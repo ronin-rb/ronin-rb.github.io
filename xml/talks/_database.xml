@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<slide-set>
+  <slide>
+    <title>The Database</title>
+
+    <p>
+      <a href="http://datamapper.org/">DataMapper</a> + 
+      <a href="http://sqlite.org/">sqlite3</a>:
+    </p>
+    <list>
+      <item><a href="http://datamapper.github.com/">datamapper.github.com</a></item>
+    </list>
+
+    <notes>
+      <p>
+        The Database uses DataMapper, a Ruby ORM, and the sqlite3 database
+        by default.
+      </p>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>ORM</title>
+
+    <p>Object Relational Mapper:</p>
+    <code>require 'ronin/model'
+
+class Person
+
+  include Ronin::Model
+
+  property :id, Serial
+  property :name, String
+  property :age, Integer
+
+end</code>
+
+    <notes>
+      <p>
+        ORM stands for Object Relational Mapper, meaning that we can define
+        our models as Classes, and rows in the database become Objects.
+      </p>
+    </notes>
+  </slide>
+
+  <slide>
+    <title>No SQL Needed</title>
+
+    <code>Person.create(:name => 'bla', :age => 22)</code>
+    <code>Person.first(:name => 'bla')</code>
+    <code>Person.all(:age.in => (18..30))</code>
+
+    <notes>
+      <p>
+        A major benefit of using an ORM, is that there is no SQL needed.
+        Create and query records all from the comfort of Ruby.
+      </p>
+    </notes>
+  </slide>
+</slide-set>
