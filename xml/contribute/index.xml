@@ -147,21 +147,22 @@
 
           <p>
             Add postmodern's (the authoritive ronin repository) remote
-            repo:
+            repository:
           </p>
           <shell>$ git remote add postmodern git://github.com/postmodern/ronin.git</shell>
 
-          <p>Update (pull) updates from postmodern's repo:</p>
+          <p>Update (pull) updates from postmodern's repository:</p>
           <shell>$ git pull postmodern</shell>
         </subsection>
 
         <subsection label="workflow" title="Git Workflow">
           <p>
             Now that you have your own fork of ronin you can hack on it to 
-            your heart's content.  You can now commit your changes (save
-            them locally with messages about the changes), push them to
-            your  remote fork, create branches, and notify postmodern
-            about features and bug fixes you have made.
+            your heart's content.  You can commit your changes (saving them
+            locally with messages about the changes), push them to
+            your remote fork, create branches, and notify postmodern (or
+            other ronin developers) about new features and bug fixes you
+            have made.
           </p>
 
           <p>
@@ -174,36 +175,75 @@
           <shell>$ git commit -m "Fixed bug preventing file inclusion in overlays" lib/ronin/platform/extension.rb</shell>
 
           <p>
-            Now that you have finished up for the day and you want to save
-            / push your changes up to github; because you might be working 
+            You can view all of the files that were modified and the files
+            which are queued up to be committed using the
+            <kbd>git status</kbd> command.
+          </p>
+
+          <p>
+            In the event that you've made changes to multiple files accross
+            several different directories, you can queue the files for
+            a commit using the <kbd>git add</kbdd> command:
+          </p>
+          <shell>$ cd lib/ronin/formatting/extensions
+$ git add binary/integer.rb
+$ git add binary/string.rb
+$ git add text/array.rb
+$ git commit</shell>
+
+          <p>
+            Now that you have finished up for the day and you want to 
+            push your changes up to github; because you might be working 
             from a different machine tomorrow, or maybe because you just
             need a backup.
           </p>
 
-          <shell>$ git push master</shell>
+          <shell>$ git push origin</shell>
 
           <p>
             Now a couple days have passed and you are pumped because you 
-            fixed like 20 bugs (totally a hypothetical situation because
-            agile programming eliminates bugs in code) and added a sick
+            fixed like 20 bugs (totally a hypothetical situation since 
+            Agile programming reduces bug buildup) and added a sick
             new feature for 
             <a href="http://www.youtube.com/watch?v=x3XzPhdBx9g">
-              hacking the gibso
+              hacking the gibson
             </a>.
-            Problem is that it is 9am and you want to keep working on a
-            totally different feature that won't be finished till some time
-            next week.  What your gunna do is branch and send a
-            "pull notify" to postmodern.
           </p>
 
-          <shell>$ git push origin AWESOME_BRANCH</shell>
+          <p>
+            Problem is that it is 9am and you want to start working on a
+            totally different feature that won't be finished till some time
+            next week. What you'll need to do is create a branch for
+            the new feature.
+          </p>
+
+          <shell>$ git checkout -b awesome
+... hack hack hack ...
+$ git push origin awesome</shell>
+          <note>
+            <p>
+              The <kbd>-b</kbd> option will cause <kbd>git checkout</kbd>
+              to create a new branch, then check it out.
+            </p>
+          </note>
+
+          <p>
+            When your awesome new feature is complete and all tested, you
+            can merge your awesome branch back into the master branch.
+          </p>
+          <shell>$ git checkout master
+$ git merge awesome
+          </shell>
 
           <p>
             Then follow the 
             <a href="http://github.com/guides/pull-requests">
               pull request documentation
             </a>,
-            being sure to mention your branch name in the message.
+            providing a summary of your bug fixes and any new features.
+            Ronin's developers will then pull in your changes into the
+            main ronin repository, preserving your author information
+            and commit messages.
           </p>
         </subsection>
 
@@ -216,14 +256,14 @@
           <list>
             <item>
               <a href="http://zrusin.blogspot.com/2007/09/git-cheat-sheet.html">
-                Git cheat sheet
+                Git Cheat Sheet
               </a> -
               A totally sweet visual representation of working with git.
             </item>
 
             <item>
               <a href="http://datamapper.github.com/using-git.html">
-                Git tutorial
+                Git Tutorial
               </a> -
               An indepth tutorial from the rightous ruby datamapper 
               project.
