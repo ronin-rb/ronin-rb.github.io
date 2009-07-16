@@ -41,19 +41,15 @@ namespace :web do
     return options.join(' ')
   end
 
-  def xml(page=nil)
-    if page
-      File.join('xml',"#{page}.xml")
-    else
-      'xml'
-    end
+  def xml(page)
+    File.join('xml',"#{page}.xml")
   end
 
   def www(page=nil)
     if page
       File.join('www',"#{page}.html")
     else
-      'www'
+      File.join('www','')
     end
   end
 
