@@ -4,7 +4,6 @@
   <xsl:import href="header.xsl" />
   <xsl:import href="common.xsl" />
   <xsl:import href="project.xsl" />
-  <xsl:import href="ohloh.xsl" />
   <xsl:import href="google_analytics.xsl" />
 
   <xsl:output method="xml" version="1.0" encoding="UTF-8" doctype-public="-//W3C//DTD XHTML 1.1//EN" doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd" indent="yes" />
