@@ -117,6 +117,8 @@ contains many specialized tags used to generate very complex HTML markup.
 == An Example Page
 
   <?xml version="1.0"?>
+  <?xml-stylesheet type="text/xsl" href="../xsl/page.xsl"?>
+  
   <rubyforge xmlns:xi="http://www.w3.org/2001/XInclude">
     <title>Test page</title>
   
