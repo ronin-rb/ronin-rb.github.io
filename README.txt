@@ -143,6 +143,18 @@ contains many specialized tags used to generate very complex HTML markup.
     </page>
   </sophweb>
 
+== Synopsis
+
+* Building the website locally:
+
+  $ rake
+
+* Publishing the website:
+
+    $ rake web:publish
+
+  * Publishing to ronin.rubyforge.org requires ssh access.
+
 == License
 
 ronin.rubyforge.org.
