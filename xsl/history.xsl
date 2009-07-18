@@ -22,15 +22,13 @@
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <xsl:template name="history">
-    <div class="history">
-      <p>
-        <a href="http://github.com/postmodern/ronin.rubyforge.org/fork">Fork</a> |
-        <a>
-          <xsl:attribute name="href">http://github.com/postmodern/ronin.rubyforge.org/commits/master/<xsl:value-of select="$page" /></xsl:attribute>
-          History
-        </a>
-      </p>
-    </div>
+    <span class="history">
+      <a href="http://github.com/postmodern/ronin.rubyforge.org/fork">Fork</a> |
+      <a>
+        <xsl:attribute name="href">http://github.com/postmodern/ronin.rubyforge.org/commits/master/<xsl:value-of select="$page" /></xsl:attribute>
+        History
+      </a>
+    </span>
   </xsl:template>
 
 </xsl:stylesheet>
