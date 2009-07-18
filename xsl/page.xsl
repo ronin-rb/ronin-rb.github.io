@@ -26,6 +26,7 @@
   <xsl:import href="footer.xsl" />
 
   <xsl:import href="common.xsl" />
+  <xsl:import href="history.xsl" />
   <xsl:import href="faq.xsl" />
   <xsl:import href="project.xsl" />
   <xsl:import href="menu.xsl" />
@@ -71,6 +72,8 @@
   <!-- Content template -->
   <xsl:template match="/rubyforge/page/content">
     <div id="content">
+      <xsl:call-template name="history" />
+
       <xsl:apply-templates />
     </div>
   </xsl:template>
