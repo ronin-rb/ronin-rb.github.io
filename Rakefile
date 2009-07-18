@@ -3,6 +3,18 @@ require 'yaml'
 namespace :web do
   CONFIG = YAML.load_file('config.yaml')
 
+  def xml(page)
+    File.join('xml',"#{page}.xml")
+  end
+
+  def www(page=nil)
+    if page
+      File.join('www',"#{page}.html")
+    else
+      File.join('www','')
+    end
+  end
+
   def project
     CONFIG[:project]
   end
@@ -11,8 +23,8 @@ namespace :web do
     CONFIG[:pages]
   end
 
-  def xslt_options
-    options = ['--xinclude']
+  def xslt_options(page)
+    options = ['--xinclude', '--stringparam', 'page', xml(page)]
 
     CONFIG[:project].each do |name,value|
       options += [
@@ -41,20 +53,8 @@ namespace :web do
     return options.join(' ')
   end
 
-  def xml(page)
-    File.join('xml',"#{page}.xml")
-  end
-
-  def www(page=nil)
-    if page
-      File.join('www',"#{page}.html")
-    else
-      File.join('www','')
-    end
-  end
-
   def xslt(src,dest=src)
-    system "xsltproc #{xslt_options} -o #{www(dest)} #{xml(src)}"
+    system "xsltproc #{xslt_options(src)} -o #{www(dest)} #{xml(src)}"
   end
 
   desc "Builds the HTML"
