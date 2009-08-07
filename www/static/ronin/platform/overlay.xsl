@@ -9,12 +9,35 @@
         <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
         <style type="text/css">
           body {
+            font-family: sans-serif;
+            font-size: 0.9em;
+            margin: 0;
+            padding: 0;
           }
 
           #overlay {
-            margin: 0.5em;
-            padding: 0.2em;
+            margin: 1em;
+            padding: 1em;
             border: 20px solid black;
+          }
+
+          #overlay p {
+            margin: 0.125em;
+            padding: 0;
+          }
+
+          #overlay strong {
+            margin-right: 1em;
+          }
+
+          #overlay a {
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+          }
+
+          #overlay a:hover {
+            color: #BD0000;
           }
 
           #overlay-title {
@@ -28,76 +51,132 @@
 
           #overlay-description {
           }
+        </style>
+        <style type="text/css" media="print">
+          #overlay {
+            border: none;
+          }
 
-          #overlay-description blockquote {
+          #overlay a {
+            font-weight: normal;
           }
         </style>
-        <script type="text/javascript" src="http://ronin.rubyforge.org/scripts/jquery.min.js"></script>
-        <script type="text/javascript" src="http://ronin.rubyforge.org/scripts/jquery.expander.js"></script>
-        <script type="text/javascript">
-          $(document).ready(function() {
-            $("#overlay-description/blockquote").expander({
-              expandText: '[ more ]',
-              userCollapseText: '[ less ]'
-            });
-          });
-        </script>
       </head>
 
       <body>
-        <div id="overlay">
+        <table id="overlay">
           <xsl:apply-templates />
-        </div>
+        </table>
       </body>
     </html>
   </xsl:template>
 
   <xsl:template match="/ronin-overlay/title">
-    <p id="overlay-title">
-      <strong>Title:</strong> <xsl:value-of select="." />
-    </p>
+    <tr id="overlay-title">
+      <td valign="top">
+        <p><strong>Title:</strong></p>
+      </td>
+      <td valign="top">
+        <p><xsl:value-of select="." /></p>
+      </td>
+    </tr>
   </xsl:template>
 
   <xsl:template match="/ronin-overlay/license">
-    <p id="overlay-license">
-      <strong>License:</strong> <xsl:value-of select="." />
-    </p>
+    <tr id="overlay-license">
+      <td valign="top">
+        <p><strong>License:</strong></p>
+      </td>
+      <td valign="top">
+        <p><xsl:value-of select="." /></p>
+      </td>
+    </tr>
   </xsl:template>
 
   <xsl:template match="/ronin-overlay/source">
-    <p id="overlay-source">
-      <strong>Source:</strong>
-      <a>
-        <xsl:attribute name="href"><xsl:value-of select="." /></xsl:attribute>
-        <xsl:value-of select="." />
-      </a>
-    </p>
+    <tr id="overlay-source">
+      <td valign="top">
+        <p><strong>Source:</strong></p>
+      </td>
+      <td valign="top">
+        <p>
+          <a>
+            <xsl:attribute name="href"><xsl:value-of select="." /></xsl:attribute>
+            <xsl:value-of select="." />
+          </a>
+        </p>
+      </td>
+    </tr>
   </xsl:template>
 
-  <xsl:template match="/ronin-overlay/source-browse">
-    <p id="overlay-source-browse">
-      <strong>Source Browser:</strong>
-      <a>
-        <xsl:attribute name="href"><xsl:value-of select="." /></xsl:attribute>
-        <xsl:value-of select="." />
-      </a>
-    </p>
+  <xsl:template match="/ronin-overlay/source-view">
+    <tr id="overlay-source-view">
+      <td valign="top">
+        <p><strong>View Source:</strong></p>
+      </td>
+      <td valign="top">
+        <p>
+          <a>
+            <xsl:attribute name="href"><xsl:value-of select="." /></xsl:attribute>
+            <xsl:value-of select="." />
+          </a>
+        </p>
+      </td>
+    </tr>
   </xsl:template>
 
   <xsl:template match="/ronin-overlay/website">
-    <p id="overlay-website">
-      <strong>Website:</strong>
-      <a>
-        <xsl:attribute name="href"><xsl:value-of select="." /></xsl:attribute>
-        <xsl:value-of select="." />
-      </a>
+    <tr id="overlay-website">
+      <td valign="top">
+        <p><strong>Website:</strong></p>
+      </td>
+      <td valign="top">
+        <p>
+          <a>
+            <xsl:attribute name="href"><xsl:value-of select="." /></xsl:attribute>
+            <xsl:value-of select="." />
+          </a>
+        </p>
+      </td>
+    </tr>
+  </xsl:template>
+
+  <xsl:template match="/ronin-overlay/maintainers">
+    <tr id="overlay-maintainers">
+      <td valign="top">
+        <p><strong>Maintainers:</strong></p>
+      </td>
+      <td valign="top">
+        <xsl:apply-templates />
+      </td>
+    </tr>
+  </xsl:template>
+
+  <xsl:template match="/ronin-overlay/maintainers/maintainer">
+    <p class="maintainer">
+      <xsl:choose>
+        <xsl:when test="email">
+          <a>
+            <xsl:attribute name="href">mailto:<xsl:value-of select="email/." /></xsl:attribute>
+            <xsl:value-of select="name/." />
+          </a>
+        </xsl:when>
+
+        <xsl:otherwise>
+          <strong><xsl:value-of select="name/." /></strong>
+        </xsl:otherwise>
+      </xsl:choose>
     </p>
   </xsl:template>
 
   <xsl:template match="/ronin-overlay/description">
-    <div id="overlay-description">
-      <p><strong>Description:</strong></p>
-      <blockquote><xsl:value-of select="." /></blockquote>
-    </div>
+    <tr id="overlay-description">
+      <td valign="top">
+        <p><strong>Description:</strong></p>
+      </td>
+      <td valign="top">
+        <p><xsl:value-of select="." /></p>
+      </td>
+    </tr>
   </xsl:template>
 </xsl:stylesheet>
