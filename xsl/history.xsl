@@ -23,7 +23,7 @@
 
   <xsl:template name="history">
     <span class="history">
-      <a href="http://github.com/postmodern/ronin.rubyforge.org/fork">Fork</a> |
+      <a href="http://github.com/postmodern/ronin.rubyforge.org/fork">Fork Page</a> |
       <a>
         <xsl:attribute name="href">http://github.com/postmodern/ronin.rubyforge.org/commits/master/<xsl:value-of select="$page" /></xsl:attribute>
         History
