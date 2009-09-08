@@ -292,10 +292,13 @@ class ShellService extends Service
 
   function exec_output($command)
   {
-    $output = array();
-    exec($command, &$output);
+    ob_start();
 
-    return $output;
+    passthru($command);
+
+    $output = ob_get_contents();
+    ob_end_clean();
+    return split("\n",$output);
   }
 
   function load_env()
