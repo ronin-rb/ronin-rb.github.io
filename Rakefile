@@ -23,6 +23,10 @@ namespace :web do
     CONFIG[:pages]
   end
 
+  def symlinks
+    (CONFIG[:symlinks] || {})
+  end
+
   def xslt_options(page)
     options = ['--xinclude', '--stringparam', 'page', xml(page)]
 
@@ -57,6 +61,12 @@ namespace :web do
     system "xsltproc #{xslt_options(src)} -o #{www(dest)} #{xml(src)}"
   end
 
+  def symlink(src,dest)
+    src = File.join('www',src)
+
+    system "ln -t #{File.dirname(src)} -sf #{src} #{dest}"
+  end
+
   desc "Builds the HTML"
   task :html do
     pages.each do |page|
@@ -66,18 +76,30 @@ namespace :web do
     end
   end
 
+  desc "Build symlinks for old links"
+  task :symlinks do
+    symlinks.each do |src,dest|
+      puts "[-] Symlinking #{src} -> #{dest} ..."
+
+      symlink(src,dest)
+    end
+  end
+
+  desc "Builds the website"
+  task :build => [:html, :symlinks]
+
   desc "Publishes the built HTML"
-  task :publish => :html do
+  task :publish => :build do
     puts "[-] Publishing website ..."
     sh "rsync #{rsync_options} #{www} '#{project[:user]}@#{project[:host]}:#{project[:webroot]}/'"
   end
 
   desc "Shows what will be published"
-  task :test => :html do
+  task :test => :build do
     puts "[-] Comparing website changes ..."
     sh "rsync #{rsync_options} -n #{www} '#{project[:user]}@#{project[:host]}:#{project[:webroot]}/'"
   end
 end
 
 desc "Build the html by default"
-task :default => 'web:html'
+task :default => 'web:build'
