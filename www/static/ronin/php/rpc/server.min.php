@@ -298,7 +298,7 @@ class ShellService extends Service
 
     $output = ob_get_contents();
     ob_end_clean();
-    return split("\n",$output);
+    return split("\n",rtrim($output,"\n\r"));
   }
 
   function load_env()
