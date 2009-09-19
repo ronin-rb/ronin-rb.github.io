@@ -26,8 +26,6 @@
       <img id="logo" src="/images/logo.png">
         <xsl:attribute name="alt"><xsl:value-of select="$project-title" /> logo</xsl:attribute>
       </img>
-
-      <img id="banner_flowers" src="/images/hexagons_flowers.png" alt="hexagons with flowers" />
     </div>
   </xsl:template>
 
