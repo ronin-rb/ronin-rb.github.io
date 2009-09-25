@@ -48,16 +48,6 @@
         </list>
       </section>
 
-      <section label="requirements" title="Requirements">
-        <list>
-          <item><a href="/index.html">Ronin</a> &gt;= 0.0.9</item>
-        </list>
-      </section>
-
-      <section label="install" title="Install">
-        <shell>$ sudo gem install ronin-sql</shell>
-      </section>
-
       <section label="synopsis" title="Synopsis">
         <list>
           <item>
@@ -71,6 +61,7 @@
         <list>
           <item>
             Generate valid SQL using the Ronin SQL DSL:
+
             <code>require 'ronin/code/sql'
 
 Code.sql {
@@ -81,6 +72,7 @@ Code.sql {
 
           <item>
             Generate valid SQL injections using the Ronin SQL injection DSL:
+
             <code>Code.sql_injection {
   escape_string { has_table?(:users) }
 }.to_s
@@ -89,6 +81,7 @@ Code.sql {
 
           <item>
             Test a URL for SQL Injection (SQLi):
+
             <code>require 'ronin/sql'
 
 url = URI('http://redteatrosalternativos.com/_05enlaces/links/phpHoo3.php?viewCat=1')
@@ -98,16 +91,34 @@ url.has_sqli?
 
           <item>
             Get the first viable SQLi vulnerability:
+
             <code>url.first_sqli
 # =&gt; #&lt;Ronin::SQL::Injection: ...&gt;</code>
           </item>
 
           <item>
             Scan a URL for SQLi vulnerabilities:
+
             <code>url.sqli_scan
 # =&gt; [#&lt;Ronin::SQL::Injection: ...&gt;, ...]</code>
           </item>
         </list>
+      </section>
+
+      <section label="requirements" title="Requirements">
+        <list>
+          <item>
+            <a href="/index.html">Ronin</a> &gt;= 0.3.0
+          </item>
+
+          <item>
+            <a href="/web/">Ronin Web</a> &gt;= 0.2.0
+          </item>
+        </list>
+      </section>
+
+      <section label="install" title="Install">
+        <shell>$ sudo gem install ronin-sql</shell>
       </section>
 
       <section label="development" title="Development">
