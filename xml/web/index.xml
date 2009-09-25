@@ -23,55 +23,27 @@
             <a href="http://mechanize.rubyforge.org/">Mechanize</a> and
             <a href="http://nokogiri.rubyforge.org/">Nokogiri</a>).
           </item>
+
           <item>
             Integrates <a href="http://spidr.rubyforge.org/">Spidr</a> into
-            <a href="http://ronin.rubyforge.org/docs/ronin-web/classes/Ronin/Web/Spider.html">
+            <a href="http://ronin.rubyforge.org/docs/ronin-web/Ronin/Web/Spider.html">
               Ronin::Web::Spider
             </a>.
           </item>
+
           <item>
-            Provides <a href="http://ronin.rubyforge.org/docs/ronin-web/classes/Ronin/Web/Server.html">
+            Provides <a href="http://ronin.rubyforge.org/docs/ronin-web/Ronin/Web/Server/Base.html">
               Ronin::Web::Server
             </a>,
-            a customizable <a href="http://rack.rubyforge.org/">Rack</a>
+            a customizable <a href="http://www.sinatrarb.com/">Sinatra</a>
             web server that supports path and host-name routing.
           </item>
-        </list>
-      </section>
 
-      <!--
-      <section label="synopsis" title="Synopsis">
-        <list>
           <item>
+            Provides <a href="http://ronin.rubyforge.org/docs/ronin-web/Ronin/Web/Proxy/Base.html">Ronin::Web::Proxy</a>, a configurable
+            <a href="http://www.sinatrarb.com/">Sinatra</a> based Web Proxy.
           </item>
         </list>
-      </section>
-      -->
-
-      <section label="requirements" title="Requirements">
-        <list>
-          <item>
-            <a href="http://nokogiri.rubyforge.org/">Nokogiri</a>
-            &gt;= 1.1.0
-          </item>
-          <item>
-            <a href="http://mechanize.rubyforge.org/">Mechanize</a>
-            &gt;= 0.9.0
-          </item>
-          <item>
-            <a href="http://spidr.rubyforge.org/">Spidr</a>
-            &gt;= 0.1.3
-          </item>
-          <item>
-            <a href="http://rack.rubyforge.org/">Rack</a>
-            &gt;= 0.9.1
-          </item>
-          <item><a href="/index.html">Ronin</a> &gt;= 0.1.4</item>
-        </list>
-      </section>
-
-      <section label="install" title="Install">
-        <shell>$ sudo gem install ronin-web</shell>
       </section>
 
       <section label="synopsis" title="Synopsis">
@@ -81,6 +53,146 @@
             <shell>$ ronin-web</shell>
           </item>
         </list>
+      </section>
+
+      <section label="examples" title="Examples">
+        <list>
+          <item>
+            Get a web-page:
+
+            <code>Web.get('http://www.example.com/')</code>
+          </item>
+
+          <item>
+            Get only the body of the web-page:
+
+            <code>Web.get_body('http://www.example.com/')</code>
+          </item>
+
+          <item>
+            Get a WWW::Mechanize agent:
+
+            <code>agent = Web.agent</code>
+          </item>
+
+          <item>
+            Parse HTML:
+
+            <code>Web.html(open('some_file.html'))
+# =&gt; &lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"&gt;
+# &lt;html&gt;
+#   &lt;head&gt;
+#     &lt;script type="text/javascript" src="redirect.js"&gt;&lt;/script&gt;
+#   &lt;/head&gt;
+# &lt;/html&gt;</code>
+          </item>
+
+          <item>
+            Build a HTML document:
+
+            <code>doc = Web.build_html do
+  html {
+    head {
+      script(:type => 'text/javascript', :src => 'redirect.js')
+    }
+  }
+end
+
+puts doc.to_html
+# &lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"&gt;
+# &lt;html&gt;&lt;head&gt;&lt;script src="redirect.js" type="text/javascript"&gt;&lt;/script&gt;&lt;/head&gt;&lt;/html&gt;</code>
+          </item>
+
+          <item>
+            Parse XML:
+
+            <code>Web.xml(some_text)
+# =&gt; &lt;?xml version="1.0"?&gt;
+# &lt;users&gt;
+#   &lt;user&gt;
+#     &lt;name&gt;admin&lt;/name&gt;
+#     &lt;password&gt;0mni&lt;/password&gt;
+#   &lt;/user&gt;
+# &lt;/users&gt;</code>
+          </item>
+
+          <item>
+            Build a XML document:
+
+            <code>doc = Web.build_xml do
+  playlist {
+    mp3 {
+      file { text('02 THE WAIT.mp3') }
+      artist { text('Evil Nine') }
+      track { text('The Wait feat David Autokratz') }
+      duration { text('1000000000') }
+    }
+  }
+end
+    
+puts doc.to_xml
+# &lt;?xml version="1.0"?&gt;
+# &lt;playlist&gt;
+#   &lt;mp3&gt;
+#     &lt;file&gt;02 THE WAIT.mp3&lt;/file&gt;
+#     &lt;artist&gt;Evil Nine&lt;/artist&gt;
+#     &lt;track&gt;The Wait feat David Autokratz&lt;/track&gt;
+#     &lt;duration&gt;1000000000&lt;/duration&gt;
+#   &lt;/mp3&gt;
+# &lt;/playlist&gt;</code>
+          </item>
+
+          <item>
+            Spider a web site:
+
+            <code>Web::Spider.host('www.example.com') do |spider|
+  spider.every_url do |url|
+    # ...
+  end
+
+  spider.every_page do |page|
+    # ...
+  end
+end</code>
+          </item>
+
+          <item>
+            Serve files via a Web Server:
+
+            <code>require 'ronin/web/server'
+
+Web.server do
+  file '/opensearch.xml', '/tmp/test.xml'
+  directory '/download/', '/tmp/download/'
+end
+
+Web.server.get '/test' do
+  'Test 1 2 1 2'
+end</code>
+          </item>
+        </list>
+      </section>
+
+      <section label="requirements" title="Requirements">
+        <list>
+          <item>
+            <a href="http://mechanize.rubyforge.org/">Mechanize</a>
+            &gt;= 0.9.3
+          </item>
+          <item>
+            <a href="http://spidr.rubyforge.org/">Spidr</a>
+            &gt;= 0.1.9
+          </item>
+          <item>
+            <a href="http://www.sinatrarb.org/">Sinatra</a>
+            &gt;= 0.9.4
+          </item>
+          <item><a href="/index.html">Ronin</a> &gt;= 0.3.0</item>
+        </list>
+      </section>
+
+      <section label="install" title="Install">
+        <shell>$ sudo gem install ronin-web</shell>
       </section>
 
       <section label="development" title="Development">
