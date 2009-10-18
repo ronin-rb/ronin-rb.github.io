@@ -64,7 +64,7 @@ namespace :web do
   def symlink(src,dest)
     src = File.join('www',src)
 
-    system "ln -t #{File.dirname(src)} -sf #{src} #{dest}"
+    system "ln -sf #{dest} #{src}"
   end
 
   desc "Builds the HTML"
