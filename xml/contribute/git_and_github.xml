@@ -1,0 +1,264 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="../../xsl/page.xsl"?>
+<!--
+  ronin.rubyforge.org.
+
+  Copyright (c) 2006-2009 Hal Brodigan (postmodern.mod3 at gmail.com)
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+-->
+
+<rubyforge xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Git and GitHub</title>
+  <page>
+    <xi:include href="../_menu.xml" />
+
+    <content>
+      <section label="github" title="Ronin and Git[hub]">
+        <p>
+          Ronin development colaboration is done with the 
+          <a href="http://git-scm.com/">git</a> source code management (SCM)
+          system. <a href="http://github.com">github.com</a> is used to host
+          the authortive remote repositories.  By creating a github account
+          and forking one of the ronin projects for your development needs,
+          you will be integrating into the ronin development community.
+          This will allow core ronin developers to use git and github's
+          features to accept contributions.
+        </p>
+
+        <p>
+          There is a 
+          <a href="http://www.google.com/search?q=git+and+github">
+            plethora of documentation
+          </a>
+          for getting up to speed with git. It can be difficult to weed
+          through documentation for a tool as robust and generic as git and
+          find the few details relavant to get started hacking on ronin.
+          Below is a brief guide for using github and git for working on
+          Ronin. 
+        </p>
+
+        <list>
+          <item>
+            <jump name="setup_github">Setting up a github.com account</jump>
+          </item>
+          <item>
+            <jump name="forking">Forking Ronin</jump>
+          </item>
+          <item>
+            <jump name="workflow">Git Workflow</jump>
+          </item>
+          <item>
+            <jump name="references">Recomended References</jump>
+          </item>
+        </list>
+      </section>
+
+      <section label="setup_github" title="Setting up a github.com account">
+        <p>
+          This consists of installing git on your system, creating an
+          account on github.com, associating your git installation with
+          your github.com account, and uploading your ssh public-key
+          to github.com.  
+        </p>
+
+        <p>
+          Each of these steps are pretty straight forward.  Install git
+          in same fashion as you would for other applications on your
+          system (apt-get, yum, etc on Linux, 
+          <a href="http://github.com/guides/get-git-on-mac">
+            OS X docs
+          </a>, 
+          <a href="http://github.com/guides/using-git-and-github-for-the-windows-for-newbies">
+            Windows docs
+          </a>).
+          The github.com account can be created 
+          <a href="https://github.com/signup/free">
+            here
+          </a>, associating your git installation with github.com is 
+          documented
+          <a href="http://github.com/guides/tell-git-your-user-name-and-email-address">
+            here
+          </a>, and getting your ssh public-key onto github.com is 
+          documented
+          <a href="http://github.com/guides/providing-your-ssh-key">
+            here
+          </a>.
+        </p>
+
+        <p>
+          The authoritive source of documentation for using git with 
+          github.com is available
+          <a href="http://github.com/guides/home">here</a>.
+        </p>
+      </section>
+
+      <section label="forking" title="Forking Ronin">
+        <p>
+          "Forking" a project is a git-ism for making a copy of a source
+          code project that can be tracked through github. An initial fork
+          of a project is a copy at the point in time that the form was 
+          made.  If you want to keep your fork in sync with commits from 
+          the origionally forked project you will have to do some 
+          additional configuration of your local client.  Forking and 
+          staying in sync with the origional project is well documented
+          <a href="http://github.com/guides/keeping-a-git-fork-in-sync-with-the-forked-repo">
+            here
+          </a>.
+        </p>
+
+        <p>
+          In this example the github.com user is evoltech.<br />
+          checkout your fork of ronin:
+        </p>
+        <shell>$ git clone git@github.com:evoltech/ronin.git</shell>
+
+        <p>
+          Add postmodern's (the authoritive ronin repository) remote
+          repository:
+        </p>
+        <shell>$ git remote add postmodern git://github.com/postmodern/ronin.git</shell>
+
+        <note>
+          <p>
+            Remote repositories which one has write access to will
+            begin with <kbd>git@github.com</kbd> and are accessed
+            over ssh. Remote repositories beginning with
+            <kbd>git://</kbd> will not allow write access and are
+            accessed over HTTP.
+          </p>
+        </note>
+
+        <p>Update (pull) updates from postmodern's repository:</p>
+        <shell>$ git pull postmodern</shell>
+      </section>
+
+      <section label="workflow" title="Git Workflow">
+        <p>
+          Now that you have your own fork of ronin you can hack on it to 
+          your heart's content.  You can commit your changes (saving them
+          locally with messages about the changes), push them to
+          your remote fork, create branches, and notify postmodern (or
+          other ronin developers) about new features and bug fixes you
+          have made.
+        </p>
+
+        <p>
+          While working on ronin you may make changes to a number of files
+          that implement different features or fix bugs.  Each of these
+          can be tracked by committing them with a message.  Committing
+          is only relevant to the local clone of your remote fork.
+        </p>
+
+        <shell>$ git commit -m "Fixed bug preventing file inclusion in overlays" lib/ronin/platform/extension.rb</shell>
+
+        <p>
+          You can view all of the files that were modified and the files
+          which are queued up to be committed using the
+          <kbd>git status</kbd> command.
+        </p>
+
+        <p>
+          In the event that you've made changes to multiple files accross
+          several different directories, you can queue the files for
+          a commit using the <kbd>git add</kbd> command:
+        </p>
+        <shell>$ cd lib/ronin/formatting/extensions
+          $ git add binary/integer.rb
+          $ git add binary/string.rb
+          $ git add text/array.rb
+          $ git commit</shell>
+
+        <p>
+          Now that you have finished up for the day and you want to 
+          push your changes up to github; because you might be working 
+          from a different machine tomorrow, or maybe because you just
+          need a backup.
+        </p>
+
+        <shell>$ git push origin</shell>
+
+        <p>
+          Now a couple days have passed and you are pumped because you 
+          fixed like 20 bugs (a totally hypothetical situation since 
+          Agile programming reduces bug build-up) and added a sick
+          new feature for 
+          <a href="http://www.youtube.com/watch?v=x3XzPhdBx9g">
+            hacking the gibson
+          </a>.
+        </p>
+
+        <p>
+          Problem is that it is 9am and you want to start working on a
+          totally different feature that won't be finished till some time
+          next week. What you'll need to do is create a branch for
+          the new feature.
+        </p>
+
+        <shell>$ git checkout -b awesome
+          ... hack hack hack ...
+          $ git push origin awesome</shell>
+        <note>
+          <p>
+            The <kbd>-b</kbd> option will cause <kbd>git checkout</kbd>
+            to create a new branch, then check it out.
+          </p>
+        </note>
+
+        <p>
+          When your awesome new feature is complete and all tested, you
+          can merge your awesome branch back into the master branch.
+        </p>
+        <shell>$ git checkout master
+          $ git merge awesome</shell>
+
+        <p>
+          Then follow the 
+          <a href="http://github.com/guides/pull-requests">
+            pull request documentation
+          </a>,
+          providing a summary of your bug fixes and any new features.
+          Ronin's developers will then pull in your changes into the
+          main ronin repository, preserving your author information
+          and commit messages.
+        </p>
+      </section>
+
+      <section label="references" title="Recomended References">
+        <p>
+          Here are a few links to references that may be useful to new git
+          and github.com users.
+        </p>
+
+        <list>
+          <item>
+            <a href="http://zrusin.blogspot.com/2007/09/git-cheat-sheet.html">
+              Git Cheat Sheet
+            </a> -
+            A totally sweet visual representation of working with git.
+          </item>
+
+          <item>
+            <a href="http://datamapper.github.com/using-git.html">
+              Git Tutorial
+            </a> -
+            An indepth tutorial from the rightous ruby datamapper 
+            project.
+          </item>
+        </list>
+      </section>
+    </content>
+  </page>
+</rubyforge>
