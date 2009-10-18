@@ -1,4 +1,5 @@
 require 'yaml'
+require 'fileutils'
 
 namespace :web do
   CONFIG = YAML.load_file('config.yaml')
@@ -64,7 +65,7 @@ namespace :web do
   def symlink(src,dest)
     src = File.join('www',src)
 
-    system "ln -sf #{dest} #{src}"
+    FileUtils.ln_sf(dest,src)
   end
 
   desc "Builds the HTML"
