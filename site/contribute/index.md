@@ -11,7 +11,7 @@ Style
 
 Inorder to keep the source-code of <project-title /> clean and readable,
 those who wish to contribute code to Ronin should review the project
-[style.html](coding style guide-lines).
+[coding style guide-lines](style.html).
 
 Git and GitHub
 --------------
