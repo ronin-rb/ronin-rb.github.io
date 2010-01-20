@@ -25,15 +25,15 @@ Synopsis
 
 Building the website locally:
 
-    $ thor site
+    $ rake
 
 Preview the website locally:
 
-    $ thor site:preview
+    $ rake site:preview
 
 Publishing the website:
 
-    $ thor site:publish --user myuser
+    $ rake site:publish[user]
 
 * Publishing to ronin.rubyforge.org requires ssh access.
 
