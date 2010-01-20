@@ -14,19 +14,19 @@ class Site < Thor
 
   desc 'clean', 'Deletes a previously built site'
   def clean
-    FileUtils.rm_rf WWW_DIR
+    FileUtils.rm_rf www
   end
 
   desc 'build', 'Builds the website'
   def build
     invoke :clean
 
-    run "jekyll #{SITE_DIR} #{WWW_DIR}"
+    run "jekyll #{site} #{www}"
   end
 
   desc 'preview', 'Previews the website'
   def preview
-    run "jekyll #{SITE_DIR} #{WWW_DIR} --server"
+    run "jekyll #{site} #{www} --server"
   end
 
   desc 'publish', 'Publishes the built HTML'
@@ -35,7 +35,7 @@ class Site < Thor
     invoke :build
 
     say "Publishing site ..."
-    run "rsync #{rsync_options} #{WWW_DIR} '#{rsync_dest(options[:user])}'"
+    run "rsync #{rsync_options} #{www} '#{rsync_dest(options[:user])}'"
     say "Site published."
   end
 
@@ -45,13 +45,26 @@ class Site < Thor
     invoke :build
 
     say "Comparing site changes ..."
-    run "rsync #{rsync_options} -n #{WWW_DIR} '#{rsync_dest(options[:user])}'"
+    run "rsync #{rsync_options} -n #{www} '#{rsync_dest(options[:user])}'"
   end
 
   protected
 
-  SITE_DIR = 'site'
-  WWW_DIR = 'www'
+  def self.source_root
+    File.expand_path(File.dirname(__FILE__))
+  end
+
+  def destination_root
+    self.class.source_root
+  end
+
+  def site
+    File.join(self.class.source_root,'site')
+  end
+
+  def www
+    File.join(destination_root,'www')
+  end
 
   def config
     @@config ||= YAML.load_file('config.yml')
