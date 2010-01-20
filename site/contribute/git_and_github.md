@@ -147,8 +147,7 @@ github.com users.
   screencasts about Git and GitHub.
 * [Getting the Hang of GitHub](http://net.tutsplus.com/tutorials/other/getting-the-hang-of-github/).
 * [Terminal, Git, and GitHub for the Rest of Us: Screencast](http://net.tutsplus.com/videos/screencasts/terminal-git-and-github-for-the-rest-of-us-screencast/).
-* [Git Cheat Sheet](http://zrusin.blogspot.com/2007/09/git-cheat-sheet.html)
-  - A totally sweet visual representation of working with git.
+* [Git Cheat Sheet](http://zrusin.blogspot.com/2007/09/git-cheat-sheet.html) - A totally sweet visual representation of working with git.
 * [Git Tutorial](http://datamapper.github.com/using-git.html) - An indepth
   tutorial from the Ruby Datamapper project.
 
