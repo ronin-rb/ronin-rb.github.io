@@ -137,9 +137,16 @@ the other developers of Ronin can then pull in your changes into the
 main Ronin repository, preserving your author information and commit
 messages.
 
+References
+----------
+
 Here are a few links to references that may be useful to new git and
 github.com users.
 
+* [learn.github.com](http://learn.github.com/) - Excellent source for
+  screencasts about Git and GitHub.
+* [Getting the Hang of GitHub](http://net.tutsplus.com/tutorials/other/getting-the-hang-of-github/).
+* [Terminal, Git, and GitHub for the Rest of Us: Screencast](http://net.tutsplus.com/videos/screencasts/terminal-git-and-github-for-the-rest-of-us-screencast/).
 * [Git Cheat Sheet](http://zrusin.blogspot.com/2007/09/git-cheat-sheet.html)
   - A totally sweet visual representation of working with git.
 * [Git Tutorial](http://datamapper.github.com/using-git.html) - An indepth
