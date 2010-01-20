@@ -18,20 +18,22 @@ class Site < Thor
   end
 
   desc 'publish', 'Publishes the built HTML'
+  method_options :user => ENV['USER']
   def publish
     invoke :build
 
     say "Publishing site ..."
-    run "rsync #{rsync_options} #{WWW_DIR} '#{rsync_dest}'"
+    run "rsync #{rsync_options} #{WWW_DIR} '#{rsync_dest(options[:user])}'"
     say "Site published."
   end
 
   desc 'cmp', 'Shows what will be published'
+  method_options :user => ENV['USER']
   def cmp
     invoke :build
 
     say "Comparing site changes ..."
-    run "rsync #{rsync_options} -n #{WWW_DIR} '#{rsync_dest}'"
+    run "rsync #{rsync_options} -n #{WWW_DIR} '#{rsync_dest(options[:user])}'"
   end
 
   protected
@@ -59,8 +61,11 @@ class Site < Thor
     return options.join(' ')
   end
 
-  def rsync_dest
-    "#{rsync[:dest][:host]}:#{rsync[:dest][:path]}/"
+  def rsync_dest(user=nil)
+    url = "#{rsync[:dest][:host]}:#{rsync[:dest][:path]}/"
+    url = "#{user}@#{url}" if user
+
+    return url
   end
 
 end
