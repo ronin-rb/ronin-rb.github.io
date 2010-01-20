@@ -1,5 +1,6 @@
 require 'yaml'
 require 'thor'
+require 'fileutils'
 
 class Site < Thor
 
@@ -7,8 +8,15 @@ class Site < Thor
 
   default_task :build
 
+  desc 'clean', 'Deletes a previously built site'
+  def clean
+    FileUtils.rm_r WWW_DIR
+  end
+
   desc 'build', 'Builds the website'
   def build
+    invoke :clean
+
     run "jekyll #{SITE_DIR} #{WWW_DIR}"
   end
 
