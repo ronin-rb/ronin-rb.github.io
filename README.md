@@ -23,19 +23,19 @@ Directory Structure
 Synopsis
 --------
 
-* Building the website locally:
+Building the website locally:
 
-      $ thor site
+    $ thor site
 
-* Preview the website locally:
+Preview the website locally:
 
-      $ thor site:preview
+    $ thor site:preview
 
-* Publishing the website:
+Publishing the website:
 
-      $ thor site:publish --user myuser
+    $ thor site:publish --user myuser
 
-    * Publishing to ronin.rubyforge.org requires ssh access.
+* Publishing to ronin.rubyforge.org requires ssh access.
 
 License
 -------
