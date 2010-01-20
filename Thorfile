@@ -8,6 +8,10 @@ class Site < Thor
 
   default_task :build
 
+  map '-b' => :build
+  map '-c' => :clean
+  map '-p' => :preview
+
   desc 'clean', 'Deletes a previously built site'
   def clean
     FileUtils.rm_rf WWW_DIR
