@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $("div.answer").hide();
 
-  $("a.question").click(function() {
-    $("div.answer",$(this).parent()).toggle();
+  $("div.question/a").click(function() {
+    $("div.answer",$(this).parent().parent()).toggle();
   });
 });
