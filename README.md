@@ -20,6 +20,13 @@ Directory Structure
 * site/static: Contains static files provided by various Ronin libraries.
 * www: Contains the files to be published.
 
+Requirements
+------------
+
+* jekyll >= 0.5.7
+* rdiscount (for markdown)
+* watchr (for previewing)
+
 Synopsis
 --------
 
