@@ -10,7 +10,7 @@ class Site < Thor
 
   desc 'clean', 'Deletes a previously built site'
   def clean
-    FileUtils.rm_r WWW_DIR
+    FileUtils.rm_rf WWW_DIR
   end
 
   desc 'build', 'Builds the website'
