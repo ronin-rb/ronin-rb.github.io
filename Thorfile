@@ -54,7 +54,7 @@ class Site < Thor
   WWW_DIR = 'www'
 
   def config
-    @@config ||= YAML.load_file('config.yaml')
+    @@config ||= YAML.load_file('config.yml')
   end
 
   def rsync
