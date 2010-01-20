@@ -34,7 +34,7 @@ Building the website locally:
 
     $ rake
 
-Preview the website locally:
+Run the site locally on `localhost:2222`:
 
     $ rake site:preview
 
