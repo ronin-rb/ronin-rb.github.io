@@ -40,4 +40,4 @@ you can dive right into Ronin. Just pick a repository, fork it and dive in:
 * [Ronin Scanners](http://github.com/postmodern/ronin-scanners)
 * [Ronin SQL](http://github.com/postmodern/ronin-sql)
 * [Ronin Web](http://github.com/postmodern/ronin-web)
-
+* [ronin.rubyforge.org](http://github.com/postmodern/ronin.rubyforge.org)
