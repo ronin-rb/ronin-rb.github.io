@@ -31,13 +31,14 @@ Once your familiar with Ronins coding style, and setup with
 [Git](http://git-scm.com/) and [GitHub](http://www.github.com/),
 you can dive right into Ronin. Just pick a repository, fork it and dive in:
 
-* [Ronin](http://github.com/postmodern/ronin)
-* [Ronin Dorks](http://github.com/postmodern/ronin-dorks)
-* [Ronin Exploits](http://github.com/postmodern/ronin-exploits)
-* [Ronin Gen](http://github.com/postmodern/ronin-gen)
-* [Ronin HTML](http://github.com/postmodern/ronin-html)
-* [Ronin PHP](http://github.com/postmodern/ronin-php)
-* [Ronin Scanners](http://github.com/postmodern/ronin-scanners)
-* [Ronin SQL](http://github.com/postmodern/ronin-sql)
-* [Ronin Web](http://github.com/postmodern/ronin-web)
+* [ronin](http://github.com/postmodern/ronin)
+* [ronin-dorks](http://github.com/postmodern/ronin-dorks)
+* [ronin-exploits](http://github.com/postmodern/ronin-exploits)
+* [ronin-gen](http://github.com/postmodern/ronin-gen)
+* [ronin-html](http://github.com/postmodern/ronin-html)
+* [ronin-php](http://github.com/postmodern/ronin-php)
+* [ronin-scanners](http://github.com/postmodern/ronin-scanners)
+* [ronin-sql](http://github.com/postmodern/ronin-sql)
+* [ronin-web](http://github.com/postmodern/ronin-web)
 * [ronin.rubyforge.org](http://github.com/postmodern/ronin.rubyforge.org)
+
