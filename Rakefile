@@ -13,7 +13,7 @@ namespace :site do
     sh "jekyll"
   end
 
-  task :preview do
+  task :preview => :clean do
     sh "jekyll --auto --server"
   end
 
