@@ -21,6 +21,8 @@ HowTos
   convenience methods within the Ronin Console.
 * [Using Ronin Web](using_ronin_web.html) -
   A brief tutorial showing basic usage of the Ronin Web library.
+* [Using Ronin PHP](using_ronin_php.html) -
+  A brief tutorial showing basic usage of the Ronin PHP library.
 
 API Documentation
 -----------------
