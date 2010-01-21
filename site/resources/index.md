@@ -17,9 +17,8 @@ HowTos
 ------
 
 * [Everyday Ronin](everyday_ronin.html) - 
-  A somewhat lengthy tutorial covering the everyday usage of the Ronin
-  Console, various convenience methods and other Ronin
-  libraries.
+  A somewhat lengthy tutorial covering the everyday usage of various
+  convenience methods within the Ronin Console.
 * [Using Ronin Web](using_ronin_web.html) -
   A brief tutorial showing basic usage of the Ronin Web library.
 
