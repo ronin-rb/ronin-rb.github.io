@@ -6,6 +6,14 @@ title: Resources
 Resources
 =========
 
+Videos
+------
+
+* [Ronin: A Platform for Publishing and Mayhem](http://www.vimeo.com/7359548) - 
+  A talk at ToorCamp 2009 discussing Ronin, how it can be used as a
+  Platform for Publishing and Mayhem, given by Postmodern of Sophsec
+  Intrusion Labs.
+
 Installation Guides
 -------------------
 
@@ -50,12 +58,4 @@ API Documentation
 * [Ronin Web](http://ronin.rubyforge.org/docs/ronin-web) - A Ruby library
   for Ronin that provides support for web scraping and spidering
   functionality.
-
-Videos
-------
-
-* [Ronin: A Platform for Publishing and Mayhem](http://www.vimeo.com/7359548) - 
-  A talk at ToorCamp 2009 discussing Ronin, how it can be used as a
-  Platform for Publishing and Mayhem, given by Postmodern of Sophsec
-  Intrusion Labs.
 
