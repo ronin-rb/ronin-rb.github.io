@@ -11,7 +11,7 @@ IRC
 
 Ronin also has a dedicated IRC channel for general questions or
 feedback. Simply join [#ronin](irc://irc.freenode.net/#ronin) on
-[irc.freenode.net](http://freenode.net/).
+[freenode.net](http://freenode.net/).
 
 If you do not have an IRC client, you can use the
 [Java Chat Applet](http://java.freenode.net/index.php?channel=ronin)
