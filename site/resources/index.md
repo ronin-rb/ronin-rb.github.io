@@ -45,7 +45,7 @@ API Documentation
   third-party security scanners.
 * [Ronin SQL](http://ronin.rubyforge.org/docs/ronin-sql) - A Ruby library
   for Ronin that provids support for SQL related security tasks.
-* [Ronin Web](http://ronin.rubyforge.org/docs/ronin-sql) - A Ruby library
+* [Ronin Web](http://ronin.rubyforge.org/docs/ronin-web) - A Ruby library
   for Ronin that provides support for web scraping and spidering
   functionality.
 
