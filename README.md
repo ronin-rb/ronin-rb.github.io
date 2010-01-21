@@ -23,7 +23,7 @@ Directory Structure
 Requirements
 ------------
 
-* jekyll >= 0.5.7
+* [jekyll](http://github.com/mojombo/jekyll) >= 0.5.7
 * rdiscount (for markdown)
 * watchr (for previewing)
 
