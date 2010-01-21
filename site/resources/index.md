@@ -20,7 +20,8 @@ HowTos
   A somewhat lengthy tutorial covering the everyday usage of the Ronin
   Console, various convenience methods and other Ronin
   libraries.
-
+* [Using Ronin Web](using_ronin_web.html) -
+  A brief tutorial showing basic usage of the Ronin Web library.
 
 API Documentation
 -----------------
