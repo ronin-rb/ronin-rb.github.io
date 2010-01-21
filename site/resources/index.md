@@ -13,16 +13,16 @@ Installation Guides
   A brief set of instructions describing how to install Ronin on a vanilla
   Debian system.
 
-HowTos
+Guides
 ------
 
 * [Everyday Ronin](everyday_ronin.html) - 
-  A somewhat lengthy tutorial covering the everyday usage of various
+  A somewhat lengthy guide covering the everyday usage of various
   convenience methods within the Ronin Console.
 * [Using Ronin Web](using_ronin_web.html) -
-  A brief tutorial showing basic usage of the Ronin Web library.
+  A brief guide showing basic usage of the Ronin Web library.
 * [Using Ronin PHP](using_ronin_php.html) -
-  A brief tutorial showing basic usage of the Ronin PHP library.
+  A brief guide showing basic usage of the Ronin PHP library.
 
 API Documentation
 -----------------
