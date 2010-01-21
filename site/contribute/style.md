@@ -40,16 +40,14 @@ Use double-quotes when necessary, use single-quotes otherwise.
 Embedded Strings
 ----------------
 
-Use the <code>%{...}</code>syntax when embedding large strings into Ruby
-code.
+Use the `%{...}` syntax when embedding large strings into Ruby code.
 
     %{I find this style to be particularly clean.}
 
 Expressions
 -----------
 
-The <code>and</code>, <code>or</code>, <code>not</code> keywords are
-not the same as their <code>&&</code>, <code>||</code>, <code>!</code>
+The `and`, `or`, `not` keywords are not the same as their `&&`, `||`, `!`
 counter-parts. Please use symbolic operators instead.
 
 Statements
@@ -105,7 +103,7 @@ Avoid using global variables, instead use class variables.
 Blocks (aka Closures)
 ---------------------
 
-Use <code>&block</code> syntax to explicitly receive and pass blocks.
+Use `&block` syntax to explicitly receive and pass blocks.
 
     def explicit_block(var,&amp;block)
       ...
