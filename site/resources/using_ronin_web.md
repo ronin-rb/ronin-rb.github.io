@@ -7,11 +7,11 @@ Using Ronin Web
 ===============
 
 The [Ronin Web](http://ronin.rubyforge.org/docs/ronin-web/) library provides
-support for Web Scraping and Spidering functionality in Ronin. Before we can
-use this library in the Ronin Console, we must first install the library.
+support for Web Scraping and Spidering functionality in Ronin.
 
-To install the Ronin Web library used in this tutorial, simply run
-the following command:
+Before we can use this library in the Ronin Console, we must first install
+the library. To install the Ronin Web library used in this tutorial, simply
+run the following command:
 
     $ sudo gem install ronin-web
 
