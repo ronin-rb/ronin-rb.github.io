@@ -52,14 +52,14 @@ even [Integers](http://www.ruby-doc.org/core/classes/Integer.html) and
 are represented as Objects. These Objects have methods and are defined by
 Classes, much like any other Object in Ruby. In the example above Ronin has
 added the [pack](http://ronin.rubyforge.org/docs/ronin/Integer.html#pack-instance_method)
-method to the Integer class.
+method to the `Integer` class.
 
-Packing an Integer with a custom address length:
+Packing an `Integer` with a custom address length:
 
     0x1337.pack(Arch.arm_le,2)
     # => "7\x13"
 
-Depacking a previously packed Integer:
+Depacking a previously packed `Integer`:
 
     "7\x13\0\0".depack(Arch.i686)
     # => 4919
@@ -82,7 +82,7 @@ Base64 encode a [String](http://www.ruby-doc.org/core/classes/String.html):
     payload.base64_encode
     # => "6ypeiXYIxkYHAMdGDAAAAAoAuAsAAACJ841OCI1WDM2AuAEAAAC7AAAAAM2A\n6NH///8vYmluL3NoAInsXcM=\n"
 
-Base64 decode a [String](http://www.ruby-doc.org/core/classes/String.html):
+Base64 decode a `String`:
 
     "c2VjcmV0\n".base64_decode
     # => "secret"
@@ -95,17 +95,17 @@ Return the MD5 checksum of a [String](http://www.ruby-doc.org/core/classes/Strin
     "leet school".md5
     # => "1b11ba66f5e9d40a7eef699cd812e362"
 
-Return the SHA1 checksum of a String:
+Return the SHA1 checksum of a `String`:
 
     "lol train".sha1
     # => "37f05f0cc2914615c580af396df5c66316112f48"
 
-Return the SHA256 checksum of a String:
+Return the SHA256 checksum of a `String`:
 
     "admin".sha256
     # => "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
 
-Return the SHA512 checksum of a String:
+Return the SHA512 checksum of a `String`:
 
     "thunder growl".sha512
     # => "b2a1e560a497514dafda024f9e6fc2dfbfb178483251a708f07a88d4e157e5561604460da313ebc88dde2814ae58a15ae4085d00efb6a825a62f5be3215f5cbf"
