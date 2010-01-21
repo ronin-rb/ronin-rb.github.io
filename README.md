@@ -7,18 +7,18 @@ Ronin project.
 Directory Structure
 -------------------
 
-* Thorfile: The top-level Thorfile which builds the HTML files.
-* config.yml: Configuration file used by the Thorfile.
-* images: Contains image project files (XCFs or SVGs).
-* site: Contains the site templates and other site data.
-* site/_config.yml: Configuration file used by Jekyll.
-* site/_layouts: Top-level layout templates.
-* site/_includes: Commonly included content.
-* site/css: Contains the CSS files to be published.
-* site/images: Contains the static images to be published.
-* site/scripts: Contains the static JavaScript files to be published.
-* site/static: Contains static files provided by various Ronin libraries.
-* www: Contains the files to be published.
+* `Thorfile`: The top-level Thorfile which builds the HTML files.
+* `config.yml`: Configuration file used by the Thorfile.
+* `images`: Contains image project files (XCFs or SVGs).
+* `site`: Contains the site templates and other site data.
+* `site/_config.yml`: Configuration file used by Jekyll.
+* `site/_layouts`: Top-level layout templates.
+* `site/_includes`: Commonly included content.
+* `site/css`: Contains the CSS files to be published.
+* `site/images`: Contains the static images to be published.
+* `site/scripts`: Contains the static JavaScript files to be published.
+* `site/static`: Contains static files provided by various Ronin libraries.
+* `www`: Contains the files to be published.
 
 A Word about Markdown
 ---------------------
@@ -32,8 +32,8 @@ Requirements
 ------------
 
 * [jekyll](http://github.com/mojombo/jekyll) >= 0.5.7
-* rdiscount (for markdown)
-* watchr (for previewing)
+* [rdiscount](http://github.com/rtomayko/rdiscount) (for markdown)
+* [watchr](http://github.com/mynyml/watchr/) (for previewing)
 
 Synopsis
 --------
