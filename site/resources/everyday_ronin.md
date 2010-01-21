@@ -19,7 +19,7 @@ scan for vulnerabilities and even exploit vulnerable targets.
 To install Ronin and the supporting libraries used in this HOWTO, simply run
 the following command:
 
-    $ sudo gem install ronin ronin-dorks ronin-php ronin-sql
+    $ sudo gem install ronin
 
 To start the Ronin Console, simply run the `ronin` command:
 
