@@ -1,0 +1,22 @@
+---
+permalink: atom.xml
+layout: nil
+---
+
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ronin Developer Blog</title>
+  <link href="http://ronin.rubyforge.org/blog/atom.xml" rel="self" />
+  <link href="http://ronin.rubyforge.org/blog/" />
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <id>http://ronin.rubyforge.org/blog/</id>
+  {% for post in site.categories.blog %}
+  <entry>
+    <title>{{ post.title }}</title>
+    <link href="http://ronin.rubyforge.org{{ post.url }}" />
+    <updated>{{ post.date | date_to_xmlchema }}</updated>
+    <id>http://ronin.rubyforge.org{{ post.url }}</id>
+    <content type="html">{{ post.content | xml_escape }}</content>
+  </entry>
+  {% endfor %}
+</feed>
