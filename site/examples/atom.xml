@@ -1,0 +1,26 @@
+---
+permalink: atom.xml
+layout: nil
+---
+
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ronin Examples</title>
+  <link href="http://ronin.rubyforge.org/examples/atom.xml" rel="self" />
+  <link href="http://ronin.rubyforge.org/examples/" />
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <id>http://ronin.rubyforge.org/examples/</id>
+  <author>
+    <name>Postmodern</name>
+    <email>postmodern.mod3@gmail.com</email>
+  </author>
+  {% for post in site.categories.examples %}
+  <entry>
+    <title>{{ post.title }}</title>
+    <link href="http://ronin.rubyforge.org{{ post.url }}" />
+    <updated>{{ post.date | date_to_xmlchema }}</updated>
+    <id>http://ronin.rubyforge.org{{ post.url }}</id>
+    <content type="html">{{ post.content | xml_escape }}</content>
+  </entry>
+  {% endfor %}
+</feed>
