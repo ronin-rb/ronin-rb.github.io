@@ -7,7 +7,20 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" media="screen" href="/css/page.css"/>
     <link rel="stylesheet" type="text/css" media="screen" href="/css/menu.css"/>
+
+    {% if page.css != null %}
+    {% for css in page.css %}
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/{{ css }}" />
+    {% endfor %}
+    {% endif %}
     <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="/css/ie/page.css"/><![endif]-->
+
+    {% if page.js != %}
+    {% for js in page.js %}
+    <script type="text/javascript" src="/scripts/{{ js }}" /></script>
+    {% endfor %}
+    {% endif %}
+
     {% include analytics.html %}
   </head>
 
