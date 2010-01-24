@@ -18,6 +18,8 @@ Directory Structure
 * `site/images`: Contains the static images to be published.
 * `site/scripts`: Contains the static JavaScript files to be published.
 * `site/static`: Contains static files provided by various Ronin libraries.
+* `site/examples/_posts/`: Contains the random examples displayed on the
+  front page.
 * `www`: Contains the files to be published.
 
 A Word about Markdown
