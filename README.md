@@ -20,6 +20,7 @@ Directory Structure
 * `site/static`: Contains static files provided by various Ronin libraries.
 * `site/examples/_posts/`: Contains the random examples displayed on the
   front page.
+* `site/blog/_posts`: Contains the posts for the Development Blog.
 * `www`: Contains the files to be published.
 
 A Word about Markdown
