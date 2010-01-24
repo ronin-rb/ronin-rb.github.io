@@ -7,7 +7,7 @@ Ronin project.
 Directory Structure
 -------------------
 
-* `Thorfile`: The top-level Thorfile which builds the HTML files.
+* `Rakefile`: The top-level rake file which builds the HTML files.
 * `config.yml`: Configuration file used by the Thorfile.
 * `images`: Contains image project files (XCFs or SVGs).
 * `site`: Contains the site templates and other site data.
