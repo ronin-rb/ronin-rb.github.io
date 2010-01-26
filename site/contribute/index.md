@@ -6,13 +6,6 @@ title: Contribute
 Contribute
 ==========
 
-Style
------
-
-Inorder to keep the source-code of Ronin clean and readable,
-those who wish to contribute code to Ronin should review the project
-[coding style guide-lines](style.html).
-
 Git and GitHub
 --------------
 
@@ -22,6 +15,13 @@ account and understanding Git workflow is crucial to contributors.
 
 Not to worry, we have a good overview of
 [Git and GitHub](git_and_github.html).
+
+Style
+-----
+
+Inorder to keep the source-code of Ronin clean and readable,
+those who wish to contribute code to Ronin should review the project
+[coding style guide-lines](style.html).
 
 
 Dive right in
