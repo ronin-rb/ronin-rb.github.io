@@ -28,7 +28,8 @@ A Word about Markdown
 
 For ease of editing and proof-reading many of the files in this repository
 are written as [Markdown](http://en.wikipedia.org/wiki/Markdown) documents.
-Files containing [Markdown syntax](http://en.wikipedia.org/wiki/Markdown#Syntax_examples)
+Files containing
+[Markdown syntax](http://daringfireball.net/projects/markdown/basics)
 are denoted by the `.md` file extension.
 
 Requirements
