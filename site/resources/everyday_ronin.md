@@ -118,7 +118,7 @@ Escaping a directory:
     Path.up(7)
     # => #<Ronin::Path:../../../../../../..>
 
-Directory transversal:
+Directory traversal:
 
     Path.up(7) / 'etc' / 'passwd'
     # => #<Ronin::Path:../../../../../../../etc/passwd>
