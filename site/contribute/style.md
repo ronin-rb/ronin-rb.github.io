@@ -20,6 +20,29 @@ The following code would reside in the file `thing/stuff.rb`.
       end
     end
 
+Class/Module Naming
+------------
+
+Class or Module names should be in CamelCase or in all CAPS.
+
+Method Naming
+-------------
+
+Method names should always be in all lower-case, with words seperated by
+underscores.
+
+Methods which return a Boolean value, should end with a `?`.
+
+    def is_closed?
+      ...
+    end
+
+Methods which change the state of an object should end with a `!`.
+
+    def close!
+      ...
+    end
+
 Indentation
 -----------
 
@@ -60,6 +83,8 @@ when appropriate, it helps DRY (Dont Repeat Yourself) up the code.
 Repetitive:
 
     if !(@var)
+      ...
+    end
 
     if @var.nil?
       @var = 'default'
@@ -68,6 +93,8 @@ Repetitive:
 DRY:
 
     unless @var
+      ...
+    end
 
     @var ||= 'default'
 
@@ -77,6 +104,7 @@ Defining Modules/Classes
 Bad:
 
     class Bla::Ugly
+      
     end
 
 Good:
@@ -103,13 +131,32 @@ Avoid using global variables, instead use class variables.
 Blocks (aka Closures)
 ---------------------
 
-Use `&block` syntax to explicitly receive and pass blocks.
+Use `&block` syntax to explicitly receive and pass blocks. This allows
+for maximum control of where blocks are passed to.
 
     def explicit_block(var,&amp;block)
       ...
       compute(var,&amp;block)
       ...
     end
+
+Chaining Blocks
+---------------
+
+When chaining together method calls that receive blocks, please use
+`{` and `}` instead of `do` and `end` for defining the blocks.
+
+Ugly:
+
+    stuff.do |i|
+      i =~ /[a-f0-9]/
+    end.map |j|
+      j.to_i(16)
+    end
+
+Better:
+
+    stuff.select { |i| i =~ /[a-f0-9]/ }.map { |j| j.to_i(16) }
 
 send
 ----
