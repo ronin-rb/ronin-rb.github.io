@@ -148,7 +148,7 @@ Creating a TCP session which will be automatically closed:
       puts sock.readline
     end
 
-Grabbing the banner of a TCP service:
+Grabbing the banner from a TCP service:
 
     Net.tcp_banner('www.example.com', 22)
     # => "SSH-2.0-OpenSSH_4.3p2 Debian-8ubuntu1.4\n"
