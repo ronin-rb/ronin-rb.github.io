@@ -61,18 +61,18 @@ checkout your fork of ronin:
 
     $ git clone git@github.com:evoltech/ronin.git
 
-Add postmoderns (the authoritive ronin repository) remote repository:
+Add the ronin-ruby (the authoritive ronin repository) remote repository:
 
-    $ git remote add postmodern git://github.com/postmodern/ronin.git
+    $ git remote add ronin-ruby git://github.com/ronin-ruby/ronin.git
 
 __Note:__ Remote repositories which one has write access to will begin with
 `git@github.com` and are accessed over ssh. Remote repositories
 beginning with `git://` will not allow write access and are
 accessed over HTTP.
 
-Update (pull) updates from postmoderns repository:
+Update (pull) updates from the ronin-ruby repository:
 
-    $ git pull postmodern
+    $ git pull ronin-ruby
 
 Git Workflow
 ------------
