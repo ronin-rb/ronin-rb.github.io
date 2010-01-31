@@ -65,10 +65,14 @@ Add the ronin-ruby (the authoritive ronin repository) remote repository:
 
     $ git remote add ronin-ruby git://github.com/ronin-ruby/ronin.git
 
-__Note:__ Remote repositories which one has write access to will begin with
-`git@github.com` and are accessed over ssh. Remote repositories
-beginning with `git://` will not allow write access and are
-accessed over HTTP.
+<div class="note">
+  <p>
+    Remote repositories which one has write access to will begin with
+    <code>git@github.com</code> and are accessed over ssh. Remote
+    repositories beginning with `git://` will not allow write access and
+    are accessed over HTTP.
+  </p>
+</div>
 
 Update (pull) updates from the ronin-ruby repository:
 
