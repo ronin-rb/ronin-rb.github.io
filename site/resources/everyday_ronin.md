@@ -25,18 +25,22 @@ To start the Ronin Console, simply run the `ronin` command:
 
     $ ronin
 
-**Note:** If you are new to the Ruby programming language, you might
-consider reviewing the
-[Pragmatic Programmers Guide to Ruby](http://www.rubycentral.com/book/),
-since it is expected that users of the Ronin Console have a basic
-understanding of Ruby programming practices.
+<div class="note">
+  <p>
+  <b>Note:</b> If you are new to the Ruby programming language, you might
+  consider reviewing the <a href="http://www.rubycentral.com/book/">Pragmatic Programmers Guide to Ruby</a>,
+  since it is expected that users of the Ronin Console have a basic
+  understanding of Ruby programming practices.
+  </p>
 
-**Note:** If you have questions regarding the methods or Classes defined
-within Ronin, you can consult the
-[API Documentation](http://ronin.rubyforge.org/docs/ronin/)
-for Ronin. If on the other hand, you have questions about methods or Classes
-provided by Ruby itself, I recommend using
-[www.ruby-doc.org](http://www.ruby-doc.org/).
+  <p>
+  If you have questions regarding the methods or Classes defined within
+  Ronin, you can consult the <a href="http://ronin.rubyforge.org/docs/ronin/">API Documentation</a>
+  for Ronin. If on the other hand, you have questions about methods or
+  Classes provided by Ruby itself, I recommend using
+  <a href="http://www.ruby-doc.org/">www.ruby-doc.org</a>.
+  </p>
+</div>
 
 Formatting Binary Data
 ----------------------

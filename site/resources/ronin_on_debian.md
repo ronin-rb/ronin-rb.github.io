@@ -30,8 +30,12 @@ Installing RubyGems
 Since the Debian packages for RubyGems are woofly out of date, we
 must install the most recent RubyGems from source.
 
-**Note:** This section can be skiped all together if you are using
-Ruby 1.9.1 or above.
+<div class="note">
+  <p>
+  <b>Note:</b> This section can be skiped all together if you are using
+  Ruby 1.9.1 or above.
+  </p>
+</div>
 
     $ wget http://rubyforge.org/frs/download.php/45905/rubygems-1.3.1.tgz
     $ tar -xzvf rubygems-1.3.1.tgz
