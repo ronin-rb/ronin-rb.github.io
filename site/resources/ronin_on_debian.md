@@ -69,3 +69,30 @@ install a couple extra RubyGems.
 
     $ sudo gem install hoe rspec
 
+For the Inpatient
+-----------------
+
+Copy and paste this into the terminal to install Ronin on Debian:
+
+    #
+    # install needed libraries
+    #
+    sudo apt-get install libxml2 libxml2-dev libxslt1-dev sqlite3 libsqlite3-dev
+    #
+    # install ruby
+    #
+    sudo apt-get install ruby ruby-dev rdoc irb libyaml-ruby libjson-ruby libopenssl-ruby
+    #
+    # install rubygems
+    #
+    wget http://rubyforge.org/frs/download.php/45905/rubygems-1.3.1.tgz
+    tar -xzvf rubygems-1.3.1.tgz
+    cd rubygems-1.3.1
+    sudo ruby setup.rb
+    #
+    # configure ruby to use rubygems
+    #
+    echo 'export RUBYOPT="-r rubygems"' >> ~/.bashrc
+    source ~/.bashrc
+    sudo gem install ronin
+
