@@ -3,26 +3,22 @@ layout: default
 title: Resources
 ---
 
-Resources
-=========
+# Resources
 
-Videos
-------
+## Videos
 
 * [Ronin: A Platform for Publishing and Mayhem](http://www.vimeo.com/7359548) - 
   A talk at ToorCamp 2009 discussing Ronin, how it can be used as a
   Platform for Publishing and Mayhem, given by Postmodern of Sophsec
   Intrusion Labs.
 
-Installation Guides
--------------------
+## Installation Guides
 
 * [Installing Ronin on Debian](ronin_on_debian.html) -
   A brief set of instructions describing how to install Ronin on a vanilla
   Debian system.
 
-Guides
-------
+## Guides
 
 * [Everyday Ronin](everyday_ronin.html) - 
   A somewhat lengthy guide covering the everyday usage of various
@@ -32,8 +28,7 @@ Guides
 * [Using Ronin PHP](using_ronin_php.html) -
   A brief guide showing basic usage of the Ronin PHP library.
 
-API Documentation
------------------
+## API Documentation
 
 * [Ronin](http://ronin.rubyforge.org/docs/ronin/) - A Ruby platform for
   exploit development and security research.

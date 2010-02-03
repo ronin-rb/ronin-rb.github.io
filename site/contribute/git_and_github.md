@@ -3,8 +3,7 @@ layout: default
 title: Git and GitHub
 ---
 
-Ronin and Git[Hub]
-==================
+# Ronin and Git[Hub]
 
 Ronin development colaboration is done with the [git](http://git-scm.com/)
 source code management (SCM) system. [github.com](http://github.com/)
@@ -20,8 +19,7 @@ documentation for a tool as robust and generic as git and find the few
 details relavant to get started hacking on ronin. Below is a brief guide for
 using github and git for working on Ronin.
 
-Setting up a github.com account
--------------------------------
+## Setting up a github.com account
 
 This consists of installing git on your system, creating an
 account on github.com, associating your git installation with
@@ -44,8 +42,7 @@ and getting your ssh public-key onto github.com is documented
 The authoritive source of documentation for using git with github.com is
 available [here](http://github.com/guides/home).
 
-Forking Ronin
--------------
+## Forking Ronin
 
 _Forking_ a project is a git-ism for making a copy of a source
 code project that can be tracked through github. An initial fork
@@ -78,8 +75,7 @@ Update (pull) updates from the ronin-ruby repository:
 
     $ git pull ronin-ruby
 
-Git Workflow
-------------
+## Git Workflow
 
 Now that you have your own fork of ronin you can hack on it to  your hearts
 content.  You can commit your changes (saving them locally with messages
@@ -141,8 +137,7 @@ the other developers of Ronin can then pull in your changes into the
 main Ronin repository, preserving your author information and commit
 messages.
 
-References
-----------
+## References
 
 Here are a few links to references that may be useful to new git and
 github.com users.

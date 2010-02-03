@@ -3,29 +3,25 @@ layout: default
 title: Installing Ronin on Debian
 ---
 
-Installing Ronin on Debian
-==========================
+# Installing Ronin on Debian
 
 This guide will show you how to properly install Ruby, RubyGems and then
 Ronin on a vanilla Debian Linux system.
 
-Libraries
----------
+## Libraries
 
 dependencies of Ronin (such as do_sqlite3 and nokogiri) require certain
 libraries and their header files to be installed:
 
     $ sudo apt-get install libxml2 libxml2-dev libxslt1-dev sqlite3 libsqlite3-dev
 
-Installing Ruby
----------------
+## Installing Ruby
 
 If you already have not done so, we must fully install Ruby on the system.
 
     $ sudo apt-get install ruby ruby-dev rdoc irb libyaml-ruby libjson-ruby libopenssl-ruby
 
-Installing RubyGems
--------------------
+## Installing RubyGems
 
 Since the Debian packages for RubyGems are woofly out of date, we
 must install the most recent RubyGems from source.
@@ -53,24 +49,21 @@ For Ruby 1.8.x and earlier you will have to edit your `.bashrc` or
     $ echo 'export RUBYOPT="-r rubygems"' >> ~/.bashrc
     $ source ~/.bashrc
 
-Installing Ronin
-----------------
+## Installing Ronin
 
 Now that your Debian system has been properly setup with Ruby and RubyGems,
 we can finally install Ronin:
 
     $ sudo gem install ronin
 
-Developers Only
----------------
+## Developers Only
 
 If you plan on testing or contributing code to Ronin, you will need to
 install a couple extra RubyGems.
 
     $ sudo gem install rspec
 
-For the Inpatient
------------------
+## For the Inpatient
 
 Copy and paste this into the terminal to install Ronin on Debian:
 

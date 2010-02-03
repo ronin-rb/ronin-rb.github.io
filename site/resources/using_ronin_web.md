@@ -3,8 +3,7 @@ layout: default
 title: Using Ronin Web
 ---
 
-Using Ronin Web
-===============
+# Using Ronin Web
 
 The [Ronin Web](http://ronin.rubyforge.org/docs/ronin-web/) library provides
 support for Web Scraping and Spidering functionality in Ronin.
@@ -20,8 +19,7 @@ To start the Ronin Console, with ronin-web pre-loaded, simply run the
 
     $ ronin-web
 
-Proxy Settings
---------------
+## Proxy Settings
 
 Accessing the Ronin Web Proxy settings, just like in
 [Network::HTTP](http://ronin.rubyforge.org/docs/ronin/Ronin/Network/HTTP.html):
@@ -29,8 +27,7 @@ Accessing the Ronin Web Proxy settings, just like in
     Web.proxy
     # => {:port=>8080, :pass=>nil, :user=>nil, :host=>nil}
 
-User Agent Settings
--------------------
+## User Agent Settings
 
 Accessing the Ronin Web User-Agent string:
 
@@ -59,8 +56,7 @@ Setting the Ronin User-Agent alias:
     Web.user_agent_alias = 'iPhone'
     # => "iPhone"
 
-WWW::Mechanize
---------------
+## WWW::Mechanize
 
 Getting a persistent [WWW::Mechanize](http://mechanize.rubyforge.org/mechanize/WWW/Mechanize.html)
 agent:

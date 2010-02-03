@@ -3,11 +3,9 @@ layout: default
 title: Contribute
 ---
 
-Contribute
-==========
+# Contribute
 
-Git and GitHub
---------------
+## Git and GitHub
 
 Since Ronin makes extensive use of [Git](http://git-scm.com/) and
 [GitHub](http://github.com/), having a [github.com](https://github.com/login)
@@ -16,16 +14,14 @@ account and understanding Git workflow is crucial to contributors.
 Not to worry, we have a good overview of
 [Git and GitHub](git_and_github.html).
 
-Style
------
+## Style
 
 Inorder to keep the source-code of Ronin clean and readable,
 those who wish to contribute code to Ronin should review the project
 [coding style guide-lines](style.html).
 
 
-Dive right in
--------------
+## Dive right in
 
 Once your familiar with Ronins coding style, and setup with
 [Git](http://git-scm.com/) and [GitHub](http://www.github.com/),

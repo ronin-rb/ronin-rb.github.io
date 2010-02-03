@@ -3,8 +3,7 @@ layout: default
 title: Everyday Ronin
 ---
 
-Everyday Ronin
-==============
+# Everyday Ronin
 
 In day-to-day usage, the Ronin Console is the most commonly used component
 of Ronin. The Ronin Console is not to be confused with the text-based
@@ -42,8 +41,7 @@ To start the Ronin Console, simply run the `ronin` command:
   </p>
 </div>
 
-Formatting Binary Data
-----------------------
+## Formatting Binary Data
 
 Packing an [Integer](http://www.ruby-doc.org/core/classes/Integer.html):
 
@@ -68,14 +66,12 @@ Depacking a previously packed `Integer`:
     "7\x13\0\0".depack(Arch.i686)
     # => 4919
 
-Generating Text
----------------
+## Generating Text
 
 Please see the [Chars](http://chars.rubyforge.org/) library for text
 generation examples.
 
-Base64
-------
+## Base64
 
 Base64 encode a [String](http://www.ruby-doc.org/core/classes/String.html):
 
@@ -91,8 +87,7 @@ Base64 decode a `String`:
     "c2VjcmV0\n".base64_decode
     # => "secret"
 
-Digests
--------
+## Digests
 
 Return the MD5 checksum of a [String](http://www.ruby-doc.org/core/classes/String.html):
 
@@ -114,8 +109,7 @@ Return the SHA512 checksum of a `String`:
     "thunder growl".sha512
     # => "b2a1e560a497514dafda024f9e6fc2dfbfb178483251a708f07a88d4e157e5561604460da313ebc88dde2814ae58a15ae4085d00efb6a825a62f5be3215f5cbf"
 
-Paths
------
+## Paths
 
 Escaping a directory:
 
@@ -127,8 +121,7 @@ Directory traversal:
     Path.up(7) / 'etc' / 'passwd'
     # => #<Ronin::Path:../../../../../../../etc/passwd>
 
-Networking
-----------
+## Networking
 
 Creating a TCP Socket for a specified host and port:
 
@@ -182,8 +175,7 @@ Creating a UDP session which will be automatically closed:
 **Note:** For more Networking convenience methods, consult the documentation
 for the [Net](http://ronin.rubyforge.org/docs/ronin/Net.html) namespace.
 
-URLs
-----
+## URLs
 
 Accessing the URL query parameters:
 
@@ -206,8 +198,7 @@ Setting the URL query parameters en-mass:
     url.to_s
     # => "http://www.google.com/search?sa=N&start=20&q=meowmix"
 
-HTTP
-----
+## HTTP
 
 HTTP Proxy settings:
 

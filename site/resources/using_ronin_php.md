@@ -3,8 +3,7 @@ layout: default
 title: Using Ronin PHP
 ---
 
-Using Ronin PHP
-===============
+# Using Ronin PHP
 
 The [Ronin PHP](http://ronin.rubyforge.org/docs/ronin-php/) library provides
 support for PHP related security tasks, such as Local File Inclusion (LFI)
@@ -21,8 +20,7 @@ To start the Ronin Console, with ronin-php pre-loaded, simply run the
 
     $ ronin-php
 
-Local File Inclusion (LFI)
---------------------------
+## Local File Inclusion (LFI)
 
 Test a URL for LFI:
 
@@ -45,8 +43,7 @@ object:
     lfi.include('/etc/passwd')
     # => #<Ronin::PHP::LFI::File:/etc/passwd>
 
-Remote File Inclusion (RFI)
----------------------------
+## Remote File Inclusion (RFI)
 
 Test a URL for RFI:
 
