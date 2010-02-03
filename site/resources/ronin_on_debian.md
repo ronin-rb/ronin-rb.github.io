@@ -37,9 +37,9 @@ must install the most recent RubyGems from source.
   </p>
 </div>
 
-    $ wget http://rubyforge.org/frs/download.php/45905/rubygems-1.3.1.tgz
-    $ tar -xzvf rubygems-1.3.1.tgz
-    $ cd rubygems-1.3.1
+    $ wget http://rubyforge.org/frs/download.php/45905/rubygems-1.3.5.tgz
+    $ tar -xzvf rubygems-1.3.5.tgz
+    $ cd rubygems-1.3.5
     $ sudo ruby setup.rb
 
 If you are using the Debian package for RubyGems, you must
@@ -85,9 +85,9 @@ Copy and paste this into the terminal to install Ronin on Debian:
     #
     # install rubygems
     #
-    wget http://rubyforge.org/frs/download.php/45905/rubygems-1.3.1.tgz
-    tar -xzvf rubygems-1.3.1.tgz
-    cd rubygems-1.3.1
+    wget http://rubyforge.org/frs/download.php/45905/rubygems-1.3.5.tgz
+    tar -xzvf rubygems-1.3.5.tgz
+    cd rubygems-1.3.5
     sudo ruby setup.rb
     #
     # configure ruby to use rubygems
