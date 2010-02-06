@@ -2,27 +2,28 @@
 layout: default
 title: Developer Blog
 feed: /blog/atom.xml
+css:
+ - post.css
 ---
-
-<h1>Ronin Developer Blog</h1>
 
 {% assign latest_post = site.categories.blog.first %}
 
 {% if latest_post != null %}
-<div id="post">
-  <div id="post_head">
-    <h2><a href="{{ latest_post.url }}">{{ latest_post.title }}</a></h2>
-    <p>{{ latest_post.author }} - {{ latest_post.date }}</p>
-  </div>
+<div class="post">
+  <h1><a href="{{ latest_post.url }}">{{ latest_post.title }}</a></h1>
+  <p class="post-info">{{ latest_post.date }} &mdash; {{ latest_post.author }}</p>
 
-  <div id="post_body">{{ latest_post.content }}</div>
+  <div class="post-content">{{ latest_post.content }}</div>
 </div>
 
 <hr />
 
-{% for post in site.categories.blog offset:1 limit:5 %}
-<p>{{ post.date }} - <a href="{{ post.url }}">{{ post.title }}</a></p>
-{% endfor %}
-
-<p><a href="archive.html">Archive</a></p>
+<div>
+  <p><a href="archive.html">Archive</a></p>
+  <ul>
+  {% for post in site.categories.blog offset:1 limit:5 %}
+    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% endfor %}
+  </ul>
+</div>
 {% endif %}
