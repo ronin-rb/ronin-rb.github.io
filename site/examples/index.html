@@ -9,9 +9,15 @@ css:
 <h1>Ronin Examples</h1>
 
 <ul id="examples">
-{% for post in site.categories.examples %}
+{% for example in site.categories.examples %}
   <li class="example">
-  {{ post.content }}
+  {{ example.content }}
+
+    <p class="example-categories">
+    {% for category in example.categories offset:1 %}
+    Categories: <a href="/examples/{{ category }}/">{{ category }}</a>
+    {% endfor %}
+    </p>
   </li>
 {% endfor %}
 </ul>
