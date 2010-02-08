@@ -19,7 +19,7 @@ libraries and their header files to be installed:
 
 If you already have not done so, we must fully install Ruby on the system.
 
-    $ sudo apt-get install ruby1.9.1-full
+    $ sudo apt-get install ruby1.9.1-full rubygems1.9.1
 
 ## Installing Ronin
 
@@ -42,7 +42,7 @@ Copy and paste this into the terminal to install Ronin on Debian:
     echo "[-] Installing required libraries" && \
     sudo apt-get install libxml2 libxml2-dev libxslt1-dev sqlite3 libsqlite3-dev && \
     echo "[-] Installing Ruby 1.9.1" && \
-    sudo apt-get install ruby1.9.1-full && \
+    sudo apt-get install ruby1.9.1-full rubygems1.9.1 && \
     echo "[-] Installing Ronin" && \
     sudo gem install ronin
 
