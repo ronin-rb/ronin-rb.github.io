@@ -39,10 +39,10 @@ install a couple extra RubyGems.
 
 Copy and paste this into the terminal to install Ronin on Debian:
 
-    echo "[-] Installing required libraries"
-    sudo apt-get install libxml2 libxml2-dev libxslt1-dev sqlite3 libsqlite3-dev
-    echo "[-] Installing Ruby 1.9.1"
-    sudo apt-get install ruby1.9.1-full
-    echo "[-] Installing Ronin"
+    echo "[-] Installing required libraries" && \
+    sudo apt-get install libxml2 libxml2-dev libxslt1-dev sqlite3 libsqlite3-dev && \
+    echo "[-] Installing Ruby 1.9.1" && \
+    sudo apt-get install ruby1.9.1-full && \
+    echo "[-] Installing Ronin" && \
     sudo gem install ronin
 
