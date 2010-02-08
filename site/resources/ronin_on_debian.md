@@ -8,7 +8,7 @@ title: Installing Ronin on Debian
 This guide will show you how to properly install Ruby, RubyGems and then
 Ronin on a vanilla Debian Linux system.
 
-## Libraries
+## Installing required Libraries
 
 dependencies of Ronin (such as do_sqlite3 and nokogiri) require certain
 libraries and their header files to be installed:
