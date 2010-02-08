@@ -19,35 +19,7 @@ libraries and their header files to be installed:
 
 If you already have not done so, we must fully install Ruby on the system.
 
-    $ sudo apt-get install ruby ruby-dev rdoc irb libyaml-ruby libjson-ruby libopenssl-ruby
-
-## Installing RubyGems
-
-Since the Debian packages for RubyGems are woofly out of date, we
-must install the most recent RubyGems from source.
-
-<div class="note">
-  <p>
-  <b>Note:</b> This section can be skiped all together if you are using
-  Ruby 1.9.1 or above.
-  </p>
-</div>
-
-    $ wget http://rubyforge.org/frs/download.php/45905/rubygems-1.3.5.tgz
-    $ tar -xzvf rubygems-1.3.5.tgz
-    $ cd rubygems-1.3.5
-    $ sudo ruby setup.rb
-
-If you are using the Debian package for RubyGems, you must
-add /var/lib/gems/1.8/bin/ to your `PATH` environment variable.
-
-    echo 'export PATH="$PATH:/var/lib/gems/1.8/bin"' >> ~/.bashrc
-
-For Ruby 1.8.x and earlier you will have to edit your `.bashrc` or
-`.profile` file in order to have Ruby automatically load rubygems.
-
-    $ echo 'export RUBYOPT="-r rubygems"' >> ~/.bashrc
-    $ source ~/.bashrc
+    $ sudo apt-get install ruby1.9.1-full
 
 ## Installing Ronin
 
@@ -74,18 +46,9 @@ Copy and paste this into the terminal to install Ronin on Debian:
     #
     # install ruby
     #
-    sudo apt-get install ruby ruby-dev rdoc irb libyaml-ruby libjson-ruby libopenssl-ruby
+    sudo apt-get install ruby1.9.1-full
     #
-    # install rubygems
+    # install ronin
     #
-    wget http://rubyforge.org/frs/download.php/45905/rubygems-1.3.5.tgz
-    tar -xzvf rubygems-1.3.5.tgz
-    cd rubygems-1.3.5
-    sudo ruby setup.rb
-    #
-    # configure ruby to use rubygems
-    #
-    echo 'export RUBYOPT="-r rubygems"' >> ~/.bashrc
-    source ~/.bashrc
     sudo gem install ronin
 
