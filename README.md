@@ -1,11 +1,9 @@
-ronin.rubyforge.org
-===================
+# ronin.rubyforge.org
 
 ronin.rubyforge.org is the Jekyll powered static website and blog for the
 Ronin project.
 
-Directory Structure
--------------------
+## Directory Structure
 
 * `Rakefile`: The top-level rake file which builds the HTML files.
 * `config.yml`: Configuration file used by the Thorfile.
@@ -22,8 +20,7 @@ Directory Structure
 * `site/blog/_posts`: Contains the posts for the Development Blog.
 * `www`: Contains the files to be published.
 
-A Word about Markdown
----------------------
+## A Word about Markdown
 
 For ease of editing and proof-reading many of the files in this repository
 are written as [Markdown](http://en.wikipedia.org/wiki/Markdown) documents.
@@ -31,15 +28,13 @@ Files containing
 [Markdown syntax](http://daringfireball.net/projects/markdown/basics)
 are denoted by the `.md` file extension.
 
-Requirements
-------------
+## Requirements
 
 * [jekyll](http://github.com/mojombo/jekyll) >= 0.5.7
 * [rdiscount](http://github.com/rtomayko/rdiscount) (for markdown)
 * [watchr](http://github.com/mynyml/watchr/) (for previewing)
 
-Synopsis
---------
+## Synopsis
 
 Building the website locally:
 
@@ -59,8 +54,7 @@ Perform a publishing dry-run of the website:
 
     $ rake publish:dry_run[user]
 
-License
--------
+## License
 
 ronin.rubyforge.org.
 
