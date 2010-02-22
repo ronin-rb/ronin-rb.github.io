@@ -16,14 +16,18 @@ namespace :site do
   task :preview => :clean do
     sh "jekyll --auto --server"
   end
+end
 
-  task :publish, [:user] => :build do |t,args|
+namespace :publish do
+  task :www, [:user] => 'site:build' do |t,args|
     sh "rsync #{rsync_options} www/ '#{rsync_dest(args.user)}'"
   end
 
-  task :check, [:user] => :build do |t,args|
+  task :dry_run, [:user] => 'site:build' do |t,args|
     sh "rsync #{rsync_options} -n www/ '#{rsync_dest(args.user)}'"
   end
+
+  task :default => :www
 end
 
 task :default => 'site:build'

@@ -52,9 +52,13 @@ Run the site locally on `localhost:2222`:
 
 Publishing the website:
 
-    $ rake site:publish[user]
+    $ rake publish[user]
 
 * Publishing to ronin.rubyforge.org requires ssh access.
+
+Perform a publishing dry-run of the website:
+
+    $ rake publish:dry_run[user]
 
 License
 -------
