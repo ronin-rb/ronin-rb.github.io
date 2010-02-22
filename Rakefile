@@ -31,9 +31,10 @@ namespace :publish do
   task :dry_run, [:user] => 'site:build' do |t,args|
     sh "rsync #{rsync_options} -n www/ '#{rsync_dest(args.user)}'"
   end
-
-  task :default => :www
 end
+
+desc 'Publishes the site'
+task :publush, [:user] => 'publish:www'
 
 task :default => 'site:build'
 
