@@ -1,13 +1,13 @@
 $(document).ready(function() {
-  $("td.download-name span.version").hide();
+  $("td.download-version span").hide();
 
   $("#downloads tr").hover(
     function() {
-      $("span.version",$(this)).show();
+      $("td.download-version span",$(this)).show();
     },
 
     function() {
-      $("span.version",$(this)).hide();
+      $("td.download-version span",$(this)).hide();
     }
   );
 });
