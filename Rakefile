@@ -34,7 +34,7 @@ namespace :publish do
 end
 
 desc 'Publishes the site'
-task :publush, [:user] => 'publish:www'
+task :publish, [:user] => 'publish:www'
 
 task :default => 'site:build'
 
