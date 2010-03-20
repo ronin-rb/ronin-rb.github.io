@@ -1,8 +1,9 @@
 ---
-layout: post
-title: "Hack This Zine #8 article"
-author: evoltech
+layout: default
+title: "Hack This Zine #8 article - Ronin"
 ---
+
+# Hack This Zine #8 - Ronin
 
 **Dave Bowman**: Open the pod bay doors, HAL.<br />
 **HAL**: I'm sorry, Dave. I'm afraid I can't do that.<br />

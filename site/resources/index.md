@@ -28,6 +28,12 @@ title: Resources
 * [Using Ronin PHP](using_ronin_php.html) -
   A brief guide showing basic usage of the Ronin PHP library.
 
+## Articles
+
+* [Hack This Zine #8 - Ronin](hack_this_zine_8.html) -
+  The [Hack This Zine #8](https://hackbloc.org/etc/zine/8/htz8_Print.pdf)
+  article which gives an detailed introduction to Ronin.
+
 ## API Documentation
 
 {% for library in site.libraries %}
