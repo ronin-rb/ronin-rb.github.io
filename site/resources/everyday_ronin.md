@@ -10,10 +10,12 @@ component of Ronin. This Console is not to be confused with a
 typical interactive shell with simple one-word commands that most projects
 implement. Instead, the Console is a customized
 [Interactive Ruby Shell (IRB)](http://en.wikipedia.org/wiki/Interactive_Ruby_Shell)
-with tab-completion and auto-indentation enabled. The Console provides one
-with the full power of the Ruby language and the convenience methods of
-Ronin, all in a handy console. From this Console one can perform research,
-scan for vulnerabilities and even exploit vulnerable targets.
+with tab-completion and auto-indentation enabled.
+
+The Console provides one with the full power of the Ruby language and the
+convenience methods of Ronin, all in a handy console. From this Console one
+can perform research, scan for vulnerabilities and even exploit vulnerable
+targets.
 
 To install Ronin and the supporting libraries used in this guide, simply
 run the following command:
