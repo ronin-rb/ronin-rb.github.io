@@ -6,9 +6,9 @@ title: Everyday Ronin
 # Everyday Ronin
 
 In day-to-day usage, the Ronin Ruby Console is the most commonly used
-component of Ronin. The Console is not to be confused with the
-text-based adventure shells commonly found in many other projects.
-Instead, the Console is a customized
+component of Ronin. This Console is not to be confused with a
+typical interactive shell with simple one-word commands that most projects
+implement. Instead, the Console is a customized
 [Interactive Ruby Shell (IRB)](http://en.wikipedia.org/wiki/Interactive_Ruby_Shell)
 with tab-completion and auto-indentation enabled. The Console provides one
 with the full power of the Ruby language and the convenience methods of
