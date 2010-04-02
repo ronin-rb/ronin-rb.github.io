@@ -209,9 +209,10 @@ when an incompatible Overlay is being used [7].
 
 ## Using Overlays
 Overlays, like all other parts of the Ronin framework, can either be used 
-from the Ronin Console or from a standalone script.  After an overlay is 
-installed in your environment and the Ronin Console is loaded the Overlay Cache
-will be loaded with all of the overlays installed on your system. 
+from the Ronin Ruby Console or from a standalone script.  After an overlay
+is installed in your environment and the Ronin Ruby Console is loaded the
+Overlay Cache will be loaded with all of the overlays installed on your
+system. 
 
     ronin>> Platform.overlays.names
     => ["postmodern-overlay"]

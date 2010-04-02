@@ -9,13 +9,13 @@ The [Ronin PHP](http://ronin.rubyforge.org/docs/ronin-php/) library provides
 support for PHP related security tasks, such as Local File Inclusion (LFI)
 or Remote File Inclusion (RFI).
 
-Before we can use this library in the Ronin Console, we must first install
-the library. To install the Ronin Web library used in this guide, simply
-run the following command:
+Before we can use this library in the Ronin Ruby Console, we must first
+install the library. To install the Ronin Web library used in this guide,
+simply run the following command:
 
     $ sudo gem install ronin-php
 
-To start the Ronin Console, with ronin-php pre-loaded, simply run the
+To start the Ronin Ruby Console, with ronin-php pre-loaded, simply run the
 `ronin-php` command:
 
     $ ronin-php

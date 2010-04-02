@@ -5,10 +5,10 @@ title: Everyday Ronin
 
 # Everyday Ronin
 
-In day-to-day usage, the Ronin Console is the most commonly used component
-of Ronin. The Ronin Console is not to be confused with the text-based
-adventure shells commonly found in many other projects. Instead, the Ronin
-Console is a customized
+In day-to-day usage, the Ronin Ruby Console is the most commonly used
+component of Ronin. The Console is not to be confused with the
+text-based adventure shells commonly found in many other projects.
+Instead, the Console is a customized
 [Interactive Ruby Shell (IRB)](http://en.wikipedia.org/wiki/Interactive_Ruby_Shell)
 with tab-completion and auto-indentation enabled. The Console provides one
 with the full power of the Ruby language and the convenience methods of
@@ -20,7 +20,7 @@ run the following command:
 
     $ sudo gem install ronin
 
-To start the Ronin Console, simply run the `ronin` command:
+To start the Ronin Ruby Console, simply run the `ronin` command:
 
     $ ronin
 
@@ -28,7 +28,7 @@ To start the Ronin Console, simply run the `ronin` command:
   <p>
   <b>Note:</b> If you are new to the Ruby programming language, you might
   consider reviewing the <a href="http://www.rubycentral.com/book/">Pragmatic Programmers Guide to Ruby</a>,
-  since it is expected that users of the Ronin Console have a basic
+  since it is expected that users of the Ronin Ruby Console have a basic
   understanding of Ruby programming practices.
   </p>
 
