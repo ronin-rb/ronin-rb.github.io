@@ -6,16 +6,16 @@ Ronin project.
 ## Directory Structure
 
 * `Rakefile`: The top-level rake file which builds the HTML files.
-* `config.yml`: Configuration file used by the Rakefile and `jekyll`.
-* `images`: Contains image project files (XCFs or SVGs).
+* `_config.yml`: Configuration file used by the Rakefile and `jekyll`.
+* `images`: Contains the original image files (XCFs or SVGs).
 * `site`: Contains the site templates and other site data.
-* `site/_layouts`: Top-level layout templates.
-* `site/_includes`: Commonly included content.
+* `site/_layouts`: Top-level HTML/XML layout templates.
+* `site/_includes`: Commonly included HTML content.
 * `site/images`: Contains the static images to be published.
 * `site/css`: Contains the CSS files to be published.
 * `site/js`: Contains the static JavaScript files to be published.
 * `site/static`: Contains static files provided by various Ronin libraries.
-* `site/examples/_posts/`: Contains the random examples displayed on the
+* `site/examples/*/_posts/`: Contains the random examples displayed on the
   front page.
 * `site/blog/_posts`: Contains the posts for the Development Blog.
 * `www`: Contains the files to be published.
