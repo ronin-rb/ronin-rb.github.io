@@ -40,7 +40,7 @@ Building the website locally:
 
     $ rake
 
-Run the site locally on `localhost:2222`:
+Run the site locally on [localhost:2222](http://localhost:2222):
 
     $ rake site:preview
 
