@@ -1,6 +1,6 @@
 # -*- ruby -*-
 
-require 'helpers/site'
+require './helpers/site.rb'
 
 namespace :site do
   include Helpers::Site
