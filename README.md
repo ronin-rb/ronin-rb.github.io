@@ -1,24 +1,20 @@
-# ronin.rubyforge.org
+# ronin-ruby.github.com
 
-ronin.rubyforge.org is the Jekyll powered static website and blog for the
+ronin-ruby.github.com is the Jekyll powered static website and blog for the
 Ronin project.
 
 ## Directory Structure
 
-* `Rakefile`: The top-level rake file which builds the HTML files.
 * `_config.yml`: Configuration file used by the Rakefile and `jekyll`.
-* `images`: Contains the original image files (XCFs or SVGs).
-* `site`: Contains the site templates and other site data.
-* `site/_layouts`: Top-level HTML/XML layout templates.
-* `site/_includes`: Commonly included HTML content.
-* `site/images`: Contains the static images to be published.
-* `site/css`: Contains the CSS files to be published.
-* `site/js`: Contains the static JavaScript files to be published.
-* `site/static`: Contains static files provided by various Ronin libraries.
-* `site/examples/*/_posts/`: Contains the random examples displayed on the
+* `_layouts`: Top-level HTML/XML layout templates.
+* `_includes`: Commonly included HTML content.
+* `images`: Contains the static images to be published.
+* `css`: Contains the CSS files to be published.
+* `js`: Contains the static JavaScript files to be published.
+* `static`: Contains static files provided by various Ronin libraries.
+* `examples/*/_posts/`: Contains the random examples displayed on the
   front page.
-* `site/blog/_posts`: Contains the posts for the Development Blog.
-* `www`: Contains the files to be published.
+* `blog/_posts`: Contains the posts for the Development Blog.
 
 ## A Word about Markdown
 
@@ -34,29 +30,9 @@ are denoted by the `.md` file extension.
 * [rdiscount](http://github.com/rtomayko/rdiscount) (for markdown)
 * [watchr](http://github.com/mynyml/watchr/) (for previewing)
 
-## Synopsis
-
-Building the website locally:
-
-    $ rake
-
-Run the site locally on [localhost:2222](http://localhost:2222):
-
-    $ rake site:preview
-
-Publishing the website:
-
-    $ rake publish[user]
-
-* Publishing to ronin.rubyforge.org requires ssh access.
-
-Perform a publishing dry-run of the website:
-
-    $ rake publish:dry_run[user]
-
 ## License
 
-ronin.rubyforge.org.
+ronin-ruby.github.com.
 
 Copyright (c) 2006-2010 Hal Brodigan (postmodern.mod3 at gmail.com)
 
