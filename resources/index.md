@@ -37,6 +37,6 @@ title: Resources
 ## API Documentation
 
 {% for library in site.libraries %}
-* [{{ library.name }}](http://ronin.rubyforge.org/docs/{{ library.slug }}) -
+* [{{ library.name }}](http://ronin-ruby.github.com/docs/{{ library.slug }}) -
   {{ library.description }}{% endfor %}
 

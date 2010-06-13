@@ -30,6 +30,6 @@ you can dive right into Ronin. Just pick a repository, fork it and dive in:
 {% for library in site.libraries %}
 * [{{ library.name }}](http://github.com/ronin-ruby/{{ library.slug }}/) -
   {{ library.description }}{% endfor %}
-* [ronin.rubyforge.org](http://github.com/ronin-ruby/ronin.rubyforge.org) - 
+* [ronin-ruby.github.com](http://github.com/ronin-ruby/ronin-ruby.github.com) - 
   This website.
 

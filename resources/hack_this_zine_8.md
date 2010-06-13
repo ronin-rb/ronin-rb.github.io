@@ -536,23 +536,23 @@ debian installation, and `AWESOME.times! 300`
 hosting the book with a nice browseable TOC and Index all in frames is here:
 http://www.rubycentral.com/book/.
 
-[2] Ronin - The main site for the Ronin project: http://ronin.rubyforge.org/.
+[2] Ronin - The main site for the Ronin project: http://ronin-ruby.github.com/.
 
-[2.a] ronin.rubyforge.org on GitHub - The code base for the main Ronin site
+[2.a] ronin-ruby.github.com on GitHub - The code base for the main Ronin site
 powered by [Jekyll](http://github.com/mojombo/jekyll/), a static
 website/blog generator written in Ruby. The site source can be cloned
 through GitHub here:
-http://github.com/ronin-ruby/ronin.rubyforge.org/
+http://github.com/ronin-ruby/ronin-ruby.github.com/
 
 [3] Installing Ronin on Debian - Detailed instructions for getting the Ronin
 (and Ruby) code base on a Debian computer.  If your installation steps are 
 significantly different than what is here, please write them up and submit
 them to the documentation project [2.a]. 
-http://ronin.rubyforge.org/howtos/ronin_on_debian.html
+http://ronin-ruby.github.com/howtos/ronin_on_debian.html
 
 [4] [RubyGems](http://rubygems.org) - "The premier Ruby packaging system".
 
-[5] [Ronin and Git[hub]](http://ronin.rubyforge.org/contribute/) - Detailed documentation for using git to hack on 
+[5] [Ronin and Git[hub]](http://ronin-ruby.github.com/contribute/) - Detailed documentation for using git to hack on 
 Ronin is available here.
 
 [6] IRB - The Interactive Ruby Interpreter.  This is the "Ruby command Line", 
