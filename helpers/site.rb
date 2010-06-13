@@ -1,3 +1,5 @@
+require 'yaml'
+
 module Helpers
   module Site
     def config
