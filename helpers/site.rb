@@ -23,10 +23,7 @@ module Helpers
     end
 
     def rsync_dest(user=nil)
-      url = rsync_config['dest']['host'] + ':' + rsync_config['dest']['path'] + '/'
-      url = "#{user}@#{url}" if user
-
-      return url
+      rsync_config['dest']['host'] + ':' + rsync_config['dest']['path'] + '/'
     end
   end
 end
