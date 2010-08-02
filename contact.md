@@ -15,16 +15,6 @@ If you do not have an IRC client, you can use the
 [Java Chat Applet](http://java.freenode.net/index.php?channel=ronin)
 provided by freenode.
 
-## Jabber
-
-If you find IRC out-dated or if [irc.freenode.net](http://irc.freenode.net/)
-is currently being DDoSed, we also have a Ronin chatroom available on
-[densando.net](http://densando.net/).
-
-Simply follow the [instructions](http://densando.net/#connect) for creating
-an account on `densando.net`. Once you are logged onto `densando.net`, join
-the `ronin` chatroom on `conference.densando.net`.
-
 ## Mailing List
 
 If you want to discuss at greater lengths any questions,
