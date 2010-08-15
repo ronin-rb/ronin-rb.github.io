@@ -135,7 +135,7 @@ When chaining together method calls that receive blocks, please use
 
 Ugly:
 
-    stuff.do |i|
+    stuff do |i|
       i =~ /[a-f0-9]/
     end.map |j|
       j.to_i(16)
