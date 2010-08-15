@@ -39,6 +39,12 @@ Methods which change the state of an object should end with a `!`.
       ...
     end
 
+## Argument/Variable Naming
+
+Please try to use english words for method arguments or variable names.
+
+Try not use names such as `tmp`, `var`, `x`, `i`, `foo` or `bar`.
+
 ## Indentation
 
 **Two space** indentation Ruby, XML, XSL, HTML and Javascript source-code.
