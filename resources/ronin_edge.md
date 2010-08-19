@@ -11,7 +11,8 @@ home directory.
 
 # Installing Ruby
 
-In order to run Ronin, you will need a recent version of Ruby and RubyGems
+In order to run Ronin, you will need a recent version of
+[Ruby](http://www.ruby-lang.org/) and [RubyGems](http://rubygems.org/)
 installed on your system. It is recommended that you use Ruby 1.8.7, 1.9.1
 or 1.9.2 with Ronin.
 
