@@ -62,7 +62,7 @@ Additionally, you can add the `bin/` directory to your `$PATH`
 environment variable in `~/.bashrc` or `~/.profile` file, so you can run
 `ronin` as if it was installed:
 
-    echo "export PATH=$PATH:~/src/ronin/bin" >> ~/.bashrc
+    echo "export PATH=$PATH:~/path/to/ronin/bin" >> ~/.bashrc
     source ~/.bashrc
 
     $ ronin
