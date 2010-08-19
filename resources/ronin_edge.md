@@ -18,6 +18,9 @@ or 1.9.2 with Ronin.
 The easiest and recommended way for developers to install Ruby, is by using
 the [Ruby Version Manager](http://rvm.beginrescueend.com/).
 
+    rvm install 1.9.2
+    rvm use 1.9.2 --default
+
 # Checking Out the Source-Code
 
 First, you will need to checkout the source-code from the main Ronin
