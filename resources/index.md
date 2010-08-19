@@ -18,6 +18,10 @@ title: Resources
   A brief set of instructions describing how to install Ronin on a vanilla
   Debian system.
 
+* [Installing Ronin (Edge)](ronin_edge.html) -
+  Describes how to install and run the development version of Ronin into
+  your home directory.
+
 ## Guides
 
 * [Everyday Ronin](everyday_ronin.html) - 
