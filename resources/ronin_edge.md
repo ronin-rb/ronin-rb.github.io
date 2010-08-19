@@ -9,7 +9,7 @@ This guide covers how to install the development version of Ronin from
 [GitHub](http://github.com/ronin-ruby/ronin/) and run it out of your
 home directory.
 
-# Installing Ruby
+## Installing Ruby
 
 In order to run Ronin, you will need a recent version of
 [Ruby](http://www.ruby-lang.org/) and [RubyGems](http://rubygems.org/)
@@ -22,7 +22,7 @@ the [Ruby Version Manager](http://rvm.beginrescueend.com/).
     rvm install 1.9.2
     rvm use 1.9.2 --default
 
-# Checking Out the Source-Code
+## Checking Out the Source-Code
 
 First, you will need to checkout the source-code from the main Ronin
 repository using git:
@@ -35,7 +35,7 @@ been cloned, you can update the Git repository to get the latest changes:
     cd ronin/
     git pull
 
-# Installing dependencies
+## Installing dependencies
 
 Before you can use Ronin, dependencies must be installed. Additionally, the
 development version of Ronin may require edge versions of libraries
@@ -52,7 +52,7 @@ Install the dependencies:
     cd ronin/
     bundle install
 
-# Running Ronin
+## Running Ronin
 
 At this point you should be able to run the `ronin` command-line utility
 from the repository:
