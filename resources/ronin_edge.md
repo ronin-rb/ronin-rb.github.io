@@ -70,6 +70,7 @@ environment variable in `~/.bashrc` or `~/.profile` file, so you can run
 
 Alternatively, if you just need to open an IRB Console to selectively load files from ronin, you can use the `console` rake task:
 
+    $ cd ronin/
     $ rake console
     ruby-1.9.2-p0 > require 'ronin/environment'
      => true
