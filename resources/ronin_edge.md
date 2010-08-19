@@ -16,7 +16,7 @@ installed on your system. It is recommended that you use Ruby 1.8.7, 1.9.1
 or 1.9.2 with Ronin.
 
 The easiest and recommended way for developers to install Ruby, is by using
-the [Ruby Version Manager](http://rvm.beginrescueend.com/rvm/install/).
+the [Ruby Version Manager](http://rvm.beginrescueend.com/).
 
 # Checking Out the Source-Code
 
