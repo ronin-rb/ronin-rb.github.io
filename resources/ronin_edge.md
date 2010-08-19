@@ -6,7 +6,7 @@ title: Installing Ronin (Edge)
 # Installing Ronin (Edge)
 
 This guide covers how to install the development version of Ronin from
-[GitHub](http://github.com/ronin-ruby/) and run it out of your
+[GitHub](http://github.com/ronin-ruby/ronin/) and run it out of your
 home directory.
 
 # Installing Ruby
