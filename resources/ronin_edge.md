@@ -15,6 +15,9 @@ In order to run Ronin, you will need a recent version of Ruby and RubyGems
 installed on your system. It is recommended that you use Ruby 1.8.7, 1.9.1
 or 1.9.2 with Ronin.
 
+The easiest and recommended way for developers to install Ruby, is by using
+the [Ruby Version Manager](http://rvm.beginrescueend.com/rvm/install/).
+
 # Checking Out the Source-Code
 
 First, you will need to checkout the source-code from the main Ronin
