@@ -40,6 +40,6 @@ title: Resources
 ## API Documentation
 
 {% for library in site.libraries %}
-* [{{ library.name }}](http://ronin-ruby.github.com/docs/{{ library.slug }}) -
+* [{{ library.name }} [edge]](http://yardoc.org/docs/ronin-ruby-{{ library.slug }}) -
   {{ library.description }}{% endfor %}
 
