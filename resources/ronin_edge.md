@@ -35,6 +35,7 @@ repository to get the latest changes:
 
     cd ronin/
     git pull
+    bundle install
 
 ## Installing dependencies
 
