@@ -10,7 +10,7 @@ title: "Hack This Zine #8 article - Ronin"
 **Dave Bowman**: What's the problem?<br />
 **HAL**: I think you know what the problem is just as well as I do.<br />
 
-    ronin add --git git://github.com/postmodern/postmodern-overlay.git
+    ronin add --git http://github.com/postmodern/postmodern-overlay.git
     ronin
     ronin>> pod_bay_door.open
 
@@ -116,7 +116,7 @@ documentation management with patches pending to dm-core. To install this
 repo you will have to:
 
     sudo gem source --add http://gems.datamapper.org/
-    git clone git://github.com/postmodern/dm-core.git
+    git clone http://github.com/postmodern/dm-core.git
     cd dm-core
     git checkout -b next --track origin/next
     git pull
@@ -142,7 +142,7 @@ well.
 Rolling the new gem from the git source you just checked out can be done as 
 for dm-core above:
 
-    git clone git://github.com/ronin-ruby/ronin.git
+    git clone http://github.com/ronin-ruby/ronin.git
     cd ronin
     rake gem
     sudo gem install pkg/ronin-0.2.5.gem
@@ -179,7 +179,7 @@ local cache (~/.ronin) of your installed overlays.  An overlay is managed in
 the following way:
 
     ronin list
-    ronin add git://github.com/postmodern/postmodern-overlay.git
+    ronin add http://github.com/postmodern/postmodern-overlay.git
     ronin update postmodern-overlay
 
     # Remove the local entry and delete the associated files.
@@ -193,13 +193,13 @@ the following way:
 Overlays are managed by Ronin::Platform.  This section of code describes the
 Overlay API; file structure, recognized format of ronin.xml.  In the 
 following example we will be using an overlay called postmodern-overlay
-hosted at git://github.com/postmodern/postmodern-overlay.git.  This overlay
+hosted at http://github.com/postmodern/postmodern-overlay.git.  This overlay
 version will change as Ronin::Platform gets updated and may not always be 
 compatible with the gem version of Ronin.  As of Ronin 0.3.0 if you want to
 use a compatible version of postmodern-overlay you will have to check it out
 with the ronin-0.3.0 tag:
 
-    git clone git://github.com/postmodern/postmodern-overlay.git
+    git clone http://github.com/postmodern/postmodern-overlay.git
     cd postmodern-overlay
     git checkout -b ronin-0.3.0 --track origin/ronin-0.3.0  
 

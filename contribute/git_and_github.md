@@ -60,13 +60,13 @@ checkout your fork of ronin:
 
 Add the ronin-ruby (the authoritive ronin repository) remote repository:
 
-    $ git remote add ronin-ruby git://github.com/ronin-ruby/ronin.git
+    $ git remote add ronin-ruby http://github.com/ronin-ruby/ronin.git
 
 <div class="note">
   <p>
     Remote repositories which one has write access to will begin with
     <code>git@github.com</code> and are accessed over ssh. Remote
-    repositories beginning with `git://` will not allow write access and
+    repositories beginning with `http://` will not allow write access and
     are accessed over HTTP.
   </p>
 </div>

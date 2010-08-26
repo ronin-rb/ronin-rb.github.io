@@ -27,7 +27,7 @@ is by using the [Ruby Version Manager (RVM)](http://rvm.beginrescueend.com/).
 First, you will need to checkout the source-code from the main Ronin
 repository using git:
 
-    git clone git://github.com/ronin-ruby/ronin.git
+    git clone http://github.com/ronin-ruby/ronin.git
 
 This will pull down every commit made to Ronin, giving you a complete copy of
 the repository. After the repository has been cloned, you can update the Git
