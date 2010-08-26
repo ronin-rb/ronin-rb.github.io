@@ -51,6 +51,15 @@ You will need to install bundler >= 1.0.0.rc.1:
 
     gem install bundler --pre
 
+<div class="warning">
+  <p>
+    In order to safely use the development version of Ronin with Bundler,
+    you must first uninstall any previous Ronin gems:
+  </p>
+
+  <pre>gem uninstall ronin-asm ronin-dorks ronin-exploits ronin-gen ronin-php ronin-scanners ronin-sql ronin-web ronin</pre>
+</div>
+
 Install the dependencies:
 
     cd ronin/
