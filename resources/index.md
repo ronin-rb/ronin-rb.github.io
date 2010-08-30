@@ -40,6 +40,6 @@ title: Resources
 ## API Documentation
 
 {% for library in site.libraries %}
-* [{{ library.name }} [edge]](http://yardoc.org/docs/ronin-ruby-{{ library.slug }}) -
+* [{{ library.name }} [edge]](http://rubydoc.info/github/ronin-ruby/{{ library.slug }}/master/iframes) -
   {{ library.description }}{% endfor %}
 
