@@ -39,7 +39,16 @@ title: Resources
 
 ## API Documentation
 
+<ul>
 {% for library in site.libraries %}
-* [{{ library.name }}](http://rubydoc.info/gems/{{ library.slug }}/{{ library.version }}/frames) [[edge]](http://rubydoc.info/github/ronin-ruby/{{ library.slug }}/master/frames) -
-  {{ library.description }}{% endfor %}
+  <li>
+{% if library.dev != true %}
+    <a href="http://rubydoc.info/gems/{{ library.slug }}/{{ library.version }}/frames">{{ library.name }}</a>
+{% else %}
+    <span class="underlined">{{ library.name }}</span>
+{% endif %}
 
+    <a href="http://rubydoc.info/github/ronin-ruby/{{ library.slug }}/master/frames">[edge]</a> - {{ library.description }}
+  </li>
+{% endfor %}
+</ul>

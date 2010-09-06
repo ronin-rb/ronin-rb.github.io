@@ -27,9 +27,14 @@ Once your familiar with Ronins coding style, and setup with
 [Git](http://git-scm.com/) and [GitHub](http://www.github.com/),
 you can dive right into Ronin. Just pick a repository, fork it and dive in:
 
+<ul>
 {% for library in site.libraries %}
-* [{{ library.name }}](http://github.com/ronin-ruby/{{ library.slug }}/) -
-  {{ library.description }}{% endfor %}
-* [ronin-ruby.github.com](http://github.com/ronin-ruby/ronin-ruby.github.com) - 
-  This website.
-
+  <li>
+    <a href="http://github.com/ronin-ruby/{{ library.slug }}/">{{ library.name }}</a> -
+    {{ library.description }}
+  </li>
+{% endfor %}
+  <li>
+    <a href="http://github.com/ronin-ruby/ronin-ruby.github.com">ronin-ruby.github.com</a> - This website.
+  </li>
+</ul>
