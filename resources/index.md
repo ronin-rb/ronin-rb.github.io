@@ -11,6 +11,11 @@ title: Resources
   A talk at ToorCamp 2009 discussing Ronin, how it can be used as a
   Platform for Publishing and Mayhem, given by Postmodern of Sophsec
   Intrusion Labs.
+* [Intrusion via web application flaws](http://www.vimeo.com/14983596) -
+  A demo illustrating the Exploitation Life Cycle by
+  [Dan Guido](http://cryptocity.net/) for the [NYU: Poly Penetration Testing and Vulnerability Analysis](http://pentest.cryptocity.net/)
+  class. Features the Ronin AJAX PHP-RPC Server being injected via a
+  [Remote File Inclusion (RFI)](http://en.wikipedia.org/wiki/Remote_File_Inclusion).
 
 ## Installation Guides
 
