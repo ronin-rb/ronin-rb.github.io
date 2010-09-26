@@ -38,6 +38,17 @@ title: Resources
 
 ## Articles
 
+* [Hack This Zine #10 article - Delivering Weaponized Exploits with Ronin, 
+  RVM, and Bundler with evoltech and postmodern"(hack_this_zine_10.html) -
+  The [Hack This Zine #10](https://hackbloc.org/svn/htz/10/indesign_Files/htz10_Print.pdf) 
+  Developing with the ronin platform using rvm and bundler to release a 
+  weaponized exploit.
+
+* [Hack This Zine #9 - Ronin: Badger! Badger! Badger!](hack_this_zine_9.html) -
+  The [Hack This Zine #9](https://hackbloc.org/svn/htz/9/indesign_Files/htz9_Print.pdf)
+  article which gives an update on Ronin development as well as new techniques 
+  used in the [Smart Brute Force Word Press utility](https://hackbloc.org/svn/htz/8/smartBruteForceWP.rb).
+
 * [Hack This Zine #8 - Ronin](hack_this_zine_8.html) -
   The [Hack This Zine #8](https://hackbloc.org/etc/zine/8/htz8_Print.pdf)
   article which gives an detailed introduction to Ronin.
