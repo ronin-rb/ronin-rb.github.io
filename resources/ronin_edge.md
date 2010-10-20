@@ -47,9 +47,9 @@ To make the management of dependencies easier for developers, Ronin uses
 [Gem Bundler](http://gembundler.com/) to install dependencies separately from
 RubyGems.
 
-You will need to install bundler >= 1.0.0.rc.1:
+You will need to install bundler ~> 1.0.0:
 
-    gem install bundler --pre
+    gem install bundler
 
 <div class="warning">
   <p>
