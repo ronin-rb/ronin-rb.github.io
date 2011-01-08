@@ -1,0 +1,522 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Ronin::Scanner</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (S)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Ronin.html" title="Ronin (module)">Ronin</a></span></span>
+     &raquo; 
+    <span class="title">Scanner</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Ronin::Scanner
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="../IPAddr.html" title="IPAddr (class)">IPAddr</a></span>, <span class='object_link'><a href="../URI/HTTP.html" title="URI::HTTP (class)">URI::HTTP</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/ronin/scanner/scanner.rb<span class="defines">,<br />
+  lib/ronin/scanner/class_methods.rb,<br /> lib/ronin/scanner/exceptions/unknown_category.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>The <span class='object_link'><a href="" title="Ronin::Scanner (module)">Scanner</a></span> module allows a class to have multiple scanner rules
+added to it. The scanner rules can be called individually or en-mass.
+These scanner rules can be passed options, and pass back their results
+in real-time.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Scanner/ClassMethods.html" title="Ronin::Scanner::ClassMethods (module)">ClassMethods</a></span>
+    
+   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Scanner/UnknownCategory.html" title="Ronin::Scanner::UnknownCategory (class)">UnknownCategory</a></span>
+    
+  
+</p>
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#included-class_method" title="included (class method)">+ (Object) <strong>included</strong>(base) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#each_target-instance_method" title="#each_target (instance method)">- (Object) <strong>each_target</strong> {|target| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A place holder method which will call the given block with
+each target object to be scanned.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#scan-instance_method" title="#scan (instance method)">- (Hash) <strong>scan</strong>(categories = {}) {|category, result| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Runs all scanners in the given categories against <span class='object_link'><a href="#each_target-instance_method" title="Ronin::Scanner#each_target (method)">Scanner#each_target</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="included-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>included</strong>(base) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/scanner/scanner.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
+  <span class='id base'>base</span><span class='period'>.</span><span class='id extend'>extend</span> <span class='const'>ClassMethods</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="each_target-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>each_target</strong> {|target| ... } <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>A place holder method which will call the given block with
+each target object to be scanned. By default, the method will call
+the given block once, simply passing it the <code>self</code> object.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'>(<tt>target</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The block that will be passed each target object to be scanned.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>)</span>
+      
+      
+        <span class='name'>target</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The target object to be scanned.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+120
+121
+122</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/scanner/scanner.rb', line 120</span>
+
+<span class='kw'>def</span> <span class='id each_target'>each_target</span>
+  <span class='kw'>yield</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="scan-instance_method">
+  
+    - (<tt>Hash</tt>) <strong>scan</strong>(categories = {}) {|category, result| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Runs all scanners in the given categories against <span class='object_link'><a href="#each_target-instance_method" title="Ronin::Scanner#each_target (method)">#each_target</a></span>.
+If no categories are specified, all categories will be ran
+against <span class='object_link'><a href="#each_target-instance_method" title="Ronin::Scanner#each_target (method)">#each_target</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'><p>Scanning a specific category.</p>
+</div></h4>
+      <pre class="example code"><span class='id url'>url</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='symbol'>:rfi</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='rparen'>)</span>
+<span class='comment'># =&gt; {:rfi =&gt; [...]}</span></pre>
+    
+      <h4><div class='inline'><p>Scanning multiple categories, with scanner-options.</p>
+</div></h4>
+      <pre class="example code"><span class='id url'>url</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='symbol'>:lfi</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:sqli</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:params</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>id</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>catid</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='comment'># =&gt; {:lfi =&gt; [...], :sqli =&gt; [...]}</span></pre>
+    
+      <h4><div class='inline'><p>Receiving scanner results from categories in real-time.</p>
+</div></h4>
+      <pre class="example code"><span class='id url'>url</span><span class='period'>.</span><span class='id scan'>scan</span><span class='lparen'>(</span><span class='symbol'>:lfi</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:rfi</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id category'>category</span><span class='comma'>,</span><span class='id result'>result</span><span class='op'>|</span>
+  <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[</span><span class='embexpr_beg'>#{</span><span class='id category'>category</span><span class='rbrace'>}</span><span class='tstring_content'>] </span><span class='embexpr_beg'>#{</span><span class='id result'>result</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash{Symbol,<span class='object_link'><a href="../String.html" title="String (class)">String</a></span> =&gt; Boolean,Hash}</tt>)</span>
+      
+      
+        <span class='name'>categories</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The categories to scan for, with additional per-category
+scanner-options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'>(<tt>category</tt>, <tt>result</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The block that may receive the scanner results for categories
+in real-time.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+        <span class='name'>category</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The category the result belongs to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>)</span>
+      
+      
+        <span class='name'>result</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The result object enqueued by the scanner.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The results grouped by scanner category.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/scanner/scanner.rb', line 74</span>
+
+<span class='kw'>def</span> <span class='id scan'>scan</span><span class='lparen'>(</span><span class='id categories'>categories</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id options'>options</span> <span class='op'>=</span> <span class='id normalize_category_options'>normalize_category_options</span><span class='lparen'>(</span><span class='id categories'>categories</span><span class='rparen'>)</span>
+  <span class='id tests'>tests</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='id results'>results</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='id options'>options</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='comma'>,</span><span class='id opts'>opts</span><span class='op'>|</span>
+    <span class='id tests'>tests</span><span class='lbracket'>[</span><span class='id name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id scanners_in'>scanners_in</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+    <span class='id results'>results</span><span class='lbracket'>[</span><span class='id name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+
+  <span class='id current_category'>current_category</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='id result_callback'>result_callback</span> <span class='op'>=</span> <span class='id lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id result'>result</span><span class='op'>|</span>
+    <span class='id results'>results</span><span class='lbracket'>[</span><span class='id current_category'>current_category</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='id result'>result</span>
+    <span class='kw'>yield</span> <span class='id current_category'>current_category</span><span class='comma'>,</span> <span class='id result'>result</span> <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
+  <span class='rbrace'>}</span>
+
+  <span class='id each_target'>each_target</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id target'>target</span><span class='op'>|</span>
+    <span class='id tests'>tests</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='comma'>,</span><span class='id scanners'>scanners</span><span class='op'>|</span>
+      <span class='id current_category'>current_category</span> <span class='op'>=</span> <span class='id name'>name</span>
+
+      <span class='id scanners'>scanners</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id scanner'>scanner</span><span class='op'>|</span>
+        <span class='kw'>if</span> <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id arity'>arity</span> <span class='op'>==</span> <span class='int'>3</span>
+          <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id call'>call</span><span class='lparen'>(</span><span class='id target'>target</span><span class='comma'>,</span><span class='id result_callback'>result_callback</span><span class='comma'>,</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='id name'>name</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id call'>call</span><span class='lparen'>(</span><span class='id target'>target</span><span class='comma'>,</span><span class='id result_callback'>result_callback</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id results'>results</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Wed Sep  1 02:22:00 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.0 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>
