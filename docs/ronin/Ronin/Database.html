@@ -1,0 +1,1439 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Ronin::Database</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (D)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Ronin.html" title="Ronin (module)">Ronin</a></span></span>
+     &raquo; 
+    <span class="title">Database</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Ronin::Database
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/ronin/database/database.rb<span class="defines">,<br />
+  lib/ronin/database/migrations/graph.rb,<br /> lib/ronin/database/migrations/migration.rb,<br /> lib/ronin/database/migrations/migrations.rb,<br /> lib/ronin/database/exceptions/invalid_config.rb,<br /> lib/ronin/database/migrations/create_os_table.rb,<br /> lib/ronin/database/migrations/create_tags_table.rb,<br /> lib/ronin/database/migrations/create_urls_table.rb,<br /> lib/ronin/database/migrations/create_ports_table.rb,<br /> lib/ronin/database/exceptions/unknown_repository.rb,<br /> lib/ronin/database/migrations/create_arches_table.rb,<br /> lib/ronin/database/migrations/create_proxies_table.rb,<br /> lib/ronin/database/migrations/create_vendors_table.rb,<br /> lib/ronin/database/migrations/create_authors_table.rb,<br /> lib/ronin/database/migrations/create_targets_table.rb,<br /> lib/ronin/database/migrations/create_services_table.rb,<br /> lib/ronin/database/migrations/create_licenses_table.rb,<br /> lib/ronin/database/migrations/create_taggings_table.rb,<br /> lib/ronin/database/migrations/create_softwares_table.rb,<br /> lib/ronin/database/migrations/create_addresses_table.rb,<br /> lib/ronin/database/migrations/create_passwords_table.rb,<br /> lib/ronin/database/migrations/create_campaigns_table.rb,<br /> lib/ronin/database/migrations/create_countries_table.rb,<br /> lib/ronin/database/migrations/create_open_ports_table.rb,<br /> lib/ronin/database/migrations/create_user_names_table.rb,<br /> lib/ronin/database/migrations/create_os_guesses_table.rb,<br /> lib/ronin/database/migrations/create_url_schemes_table.rb,<br /> lib/ronin/database/migrations/create_credentials_table.rb,<br /> lib/ronin/database/migrations/create_remote_files_table.rb,<br /> lib/ronin/database/migrations/create_repositories_table.rb,<br /> lib/ronin/database/migrations/create_cached_files_table.rb,<br /> lib/ronin/database/migrations/create_organizations_table.rb,<br /> lib/ronin/database/migrations/exceptions/unknown_migration.rb,<br /> lib/ronin/database/migrations/create_email_addresses_table.rb,<br /> lib/ronin/database/migrations/create_url_query_params_table.rb,<br /> lib/ronin/database/migrations/exceptions/duplicate_migration.rb,<br /> lib/ronin/database/migrations/create_host_name_ip_addresses_table.rb,<br /> lib/ronin/database/migrations/create_ip_address_mac_addresses_table.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Manages the <span class='object_link'><a href="" title="Ronin::Database (module)">Database</a></span> configuration and the defined repositories.
+Also provides a simple wrapper around DataMapper, for initializing,
+auto-upgrading and querying <span class='object_link'><a href="" title="Ronin::Database (module)">Database</a></span> repositories.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Database/Migrations.html" title="Ronin::Database::Migrations (module)">Migrations</a></span>
+    
+   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Database/InvalidConfig.html" title="Ronin::Database::InvalidConfig (class)">InvalidConfig</a></span>, <span class='object_link'><a href="Database/UnknownRepository.html" title="Ronin::Database::UnknownRepository (class)">UnknownRepository</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="CONFIG_FILE-constant" class="">CONFIG_FILE =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Database configuration file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'>File</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>Config</span><span class='op'>::</span><span class='const'>PATH</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>database.yml</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="DEFAULT_LOG_PATH-constant" class="">DEFAULT_LOG_PATH =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Database log file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'>File</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>Config</span><span class='op'>::</span><span class='const'>PATH</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>database.log</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="DEFAULT_LOG_LEVEL-constant" class="">DEFAULT_LOG_LEVEL =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Database log level</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='symbol'>:info</span></pre></dd>
+      
+        <dt id="DEFAULT_REPOSITORY-constant" class="">DEFAULT_REPOSITORY =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Default database repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span>
+  <span class='symbol'>:scheme</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sqlite3</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='const'>File</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>Config</span><span class='op'>::</span><span class='const'>PATH</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>database.sqlite3</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='rparen'>)</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#clear-class_method" title="clear (class method)">+ (nil) <strong>clear</strong>(name) { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Clears the Database, by running destructive auto-migrations.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#map-class_method" title="map (class method)">+ (Array) <strong>map</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Performs Database transactions in each of the Database
+repositories.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#repositories-class_method" title="repositories (class method)">+ (Hash{Symbol =&gt; Addressable::URI}) <strong>repositories</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the Database repositories to use.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#repository-class_method" title="repository (class method)">+ (DataMapper::Repository) <strong>repository</strong>(name, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Performs Database transactions within a given repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#repository%3F-class_method" title="repository? (class method)">+ (Boolean) <strong>repository?</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Determines if the Database provides a specific repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#save-class_method" title="save (class method)">+ (true) <strong>save</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Saves the Database configuration to <code>CONFIG_FILE</code>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#setup-class_method" title="setup (class method)">+ (Object) <strong>setup</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets up the Database.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#setup%3F-class_method" title="setup? (class method)">+ (Boolean) <strong>setup?</strong>(name = :default) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Determines if a specific database repository is setup.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#setup_log-class_method" title="setup_log (class method)">+ (true) <strong>setup_log</strong>(options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Setup the Database log.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#upgrade%21-class_method" title="upgrade! (class method)">+ (Boolean) <strong>upgrade!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Upgrades the Database, by running migrations for a given
+ronin library, but only if the Database has been setup.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="clear-class_method">
+  
+    + (<tt>nil</tt>) <strong>clear</strong>(name) { ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Clears the Database, by running destructive auto-migrations.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>, <tt>Symbol</tt>)</span>
+      
+      
+        <span class='name'>name</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the Database repository to clear.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>[]
+If a block is given, it will be called after the Database
+repository has been cleared.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Database/UnknownRepository.html" title="Ronin::Database::UnknownRepository (class)">UnknownRepository</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The specified Database repository is unknown.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 251</span>
+
+<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id clear'>clear</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+  <span class='id name'>name</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
+
+  <span class='kw'>unless</span> <span class='const'>Database</span><span class='period'>.</span><span class='id repository?'>repository?</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>UnknownRepository</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown database repository </span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='const'>DataMapper</span><span class='period'>.</span><span class='id auto_migrate!'>auto_migrate!</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+
+  <span class='kw'>yield</span> <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="map-class_method">
+  
+    + (<tt>Array</tt>) <strong>map</strong> { ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Performs Database transactions in each of the Database
+repositories.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>[]
+The given block will be ran within the context of each Database
+repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The results from each database transaction.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 277</span>
+
+<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id map'>map</span>
+  <span class='id results'>results</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='const'>Database</span><span class='period'>.</span><span class='id repositories'>repositories</span><span class='period'>.</span><span class='id each_key'>each_key</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='op'>|</span>
+    <span class='const'>DataMapper</span><span class='period'>.</span><span class='id repository'>repository</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='id result'>result</span> <span class='op'>=</span> <span class='kw'>yield</span>
+      <span class='id results'>results</span> <span class='op'>&lt;&lt;</span> <span class='id result'>result</span> <span class='kw'>unless</span> <span class='id result'>result</span><span class='period'>.</span><span class='id nil?'>nil?</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id results'>results</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="repositories-class_method">
+  
+    + (<tt>Hash{Symbol =&gt; Addressable::URI}</tt>) <strong>repositories</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the Database repositories to use.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Addressable::URI}</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The database repository names and URIs.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Database/InvalidConfig.html" title="Ronin::Database::InvalidConfig (class)">InvalidConfig</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The config file did not contain a YAML Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 67</span>
+
+<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id repositories'>repositories</span>
+  <span class='kw'>if</span> <span class='ivar'>@repositories</span><span class='period'>.</span><span class='id empty?'>empty?</span>
+    <span class='ivar'>@repositories</span><span class='lbracket'>[</span><span class='symbol'>:default</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>DEFAULT_REPOSITORY</span>
+
+    <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id file?'>file?</span><span class='lparen'>(</span><span class='const'>CONFIG_FILE</span><span class='rparen'>)</span>
+      <span class='id conf'>conf</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='period'>.</span><span class='id load_file'>load_file</span><span class='lparen'>(</span><span class='const'>CONFIG_FILE</span><span class='rparen'>)</span>
+
+      <span class='kw'>unless</span> <span class='id conf'>conf</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span>
+        <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>InvalidConfig</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>CONFIG_FILE</span><span class='rbrace'>}</span><span class='tstring_content'> must contain a YAML Hash of repositories</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+
+      <span class='id conf'>conf</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='comma'>,</span><span class='id uri'>uri</span><span class='op'>|</span>
+        <span class='ivar'>@repositories</span><span class='lbracket'>[</span><span class='id name'>name</span><span class='period'>.</span><span class='id to_sym'>to_sym</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id parse'>parse</span><span class='lparen'>(</span><span class='id uri'>uri</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='ivar'>@repositories</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="repository-class_method">
+  
+    + (<tt>DataMapper::Repository</tt>) <strong>repository</strong>(name, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Performs Database transactions within a given repository.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>, <tt>Symbol</tt>)</span>
+      
+      
+        <span class='name'>name</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the repository to access.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>DataMapper::Repository</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Database repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Database/UnknownRepository.html" title="Ronin::Database::UnknownRepository (class)">UnknownRepository</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The specified Database repository is unknown.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+224
+225
+226
+227
+228
+229
+230
+231
+232</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 224</span>
+
+<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id repository'>repository</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id name'>name</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
+
+  <span class='kw'>unless</span> <span class='const'>Database</span><span class='period'>.</span><span class='id repository?'>repository?</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>UnknownRepository</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown database repository </span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='const'>DataMapper</span><span class='period'>.</span><span class='id repository'>repository</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="repository?-class_method">
+  
+    + (<tt>Boolean</tt>) <strong>repository?</strong>(name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Determines if the Database provides a specific repository.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>, <tt>Symbol</tt>)</span>
+      
+      
+        <span class='name'>name</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Name of the repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies if the Database provides the repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 98</span>
+
+<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id repository?'>repository?</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+  <span class='const'>Database</span><span class='period'>.</span><span class='id repositories'>repositories</span><span class='period'>.</span><span class='id has_key?'>has_key?</span><span class='lparen'>(</span><span class='id name'>name</span><span class='period'>.</span><span class='id to_sym'>to_sym</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="save-class_method">
+  
+    + (<tt>true</tt>) <strong>save</strong> { ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Saves the Database configuration to <code>CONFIG_FILE</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>[]
+If a block is given, it will be called before the database
+configuration is saved.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>true</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 113</span>
+
+<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id save'>save</span>
+  <span class='kw'>yield</span> <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
+
+  <span class='const'>File</span><span class='period'>.</span><span class='id open'>open</span><span class='lparen'>(</span><span class='const'>CONFIG_FILE</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id file'>file</span><span class='op'>|</span>
+    <span class='id hash'>hash</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+    
+    <span class='const'>Database</span><span class='period'>.</span><span class='id repositories'>repositories</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='comma'>,</span><span class='id value'>value</span><span class='op'>|</span>
+      <span class='id hash'>hash</span><span class='lbracket'>[</span><span class='id name'>name</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id value'>value</span><span class='period'>.</span><span class='id to_s'>to_s</span>
+    <span class='kw'>end</span>
+
+    <span class='const'>YAML</span><span class='period'>.</span><span class='id dump'>dump</span><span class='lparen'>(</span><span class='id hash'>hash</span><span class='comma'>,</span><span class='id file'>file</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="setup-class_method">
+  
+    + (<tt>Object</tt>) <strong>setup</strong> { ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Sets up the Database.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>[]
+The block to call after the Database has been setup, but before
+it is updated.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#upgrade%21-class_method" title="Ronin::Database.upgrade! (method)">upgrade!</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 197</span>
+
+<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id setup'>setup</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='comment'># setup the database log
+</span>  <span class='const'>Database</span><span class='period'>.</span><span class='id setup_log'>setup_log</span> <span class='kw'>unless</span> <span class='ivar'>@log</span>
+
+  <span class='comment'># setup the database repositories
+</span>  <span class='const'>Database</span><span class='period'>.</span><span class='id repositories'>repositories</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='comma'>,</span><span class='id uri'>uri</span><span class='op'>|</span>
+    <span class='const'>DataMapper</span><span class='period'>.</span><span class='id setup'>setup</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='id uri'>uri</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># auto-upgrade the database repository
+</span>  <span class='const'>Database</span><span class='period'>.</span><span class='id upgrade!'>upgrade!</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="setup?-class_method">
+  
+    + (<tt>Boolean</tt>) <strong>setup?</strong>(name = :default) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Determines if a specific database repository is setup.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+        <span class='name'>name</span>
+      
+      
+        <em class="default">(defaults to: <tt>:default</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The database repository name.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies wether or not the Database is setup.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+166
+167
+168
+169
+170</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 166</span>
+
+<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id setup?'>setup?</span><span class='lparen'>(</span><span class='id name'>name</span><span class='op'>=</span><span class='symbol'>:default</span><span class='rparen'>)</span>
+  <span class='id repository'>repository</span> <span class='op'>=</span> <span class='const'>DataMapper</span><span class='period'>.</span><span class='id repository'>repository</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+
+  <span class='kw'>return</span> <span class='id repository'>repository</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id adapters'>adapters</span><span class='period'>.</span><span class='id has_key?'>has_key?</span><span class='lparen'>(</span><span class='id repository'>repository</span><span class='period'>.</span><span class='id name'>name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="setup_log-class_method">
+  
+    + (<tt>true</tt>) <strong>setup_log</strong>(options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Setup the Database log.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="name">:path</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>DEFAULT_LOG_PATH</tt>
+            
+          </span>
+          &mdash; <div class='inline'><p>The path of the log file.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="type">(<tt>IO</tt>)</span>
+          <span class="name">:stream</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The stream to use for the log.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="type">(<tt>Symbol</tt>)</span>
+          <span class="name">:level</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The level of messages to log.
+May be either <code>:fatal</code>, <code>:error</code>, <code>:warn</code>, <code>:info</code> or <code>:debug</code>.</p>
+</div>
+        </tr>
+      
+    </ul>
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>true</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies that the log has been setup.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+148
+149
+150
+151
+152
+153
+154
+155</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 148</span>
+
+<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id setup_log'>setup_log</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id path'>path</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:path</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'>DEFAULT_LOG_PATH</span><span class='rparen'>)</span>
+  <span class='id stream'>stream</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:stream</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'>File</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id path'>path</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w+</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id level'>level</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:level</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'>DEFAULT_LOG_LEVEL</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@log</span> <span class='op'>=</span> <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id stream'>stream</span><span class='comma'>,</span><span class='id level'>level</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="upgrade!-class_method">
+  
+    + (<tt>Boolean</tt>) <strong>upgrade!</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Upgrades the Database, by running migrations for a given
+ronin library, but only if the Database has been setup.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether the Database was migrated or is currently
+not setup.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+180
+181
+182
+183
+184
+185
+186</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 180</span>
+
+<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id upgrade!'>upgrade!</span>
+  <span class='kw'>if</span> <span class='const'>Database</span><span class='period'>.</span><span class='id setup?'>setup?</span>
+    <span class='const'>Migrations</span><span class='period'>.</span><span class='id migrate_up!'>migrate_up!</span>
+  <span class='kw'>else</span>
+    <span class='kw'>false</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Sat Jan  8 15:54:53 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

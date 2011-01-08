@@ -1,0 +1,1413 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Ronin::UI::CLI::Command</title>
+<link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (C)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../UI.html" title="Ronin::UI (module)">UI</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../CLI.html" title="Ronin::UI::CLI (module)">CLI</a></span></span>
+     &raquo; 
+    <span class="title">Command</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Ronin::UI::CLI::Command
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Thor::Group</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Thor::Group</li>
+          
+            <li class="next">Ronin::UI::CLI::Command</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="../Output/Helpers.html" title="Ronin::UI::Output::Helpers (module)">Output::Helpers</a></span>, Thor::Actions</dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/ronin/ui/cli/command.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>The <span class='object_link'><a href="" title="Ronin::UI::CLI::Command (class)">Command</a></span> class inherits <code>Thor::Group</code> to provide a base-class
+for defining sub-commands for the <span class='object_link'><a href="../CLI.html" title="Ronin::UI::CLI (module)">Ronin::UI::CLI</a></span>.</p>
+
+<h1 id="extending">Extending</h1>
+
+<p>To create a new sub-command one can inherit the <span class='object_link'><a href="" title="Ronin::UI::CLI::Command (class)">Command</a></span> class.
+The new sub-command can define multiple <code>class_options</code> and
+<code>arguments</code> which <code>Thor::Group</code> will use to parse command-line
+arguments.</p>
+
+<pre class="code"><span class='id require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ronin/ui/cli/command</span><span class='tstring_end'>'</span></span>
+
+<span class='kw'>module</span> <span class='const'>Ronin</span>
+  <span class='kw'>module</span> <span class='const'>UI</span>
+    <span class='kw'>module</span> <span class='const'>CLI</span>
+      <span class='kw'>module</span> <span class='const'>Commands</span>
+        <span class='kw'>class</span> <span class='const'>MyCommand</span> <span class='op'>&lt;</span> <span class='const'>Command</span>
+
+          <span class='id desc'>desc</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>My command</span><span class='tstring_end'>'</span></span>
+
+          <span class='comment'># command options
+</span>          <span class='id class_option'>class_option</span> <span class='symbol'>:stuff</span><span class='comma'>,</span> <span class='symbol'>:type</span> <span class='op'>=&gt;</span> <span class='symbol'>:boolean</span>
+          <span class='id class_option'>class_option</span> <span class='symbol'>:syntax</span><span class='comma'>,</span> <span class='symbol'>:type</span> <span class='op'>=&gt;</span> <span class='symbol'>:string</span>
+          <span class='id class_option'>class_option</span> <span class='symbol'>:includes</span><span class='comma'>,</span> <span class='symbol'>:type</span> <span class='op'>=&gt;</span> <span class='symbol'>:array</span>
+
+          <span class='comment'># command arguments
+</span>          <span class='id argument'>argument</span> <span class='symbol'>:path</span>
+
+          <span class='comment'>#
+</span>          <span class='comment'># Executes the command.
+</span>          <span class='comment'>#
+</span>          <span class='kw'>def</span> <span class='id execute'>execute</span>
+            <span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Stuff enabled</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id options'>options</span><span class='period'>.</span><span class='id stuff?'>stuff?</span>
+
+            <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:syntax</span><span class='rbracket'>]</span>
+              <span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Using syntax </span><span class='embexpr_beg'>#{</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:syntax</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+            <span class='kw'>end</span>
+
+            <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:includes</span><span class='rbracket'>]</span>
+              <span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Including:</span><span class='tstring_end'>&quot;</span></span>
+              <span class='id print_array'>print_array</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:includes</span><span class='rbracket'>]</span>
+            <span class='kw'>end</span>
+          <span class='kw'>end</span>
+
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+
+<h1 id="running">Running</h1>
+
+<p>To run the sub-command from Ruby, one can call the <code>start</code> class
+method with the options and arguments to run the sub-command with.</p>
+
+<pre class="code"><span class='const'>MyCommand</span><span class='period'>.</span><span class='id start'>start</span><span class='lparen'>(</span>
+  <span class='lbrace'>{</span><span class='symbol'>:stuff</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:syntax</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bla</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:includes</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>other</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>some/file.txt</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+<span class='rparen'>)</span>
+</pre>
+
+<p>To ensure that your sub-command is accessible to the <code>ronin</code>
+command, make sure that the ruby file the sub-command is defined
+within is in the <code>ronin/ui/cli/commands</code> directory of a
+Ronin library. If the sub-command class is named &lsquo;MyCommand&rsquo;
+it&rsquo;s ruby file must also be named &lsquo;my_command.rb&rsquo;.</p>
+
+<p>To run the sub-command using the <code>ronin</code> command, simply specify
+it&rsquo;s underscored name:</p>
+
+<pre class="code">ronin my_command some/file.txt --stuff --syntax bla --includes one two
+</pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="Commands/Console.html" title="Ronin::UI::CLI::Commands::Console (class)">s::Console</a></span>, <span class='object_link'><a href="Commands/Database.html" title="Ronin::UI::CLI::Commands::Database (class)">s::Database</a></span>, <span class='object_link'><a href="Commands/Help.html" title="Ronin::UI::CLI::Commands::Help (class)">s::Help</a></span>, <span class='object_link'><a href="Commands/Repos.html" title="Ronin::UI::CLI::Commands::Repos (class)">s::Repos</a></span>, <span class='object_link'><a href="ModelCommand.html" title="Ronin::UI::CLI::ModelCommand (class)">ModelCommand</a></span></p>
+</div>
+
+
+  
+  
+  
+  
+  
+  
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#banner-class_method" title="banner (class method)">+ (String) <strong>banner</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The banner for the command.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#command_name-class_method" title="command_name (class method)">+ (Object) <strong>command_name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the name of the command.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#inherited-class_method" title="inherited (class method)">+ (Object) <strong>inherited</strong>(super_class) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#execute-instance_method" title="#execute (instance method)">- (Object) <strong>execute</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Default method to call after the options have been parsed.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#indent-instance_method" title="#indent (instance method)">- (nil) <strong>indent</strong>(n = 2) { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Increases the indentation out output temporarily.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Command) <strong>initialize</strong>(arguments = [], opts = {}, config = {}) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new Command object.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#print_array-instance_method" title="#print_array (instance method)">- (nil) <strong>print_array</strong>(array, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Prints a given Array.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#print_exception-instance_method" title="#print_exception (instance method)">- (Object) <strong>print_exception</strong>(exception) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Prints an exception and a shortened backtrace.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#print_hash-instance_method" title="#print_hash (instance method)">- (nil) <strong>print_hash</strong>(hash, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Prints a given Hash.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#print_section-instance_method" title="#print_section (instance method)">- (Object) <strong>print_section</strong>(title) { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Prints a section with a title.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#print_title-instance_method" title="#print_title (instance method)">- (Object) <strong>print_title</strong>(title) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Prints a given title.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#puts-instance_method" title="#puts (instance method)">- (Object) <strong>puts</strong>(*messages) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Print the given messages with indentation.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Output/Helpers.html" title="Ronin::UI::Output::Helpers (module)">Output::Helpers</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Output/Helpers.html#print_debug-instance_method" title="Ronin::UI::Output::Helpers#print_debug (method)">#print_debug</a></span>, <span class='object_link'><a href="../Output/Helpers.html#print_error-instance_method" title="Ronin::UI::Output::Helpers#print_error (method)">#print_error</a></span>, <span class='object_link'><a href="../Output/Helpers.html#print_info-instance_method" title="Ronin::UI::Output::Helpers#print_info (method)">#print_info</a></span>, <span class='object_link'><a href="../Output/Helpers.html#print_warning-instance_method" title="Ronin::UI::Output::Helpers#print_warning (method)">#print_warning</a></span>, <span class='object_link'><a href="../Output/Helpers.html#printf-instance_method" title="Ronin::UI::Output::Helpers#printf (method)">#printf</a></span>, <span class='object_link'><a href="../Output/Helpers.html#putc-instance_method" title="Ronin::UI::Output::Helpers#putc (method)">#putc</a></span>, <span class='object_link'><a href="../Output/Helpers.html#write-instance_method" title="Ronin::UI::Output::Helpers#write (method)">#write</a></span></p>
+
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Ronin::UI::CLI::Command (class)">Command</a></span></tt>) <strong>initialize</strong>(arguments = [], opts = {}, config = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new Command object.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <span class='name'>arguments</span>
+      
+      
+        <em class="default">(defaults to: <tt>[]</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Command-line arguments.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <span class='name'>opts</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional command-line options.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>config</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional configuration.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 143</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id arguments'>arguments</span><span class='op'>=</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id opts'>opts</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='id config'>config</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id arguments'>arguments</span><span class='comma'>,</span><span class='id opts'>opts</span><span class='comma'>,</span><span class='id config'>config</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@indent</span> <span class='op'>=</span> <span class='int'>0</span>
+
+  <span class='const'>UI</span><span class='op'>::</span><span class='const'>Output</span><span class='period'>.</span><span class='id verbose!'>verbose!</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id options'>options</span><span class='period'>.</span><span class='id verbose?'>verbose?</span>
+  <span class='const'>UI</span><span class='op'>::</span><span class='const'>Output</span><span class='period'>.</span><span class='id quiet!'>quiet!</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id options'>options</span><span class='period'>.</span><span class='id quiet?'>quiet?</span>
+  <span class='const'>UI</span><span class='op'>::</span><span class='const'>Output</span><span class='period'>.</span><span class='id silent!'>silent!</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id options'>options</span><span class='period'>.</span><span class='id silent?'>silent?</span>
+
+  <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id options'>options</span><span class='period'>.</span><span class='id no_color?'>no_color?</span>
+    <span class='const'>UI</span><span class='op'>::</span><span class='const'>Output</span><span class='period'>.</span><span class='id handler'>handler</span> <span class='op'>=</span> <span class='const'>UI</span><span class='op'>::</span><span class='const'>Output</span><span class='op'>::</span><span class='const'>Terminal</span><span class='op'>::</span><span class='const'>Raw</span>
+  <span class='kw'>elsif</span> <span class='kw'>self</span><span class='period'>.</span><span class='id options'>options</span><span class='period'>.</span><span class='id color?'>color?</span>
+    <span class='const'>UI</span><span class='op'>::</span><span class='const'>Output</span><span class='period'>.</span><span class='id handler'>handler</span> <span class='op'>=</span> <span class='const'>UI</span><span class='op'>::</span><span class='const'>Output</span><span class='op'>::</span><span class='const'>Terminal</span><span class='op'>::</span><span class='const'>Color</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="banner-class_method">
+  
+    + (<tt>String</tt>) <strong>banner</strong>  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The banner for the command.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The banner string.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+175
+176
+177</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 175</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id banner'>banner</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ronin </span><span class='embexpr_beg'>#{</span><span class='id self_task'>self_task</span><span class='period'>.</span><span class='id formatted_usage'>formatted_usage</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span><span class='kw'>false</span><span class='comma'>,</span><span class='kw'>true</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="command_name-class_method">
+  
+    + (<tt>Object</tt>) <strong>command_name</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the name of the command.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+127
+128
+129</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 127</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id command_name'>command_name</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id name'>name</span><span class='period'>.</span><span class='id split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>::</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id last'>last</span><span class='period'>.</span><span class='id underscore'>underscore</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="inherited-class_method">
+  
+    + (<tt>Object</tt>) <strong>inherited</strong>(super_class) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+120
+121
+122</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 120</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id inherited'>inherited</span><span class='lparen'>(</span><span class='id super_class'>super_class</span><span class='rparen'>)</span>
+  <span class='id super_class'>super_class</span><span class='period'>.</span><span class='id namespace'>namespace</span><span class='lparen'>(</span><span class='id super_class'>super_class</span><span class='period'>.</span><span class='id command_name'>command_name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="execute-instance_method">
+  
+    - (<tt>Object</tt>) <strong>execute</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Default method to call after the options have been parsed.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+162
+163</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 162</span>
+
+<span class='kw'>def</span> <span class='id execute'>execute</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="indent-instance_method">
+  
+    - (<tt>nil</tt>) <strong>indent</strong>(n = 2) { ... } <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Increases the indentation out output temporarily.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <span class='name'>n</span>
+      
+      
+        <em class="default">(defaults to: <tt>2</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The number of spaces to increase the indentation by.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>[]
+The block will be called after the indentation has been
+increased. After the block has returned, the indentation will
+be returned to normal.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+192
+193
+194
+195
+196
+197
+198
+199</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 192</span>
+
+<span class='kw'>def</span> <span class='id indent'>indent</span><span class='lparen'>(</span><span class='id n'>n</span><span class='op'>=</span><span class='int'>2</span><span class='rparen'>)</span>
+  <span class='ivar'>@indent</span> <span class='op'>+=</span> <span class='id n'>n</span>
+
+  <span class='kw'>yield</span>
+
+  <span class='ivar'>@indent</span> <span class='op'>-=</span> <span class='id n'>n</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="print_array-instance_method">
+  
+    - (<tt>nil</tt>) <strong>print_array</strong>(array, options = {})  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Prints a given Array.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <span class='name'>array</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Array to print.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="name">:title</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The optional title to print before the contents of the Array.</p>
+</div>
+        </tr>
+      
+    </ul>
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 249</span>
+
+<span class='kw'>def</span> <span class='id print_array'>print_array</span><span class='lparen'>(</span><span class='id array'>array</span><span class='comma'>,</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id print_title'>print_title</span><span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:title</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:title</span><span class='rbracket'>]</span>
+
+  <span class='id indent'>indent</span> <span class='kw'>do</span>
+    <span class='id array'>array</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id value'>value</span><span class='op'>|</span> <span class='id puts'>puts</span> <span class='id value'>value</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+
+  <span class='id puts'>puts</span> <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:title</span><span class='rbracket'>]</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="print_exception-instance_method">
+  
+    - (<tt>Object</tt>) <strong>print_exception</strong>(exception)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Prints an exception and a shortened backtrace.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Exception</tt>)</span>
+      
+      
+        <span class='name'>exception</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The exception to print.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+300
+301
+302
+303
+304
+305
+306</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 300</span>
+
+<span class='kw'>def</span> <span class='id print_exception'>print_exception</span><span class='lparen'>(</span><span class='id exception'>exception</span><span class='rparen'>)</span>
+  <span class='id print_error'>print_error</span> <span class='id exception'>exception</span><span class='period'>.</span><span class='id message'>message</span>
+
+  <span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='int'>5</span><span class='rparen'>)</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id i'>i</span><span class='op'>|</span>
+    <span class='id print_error'>print_error</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>  </span><span class='tstring_end'>'</span></span> <span class='op'>+</span> <span class='id exception'>exception</span><span class='period'>.</span><span class='id backtrace'>backtrace</span><span class='lbracket'>[</span><span class='id i'>i</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="print_hash-instance_method">
+  
+    - (<tt>nil</tt>) <strong>print_hash</strong>(hash, options = {})  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Prints a given Hash.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>hash</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Hash to print.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="name">:title</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The optional title to print before the contents of the Hash.</p>
+</div>
+        </tr>
+      
+    </ul>
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 274</span>
+
+<span class='kw'>def</span> <span class='id print_hash'>print_hash</span><span class='lparen'>(</span><span class='id hash'>hash</span><span class='comma'>,</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id align'>align</span> <span class='op'>=</span> <span class='id hash'>hash</span><span class='period'>.</span><span class='id keys'>keys</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id name'>name</span><span class='op'>|</span>
+    <span class='id name'>name</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id length'>length</span>
+  <span class='rbrace'>}</span><span class='period'>.</span><span class='id max'>max</span>
+
+  <span class='id print_title'>print_title</span><span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:title</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:title</span><span class='rbracket'>]</span>
+
+  <span class='id indent'>indent</span> <span class='kw'>do</span>
+    <span class='id hash'>hash</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='comma'>,</span><span class='id value'>value</span><span class='op'>|</span>
+      <span class='id name'>name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>:</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id ljust'>ljust</span><span class='lparen'>(</span><span class='id align'>align</span><span class='rparen'>)</span>
+      <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>\t</span><span class='embexpr_beg'>#{</span><span class='id value'>value</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='id puts'>puts</span> <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:title</span><span class='rbracket'>]</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="print_section-instance_method">
+  
+    - (<tt>Object</tt>) <strong>print_section</strong>(title) { ... } <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Prints a section with a title.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>[]
+The block will be called after the title has been printed
+and indentation increased.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+230
+231
+232
+233</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 230</span>
+
+<span class='kw'>def</span> <span class='id print_section'>print_section</span><span class='lparen'>(</span><span class='id title'>title</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id print_title'>print_title</span><span class='lparen'>(</span><span class='id title'>title</span><span class='rparen'>)</span>
+  <span class='id indent'>indent</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="print_title-instance_method">
+  
+    - (<tt>Object</tt>) <strong>print_title</strong>(title)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Prints a given title.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>title</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The title to print.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+217
+218
+219</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 217</span>
+
+<span class='kw'>def</span> <span class='id print_title'>print_title</span><span class='lparen'>(</span><span class='id title'>title</span><span class='rparen'>)</span>
+  <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[ </span><span class='embexpr_beg'>#{</span><span class='id title'>title</span><span class='rbrace'>}</span><span class='tstring_content'> ]\n</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="puts-instance_method">
+  
+    - (<tt>Object</tt>) <strong>puts</strong>(*messages)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Print the given messages with indentation.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <span class='name'>messages</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The messages to print, one per-line.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+207
+208
+209</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 207</span>
+
+<span class='kw'>def</span> <span class='id puts'>puts</span><span class='lparen'>(</span><span class='op'>*</span><span class='id messages'>messages</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>*</span><span class='lparen'>(</span><span class='id messages'>messages</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id mesg'>mesg</span><span class='op'>|</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> </span><span class='tstring_end'>'</span></span> <span class='op'>*</span> <span class='ivar'>@indent</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id mesg'>mesg</span><span class='period'>.</span><span class='id to_s'>to_s</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Sat Jan  8 15:54:50 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

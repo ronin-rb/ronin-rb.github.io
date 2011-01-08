@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Ronin::UI::Hexdump</title>
+<link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (H)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../UI.html" title="Ronin::UI (module)">UI</a></span></span>
+     &raquo; 
+    <span class="title">Hexdump</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Ronin::UI::Hexdump
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/ronin/ui/hexdump/hexdump.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dump-class_method" title="dump (class method)">+ (nil) <strong>dump</strong>(object, output = STDOUT) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Hexdumps an object.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="dump-class_method">
+  
+    + (<tt>nil</tt>) <strong>dump</strong>(object, output = STDOUT) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Hexdumps an object.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>#each_byte</tt>)</span>
+      
+      
+        <span class='name'>object</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The object to hexdump, must respond to the <code>each_byte</code> method.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>IO</tt>)</span>
+      
+      
+        <span class='name'>output</span>
+      
+      
+        <em class="default">(defaults to: <tt>STDOUT</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The output stream to print the hexdump to.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given object does not respond to the <code>#each_byte</code> method.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/hexdump/hexdump.rb', line 37</span>
+
+<span class='kw'>def</span> <span class='const'>Hexdump</span><span class='period'>.</span><span class='id dump'>dump</span><span class='lparen'>(</span><span class='id object'>object</span><span class='comma'>,</span><span class='id output'>output</span><span class='op'>=</span><span class='const'>STDOUT</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id object'>object</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:each_byte</span><span class='rparen'>)</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>argument must respond to #each_byte</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id index'>index</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='id offset'>offset</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='id hex_segment'>hex_segment</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='id print_segment'>print_segment</span> <span class='op'>=</span> <span class='kw'>nil</span>
+
+  <span class='id segment'>segment</span> <span class='op'>=</span> <span class='id lambda'>lambda</span> <span class='lbrace'>{</span>
+    <span class='id output'>output</span><span class='period'>.</span><span class='id printf'>printf</span><span class='lparen'>(</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%.8x  %s  |%s|\n</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+      <span class='id index'>index</span><span class='comma'>,</span>
+      <span class='id hex_segment'>hex_segment</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> </span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id ljust'>ljust</span><span class='lparen'>(</span><span class='int'>47</span><span class='rparen'>)</span><span class='period'>.</span><span class='id insert'>insert</span><span class='lparen'>(</span><span class='int'>23</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> </span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='id print_segment'>print_segment</span><span class='period'>.</span><span class='id join'>join</span>
+    <span class='rparen'>)</span>
+  <span class='rbrace'>}</span>
+
+  <span class='id object'>object</span><span class='period'>.</span><span class='id each_byte'>each_byte</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id b'>b</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id offset'>offset</span> <span class='op'>==</span> <span class='int'>0</span>
+      <span class='id hex_segment'>hex_segment</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+      <span class='id print_segment'>print_segment</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+    <span class='kw'>end</span>
+
+    <span class='id hex_segment'>hex_segment</span> <span class='op'>&lt;&lt;</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%.2x</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='id b'>b</span><span class='rparen'>)</span>
+
+    <span class='id print_segment'>print_segment</span><span class='lbracket'>[</span><span class='id offset'>offset</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id b'>b</span>
+                            <span class='kw'>when</span> <span class='lparen'>(</span><span class='int'>0x20</span><span class='op'>..</span><span class='int'>0x7e</span><span class='rparen'>)</span>
+                              <span class='id b'>b</span><span class='period'>.</span><span class='id chr'>chr</span>
+                            <span class='kw'>else</span>
+                              <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.</span><span class='tstring_end'>'</span></span>
+                            <span class='kw'>end</span>
+
+    <span class='id offset'>offset</span> <span class='op'>+=</span> <span class='int'>1</span>
+
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id offset'>offset</span> <span class='op'>&gt;=</span> <span class='int'>16</span><span class='rparen'>)</span>
+      <span class='id segment'>segment</span><span class='period'>.</span><span class='id call'>call</span>
+
+      <span class='id offset'>offset</span> <span class='op'>=</span> <span class='int'>0</span>
+      <span class='id index'>index</span> <span class='op'>+=</span> <span class='int'>16</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>unless</span> <span class='id offset'>offset</span> <span class='op'>==</span> <span class='int'>0</span>
+    <span class='id segment'>segment</span><span class='period'>.</span><span class='id call'>call</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Sat Jan  8 15:54:56 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,5281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Ronin::Repository</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (R)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Ronin.html" title="Ronin (module)">Ronin</a></span></span>
+     &raquo; 
+    <span class="title">Repository</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Ronin::Repository
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Ronin::Repository</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2">DataPaths, <span class='object_link'><a href="Model.html" title="Ronin::Model (module)">Model</a></span>, <span class='object_link'><a href="Model/HasAuthors.html" title="Ronin::Model::HasAuthors (module)">Model::HasAuthors</a></span>, <span class='object_link'><a href="Model/HasLicense.html" title="Ronin::Model::HasLicense (module)">Model::HasLicense</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/ronin/repository.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="LOCAL_DOMAIN-constant" class="">LOCAL_DOMAIN =
+          <div class="docstring">
+  <div class="discussion">
+    <p>The default domain that repositories are added from</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>localhost</span><span class='tstring_end'>'</span></span></pre></dd>
+      
+        <dt id="METADATA_FILE-constant" class="">METADATA_FILE =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Repository metadata file name</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ronin.yml</span><span class='tstring_end'>'</span></span></pre></dd>
+      
+        <dt id="BIN_DIR-constant" class="">BIN_DIR =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Repository <code>bin/</code> directory</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bin</span><span class='tstring_end'>'</span></span></pre></dd>
+      
+        <dt id="LIB_DIR-constant" class="">LIB_DIR =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Repository <code>lib/</code> directory</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>lib</span><span class='tstring_end'>'</span></span></pre></dd>
+      
+        <dt id="INIT_FILE-constant" class="">INIT_FILE =
+          <div class="docstring">
+  <div class="discussion">
+    <p>The <code>init.rb</code> file to load from the <span class='object_link'><a href="#LIB_DIR-constant" title="Ronin::Repository::LIB_DIR (constant)">LIB_DIR</a></span></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>init.rb</span><span class='tstring_end'>'</span></span></pre></dd>
+      
+        <dt id="DATA_DIR-constant" class="">DATA_DIR =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Repository <code>data/</code> directory</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>data</span><span class='tstring_end'>'</span></span></pre></dd>
+      
+        <dt id="CACHE_DIR-constant" class="">CACHE_DIR =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Repository <code>cache/</code> directory</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>cache</span><span class='tstring_end'>'</span></span></pre></dd>
+      
+    </dl>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bin_dir-instance_method" title="#bin_dir (instance method)">- (Object) <strong>bin_dir</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The <code>bin/</code> directory.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cache_dir-instance_method" title="#cache_dir (instance method)">- (Object) <strong>cache_dir</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The <code>cache/</code> directory.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#data_dir-instance_method" title="#data_dir (instance method)">- (Object) <strong>data_dir</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The <code>data/</code> directory.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#lib_dir-instance_method" title="#lib_dir (instance method)">- (Object) <strong>lib_dir</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The <code>lib/</code> directory.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#activate%21-class_method" title="activate! (class method)">+ (Array&lt;Repository&gt;) <strong>activate!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Activates all installed or added repositories.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#add%21-class_method" title="add! (class method)">+ (Repository) <strong>add!</strong>(options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Adds an Repository with the given options.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cached_files-class_method" title="cached_files (class method)">+ (Object) <strong>cached_files</strong>(repository = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The cached files from the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#deactivate%21-class_method" title="deactivate! (class method)">+ (Array&lt;Repository&gt;) <strong>deactivate!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>De-activates all installed or added repositories.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#description-class_method" title="description (class method)">+ (Object) <strong>description</strong>(repository = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Description of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#domain-class_method" title="domain (class method)">+ (Object) <strong>domain</strong>(repository = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The domain the repository belongs to.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#find-class_method" title="find (class method)">+ (Repository) <strong>find</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Searches for the Repository with a given name, and potentially
+installed from the given domain.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#id-class_method" title="id (class method)">+ (Object) <strong>id</strong>(repository = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The primary key of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#install%21-class_method" title="install! (class method)">+ (Repository) <strong>install!</strong>(options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Installs an repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#installed-class_method" title="installed (class method)">+ (Object) <strong>installed</strong>(repository = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Specifies whether the repository was installed remotely
+or added using a local directory.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-class_method" title="name (class method)">+ (Object) <strong>name</strong>(repository = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Name of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#path-class_method" title="path (class method)">+ (Object) <strong>path</strong>(repository = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Local path to the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#scm-class_method" title="scm (class method)">+ (Object) <strong>scm</strong>(repository = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The SCM used by the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#source-class_method" title="source (class method)">+ (Object) <strong>source</strong>(repository = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Source View URI of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#title-class_method" title="title (class method)">+ (Object) <strong>title</strong>(repository = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Title of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#uninstall%21-class_method" title="uninstall! (class method)">+ (nil) <strong>uninstall!</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Uninstalls the repository with the given name or domain.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update%21-class_method" title="update! (class method)">+ (Object) <strong>update!</strong> {|repo| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Updates all repositories.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#uri-class_method" title="uri (class method)">+ (Object) <strong>uri</strong>(repository = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>URI that the repository was installed from.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#website-class_method" title="website (class method)">+ (Object) <strong>website</strong>(repository = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Website URI for the repository.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#activate%21-instance_method" title="#activate! (instance method)">- (Object) <strong>activate!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Activates the repository by adding the <span class='object_link'><a href="#lib_dir-instance_method" title="Ronin::Repository#lib_dir (method)">#lib_dir</a></span> to the <code>$LOAD_PATH</code>
+global variable.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#activated%3F-instance_method" title="#activated? (instance method)">- (Boolean) <strong>activated?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Determines if the repository has been activated.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cache_files%21-instance_method" title="#cache_files! (instance method)">- (Repository) <strong>cache_files!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Clears the <span class='object_link'><a href="#cached_files-instance_method" title="Ronin::Repository#cached_files (method)">#cached_files</a></span> and re-saves the cached files within the
+<code>cache/</code> directory.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cache_paths-instance_method" title="#cache_paths (instance method)">- (Array&lt;Pathname&gt;) <strong>cache_paths</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>All paths within the <code>cache/</code> directory of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cached_files-instance_method" title="#cached_files (instance method)">- (Object) <strong>cached_files</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The cached files from the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cached_files%3D-instance_method" title="#cached_files= (instance method)">- (Object) <strong>cached_files=</strong>(new_cached_files) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The cached files from the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#clean_cached_files%21-instance_method" title="#clean_cached_files! (instance method)">- (Repository) <strong>clean_cached_files!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Deletes any <span class='object_link'><a href="#cached_files-instance_method" title="Ronin::Repository#cached_files (method)">#cached_files</a></span> associated with the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#deactivate%21-instance_method" title="#deactivate! (instance method)">- (Object) <strong>deactivate!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>De-activates the repository by removing the <span class='object_link'><a href="#lib_dir-instance_method" title="Ronin::Repository#lib_dir (method)">#lib_dir</a></span> from the
+<code>$LOAD_PATH</code> global variable.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#description-instance_method" title="#description (instance method)">- (Object) <strong>description</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Description of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#description%3D-instance_method" title="#description= (instance method)">- (Object) <strong>description=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Description of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#domain-instance_method" title="#domain (instance method)">- (Object) <strong>domain</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The domain the repository belongs to.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#domain%3D-instance_method" title="#domain= (instance method)">- (Object) <strong>domain=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The domain the repository belongs to.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#executables-instance_method" title="#executables (instance method)">- (Array&lt;String&gt;) <strong>executables</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The executable scripts in the <code>bin/</code> directory.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#id-instance_method" title="#id (instance method)">- (Object) <strong>id</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The primary key of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#id%3D-instance_method" title="#id= (instance method)">- (Object) <strong>id=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The primary key of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Repository) <strong>initialize</strong>(attributes = {}) {|repo| ... }</a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new <span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span> object.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#initialize_metadata-instance_method" title="#initialize_metadata (instance method)">- (Object) <strong>initialize_metadata</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Loads the metadata from <span class='object_link'><a href="#METADATA_FILE-constant" title="Ronin::Repository::METADATA_FILE (constant)">METADATA_FILE</a></span> within the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#installed-instance_method" title="#installed (instance method)">- (Object) <strong>installed</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Specifies whether the repository was installed remotely
+or added using a local directory.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#installed%3D-instance_method" title="#installed= (instance method)">- (Object) <strong>installed=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Specifies whether the repository was installed remotely
+or added using a local directory.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#local%3F-instance_method" title="#local? (instance method)">- (Boolean) <strong>local?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Determines if the repository was added locally.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-instance_method" title="#name (instance method)">- (Object) <strong>name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Name of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name%3D-instance_method" title="#name= (instance method)">- (Object) <strong>name=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Name of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#path-instance_method" title="#path (instance method)">- (Object) <strong>path</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Local path to the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#path%3D-instance_method" title="#path= (instance method)">- (Object) <strong>path=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Local path to the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#remote%3F-instance_method" title="#remote? (instance method)">- (Boolean) <strong>remote?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Determines if the repository was installed remotely.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#scm-instance_method" title="#scm (instance method)">- (Object) <strong>scm</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The SCM used by the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#scm%3D-instance_method" title="#scm= (instance method)">- (Object) <strong>scm=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The SCM used by the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#source-instance_method" title="#source (instance method)">- (Object) <strong>source</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Source View URI of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#source%3D-instance_method" title="#source= (instance method)">- (Object) <strong>source=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Source View URI of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sync_cached_files%21-instance_method" title="#sync_cached_files! (instance method)">- (Repository) <strong>sync_cached_files!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Syncs the <span class='object_link'><a href="#cached_files-instance_method" title="Ronin::Repository#cached_files (method)">#cached_files</a></span> of the repository, and adds any new cached
+files.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#title-instance_method" title="#title (instance method)">- (Object) <strong>title</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Title of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#title%3D-instance_method" title="#title= (instance method)">- (Object) <strong>title=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Title of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_s-instance_method" title="#to_s (instance method)">- (String) <strong>to_s</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Converts the repository to a String.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#uninstall%21-instance_method" title="#uninstall! (instance method)">- (Repository) <strong>uninstall!</strong> {|repo| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Deletes the contents of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update%21-instance_method" title="#update! (instance method)">- (Repository) <strong>update!</strong> {|repo| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Updates the repository, reloads it&rsquo;s metadata and syncs the
+cached files of the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#uri-instance_method" title="#uri (instance method)">- (Object) <strong>uri</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>URI that the repository was installed from.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#uri%3D-instance_method" title="#uri= (instance method)">- (Object) <strong>uri=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>URI that the repository was installed from.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#website-instance_method" title="#website (instance method)">- (Object) <strong>website</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Website URI for the repository.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#website%3D-instance_method" title="#website= (instance method)">- (Object) <strong>website=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Website URI for the repository.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Model/HasLicense.html" title="Ronin::Model::HasLicense (module)">Model::HasLicense</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Model/HasLicense.html#included-class_method" title="Ronin::Model::HasLicense.included (method)">included</a></span>, <span class='object_link'><a href="Model/HasLicense.html#license%21-instance_method" title="Ronin::Model::HasLicense#license! (method)">#license!</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Model/HasAuthors.html" title="Ronin::Model::HasAuthors (module)">Model::HasAuthors</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Model/HasAuthors.html#author-instance_method" title="Ronin::Model::HasAuthors#author (method)">#author</a></span>, <span class='object_link'><a href="Model/HasAuthors.html#included-class_method" title="Ronin::Model::HasAuthors.included (method)">included</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Model.html" title="Ronin::Model (module)">Model</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Model.html#humanize_attributes-instance_method" title="Ronin::Model#humanize_attributes (method)">#humanize_attributes</a></span>, <span class='object_link'><a href="Model.html#included-class_method" title="Ronin::Model.included (method)">included</a></span></p>
+
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>) <strong>initialize</strong>(attributes = {}) {|repo| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new <span class='object_link'><a href="" title="Ronin::Repository (class)">Ronin::Repository</a></span> object.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>attributes</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The attributes of the repository.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>path</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path to the repository.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+        <span class='name'>scm</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The SCM used by the repository. Can be either <code>:git</code>, <code>:mercurial</code>,
+<code>:sub_version</code> or <code>:rsync</code>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>, <tt>URI::HTTP</tt>, <tt>URI::HTTPS</tt>)</span>
+      
+      
+        <span class='name'>uri</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The URI the repository resides at.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'>(<tt>repo</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, the repository will be passed to it.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>)</span>
+      
+      
+        <span class='name'>repo</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The newly created repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 134</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id attributes'>attributes</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id attributes'>attributes</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@bin_dir</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>BIN_DIR</span><span class='rparen'>)</span>
+  <span class='ivar'>@lib_dir</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>LIB_DIR</span><span class='rparen'>)</span>
+  <span class='ivar'>@data_dir</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>DATA_DIR</span><span class='rparen'>)</span>
+  <span class='ivar'>@cache_dir</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>CACHE_DIR</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@activated</span> <span class='op'>=</span> <span class='kw'>false</span>
+
+  <span class='id initialize_metadata'>initialize_metadata</span>
+
+  <span class='kw'>yield</span> <span class='kw'>self</span> <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="bin_dir-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="bin_dir-instance_method">
+  
+    - (<tt>Object</tt>) <strong>bin_dir</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The <code>bin/</code> directory</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+101
+102
+103</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 101</span>
+
+<span class='kw'>def</span> <span class='id bin_dir'>bin_dir</span>
+  <span class='ivar'>@bin_dir</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="cache_dir-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="cache_dir-instance_method">
+  
+    - (<tt>Object</tt>) <strong>cache_dir</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The <code>cache/</code> directory</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+110
+111
+112</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 110</span>
+
+<span class='kw'>def</span> <span class='id cache_dir'>cache_dir</span>
+  <span class='ivar'>@cache_dir</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="data_dir-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="data_dir-instance_method">
+  
+    - (<tt>Object</tt>) <strong>data_dir</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The <code>data/</code> directory</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+107
+108
+109</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 107</span>
+
+<span class='kw'>def</span> <span class='id data_dir'>data_dir</span>
+  <span class='ivar'>@data_dir</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="lib_dir-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="lib_dir-instance_method">
+  
+    - (<tt>Object</tt>) <strong>lib_dir</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The <code>lib/</code> directory</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 104</span>
+
+<span class='kw'>def</span> <span class='id lib_dir'>lib_dir</span>
+  <span class='ivar'>@lib_dir</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="activate!-class_method">
+  
+    + (<tt>Array&lt;<span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span>&gt;</tt>) <strong>activate!</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Activates all installed or added repositories.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span>&gt;</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The activated repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#activate%21-instance_method" title="Ronin::Repository#activate! (method)">#activate!</a></span></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+357
+358
+359</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 357</span>
+
+<span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id activate!'>activate!</span>
+  <span class='const'>Repository</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id repo'>repo</span><span class='op'>|</span> <span class='id repo'>repo</span><span class='period'>.</span><span class='id activate!'>activate!</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="add!-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>) <strong>add!</strong>(options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Adds an Repository with the given options.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The added repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The <code>:path</code> option was not specified.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="RepositoryNotFound.html" title="Ronin::RepositoryNotFound (class)">RepositoryNotFound</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path of the repository did not exist or was not a directory.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="DuplicateRepository.html" title="Ronin::DuplicateRepository (class)">DuplicateRepository</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The repository was already added or installed.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 204</span>
+
+<span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id add!'>add!</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id options'>options</span><span class='period'>.</span><span class='id has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:path</span><span class='rparen'>)</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>the :path option was not given</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id path'>path</span> <span class='op'>=</span> <span class='const'>Pathname</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:path</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id expand_path'>expand_path</span>
+
+  <span class='kw'>unless</span> <span class='id path'>path</span><span class='period'>.</span><span class='id directory?'>directory?</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>RepositoryNotFound</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Repository </span><span class='embexpr_beg'>#{</span><span class='id path'>path</span><span class='rbrace'>}</span><span class='tstring_content'> cannot be found</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id count'>count</span><span class='lparen'>(</span><span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id path'>path</span><span class='rparen'>)</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>DuplicateRepository</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a Repository at the path </span><span class='embexpr_beg'>#{</span><span class='id path'>path</span><span class='rbrace'>}</span><span class='tstring_content'> was already added</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># create the repository
+</span>  <span class='id repo'>repo</span> <span class='op'>=</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id options'>options</span><span class='period'>.</span><span class='id merge'>merge</span><span class='lparen'>(</span>
+    <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id path'>path</span><span class='comma'>,</span>
+    <span class='symbol'>:installed</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='comma'>,</span>
+    <span class='symbol'>:domain</span> <span class='op'>=&gt;</span> <span class='const'>LOCAL_DOMAIN</span>
+  <span class='rparen'>)</span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id count'>count</span><span class='lparen'>(</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id repo'>repo</span><span class='period'>.</span><span class='id name'>name</span><span class='comma'>,</span> <span class='symbol'>:domain</span> <span class='op'>=&gt;</span> <span class='id repo'>repo</span><span class='period'>.</span><span class='id domain'>domain</span><span class='rparen'>)</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>DuplicateRepository</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>the Repository </span><span class='embexpr_beg'>#{</span><span class='id repo'>repo</span><span class='rbrace'>}</span><span class='tstring_content'> already exists in the database</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># save the repository
+</span>  <span class='kw'>if</span> <span class='id repo'>repo</span><span class='period'>.</span><span class='id save'>save</span>
+    <span class='comment'># cache any files from within the `cache/` directory of the
+</span>    <span class='comment'># repository
+</span>    <span class='id repo'>repo</span><span class='period'>.</span><span class='id cache_files!'>cache_files!</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id repo'>repo</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="cached_files-class_method">
+  
+    + (<tt>Object</tt>) <strong>cached_files</strong>(repository = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The cached files from the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+98</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 98</span>
+
+<span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:cached_files</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="deactivate!-class_method">
+  
+    + (<tt>Array&lt;<span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span>&gt;</tt>) <strong>deactivate!</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>De-activates all installed or added repositories.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span>&gt;</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The de-activated repositories.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#deactivate%21-instance_method" title="Ronin::Repository#deactivate! (method)">#deactivate!</a></span></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+371
+372
+373</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 371</span>
+
+<span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id deactivate!'>deactivate!</span>
+  <span class='const'>Repository</span><span class='period'>.</span><span class='id reverse_each'>reverse_each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id repo'>repo</span><span class='op'>|</span> <span class='id repo'>repo</span><span class='period'>.</span><span class='id deactivate!'>deactivate!</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="description-class_method">
+  
+    + (<tt>Object</tt>) <strong>description</strong>(repository = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Description of the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+95</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 95</span>
+
+<span class='id property'>property</span> <span class='symbol'>:description</span><span class='comma'>,</span> <span class='const'>Text</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="domain-class_method">
+  
+    + (<tt>Object</tt>) <strong>domain</strong>(repository = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The domain the repository belongs to</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 83</span>
+
+<span class='id property'>property</span> <span class='symbol'>:domain</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="find-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>) <strong>find</strong>(name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Searches for the Repository with a given name, and potentially
+installed from the given domain.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'><p>Load the repository with the given name</p>
+</div></h4>
+      <pre class="example code"><span class='const'>Repository</span><span class='period'>.</span><span class='id find'>find</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>postmodern-repo</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre>
+    
+      <h4><div class='inline'><p>Load the repository with the given name and domain.</p>
+</div></h4>
+      <pre class="example code"><span class='const'>Repository</span><span class='period'>.</span><span class='id find'>find</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>postmodern-repo/github.com</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>name</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The matching repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="RepositoryNotFound.html" title="Ronin::RepositoryNotFound (class)">RepositoryNotFound</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>No repository could be found with the given name or domain.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 170</span>
+
+<span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id find'>find</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+  <span class='id name'>name</span><span class='comma'>,</span> <span class='id domain'>domain</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='int'>2</span><span class='rparen'>)</span>
+
+  <span class='id query'>query</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id name'>name</span><span class='rbrace'>}</span>
+  <span class='id query'>query</span><span class='lbracket'>[</span><span class='symbol'>:domain</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id domain'>domain</span> <span class='kw'>if</span> <span class='id domain'>domain</span>
+
+  <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id repo'>repo</span> <span class='op'>=</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id first'>first</span><span class='lparen'>(</span><span class='id query'>query</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id domain'>domain</span>
+      <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>RepositoryNotFound</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Repository </span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='period'>.</span><span class='id dump'>dump</span><span class='rbrace'>}</span><span class='tstring_content'> from domain </span><span class='embexpr_beg'>#{</span><span class='id domain'>domain</span><span class='period'>.</span><span class='id dump'>dump</span><span class='rbrace'>}</span><span class='tstring_content'> cannot be found</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>RepositoryNotFound</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Repository </span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='period'>.</span><span class='id dump'>dump</span><span class='rbrace'>}</span><span class='tstring_content'> cannot be found</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id repo'>repo</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="id-class_method">
+  
+    + (<tt>Object</tt>) <strong>id</strong>(repository = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The primary key of the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 62</span>
+
+<span class='id property'>property</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='const'>Serial</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="install!-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>) <strong>install!</strong>(options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Installs an repository.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="type">(<tt>Addressable::URI</tt>, <tt>String</tt>)</span>
+          <span class="name">:uri</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The URI to the repository.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="type">(<tt>Symbol</tt>)</span>
+          <span class="name">:scm</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The SCM used by the repository. May be either <code>:git</code>, <code>:mercurial</code>,
+<code>:sub_version</code> or <code>:rsync</code>.</p>
+</div>
+        </tr>
+      
+    </ul>
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The newly installed repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The <code>:uri</code> option must be specified.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="DuplicateRepository.html" title="Ronin::DuplicateRepository (class)">DuplicateRepository</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>An repository already exists with the same <code>name</code> and <code>host</code>
+properties.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 265</span>
+
+<span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id install!'>install!</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:uri</span><span class='rbracket'>]</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>:uri must be passed to Repository.install</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id remote_repo'>remote_repo</span> <span class='op'>=</span> <span class='const'>Pullr</span><span class='op'>::</span><span class='const'>RemoteRepository</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+  <span class='id name'>name</span> <span class='op'>=</span> <span class='id remote_repo'>remote_repo</span><span class='period'>.</span><span class='id name'>name</span>
+  <span class='id domain'>domain</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id remote_repo'>remote_repo</span><span class='period'>.</span><span class='id uri'>uri</span><span class='period'>.</span><span class='id scheme'>scheme</span>
+             <span class='id remote_repo'>remote_repo</span><span class='period'>.</span><span class='id uri'>uri</span><span class='period'>.</span><span class='id host'>host</span>
+           <span class='kw'>else</span>
+             <span class='comment'># Use a regexp to pull out the host-name, if the URI
+</span>             <span class='comment'># lacks a scheme.
+</span>             <span class='id remote_repo'>remote_repo</span><span class='period'>.</span><span class='id uri'>uri</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id match'>match</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\@([^@:\/]+)</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
+           <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id count'>count</span><span class='lparen'>(</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id name'>name</span><span class='comma'>,</span> <span class='symbol'>:domain</span> <span class='op'>=&gt;</span> <span class='id domain'>domain</span><span class='rparen'>)</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>DuplicateRepository</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a Repository already exists with the name </span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='period'>.</span><span class='id dump'>dump</span><span class='rbrace'>}</span><span class='tstring_content'> from domain </span><span class='embexpr_beg'>#{</span><span class='id domain'>domain</span><span class='period'>.</span><span class='id dump'>dump</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id path'>path</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>Config</span><span class='op'>::</span><span class='const'>REPOS_DIR</span><span class='comma'>,</span><span class='id name'>name</span><span class='comma'>,</span><span class='id domain'>domain</span><span class='rparen'>)</span>
+
+  <span class='comment'># pull down the remote repository
+</span>  <span class='id local_repo'>local_repo</span> <span class='op'>=</span> <span class='id remote_repo'>remote_repo</span><span class='period'>.</span><span class='id pull'>pull</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span>
+
+  <span class='comment'># add the new remote repository
+</span>  <span class='id repo'>repo</span> <span class='op'>=</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span>
+    <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id path'>path</span><span class='comma'>,</span>
+    <span class='symbol'>:scm</span> <span class='op'>=&gt;</span> <span class='id local_repo'>local_repo</span><span class='period'>.</span><span class='id scm'>scm</span><span class='comma'>,</span>
+    <span class='symbol'>:uri</span> <span class='op'>=&gt;</span> <span class='id remote_repo'>remote_repo</span><span class='period'>.</span><span class='id uri'>uri</span><span class='comma'>,</span>
+    <span class='symbol'>:installed</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span>
+    <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id name'>name</span><span class='comma'>,</span>
+    <span class='symbol'>:domain</span> <span class='op'>=&gt;</span> <span class='id domain'>domain</span>
+  <span class='rparen'>)</span>
+
+  <span class='comment'># save the repository 
+</span>  <span class='kw'>if</span> <span class='id repo'>repo</span><span class='period'>.</span><span class='id save'>save</span>
+    <span class='comment'># cache any files from within the `cache/` directory of the
+</span>    <span class='comment'># repository
+</span>    <span class='id repo'>repo</span><span class='period'>.</span><span class='id cache_files!'>cache_files!</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id repo'>repo</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="installed-class_method">
+  
+    + (<tt>Object</tt>) <strong>installed</strong>(repository = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Specifies whether the repository was installed remotely
+or added using a local directory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+75</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 75</span>
+
+<span class='id property'>property</span> <span class='symbol'>:installed</span><span class='comma'>,</span> <span class='const'>Boolean</span><span class='comma'>,</span> <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="name-class_method">
+  
+    + (<tt>Object</tt>) <strong>name</strong>(repository = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Name of the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78
+79
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 78</span>
+
+<span class='id property'>property</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='id lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id repo'>repo</span><span class='comma'>,</span><span class='id name'>name</span><span class='op'>|</span>
+  <span class='id repo'>repo</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id basename'>basename</span>
+<span class='rbrace'>}</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="path-class_method">
+  
+    + (<tt>Object</tt>) <strong>path</strong>(repository = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Local path to the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 68</span>
+
+<span class='id property'>property</span> <span class='symbol'>:path</span><span class='comma'>,</span> <span class='const'>FilePath</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:unique</span> <span class='op'>=&gt;</span> <span class='kw'>true</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="scm-class_method">
+  
+    + (<tt>Object</tt>) <strong>scm</strong>(repository = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The SCM used by the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 65</span>
+
+<span class='id property'>property</span> <span class='symbol'>:scm</span><span class='comma'>,</span> <span class='const'>String</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="source-class_method">
+  
+    + (<tt>Object</tt>) <strong>source</strong>(repository = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Source View URI of the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 89</span>
+
+<span class='id property'>property</span> <span class='symbol'>:source</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="title-class_method">
+  
+    + (<tt>Object</tt>) <strong>title</strong>(repository = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Title of the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+86</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 86</span>
+
+<span class='id property'>property</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='const'>Text</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="uninstall!-class_method">
+  
+    + (<tt>nil</tt>) <strong>uninstall!</strong>(name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Uninstalls the repository with the given name or domain.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'><p>Uninstall the repository with the given name</p>
+</div></h4>
+      <pre class="example code"><span class='const'>Repository</span><span class='period'>.</span><span class='id uninstall!'>uninstall!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>postmodern-repo</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre>
+    
+      <h4><div class='inline'><p>Uninstall the repository with the given name and domain.</p>
+</div></h4>
+      <pre class="example code"><span class='const'>Repository</span><span class='period'>.</span><span class='id uninstall!'>uninstall!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>postmodern-repo/github.com</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>name</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the repository to uninstall.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+343
+344
+345</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 343</span>
+
+<span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id uninstall!'>uninstall!</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+  <span class='const'>Repository</span><span class='period'>.</span><span class='id find'>find</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id uninstall!'>uninstall!</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="update!-class_method">
+  
+    + (<tt>Object</tt>) <strong>update!</strong> {|repo| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Updates all repositories.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'>(<tt>repo</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed each updated repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>)</span>
+      
+      
+        <span class='name'>repo</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>An updated repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+320
+321
+322
+323
+324
+325
+326
+327</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 320</span>
+
+<span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id update!'>update!</span>
+  <span class='const'>Repository</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id repo'>repo</span><span class='op'>|</span>
+    <span class='comment'># update the repositories contents
+</span>    <span class='id repo'>repo</span><span class='period'>.</span><span class='id update!'>update!</span>
+
+    <span class='kw'>yield</span> <span class='id repo'>repo</span> <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="uri-class_method">
+  
+    + (<tt>Object</tt>) <strong>uri</strong>(repository = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>URI that the repository was installed from</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 71</span>
+
+<span class='id property'>property</span> <span class='symbol'>:uri</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="website-class_method">
+  
+    + (<tt>Object</tt>) <strong>website</strong>(repository = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Website URI for the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+92</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 92</span>
+
+<span class='id property'>property</span> <span class='symbol'>:website</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="activate!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>activate!</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Activates the repository by adding the <span class='object_link'><a href="#lib_dir-instance_method" title="Ronin::Repository#lib_dir (method)">#lib_dir</a></span> to the <code>$LOAD_PATH</code>
+global variable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 445</span>
+
+<span class='kw'>def</span> <span class='id activate!'>activate!</span>
+  <span class='comment'># add the data/ directory
+</span>  <span class='id register_data_dir'>register_data_dir</span><span class='lparen'>(</span><span class='ivar'>@data_dir</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id directory?'>directory?</span><span class='lparen'>(</span><span class='ivar'>@data_dir</span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id directory?'>directory?</span><span class='lparen'>(</span><span class='ivar'>@lib_dir</span><span class='rparen'>)</span>
+    <span class='gvar'>$LOAD_PATH</span> <span class='op'>&lt;&lt;</span> <span class='ivar'>@lib_dir</span> <span class='kw'>unless</span> <span class='gvar'>$LOAD_PATH</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='ivar'>@lib_dir</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># load the lib/init.rb file
+</span>  <span class='id init_path'>init_path</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>LIB_DIR</span><span class='comma'>,</span><span class='const'>INIT_FILE</span><span class='rparen'>)</span>
+  <span class='id require'>require</span> <span class='id init_path'>init_path</span> <span class='kw'>if</span> <span class='id init_path'>init_path</span><span class='period'>.</span><span class='id file?'>file?</span>
+
+  <span class='ivar'>@activated</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='kw'>return</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="activated?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>activated?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Determines if the repository has been activated.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether the repository has been activated.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+437
+438
+439</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 437</span>
+
+<span class='kw'>def</span> <span class='id activated?'>activated?</span>
+  <span class='ivar'>@activated</span> <span class='op'>==</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="cache_files!-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>) <strong>cache_files!</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Clears the <span class='object_link'><a href="#cached_files-instance_method" title="Ronin::Repository#cached_files (method)">#cached_files</a></span> and re-saves the cached files within the
+<code>cache/</code> directory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The cleaned repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+483
+484
+485
+486
+487
+488
+489
+490
+491</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 483</span>
+
+<span class='kw'>def</span> <span class='id cache_files!'>cache_files!</span>
+  <span class='id clean_cached_files!'>clean_cached_files!</span>
+
+  <span class='id cache_paths'>cache_paths</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id path'>path</span><span class='op'>|</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id cached_files'>cached_files</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id path'>path</span><span class='rparen'>)</span><span class='period'>.</span><span class='id cache'>cache</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="cache_paths-instance_method">
+  
+    - (<tt>Array&lt;Pathname&gt;</tt>) <strong>cache_paths</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>All paths within the <code>cache/</code> directory of the repository.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;Pathname&gt;</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The paths within the <code>cache/</code> directory.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+427
+428
+429</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 427</span>
+
+<span class='kw'>def</span> <span class='id cache_paths'>cache_paths</span>
+  <span class='const'>Pathname</span><span class='period'>.</span><span class='id glob'>glob</span><span class='lparen'>(</span><span class='ivar'>@cache_dir</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>**</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>*.rb</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="cached_files-instance_method">
+  
+    - (<tt>Object</tt>) <strong>cached_files</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The cached files from the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+98</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 98</span>
+
+<span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:cached_files</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="cached_files=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>cached_files=</strong>(new_cached_files) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The cached files from the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+98</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 98</span>
+
+<span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:cached_files</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="clean_cached_files!-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>) <strong>clean_cached_files!</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Deletes any <span class='object_link'><a href="#cached_files-instance_method" title="Ronin::Repository#cached_files (method)">#cached_files</a></span> associated with the repository.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The cleaned repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+535
+536
+537
+538</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 535</span>
+
+<span class='kw'>def</span> <span class='id clean_cached_files!'>clean_cached_files!</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id cached_files'>cached_files</span><span class='period'>.</span><span class='id clear'>clear</span>
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="deactivate!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>deactivate!</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>De-activates the repository by removing the <span class='object_link'><a href="#lib_dir-instance_method" title="Ronin::Repository#lib_dir (method)">#lib_dir</a></span> from the
+<code>$LOAD_PATH</code> global variable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+465
+466
+467
+468
+469
+470
+471
+472</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 465</span>
+
+<span class='kw'>def</span> <span class='id deactivate!'>deactivate!</span>
+  <span class='id unregister_data_dirs!'>unregister_data_dirs!</span>
+
+  <span class='gvar'>$LOAD_PATH</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='ivar'>@lib_dir</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@activated</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='kw'>return</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="description-instance_method">
+  
+    - (<tt>Object</tt>) <strong>description</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Description of the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+95</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 95</span>
+
+<span class='id property'>property</span> <span class='symbol'>:description</span><span class='comma'>,</span> <span class='const'>Text</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="description=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>description=</strong>(value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Description of the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+95</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 95</span>
+
+<span class='id property'>property</span> <span class='symbol'>:description</span><span class='comma'>,</span> <span class='const'>Text</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="domain-instance_method">
+  
+    - (<tt>Object</tt>) <strong>domain</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The domain the repository belongs to</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 83</span>
+
+<span class='id property'>property</span> <span class='symbol'>:domain</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="domain=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>domain=</strong>(value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The domain the repository belongs to</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 83</span>
+
+<span class='id property'>property</span> <span class='symbol'>:domain</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="executables-instance_method">
+  
+    - (<tt>Array&lt;String&gt;</tt>) <strong>executables</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The executable scripts in the <code>bin/</code> directory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The executable script names.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 407</span>
+
+<span class='kw'>def</span> <span class='id executables'>executables</span>
+  <span class='id scripts'>scripts</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='kw'>if</span> <span class='ivar'>@bin_dir</span><span class='period'>.</span><span class='id directory?'>directory?</span>
+    <span class='ivar'>@bin_dir</span><span class='period'>.</span><span class='id entries'>entries</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id path'>path</span><span class='op'>|</span>
+      <span class='id scripts'>scripts</span> <span class='op'>&lt;&lt;</span> <span class='id path'>path</span><span class='period'>.</span><span class='id basename'>basename</span><span class='period'>.</span><span class='id to_s'>to_s</span> <span class='kw'>if</span> <span class='id path'>path</span><span class='period'>.</span><span class='id file?'>file?</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id scripts'>scripts</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="id-instance_method">
+  
+    - (<tt>Object</tt>) <strong>id</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The primary key of the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 62</span>
+
+<span class='id property'>property</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='const'>Serial</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="id=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>id=</strong>(value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The primary key of the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 62</span>
+
+<span class='id property'>property</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='const'>Serial</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="initialize_metadata-instance_method">
+  
+    - (<tt>Object</tt>) <strong>initialize_metadata</strong>  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Loads the metadata from <span class='object_link'><a href="#METADATA_FILE-constant" title="Ronin::Repository::METADATA_FILE (constant)">METADATA_FILE</a></span> within the repository.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 623</span>
+
+<span class='kw'>def</span> <span class='id initialize_metadata'>initialize_metadata</span>
+  <span class='id metadata_path'>metadata_path</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>METADATA_FILE</span><span class='rparen'>)</span>
+
+  <span class='kw'>self</span><span class='period'>.</span><span class='id title'>title</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id name'>name</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id description'>description</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id license'>license</span> <span class='op'>=</span> <span class='kw'>nil</span>
+
+  <span class='kw'>self</span><span class='period'>.</span><span class='id source'>source</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id uri'>uri</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id website'>website</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id source'>source</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id authors'>authors</span><span class='period'>.</span><span class='id clear'>clear</span>
+
+  <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id file?'>file?</span><span class='lparen'>(</span><span class='id metadata_path'>metadata_path</span><span class='rparen'>)</span>
+    <span class='id metadata'>metadata</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='period'>.</span><span class='id load_file'>load_file</span><span class='lparen'>(</span><span class='id metadata_path'>metadata_path</span><span class='rparen'>)</span>
+
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id title'>title</span> <span class='op'>=</span> <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>title</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id title'>title</span> <span class='op'>=</span> <span class='id title'>title</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id description'>description</span> <span class='op'>=</span> <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>description</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id description'>description</span> <span class='op'>=</span> <span class='id description'>description</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id license'>license</span> <span class='op'>=</span> <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>license</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id license'>license</span> <span class='op'>=</span> <span class='const'>License</span><span class='period'>.</span><span class='id predefined_resource_with'>predefined_resource_with</span><span class='lparen'>(</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id license'>license</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id uri'>uri</span> <span class='op'>=</span> <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>uri</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id uri'>uri</span> <span class='op'>||=</span> <span class='id uri'>uri</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id source'>source</span> <span class='op'>=</span> <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>source</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id source'>source</span> <span class='op'>=</span> <span class='id source'>source</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id website'>website</span> <span class='op'>=</span> <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>website</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id website'>website</span> <span class='op'>=</span> <span class='id website'>website</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>case</span> <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>authors</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+    <span class='kw'>when</span> <span class='const'>Hash</span>
+      <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>authors</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='comma'>,</span><span class='id email'>email</span><span class='op'>|</span>
+        <span class='kw'>self</span><span class='period'>.</span><span class='id authors'>authors</span> <span class='op'>&lt;&lt;</span> <span class='const'>Author</span><span class='period'>.</span><span class='id first_or_new'>first_or_new</span><span class='lparen'>(</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id name'>name</span><span class='comma'>,</span> <span class='symbol'>:email</span> <span class='op'>=&gt;</span> <span class='id email'>email</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>when</span> <span class='const'>Array</span>
+      <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>authors</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='op'>|</span>
+        <span class='kw'>self</span><span class='period'>.</span><span class='id authors'>authors</span> <span class='op'>&lt;&lt;</span> <span class='const'>Author</span><span class='period'>.</span><span class='id first_or_new'>first_or_new</span><span class='lparen'>(</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id name'>name</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="installed-instance_method">
+  
+    - (<tt>Object</tt>) <strong>installed</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Specifies whether the repository was installed remotely
+or added using a local directory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+75</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 75</span>
+
+<span class='id property'>property</span> <span class='symbol'>:installed</span><span class='comma'>,</span> <span class='const'>Boolean</span><span class='comma'>,</span> <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="installed=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>installed=</strong>(value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Specifies whether the repository was installed remotely
+or added using a local directory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+75</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 75</span>
+
+<span class='id property'>property</span> <span class='symbol'>:installed</span><span class='comma'>,</span> <span class='const'>Boolean</span><span class='comma'>,</span> <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="local?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>local?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Determines if the repository was added locally.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether the repository was added locally.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+383
+384
+385</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 383</span>
+
+<span class='kw'>def</span> <span class='id local?'>local?</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id domain'>domain</span> <span class='op'>==</span> <span class='const'>LOCAL_DOMAIN</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="name-instance_method">
+  
+    - (<tt>Object</tt>) <strong>name</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Name of the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78
+79
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 78</span>
+
+<span class='id property'>property</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='id lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id repo'>repo</span><span class='comma'>,</span><span class='id name'>name</span><span class='op'>|</span>
+  <span class='id repo'>repo</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id basename'>basename</span>
+<span class='rbrace'>}</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="name=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>name=</strong>(value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Name of the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78
+79
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 78</span>
+
+<span class='id property'>property</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='id lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id repo'>repo</span><span class='comma'>,</span><span class='id name'>name</span><span class='op'>|</span>
+  <span class='id repo'>repo</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id basename'>basename</span>
+<span class='rbrace'>}</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="path-instance_method">
+  
+    - (<tt>Object</tt>) <strong>path</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Local path to the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 68</span>
+
+<span class='id property'>property</span> <span class='symbol'>:path</span><span class='comma'>,</span> <span class='const'>FilePath</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:unique</span> <span class='op'>=&gt;</span> <span class='kw'>true</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="path=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>path=</strong>(value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Local path to the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 68</span>
+
+<span class='id property'>property</span> <span class='symbol'>:path</span><span class='comma'>,</span> <span class='const'>FilePath</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:unique</span> <span class='op'>=&gt;</span> <span class='kw'>true</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="remote?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>remote?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Determines if the repository was installed remotely.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether the repository was installed from a remote URI.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+395
+396
+397</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 395</span>
+
+<span class='kw'>def</span> <span class='id remote?'>remote?</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id domain'>domain</span> <span class='op'>!=</span> <span class='const'>LOCAL_DOMAIN</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="scm-instance_method">
+  
+    - (<tt>Object</tt>) <strong>scm</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The SCM used by the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 65</span>
+
+<span class='id property'>property</span> <span class='symbol'>:scm</span><span class='comma'>,</span> <span class='const'>String</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="scm=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>scm=</strong>(value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The SCM used by the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 65</span>
+
+<span class='id property'>property</span> <span class='symbol'>:scm</span><span class='comma'>,</span> <span class='const'>String</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="source-instance_method">
+  
+    - (<tt>Object</tt>) <strong>source</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Source View URI of the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 89</span>
+
+<span class='id property'>property</span> <span class='symbol'>:source</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="source=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>source=</strong>(value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Source View URI of the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 89</span>
+
+<span class='id property'>property</span> <span class='symbol'>:source</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="sync_cached_files!-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>) <strong>sync_cached_files!</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Syncs the <span class='object_link'><a href="#cached_files-instance_method" title="Ronin::Repository#cached_files (method)">#cached_files</a></span> of the repository, and adds any new cached
+files.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The cleaned repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 502</span>
+
+<span class='kw'>def</span> <span class='id sync_cached_files!'>sync_cached_files!</span>
+  <span class='comment'># activates the repository before caching it's objects
+</span>  <span class='id activate!'>activate!</span>
+
+  <span class='id new_paths'>new_paths</span> <span class='op'>=</span> <span class='id cache_paths'>cache_paths</span>
+
+  <span class='kw'>self</span><span class='period'>.</span><span class='id cached_files'>cached_files</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id cached_file'>cached_file</span><span class='op'>|</span>
+    <span class='comment'># filter out pre-existing paths within the `cached/` directory
+</span>    <span class='id new_paths'>new_paths</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='id cached_file'>cached_file</span><span class='period'>.</span><span class='id path'>path</span><span class='rparen'>)</span>
+
+    <span class='comment'># sync the cached file and catch any exceptions
+</span>    <span class='id cached_file'>cached_file</span><span class='period'>.</span><span class='id sync'>sync</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># cache the new paths within the `cache/` directory
+</span>  <span class='id new_paths'>new_paths</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id path'>path</span><span class='op'>|</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id cached_files'>cached_files</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id path'>path</span><span class='rparen'>)</span><span class='period'>.</span><span class='id cache'>cache</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># deactivates the repository
+</span>  <span class='id deactivate!'>deactivate!</span>
+
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="title-instance_method">
+  
+    - (<tt>Object</tt>) <strong>title</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Title of the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+86</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 86</span>
+
+<span class='id property'>property</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='const'>Text</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="title=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>title=</strong>(value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Title of the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+86</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 86</span>
+
+<span class='id property'>property</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='const'>Text</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_s-instance_method">
+  
+    - (<tt>String</tt>) <strong>to_s</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Converts the repository to a String.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name and domain of the repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+614
+615
+616</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 614</span>
+
+<span class='kw'>def</span> <span class='id to_s'>to_s</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id domain'>domain</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="uninstall!-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>) <strong>uninstall!</strong> {|repo| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Deletes the contents of the repository.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'>(<tt>repo</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed the repository after it&rsquo;s
+contents have been deleted.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>)</span>
+      
+      
+        <span class='name'>repo</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The deleted repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The deleted repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 593</span>
+
+<span class='kw'>def</span> <span class='id uninstall!'>uninstall!</span>
+  <span class='id deactivate!'>deactivate!</span>
+
+  <span class='const'>FileUtils</span><span class='period'>.</span><span class='id rm_rf'>rm_rf</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id installed?'>installed?</span>
+
+  <span class='comment'># destroy any cached files first
+</span>  <span class='id clean_cached_files!'>clean_cached_files!</span>
+
+  <span class='comment'># remove the repository from the database
+</span>  <span class='id destroy'>destroy</span> <span class='kw'>if</span> <span class='id saved?'>saved?</span>
+
+  <span class='kw'>yield</span> <span class='kw'>self</span> <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="update!-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>) <strong>update!</strong> {|repo| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Updates the repository, reloads it&rsquo;s metadata and syncs the
+cached files of the repository.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'>(<tt>repo</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed after the repository has
+been updated.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>)</span>
+      
+      
+        <span class='name'>repo</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The updated repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Repository (class)">Repository</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The updated repository.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 556</span>
+
+<span class='kw'>def</span> <span class='id update!'>update!</span>
+  <span class='id local_repo'>local_repo</span> <span class='op'>=</span> <span class='const'>Pullr</span><span class='op'>::</span><span class='const'>LocalRepository</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span>
+    <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span><span class='comma'>,</span>
+    <span class='symbol'>:scm</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id scm'>scm</span>
+  <span class='rparen'>)</span>
+
+  <span class='comment'># only update if we have a repository
+</span>  <span class='id local_repo'>local_repo</span><span class='period'>.</span><span class='id update'>update</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id uri'>uri</span><span class='rparen'>)</span>
+
+  <span class='comment'># re-initialize the metadata
+</span>  <span class='id initialize_metadata'>initialize_metadata</span>
+
+  <span class='comment'># save the repository
+</span>  <span class='kw'>if</span> <span class='id save'>save</span>
+    <span class='comment'># syncs the cached files of the repository
+</span>    <span class='id sync_cached_files!'>sync_cached_files!</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>yield</span> <span class='kw'>self</span> <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="uri-instance_method">
+  
+    - (<tt>Object</tt>) <strong>uri</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>URI that the repository was installed from</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 71</span>
+
+<span class='id property'>property</span> <span class='symbol'>:uri</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="uri=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>uri=</strong>(value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>URI that the repository was installed from</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 71</span>
+
+<span class='id property'>property</span> <span class='symbol'>:uri</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="website-instance_method">
+  
+    - (<tt>Object</tt>) <strong>website</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Website URI for the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+92</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 92</span>
+
+<span class='id property'>property</span> <span class='symbol'>:website</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="website=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>website=</strong>(value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Website URI for the repository</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+92</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 92</span>
+
+<span class='id property'>property</span> <span class='symbol'>:website</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Sat Jan  8 15:54:41 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>
