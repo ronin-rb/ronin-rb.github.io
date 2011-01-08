@@ -221,7 +221,7 @@ js:
         Ronin does not ship with any builtin Exploits. Although, Ronin
         makes it rather easy to write your own exploits using
         <a href="http://github.com/ronin-ruby/ronin-exploits">ronin-exploits</a>
-        and distribute them in <a href="#overlays">Overlays</a>.
+        and distribute them in <a href="#repos">Repositories</a>.
       </p>
 
       <p>
@@ -260,33 +260,35 @@ js:
   </li>
 </ol>
 
-<h2 class="section"><a name="overlays">Overlays</a></h2>
+<h2 class="section"><a name="repos">Repositories</a></h2>
 
 <ol class="faq">
   <li class="faq">
     <div class="question">
-      <a>What exactly are Overlays?</a>
+      <a>What is a Ronin Repository?</a>
     </div>
 
     <div class="answer">
       <p>
-      Overlays are directories which can contain Objects (such
-      as Exploits or Payloads) or Extensions (small groupings of
-      code) that can be used within Ronin. An Overlay also contains
-      a small YAML file named <code>overlay.yml</code> that describes the
-      Overlay, it's authors and it's licensing.
+        Ronin Repositories are very similar to RubyGems. They both can contain
+        Ruby code in a <code>lib/</code> directory, command-line scripts in a <code>bin/</code>
+        and data files in a <code>data/</code> directory. Ronin Repositories also
+        have a <code>ronin.yml</code> metadata file and a <code>cache/</code> directory for
+        exploits, payloads, scanners or anything else Ronin can cache into it's Database.
       </p>
+
+      <p>Think of Ronin Repositoires as a quicker / less-formal way to organize your code.</p>
     </div>
   </li>
 
   <li class="faq">
     <div class="question">
-      <a>How are Overlays hosted?</a>
+      <a>How are Ronin Repositories hosted?</a>
     </div>
 
     <div class="answer">
       <p>
-      An Overlay can be hosted on any
+      A Ronin Repository can be hosted on any
       <a href="http://subversion.tigris.org/">Subversion (SVN)</a>,
       <a href="http://www.selenic.com/mercurial/wiki/">Mercurial (Hg)</a>,
       <a href="http://git.or.cz/">Git</a> or
@@ -294,7 +296,7 @@ js:
       </p>
 
       <p>
-      One could easily host an Overlay on free source-code hosting sites 
+      One could easily host a Ronin Repository on free source-code hosting sites
       such as,
       <a href="http://github.com/">GitHub</a>,
       <a href="http://gitorious.com/">Gitorious</a>,
@@ -306,48 +308,47 @@ js:
 
   <li class="faq">
     <div class="question">
-      <a>How can I install an Overlay?</a>
+      <a>How can I install a Ronin Repository?</a>
     </div>
 
     <div class="answer">
       <p>
-      Simply pass the URL of the Overlay to the
-      <code>ronin install</code> command:
+      Simply install the URL of the Ronin Repository using the
+      <code>ronin-repos</code> command:
       </p>
-      <pre class="shell"><code>$ ronin install svn://www.example.com/overlay</code></pre>
+      <pre class="shell"><code>$ ronin-repos --install svn://www.example.com/repo</code></pre>
 
       <p>
-      If you have previously checked out an Overlay, then
-      simply pass the path of the local Overlay to the
-      <code>ronin add</code> command:
+      If you have previously checked out a Ronin Repository, then
+      simply add the path of the local Repository using the
+      <code>ronin-repos</code> command:
       </p>
-      <pre class="shell"><code>$ ronin add path/to/local/overlay</code></pre>
+      <pre class="shell"><code>$ ronin-repos --add path/to/local/repo</code></pre>
     </div>
   </li>
 
   <li class="faq">
     <div class="question">
-      <a>How can I generate a skeleton Overlay?</a>
+      <a>How can I generate a skeleton Ronin Repository?</a>
     </div>
 
     <div class="answer">
       <p>
-        You can generate a skeleton Overlay by simply running
+        You can generate a skeleton Ronin Repository by simply running
         the following command provided by the
         <a href="/gen/">Ronin Gen</a> library:
       </p>
 
-      <pre class="shell"><code>$ ronin-gen overlay path/to/overlay/name</code></pre>
+      <pre class="shell"><code>$ ronin-gen repository path/to/repo</code></pre>
 
-      <p>
-        Or if you wish to specify additional Overlay metadata:
-      </p>
-      <pre class="shell"><code>$ ronin-gen overlay -n Overlay-Name -L GPL-2 \
+      <p>Or if you wish to specify additional Repository metadata:</p>
+
+      <pre class="shell"><code>$ ronin-gen repository -n Repo-Name -L GPL-3 \
   -m "Author <email>" \
-  -S http://svn.mysite.com/overlay \
+  -S http://svn.mysite.com/repo \
   -U http://myblog.com \
-  -D "This is my Overlay, enjoy." \
-  path/to/overlay</code></pre>
+  -D "This is my Repo, enjoy." \
+  path/to/repo</code></pre>
     </div>
   </li>
 </ol>
