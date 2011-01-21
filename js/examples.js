@@ -1,37 +1,46 @@
+/*
+ * Controls displaying Examples on the front page.
+ */
 var Examples = {
-  div: null,
+  // maximum number of examples to show
+  maximum: 3,
+
+  // loop to control cycling of examples
   loop: null,
 
-  maximum: 3,
-  entries: null,
+  /*
+   * Hides the visible examples and displays the hidden examples.
+   */
+  show: function() {
+    var visible = $("li.example:visible");
+    var invisible = $("li.example:hidden");
 
-  next: function() {
     var indices = [];
 
-    for (i=0;i<Examples.entries.length;i++)
+    for (i=0;i<invisible.size();i++)
     {
       indices.push(i);
     }
 
-    Examples.div.fadeOut("slow",function() {
-      Examples.div.empty();
+    visible.hide();
 
-      for (i=0;i<Examples.maximum && indices.length > 0;i++)
-      {
-        var index = Math.floor(Math.random()*indices.length);
-        var example = Examples.entries[indices[index]];
+    for (i=0;i<Examples.maximum && indices.length > 0;i++)
+    {
+      var index = Math.floor(Math.random()*indices.length);
 
-        $('<li class="example">' + $(example).find('content').text() + '</li>').appendTo(Examples.div);
-
-        indices.splice(index,1);
-      }
-
-      Examples.div.fadeIn("slow");
-    });
+      $(invisible[indices[index]]).fadeIn(1200);
+      indices.splice(index,1);
+    }
   },
 
-  start: function() { Examples.loop = setInterval(Examples.next,8000); },
+  /*
+   * Starts cycling the Examples.
+   */
+  start: function() { Examples.loop = setInterval(Examples.show,8000); },
 
+  /*
+   * Pauses the cycling of Examples.
+   */
   pause: function() {
     if (Examples.loop != null)
     {
@@ -40,8 +49,11 @@ var Examples = {
     }
   },
 
+  /*
+   * Sets up the Examples.
+   */
   setup: function() {
-    Examples.div = $("#examples");
+    var list = $("#examples");
 
     // download the examples feed
     $.ajax({
@@ -49,13 +61,17 @@ var Examples = {
       url: '/examples/atom.xml',
       dataType: 'xml',
       success: function(feed) {
-        Examples.entries = $(feed).find('entry');
+        $(feed).find("entry > content").each(function() {
+          $('<li class="example" />').html($(this).text()).appendTo(list);
+        });
 
-        // populate the examples div immediately
-        Examples.next();
+        // show examples immediately
+        Examples.show();
 
         // pause/start the examples on mousein/mouseout
-        Examples.div.hover(Examples.pause,Examples.start);
+        list.hover(Examples.pause,Examples.start);
+
+        // begin cycling examples
         Examples.start();
       }
     });
