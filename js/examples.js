@@ -28,7 +28,7 @@ var Examples = {
     {
       var index = Math.floor(Math.random()*indices.length);
 
-      $(invisible[indices[index]]).fadeIn(1200);
+      $(invisible[indices[index]]).fadeIn(1400);
       indices.splice(index,1);
     }
   },
@@ -36,7 +36,7 @@ var Examples = {
   /*
    * Starts cycling the Examples.
    */
-  start: function() { Examples.loop = setInterval(Examples.show,8000); },
+  start: function() { Examples.loop = setInterval(Examples.show,10000); },
 
   /*
    * Pauses the cycling of Examples.
