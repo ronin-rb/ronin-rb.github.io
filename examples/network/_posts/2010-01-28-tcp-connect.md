@@ -3,7 +3,7 @@ layout: nil
 title: Connect to a TCP Socket
 ---
 
-Creating a TCP Socket for a specified host and port:
+Creating a TCP Socket to a specified host and port:
 
 {% highlight ruby %}
 Net.tcp_connect('www.example.com', 25)
