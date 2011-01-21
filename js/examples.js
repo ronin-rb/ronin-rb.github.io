@@ -62,7 +62,12 @@ var Examples = {
       dataType: 'xml',
       success: function(feed) {
         $(feed).find("entry > content").each(function() {
-          $('<li class="example" />').html($(this).text()).appendTo(list);
+          var entry = $('<li class="example" />');
+          
+          entry.html($(this).text());
+          entry.hide();
+          
+          list.append(entry);
         });
 
         // show examples immediately
