@@ -10,13 +10,15 @@ title: Coding Style Guide-Lines
 Files should be named after their contained modules/classes.
 The following code would reside in the file `thing/stuff.rb`.
 
-    module Thing
-      class Stuff
+{% highlight ruby %}
+module Thing
+  class Stuff
 
-        ....
+    # ....
 
-      end
-    end
+  end
+end
+{% endhighlight %}
 
 ## Class/Module Naming
 
@@ -29,15 +31,19 @@ underscores.
 
 Methods which return a Boolean value, should end with a `?`.
 
-    def is_closed?
-      ...
-    end
+{% highlight ruby %}
+def is_closed?
+  # ...
+end
+{% endhighlight %}
 
 Methods which change the state of an object should end with a `!`.
 
-    def close!
-      ...
-    end
+{% highlight ruby %}
+def close!
+  # ...
+end
+{% endhighlight %}
 
 ## Argument/Variable Naming
 
@@ -56,15 +62,19 @@ Also, all code should try to be no wider than 80 columns.
 
 Use double-quotes when necessary, use single-quotes otherwise.
 
-    'i do not need double quotes here, so why use them?'
+{% highlight ruby %}
+'i do not need double quotes here, so why use them?'
 
-    "I do need double quotes here, #{var}."
+"I do need double quotes here, #{var}."
+{% endhighlight %}
 
 ## Embedded Strings
 
 Use the `%{...}` syntax when embedding large strings into Ruby code.
 
-    %{I find this style to be particularly clean.}
+{% highlight ruby %}
+%{I find this style to be particularly clean.}
+{% endhighlight %}
 
 ## Expressions
 
@@ -77,39 +87,47 @@ Ruby provides various short-hand statements, that lessen repetitive typing.
 Please use the short-hand statements
 when appropriate, it helps DRY (Dont Repeat Yourself) up the code.
 
-Repetitive:
+### Repetitive
 
-    if !(@var)
-      ...
-    end
+{% highlight ruby %}
+if !(@var)
+  # ...
+end
 
-    if @var.nil?
-      @var = 'default'
-    end
+if @var.nil?
+  @var = 'default'
+end
+{% endhighlight %}
 
-DRY:
+### DRY
 
-    unless @var
-      ...
-    end
+{% highlight ruby %}
+unless @var
+  # ...
+end
 
-    @var ||= 'default'
+@var ||= 'default'
+{% endhighlight %}
 
 ## Defining Modules/Classes
 
-Bad:
+### Bad
 
-    class Bla::Ugly
-      
-    end
+{% highlight ruby %}
+class Bla::Ugly
 
-Good:
+end
+{% highlight ruby %}
 
-    module Bla
-      class Better
+### Good
 
-      end
-    end
+{% highlight ruby %}
+module Bla
+  class Better
+
+  end
+end
+{% endhighlight %}
 
 ## Global Variables
 
@@ -128,59 +146,70 @@ Avoid using global variables, instead use class variables.
 Use `&block` syntax to explicitly receive and pass blocks. This allows
 for maximum control of where blocks are passed to.
 
-    def explicit_block(var,&amp;block)
-      ...
-      compute(var,&amp;block)
-      ...
-    end
+{% highlight ruby %}
+def explicit_block(var,&amp;block)
+  # ...
+  compute(var,&amp;block)
+  # ...
+end
+{% endhighlight %}
 
 ## Chaining Blocks
 
 When chaining together method calls that receive blocks, please use
 `{` and `}` instead of `do` and `end` for defining the blocks.
 
-Ugly:
+### Ugly
 
-    stuff do |i|
-      i =~ /[a-f0-9]/
-    end.map |j|
-      j.to_i(16)
-    end
+{% highlight ruby %}
+stuff do |i|
+  i =~ /[a-f0-9]/
+end.map |j|
+  j.to_i(16)
+end
+{% endhighlight %}
 
-Better:
+### Better
 
-    stuff.select { |i| i =~ /[a-f0-9]/ }.map { |j| j.to_i(16) }
+{% highlight ruby %}
+stuff.select { |i| i =~ /[a-f0-9]/ }.map { |j| j.to_i(16) }
+{% endhighlight %}
 
 ## send
 
 Always check if the requested method is public.
 
-Dangerous:
+### Dangerous
 
-    def bad_method_proxy(name)
-      @obj.send(name)
-    end
+{% highlight ruby %}
+def bad_method_proxy(name)
+  @obj.send(name)
+end
+{% endhighlight %}
 
-Safer:
+### Safer
 
-    def better_method_proxy(name)
-      if @obj.public_methods.include?(name.to_s)
-        return @obj.send(name)
-      else
-        raise(NoMethodError,"unknown method #{name.dump}",caller)
-      end
-    end
+{% highlight ruby %}
+def better_method_proxy(name)
+  if @obj.public_methods.include?(name.to_s)
+    return @obj.send(name)
+  end
+
+  raise(NoMethodError,"unknown method #{name.dump}",caller)
+end
+{% endhighlight %}
 
 Also, sometimes it is necessary to check if the method is not inherited,
 but defined directly within the class.
 
-Safest:
+### Safest
 
-    def strict_method_proxy(name)
-      if @obj.class.public_instance_methods(false).include?(name)
-        return @obj.send(name)
-      else
-        raise(NoMethodError,"undefined method #{name.dump}",caller)
-      end
-    end
+{% highlight ruby %}
+def strict_method_proxy(name)
+  if @obj.class.public_instance_methods(false).include?(name)
+    return @obj.send(name)
+  end
 
+  raise(NoMethodError,"undefined method #{name.dump}",caller)
+end
+{% endhighlight %}
