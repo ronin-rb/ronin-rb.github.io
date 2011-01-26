@@ -68,7 +68,16 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Helper methods for printing output.</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
 
 
   
@@ -79,23 +88,23 @@
 
     <ul class="summary">
       
-        <li class="public ">
+        <li class="protected ">
   <span class="summary_signature">
     
-      <a href="#print_debug-instance_method" title="#print_debug (instance method)">- (Boolean) <strong>print_debug</strong>(*messages) </a>
+      <a href="#format_message-instance_method" title="#format_message (instance method)">- (String) <strong>format_message</strong>(message) </a>
     
 
     
   </span>
   
   
-  
+  <span class="note title protected">protected</span>
   
   
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Prints one or more messages as <code>debug</code> output.</p>
+    <span class="summary_desc"><div class='inline'><p>Formats a message to be printed.</p>
 </div></span>
   
 </li>
@@ -104,7 +113,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#print_error-instance_method" title="#print_error (instance method)">- (Boolean) <strong>print_error</strong>(*messages) </a>
+      <a href="#print_debug-instance_method" title="#print_debug (instance method)">- (Boolean) <strong>print_debug</strong>(*message) </a>
     
 
     
@@ -117,7 +126,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Prints one or more messages as <code>error</code> output.</p>
+    <span class="summary_desc"><div class='inline'><p>Prints a <code>debug</code> message.</p>
 </div></span>
   
 </li>
@@ -126,7 +135,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#print_info-instance_method" title="#print_info (instance method)">- (Boolean) <strong>print_info</strong>(*messages) </a>
+      <a href="#print_error-instance_method" title="#print_error (instance method)">- (Boolean) <strong>print_error</strong>(*message) </a>
     
 
     
@@ -139,7 +148,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Prints one or more messages as <code>info</code> output.</p>
+    <span class="summary_desc"><div class='inline'><p>Prints an <code>error</code> message.</p>
 </div></span>
   
 </li>
@@ -148,7 +157,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#print_warning-instance_method" title="#print_warning (instance method)">- (Boolean) <strong>print_warning</strong>(*messages) </a>
+      <a href="#print_info-instance_method" title="#print_info (instance method)">- (Boolean) <strong>print_info</strong>(*message) </a>
     
 
     
@@ -161,7 +170,29 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Prints one or more messages as <code>warning</code> output.</p>
+    <span class="summary_desc"><div class='inline'><p>Prints an <code>info</code> message.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#print_warning-instance_method" title="#print_warning (instance method)">- (Boolean) <strong>print_warning</strong>(*message) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Prints a <code>warning</code> message.</p>
 </div></span>
   
 </li>
@@ -265,15 +296,111 @@
     
     
       <div class="method_details first">
-  <p class="signature first" id="print_debug-instance_method">
+  <p class="signature first" id="format_message-instance_method">
   
-    - (<tt>Boolean</tt>) <strong>print_debug</strong>(*messages) 
+    - (<tt>String</tt>) <strong>format_message</strong>(message)  <span class="extras">(protected)</span>
   
 
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>Prints one or more messages as <code>debug</code> output.</p>
+    <p>Formats a message to be printed.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <span class='name'>message</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The message and additional Objects to format.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The formatted message.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+220
+221
+222
+223
+224
+225
+226</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 220</span>
+
+<span class='kw'>def</span> <span class='id format_message'>format_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id message'>message</span><span class='period'>.</span><span class='id length'>length</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='id message'>message</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+  <span class='kw'>else</span>
+    <span class='id message'>message</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>%</span> <span class='id message'>message</span><span class='lbracket'>[</span><span class='int'>1</span><span class='op'>..</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="print_debug-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>print_debug</strong>(*message) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Prints a <code>debug</code> message.</p>
 
 
   </div>
@@ -283,9 +410,9 @@
   <div class="examples">
     <h3>Examples:</h3>
     
-      <h4><div class='inline'>
+      <h4><div class='inline'><p>Print a formatted message.</p>
 </div></h4>
-      <pre class="example code"><span class='id print_debug'>print_debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>var1: </span><span class='embexpr_beg'>#{</span><span class='id var1'>var1</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span></pre>
+      <pre class="example code"><span class='id print_debug'>print_debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>vars: %p %p</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id vars'>vars</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id vars'>vars</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span></pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -293,15 +420,15 @@
   
     <li>
       
-        <span class='type'>(<tt>Array</tt>)</span>
+        <span class='type'>(<tt>Array</tt>, <tt>String</tt>)</span>
       
       
-        <span class='name'>messages</span>
+        <span class='name'>message</span>
       
       
       
         &mdash;
-        <div class='inline'><p>The messages to print.</p>
+        <div class='inline'><p>The message to print.</p>
 </div>
       
     </li>
@@ -346,21 +473,21 @@
       <pre class="lines">
 
 
-140
-141
-142
-143
-144
-145
 146
-147</pre>
+147
+148
+149
+150
+151
+152
+153</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 140</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 146</span>
 
-<span class='kw'>def</span> <span class='id print_debug'>print_debug</span><span class='lparen'>(</span><span class='op'>*</span><span class='id messages'>messages</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id print_debug'>print_debug</span><span class='lparen'>(</span><span class='op'>*</span><span class='id message'>message</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='const'>Output</span><span class='period'>.</span><span class='id verbose?'>verbose?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='lparen'>(</span><span class='const'>Output</span><span class='period'>.</span><span class='id silent?'>silent?</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='const'>Output</span><span class='period'>.</span><span class='id handler'>handler</span><span class='period'>.</span><span class='id print_debug'>print_debug</span><span class='lparen'>(</span><span class='op'>*</span><span class='id messages'>messages</span><span class='rparen'>)</span>
+    <span class='const'>Output</span><span class='period'>.</span><span class='id handler'>handler</span><span class='period'>.</span><span class='id print_debug'>print_debug</span><span class='lparen'>(</span><span class='id format_message'>format_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span><span class='rparen'>)</span>
     <span class='kw'>return</span> <span class='kw'>true</span>
   <span class='kw'>end</span>
 
@@ -374,13 +501,13 @@
       <div class="method_details ">
   <p class="signature " id="print_error-instance_method">
   
-    - (<tt>Boolean</tt>) <strong>print_error</strong>(*messages) 
+    - (<tt>Boolean</tt>) <strong>print_error</strong>(*message) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>Prints one or more messages as <code>error</code> output.</p>
+    <p>Prints an <code>error</code> message.</p>
 
 
   </div>
@@ -392,7 +519,11 @@
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='id print_error'>print_error</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Could not connect!</span><span class='tstring_end'>'</span></span></pre>
+      <pre class="example code"><span class='id print_error'>print_error</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Could not connect!</span><span class='tstring_end'>&quot;</span></span></pre>
+    
+      <h4><div class='inline'><p>Print a formatted message.</p>
+</div></h4>
+      <pre class="example code"><span class='id print_error'>print_error</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%p: %s</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id error'>error</span><span class='period'>.</span><span class='id class'>class</span><span class='comma'>,</span> <span class='id error'>error</span><span class='period'>.</span><span class='id message'>message</span></pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -400,15 +531,15 @@
   
     <li>
       
-        <span class='type'>(<tt>Array</tt>)</span>
+        <span class='type'>(<tt>Array</tt>, <tt>String</tt>)</span>
       
       
-        <span class='name'>messages</span>
+        <span class='name'>message</span>
       
       
       
         &mdash;
-        <div class='inline'><p>The messages to print.</p>
+        <div class='inline'><p>The message to print.</p>
 </div>
       
     </li>
@@ -453,21 +584,21 @@
       <pre class="lines">
 
 
-186
-187
-188
-189
-190
-191
-192
-193</pre>
+198
+199
+200
+201
+202
+203
+204
+205</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 186</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 198</span>
 
-<span class='kw'>def</span> <span class='id print_error'>print_error</span><span class='lparen'>(</span><span class='op'>*</span><span class='id messages'>messages</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id print_error'>print_error</span><span class='lparen'>(</span><span class='op'>*</span><span class='id message'>message</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='const'>Output</span><span class='period'>.</span><span class='id silent?'>silent?</span>
-    <span class='const'>Output</span><span class='period'>.</span><span class='id handler'>handler</span><span class='period'>.</span><span class='id print_error'>print_error</span><span class='lparen'>(</span><span class='op'>*</span><span class='id messages'>messages</span><span class='rparen'>)</span>
+    <span class='const'>Output</span><span class='period'>.</span><span class='id handler'>handler</span><span class='period'>.</span><span class='id print_error'>print_error</span><span class='lparen'>(</span><span class='id format_message'>format_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span><span class='rparen'>)</span>
     <span class='kw'>return</span> <span class='kw'>true</span>
   <span class='kw'>end</span>
 
@@ -481,13 +612,13 @@
       <div class="method_details ">
   <p class="signature " id="print_info-instance_method">
   
-    - (<tt>Boolean</tt>) <strong>print_info</strong>(*messages) 
+    - (<tt>Boolean</tt>) <strong>print_info</strong>(*message) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>Prints one or more messages as <code>info</code> output.</p>
+    <p>Prints an <code>info</code> message.</p>
 
 
   </div>
@@ -499,7 +630,11 @@
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Connecting ...</span><span class='tstring_end'>'</span></span></pre>
+      <pre class="example code"><span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Connecting ...</span><span class='tstring_end'>&quot;</span></span></pre>
+    
+      <h4><div class='inline'><p>Print a formatted message.</p>
+</div></h4>
+      <pre class="example code"><span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Connected to %s</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id host'>host</span></pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -510,12 +645,12 @@
         <span class='type'>(<tt>Array</tt>)</span>
       
       
-        <span class='name'>messages</span>
+        <span class='name'>message</span>
       
       
       
         &mdash;
-        <div class='inline'><p>The messages to print.</p>
+        <div class='inline'><p>The message to print.</p>
 </div>
       
     </li>
@@ -560,21 +695,21 @@
       <pre class="lines">
 
 
-117
-118
-119
-120
-121
-122
 123
-124</pre>
+124
+125
+126
+127
+128
+129
+130</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 117</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 123</span>
 
-<span class='kw'>def</span> <span class='id print_info'>print_info</span><span class='lparen'>(</span><span class='op'>*</span><span class='id messages'>messages</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id print_info'>print_info</span><span class='lparen'>(</span><span class='op'>*</span><span class='id message'>message</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='const'>Output</span><span class='period'>.</span><span class='id silent?'>silent?</span>
-    <span class='const'>Output</span><span class='period'>.</span><span class='id handler'>handler</span><span class='period'>.</span><span class='id print_info'>print_info</span><span class='lparen'>(</span><span class='op'>*</span><span class='id messages'>messages</span><span class='rparen'>)</span>
+    <span class='const'>Output</span><span class='period'>.</span><span class='id handler'>handler</span><span class='period'>.</span><span class='id print_info'>print_info</span><span class='lparen'>(</span><span class='id format_message'>format_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span><span class='rparen'>)</span>
     <span class='kw'>return</span> <span class='kw'>true</span>
   <span class='kw'>end</span>
 
@@ -588,13 +723,13 @@
       <div class="method_details ">
   <p class="signature " id="print_warning-instance_method">
   
-    - (<tt>Boolean</tt>) <strong>print_warning</strong>(*messages) 
+    - (<tt>Boolean</tt>) <strong>print_warning</strong>(*message) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>Prints one or more messages as <code>warning</code> output.</p>
+    <p>Prints a <code>warning</code> message.</p>
 
 
   </div>
@@ -606,7 +741,11 @@
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='id print_warning'>print_warning</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Detecting a restricted character in the buffer</span><span class='tstring_end'>'</span></span></pre>
+      <pre class="example code"><span class='id print_warning'>print_warning</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Detecting a restricted character in the buffer</span><span class='tstring_end'>&quot;</span></span></pre>
+    
+      <h4><div class='inline'><p>Print a formatted message.</p>
+</div></h4>
+      <pre class="example code"><span class='id print_warning'>print_warning</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Malformed input detected: %p</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id user_input'>user_input</span></pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -614,15 +753,15 @@
   
     <li>
       
-        <span class='type'>(<tt>Array</tt>)</span>
+        <span class='type'>(<tt>Array</tt>, <tt>String</tt>)</span>
       
       
-        <span class='name'>messages</span>
+        <span class='name'>message</span>
       
       
       
         &mdash;
-        <div class='inline'><p>The messages to print.</p>
+        <div class='inline'><p>The message to print.</p>
 </div>
       
     </li>
@@ -667,21 +806,21 @@
       <pre class="lines">
 
 
-163
-164
-165
-166
-167
-168
-169
-170</pre>
+172
+173
+174
+175
+176
+177
+178
+179</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 163</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 172</span>
 
-<span class='kw'>def</span> <span class='id print_warning'>print_warning</span><span class='lparen'>(</span><span class='op'>*</span><span class='id messages'>messages</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id print_warning'>print_warning</span><span class='lparen'>(</span><span class='op'>*</span><span class='id message'>message</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='const'>Output</span><span class='period'>.</span><span class='id verbose?'>verbose?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='lparen'>(</span><span class='const'>Output</span><span class='period'>.</span><span class='id silent?'>silent?</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='const'>Output</span><span class='period'>.</span><span class='id handler'>handler</span><span class='period'>.</span><span class='id print_warning'>print_warning</span><span class='lparen'>(</span><span class='op'>*</span><span class='id messages'>messages</span><span class='rparen'>)</span>
+    <span class='const'>Output</span><span class='period'>.</span><span class='id handler'>handler</span><span class='period'>.</span><span class='id print_warning'>print_warning</span><span class='lparen'>(</span><span class='id format_message'>format_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span><span class='rparen'>)</span>
     <span class='kw'>return</span> <span class='kw'>true</span>
   <span class='kw'>end</span>
   
@@ -776,13 +915,13 @@
       <pre class="lines">
 
 
-98
-99
-100
-101</pre>
+101
+102
+103
+104</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 101</span>
 
 <span class='kw'>def</span> <span class='id printf'>printf</span><span class='lparen'>(</span><span class='id format'>format</span><span class='comma'>,</span><span class='op'>*</span><span class='id data'>data</span><span class='rparen'>)</span>
   <span class='id write'>write</span><span class='lparen'>(</span><span class='id format'>format</span> <span class='op'>%</span> <span class='id data'>data</span><span class='rparen'>)</span>
@@ -866,15 +1005,15 @@
       <pre class="lines">
 
 
-57
-58
-59
 60
 61
-62</pre>
+62
+63
+64
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='id putc'>putc</span><span class='lparen'>(</span><span class='id data'>data</span><span class='rparen'>)</span>
   <span class='id char'>char</span> <span class='op'>=</span> <span class='id data'>data</span><span class='period'>.</span><span class='id chr'>chr</span> <span class='kw'>if</span> <span class='id data'>data</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Integer</span><span class='rparen'>)</span>
@@ -952,18 +1091,18 @@
       <pre class="lines">
 
 
-75
-76
-77
 78
 79
 80
 81
 82
-83</pre>
+83
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 78</span>
 
 <span class='kw'>def</span> <span class='id puts'>puts</span><span class='lparen'>(</span><span class='op'>*</span><span class='id messages'>messages</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='id messages'>messages</span><span class='period'>.</span><span class='id empty?'>empty?</span>
@@ -1024,7 +1163,7 @@
       
       
         &mdash;
-        <div class='inline'><p>The number of bytes writen.</p>
+        <div class='inline'><p>The number of bytes written.</p>
 </div>
       
     </li>
@@ -1052,17 +1191,17 @@
       <pre class="lines">
 
 
-37
-38
-39
 40
 41
 42
 43
-44</pre>
+44
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id write'>write</span><span class='lparen'>(</span><span class='id data'>data</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='const'>Output</span><span class='period'>.</span><span class='id silent?'>silent?</span>
@@ -1082,7 +1221,7 @@
 </div>
     
     <div id="footer">
-  Generated on Sat Jan  8 15:54:54 2011 by 
+  Generated on Wed Jan 26 15:23:22 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.9.2).
 </div>

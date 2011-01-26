@@ -72,8 +72,7 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>Adds an <code>authors</code> relation between a model and the <code>Ronin::Author</code>
-model.</p>
+    <p>Adds an <code>authors</code> relationship between a model and the <span class='object_link'><a href="../Author.html" title="Ronin::Author (class)">Author</a></span> model.</p>
 
 
   </div>
@@ -117,7 +116,7 @@ model.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'>
+    <span class="summary_desc"><div class='inline'><p>Adds the <code>authors</code> relationship and <span class='object_link'><a href="HasAuthors/ClassMethods.html" title="Ronin::Model::HasAuthors::ClassMethods (module)">ClassMethods</a></span> to the model.</p>
 </div></span>
   
 </li>
@@ -170,17 +169,40 @@ model.</p>
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Adds the <code>authors</code> relationship and <span class='object_link'><a href="HasAuthors/ClassMethods.html" title="Ronin::Model::HasAuthors::ClassMethods (module)">ClassMethods</a></span> to the model.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+        <span class='name'>base</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The model.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-31
-32
-33
-34
-35
 36
 37
 38
@@ -189,10 +211,14 @@ model.</p>
 41
 42
 43
-44</pre>
+44
+45
+46
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/has_authors/has_authors.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/has_authors/has_authors.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
   <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>Model</span>
@@ -200,12 +226,11 @@ model.</p>
 
   <span class='id base'>base</span><span class='period'>.</span><span class='id module_eval'>module_eval</span> <span class='kw'>do</span>
     <span class='comment'># The authors associated with the model.
-</span>    <span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:authors</span><span class='comma'>,</span> <span class='symbol'>:through</span> <span class='op'>=&gt;</span> <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Resource</span><span class='comma'>,</span>
-                        <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Ronin::Author</span><span class='tstring_end'>'</span></span>
+</span>    <span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:authors</span><span class='comma'>,</span> <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>Author</span><span class='comma'>,</span> <span class='symbol'>:through</span> <span class='op'>=&gt;</span> <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Resource</span>
 
     <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>Author</span><span class='period'>.</span><span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id relationship_name'>relationship_name</span><span class='comma'>,</span>
                             <span class='symbol'>:through</span> <span class='op'>=&gt;</span> <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Resource</span><span class='comma'>,</span>
-                            <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id name'>name</span>
+                            <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='kw'>self</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -273,12 +298,12 @@ model.</p>
       <pre class="lines">
 
 
-57
-58
-59</pre>
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/has_authors/has_authors.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/has_authors/has_authors.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id author'>author</span><span class='lparen'>(</span><span class='id attributes'>attributes</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id authors'>authors</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id attributes'>attributes</span><span class='rparen'>)</span>
@@ -293,7 +318,7 @@ model.</p>
 </div>
     
     <div id="footer">
-  Generated on Sat Jan  8 15:55:24 2011 by 
+  Generated on Wed Jan 26 15:23:40 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.9.2).
 </div>

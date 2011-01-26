@@ -68,7 +68,16 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Configuration information for Ronin.</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
   <h2>Constant Summary</h2>
   
     <dl class="constants">
@@ -85,7 +94,7 @@
   
 </div>
         </dt>
-        <dd><pre class="code"><span class='const'>File</span><span class='period'>.</span><span class='id expand_path'>expand_path</span><span class='lparen'>(</span><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>HOME</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>HOMEPATH</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span></pre></dd>
+        <dd><pre class="code"><span class='const'>Env</span><span class='period'>.</span><span class='id home'>home</span></pre></dd>
       
         <dt id="PATH-constant" class="">PATH =
           <div class="docstring">
@@ -99,7 +108,7 @@
   
 </div>
         </dt>
-        <dd><pre class="code"><span class='const'>File</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>HOME</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.ronin</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre></dd>
+        <dd><pre class="code"><span class='const'>HOME</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.ronin</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre></dd>
       
         <dt id="CONFIG_DIR-constant" class="">CONFIG_DIR =
           <div class="docstring">
@@ -113,7 +122,7 @@
   
 </div>
         </dt>
-        <dd><pre class="code"><span class='const'>File</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>PATH</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>config</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre></dd>
+        <dd><pre class="code"><span class='const'>PATH</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>config</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre></dd>
       
         <dt id="REPOS_DIR-constant" class="">REPOS_DIR =
           <div class="docstring">
@@ -127,7 +136,7 @@
   
 </div>
         </dt>
-        <dd><pre class="code"><span class='const'>File</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>PATH</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>repos</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre></dd>
+        <dd><pre class="code"><span class='const'>PATH</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>repos</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre></dd>
       
         <dt id="TMP_DIR-constant" class="">TMP_DIR =
           <div class="docstring">
@@ -141,21 +150,7 @@
   
 </div>
         </dt>
-        <dd><pre class="code"><span class='const'>File</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>PATH</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>tmp</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre></dd>
-      
-        <dt id="CAMPAIGNS_DIR-constant" class="">CAMPAIGNS_DIR =
-          <div class="docstring">
-  <div class="discussion">
-    <p>Directory for storing files for campaigns</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-</div>
-        </dt>
-        <dd><pre class="code"><span class='const'>File</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>PATH</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>campaigns</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre></dd>
+        <dd><pre class="code"><span class='const'>PATH</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>tmp</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre></dd>
       
     </dl>
   
@@ -174,7 +169,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#load-class_method" title="load (class method)">+ (Object) <strong>load</strong>(name = :ronin) </a>
+      <a href="#load-class_method" title="load (class method)">+ (Object) <strong>load</strong>(name = nil) </a>
     
 
     
@@ -196,7 +191,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#tmp_dir-class_method" title="tmp_dir (class method)">+ (String) <strong>tmp_dir</strong>(sub_path = nil) </a>
+      <a href="#tmp_dir-class_method" title="tmp_dir (class method)">+ (Pathname) <strong>tmp_dir</strong>(sub_path = nil) </a>
     
 
     
@@ -228,7 +223,7 @@
       <div class="method_details first">
   <p class="signature first" id="load-class_method">
   
-    + (<tt>Object</tt>) <strong>load</strong>(name = :ronin) 
+    + (<tt>Object</tt>) <strong>load</strong>(name = nil) 
   
 
   
@@ -244,12 +239,12 @@
   <div class="examples">
     <h3>Examples:</h3>
     
-      <h4><div class='inline'><p>Load the config file at <code>~/.ronin/config/ronin.rb</code></p>
+      <h4><div class='inline'><p>Load the config file at <code>~/.ronin/config.rb</code></p>
 </div></h4>
       <pre class="example code"><span class='const'>Config</span><span class='period'>.</span><span class='id load'>load</span>
 <span class='comment'># =&gt; true</span></pre>
     
-      <h4><div class='inline'><p>Load a specific config file in <code>~/.ronin/config/</code></p>
+      <h4><div class='inline'><p>Load the config file at <code>~/.ronin/config/sql.rb</code></p>
 </div></h4>
       <pre class="example code"><span class='const'>Config</span><span class='period'>.</span><span class='id load'>load</span> <span class='symbol'>:sql</span>
 <span class='comment'># =&gt; true</span></pre>
@@ -266,11 +261,11 @@
         <span class='name'>name</span>
       
       
-        <em class="default">(defaults to: <tt>:ronin</tt>)</em>
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
         &mdash;
-        <div class='inline'><p>The optional name of the file to load within +CONFIG_DIR+.</p>
+        <div class='inline'><p>The optional name of the file to load within <span class='object_link'><a href="#CONFIG_DIR-constant" title="Ronin::Config::CONFIG_DIR (constant)">CONFIG_DIR</a></span>.</p>
 </div>
       
     </li>
@@ -287,15 +282,23 @@
 65
 66
 67
-68</pre>
+68
+69
+70
+71
+72</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/config.rb', line 64</span>
 
-<span class='kw'>def</span> <span class='const'>Config</span><span class='period'>.</span><span class='id load'>load</span><span class='lparen'>(</span><span class='id name'>name</span><span class='op'>=</span><span class='symbol'>:ronin</span><span class='rparen'>)</span>
-  <span class='id path'>path</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id expand_path'>expand_path</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>CONFIG_DIR</span><span class='comma'>,</span><span class='id name'>name</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='const'>Config</span><span class='period'>.</span><span class='id load'>load</span><span class='lparen'>(</span><span class='id name'>name</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id path'>path</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id name'>name</span>
+           <span class='const'>CONFIG_DIR</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>.rb</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id expand_path'>expand_path</span>
+         <span class='kw'>else</span>
+           <span class='const'>PATH</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>config.rb</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+         <span class='kw'>end</span>
 
-  <span class='id require'>require</span> <span class='id path'>path</span> <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id file?'>file?</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span>
+  <span class='id require'>require</span> <span class='id path'>path</span> <span class='kw'>if</span> <span class='id path'>path</span><span class='period'>.</span><span class='id file?'>file?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -305,7 +308,7 @@
       <div class="method_details ">
   <p class="signature " id="tmp_dir-class_method">
   
-    + (<tt>String</tt>) <strong>tmp_dir</strong>(sub_path = nil) 
+    + (<tt>Pathname</tt>) <strong>tmp_dir</strong>(sub_path = nil) 
   
 
   
@@ -343,7 +346,7 @@
   
     <li>
       
-        <span class='type'>(<tt>String</tt>)</span>
+        <span class='type'>(<tt>Pathname</tt>)</span>
       
       
       
@@ -362,10 +365,6 @@
       <pre class="lines">
 
 
-79
-80
-81
-82
 83
 84
 85
@@ -375,20 +374,18 @@
 89
 90
 91
-92</pre>
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/config.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/config.rb', line 83</span>
 
 <span class='kw'>def</span> <span class='const'>Config</span><span class='period'>.</span><span class='id tmp_dir'>tmp_dir</span><span class='lparen'>(</span><span class='id sub_path'>sub_path</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id sub_path'>sub_path</span>
     <span class='id sub_path'>sub_path</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id expand_path'>expand_path</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='id sub_path'>sub_path</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='id path'>path</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>TMP_DIR</span><span class='comma'>,</span><span class='id sub_path'>sub_path</span><span class='rparen'>)</span>
+    <span class='id path'>path</span> <span class='op'>=</span> <span class='const'>TMP_DIR</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='id sub_path'>sub_path</span><span class='rparen'>)</span>
 
-    <span class='kw'>unless</span> <span class='const'>File</span><span class='period'>.</span><span class='id exist?'>exist?</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span>
-      <span class='const'>FileUtils</span><span class='period'>.</span><span class='id mkdir_p'>mkdir_p</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span>
-    <span class='kw'>end</span>
-
+    <span class='id path'>path</span><span class='period'>.</span><span class='id mkpath'>mkpath</span> <span class='kw'>unless</span> <span class='id path'>path</span><span class='period'>.</span><span class='id exist?'>exist?</span>
     <span class='kw'>return</span> <span class='id path'>path</span>
   <span class='kw'>end</span>
 
@@ -404,7 +401,7 @@
 </div>
     
     <div id="footer">
-  Generated on Sat Jan  8 15:54:22 2011 by 
+  Generated on Wed Jan 26 15:22:53 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.9.2).
 </div>

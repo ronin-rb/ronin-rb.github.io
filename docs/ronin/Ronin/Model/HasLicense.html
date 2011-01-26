@@ -72,7 +72,7 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>Adds a <code>license</code> relation between a model and the <span class='object_link'><a href="../License.html" title="Ronin::License (class)">License</a></span> model.</p>
+    <p>Adds a <code>license</code> relationship between a model and the <span class='object_link'><a href="../License.html" title="Ronin::License (class)">License</a></span> model.</p>
 
 
   </div>
@@ -116,7 +116,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
+    <span class="summary_desc"><div class='inline'><p>Adds the <code>license</code> relationship and <span class='object_link'><a href="HasLicense/ClassMethods.html" title="Ronin::Model::HasLicense::ClassMethods (module)">ClassMethods</a></span> to the model.</p>
 </div></span>
   
 </li>
@@ -169,28 +169,54 @@
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Adds the <code>license</code> relationship and <span class='object_link'><a href="HasLicense/ClassMethods.html" title="Ronin::Model::HasLicense::ClassMethods (module)">ClassMethods</a></span> to the model.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+        <span class='name'>base</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The model.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-30
-31
-32
-33
-34
-35
 36
 37
 38
 39
 40
 41
-42</pre>
+42
+43
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/has_license/has_license.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/has_license/has_license.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
   <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>Model</span>
@@ -198,12 +224,10 @@
 
   <span class='id base'>base</span><span class='period'>.</span><span class='id module_eval'>module_eval</span> <span class='kw'>do</span>
     <span class='comment'># The license
-</span>    <span class='id belongs_to'>belongs_to</span> <span class='symbol'>:license</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='comma'>,</span>
-                         <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Ronin::License</span><span class='tstring_end'>'</span></span>
+</span>    <span class='id belongs_to'>belongs_to</span> <span class='symbol'>:license</span><span class='comma'>,</span> <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>License</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
 
+    <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>License</span><span class='period'>.</span><span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id relationship_name'>relationship_name</span><span class='comma'>,</span> <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='kw'>self</span>
   <span class='kw'>end</span>
-
-  <span class='const'>License</span><span class='period'>.</span><span class='id has'>has</span> <span class='const'>License</span><span class='period'>.</span><span class='id n'>n</span><span class='comma'>,</span> <span class='id base'>base</span><span class='period'>.</span><span class='id relationship_name'>relationship_name</span><span class='comma'>,</span> <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='id base'>base</span><span class='period'>.</span><span class='id name'>name</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -298,12 +322,12 @@
       <pre class="lines">
 
 
-58
-59
-60</pre>
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/has_license/has_license.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/has_license/has_license.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id license!'>license!</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id license'>license</span> <span class='op'>=</span> <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>License</span><span class='period'>.</span><span class='id predefined_resource'>predefined_resource</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
@@ -318,7 +342,7 @@
 </div>
     
     <div id="footer">
-  Generated on Sat Jan  8 15:55:23 2011 by 
+  Generated on Wed Jan 26 15:23:41 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.9.2).
 </div>

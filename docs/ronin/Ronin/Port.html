@@ -83,7 +83,16 @@
 </dl>
 <div class="clear"></div>
 
-<div id="subclasses">
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Represents a TCP or UDP port.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
   <p class="children"><span class='object_link'><a href="TCPPort.html" title="Ronin::TCPPort (class)">TCPPort</a></span>, <span class='object_link'><a href="UDPPort.html" title="Ronin::UDPPort (class)">UDPPort</a></span></p>
 </div>
@@ -188,7 +197,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>The protocol of the port (tcp/udp).</p>
+    <span class="summary_desc"><div class='inline'><p>The protocol of the port (either <code>'tcp'</code> / <code>'udp'</code>).</p>
 </div></span>
   
 </li>
@@ -373,7 +382,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>The protocol of the port (tcp/udp).</p>
+    <span class="summary_desc"><div class='inline'><p>The protocol of the port (either <code>'tcp'</code> / <code>'udp'</code>).</p>
 </div></span>
   
 </li>
@@ -395,7 +404,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>The protocol of the port (tcp/udp).</p>
+    <span class="summary_desc"><div class='inline'><p>The protocol of the port (either <code>'tcp'</code> / <code>'udp'</code>).</p>
 </div></span>
   
 </li>
@@ -491,10 +500,10 @@
       <pre class="lines">
 
 
-29</pre>
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 32</span>
 
 <span class='id property'>property</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='const'>Serial</span></pre>
     </td>
@@ -524,13 +533,17 @@
       <pre class="lines">
 
 
-37
-38</pre>
+40
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 40</span>
 
 <span class='id property'>property</span> <span class='symbol'>:number</span><span class='comma'>,</span> <span class='const'>Integer</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span>
+<span class='symbol'>:min</span> <span class='op'>=&gt;</span> <span class='int'>1</span><span class='comma'>,</span>
+<span class='symbol'>:max</span> <span class='op'>=&gt;</span> <span class='int'>65535</span><span class='comma'>,</span>
 <span class='symbol'>:unique_index</span> <span class='op'>=&gt;</span> <span class='symbol'>:protocol_port</span></pre>
     </td>
   </tr>
@@ -559,10 +572,10 @@
       <pre class="lines">
 
 
-41</pre>
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 46</span>
 
 <span class='id has'>has</span> <span class='int'>1</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:open_ports</span></pre>
     </td>
@@ -579,7 +592,7 @@
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>The protocol of the port (tcp/udp)</p>
+    <p>The protocol of the port (either <code>'tcp'</code> / <code>'udp'</code>)</p>
 
 
   </div>
@@ -592,12 +605,12 @@
       <pre class="lines">
 
 
-32
-33
-34</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 35</span>
 
 <span class='id property'>property</span> <span class='symbol'>:protocol</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:set</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>tcp</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>udp</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
 <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span>
@@ -635,10 +648,10 @@
       <pre class="lines">
 
 
-29</pre>
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 32</span>
 
 <span class='id property'>property</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='const'>Serial</span></pre>
     </td>
@@ -668,10 +681,10 @@
       <pre class="lines">
 
 
-29</pre>
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 32</span>
 
 <span class='id property'>property</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='const'>Serial</span></pre>
     </td>
@@ -733,12 +746,12 @@
       <pre class="lines">
 
 
-77
-78
-79</pre>
+82
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 77</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='rbrace'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
@@ -770,13 +783,17 @@
       <pre class="lines">
 
 
-37
-38</pre>
+40
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 40</span>
 
 <span class='id property'>property</span> <span class='symbol'>:number</span><span class='comma'>,</span> <span class='const'>Integer</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span>
+<span class='symbol'>:min</span> <span class='op'>=&gt;</span> <span class='int'>1</span><span class='comma'>,</span>
+<span class='symbol'>:max</span> <span class='op'>=&gt;</span> <span class='int'>65535</span><span class='comma'>,</span>
 <span class='symbol'>:unique_index</span> <span class='op'>=&gt;</span> <span class='symbol'>:protocol_port</span></pre>
     </td>
   </tr>
@@ -805,13 +822,17 @@
       <pre class="lines">
 
 
-37
-38</pre>
+40
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 40</span>
 
 <span class='id property'>property</span> <span class='symbol'>:number</span><span class='comma'>,</span> <span class='const'>Integer</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span>
+<span class='symbol'>:min</span> <span class='op'>=&gt;</span> <span class='int'>1</span><span class='comma'>,</span>
+<span class='symbol'>:max</span> <span class='op'>=&gt;</span> <span class='int'>65535</span><span class='comma'>,</span>
 <span class='symbol'>:unique_index</span> <span class='op'>=&gt;</span> <span class='symbol'>:protocol_port</span></pre>
     </td>
   </tr>
@@ -840,10 +861,10 @@
       <pre class="lines">
 
 
-41</pre>
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 46</span>
 
 <span class='id has'>has</span> <span class='int'>1</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:open_ports</span></pre>
     </td>
@@ -873,10 +894,10 @@
       <pre class="lines">
 
 
-41</pre>
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 46</span>
 
 <span class='id has'>has</span> <span class='int'>1</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:open_ports</span></pre>
     </td>
@@ -893,7 +914,7 @@
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>The protocol of the port (tcp/udp)</p>
+    <p>The protocol of the port (either <code>'tcp'</code> / <code>'udp'</code>)</p>
 
 
   </div>
@@ -906,12 +927,12 @@
       <pre class="lines">
 
 
-32
-33
-34</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 35</span>
 
 <span class='id property'>property</span> <span class='symbol'>:protocol</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:set</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>tcp</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>udp</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
 <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span>
@@ -930,7 +951,7 @@
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>The protocol of the port (tcp/udp)</p>
+    <p>The protocol of the port (either <code>'tcp'</code> / <code>'udp'</code>)</p>
 
 
   </div>
@@ -943,12 +964,12 @@
       <pre class="lines">
 
 
-32
-33
-34</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 35</span>
 
 <span class='id property'>property</span> <span class='symbol'>:protocol</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:set</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>tcp</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>udp</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
 <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span>
@@ -1012,12 +1033,12 @@
       <pre class="lines">
 
 
-53
-54
-55</pre>
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='id to_i'>to_i</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id number'>number</span><span class='period'>.</span><span class='id to_i'>to_i</span>
@@ -1081,12 +1102,12 @@
       <pre class="lines">
 
 
-65
-66
-67</pre>
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/port.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='id to_s'>to_s</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id number'>number</span><span class='rbrace'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id protocol'>protocol</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -1101,7 +1122,7 @@
 </div>
     
     <div id="footer">
-  Generated on Sat Jan  8 15:54:19 2011 by 
+  Generated on Wed Jan 26 15:22:51 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.9.2).
 </div>

@@ -79,7 +79,16 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>The handler for raw output to the terminal.</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
 
 
   
@@ -93,7 +102,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#print_debug-class_method" title="print_debug (class method)">+ (Object) <strong>print_debug</strong>(*messages) </a>
+      <a href="#print_debug-class_method" title="print_debug (class method)">+ (Object) <strong>print_debug</strong>(message) </a>
     
 
     
@@ -106,7 +115,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Prints one or more messages as <code>debug</code> mssages.</p>
+    <span class="summary_desc"><div class='inline'><p>Prints a <code>debug</code> message.</p>
 </div></span>
   
 </li>
@@ -115,7 +124,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#print_error-class_method" title="print_error (class method)">+ (Object) <strong>print_error</strong>(*messages) </a>
+      <a href="#print_error-class_method" title="print_error (class method)">+ (Object) <strong>print_error</strong>(message) </a>
     
 
     
@@ -128,7 +137,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Prints one or more messages as <code>error</code> mssages.</p>
+    <span class="summary_desc"><div class='inline'><p>Prints an <code>error</code> messages.</p>
 </div></span>
   
 </li>
@@ -137,7 +146,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#print_info-class_method" title="print_info (class method)">+ (Object) <strong>print_info</strong>(*messages) </a>
+      <a href="#print_info-class_method" title="print_info (class method)">+ (Object) <strong>print_info</strong>(message) </a>
     
 
     
@@ -150,7 +159,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Prints one or more messages as <code>info</code> messages.</p>
+    <span class="summary_desc"><div class='inline'><p>Prints an <code>info</code> message.</p>
 </div></span>
   
 </li>
@@ -159,7 +168,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#print_warning-class_method" title="print_warning (class method)">+ (Object) <strong>print_warning</strong>(*messages) </a>
+      <a href="#print_warning-class_method" title="print_warning (class method)">+ (Object) <strong>print_warning</strong>(message) </a>
     
 
     
@@ -172,7 +181,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Prints one or more messages as <code>warning</code> mssages.</p>
+    <span class="summary_desc"><div class='inline'><p>Prints a <code>warning</code> message.</p>
 </div></span>
   
 </li>
@@ -212,13 +221,13 @@
       <div class="method_details first">
   <p class="signature first" id="print_debug-class_method">
   
-    + (<tt>Object</tt>) <strong>print_debug</strong>(*messages) 
+    + (<tt>Object</tt>) <strong>print_debug</strong>(message) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>Prints one or more messages as <code>debug</code> mssages.</p>
+    <p>Prints a <code>debug</code> message.</p>
 
 
   </div>
@@ -229,15 +238,15 @@
   
     <li>
       
-        <span class='type'>(<tt>Array</tt>)</span>
+        <span class='type'>(<tt>String</tt>)</span>
       
       
-        <span class='name'>messages</span>
+        <span class='name'>message</span>
       
       
       
         &mdash;
-        <div class='inline'><p>The messages to print.</p>
+        <div class='inline'><p>The message to print.</p>
 </div>
       
     </li>
@@ -265,15 +274,15 @@
       <pre class="lines">
 
 
-58
-59
-60</pre>
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/terminal/raw.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/terminal/raw.rb', line 61</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id print_debug'>print_debug</span><span class='lparen'>(</span><span class='op'>*</span><span class='id messages'>messages</span><span class='rparen'>)</span>
-  <span class='id messages'>messages</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id mesg'>mesg</span><span class='op'>|</span> <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[=] </span><span class='embexpr_beg'>#{</span><span class='id mesg'>mesg</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id print_debug'>print_debug</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
+  <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[=] </span><span class='embexpr_beg'>#{</span><span class='id message'>message</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -283,13 +292,13 @@
       <div class="method_details ">
   <p class="signature " id="print_error-class_method">
   
-    + (<tt>Object</tt>) <strong>print_error</strong>(*messages) 
+    + (<tt>Object</tt>) <strong>print_error</strong>(message) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>Prints one or more messages as <code>error</code> mssages.</p>
+    <p>Prints an <code>error</code> messages.</p>
 
 
   </div>
@@ -300,15 +309,15 @@
   
     <li>
       
-        <span class='type'>(<tt>Array</tt>)</span>
+        <span class='type'>(<tt>String</tt>)</span>
       
       
-        <span class='name'>messages</span>
+        <span class='name'>message</span>
       
       
       
         &mdash;
-        <div class='inline'><p>The messages to print.</p>
+        <div class='inline'><p>The message to print.</p>
 </div>
       
     </li>
@@ -336,15 +345,15 @@
       <pre class="lines">
 
 
-82
-83
-84</pre>
+85
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/terminal/raw.rb', line 82</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/terminal/raw.rb', line 85</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id print_error'>print_error</span><span class='lparen'>(</span><span class='op'>*</span><span class='id messages'>messages</span><span class='rparen'>)</span>
-  <span class='id messages'>messages</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id mesg'>mesg</span><span class='op'>|</span> <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[!] </span><span class='embexpr_beg'>#{</span><span class='id mesg'>mesg</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id print_error'>print_error</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
+  <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[!] </span><span class='embexpr_beg'>#{</span><span class='id message'>message</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -354,13 +363,13 @@
       <div class="method_details ">
   <p class="signature " id="print_info-class_method">
   
-    + (<tt>Object</tt>) <strong>print_info</strong>(*messages) 
+    + (<tt>Object</tt>) <strong>print_info</strong>(message) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>Prints one or more messages as <code>info</code> messages.</p>
+    <p>Prints an <code>info</code> message.</p>
 
 
   </div>
@@ -371,15 +380,15 @@
   
     <li>
       
-        <span class='type'>(<tt>Array</tt>)</span>
+        <span class='type'>(<tt>String</tt>)</span>
       
       
-        <span class='name'>messages</span>
+        <span class='name'>message</span>
       
       
       
         &mdash;
-        <div class='inline'><p>The messages to print.</p>
+        <div class='inline'><p>The message to print.</p>
 </div>
       
     </li>
@@ -407,15 +416,15 @@
       <pre class="lines">
 
 
-46
-47
-48</pre>
+49
+50
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/terminal/raw.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/terminal/raw.rb', line 49</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id print_info'>print_info</span><span class='lparen'>(</span><span class='op'>*</span><span class='id messages'>messages</span><span class='rparen'>)</span>
-  <span class='id messages'>messages</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id mesg'>mesg</span><span class='op'>|</span> <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[-] </span><span class='embexpr_beg'>#{</span><span class='id mesg'>mesg</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id print_info'>print_info</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
+  <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[-] </span><span class='embexpr_beg'>#{</span><span class='id message'>message</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -425,13 +434,13 @@
       <div class="method_details ">
   <p class="signature " id="print_warning-class_method">
   
-    + (<tt>Object</tt>) <strong>print_warning</strong>(*messages) 
+    + (<tt>Object</tt>) <strong>print_warning</strong>(message) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>Prints one or more messages as <code>warning</code> mssages.</p>
+    <p>Prints a <code>warning</code> message.</p>
 
 
   </div>
@@ -442,15 +451,15 @@
   
     <li>
       
-        <span class='type'>(<tt>Array</tt>)</span>
+        <span class='type'>(<tt>String</tt>)</span>
       
       
-        <span class='name'>messages</span>
+        <span class='name'>message</span>
       
       
       
         &mdash;
-        <div class='inline'><p>The messages to print.</p>
+        <div class='inline'><p>The message to print.</p>
 </div>
       
     </li>
@@ -478,15 +487,15 @@
       <pre class="lines">
 
 
-70
-71
-72</pre>
+73
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/terminal/raw.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/terminal/raw.rb', line 73</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id print_warning'>print_warning</span><span class='lparen'>(</span><span class='op'>*</span><span class='id messages'>messages</span><span class='rparen'>)</span>
-  <span class='id messages'>messages</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id mesg'>mesg</span><span class='op'>|</span> <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[*] </span><span class='embexpr_beg'>#{</span><span class='id mesg'>mesg</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id print_warning'>print_warning</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
+  <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[*] </span><span class='embexpr_beg'>#{</span><span class='id message'>message</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -549,12 +558,12 @@
       <pre class="lines">
 
 
-34
-35
-36</pre>
+37
+38
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/terminal/raw.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/terminal/raw.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id write'>write</span><span class='lparen'>(</span><span class='id data'>data</span><span class='rparen'>)</span>
   <span class='const'>STDOUT</span><span class='period'>.</span><span class='id write'>write</span><span class='lparen'>(</span><span class='id data'>data</span><span class='rparen'>)</span>
@@ -569,7 +578,7 @@
 </div>
     
     <div id="footer">
-  Generated on Sat Jan  8 15:55:17 2011 by 
+  Generated on Wed Jan 26 15:23:37 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.9.2).
 </div>

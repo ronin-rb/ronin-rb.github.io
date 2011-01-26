@@ -212,7 +212,7 @@ it&rsquo;s underscored name:</p>
   
 
   
-    <span class="summary_desc"><div class='inline'>
+    <span class="summary_desc"><div class='inline'><p>Sets the namespace of new <span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Generator</a></span> classes.</p>
 </div></span>
   
 </li>
@@ -332,8 +332,7 @@ working directory.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Renders the ERB template at the specified <em>template_path</em> and
-saves the result at the given <em>destination</em>.</p>
+    <span class="summary_desc"><div class='inline'><p>Renders the ERB template and saves the result.</p>
 </div></span>
   
 </li>
@@ -586,16 +585,16 @@ the tasks are invoked.</p>
       <pre class="lines">
 
 
-186
-187
-188
-189
-190
-191
-192</pre>
+192
+193
+194
+195
+196
+197
+198</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 186</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 192</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id arguments'>arguments</span><span class='op'>=</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='id config'>config</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id arguments'>arguments</span><span class='comma'>,</span><span class='id options'>options</span><span class='comma'>,</span><span class='id config'>config</span><span class='rparen'>)</span>
@@ -753,15 +752,15 @@ the tasks are invoked.</p>
       <pre class="lines">
 
 
-153
-154
-155
-156
-157
-158</pre>
+159
+160
+161
+162
+163
+164</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 153</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 159</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id generate'>generate</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='id arguments'>arguments</span><span class='op'>=</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id generator'>generator</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id arguments'>arguments</span><span class='comma'>,</span><span class='id options'>options</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
@@ -781,21 +780,49 @@ the tasks are invoked.</p>
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Sets the namespace of new <span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Ronin::Gen::Generator</a></span> classes.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+        <span class='name'>super_class</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new <span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Ronin::Gen::Generator</a></span> class.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-98
-99
-100
-101
-102
-103</pre>
+104
+105
+106
+107
+108
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 104</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id inherited'>inherited</span><span class='lparen'>(</span><span class='id super_class'>super_class</span><span class='rparen'>)</span>
   <span class='id class_name'>class_name</span> <span class='op'>=</span> <span class='id super_class'>super_class</span><span class='period'>.</span><span class='id name'>name</span><span class='period'>.</span><span class='id sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Ronin::Gen::Generators::</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
@@ -846,12 +873,12 @@ working directory.</p>
       <pre class="lines">
 
 
-111
-112
-113</pre>
+117
+118
+119</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 111</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 117</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id source_root'>source_root</span>
   <span class='ivar'>@generator_source_root</span> <span class='op'>||=</span> <span class='const'>Dir</span><span class='period'>.</span><span class='id pwd'>pwd</span>
@@ -934,12 +961,12 @@ working directory.</p>
       <pre class="lines">
 
 
-126
-127
-128</pre>
+132
+133
+134</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 126</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 132</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id source_root='>source_root=</span><span class='lparen'>(</span><span class='id new_dir'>new_dir</span><span class='rparen'>)</span>
   <span class='ivar'>@genereator_source_root</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id expand_path'>expand_path</span><span class='lparen'>(</span><span class='id new_dir'>new_dir</span><span class='rparen'>)</span>
@@ -1036,12 +1063,12 @@ working directory.</p>
       <pre class="lines">
 
 
-248
-249
-250</pre>
+254
+255
+256</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 248</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 254</span>
 
 <span class='kw'>def</span> <span class='id cp'>cp</span><span class='lparen'>(</span><span class='id data_file'>data_file</span><span class='comma'>,</span><span class='id destination'>destination</span><span class='rparen'>)</span>
   <span class='id copy_file'>copy_file</span><span class='lparen'>(</span><span class='id find_data_file'>find_data_file</span><span class='lparen'>(</span><span class='id data_file'>data_file</span><span class='rparen'>)</span><span class='comma'>,</span><span class='id destination'>destination</span><span class='rparen'>)</span>
@@ -1167,14 +1194,14 @@ working directory.</p>
       <pre class="lines">
 
 
-269
-270
-271
-272
-273</pre>
+275
+276
+277
+278
+279</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 269</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 275</span>
 
 <span class='kw'>def</span> <span class='id cp_r'>cp_r</span><span class='lparen'>(</span><span class='id data_dir'>data_dir</span><span class='comma'>,</span><span class='id destination'>destination</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id config'>config</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id each_data_dir'>each_data_dir</span><span class='lparen'>(</span><span class='id data_dir'>data_dir</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id dir'>dir</span><span class='op'>|</span>
@@ -1195,8 +1222,7 @@ working directory.</p>
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>Renders the ERB template at the specified <em>template_path</em> and
-saves the result at the given <em>destination</em>.</p>
+    <p>Renders the ERB template and saves the result.</p>
 
 
   </div>
@@ -1291,20 +1317,20 @@ will be returned.</p>
       <pre class="lines">
 
 
-297
-298
-299
-300
-301
 302
 303
 304
 305
 306
-307</pre>
+307
+308
+309
+310
+311
+312</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 297</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 302</span>
 
 <span class='kw'>def</span> <span class='id erb'>erb</span><span class='lparen'>(</span><span class='id template_path'>template_path</span><span class='comma'>,</span><span class='id destination'>destination</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id destination'>destination</span>
@@ -1359,11 +1385,11 @@ will be returned.</p>
       <pre class="lines">
 
 
-167
-168</pre>
+173
+174</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 167</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 173</span>
 
 <span class='kw'>def</span> <span class='id generate'>generate</span>
 <span class='kw'>end</span></pre>
@@ -1437,12 +1463,12 @@ will be returned.</p>
       <pre class="lines">
 
 
-229
-230
-231</pre>
+235
+236
+237</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 229</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 235</span>
 
 <span class='kw'>def</span> <span class='id mkdir'>mkdir</span><span class='lparen'>(</span><span class='id destination'>destination</span><span class='rparen'>)</span>
   <span class='id empty_directory'>empty_directory</span><span class='lparen'>(</span><span class='id destination'>destination</span><span class='rparen'>)</span>
@@ -1490,11 +1516,11 @@ the tasks are invoked.</p>
       <pre class="lines">
 
 
-200
-201</pre>
+206
+207</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 200</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 206</span>
 
 <span class='kw'>def</span> <span class='id setup'>setup</span>
 <span class='kw'>end</span></pre>
@@ -1568,12 +1594,12 @@ the tasks are invoked.</p>
       <pre class="lines">
 
 
-214
-215
-216</pre>
+220
+221
+222</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 214</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 220</span>
 
 <span class='kw'>def</span> <span class='id touch'>touch</span><span class='lparen'>(</span><span class='id destination'>destination</span><span class='rparen'>)</span>
   <span class='id create_file'>create_file</span><span class='lparen'>(</span><span class='id destination'>destination</span><span class='rparen'>)</span>
@@ -1588,7 +1614,7 @@ the tasks are invoked.</p>
 </div>
     
     <div id="footer">
-  Generated on Sat Jan  8 15:57:19 2011 by 
+  Generated on Wed Jan 26 15:36:48 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.9.2).
 </div>
