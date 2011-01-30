@@ -117,7 +117,7 @@ end
 class Bla::Ugly
 
 end
-{% highlight ruby %}
+{% endhighlight %}
 
 ### Good
 
