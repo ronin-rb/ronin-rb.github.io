@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Module: Ronin::Network::HTTP</title>
 <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -686,13 +686,19 @@ name to the standard camel-case HTTP header name.</p>
 
 184
 185
-186</pre>
+186
+187
+188
+189</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 184</span>
 
 <span class='kw'>def</span> <span class='const'>HTTP</span><span class='period'>.</span><span class='id header_name'>header_name</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
-  <span class='id name'>name</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[\s+_-]</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id word'>word</span><span class='op'>|</span> <span class='id word'>word</span><span class='period'>.</span><span class='id capitalize'>capitalize</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id words'>words</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[\s+_-]</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
+
+  <span class='id words'>words</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id word'>word</span><span class='op'>|</span> <span class='id word'>word</span><span class='period'>.</span><span class='id capitalize!'>capitalize!</span> <span class='rbrace'>}</span>
+  <span class='kw'>return</span> <span class='id words'>words</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -760,9 +766,6 @@ to standard camel-cased HTTP headers.</p>
       <pre class="lines">
 
 
-198
-199
-200
 201
 202
 203
@@ -774,10 +777,13 @@ to standard camel-cased HTTP headers.</p>
 209
 210
 211
-212</pre>
+212
+213
+214
+215</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 198</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 201</span>
 
 <span class='kw'>def</span> <span class='const'>HTTP</span><span class='period'>.</span><span class='id headers'>headers</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -1142,9 +1148,6 @@ class.</p>
       <pre class="lines">
 
 
-253
-254
-255
 256
 257
 258
@@ -1177,10 +1180,13 @@ class.</p>
 285
 286
 287
-288</pre>
+288
+289
+290
+291</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 253</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 256</span>
 
 <span class='kw'>def</span> <span class='const'>HTTP</span><span class='period'>.</span><span class='id request'>request</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:method</span><span class='rbracket'>]</span>
@@ -1338,9 +1344,9 @@ class.</p>
 </div>
     
     <div id="footer">
-  Generated on Wed Jan 26 15:07:56 2011 by 
+  Generated on Sun Mar 27 14:16:06 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.4 (ruby-1.9.2).
+  0.6.5 (ruby-1.9.2).
 </div>
 
   </body>

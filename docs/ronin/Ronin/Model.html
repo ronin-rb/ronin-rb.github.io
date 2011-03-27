@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Module: Ronin::Model</title>
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -68,7 +68,7 @@
   
     <dt class="r1 last">Defined in:</dt>
     <dd class="r1 last">lib/ronin/model/model.rb<span class="defines">,<br />
-  lib/ronin/model/class_methods.rb,<br /> lib/ronin/model/has_unique_name.rb,<br /> lib/ronin/model/types/description.rb,<br /> lib/ronin/model/has_name/has_name.rb,<br /> lib/ronin/model/has_title/has_title.rb,<br /> lib/ronin/model/cacheable/cacheable.rb,<br /> lib/ronin/model/has_name/class_methods.rb,<br /> lib/ronin/model/cacheable/class_methods.rb,<br /> lib/ronin/model/has_authors/has_authors.rb,<br /> lib/ronin/model/has_title/class_methods.rb,<br /> lib/ronin/model/has_version/has_version.rb,<br /> lib/ronin/model/has_license/has_license.rb,<br /> lib/ronin/model/has_version/class_methods.rb,<br /> lib/ronin/model/has_authors/class_methods.rb,<br /> lib/ronin/model/has_license/class_methods.rb,<br /> lib/ronin/model/has_description/class_methods.rb,<br /> lib/ronin/model/has_description/has_description.rb</span>
+  lib/ronin/model/types.rb,<br /> lib/ronin/model/class_methods.rb,<br /> lib/ronin/model/types/description.rb,<br /> lib/ronin/model/has_name/has_name.rb,<br /> lib/ronin/model/has_title/has_title.rb,<br /> lib/ronin/model/cacheable/cacheable.rb,<br /> lib/ronin/model/has_name/class_methods.rb,<br /> lib/ronin/model/has_version/has_version.rb,<br /> lib/ronin/model/has_license/has_license.rb,<br /> lib/ronin/model/has_title/class_methods.rb,<br /> lib/ronin/model/cacheable/class_methods.rb,<br /> lib/ronin/model/has_authors/has_authors.rb,<br /> lib/ronin/model/has_version/class_methods.rb,<br /> lib/ronin/model/has_authors/class_methods.rb,<br /> lib/ronin/model/has_license/class_methods.rb,<br /> lib/ronin/model/has_unique_name/class_methods.rb,<br /> lib/ronin/model/has_description/class_methods.rb,<br /> lib/ronin/model/has_unique_name/has_unique_name.rb,<br /> lib/ronin/model/has_description/has_description.rb</span>
 </dd>
   
 </dl>
@@ -236,7 +236,7 @@ and values.</p>
       <pre class="code"><span class="info file"># File 'lib/ronin/model/model.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
-  <span class='kw'>unless</span> <span class='id base'>base</span><span class='period'>.</span><span class='id ancestors'>ancestors</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Resource</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id base'>base</span> <span class='op'>&lt;</span> <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Resource</span>
     <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Resource</span>
   <span class='kw'>end</span>
 
@@ -486,9 +486,9 @@ value of each attribute.</p>
 </div>
     
     <div id="footer">
-  Generated on Wed Jan 26 15:23:11 2011 by 
+  Generated on Sun Mar 27 14:17:50 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.4 (ruby-1.9.2).
+  0.6.5 (ruby-1.9.2).
 </div>
 
   </body>

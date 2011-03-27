@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Module: Ronin::Support</title>
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -83,12 +83,12 @@
   
 </div>
         </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>0.1.0.rc1</span><span class='tstring_end'>'</span></span></pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>0.1.0</span><span class='tstring_end'>'</span></span></pre></dd>
       
-        <dt id="Inflector-constant" class="">Inflector =
+        <dt id="INFLECTORS-constant" class="">INFLECTORS =
           <div class="docstring">
   <div class="discussion">
-    <p>The Inflector that Ronin will use.</p>
+    <p>The Inflectors supported by ronin-support</p>
 
 
   </div>
@@ -97,25 +97,232 @@
   
 </div>
         </dt>
-        <dd><pre class="code"><span class='kw'>if</span> <span class='const'>Object</span><span class='period'>.</span><span class='id const_defined?'>const_defined?</span><span class='lparen'>(</span><span class='symbol'>:ActiveSupport</span><span class='rparen'>)</span>
-  <span class='const'>ActiveSupport</span><span class='op'>::</span><span class='const'>Inflector</span>
-<span class='kw'>else</span>
-  <span class='const'>Extlib</span><span class='op'>::</span><span class='const'>Inflection</span>
-<span class='kw'>end</span></pre></dd>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='symbol'>:datamapper</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span>
+    <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>dm-core/support/inflector</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+    <span class='symbol'>:const</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>DataMapper::Inflector</span><span class='tstring_end'>'</span></span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='symbol'>:active_support</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span>
+    <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>active_support/inflector</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+    <span class='symbol'>:const</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ActiveSupport::Inflector</span><span class='tstring_end'>'</span></span>
+  <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='symbol'>:extlib</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span>
+    <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>extlib/inflection</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+    <span class='symbol'>:const</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Extlib::Inflection</span><span class='tstring_end'>'</span></span>
+  <span class='rbrace'>}</span>
+<span class='rbrace'>}</span></pre></dd>
       
     </dl>
   
 
 
 
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
 
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#load_inflector%21-class_method" title="load_inflector! (class method)">+ (true) <strong>load_inflector!</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Loads an Inflector library and sets the <code>Ronin::Support::Inflector</code>
+constant.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="load_inflector!-class_method">
+  
+    + (<tt>true</tt>) <strong>load_inflector!</strong>(name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Loads an Inflector library and sets the <code>Ronin::Support::Inflector</code>
+constant.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Symbol</tt>, <tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+        <span class='name'>name</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the Inflector library to load. May be either
+<code>:datamapper</code>, <code>:active_support</code> or <code>:extlib</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>true</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies that the Inflector library was successfully loaded.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Inflector library is not supported.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>LoadError</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Inflector library could not be loaded.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>NameError</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The constant could not be found.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/inflector.rb', line 58</span>
+
+<span class='kw'>def</span> <span class='const'>Support</span><span class='period'>.</span><span class='id load_inflector!'>load_inflector!</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+  <span class='id name'>name</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
+
+  <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id inflector'>inflector</span> <span class='op'>=</span> <span class='const'>INFLECTORS</span><span class='lbracket'>[</span><span class='id name'>name</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unsupported Inflector: </span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>begin</span>
+    <span class='id require'>require</span> <span class='id inflector'>inflector</span><span class='lbracket'>[</span><span class='symbol'>:path</span><span class='rbracket'>]</span>
+  <span class='kw'>rescue</span> <span class='const'>Gem</span><span class='op'>::</span><span class='const'>LoadError</span> <span class='op'>=&gt;</span> <span class='id e'>e</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='id e'>e</span><span class='rparen'>)</span>
+  <span class='kw'>rescue</span> <span class='op'>::</span><span class='const'>LoadError</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>LoadError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unable to load </span><span class='embexpr_beg'>#{</span><span class='id inflector'>inflector</span><span class='lbracket'>[</span><span class='symbol'>:path</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>begin</span>
+    <span class='id const_set'>const_set</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Inflector</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id eval'>eval</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>::</span><span class='embexpr_beg'>#{</span><span class='id inflector'>inflector</span><span class='lbracket'>[</span><span class='symbol'>:const</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>rescue</span> <span class='const'>NameError</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>NameError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unable to find </span><span class='embexpr_beg'>#{</span><span class='id inflector'>inflector</span><span class='lbracket'>[</span><span class='symbol'>:const</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
 </div>
     
     <div id="footer">
-  Generated on Wed Jan 26 15:07:55 2011 by 
+  Generated on Sun Mar 27 14:16:04 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.4 (ruby-1.9.2).
+  0.6.5 (ruby-1.9.2).
 </div>
 
   </body>

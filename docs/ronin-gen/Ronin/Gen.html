@@ -60,7 +60,7 @@
   
     <dt class="r1 last">Defined in:</dt>
     <dd class="r1 last">lib/ronin/gen/gen.rb<span class="defines">,<br />
-  lib/ronin/gen/config.rb,<br /> lib/ronin/gen/version.rb,<br /> lib/ronin/gen/generator.rb,<br /> lib/ronin/gen/generators.rb,<br /> lib/ronin/gen/dir_generator.rb,<br /> lib/ronin/gen/file_generator.rb,<br /> lib/ronin/gen/ruby_generator.rb,<br /> lib/ronin/gen/generators/library.rb,<br /> lib/ronin/gen/generators/repository.rb,<br /> lib/ronin/gen/source_code_generator.rb,<br /> lib/ronin/gen/exceptions/unknown_generator.rb</span>
+  lib/ronin/gen/config.rb,<br /> lib/ronin/gen/version.rb,<br /> lib/ronin/gen/generator.rb,<br /> lib/ronin/gen/generators.rb,<br /> lib/ronin/gen/dir_generator.rb,<br /> lib/ronin/gen/ruby_generator.rb,<br /> lib/ronin/gen/file_generator.rb,<br /> lib/ronin/gen/generators/library.rb,<br /> lib/ronin/gen/generators/repository.rb,<br /> lib/ronin/gen/source_code_generator.rb,<br /> lib/ronin/gen/exceptions/unknown_generator.rb</span>
 </dd>
   
 </dl>
@@ -95,7 +95,7 @@
   
 </div>
         </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>1.0.0.rc1</span><span class='tstring_end'>'</span></span></pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>1.0.0</span><span class='tstring_end'>'</span></span></pre></dd>
       
     </dl>
   
@@ -269,25 +269,23 @@ could not be found.</p>
       <pre class="lines">
 
 
-49
-50
-51
-52
-53
 54
 55
 56
 57
-58</pre>
+58
+59
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/gen.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/gen.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='const'>Gen</span><span class='period'>.</span><span class='id generator'>generator</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
   <span class='id name'>name</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_s'>to_s</span>
-  <span class='id path'>path</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[_-]+</span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>_</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>:+</span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='const'>File</span><span class='op'>::</span><span class='const'>SEPARATOR</span><span class='rparen'>)</span>
 
-  <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id generator'>generator</span> <span class='op'>=</span> <span class='const'>Generators</span><span class='period'>.</span><span class='id require_const'>require_const</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id generator'>generator</span> <span class='op'>=</span> <span class='const'>Generators</span><span class='period'>.</span><span class='id require_const'>require_const</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span><span class='rparen'>)</span>
     <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>UnknownGenerator</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown generator </span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='period'>.</span><span class='id dump'>dump</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
@@ -352,10 +350,6 @@ could not be found.</p>
       <pre class="lines">
 
 
-68
-69
-70
-71
 72
 73
 74
@@ -366,25 +360,35 @@ could not be found.</p>
 79
 80
 81
-82</pre>
+82
+83
+84
+85
+86
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/gen.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/gen.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='const'>Gen</span><span class='period'>.</span><span class='id generators'>generators</span>
-  <span class='kw'>unless</span> <span class='kw'>defined?</span><span class='lparen'>(</span><span class='cvar'>@@ronin_gen_generators</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='ivar'>@generators</span><span class='period'>.</span><span class='id empty?'>empty?</span>
     <span class='id directory'>directory</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>lib</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='const'>Generators</span><span class='period'>.</span><span class='id namespace_root'>namespace_root</span><span class='rparen'>)</span>
 
-    <span class='cvar'>@@ronin_gen_generators</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+    <span class='const'>Installation</span><span class='period'>.</span><span class='id each_file_in'>each_file_in</span><span class='lparen'>(</span><span class='id directory'>directory</span><span class='comma'>,</span><span class='symbol'>:rb</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id path'>path</span><span class='op'>|</span>
+      <span class='comment'># strip the tailing '.rb' file extension
+</span>      <span class='id name'>name</span> <span class='op'>=</span> <span class='id path'>path</span><span class='period'>.</span><span class='id chomp'>chomp</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.rb</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 
-    <span class='const'>Installation</span><span class='period'>.</span><span class='id each_file'>each_file</span><span class='lparen'>(</span><span class='id directory'>directory</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id path'>path</span><span class='op'>|</span>
-      <span class='id name'>name</span> <span class='op'>=</span> <span class='id path'>path</span><span class='period'>.</span><span class='id gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\.rb$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id split'>split</span><span class='lparen'>(</span><span class='const'>File</span><span class='op'>::</span><span class='const'>SEPARATOR</span><span class='rparen'>)</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>:</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+      <span class='comment'># replace any file separators with a ':', to mimic the
+</span>      <span class='comment'># naming convention of Rake/Thor.
+</span>      <span class='id name'>name</span><span class='period'>.</span><span class='id tr!'>tr!</span><span class='lparen'>(</span><span class='const'>File</span><span class='op'>::</span><span class='const'>SEPARATOR</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>:</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 
-      <span class='cvar'>@@ronin_gen_generators</span><span class='lbracket'>[</span><span class='id name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id path'>path</span>
+      <span class='ivar'>@generators</span> <span class='op'>&lt;&lt;</span> <span class='id name'>name</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
-  <span class='kw'>return</span> <span class='cvar'>@@ronin_gen_generators</span>
+  <span class='kw'>return</span> <span class='ivar'>@generators</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -396,7 +400,7 @@ could not be found.</p>
 </div>
     
     <div id="footer">
-  Generated on Wed Jan 26 15:36:47 2011 by 
+  Generated on Sun Mar 27 14:19:05 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.6.4 (ruby-1.9.2).
 </div>

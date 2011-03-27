@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Class: Ronin::URL</title>
 <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -1234,6 +1234,7 @@
       <pre class="lines">
 
 
+205
 206
 207
 208
@@ -1266,16 +1267,19 @@
 235
 236
 237
-238</pre>
+238
+239</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 206</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 205</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='op'>[]</span><span class='lparen'>(</span><span class='id url'>url</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>super</span><span class='lparen'>(</span><span class='id url'>url</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id url'>url</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Integer</span><span class='rparen'>)</span>
 
   <span class='comment'># optionally parse the URL
-</span>  <span class='id url'>url</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id parse'>parse</span><span class='lparen'>(</span><span class='id url'>url</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id url'>url</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>URI</span><span class='rparen'>)</span>
+</span>  <span class='kw'>unless</span> <span class='id url'>url</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>URI</span><span class='rparen'>)</span>
+    <span class='id url'>url</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id parse'>parse</span><span class='lparen'>(</span><span class='id url'>url</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
   <span class='id port'>port</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id url'>url</span><span class='period'>.</span><span class='id port'>port</span>
            <span class='lbrace'>{</span><span class='symbol'>:number</span> <span class='op'>=&gt;</span> <span class='id url'>url</span><span class='period'>.</span><span class='id port'>port</span><span class='rbrace'>}</span>
@@ -1382,12 +1386,12 @@
       <pre class="lines">
 
 
+145
 146
-147
-148</pre>
+147</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 146</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 145</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id directory'>directory</span><span class='lparen'>(</span><span class='id sub_dir'>sub_dir</span><span class='rparen'>)</span>
   <span class='id all'>all</span><span class='lparen'>(</span><span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id sub_dir'>sub_dir</span><span class='rparen'>)</span> <span class='op'>|</span> <span class='id all'>all</span><span class='lparen'>(</span><span class='symbol'>:path</span><span class='period'>.</span><span class='id like'>like</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id sub_dir'>sub_dir</span><span class='rbrace'>}</span><span class='tstring_content'>/%</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -1470,12 +1474,12 @@
       <pre class="lines">
 
 
+160
 161
-162
-163</pre>
+162</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 161</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 160</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id extension'>extension</span><span class='lparen'>(</span><span class='id ext'>ext</span><span class='rparen'>)</span>
   <span class='id all'>all</span><span class='lparen'>(</span><span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%.</span><span class='embexpr_beg'>#{</span><span class='id ext'>ext</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -1507,10 +1511,10 @@
       <pre class="lines">
 
 
-64</pre>
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 66</span>
 
 <span class='id property'>property</span> <span class='symbol'>:fragment</span><span class='comma'>,</span> <span class='const'>String</span></pre>
     </td>
@@ -1591,7 +1595,6 @@
       <pre class="lines">
 
 
-251
 252
 253
 254
@@ -1623,10 +1626,11 @@
 280
 281
 282
-283</pre>
+283
+284</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 251</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 252</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id from'>from</span><span class='lparen'>(</span><span class='id uri'>uri</span><span class='rparen'>)</span>
   <span class='comment'># find or create the URL scheme, host_name and port
@@ -1688,10 +1692,10 @@
       <pre class="lines">
 
 
-55</pre>
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 57</span>
 
 <span class='id belongs_to'>belongs_to</span> <span class='symbol'>:host_name</span></pre>
     </td>
@@ -1772,12 +1776,12 @@
       <pre class="lines">
 
 
+115
 116
-117
-118</pre>
+117</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 116</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 115</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id hosts'>hosts</span><span class='lparen'>(</span><span class='id names'>names</span><span class='rparen'>)</span>
   <span class='id all'>all</span><span class='lparen'>(</span><span class='symbol'>:host</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:address</span> <span class='op'>=&gt;</span> <span class='id names'>names</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -1841,12 +1845,12 @@
       <pre class="lines">
 
 
+88
 89
-90
-91</pre>
+90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 89</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 88</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id http'>http</span>
   <span class='id all'>all</span><span class='lparen'>(</span><span class='symbol'>:scheme</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>http</span><span class='tstring_end'>'</span></span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -1910,12 +1914,12 @@
       <pre class="lines">
 
 
+100
 101
-102
-103</pre>
+102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 101</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id https'>https</span>
   <span class='id all'>all</span><span class='lparen'>(</span><span class='symbol'>:scheme</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>https</span><span class='tstring_end'>'</span></span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -1947,10 +1951,10 @@
       <pre class="lines">
 
 
-49</pre>
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 51</span>
 
 <span class='id property'>property</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='const'>Serial</span></pre>
     </td>
@@ -1980,10 +1984,10 @@
       <pre class="lines">
 
 
-73</pre>
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 75</span>
 
 <span class='id property'>property</span> <span class='symbol'>:last_scanned_at</span><span class='comma'>,</span> <span class='const'>Time</span></pre>
     </td>
@@ -2064,7 +2068,6 @@
       <pre class="lines">
 
 
-424
 425
 426
 427
@@ -2076,10 +2079,11 @@
 433
 434
 435
-436</pre>
+436
+437</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 424</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 425</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id normalized_path'>normalized_path</span><span class='lparen'>(</span><span class='id uri'>uri</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id uri'>uri</span>
@@ -2179,12 +2183,12 @@
       <pre class="lines">
 
 
-298
 299
-300</pre>
+300
+301</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 298</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 299</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id parse'>parse</span><span class='lparen'>(</span><span class='id url'>url</span><span class='rparen'>)</span>
   <span class='id from'>from</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id parse'>parse</span><span class='lparen'>(</span><span class='id url'>url</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -2216,10 +2220,10 @@
       <pre class="lines">
 
 
-61</pre>
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 63</span>
 
 <span class='id property'>property</span> <span class='symbol'>:path</span><span class='comma'>,</span> <span class='const'>String</span></pre>
     </td>
@@ -2249,10 +2253,10 @@
       <pre class="lines">
 
 
-58</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 60</span>
 
 <span class='id belongs_to'>belongs_to</span> <span class='symbol'>:port</span><span class='comma'>,</span> <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>TCPPort</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -2333,12 +2337,12 @@
       <pre class="lines">
 
 
+130
 131
-132
-133</pre>
+132</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 131</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 130</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id ports'>ports</span><span class='lparen'>(</span><span class='id numbers'>numbers</span><span class='rparen'>)</span>
   <span class='id all'>all</span><span class='lparen'>(</span><span class='symbol'>:port</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:number</span> <span class='op'>=&gt;</span> <span class='id numbers'>numbers</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -2421,12 +2425,12 @@
       <pre class="lines">
 
 
+175
 176
-177
-178</pre>
+177</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 176</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 175</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id query_param'>query_param</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
   <span class='id all'>all</span><span class='lparen'>(</span><span class='symbol'>:query_params</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id name'>name</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -2458,10 +2462,10 @@
       <pre class="lines">
 
 
-67</pre>
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 69</span>
 
 <span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:query_params</span><span class='comma'>,</span> <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>URLQueryParam</span><span class='tstring_end'>'</span></span></pre>
     </td>
@@ -2542,12 +2546,12 @@
       <pre class="lines">
 
 
+190
 191
-192
-193</pre>
+192</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 191</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 190</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id query_value'>query_value</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
   <span class='id all'>all</span><span class='lparen'>(</span><span class='symbol'>:query_params</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span><span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='id value'>value</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -2579,10 +2583,10 @@
       <pre class="lines">
 
 
-52</pre>
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 54</span>
 
 <span class='id belongs_to'>belongs_to</span> <span class='symbol'>:scheme</span><span class='comma'>,</span> <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>URLScheme</span><span class='tstring_end'>'</span></span></pre>
     </td>
@@ -2612,10 +2616,10 @@
       <pre class="lines">
 
 
-70</pre>
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 72</span>
 
 <span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:web_credentials</span></pre>
     </td>
@@ -2651,10 +2655,10 @@
       <pre class="lines">
 
 
-64</pre>
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 66</span>
 
 <span class='id property'>property</span> <span class='symbol'>:fragment</span><span class='comma'>,</span> <span class='const'>String</span></pre>
     </td>
@@ -2684,10 +2688,10 @@
       <pre class="lines">
 
 
-64</pre>
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 66</span>
 
 <span class='id property'>property</span> <span class='symbol'>:fragment</span><span class='comma'>,</span> <span class='const'>String</span></pre>
     </td>
@@ -2749,12 +2753,12 @@
       <pre class="lines">
 
 
-310
 311
-312</pre>
+312
+313</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 310</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 311</span>
 
 <span class='kw'>def</span> <span class='id host'>host</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id host_name'>host_name</span><span class='period'>.</span><span class='id address'>address</span>
@@ -2786,10 +2790,10 @@
       <pre class="lines">
 
 
-55</pre>
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 57</span>
 
 <span class='id belongs_to'>belongs_to</span> <span class='symbol'>:host_name</span></pre>
     </td>
@@ -2819,10 +2823,10 @@
       <pre class="lines">
 
 
-55</pre>
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 57</span>
 
 <span class='id belongs_to'>belongs_to</span> <span class='symbol'>:host_name</span></pre>
     </td>
@@ -2852,10 +2856,10 @@
       <pre class="lines">
 
 
-49</pre>
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 51</span>
 
 <span class='id property'>property</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='const'>Serial</span></pre>
     </td>
@@ -2885,10 +2889,10 @@
       <pre class="lines">
 
 
-49</pre>
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 51</span>
 
 <span class='id property'>property</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='const'>Serial</span></pre>
     </td>
@@ -2918,10 +2922,10 @@
       <pre class="lines">
 
 
-73</pre>
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 75</span>
 
 <span class='id property'>property</span> <span class='symbol'>:last_scanned_at</span><span class='comma'>,</span> <span class='const'>Time</span></pre>
     </td>
@@ -2951,10 +2955,10 @@
       <pre class="lines">
 
 
-73</pre>
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 75</span>
 
 <span class='id property'>property</span> <span class='symbol'>:last_scanned_at</span><span class='comma'>,</span> <span class='const'>Time</span></pre>
     </td>
@@ -2984,10 +2988,10 @@
       <pre class="lines">
 
 
-61</pre>
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 63</span>
 
 <span class='id property'>property</span> <span class='symbol'>:path</span><span class='comma'>,</span> <span class='const'>String</span></pre>
     </td>
@@ -3017,10 +3021,10 @@
       <pre class="lines">
 
 
-61</pre>
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 63</span>
 
 <span class='id property'>property</span> <span class='symbol'>:path</span><span class='comma'>,</span> <span class='const'>String</span></pre>
     </td>
@@ -3050,10 +3054,10 @@
       <pre class="lines">
 
 
-58</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 60</span>
 
 <span class='id belongs_to'>belongs_to</span> <span class='symbol'>:port</span><span class='comma'>,</span> <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>TCPPort</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -3083,10 +3087,10 @@
       <pre class="lines">
 
 
-58</pre>
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 60</span>
 
 <span class='id belongs_to'>belongs_to</span> <span class='symbol'>:port</span><span class='comma'>,</span> <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>TCPPort</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
@@ -3148,12 +3152,12 @@
       <pre class="lines">
 
 
-322
 323
-324</pre>
+324
+325</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 322</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 323</span>
 
 <span class='kw'>def</span> <span class='id port_number'>port_number</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id port'>port</span><span class='period'>.</span><span class='id number'>number</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id port'>port</span>
@@ -3185,10 +3189,10 @@
       <pre class="lines">
 
 
-67</pre>
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 69</span>
 
 <span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:query_params</span><span class='comma'>,</span> <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>URLQueryParam</span><span class='tstring_end'>'</span></span></pre>
     </td>
@@ -3218,10 +3222,10 @@
       <pre class="lines">
 
 
-67</pre>
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 69</span>
 
 <span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:query_params</span><span class='comma'>,</span> <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>URLQueryParam</span><span class='tstring_end'>'</span></span></pre>
     </td>
@@ -3283,7 +3287,6 @@
       <pre class="lines">
 
 
-334
 335
 336
 337
@@ -3291,10 +3294,11 @@
 339
 340
 341
-342</pre>
+342
+343</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 334</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 335</span>
 
 <span class='kw'>def</span> <span class='id query_string'>query_string</span>
   <span class='id params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -3383,7 +3387,6 @@
       <pre class="lines">
 
 
-355
 356
 357
 358
@@ -3391,10 +3394,11 @@
 360
 361
 362
-363</pre>
+363
+364</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 355</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 356</span>
 
 <span class='kw'>def</span> <span class='id query_string='>query_string=</span><span class='lparen'>(</span><span class='id query'>query</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id query_params'>query_params</span><span class='period'>.</span><span class='id clear'>clear</span>
@@ -3432,10 +3436,10 @@
       <pre class="lines">
 
 
-52</pre>
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 54</span>
 
 <span class='id belongs_to'>belongs_to</span> <span class='symbol'>:scheme</span><span class='comma'>,</span> <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>URLScheme</span><span class='tstring_end'>'</span></span></pre>
     </td>
@@ -3465,10 +3469,10 @@
       <pre class="lines">
 
 
-52</pre>
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 54</span>
 
 <span class='id belongs_to'>belongs_to</span> <span class='symbol'>:scheme</span><span class='comma'>,</span> <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>URLScheme</span><span class='tstring_end'>'</span></span></pre>
     </td>
@@ -3530,12 +3534,12 @@
       <pre class="lines">
 
 
-407
 408
-409</pre>
+409
+410</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 407</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 408</span>
 
 <span class='kw'>def</span> <span class='id to_s'>to_s</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id to_uri'>to_uri</span><span class='period'>.</span><span class='id to_s'>to_s</span>
@@ -3599,7 +3603,6 @@
       <pre class="lines">
 
 
-373
 374
 375
 376
@@ -3623,10 +3626,11 @@
 394
 395
 396
-397</pre>
+397
+398</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 373</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 374</span>
 
 <span class='kw'>def</span> <span class='id to_uri'>to_uri</span>
   <span class='comment'># map the URL scheme to a URI class
@@ -3680,10 +3684,10 @@
       <pre class="lines">
 
 
-70</pre>
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 72</span>
 
 <span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:web_credentials</span></pre>
     </td>
@@ -3713,10 +3717,10 @@
       <pre class="lines">
 
 
-70</pre>
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 72</span>
 
 <span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:web_credentials</span></pre>
     </td>
@@ -3729,9 +3733,9 @@
 </div>
     
     <div id="footer">
-  Generated on Wed Jan 26 15:22:51 2011 by 
+  Generated on Sun Mar 27 14:17:22 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.4 (ruby-1.9.2).
+  0.6.5 (ruby-1.9.2).
 </div>
 
   </body>

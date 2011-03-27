@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Ronin Documentation</title>
 <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -47,7 +47,7 @@
   <li><a href="http://ronin-ruby.github.com">Website</a></li>
   <li><a href="http://github.com/ronin-ruby/ronin">Source</a></li>
   <li><a href="http://github.com/ronin-ruby/ronin/issues">Issues</a></li>
-  <li><a href="http://rubydoc.info/github/ronin-ruby/ronin/frames">Documentation</a></li>
+  <li><a href="http://rubydoc.info/gems/ronin/frames">Documentation</a></li>
   <li><a href="http://groups.google.com/group/ronin-ruby">Mailing List</a></li>
   <li>irc.freenode.net #ronin</li>
 </ul>
@@ -60,20 +60,22 @@ or payloads over many common Source-Code-Management (SCM) systems.</p>
 
 <h3 id="hack-with-ruby">Hack with Ruby</h3>
 
-<p>Ronin combines all of the flexibily and power of Ruby, with countless
-convenience methods. Unlike other automated hacking tools, which impose a
-certain workflow, Ronin lets the user control the workflow.</p>
+<p>Ronin combines the flexibility of Ruby with countless convenience methods
+and libraries, to make Ruby usable for Offensive Security or Research work.</p>
 
 <h3 id="organize-your-data">Organize Your Data</h3>
 
-<p>Ronin comes with a fully designed Database accessible from Ruby using
-<a href="http://datamapper.org">DataMapper</a>. In Ronin it is easy to store or query
-IP addresses, Hosts, Ports, URLs or even Passwords.</p>
+<p>Ronin comes with a Database designed for Security data and accessible from
+Ruby using <a href="http://datamapper.org">DataMapper</a>. With Ronin, storing or
+querying IP addresses, Hosts, Ports, URLs, Passwords is as simple as a
+single line of Ruby.</p>
 
 <h3 id="share-code">Share Code</h3>
 
-<p>Ronin makes sharing code with the community, or just your friends, as easy
-as uploading your Ruby files to a SVN or Git repository.</p>
+<p>Ronin allows sharing code with the community, or just your friends, via
+Ronin Repositories. Ronin Repositories are like lazier versions of
+<a href="http://rubygems.org/">RubyGems</a>, that can be hosted with SubVersion,
+Mercurial or Git.</p>
 
 <h2 id="features">Features</h2>
 
@@ -90,8 +92,7 @@ as uploading your Ruby files to a SVN or Git repository.</p>
       </li>
     </ul>
   </li>
-  <li>Provides Object Database using <a href="http://datamapper.org">DataMapper</a>
-with:
+  <li>Provides a Database using <a href="http://datamapper.org">DataMapper</a> with:
     <ul>
       <li><span class='object_link'><a href="Ronin/Author.html" title="Ronin::Author (class)">Ronin::Author</a></span></li>
       <li><span class='object_link'><a href="Ronin/License.html" title="Ronin::License (class)">Ronin::License</a></span></li>
@@ -132,6 +133,7 @@ into the Database.</li>
 <a href="http://github.com/ronin-ruby/ronin-support#readme">ronin-support</a>.</li>
   <li>Provides a customized Ruby Console with:
     <ul>
+      <li>Syntax highlighting.</li>
       <li>Tab-completion enabled.</li>
       <li>Auto-indentation enabled.</li>
       <li>Pretty-Print loaded.</li>
@@ -139,7 +141,7 @@ into the Database.</li>
 output helper methods with color-output.</li>
     </ul>
   </li>
-  <li>Provides an extendable command-line interface based on
+  <li>Provides an extensible command-line interface based on
 <a href="http://github.com/wycats/thor#readme">Thor</a>.</li>
 </ul>
 
@@ -204,35 +206,52 @@ output helper methods with color-output.</li>
 
 <ul>
   <li><a href="http://www.ruby-lang.org/">Ruby</a> &gt;= 1.8.7</li>
-  <li><a href="http://rubygems.org/gems/activesupport">ActiveSupport</a> &gt;= 3.0.0</li>
   <li><a href="http://datamapper.org/">DataMapper</a>:
     <ul>
-      <li><a href="http://github.com/datamapper/dm-do-adapter">dm-do-adapter</a> ~&gt; 1.0.2</li>
-      <li><a href="http://github.com/datamapper/dm-sqlite-adapter">dm-sqlite-adapter</a>
-~&gt; 1.0.2
+      <li><a href="http://github.com/datamapper/dm-do-adapter#readme">dm-do-adapter</a>
+~&gt; 1.1.0</li>
+      <li><a href="http://github.com/datamapper/dm-sqlite-adapter#readme">dm-sqlite-adapter</a>
+~&gt; 1.1.0
         <ul>
           <li><a href="http://sqlite.org/">libsqlite3</a></li>
         </ul>
       </li>
-      <li><a href="http://github.com/datamapper/dm-core">dm-core</a> ~&gt; 1.0.2</li>
-      <li><a href="http://github.com/datamapper/dm-types">dm-types</a> ~&gt; 1.0.2</li>
-      <li><a href="http://github.com/datamapper/dm-migrations">dm-migrations</a> ~&gt; 1.0.2</li>
-      <li><a href="http://github.com/datamapper/dm-validations">dm-validations</a> ~&gt; 1.0.2</li>
-      <li><a href="http://github.com/datamapper/dm-aggregates">dm-aggregates</a> ~&gt; 1.0.2</li>
-      <li><a href="http://github.com/datamapper/dm-timestamps">dm-timestamps</a> ~&gt; 1.0.2</li>
-      <li><a href="http://github.com/datamapper/dm-tags">dm-tags</a> ~&gt; 1.0.2</li>
+      <li><a href="http://github.com/datamapper/dm-core#readme">dm-core</a>
+~&gt; 1.1.0</li>
+      <li><a href="http://github.com/datamapper/dm-types#readme">dm-types</a>
+~&gt; 1.1.0</li>
+      <li><a href="http://github.com/datamapper/dm-migrations#readme">dm-migrations</a>
+~&gt; 1.1.0</li>
+      <li><a href="http://github.com/datamapper/dm-validations#readme">dm-validations</a>
+~&gt; 1.1.0</li>
+      <li><a href="http://github.com/datamapper/dm-aggregates#readme">dm-aggregates</a>
+ ~&gt; 1.1.0</li>
+      <li><a href="http://github.com/datamapper/dm-timestamps#readme">dm-timestamps</a>
+~&gt; 1.1.0</li>
     </ul>
   </li>
-  <li><a href="http://github.com/postmodern/dm-is-predefined/">dm-is-predefined</a>
-~&gt; 0.3.0</li>
-  <li><a href="http://github.com/postmodern/uri-query_params">uri-query_params</a> ~&gt; 0.4.0</li>
-  <li><a href="http://github.com/postmodern/open_namespace">open_namespace</a> ~&gt; 0.3.0</li>
-  <li><a href="http://github.com/postmodern/parameters">parameters</a> ~&gt; 0.2.2</li>
-  <li><a href="http://github.com/postmodern/data_paths">data_paths</a> ~&gt; 0.2.1</li>
-  <li><a href="http://github.com/postmodern/contextify/">contextify</a> ~&gt; 0.1.6</li>
-  <li><a href="http://github.com/postmodern/pullr/">pullr</a> ~&gt; 0.1.2</li>
-  <li><a href="http://github.com/wycats/thor/">thor</a> ~&gt; 0.14.2</li>
-  <li><a href="http://github.com/ronin-ruby/ronin-support/">ronin-support</a> ~&gt; 0.1.0</li>
+  <li><a href="http://github.com/postmodern/dm-is-predefined#readme">dm-is-predefined</a>
+~&gt; 0.3, &gt;= 0.3.1</li>
+  <li><a href="http://github.com/postmodern/uri-query_params#readme">uri-query_params</a>
+~&gt; 0.5, &gt;= 0.5.2</li>
+  <li><a href="http://github.com/postmodern/open_namespace#readme">open_namespace</a>
+~&gt; 0.3</li>
+  <li><a href="http://github.com/postmodern/parameters#readme">parameters</a>
+~&gt; 0.2, &gt;= 0.2.3</li>
+  <li><a href="http://github.com/postmodern/data_paths#readme">data_paths</a>
+~&gt; 0.2, &gt;= 0.2.1</li>
+  <li><a href="http://github.com/postmodern/object_loader#readme">object_loader</a>
+~&gt; 1.0</li>
+  <li><a href="http://github.com/postmodern/env#readme">env</a>
+~&gt; 0.1, &gt;= 0.1.2</li>
+  <li><a href="http://github.com/postmodern/pullr#readme">pullr</a>
+~&gt; 0.1, &gt;= 0.1.2</li>
+  <li><a href="http://github.com/postmodern/hexdump#readme">hexdump</a>
+~&gt; 0.1</li>
+  <li><a href="http://github.com/wycats/thor#readme">thor</a>
+~&gt; 0.14.3</li>
+  <li><a href="http://github.com/ronin-ruby/ronin-support#readme">ronin-support</a>
+~&gt; 0.1</li>
 </ul>
 
 <h2 id="install">Install</h2>
@@ -268,7 +287,7 @@ for Ronin that provides various generators.</p>
 <h3 id="ronin-sql">Ronin SQL</h3>
 
 <p><a href="http://github.com/ronin-ruby/ronin-sql#readme">Ronin SQL</a> is a Ruby library
-for Ronin that provids support for SQL related security tasks, such as
+for Ronin that provides support for SQL related security tasks, such as
 scanning for and exploiting SQL injections.</p>
 
 <h3 id="ronin-php">Ronin PHP</h3>
@@ -305,9 +324,9 @@ along with Ronin.  If not, see <a href="http://www.gnu.org/licenses/">http://www
 </div></div>
     
     <div id="footer">
-  Generated on Fri Jan 21 14:56:59 2011 by 
+  Generated on Sun Mar 27 14:17:15 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.4 (ruby-1.9.2).
+  0.6.5 (ruby-1.9.2).
 </div>
 
   </body>

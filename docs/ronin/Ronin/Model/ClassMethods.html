@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Module: Ronin::Model::ClassMethods</title>
 <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -160,15 +160,15 @@ model.</p>
       <pre class="lines">
 
 
-44
-45
 46
 47
 48
-49</pre>
+49
+50
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/class_methods.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/class_methods.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id load'>load</span><span class='lparen'>(</span><span class='id records'>records</span><span class='comma'>,</span><span class='id query'>query</span><span class='rparen'>)</span>
   <span class='id resources'>resources</span> <span class='op'>=</span> <span class='kw'>super</span><span class='lparen'>(</span><span class='id records'>records</span><span class='comma'>,</span><span class='id query'>query</span><span class='rparen'>)</span>
@@ -238,13 +238,17 @@ model.</p>
 
 37
 38
-39</pre>
+39
+40
+41</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/model/class_methods.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id relationship_name'>relationship_name</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id name'>name</span><span class='period'>.</span><span class='id split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>::</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id last'>last</span><span class='period'>.</span><span class='id underscore'>underscore</span><span class='period'>.</span><span class='id pluralize'>pluralize</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
+  <span class='id name'>name</span> <span class='op'>=</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Inflector</span><span class='period'>.</span><span class='id underscore'>underscore</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id name'>name</span><span class='period'>.</span><span class='id split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>::</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id last'>last</span><span class='rparen'>)</span>
+
+  <span class='kw'>return</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Inflector</span><span class='period'>.</span><span class='id pluralize'>pluralize</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -256,9 +260,9 @@ model.</p>
 </div>
     
     <div id="footer">
-  Generated on Wed Jan 26 15:23:25 2011 by 
+  Generated on Sun Mar 27 14:18:20 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.4 (ruby-1.9.2).
+  0.6.5 (ruby-1.9.2).
 </div>
 
   </body>

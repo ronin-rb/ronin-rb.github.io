@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Class: Ronin::UI::CLI::Command</title>
 <link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -88,14 +88,13 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     <p>The <span class='object_link'><a href="" title="Ronin::UI::CLI::Command (class)">Command</a></span> class inherits <code>Thor::Group</code> to provide a base-class
-for defining sub-commands for the <span class='object_link'><a href="../CLI.html" title="Ronin::UI::CLI (module)">Ronin::UI::CLI</a></span>.</p>
+for defining commands for the <span class='object_link'><a href="../CLI.html" title="Ronin::UI::CLI (module)">Ronin::UI::CLI</a></span>.</p>
 
 <h1 id="extending">Extending</h1>
 
-<p>To create a new sub-command one can inherit the <span class='object_link'><a href="" title="Ronin::UI::CLI::Command (class)">Command</a></span> class.
-The new sub-command can define multiple <code>class_options</code> and
-<code>arguments</code> which <code>Thor::Group</code> will use to parse command-line
-arguments.</p>
+<p>To create a new command one can inherit the <span class='object_link'><a href="" title="Ronin::UI::CLI::Command (class)">Command</a></span> class.
+The new command can define multiple <code>class_options</code> and <code>arguments</code>
+which <code>Thor::Group</code> will use to parse command-line arguments.</p>
 
 <pre class="code"><span class='id require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ronin/ui/cli/command</span><span class='tstring_end'>'</span></span>
 
@@ -140,25 +139,38 @@ arguments.</p>
 
 <h1 id="running">Running</h1>
 
-<p>To run the sub-command from Ruby, one can call the <code>start</code> class
-method with the options and arguments to run the sub-command with.</p>
+<p>To run the command from Ruby, one can call the <span class='object_link'><a href="#run-class_method" title="Ronin::UI::CLI::Command.run (method)">run</a></span> class method
+with the options and arguments to run the command with:</p>
 
-<pre class="code"><span class='const'>MyCommand</span><span class='period'>.</span><span class='id start'>start</span><span class='lparen'>(</span>
+<pre class="code"><span class='const'>MyCommand</span><span class='period'>.</span><span class='id run'>run</span><span class='lparen'>(</span>
   <span class='lbrace'>{</span><span class='symbol'>:stuff</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:syntax</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bla</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:includes</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>other</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='comma'>,</span>
   <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>some/file.txt</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
 <span class='rparen'>)</span>
 </pre>
 
-<p>To ensure that your sub-command is accessible to the <code>ronin</code>
-command, make sure that the ruby file the sub-command is defined
-within is in the <code>ronin/ui/cli/commands</code> directory of a
-Ronin library. If the sub-command class is named &lsquo;MyCommand&rsquo;
-it&rsquo;s ruby file must also be named &lsquo;my_command.rb&rsquo;.</p>
+<p>To run the command from Ruby, with raw command-line options, one
+can call the <code>start</code> class method:</p>
 
-<p>To run the sub-command using the <code>ronin</code> command, simply specify
-it&rsquo;s underscored name:</p>
+<pre class="code"><span class='const'>MyCommand</span><span class='period'>.</span><span class='id start'>start</span><span class='lparen'>(</span><span class='lbracket'>[</span>
+  <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>--stuff</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>true</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>--syntax</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bla</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>--includes</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>other</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>some/file.txt</span><span class='tstring_end'>'</span></span>
+<span class='rbracket'>]</span><span class='rparen'>)</span>
+</pre>
 
-<pre class="code">ronin my_command some/file.txt --stuff --syntax bla --includes one two
+<p>Note: If <code>MyCommand.start</code> is not given any arguments, it will use
+<code>ARGV</code> instead.</p>
+
+<p>To ensure that your command is accessible to the <code>ronin</code> command,
+make sure that the ruby file the command is defined within is in
+the <code>ronin/ui/cli/commands</code> directory of a Ronin library.
+If the command class is named &lsquo;MyCommand&rsquo; it&rsquo;s ruby file must also
+be named &lsquo;my_command.rb&rsquo;.</p>
+
+<p>To run the command using the <code>ronin</code> command, simply specify it&rsquo;s
+underscored name:</p>
+
+<pre class="code">ronin my_command some/file.txt --stuff --syntax bla \
+  --includes one two
 </pre>
 
 
@@ -168,7 +180,7 @@ it&rsquo;s underscored name:</p>
   
 </div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
-  <p class="children"><span class='object_link'><a href="Commands/Console.html" title="Ronin::UI::CLI::Commands::Console (class)">s::Console</a></span>, <span class='object_link'><a href="Commands/Database.html" title="Ronin::UI::CLI::Commands::Database (class)">s::Database</a></span>, <span class='object_link'><a href="Commands/Help.html" title="Ronin::UI::CLI::Commands::Help (class)">s::Help</a></span>, <span class='object_link'><a href="Commands/Repos.html" title="Ronin::UI::CLI::Commands::Repos (class)">s::Repos</a></span>, <span class='object_link'><a href="ModelCommand.html" title="Ronin::UI::CLI::ModelCommand (class)">ModelCommand</a></span></p>
+  <p class="children"><span class='object_link'><a href="Commands/Console.html" title="Ronin::UI::CLI::Commands::Console (class)">Ronin::UI::CLI::Commands::Console</a></span>, <span class='object_link'><a href="Commands/Database.html" title="Ronin::UI::CLI::Commands::Database (class)">Ronin::UI::CLI::Commands::Database</a></span>, <span class='object_link'><a href="Commands/Help.html" title="Ronin::UI::CLI::Commands::Help (class)">Ronin::UI::CLI::Commands::Help</a></span>, <span class='object_link'><a href="Commands/Repos.html" title="Ronin::UI::CLI::Commands::Repos (class)">Ronin::UI::CLI::Commands::Repos</a></span>, <span class='object_link'><a href="ModelCommand.html" title="Ronin::UI::CLI::ModelCommand (class)">ModelCommand</a></span></p>
 </div>
 
 
@@ -248,6 +260,28 @@ it&rsquo;s underscored name:</p>
 
   
     <span class="summary_desc"><div class='inline'><p>Sets the namespace of a new <span class='object_link'><a href="" title="Ronin::UI::CLI::Command (class)">Command</a></span> class.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#run-class_method" title="run (class method)">+ (Command) <strong>run</strong>(options = {}, arguments = []) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Runs the command.</p>
 </div></span>
   
 </li>
@@ -557,24 +591,24 @@ it&rsquo;s underscored name:</p>
       <pre class="lines">
 
 
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163</pre>
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 149</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 181</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id arguments'>arguments</span><span class='op'>=</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id opts'>opts</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='id config'>config</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id arguments'>arguments</span><span class='comma'>,</span><span class='id opts'>opts</span><span class='comma'>,</span><span class='id config'>config</span><span class='rparen'>)</span>
@@ -657,12 +691,12 @@ it&rsquo;s underscored name:</p>
       <pre class="lines">
 
 
-181
-182
-183</pre>
+213
+214
+215</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 181</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 213</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id banner'>banner</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ronin </span><span class='embexpr_beg'>#{</span><span class='id self_task'>self_task</span><span class='period'>.</span><span class='id formatted_usage'>formatted_usage</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span><span class='kw'>false</span><span class='comma'>,</span><span class='kw'>true</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -694,15 +728,15 @@ it&rsquo;s underscored name:</p>
       <pre class="lines">
 
 
-133
-134
-135</pre>
+144
+145
+146</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 144</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id command_name'>command_name</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id name'>name</span><span class='period'>.</span><span class='id split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>::</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id last'>last</span><span class='period'>.</span><span class='id underscore'>underscore</span>
+  <span class='const'>Support</span><span class='op'>::</span><span class='const'>Inflector</span><span class='period'>.</span><span class='id underscore'>underscore</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id name'>name</span><span class='period'>.</span><span class='id split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>::</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id last'>last</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -750,15 +784,128 @@ it&rsquo;s underscored name:</p>
       <pre class="lines">
 
 
-126
-127
-128</pre>
+137
+138
+139</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 126</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 137</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id inherited'>inherited</span><span class='lparen'>(</span><span class='id super_class'>super_class</span><span class='rparen'>)</span>
   <span class='id super_class'>super_class</span><span class='period'>.</span><span class='id namespace'>namespace</span><span class='lparen'>(</span><span class='id super_class'>super_class</span><span class='period'>.</span><span class='id command_name'>command_name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="run-class_method">
+  
+    + (<tt><span class='object_link'><a href="" title="Ronin::UI::CLI::Command (class)">Command</a></span></tt>) <strong>run</strong>(options = {}, arguments = []) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Runs the command.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash{String,Symbol =&gt; Object}</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Option values for the command.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+        <span class='name'>arguments</span>
+      
+      
+        <em class="default">(defaults to: <tt>[]</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional arguments for the command.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::UI::CLI::Command (class)">Command</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The executed command.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+162
+163
+164
+165
+166
+167</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 162</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id run'>run</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='id arguments'>arguments</span><span class='op'>=</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id command'>command</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id arguments'>arguments</span><span class='comma'>,</span><span class='id options'>options</span><span class='rparen'>)</span>
+  <span class='id command'>command</span><span class='period'>.</span><span class='id invoke_all'>invoke_all</span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='kw'>return</span> <span class='id command'>command</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -793,11 +940,11 @@ it&rsquo;s underscored name:</p>
       <pre class="lines">
 
 
-168
-169</pre>
+200
+201</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 168</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 200</span>
 
 <span class='kw'>def</span> <span class='id execute'>execute</span>
 <span class='kw'>end</span></pre>
@@ -882,17 +1029,17 @@ be returned to normal.</p>
       <pre class="lines">
 
 
-198
-199
-200
-201
-202
-203
-204
-205</pre>
+230
+231
+232
+233
+234
+235
+236
+237</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 198</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 230</span>
 
 <span class='kw'>def</span> <span class='id indent'>indent</span><span class='lparen'>(</span><span class='id n'>n</span><span class='op'>=</span><span class='int'>2</span><span class='rparen'>)</span>
   <span class='ivar'>@indent</span> <span class='op'>+=</span> <span class='id n'>n</span>
@@ -999,19 +1146,19 @@ be returned to normal.</p>
       <pre class="lines">
 
 
-255
-256
-257
-258
-259
-260
-261
-262
-263
-264</pre>
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 255</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 287</span>
 
 <span class='kw'>def</span> <span class='id print_array'>print_array</span><span class='lparen'>(</span><span class='id array'>array</span><span class='comma'>,</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id print_title'>print_title</span><span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:title</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:title</span><span class='rbracket'>]</span>
@@ -1084,16 +1231,16 @@ be returned to normal.</p>
       <pre class="lines">
 
 
-306
-307
-308
-309
-310
-311
-312</pre>
+338
+339
+340
+341
+342
+343
+344</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 306</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 338</span>
 
 <span class='kw'>def</span> <span class='id print_exception'>print_exception</span><span class='lparen'>(</span><span class='id exception'>exception</span><span class='rparen'>)</span>
   <span class='id print_error'>print_error</span> <span class='id exception'>exception</span><span class='period'>.</span><span class='id message'>message</span>
@@ -1199,26 +1346,26 @@ be returned to normal.</p>
       <pre class="lines">
 
 
-280
-281
-282
-283
-284
-285
-286
-287
-288
-289
-290
-291
-292
-293
-294
-295
-296</pre>
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 280</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 312</span>
 
 <span class='kw'>def</span> <span class='id print_hash'>print_hash</span><span class='lparen'>(</span><span class='id hash'>hash</span><span class='comma'>,</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id align'>align</span> <span class='op'>=</span> <span class='id hash'>hash</span><span class='period'>.</span><span class='id keys'>keys</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id name'>name</span><span class='op'>|</span>
@@ -1298,13 +1445,13 @@ and indentation increased.</p>
       <pre class="lines">
 
 
-236
-237
-238
-239</pre>
+268
+269
+270
+271</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 236</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 268</span>
 
 <span class='kw'>def</span> <span class='id print_section'>print_section</span><span class='lparen'>(</span><span class='id title'>title</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id print_title'>print_title</span><span class='lparen'>(</span><span class='id title'>title</span><span class='rparen'>)</span>
@@ -1356,12 +1503,12 @@ and indentation increased.</p>
       <pre class="lines">
 
 
-223
-224
-225</pre>
+255
+256
+257</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 223</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 255</span>
 
 <span class='kw'>def</span> <span class='id print_title'>print_title</span><span class='lparen'>(</span><span class='id title'>title</span><span class='rparen'>)</span>
   <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[ </span><span class='embexpr_beg'>#{</span><span class='id title'>title</span><span class='rbrace'>}</span><span class='tstring_content'> ]\n</span><span class='tstring_end'>&quot;</span></span>
@@ -1412,12 +1559,12 @@ and indentation increased.</p>
       <pre class="lines">
 
 
-213
-214
-215</pre>
+245
+246
+247</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 213</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 245</span>
 
 <span class='kw'>def</span> <span class='id puts'>puts</span><span class='lparen'>(</span><span class='op'>*</span><span class='id messages'>messages</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>*</span><span class='lparen'>(</span><span class='id messages'>messages</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id mesg'>mesg</span><span class='op'>|</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> </span><span class='tstring_end'>'</span></span> <span class='op'>*</span> <span class='ivar'>@indent</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id mesg'>mesg</span><span class='period'>.</span><span class='id to_s'>to_s</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -1432,9 +1579,9 @@ and indentation increased.</p>
 </div>
     
     <div id="footer">
-  Generated on Wed Jan 26 15:23:17 2011 by 
+  Generated on Sun Mar 27 14:17:58 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.4 (ruby-1.9.2).
+  0.6.5 (ruby-1.9.2).
 </div>
 
   </body>

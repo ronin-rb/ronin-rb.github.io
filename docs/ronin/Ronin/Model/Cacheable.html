@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Module: Ronin::Model::Cacheable</title>
 <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
@@ -79,17 +79,11 @@ file it was originally cached from.</p>
 
 <h1 id="making-a-model-cacheable">Making a Model cacheable</h1>
 
-<p>In order to make a Model cacheable, one must include the <span class='object_link'><a href="" title="Ronin::Model::Cacheable (module)">Cacheable</a></span>
-module and contextifying the model. Contextifying a model involves
-calling the <code>contextify</code> method, which defines a top-level method
-used for loading model instances from files.</p>
+<p>In order to make a Model cacheable, one must include the <span class='object_link'><a href="" title="Ronin::Model::Cacheable (module)">Cacheable</a></span>.</p>
 
 <pre class="code"><span class='kw'>class</span> <span class='const'>MyModel</span>
 
     <span class='id include'>include</span> <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>Model</span><span class='op'>::</span><span class='const'>Cacheable</span>
-
-    <span class='comment'># Defines the my_model method for loading instances from files
-</span>    <span class='id contextify'>contextify</span> <span class='symbol'>:my_model</span>
 
     <span class='comment'># Primary key of the model
 </span>    <span class='id property'>property</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='const'>Serial</span>
@@ -458,16 +452,16 @@ method again.</p>
       <pre class="lines">
 
 
-270
-271
-272
-273
-274
-275
-276</pre>
+264
+265
+266
+267
+268
+269
+270</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 270</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 264</span>
 
 <span class='kw'>def</span> <span class='id method_missing'>method_missing</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='op'>*</span><span class='id arguments'>arguments</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id load_original!'>load_original!</span>
@@ -501,6 +495,12 @@ method again.</p>
       <pre class="lines">
 
 
+100
+101
+102
+103
+104
+105
 106
 107
 108
@@ -513,19 +513,13 @@ method again.</p>
 115
 116
 117
-118
-119
-120
-121
-122
-123
-124</pre>
+118</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 106</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
-  <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>Contextify</span><span class='comma'>,</span> <span class='const'>Model</span>
+  <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>ObjectLoader</span><span class='comma'>,</span> <span class='const'>Model</span>
   <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:extend</span><span class='comma'>,</span> <span class='const'>ClassMethods</span>
 
   <span class='id base'>base</span><span class='period'>.</span><span class='id module_eval'>module_eval</span> <span class='kw'>do</span>
@@ -638,6 +632,12 @@ method again.</p>
       <pre class="lines">
 
 
+146
+147
+148
+149
+150
+151
 152
 153
 154
@@ -650,20 +650,14 @@ method again.</p>
 161
 162
 163
-164
-165
-166
-167
-168
-169
-170</pre>
+164</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 152</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 146</span>
 
 <span class='kw'>def</span> <span class='const'>Cacheable</span><span class='period'>.</span><span class='id load_from'>load_from</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span>
   <span class='id path'>path</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id expand_path'>expand_path</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span>
-  <span class='id obj'>obj</span> <span class='op'>=</span> <span class='const'>Contextify</span><span class='period'>.</span><span class='id load_contexts'>load_contexts</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span><span class='period'>.</span><span class='id find'>find</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id obj'>obj</span><span class='op'>|</span>
+  <span class='id obj'>obj</span> <span class='op'>=</span> <span class='const'>ObjectLoader</span><span class='period'>.</span><span class='id load_objects'>load_objects</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span><span class='period'>.</span><span class='id find'>find</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id obj'>obj</span><span class='op'>|</span>
     <span class='id obj'>obj</span><span class='period'>.</span><span class='id class'>class</span> <span class='op'>&lt;</span> <span class='const'>Cacheable</span>
   <span class='kw'>end</span>
 
@@ -739,12 +733,12 @@ method again.</p>
       <pre class="lines">
 
 
-134
-135
-136</pre>
+128
+129
+130</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 134</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 128</span>
 
 <span class='kw'>def</span> <span class='const'>Cacheable</span><span class='period'>.</span><span class='id models'>models</span>
   <span class='ivar'>@models</span>
@@ -820,19 +814,19 @@ caching.</p>
       <pre class="lines">
 
 
+249
+250
+251
+252
+253
+254
 255
 256
 257
-258
-259
-260
-261
-262
-263
-264</pre>
+258</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 255</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 249</span>
 
 <span class='kw'>def</span> <span class='id cache'>cache</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id cached?'>cached?</span> <span class='op'>||</span> <span class='id prepared_for_cache?'>prepared_for_cache?</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -888,12 +882,12 @@ caching.</p>
       <pre class="lines">
 
 
-188
-189
-190</pre>
+182
+183
+184</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 188</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 182</span>
 
 <span class='kw'>def</span> <span class='id cache_path'>cache_path</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id cached_file'>cached_file</span><span class='period'>.</span><span class='id path'>path</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id cached_file'>cached_file</span>
@@ -942,12 +936,12 @@ caching.</p>
       <pre class="lines">
 
 
-237
-238
-239</pre>
+231
+232
+233</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 237</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 231</span>
 
 <span class='kw'>def</span> <span class='id cached?'>cached?</span>
   <span class='lparen'>(</span><span class='id saved?'>saved?</span> <span class='op'>&amp;&amp;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id cached_file'>cached_file</span><span class='rparen'>)</span>
@@ -979,15 +973,15 @@ caching.</p>
       <pre class="lines">
 
 
-175
-176
-177
-178
-179
-180</pre>
+169
+170
+171
+172
+173
+174</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 175</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 169</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id arguments'>arguments</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='ivar'>@original_loaded</span> <span class='op'>=</span> <span class='kw'>false</span>
@@ -1040,20 +1034,20 @@ evaluates it into the object.</p>
       <pre class="lines">
 
 
+205
+206
+207
+208
+209
+210
 211
 212
 213
 214
-215
-216
-217
-218
-219
-220
-221</pre>
+215</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 211</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 205</span>
 
 <span class='kw'>def</span> <span class='id load_original!'>load_original!</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id cached?'>cached?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id original_loaded?'>original_loaded?</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -1112,12 +1106,12 @@ object.</p>
       <pre class="lines">
 
 
-200
-201
-202</pre>
+194
+195
+196</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 200</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 194</span>
 
 <span class='kw'>def</span> <span class='id original_loaded?'>original_loaded?</span>
   <span class='ivar'>@original_loaded</span> <span class='op'>==</span> <span class='kw'>true</span>
@@ -1166,12 +1160,12 @@ object.</p>
       <pre class="lines">
 
 
-227
-228
-229</pre>
+221
+222
+223</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 227</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/cacheable/cacheable.rb', line 221</span>
 
 <span class='kw'>def</span> <span class='id prepared_for_cache?'>prepared_for_cache?</span>
   <span class='ivar'>@cache_prepared</span> <span class='op'>==</span> <span class='kw'>true</span>
@@ -1186,9 +1180,9 @@ object.</p>
 </div>
     
     <div id="footer">
-  Generated on Wed Jan 26 15:23:40 2011 by 
+  Generated on Sun Mar 27 14:18:37 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.4 (ruby-1.9.2).
+  0.6.5 (ruby-1.9.2).
 </div>
 
   </body>
