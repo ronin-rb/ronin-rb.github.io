@@ -13,7 +13,7 @@ home directory.
 
     echo "[-] Install RVM ..." && \
     bash < <(curl -s https://rvm.beginrescueend.com/install/rvm) && \
-    echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"' >> ~/.bash_profile && . ~/.bash_profile && \
+    echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"' >> ~/.bash_profile && source ~/.bash_profile && \
     rvm install 1.9.2 && rvm use 1.9.2 --default && \
     echo "[-] Cloning Ronin ..." && \
     git clone http://github.com/ronin-ruby/ronin.git ~/ronin && \
@@ -37,7 +37,7 @@ To install RVM:
 
     bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)
     echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"' >> ~/.bash_profile
-    . ~/.bash_profile
+    source ~/.bash_profile
     
 Then install Ruby:
 
@@ -98,7 +98,7 @@ Additionally, you can add the `bin/` directory to the `$PATH`
 environment variable in your `~/.bashrc` or `~/.profile` file, so you can run
 `ronin` as if it were installed on the system:
 
-    echo "export PATH=$PATH:~/path/to/ronin/bin" >> ~/.bashrc
+    echo "export PATH=$PATH:$HOME/path/to/ronin/bin" >> ~/.bashrc
     source ~/.bashrc
 
     $ ronin
