@@ -33,6 +33,14 @@ or 1.9.2 with Ronin.
 The easiest and recommended way for developers to install Ruby and RubyGems,
 is by using the [Ruby Version Manager (RVM)](http://rvm.beginrescueend.com/).
 
+To install RVM:
+
+    bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)
+    echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"' >> ~/.bash_profile
+    . ~/.bash_profile
+    
+Then install Ruby:
+
     rvm install 1.9.2
     rvm use 1.9.2 --default
 
