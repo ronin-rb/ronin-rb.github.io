@@ -1,1 +1,0 @@
-../install/edge.md

@@ -1,1 +1,0 @@
-../install/debian.md
