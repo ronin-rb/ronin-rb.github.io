@@ -9,6 +9,19 @@ This guide covers how to install the development version of Ronin from
 [GitHub](http://github.com/ronin-ruby/ronin/) and run it out of your
 home directory.
 
+### Quick Install
+
+    echo "[-] Install RVM ..." && \
+    bash < <(curl -s https://rvm.beginrescueend.com/install/rvm) && \
+    echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"' >> ~/.bash_profile && \
+    echo "[-] Cloning Ronin ..." && \
+    git clone http://github.com/ronin-ruby/ronin.git ~/ronin && \
+    echo "[-] Installing Dependencies ..." && \
+    gem install bundler && \
+    cd ~/ronin && bundle install && cd - && \
+    echo "[-] Adding '~/ronin/bin' to $PATH ..." && \
+    echo 'export PATH=$PATH:$HOME/ronin/bin' >> ~/.bashrc
+
 ## Installing Ruby
 
 In order to run Ronin, you will need a recent version of
