@@ -13,7 +13,8 @@ home directory.
 
     echo "[-] Install RVM ..." && \
     bash < <(curl -s https://rvm.beginrescueend.com/install/rvm) && \
-    echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"' >> ~/.bash_profile && \
+    echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"' >> ~/.bash_profile && . ~/.bash_profile && \
+    rvm install 1.9.2 && rvm use 1.9.2 --default && \
     echo "[-] Cloning Ronin ..." && \
     git clone http://github.com/ronin-ruby/ronin.git ~/ronin && \
     echo "[-] Installing Dependencies ..." && \
