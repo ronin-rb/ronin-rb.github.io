@@ -113,5 +113,5 @@ from the repository:
     ruby-1.9.2-p0 > require 'ronin/environment'
      => true
     ruby-1.9.2-p0 > Ronin::VERSION
-     => "0.4.0"
+     => "1.0.1"
 
