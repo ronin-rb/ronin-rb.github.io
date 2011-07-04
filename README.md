@@ -1,5 +1,11 @@
 # ronin-ruby.github.com
 
+* [Website](http://ronin-ruby.github.com)
+* [Source](http://github.com/ronin-ruby/ronin-ruby.github.com)
+* [Issues](http://github.com/ronin-ruby/ronin-ruby.github.com/issues)
+* [Mailing List](http://groups.google.com/group/ronin-ruby)
+* [irc.freenode.net #ronin](http://webchat.freenode.net/?channels=ronin&uio=Mj10cnVldd)
+
 ronin-ruby.github.com is the Jekyll powered static website and blog for the
 Ronin project.
 
