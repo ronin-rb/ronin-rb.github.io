@@ -1,0 +1,538 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Ronin::Web::Server::Helpers::Proxy</title>
+<link rel="stylesheet" href="../../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../../_index.html">Index (P)</a> &raquo; 
+    <span class='title'><a href="../../../../Ronin.html" title="Ronin (module)">Ronin</a></span> &raquo; <span class='title'><a href="../../../Web.html" title="Ronin::Web (module)">Web</a></span> &raquo; <span class='title'><a href="../../Server.html" title="Ronin::Web::Server (module)">Server</a></span> &raquo; <span class='title'><a href="../Helpers.html" title="Ronin::Web::Server::Helpers (module)">Helpers</a></span>
+     &raquo; 
+    <span class="title">Proxy</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Ronin::Web::Server::Helpers::Proxy
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/ronin/web/server/helpers/proxy.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#proxy-instance_method" title="#proxy (instance method)">- (Object) <strong>proxy</strong>(options = {}) {|(response), body| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Proxies the current request.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#proxy_doc-instance_method" title="#proxy_doc (instance method)">- (Object) <strong>proxy_doc</strong>(options = {}) {|(response), doc| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Proxies the current request.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="proxy-instance_method">
+  
+    - (<tt>Object</tt>) <strong>proxy</strong>(options = {}) {|(response), body| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Proxies the current request.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='id get'>get</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/login.php</span><span class='tstring_end'>'</span></span> <span class='kw'>do</span>
+  <span class='id proxy'>proxy</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id body'>body</span><span class='op'>|</span>
+    <span class='id body'>body</span><span class='period'>.</span><span class='id gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>https</span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>http</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options to use when proxying the request.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'>(<tt>(response)</tt>, <tt>body</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed the optional response
+of the proxied request and the body received from the
+proxied request.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='type'>(<tt>Net::HTTP::Response</tt>)</span>
+      
+      
+        <span class='name'>response</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The response of the proxied request.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>body</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The body from the proxied request.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/helpers/proxy.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id proxy'>proxy</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id default_options'>default_options</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+    <span class='symbol'>:host</span> <span class='op'>=&gt;</span> <span class='id request'>request</span><span class='period'>.</span><span class='id host'>host</span><span class='comma'>,</span>
+    <span class='symbol'>:port</span> <span class='op'>=&gt;</span> <span class='id request'>request</span><span class='period'>.</span><span class='id port'>port</span><span class='comma'>,</span>
+    <span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='id request'>request</span><span class='period'>.</span><span class='id request_method'>request_method</span><span class='comma'>,</span>
+    <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id request'>request</span><span class='period'>.</span><span class='id path_info'>path_info</span><span class='comma'>,</span>
+    <span class='symbol'>:query</span> <span class='op'>=&gt;</span> <span class='id request'>request</span><span class='period'>.</span><span class='id query_string'>query_string</span><span class='comma'>,</span>
+    <span class='symbol'>:content_type</span> <span class='op'>=&gt;</span> <span class='id request'>request</span><span class='period'>.</span><span class='id content_type'>content_type</span>
+  <span class='rbrace'>}</span>
+
+  <span class='id request'>request</span><span class='period'>.</span><span class='id env'>env</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='comma'>,</span><span class='id value'>value</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id name'>name</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^HTTP</span><span class='regexp_end'>/</span></span>
+      <span class='id default_options'>default_options</span><span class='lbracket'>[</span><span class='id name'>name</span><span class='period'>.</span><span class='id gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^HTTP_</span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id downcase'>downcase</span><span class='period'>.</span><span class='id to_sym'>to_sym</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id value'>value</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  
+  <span class='id options'>options</span> <span class='op'>=</span> <span class='id default_options'>default_options</span><span class='period'>.</span><span class='id merge'>merge</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+  <span class='id http_response'>http_response</span> <span class='op'>=</span> <span class='const'>Net</span><span class='period'>.</span><span class='id http_request'>http_request</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+
+  <span class='id response'>response</span> <span class='op'>=</span> <span class='const'>Rack</span><span class='op'>::</span><span class='const'>Response</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span>
+    <span class='lbracket'>[</span><span class='id http_response'>http_response</span><span class='period'>.</span><span class='id body'>body</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='id http_response'>http_response</span><span class='period'>.</span><span class='id code'>code</span><span class='comma'>,</span>
+    <span class='id http_response'>http_response</span><span class='period'>.</span><span class='id to_hash'>to_hash</span>
+  <span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='id block'>block</span>
+    <span class='id old_body'>old_body</span> <span class='op'>=</span> <span class='id response'>response</span><span class='period'>.</span><span class='id body'>body</span><span class='period'>.</span><span class='id first'>first</span>
+
+    <span class='id new_body'>new_body</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id block'>block</span><span class='period'>.</span><span class='id arity'>arity</span> <span class='op'>==</span> <span class='int'>2</span>
+      <span class='id block'>block</span><span class='period'>.</span><span class='id call'>call</span><span class='lparen'>(</span><span class='id response'>response</span><span class='comma'>,</span><span class='id old_body'>old_body</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id block'>block</span><span class='period'>.</span><span class='id call'>call</span><span class='lparen'>(</span><span class='id old_body'>old_body</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='id response'>response</span><span class='period'>.</span><span class='id body'>body</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id new_body'>new_body</span> <span class='op'>||</span> <span class='id old_body'>old_body</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id halt'>halt</span><span class='lparen'>(</span><span class='id response'>response</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="proxy_doc-instance_method">
+  
+    - (<tt>Object</tt>) <strong>proxy_doc</strong>(options = {}) {|(response), doc| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Proxies the current request.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='id get'>get</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/login.php</span><span class='tstring_end'>'</span></span> <span class='kw'>do</span>
+  <span class='id proxy_doc'>proxy_doc</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id response'>response</span><span class='comma'>,</span><span class='id doc'>doc</span><span class='op'>|</span>
+    <span class='id doc'>doc</span><span class='period'>.</span><span class='id search'>search</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>form/@action</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id action'>action</span><span class='op'>|</span>
+      <span class='id action'>action</span><span class='period'>.</span><span class='id inner_text'>inner_text</span> <span class='op'>=</span> <span class='id action'>action</span><span class='period'>.</span><span class='id inner_text'>inner_text</span><span class='period'>.</span><span class='id gsub'>gsub</span><span class='lparen'>(</span>
+        <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^https</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>http</span><span class='tstring_end'>'</span></span>
+      <span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options to use when proxying the request.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'>(<tt>(response)</tt>, <tt>doc</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed the optional response
+of the proxied request and the document representing the
+proxied request.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='type'>(<tt>Net::HTTP::Response</tt>)</span>
+      
+      
+        <span class='name'>response</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The response of the proxied request.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Nokogiri::HTML</tt>, <tt><a href="../../../../Nokogiri/XML.html" title="Nokogiri::XML (module)">Nokogiri::XML</a></tt>)</span>
+      
+      
+        <span class='name'>doc</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The document representing the proxied request.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/helpers/proxy.rb', line 125</span>
+
+<span class='kw'>def</span> <span class='id proxy_doc'>proxy_doc</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id proxy'>proxy</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id response'>response</span><span class='comma'>,</span><span class='id body'>body</span><span class='op'>|</span>
+    <span class='kw'>case</span> <span class='id response'>response</span><span class='period'>.</span><span class='id content_type'>content_type</span>
+    <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>text/html</span><span class='tstring_end'>'</span></span>
+      <span class='id doc'>doc</span> <span class='op'>=</span> <span class='const'>Nokogiri</span><span class='op'>::</span><span class='const'>HTML</span><span class='lparen'>(</span><span class='id body'>body</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>text/xml</span><span class='tstring_end'>'</span></span>
+      <span class='id doc'>doc</span> <span class='op'>=</span> <span class='const'>Nokogiri</span><span class='op'>::</span><span class='const'>XML</span><span class='lparen'>(</span><span class='id body'>body</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id doc'>doc</span> <span class='op'>=</span> <span class='kw'>nil</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id doc'>doc</span>
+      <span class='kw'>if</span> <span class='id block'>block</span>
+        <span class='kw'>if</span> <span class='id block'>block</span><span class='period'>.</span><span class='id arity'>arity</span> <span class='op'>==</span> <span class='int'>2</span>
+          <span class='id block'>block</span><span class='period'>.</span><span class='id call'>call</span><span class='lparen'>(</span><span class='id response'>response</span><span class='comma'>,</span><span class='id doc'>doc</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id block'>block</span><span class='period'>.</span><span class='id call'>call</span><span class='lparen'>(</span><span class='id doc'>doc</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+
+      <span class='id doc'>doc</span><span class='period'>.</span><span class='id to_s'>to_s</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Aug 10 21:24:36 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.8 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

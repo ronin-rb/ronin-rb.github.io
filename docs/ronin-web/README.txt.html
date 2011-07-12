@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="custom.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <title>README.txt</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section docstring readme">
+        <h1>Ronin Web</h1>
+<ul>
+<li><a href="http://ronin.rubyforge.org/web">ronin.rubyforge.org/web</a>/
+
+</li>
+<li><a
+href="http://github.com/postmodern/ronin-web">github.com/postmodern/ronin-web</a>
+
+</li>
+<li>irc.freenode.net #ronin
+
+</li>
+<li>Postmodern (postmodern.mod3 at gmail.com)
+
+</li>
+</ul>
+<h2>DESCRIPTION:</h2>
+<p>
+Ronin Web is a Ruby library for Ronin that provides support for web
+scraping and spidering functionality.
+</p>
+<p>
+Ronin is a Ruby platform for exploit development and security research.
+Ronin allows for the rapid development and distribution of code, exploits
+or payloads over many common Source-Code-Management (SCM) systems.
+</p>
+<h3>Ruby</h3>
+<p>
+Ronin&#8217;s Ruby environment allows security researchers to leverage Ruby
+with ease. The Ruby environment contains a multitude of convenience methods
+for working with data in Ruby, a Ruby Object Database, a customized Ruby
+Console and an extendable command-line interface.
+</p>
+<h3>Extend</h3>
+<p>
+Ronin&#8217;s more specialized features are provided by additional Ronin
+libraries, which users can choose to install. These libraries can allow one
+to write and run Exploits and Payloads, scan for PHP vulnerabilities,
+perform Google Dorks or run 3rd party scanners.
+</p>
+<h3>Publish</h3>
+<p>
+Ronin allows users to publish and share code, exploits, payloads or other
+data via Overlays. Overlays are directories of code and data that can be
+hosted on any SVN, Hg, Git or Rsync server. Ronin makes it easy to create,
+install or update Overlays.
+</p>
+<h2>FEATURES:</h2>
+<ul>
+<li>Web access (utilizing Mechanize and Nokogiri).
+
+</li>
+<li>Integrates Spidr into Ronin::Web::Spider.
+
+</li>
+<li>Provides Ronin::Web::Server, a customizable Sinatra based Web Server that
+supports path and host-name routing.
+
+</li>
+<li>Provides Ronin::Web::Proxy, a configurable Sinatra based Web Proxy.
+
+</li>
+</ul>
+<h2>SYNOPSIS:</h2>
+<ul>
+<li>Start the Ronin console with Ronin Web preloaded:
+
+<pre class="code">
+  $ <span class='ronin identifier id'>ronin</span><span class='minus op'>-</span><span class='web identifier id'>web</span>
+</pre>
+</li>
+</ul>
+<h2>EXAMPLES:</h2>
+<ul>
+<li>Get a web-page:
+
+<pre class="code">
+  <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='string val'>'http://www.rubyinside.com/'</span><span class='rparen token'>)</span>
+</pre>
+</li>
+<li>Get only the body of the web-page:
+
+<pre class="code">
+  <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='get_body identifier id'>get_body</span><span class='lparen token'>(</span><span class='string val'>'http://www.rubyinside.com/'</span><span class='rparen token'>)</span>
+</pre>
+</li>
+<li>Get a WWW::Mechanize agent:
+
+<pre class="code">
+  <span class='agent identifier id'>agent</span> <span class='assign token'>=</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='agent identifier id'>agent</span>
+</pre>
+</li>
+<li>Parse HTML:
+
+<pre class="code">
+  <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='html identifier id'>html</span><span class='lparen token'>(</span><span class='open identifier id'>open</span><span class='lparen token'>(</span><span class='string val'>'some_file.html'</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='comment val'># =&gt; &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/REC-html40/loose.dtd&quot;&gt;</span>
+  <span class='comment val'># &lt;html&gt;</span>
+  <span class='comment val'>#   &lt;head&gt;</span>
+  <span class='comment val'>#     &lt;script type=&quot;text/javascript&quot; src=&quot;redirect.js&quot;&gt;&lt;/script&gt;</span>
+  <span class='comment val'>#   &lt;/head&gt;</span>
+  <span class='comment val'># &lt;/html&gt;</span>
+</pre>
+</li>
+<li>Build a HTML document:
+
+<pre class="code">
+  <span class='doc identifier id'>doc</span> <span class='assign token'>=</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='build_html identifier id'>build_html</span> <span class='do do kw'>do</span>
+    <span class='html identifier id'>html</span> <span class='lbrace token'>{</span>
+      <span class='head identifier id'>head</span> <span class='lbrace token'>{</span>
+        <span class='script identifier id'>script</span><span class='lparen token'>(</span><span class='symbol val'>:type</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'text/javascript'</span><span class='comma token'>,</span> <span class='symbol val'>:src</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'redirect.js'</span><span class='rparen token'>)</span>
+      <span class='rbrace token'>}</span>
+    <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+
+  <span class='puts identifier id'>puts</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='to_html identifier id'>to_html</span>
+  <span class='comment val'># &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/REC-html40/loose.dtd&quot;&gt;</span>
+  <span class='comment val'># &lt;html&gt;&lt;head&gt;&lt;script src=&quot;redirect.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&lt;/head&gt;&lt;/html&gt;</span>
+</pre>
+</li>
+<li>Parse XML:
+
+<pre class="code">
+  <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span><span class='lparen token'>(</span><span class='some_text identifier id'>some_text</span><span class='rparen token'>)</span>
+  <span class='comment val'># =&gt; &lt;?xml version=&quot;1.0&quot;?&gt;</span>
+  <span class='comment val'># &lt;users&gt;</span>
+  <span class='comment val'>#   &lt;user&gt;</span>
+  <span class='comment val'>#     &lt;name&gt;admin&lt;/name&gt;</span>
+  <span class='comment val'>#     &lt;password&gt;0mni&lt;/password&gt;</span>
+  <span class='comment val'>#   &lt;/user&gt;</span>
+  <span class='comment val'># &lt;/users&gt;</span>
+</pre>
+</li>
+<li>Build a XML document:
+
+<pre class="code">
+  <span class='doc identifier id'>doc</span> <span class='assign token'>=</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='build_xml identifier id'>build_xml</span> <span class='do do kw'>do</span>
+    <span class='playlist identifier id'>playlist</span> <span class='lbrace token'>{</span>
+      <span class='mp3 identifier id'>mp3</span> <span class='lbrace token'>{</span>
+        <span class='file identifier id'>file</span> <span class='lbrace token'>{</span> <span class='text identifier id'>text</span><span class='lparen token'>(</span><span class='string val'>'02 THE WAIT.mp3'</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+        <span class='artist identifier id'>artist</span> <span class='lbrace token'>{</span> <span class='text identifier id'>text</span><span class='lparen token'>(</span><span class='string val'>'Evil Nine'</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+        <span class='track identifier id'>track</span> <span class='lbrace token'>{</span> <span class='text identifier id'>text</span><span class='lparen token'>(</span><span class='string val'>'The Wait feat David Autokratz'</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+        <span class='duration identifier id'>duration</span> <span class='lbrace token'>{</span> <span class='text identifier id'>text</span><span class='lparen token'>(</span><span class='string val'>'1000000000'</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+      <span class='rbrace token'>}</span>
+    <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+
+  <span class='puts identifier id'>puts</span> <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='to_xml identifier id'>to_xml</span>
+  <span class='comment val'># &lt;?xml version=&quot;1.0&quot;?&gt;</span>
+  <span class='comment val'># &lt;playlist&gt;</span>
+  <span class='comment val'>#   &lt;mp3&gt;</span>
+  <span class='comment val'>#     &lt;file&gt;02 THE WAIT.mp3&lt;/file&gt;</span>
+  <span class='comment val'>#     &lt;artist&gt;Evil Nine&lt;/artist&gt;</span>
+  <span class='comment val'>#     &lt;track&gt;The Wait feat David Autokratz&lt;/track&gt;</span>
+  <span class='comment val'>#     &lt;duration&gt;1000000000&lt;/duration&gt;</span>
+  <span class='comment val'>#   &lt;/mp3&gt;</span>
+  <span class='comment val'># &lt;/playlist&gt;</span>
+</pre>
+</li>
+<li>Spider a web site:
+
+<pre class="code">
+  <span class='Web constant id'>Web</span><span class='colon2 op'>::</span><span class='Spider constant id'>Spider</span><span class='dot token'>.</span><span class='host identifier id'>host</span><span class='lparen token'>(</span><span class='string val'>'www.example.com'</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='spider identifier id'>spider</span><span class='bitor op'>|</span>
+    <span class='spider identifier id'>spider</span><span class='dot token'>.</span><span class='every_url identifier id'>every_url</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='url identifier id'>url</span><span class='bitor op'>|</span>
+      <span class='comment val'># ...</span>
+    <span class='end end kw'>end</span>
+
+    <span class='spider identifier id'>spider</span><span class='dot token'>.</span><span class='every_page identifier id'>every_page</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='page identifier id'>page</span><span class='bitor op'>|</span>
+      <span class='comment val'># ...</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+</pre>
+</li>
+<li>Serve files via a Web Server:
+
+<pre class="code">
+  <span class='require identifier id'>require</span> <span class='string val'>'ronin/web/server'</span>
+
+  <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='server identifier id'>server</span> <span class='do do kw'>do</span>
+    <span class='file identifier id'>file</span> <span class='string val'>'/opensearch.xml'</span><span class='comma token'>,</span> <span class='string val'>'/tmp/test.xml'</span>
+    <span class='directory identifier id'>directory</span> <span class='string val'>'/download/'</span><span class='comma token'>,</span> <span class='string val'>'/tmp/download/'</span>
+  <span class='end end kw'>end</span>
+
+  <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='server identifier id'>server</span><span class='dot token'>.</span><span class='get identifier id'>get</span> <span class='string val'>'/test'</span> <span class='do do kw'>do</span>
+    <span class='string val'>'Test 1 2 1 2'</span>
+  <span class='end end kw'>end</span>
+</pre>
+</li>
+</ul>
+<h2>REQUIREMENTS:</h2>
+<ul>
+<li><a href="http://mechanize.rubyforge.org/">mechanize</a> >= 0.9.3
+
+</li>
+<li><a href="http://spidr.rubyforge.org/">spidr</a> >= 0.2.0
+
+</li>
+<li><a href="http://www.sinatrarb.com/">sinatra</a> >= 0.9.4
+
+</li>
+<li><a href="http://ronin.rubyforge.org/">ronin</a> >= 0.3.0
+
+</li>
+</ul>
+<h2>INSTALL:</h2>
+<pre class="code">
+  $ <span class='sudo identifier id'>sudo</span> <span class='gem identifier id'>gem</span> <span class='install identifier id'>install</span> <span class='ronin identifier id'>ronin</span><span class='minus op'>-</span><span class='web identifier id'>web</span>
+</pre>
+<h2>LICENSE:</h2>
+<p>
+Ronin Web - A Ruby library for Ronin that provides support for web scraping
+and spidering functionality.
+</p>
+<p>
+Copyright &#169; 2006-2009 Hal Brodigan (postmodern.mod3 at gmail.com)
+</p>
+<p>
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 2 of the License, or (at your option)
+any later version.
+</p>
+<p>
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+more details.
+</p>
+<p>
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc., 51
+Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+</p>
+
+      </div>
+    </div>
+    <div id="yard_info">
+  Generated on Tuesday, October 20 2009 at 09:15:13 PM by 
+  <abbr class="yard" title="Yay! A Ruby Documentation Tool"><a href="http://yard.soen.ca">YARD</a></abbr> 
+  0.2.3.5 (ruby-1.8.6).
+</div>
+
+  </body>
+</html>

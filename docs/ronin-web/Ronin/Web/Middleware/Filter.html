@@ -1,0 +1,794 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Ronin::Web::Middleware::Filter</title>
+<link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (F)</a> &raquo; 
+    <span class='title'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span> &raquo; <span class='title'><a href="../../Web.html" title="Ronin::Web (module)">Web</a></span> &raquo; <span class='title'><a href="../Middleware.html" title="Ronin::Web::Middleware (module)">Middleware</a></span>
+     &raquo; 
+    <span class="title">Filter</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Ronin::Web::Middleware::Filter
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><a href="Base.html" title="Ronin::Web::Middleware::Base (class)">Base</a></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><a href="Base.html" title="Ronin::Web::Middleware::Base (class)">Base</a></li>
+          
+            <li class="next">Ronin::Web::Middleware::Filter</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/ronin/web/middleware/filter.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>A Rack middleware for filtering requests based on predefined rules.</p>
+
+<pre class="code"><span class='id use'>use</span> <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>Web</span><span class='op'>::</span><span class='const'>Middleware</span><span class='op'>::</span><span class='const'>Filter</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id filter'>filter</span><span class='op'>|</span>
+  <span class='comment'># filter requests by source IP address
+</span>  <span class='id filter'>filter</span><span class='period'>.</span><span class='id rule'>rule</span> <span class='symbol'>:ip</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>212.18.45.0/24</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='const'>BannedApp</span>
+  <span class='id filter'>filter</span><span class='period'>.</span><span class='id rule'>rule</span> <span class='symbol'>:ip</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>192.168.0.0/16</span><span class='tstring_end'>'</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id request'>request</span><span class='op'>|</span>
+    <span class='id response'>response</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Nothing here</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='int'>404</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># filter requests by Referer URL
+</span>  <span class='id filter'>filter</span><span class='period'>.</span><span class='id rule'>rule</span> <span class='symbol'>:referer</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>http://www.sexy.com/</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='const'>TrapApp</span>
+  <span class='id filter'>filter</span><span class='period'>.</span><span class='id rule'>rule</span> <span class='symbol'>:referer</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\.google\.</span><span class='regexp_end'>/</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id request'>request</span><span class='op'>|</span>
+    <span class='id response'>response</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Nothing to see here.</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='int'>404</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># filter requests by User-Agent
+</span>  <span class='id filter'>filter</span><span class='period'>.</span><span class='id rule'>rule</span> <span class='symbol'>:user_agent</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>Microsoft</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='const'>IEApp</span>
+
+  <span class='comment'># filter requests using custom logic
+</span>  <span class='id filter'>filter</span><span class='period'>.</span><span class='id rule'>rule</span> <span class='symbol'>:when</span> <span class='op'>=&gt;</span> <span class='id lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id request'>request</span><span class='op'>|</span> <span class='id request'>request</span><span class='period'>.</span><span class='id form_data?'>form_data?</span> <span class='rbrace'>}</span><span class='comma'>,</span>
+              <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='const'>FormApp</span>
+
+  <span class='comment'># mix filter options together
+</span>  <span class='id filter'>filter</span><span class='period'>.</span><span class='id rule'>rule</span> <span class='symbol'>:ip</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>212.18.45.0/24</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:user_agent</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>Microsoft</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='const'>PwnApp</span>
+<span class='kw'>end</span>
+</pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+  <h2>Constant Summary</h2>
+  
+
+
+  
+  
+  
+  
+  <h3 class="inherited">Constants inherited from <a href="Base.html" title="Ronin::Web::Middleware::Base (class)">Base</a></h3>
+  <p class="inherited"><a href="Base.html#DEFAULT_STATUS-constant" title="Ronin::Web::Middleware::Base::DEFAULT_STATUS (constant)">DEFAULT_STATUS</a></p>
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rules-instance_method" title="#rules (instance method)">- (Object) <strong>rules</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The rules to filter requests by.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#call-instance_method" title="#call (instance method)">- (Rack::Response) <strong>call</strong>(env) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Filters requests based on the defined rules.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Filter) <strong>initialize</strong>(app, options = {}) {|filter| ... }</a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new Filter middleware.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rule-instance_method" title="#rule (instance method)">- (Rule) <strong>rule</strong>(options = {}) {|request| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Defines a rule to filter requests by.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <a href="Base.html" title="Ronin::Web::Middleware::Base (class)">Base</a></h3>
+  <p class="inherited"><a href="Base.html#mime_type_for-instance_method" title="Ronin::Web::Middleware::Base#mime_type_for (method)">#mime_type_for</a>, <a href="Base.html#response-instance_method" title="Ronin::Web::Middleware::Base#response (method)">#response</a>, <a href="Base.html#response_for-instance_method" title="Ronin::Web::Middleware::Base#response_for (method)">#response_for</a>, <a href="Base.html#sanitize_path-instance_method" title="Ronin::Web::Middleware::Base#sanitize_path (method)">#sanitize_path</a>, <a href="Base.html#unescape-instance_method" title="Ronin::Web::Middleware::Base#unescape (method)">#unescape</a></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><a href="" title="Ronin::Web::Middleware::Filter (class)">Filter</a></tt>) <strong>initialize</strong>(app, options = {}) {|filter| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new Filter middleware.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>#call</tt>)</span>
+      
+      
+        <span class='name'>app</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The application that the filter sits in front of.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'>(<tt>filter</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed the newly created
+filter middleware.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='type'>(<tt><a href="" title="Ronin::Web::Middleware::Filter (class)">Filter</a></tt>)</span>
+      
+      
+        <span class='name'>filter</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new filter middleware object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.2</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78
+79
+80
+81
+82</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/middleware/filter.rb', line 78</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id app'>app</span><span class='comma'>,</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@rules</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id app'>app</span><span class='comma'>,</span><span class='id options'>options</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="rules-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="rules-instance_method">
+  
+    - (<tt>Object</tt>) <strong>rules</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The rules to filter requests by</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/middleware/filter.rb', line 58</span>
+
+<span class='kw'>def</span> <span class='id rules'>rules</span>
+  <span class='ivar'>@rules</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="call-instance_method">
+  
+    - (<tt>Rack::Response</tt>) <strong>call</strong>(env) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Filters requests based on the defined rules.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>, <tt>Rack::Request</tt>)</span>
+      
+      
+        <span class='name'>env</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>An incoming request.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Rack::Response</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A response.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.2</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+151
+152
+153
+154
+155
+156
+157
+158
+159</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/middleware/filter.rb', line 151</span>
+
+<span class='kw'>def</span> <span class='id call'>call</span><span class='lparen'>(</span><span class='id env'>env</span><span class='rparen'>)</span>
+  <span class='id request'>request</span> <span class='op'>=</span> <span class='const'>Rack</span><span class='op'>::</span><span class='const'>Request</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id env'>env</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@rules</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id rule'>rule</span><span class='comma'>,</span><span class='id app'>app</span><span class='op'>|</span>
+    <span class='kw'>return</span> <span class='id app'>app</span><span class='period'>.</span><span class='id call'>call</span><span class='lparen'>(</span><span class='id env'>env</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id rule'>rule</span><span class='period'>.</span><span class='id match?'>match?</span><span class='lparen'>(</span><span class='id request'>request</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id env'>env</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="rule-instance_method">
+  
+    - (<tt><a href="Rule.html" title="Ronin::Web::Middleware::Rule (class)">Rule</a></tt>) <strong>rule</strong>(options = {}) {|request| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Defines a rule to filter requests by.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'><p>Filter requests going to an application.</p>
+</div></h4>
+      <pre class="example code"><span class='id filter'>filter</span><span class='period'>.</span><span class='id rule'>rule</span> <span class='symbol'>:ip</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>210.18.0.0/16</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='const'>BannedApp</span></pre>
+    
+      <h4><div class='inline'><p>Accept filtered requests using a block.</p>
+</div></h4>
+      <pre class="example code"><span class='id filter'>filter</span><span class='period'>.</span><span class='id rule'>rule</span> <span class='symbol'>:ip</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>210.18.0.0/16</span><span class='tstring_end'>'</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id request'>request</span><span class='op'>|</span>
+  <span class='id response'>response</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Banned!</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Filter options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="name">:campaign</span>
+          <span class="default">
+            
+              <span class="na">N/A</span>
+            
+          </span>
+          &mdash;<div class='inline'><p>The name of the campaign who's targetted hosts will be filtered.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="type">(<tt>String</tt>, <tt>Regexp</tt>)</span>
+          <span class="name">:vhost</span>
+          <span class="default">
+            
+              <span class="na">N/A</span>
+            
+          </span>
+          &mdash;<div class='inline'><p>The Virtual-Host to filter for.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="type">(<tt>String</tt>, <tt>IPAddr</tt>)</span>
+          <span class="name">:ip</span>
+          <span class="default">
+            
+              <span class="na">N/A</span>
+            
+          </span>
+          &mdash;<div class='inline'><p>The IP address or IP range to fitler.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="type">(<tt>String</tt>, <tt>Regexp</tt>)</span>
+          <span class="name">:referer</span>
+          <span class="default">
+            
+              <span class="na">N/A</span>
+            
+          </span>
+          &mdash;<div class='inline'><p>The Referer URL or pattern to filter.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="type">(<tt>String</tt>, <tt>Regexp</tt>)</span>
+          <span class="name">:user_agent</span>
+          <span class="default">
+            
+              <span class="na">N/A</span>
+            
+          </span>
+          &mdash;<div class='inline'><p>The User-Agent string to filter.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="type">(<tt>Proc</tt>)</span>
+          <span class="name">:when</span>
+          <span class="default">
+            
+              <span class="na">N/A</span>
+            
+          </span>
+          &mdash;<div class='inline'><p>Custom logic to use when filtering requests.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="type">(<tt>#call</tt>)</span>
+          <span class="name">:to</span>
+          <span class="default">
+            
+              <span class="na">N/A</span>
+            
+          </span>
+          &mdash;<div class='inline'><p>The application that will receive filtered requests.</p>
+</div>
+        </tr>
+      
+    </ul>
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'>(<tt>request</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will receive filtered requests.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='type'>(<tt>Rack::Request</tt>)</span>
+      
+      
+        <span class='name'>request</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A filtered request.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><a href="Rule.html" title="Ronin::Web::Middleware::Rule (class)">Rule</a></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new filter rule.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="Rule.html#initialize-instance_method" title="Ronin::Web::Middleware::Rule#initialize (method)">Ronin::Web::Middleware::Rule#initialize</a></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.2</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+132
+133
+134
+135
+136
+137
+138</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/middleware/filter.rb', line 132</span>
+
+<span class='kw'>def</span> <span class='id rule'>rule</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id app'>app</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id options'>options</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:to</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id rule'>rule</span> <span class='op'>=</span> <span class='const'>Rule</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@rules</span><span class='lbracket'>[</span><span class='id rule'>rule</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id app'>app</span>
+  <span class='kw'>return</span> <span class='id rule'>rule</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Aug 10 21:24:36 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.8 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../../../style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../../../custom.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../../../syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <script src="../../../jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Module: Ronin::Web::Server::Hosts</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section module Ronin_Web_Server_Hosts">
+  <h1 class="title">Module: Ronin::Web::Server::Hosts</h1>
+  <div class="section constants">
+  
+</div>  <div class="section visibilitygroup public">
+    <h1>Public Visibility</h1>
+      <div class="section methodsummary class public">
+    <h1>Public Class Method Summary</h1>
+<table class="summary">
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a title="host" href="#host-class_method">host</a></span><span class='args'>(name, server)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+Routes requests with a specific Host header to another.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a title="hosts_like" href="#hosts_like-class_method">hosts_like</a></span><span class='args'>(pattern, server)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        <p>
+Routes requests with a matching Host header to another web.
+</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <th class="signature">
+        
+          <span class='overload'>
+            <span class='name'><a title="included" href="#included-class_method">included</a></span><span class='args'>(base)</span>
+            <span class='block'></span>
+          </span>
+        
+        
+      </th>
+      <td class="docstring">
+        
+        
+      </td>
+    </tr>
+  
+</table>
+
+  </div>
+<div class="section methoddetails class public">
+  <h1>Public Class Method Details</h1>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>host</h3>
+</div><div id="host-class_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>host</span><span class='args'>(name, server)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+Routes requests with a specific Host header to another web server.
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="examples">
+  
+    <h3>Example: <small></small></h3>
+    <div class="docstring">
+      <pre class="code">  <span class='MyApp constant id'>MyApp</span><span class='dot token'>.</span><span class='host identifier id'>host</span> <span class='string val'>'cdn.evil.com'</span><span class='comma token'>,</span> <span class='EvilServer constant id'>EvilServer</span>
+</pre>
+    </div>
+  
+</div>
+<div class="param">
+  <h3>Parameters:</h3>
+  <dl>
+  
+    
+      <dt>
+        <span class='type'>[<tt>String</tt>]</span>
+        <span class='name'>name</span>
+        
+      </dt>
+      <dd>
+        <span class='desc'><p>
+The host-name to route requests for.
+</p>
+</span>
+      </dd>
+    
+  
+    
+      <dt>
+        <span class='type'>[<tt><a title="Base" href="Base.html">Base</a></tt>, <tt>#call</tt>]</span>
+        <span class='name'>server</span>
+        
+      </dt>
+      <dd>
+        <span class='desc'><p>
+The web server to route the requests to.
+</p>
+</span>
+      </dd>
+    
+  
+  </dl>
+</div><div class="since">
+  <h3>Since:</h3>
+  <dl>
+  
+    <dt>
+      
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+0.2.0
+</p>
+</span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+45
+46
+47
+48
+49
+50
+51
+52
+53</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/ronin/web/server/hosts.rb', line 45</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='host identifier id'>host</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span><span class='server identifier id'>server</span><span class='rparen token'>)</span>
+  <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+
+  <span class='before identifier id'>before</span> <span class='do do kw'>do</span>
+    <span class='if if kw'>if</span> <span class='request identifier id'>request</span><span class='dot token'>.</span><span class='host identifier id'>host</span> <span class='eq op'>==</span> <span class='name identifier id'>name</span>
+      <span class='halt identifier id'>halt</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='server identifier id'>server</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='dot token'>.</span><span class='env identifier id'>env</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>hosts_like</h3>
+</div><div id="hosts_like-class_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>hosts_like</span><span class='args'>(pattern, server)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section docstring">
+  <p>
+Routes requests with a matching Host header to another web server.
+</p>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="examples">
+  
+    <h3>Example: <small></small></h3>
+    <div class="docstring">
+      <pre class="code">  <span class='MyApp constant id'>MyApp</span><span class='dot token'>.</span><span class='hosts_like identifier id'>hosts_like</span> <span class='regexp val'>/^a[0-9]\./</span><span class='comma token'>,</span> <span class='FileProxy constant id'>FileProxy</span>
+</pre>
+    </div>
+  
+</div>
+<div class="param">
+  <h3>Parameters:</h3>
+  <dl>
+  
+    
+      <dt>
+        <span class='type'>[<tt>Regexp</tt>, <tt>String</tt>]</span>
+        <span class='name'>pattern</span>
+        
+      </dt>
+      <dd>
+        <span class='desc'><p>
+The pattern to match Host headers of requests.
+</p>
+</span>
+      </dd>
+    
+  
+    
+      <dt>
+        <span class='type'>[<tt><a title="Base" href="Base.html">Base</a></tt>, <tt>#call</tt>]</span>
+        <span class='name'>server</span>
+        
+      </dt>
+      <dd>
+        <span class='desc'><p>
+The server to route the requests to.
+</p>
+</span>
+      </dd>
+    
+  
+  </dl>
+</div><div class="since">
+  <h3>Since:</h3>
+  <dl>
+  
+    <dt>
+      
+      
+      
+    </dt>
+    <dd>
+      <span class='desc'><p>
+0.2.0
+</p>
+</span>
+    </dd>
+  
+  </dl>
+</div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+70
+71
+72
+73
+74
+75
+76</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/ronin/web/server/hosts.rb', line 70</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='hosts_like identifier id'>hosts_like</span><span class='lparen token'>(</span><span class='pattern identifier id'>pattern</span><span class='comma token'>,</span><span class='server identifier id'>server</span><span class='rparen token'>)</span>
+  <span class='before identifier id'>before</span> <span class='do do kw'>do</span>
+    <span class='if if kw'>if</span> <span class='request identifier id'>request</span><span class='dot token'>.</span><span class='host identifier id'>host</span><span class='dot token'>.</span><span class='match identifier id'>match</span><span class='lparen token'>(</span><span class='pattern identifier id'>pattern</span><span class='rparen token'>)</span>
+      <span class='halt identifier id'>halt</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='server identifier id'>server</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='dot token'>.</span><span class='env identifier id'>env</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+    <div class="method">
+      <div class="method_header">
+  <h3>included</h3>
+</div><div id="included-class_method" class="section method">
+  <div class="details_title">
+    <div class='section methodsignature'>
+    <tt class='def'>
+      <span class='visibility'>public</span>
+      <span class='return_types'></span>
+      <span class='name'>included</span><span class='args'>(base)</span>
+      <span class='block'></span>
+    </tt>
+  </div>
+
+</div><div class="section source">
+  <span>[<a class="source_link" href="#">View source</a>]</span>
+  <div class="source_code">
+    <table>
+      <tr>
+        <td>
+          <pre class="lines">
+
+
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82</pre>
+        </td>
+        <td>
+          <pre class="code"><span class="info file"># File 'lib/ronin/web/server/hosts.rb', line 28</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='included identifier id'>included</span><span class='lparen token'>(</span><span class='base identifier id'>base</span><span class='rparen token'>)</span>
+  <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='module_eval identifier id'>module_eval</span> <span class='do do kw'>do</span>
+    <span class='comment val'>#</span>
+    <span class='comment val'># Routes requests with a specific Host header to another</span>
+    <span class='comment val'># web server.</span>
+    <span class='comment val'>#</span>
+    <span class='comment val'># @param [String] name</span>
+    <span class='comment val'>#   The host-name to route requests for.</span>
+    <span class='comment val'>#</span>
+    <span class='comment val'># @param [Base, #call] server</span>
+    <span class='comment val'>#   The web server to route the requests to.</span>
+    <span class='comment val'>#</span>
+    <span class='comment val'># @example</span>
+    <span class='comment val'>#   MyApp.host 'cdn.evil.com', EvilServer</span>
+    <span class='comment val'>#</span>
+    <span class='comment val'># @since 0.2.0</span>
+    <span class='comment val'>#</span>
+    <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='host identifier id'>host</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span><span class='server identifier id'>server</span><span class='rparen token'>)</span>
+      <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+
+      <span class='before identifier id'>before</span> <span class='do do kw'>do</span>
+        <span class='if if kw'>if</span> <span class='request identifier id'>request</span><span class='dot token'>.</span><span class='host identifier id'>host</span> <span class='eq op'>==</span> <span class='name identifier id'>name</span>
+          <span class='halt identifier id'>halt</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='server identifier id'>server</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='dot token'>.</span><span class='env identifier id'>env</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+        <span class='end end kw'>end</span>
+      <span class='end end kw'>end</span>
+    <span class='end end kw'>end</span>
+
+    <span class='comment val'>#</span>
+    <span class='comment val'># Routes requests with a matching Host header to another web</span>
+    <span class='comment val'># server.</span>
+    <span class='comment val'>#</span>
+    <span class='comment val'># @param [Regexp, String] pattern</span>
+    <span class='comment val'>#   The pattern to match Host headers of requests.</span>
+    <span class='comment val'>#</span>
+    <span class='comment val'># @param [Base, #call] server</span>
+    <span class='comment val'>#   The server to route the requests to.</span>
+    <span class='comment val'>#</span>
+    <span class='comment val'># @example</span>
+    <span class='comment val'>#   MyApp.hosts_like /^a[0-9]\./, FileProxy</span>
+    <span class='comment val'>#</span>
+    <span class='comment val'># @since 0.2.0</span>
+    <span class='comment val'>#</span>
+    <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='hosts_like identifier id'>hosts_like</span><span class='lparen token'>(</span><span class='pattern identifier id'>pattern</span><span class='comma token'>,</span><span class='server identifier id'>server</span><span class='rparen token'>)</span>
+      <span class='before identifier id'>before</span> <span class='do do kw'>do</span>
+        <span class='if if kw'>if</span> <span class='request identifier id'>request</span><span class='dot token'>.</span><span class='host identifier id'>host</span><span class='dot token'>.</span><span class='match identifier id'>match</span><span class='lparen token'>(</span><span class='pattern identifier id'>pattern</span><span class='rparen token'>)</span>
+          <span class='halt identifier id'>halt</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='server identifier id'>server</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='dot token'>.</span><span class='env identifier id'>env</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+        <span class='end end kw'>end</span>
+      <span class='end end kw'>end</span>
+    <span class='end end kw'>end</span>
+
+    <span class='protected identifier id'>protected</span>
+
+    <span class='helpers identifier id'>helpers</span> <span class='Ronin constant id'>Ronin</span><span class='colon2 op'>::</span><span class='Web constant id'>Web</span><span class='colon2 op'>::</span><span class='Server constant id'>Server</span><span class='colon2 op'>::</span><span class='Helpers constant id'>Helpers</span><span class='colon2 op'>::</span><span class='Hosts constant id'>Hosts</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+    </div>
+  
+</div>
+  </div>
+
+</div>
+    </div>
+    <div id="yard_info">
+  Generated on Sunday, October 18 2009 at 06:03:05 PM by 
+  <abbr class="yard" title="Yay! A Ruby Documentation Tool"><a href="http://yard.soen.ca">YARD</a></abbr> 
+  0.2.3.5 (ruby-1.8.6).
+</div>
+
+  </body>
+</html>

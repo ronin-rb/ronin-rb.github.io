@@ -1,0 +1,2925 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>
+  Module: Ronin::Web
+  
+    &mdash; Ronin Web Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (W)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Ronin.html" title="Ronin (module)">Ronin</a></span></span>
+     &raquo; 
+    <span class="title">Web</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Ronin::Web
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/ronin/web/web.rb<span class="defines">,<br />
+  lib/ronin/web/spider.rb,<br /> lib/ronin/web/config.rb,<br /> lib/ronin/web/version.rb,<br /> lib/ronin/web/proxy/app.rb,<br /> lib/ronin/web/mechanize.rb,<br /> lib/ronin/web/proxy/web.rb,<br /> lib/ronin/web/server/web.rb,<br /> lib/ronin/web/server/app.rb,<br /> lib/ronin/web/proxy/base.rb,<br /> lib/ronin/web/user_agents.rb,<br /> lib/ronin/web/server/base.rb,<br /> lib/ronin/web/middleware/rule.rb,<br /> lib/ronin/web/middleware/base.rb,<br /> lib/ronin/web/middleware/proxy.rb,<br /> lib/ronin/web/middleware/files.rb,<br /> lib/ronin/web/middleware/router.rb,<br /> lib/ronin/web/middleware/request.rb,<br /> lib/ronin/web/middleware/helpers.rb,<br /> lib/ronin/web/middleware/response.rb,<br /> lib/ronin/web/middleware/directories.rb,<br /> lib/ronin/web/middleware/proxy_request.rb,<br /> lib/ronin/web/middleware/filters/ip_filter.rb,<br /> lib/ronin/web/middleware/filters/path_filter.rb,<br /> lib/ronin/web/middleware/filters/vhost_filter.rb,<br /> lib/ronin/web/middleware/filters/referer_filter.rb,<br /> lib/ronin/web/middleware/filters/campaign_filter.rb,<br /> lib/ronin/web/middleware/filters/user_agent_filter.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Web/Config.html" title="Ronin::Web::Config (module)">Config</a></span>, <span class='object_link'><a href="Web/Middleware.html" title="Ronin::Web::Middleware (module)">Middleware</a></span>, <span class='object_link'><a href="Web/Proxy.html" title="Ronin::Web::Proxy (module)">Proxy</a></span>, <span class='object_link'><a href="Web/Server.html" title="Ronin::Web::Server (module)">Server</a></span>
+    
+   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Web/Mechanize.html" title="Ronin::Web::Mechanize (class)">Mechanize</a></span>, <span class='object_link'><a href="Web/Spider.html" title="Ronin::Web::Spider (class)">Spider</a></span>, <span class='object_link'><a href="Web/UserAgents.html" title="Ronin::Web::UserAgents (class)">UserAgents</a></span>
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="VERSION-constant" class="">VERSION =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Ronin Web Version</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='string val'>'0.3.0.rc1'</span>
+</pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#agent-class_method" title="agent (class method)">+ (Mechanize) <strong>agent</strong>(options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A persistant Mechanize Agent.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#build_html-class_method" title="build_html (class method)">+ (Nokogiri::HTML::Builder) <strong>build_html</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new Nokogiri::HTML::Builder.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#build_xml-class_method" title="build_xml (class method)">+ (Nokogiri::XML::Builder) <strong>build_xml</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new Nokogiri::XML::Builder.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get-class_method" title="get (class method)">+ (Mechanize::Page) <strong>get</strong>(url, options = {}) {|page| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a Mechanize Page for the contents at a given URL.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_body-class_method" title="get_body (class method)">+ (String) <strong>get_body</strong>(url, options = {}) {|body| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Requests the body of the Mechanize Page created from the response
+of the given URL.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#html-class_method" title="html (class method)">+ (Nokogiri::HTML::Document) <strong>html</strong>(body) {|doc| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Parses the body of a document into a HTML document object.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#open-class_method" title="open (class method)">+ (File) <strong>open</strong>(url, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Opens a URL as a temporary file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#post-class_method" title="post (class method)">+ (Mechanize::Page) <strong>post</strong>(url, options = {}) {|page| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Posts to a given URL and creates a Mechanize Page from the response.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#post_body-class_method" title="post_body (class method)">+ (Mechanize::Page) <strong>post_body</strong>(url, options = {}) {|body| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Posts to a given URL and returns the body of the Mechanize Page
+created from the response.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#proxy-class_method" title="proxy (class method)">+ (Network::HTTP::Proxy) <strong>proxy</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Proxy information for <span class='object_link'><a href="" title="Ronin::Web (module)">Web</a></span> to use.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#proxy%3D-class_method" title="proxy= (class method)">+ (Network::HTTP::Proxy) <strong>proxy=</strong>(new_proxy) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets the proxy used by <span class='object_link'><a href="" title="Ronin::Web (module)">Web</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#proxy_server-class_method" title="proxy_server (class method)">+ (Object) <strong>proxy_server</strong>(options = {}, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the Ronin Web Proxy.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#server-class_method" title="server (class method)">+ (Server::App) <strong>server</strong>(options = {}) {|server| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the Ronin Web Server.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#user_agent-class_method" title="user_agent (class method)">+ (String<sup>?</sup>) <strong>user_agent</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The User-Agent string used by <span class='object_link'><a href="" title="Ronin::Web (module)">Web</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#user_agent%3D-class_method" title="user_agent= (class method)">+ (String) <strong>user_agent=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets the <code>User-Agent</code> string used by <span class='object_link'><a href="" title="Ronin::Web (module)">Web</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public deprecated">
+  <span class="summary_signature">
+    
+      <a href="#user_agent_alias%3D-class_method" title="user_agent_alias= (class method)">+ (String) <strong>user_agent_alias=</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  <span class="deprecated note title">Deprecated</span>
+  
+
+  
+    <span class="summary_desc"><strong>Deprecated.</strong> <div class='inline'><p>Will be replaced by calling <span class='object_link'><a href="#user_agent%3D-class_method" title="Ronin::Web.user_agent= (method)">user_agent=</a></span> with a <code>Symbol</code>
+and will be removed in 1.0.0.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public deprecated">
+  <span class="summary_signature">
+    
+      <a href="#user_agent_aliases-class_method" title="user_agent_aliases (class method)">+ (Array) <strong>user_agent_aliases</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  <span class="deprecated note title">Deprecated</span>
+  
+
+  
+    <span class="summary_desc"><strong>Deprecated.</strong> <div class='inline'><p>Will be replaced by <span class='object_link'><a href="#user_agents-class_method" title="Ronin::Web.user_agents (method)">user_agents</a></span> in 1.0.0.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#user_agents-class_method" title="user_agents (class method)">+ (UserAgents) <strong>user_agents</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>A set of common <code>User-Agent</code> strings.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#xml-class_method" title="xml (class method)">+ (Nokogiri::XML::Document) <strong>xml</strong>(body) {|doc| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Parses the body of a document into a XML document object.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="agent-class_method">
+  
+    + (<tt><span class='object_link'><a href="Web/Mechanize.html" title="Ronin::Web::Mechanize (class)">Mechanize</a></span></tt>) <strong>agent</strong>(options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>A persistant Mechanize Agent.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Web/Mechanize.html" title="Ronin::Web::Mechanize (class)">Mechanize</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The persistant Mechanize Agent.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Web/Mechanize.html" title="Ronin::Web::Mechanize (class)">Mechanize</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+355
+356
+357
+358
+359
+360
+361</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/web.rb', line 355</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='agent identifier id'>agent</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
+    <span class='@agent ivar id'>@agent</span> <span class='opasgn op'>||=</span> <span class='Mechanize constant id'>Mechanize</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span>
+  <span class='else else kw'>else</span>
+    <span class='@agent ivar id'>@agent</span> <span class='assign token'>=</span> <span class='Mechanize constant id'>Mechanize</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="build_html-class_method">
+  
+    + (<tt>Nokogiri::HTML::Builder</tt>) <strong>build_html</strong> { ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new Nokogiri::HTML::Builder.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='build_html identifier id'>build_html</span> <span class='do do kw'>do</span>
+  <span class='html identifier id'>html</span> <span class='lbrace token'>{</span>
+    <span class='body identifier id'>body</span> <span class='lbrace token'>{</span>
+      <span class='div identifier id'>div</span><span class='lparen token'>(</span><span class='symbol val'>:style</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'display:none;'</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span>
+        <span class='object identifier id'>object</span><span class='lparen token'>(</span><span class='symbol val'>:classid</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'blabla'</span><span class='rparen token'>)</span>
+      <span class='rbrace token'>}</span>
+    <span class='rbrace token'>}</span>
+  <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    
+  </div>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'><p>[]
+The block that will be used to construct the HTML document.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Nokogiri::HTML::Builder</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new HTML builder object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/gems/nokogiri/Nokogiri/HTML/Builder" target="_parent" title="http://rubydoc.info/gems/nokogiri/Nokogiri/HTML/Builder">http://rubydoc.info/gems/nokogiri/Nokogiri/HTML/Builder</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+85
+86
+87</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/web.rb', line 85</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='build_html identifier id'>build_html</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='Nokogiri constant id'>Nokogiri</span><span class='colon2 op'>::</span><span class='HTML constant id'>HTML</span><span class='colon2 op'>::</span><span class='Builder constant id'>Builder</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="build_xml-class_method">
+  
+    + (<tt>Nokogiri::XML::Builder</tt>) <strong>build_xml</strong> { ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new Nokogiri::XML::Builder.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='build_xml identifier id'>build_xml</span> <span class='do do kw'>do</span>
+  <span class='post identifier id'>post</span><span class='lparen token'>(</span><span class='symbol val'>:id</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>2</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span>
+    <span class='title identifier id'>title</span> <span class='lbrace token'>{</span> <span class='text identifier id'>text</span><span class='lparen token'>(</span><span class='string val'>'some example'</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+    <span class='body identifier id'>body</span> <span class='lbrace token'>{</span> <span class='text identifier id'>text</span><span class='lparen token'>(</span><span class='string val'>'this is one contrived example.'</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+  <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    
+  </div>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'><p>[]
+The block that will be used to construct the XML document.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Nokogiri::XML::Builder</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new XML builder object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/gems/nokogiri/Nokogiri/XML/Builder" target="_parent" title="http://rubydoc.info/gems/nokogiri/Nokogiri/XML/Builder">http://rubydoc.info/gems/nokogiri/Nokogiri/XML/Builder</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+137
+138
+139</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/web.rb', line 137</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='build_xml identifier id'>build_xml</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='Nokogiri constant id'>Nokogiri</span><span class='colon2 op'>::</span><span class='XML constant id'>XML</span><span class='colon2 op'>::</span><span class='Builder constant id'>Builder</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get-class_method">
+  
+    + (<tt>Mechanize::Page</tt>) <strong>get</strong>(url, options = {}) {|page| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Creates a Mechanize Page for the contents at a given URL.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='string val'>'http://www.rubyinside.com'</span><span class='rparen token'>)</span>
+<span class='comment val'># =&gt; Mechanize::Page</span>
+</pre>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='string val'>'http://www.rubyinside.com'</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='page identifier id'>page</span><span class='bitor op'>|</span>
+  <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='search identifier id'>search</span><span class='lparen token'>(</span><span class='string val'>'div.post/h2/a'</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='title identifier id'>title</span><span class='bitor op'>|</span>
+    <span class='puts identifier id'>puts</span> <span class='title identifier id'>title</span><span class='dot token'>.</span><span class='inner_text identifier id'>inner_text</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>url</span>
+      
+      
+        <span class='type'>(<tt>URI::Generic</tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The URL to request.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:user_agent</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The User-Agent string to use.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:user_agent_alias</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The User-Agent Alias to use.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:proxy</span>
+          <span class="type">(<tt>Network::HTTP::Proxy</tt>, <tt>Hash</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>Web.proxy</tt>
+            
+          </span>
+          &mdash; <div class='inline'><p>Proxy information.</p>
+</div>
+        </tr>
+      
+    </ul>
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>page</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed the page for the requested
+URL.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>page</span>
+      
+      
+        <span class='type'>(<tt>Mechanize::Page</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The requested page.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Mechanize::Page</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The requested page.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/gems/mechanize/Mechanize/Page" target="_parent" title="http://rubydoc.info/gems/mechanize/Mechanize/Page">http://rubydoc.info/gems/mechanize/Mechanize/Page</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+406
+407
+408
+409
+410
+411</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/web.rb', line 406</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='page identifier id'>page</span> <span class='assign token'>=</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='agent identifier id'>agent</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='rparen token'>)</span>
+
+  <span class='yield yield kw'>yield</span> <span class='page identifier id'>page</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+  <span class='return return kw'>return</span> <span class='page identifier id'>page</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_body-class_method">
+  
+    + (<tt>String</tt>) <strong>get_body</strong>(url, options = {}) {|body| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Requests the body of the Mechanize Page created from the response
+of the given URL.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='get_body identifier id'>get_body</span><span class='lparen token'>(</span><span class='string val'>'http://www.rubyinside.com'</span><span class='rparen token'>)</span> <span class='comment val'># =&gt; String</span>
+</pre>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='get_body identifier id'>get_body</span><span class='lparen token'>(</span><span class='string val'>'http://www.rubyinside.com'</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='body identifier id'>body</span><span class='bitor op'>|</span>
+  <span class='puts identifier id'>puts</span> <span class='body identifier id'>body</span>
+<span class='end end kw'>end</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>url</span>
+      
+      
+        <span class='type'>(<tt>URI::Generic</tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The URL to request.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:user_agent</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The User-Agent string to use.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:user_agent_alias</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The User-Agent Alias to use.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:proxy</span>
+          <span class="type">(<tt>Network::HTTP::Proxy</tt>, <tt>Hash</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>Web.proxy</tt>
+            
+          </span>
+          &mdash; <div class='inline'><p>Proxy information.</p>
+</div>
+        </tr>
+      
+    </ul>
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>body</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed the body of the page.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>body</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The requested body of the page.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The requested body of the page.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#get-class_method" title="Ronin::Web.get (method)">get</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+453
+454
+455
+456
+457
+458</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/web.rb', line 453</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='get_body identifier id'>get_body</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='body identifier id'>body</span> <span class='assign token'>=</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='body identifier id'>body</span>
+
+  <span class='yield yield kw'>yield</span> <span class='body identifier id'>body</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+  <span class='return return kw'>return</span> <span class='body identifier id'>body</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="html-class_method">
+  
+    + (<tt>Nokogiri::HTML::Document</tt>) <strong>html</strong>(body) {|doc| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Parses the body of a document into a HTML document object.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>body</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>IO</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The body of the document to parse.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>doc</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed the newly created document
+object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>doc</span>
+      
+      
+        <span class='type'>(<tt>Nokogiri::HTML::Document</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new HTML document object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Nokogiri::HTML::Document</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new HTML document object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/gems/nokogiri/Nokogiri/HTML/Document" target="_parent" title="http://rubydoc.info/gems/nokogiri/Nokogiri/HTML/Document">http://rubydoc.info/gems/nokogiri/Nokogiri/HTML/Document</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+54
+55
+56
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/web.rb', line 54</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='html identifier id'>html</span><span class='lparen token'>(</span><span class='body identifier id'>body</span><span class='rparen token'>)</span>
+  <span class='doc identifier id'>doc</span> <span class='assign token'>=</span> <span class='Nokogiri constant id'>Nokogiri</span><span class='colon2 op'>::</span><span class='HTML constant id'>HTML</span><span class='lparen token'>(</span><span class='body identifier id'>body</span><span class='rparen token'>)</span>
+
+  <span class='yield yield kw'>yield</span> <span class='doc identifier id'>doc</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+  <span class='return return kw'>return</span> <span class='doc identifier id'>doc</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="open-class_method">
+  
+    + (<tt>File</tt>) <strong>open</strong>(url, options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Opens a URL as a temporary file.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'><p>Open a given URL.</p>
+</div></h4>
+      <pre class="example code"><span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='open identifier id'>open</span><span class='lparen token'>(</span><span class='string val'>'http://rubyflow.com/'</span><span class='rparen token'>)</span>
+</pre>
+    
+      <h4><div class='inline'><p>Open a given URL, using a custom User-Agent alias.</p>
+</div></h4>
+      <pre class="example code"><span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='open identifier id'>open</span><span class='lparen token'>(</span><span class='string val'>'http://tenderlovemaking.com/'</span><span class='comma token'>,</span>
+  <span class='symbol val'>:user_agent_alias</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'Linux Mozilla'</span><span class='rparen token'>)</span>
+</pre>
+    
+      <h4><div class='inline'><p>Open a given URL, using a custom User-Agent string.</p>
+</div></h4>
+      <pre class="example code"><span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='open identifier id'>open</span><span class='lparen token'>(</span><span class='string val'>'http://www.wired.com/'</span><span class='comma token'>,</span> <span class='symbol val'>:user_agent</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'the future'</span><span class='rparen token'>)</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:user_agent</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The User-Agent string to use.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:user_agent_alias</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The User-Agent Alias to use.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:proxy</span>
+          <span class="type">(<tt>Network::HTTP::Proxy</tt>, <tt>Hash</tt>, <tt>String</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>Web.proxy</tt>
+            
+          </span>
+          &mdash; <div class='inline'><p>Proxy information.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:user</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The HTTP Basic Authentication user name.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:password</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The HTTP Basic Authentication password.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:content_length_proc</span>
+          <span class="type">(<tt>Proc</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>A callback which will be passed the content-length of the HTTP
+response.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:progress_proc</span>
+          <span class="type">(<tt>Proc</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>A callback which will be passed the size of each fragment, once
+received from the server.</p>
+</div>
+        </tr>
+      
+    </ul>
+  
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>File</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The contents of the URL.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/open-uri/frames" target="_parent" title="http://rubydoc.info/stdlib/open-uri/frames">http://rubydoc.info/stdlib/open-uri/frames</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/web.rb', line 310</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='open identifier id'>open</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='user_agent_alias identifier id'>user_agent_alias</span> <span class='assign token'>=</span> <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:user_agent_alias</span><span class='rparen token'>)</span>
+  <span class='proxy identifier id'>proxy</span> <span class='assign token'>=</span> <span class='Network constant id'>Network</span><span class='colon2 op'>::</span><span class='HTTP constant id'>HTTP</span><span class='colon2 op'>::</span><span class='Proxy constant id'>Proxy</span><span class='dot token'>.</span><span class='create identifier id'>create</span><span class='lparen token'>(</span>
+    <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:proxy</span><span class='rparen token'>)</span> <span class='orop op'>||</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='proxy identifier id'>proxy</span>
+  <span class='rparen token'>)</span>
+  <span class='user identifier id'>user</span> <span class='assign token'>=</span> <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:user</span><span class='rparen token'>)</span>
+  <span class='password identifier id'>password</span> <span class='assign token'>=</span> <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:password</span><span class='rparen token'>)</span>
+  <span class='content_length_proc identifier id'>content_length_proc</span> <span class='assign token'>=</span> <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:content_length_proc</span><span class='rparen token'>)</span>
+  <span class='progress_proc identifier id'>progress_proc</span> <span class='assign token'>=</span> <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:progress_proc</span><span class='rparen token'>)</span>
+
+  <span class='headers identifier id'>headers</span> <span class='assign token'>=</span> <span class='Network constant id'>Network</span><span class='colon2 op'>::</span><span class='HTTP constant id'>HTTP</span><span class='dot token'>.</span><span class='headers identifier id'>headers</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span>
+
+  <span class='if if kw'>if</span> <span class='user_agent_alias identifier id'>user_agent_alias</span>
+    <span class='headers identifier id'>headers</span><span class='lbrack token'>[</span><span class='string val'>'User-Agent'</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='user_agent_aliases identifier id'>user_agent_aliases</span><span class='lbrack token'>[</span><span class='user_agent_alias identifier id'>user_agent_alias</span><span class='rbrack token'>]</span>
+  <span class='end end kw'>end</span>
+
+  <span class='if if kw'>if</span> <span class='proxy identifier id'>proxy</span><span class='lbrack token'>[</span><span class='symbol val'>:host</span><span class='rbrack token'>]</span>
+    <span class='headers identifier id'>headers</span><span class='lbrack token'>[</span><span class='symbol val'>:proxy</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='proxy identifier id'>proxy</span><span class='dot token'>.</span><span class='url identifier id'>url</span>
+  <span class='end end kw'>end</span>
+
+  <span class='if if kw'>if</span> <span class='user identifier id'>user</span>
+    <span class='headers identifier id'>headers</span><span class='lbrack token'>[</span><span class='symbol val'>:http_basic_authentication</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='user identifier id'>user</span><span class='comma token'>,</span> <span class='password identifier id'>password</span><span class='rbrack token'>]</span>
+  <span class='end end kw'>end</span>
+
+  <span class='if if kw'>if</span> <span class='content_length_proc identifier id'>content_length_proc</span>
+    <span class='headers identifier id'>headers</span><span class='lbrack token'>[</span><span class='symbol val'>:content_length_proc</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='content_length_proc identifier id'>content_length_proc</span>
+  <span class='end end kw'>end</span>
+
+  <span class='if if kw'>if</span> <span class='progress_proc identifier id'>progress_proc</span>
+    <span class='headers identifier id'>headers</span><span class='lbrack token'>[</span><span class='symbol val'>:progress_proc</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='progress_proc identifier id'>progress_proc</span>
+  <span class='end end kw'>end</span>
+
+  <span class='return return kw'>return</span> <span class='Kernel constant id'>Kernel</span><span class='dot token'>.</span><span class='open identifier id'>open</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='comma token'>,</span><span class='headers identifier id'>headers</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="post-class_method">
+  
+    + (<tt>Mechanize::Page</tt>) <strong>post</strong>(url, options = {}) {|page| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Posts to a given URL and creates a Mechanize Page from the response.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='post identifier id'>post</span><span class='lparen token'>(</span><span class='string val'>'http://www.rubyinside.com'</span><span class='rparen token'>)</span>
+<span class='comment val'># =&gt; Mechanize::Page</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>url</span>
+      
+      
+        <span class='type'>(<tt>URI::Generic</tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The URL to request.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:query</span>
+          <span class="type">(<tt>Hash</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>Additional query parameters to post with.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:user_agent</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The User-Agent string to use.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:user_agent_alias</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The User-Agent Alia to use.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:proxy</span>
+          <span class="type">(<tt>Network::HTTP::Proxy</tt>, <tt>Hash</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>Web.proxy</tt>
+            
+          </span>
+          &mdash; <div class='inline'><p>Proxy information.</p>
+</div>
+        </tr>
+      
+    </ul>
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>page</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed the page for the requested
+URL.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>page</span>
+      
+      
+        <span class='type'>(<tt>Mechanize::Page</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The requested page.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Mechanize::Page</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The requested page.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/gems/mechanize/Mechanize/Page" target="_parent" title="http://rubydoc.info/gems/mechanize/Mechanize/Page">http://rubydoc.info/gems/mechanize/Mechanize/Page</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+499
+500
+501
+502
+503
+504
+505
+506
+507</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/web.rb', line 499</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='post identifier id'>post</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='query identifier id'>query</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+  <span class='query identifier id'>query</span><span class='dot token'>.</span><span class='merge! fid id'>merge!</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:query</span><span class='rbrack token'>]</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:query</span><span class='rbrack token'>]</span>
+
+  <span class='page identifier id'>page</span> <span class='assign token'>=</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='agent identifier id'>agent</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='post identifier id'>post</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='comma token'>,</span><span class='query identifier id'>query</span><span class='rparen token'>)</span>
+
+  <span class='yield yield kw'>yield</span> <span class='page identifier id'>page</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+  <span class='return return kw'>return</span> <span class='page identifier id'>page</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="post_body-class_method">
+  
+    + (<tt>Mechanize::Page</tt>) <strong>post_body</strong>(url, options = {}) {|body| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Posts to a given URL and returns the body of the Mechanize Page
+created from the response.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='post_body identifier id'>post_body</span><span class='lparen token'>(</span><span class='string val'>'http://www.rubyinside.com'</span><span class='rparen token'>)</span>
+<span class='comment val'># =&gt; String</span>
+</pre>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='post_body identifier id'>post_body</span><span class='lparen token'>(</span><span class='string val'>'http://www.rubyinside.com'</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='body identifier id'>body</span><span class='bitor op'>|</span>
+  <span class='puts identifier id'>puts</span> <span class='body identifier id'>body</span>
+<span class='end end kw'>end</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>url</span>
+      
+      
+        <span class='type'>(<tt>URI::Generic</tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The URL to request.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:query</span>
+          <span class="type">(<tt>Hash</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>Additional query parameters to post with.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:user_agent</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The User-Agent string to use.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:user_agent_alias</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The User-Agent Alias to use.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:proxy</span>
+          <span class="type">(<tt>Network::HTTP::Proxy</tt>, <tt>Hash</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>Web.proxy</tt>
+            
+          </span>
+          &mdash; <div class='inline'><p>Proxy information.</p>
+</div>
+        </tr>
+      
+    </ul>
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>body</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed the body of the page.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>page</span>
+      
+      
+        <span class='type'>(<tt>Mechanize::Page</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The body of the requested page.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Mechanize::Page</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The body of the requested page.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#post-class_method" title="Ronin::Web.post (method)">post</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+553
+554
+555
+556
+557
+558</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/web.rb', line 553</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='post_body identifier id'>post_body</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='body identifier id'>body</span> <span class='assign token'>=</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='post identifier id'>post</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='body identifier id'>body</span>
+
+  <span class='yield yield kw'>yield</span> <span class='body identifier id'>body</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+  <span class='return return kw'>return</span> <span class='body identifier id'>body</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="proxy-class_method">
+  
+    + (<tt>Network::HTTP::Proxy</tt>) <strong>proxy</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Proxy information for <span class='object_link'><a href="" title="Ronin::Web (module)">Ronin::Web</a></span> to use.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Network::HTTP::Proxy</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Ronin Web proxy information.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/gems/ronin-support/Ronin/Network/HTTP#proxy-class_method" target="_parent" title="http://rubydoc.info/gems/ronin-support/Ronin/Network/HTTP#proxy-class_method">http://rubydoc.info/gems/ronin-support/Ronin/Network/HTTP#proxy-class_method</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+151
+152
+153</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/web.rb', line 151</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='proxy identifier id'>proxy</span>
+  <span class='lparen token'>(</span><span class='@proxy ivar id'>@proxy</span> <span class='opasgn op'>||=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span> <span class='orop op'>||</span> <span class='Network constant id'>Network</span><span class='colon2 op'>::</span><span class='HTTP constant id'>HTTP</span><span class='dot token'>.</span><span class='proxy identifier id'>proxy</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="proxy=-class_method">
+  
+    + (<tt>Network::HTTP::Proxy</tt>) <strong>proxy=</strong>(new_proxy) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Sets the proxy used by <span class='object_link'><a href="" title="Ronin::Web (module)">Ronin::Web</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>new_proxy</span>
+      
+      
+        <span class='type'>(<tt>Network::HTTP::Proxy</tt>, <tt>URI::HTTP</tt>, <tt>Hash</tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new proxy information to use.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Network::HTTP::Proxy</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new proxy.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+168
+169
+170</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/web.rb', line 168</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='proxy identifier id'>proxy</span><span class='assign token'>=</span><span class='lparen token'>(</span><span class='new_proxy identifier id'>new_proxy</span><span class='rparen token'>)</span>
+  <span class='@proxy ivar id'>@proxy</span> <span class='assign token'>=</span> <span class='Network constant id'>Network</span><span class='colon2 op'>::</span><span class='HTTP constant id'>HTTP</span><span class='colon2 op'>::</span><span class='Proxy constant id'>Proxy</span><span class='dot token'>.</span><span class='create identifier id'>create</span><span class='lparen token'>(</span><span class='new_proxy identifier id'>new_proxy</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="proxy_server-class_method">
+  
+    + (<tt>Object</tt>) <strong>proxy_server</strong>(options = {}, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the Ronin Web Proxy. When called for the first time
+the proxy will be started in the background.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Web/Server/Base.html#run%21-class_method" title="Ronin::Web::Server::Base.run! (method)">Ronin::Web::Server::Base.run!</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/proxy/web.rb', line 35</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='proxy_server identifier id'>proxy_server</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='unless unless kw'>unless</span> <span class='class_variable_defined? fid id'>class_variable_defined?</span><span class='lparen token'>(</span><span class='string val'>'@@ronin_web_proxy'</span><span class='rparen token'>)</span>
+    <span class='@@ronin_web_proxy ivar id'>@@ronin_web_proxy</span> <span class='assign token'>=</span> <span class='Proxy constant id'>Proxy</span><span class='colon2 op'>::</span><span class='App constant id'>App</span>
+    <span class='@@ronin_web_proxy ivar id'>@@ronin_web_proxy</span><span class='dot token'>.</span><span class='run! fid id'>run!</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='dot token'>.</span><span class='merge identifier id'>merge</span><span class='lparen token'>(</span><span class='symbol val'>:background</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+
+  <span class='@@ronin_web_proxy ivar id'>@@ronin_web_proxy</span><span class='dot token'>.</span><span class='class_eval identifier id'>class_eval</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+
+  <span class='return return kw'>return</span> <span class='@@ronin_web_proxy ivar id'>@@ronin_web_proxy</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="server-class_method">
+  
+    + (<tt><span class='object_link'><a href="Web/Server/App.html" title="Ronin::Web::Server::App (class)">Server::App</a></span></tt>) <strong>server</strong>(options = {}) {|server| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns the Ronin Web Server.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='server identifier id'>server</span> <span class='do do kw'>do</span>
+  <span class='get identifier id'>get</span> <span class='string val'>'/hello'</span> <span class='do do kw'>do</span>
+    <span class='string val'>'world'</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="#server-class_method" title="Ronin::Web.server (method)">server</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed the current web server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>The</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Web/Server/App.html" title="Ronin::Web::Server::App (class)">Server::App</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>current web server class.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Web/Server/App.html" title="Ronin::Web::Server::App (class)">Server::App</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The current web server class.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Web/Server/Base.html#run%21-class_method" title="Ronin::Web::Server::Base.run! (method)">Ronin::Web::Server::Base.run!</a></span></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/web.rb', line 55</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='server identifier id'>server</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='unless unless kw'>unless</span> <span class='class_variable_defined? fid id'>class_variable_defined?</span><span class='lparen token'>(</span><span class='string val'>'@@ronin_web_server'</span><span class='rparen token'>)</span>
+    <span class='@@ronin_web_server ivar id'>@@ronin_web_server</span> <span class='assign token'>=</span> <span class='Server constant id'>Server</span><span class='colon2 op'>::</span><span class='App constant id'>App</span>
+    <span class='@@ronin_web_server ivar id'>@@ronin_web_server</span><span class='dot token'>.</span><span class='run! fid id'>run!</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='dot token'>.</span><span class='merge identifier id'>merge</span><span class='lparen token'>(</span><span class='symbol val'>:background</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+
+  <span class='@@ronin_web_server ivar id'>@@ronin_web_server</span><span class='dot token'>.</span><span class='class_eval identifier id'>class_eval</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+
+  <span class='return return kw'>return</span> <span class='@@ronin_web_server ivar id'>@@ronin_web_server</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="user_agent-class_method">
+  
+    + (<tt>String</tt><sup>?</sup>) <strong>user_agent</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The User-Agent string used by <span class='object_link'><a href="" title="Ronin::Web (module)">Ronin::Web</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Ronin Web User-Agent</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/gems/ronin-support/Ronin/Network/HTTP#user_agent-class_method" target="_parent" title="http://rubydoc.info/gems/ronin-support/Ronin/Network/HTTP#user_agent-class_method">http://rubydoc.info/gems/ronin-support/Ronin/Network/HTTP#user_agent-class_method</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+211
+212
+213</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/web.rb', line 211</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='user_agent identifier id'>user_agent</span>
+  <span class='lparen token'>(</span><span class='@user_agent ivar id'>@user_agent</span> <span class='opasgn op'>||=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span> <span class='orop op'>||</span> <span class='Network constant id'>Network</span><span class='colon2 op'>::</span><span class='HTTP constant id'>HTTP</span><span class='dot token'>.</span><span class='user_agent identifier id'>user_agent</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="user_agent=-class_method">
+  
+    + (<tt>String</tt>) <strong>user_agent=</strong>(value) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Sets the <code>User-Agent</code> string used by <span class='object_link'><a href="" title="Ronin::Web (module)">Ronin::Web</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Symbol</tt>, <tt>Regexp</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The User-Agent string to use.
+Setting <span class='object_link'><a href="#user_agent-class_method" title="Ronin::Web.user_agent (method)">user_agent</a></span> to <code>nil</code> will disable the <code>User-Agent</code> string.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new User-Agent string.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>RuntimeError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Either no User-Agent group exists with the given <code>Symbol</code>,
+or no User-Agent string matched the given <code>Regexp</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/web.rb', line 231</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='user_agent identifier id'>user_agent</span><span class='assign token'>=</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
+  <span class='@user_agent ivar id'>@user_agent</span> <span class='assign token'>=</span> <span class='case case kw'>case</span> <span class='value identifier id'>value</span>
+                <span class='when when kw'>when</span> <span class='String constant id'>String</span>
+                  <span class='user_agents identifier id'>user_agents</span><span class='dot token'>.</span><span class='fetch identifier id'>fetch</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='comma token'>,</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
+                <span class='when when kw'>when</span> <span class='nil nil kw'>nil</span>
+                  <span class='nil nil kw'>nil</span>
+                <span class='else else kw'>else</span>
+                  <span class='user_agents identifier id'>user_agents</span><span class='dot token'>.</span><span class='fetch identifier id'>fetch</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
+                <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="user_agent_alias=-class_method">
+  
+    + (<tt>String</tt>) <strong>user_agent_alias=</strong>(name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'><p>Will be replaced by calling <span class='object_link'><a href="#user_agent%3D-class_method" title="Ronin::Web.user_agent= (method)">user_agent=</a></span> with a <code>Symbol</code>
+and will be removed in 1.0.0.</p>
+</div></div>
+<p>Sets the Ronin Web User-Agent.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The User-Agent alias to use.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new User-Agent string.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#user_agent_aliases-class_method" title="Ronin::Web.user_agent_aliases (method)">user_agent_aliases</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+259
+260
+261</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/web.rb', line 259</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='user_agent_alias identifier id'>user_agent_alias</span><span class='assign token'>=</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
+  <span class='@user_agent ivar id'>@user_agent</span> <span class='assign token'>=</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='user_agent_aliases identifier id'>user_agent_aliases</span><span class='lbrack token'>[</span><span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rbrack token'>]</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="user_agent_aliases-class_method">
+  
+    + (<tt>Array</tt>) <strong>user_agent_aliases</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'><p>Will be replaced by <span class='object_link'><a href="#user_agents-class_method" title="Ronin::Web.user_agents (method)">user_agents</a></span> in 1.0.0.</p>
+</div></div>
+<p>The supported Web User-Agent Aliases.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The supported Web User-Agent Aliases.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/gems/mechanize/Mechanize#AGENT_ALIASES-constant" target="_parent" title="http://rubydoc.info/gems/mechanize/Mechanize#AGENT_ALIASES-constant">http://rubydoc.info/gems/mechanize/Mechanize#AGENT_ALIASES-constant</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+197
+198
+199</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/web.rb', line 197</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='user_agent_aliases identifier id'>user_agent_aliases</span>
+  <span class='Mechanize constant id'>Mechanize</span><span class='colon2 op'>::</span><span class='AGENT_ALIASES constant id'>AGENT_ALIASES</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="user_agents-class_method">
+  
+    + (<tt><span class='object_link'><a href="Web/UserAgents.html" title="Ronin::Web::UserAgents (class)">UserAgents</a></span></tt>) <strong>user_agents</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>A set of common <code>User-Agent</code> strings.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Web/UserAgents.html" title="Ronin::Web::UserAgents (class)">UserAgents</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The set of <code>User-Agent</code> strings.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+182
+183
+184</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/web.rb', line 182</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='user_agents identifier id'>user_agents</span>
+  <span class='@user_agents ivar id'>@user_agents</span> <span class='opasgn op'>||=</span> <span class='UserAgents constant id'>UserAgents</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="xml-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Nokogiri/XML/Document.html" title="Nokogiri::XML::Document (class)">Nokogiri::XML::Document</a></span></tt>) <strong>xml</strong>(body) {|doc| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Parses the body of a document into a XML document object.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>body</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>IO</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The body of the document to parse.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>doc</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed the newly created document
+object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>doc</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Nokogiri/XML/Document.html" title="Nokogiri::XML::Document (class)">Nokogiri::XML::Document</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new XML document object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Nokogiri/XML/Document.html" title="Nokogiri::XML::Document (class)">Nokogiri::XML::Document</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new XML document object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/gems/nokogiri/Nokogiri/XML/Document" target="_parent" title="http://rubydoc.info/gems/nokogiri/Nokogiri/XML/Document">http://rubydoc.info/gems/nokogiri/Nokogiri/XML/Document</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+109
+110
+111
+112
+113
+114</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/web.rb', line 109</span>
+
+<span class='def def kw'>def</span> <span class='Web constant id'>Web</span><span class='dot token'>.</span><span class='xml identifier id'>xml</span><span class='lparen token'>(</span><span class='body identifier id'>body</span><span class='rparen token'>)</span>
+  <span class='doc identifier id'>doc</span> <span class='assign token'>=</span> <span class='Nokogiri constant id'>Nokogiri</span><span class='colon2 op'>::</span><span class='XML constant id'>XML</span><span class='lparen token'>(</span><span class='body identifier id'>body</span><span class='rparen token'>)</span>
+
+  <span class='yield yield kw'>yield</span> <span class='doc identifier id'>doc</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+  <span class='return return kw'>return</span> <span class='doc identifier id'>doc</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Jul 12 15:52:55 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.0 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>
+  Class: Ronin::Web::Middleware::Rule
+  
+    &mdash; Ronin Web Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (R)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Web.html" title="Ronin::Web (module)">Web</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Middleware.html" title="Ronin::Web::Middleware (module)">Middleware</a></span></span>
+     &raquo; 
+    <span class="title">Rule</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Ronin::Web::Middleware::Rule
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Ronin::Web::Middleware::Rule</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/ronin/web/middleware/rule.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Matches requests against one or more filters.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="FILTERS-constant" class="">FILTERS =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Registered filters</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace token'>{</span>
+  <span class='symbol val'>:ip</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Filters constant id'>Filters</span><span class='colon2 op'>::</span><span class='IPFilter constant id'>IPFilter</span><span class='comma token'>,</span>
+  <span class='symbol val'>:campaign</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Filters constant id'>Filters</span><span class='colon2 op'>::</span><span class='CampaignFilter constant id'>CampaignFilter</span><span class='comma token'>,</span>
+  <span class='symbol val'>:path</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Filters constant id'>Filters</span><span class='colon2 op'>::</span><span class='PathFilter constant id'>PathFilter</span><span class='comma token'>,</span>
+  <span class='symbol val'>:vhost</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Filters constant id'>Filters</span><span class='colon2 op'>::</span><span class='VHostFilter constant id'>VHostFilter</span><span class='comma token'>,</span>
+  <span class='symbol val'>:referer</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Filters constant id'>Filters</span><span class='colon2 op'>::</span><span class='RefererFilter constant id'>RefererFilter</span><span class='comma token'>,</span>
+  <span class='symbol val'>:user_agent</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='Filters constant id'>Filters</span><span class='colon2 op'>::</span><span class='UserAgentFilter constant id'>UserAgentFilter</span>
+<span class='rbrace token'>}</span>
+</pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Rule) <strong>initialize</strong>(options = {}, &amp;block) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new rule.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#match%3F-instance_method" title="#match? (instance method)">- (Boolean) <strong>match?</strong>(request) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Matches a request against the rule.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Ronin::Web::Middleware::Rule (class)">Rule</a></span></tt>) <strong>initialize</strong>(options = {}, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new rule.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional filtering options for the rule.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:campaign</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The name of the campaign who&rsquo;s targetted hosts will be
+filtered by.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:vhost</span>
+          <span class="type">(<tt>String</tt>, <tt>Regexp</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The Virtual-Host to filter.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:ip</span>
+          <span class="type">(<tt>String</tt>, <tt>IPAddr</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The IP address or IP range to filter.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:referer</span>
+          <span class="type">(<tt>String</tt>, <tt>Regexp</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The Referer URL or pattern to filter.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:user_agent</span>
+          <span class="type">(<tt>String</tt>, <tt>Regexp</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The User-Agent string to filter.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:when</span>
+          <span class="type">(<tt>Proc</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>Custom logic to filter requests by.</p>
+</div>
+        </tr>
+      
+    </ul>
+  
+    
+    
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/middleware/rule.rb', line 72</span>
+
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='@filters ivar id'>@filters</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='@when_block ivar id'>@when_block</span> <span class='assign token'>=</span> <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:when</span><span class='rparen token'>)</span>
+
+  <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='name identifier id'>name</span><span class='comma token'>,</span><span class='value identifier id'>value</span><span class='bitor op'>|</span>
+    <span class='if if kw'>if</span> <span class='FILTERS constant id'>FILTERS</span><span class='dot token'>.</span><span class='has_key? fid id'>has_key?</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
+      <span class='@filters ivar id'>@filters</span> <span class='lshft op'>&lt;&lt;</span> <span class='FILTERS constant id'>FILTERS</span><span class='lbrack token'>[</span><span class='name identifier id'>name</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="match?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>match?</strong>(request) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Matches a request against the rule.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>request</span>
+      
+      
+        <span class='type'>(<tt>Rack::Request</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The request to match.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies if the request matches all of the filters.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+94
+95
+96
+97
+98</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/middleware/rule.rb', line 94</span>
+
+<span class='def def kw'>def</span> <span class='match? fid id'>match?</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='rparen token'>)</span>
+  <span class='@filters ivar id'>@filters</span><span class='dot token'>.</span><span class='all? fid id'>all?</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='filter identifier id'>filter</span><span class='bitor op'>|</span> 
+    <span class='filter identifier id'>filter</span><span class='dot token'>.</span><span class='match? fid id'>match?</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='rparen token'>)</span>
+  <span class='rbrace token'>}</span> <span class='andop op'>&amp;&amp;</span> <span class='lparen token'>(</span><span class='@when_block ivar id'>@when_block</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span> <span class='orop op'>||</span> <span class='lparen token'>(</span><span class='@when_block ivar id'>@when_block</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='rparen token'>)</span> <span class='question op'>?</span> <span class='true true kw'>true</span> <span class='colon op'>:</span> <span class='false false kw'>false</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Jul 12 15:53:09 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.0 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,2234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>
+  Class: Ronin::Web::Server::Base
+  
+    &mdash; Ronin Web Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (B)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Web.html" title="Ronin::Web (module)">Web</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Server.html" title="Ronin::Web::Server (module)">Server</a></span></span>
+     &raquo; 
+    <span class="title">Base</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Ronin::Web::Server::Base
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Sinatra::Base</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Sinatra::Base</li>
+          
+            <li class="next">Ronin::Web::Server::Base</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+      <dt class="r2">Extended by:</dt>
+      <dd class="r2">UI::Output::Helpers</dd>
+      
+    
+  
+    
+      <dt class="r1">Includes:</dt>
+      <dd class="r1">Templates::Erb, UI::Output::Helpers</dd>
+      
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/ronin/web/server/base.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>The base-class for all Ronin Web Servers. Extends
+<a href="http://rubydoc.info/gems/sinatra/Sinatra/Base">Sinatra::Base</a>
+with additional helper methods and Rack <span class='object_link'><a href="../Middleware.html" title="Ronin::Web::Middleware (module)">Middleware</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="../Proxy/Base.html" title="Ronin::Web::Proxy::Base (class)">Proxy::Base</a></span>, <span class='object_link'><a href="App.html" title="Ronin::Web::Server::App (class)">App</a></span></p>
+</div>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="DEFAULT_HOST-constant" class="">DEFAULT_HOST =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Default interface to run the Web Server on</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='string val'>'0.0.0.0'</span>
+</pre></dd>
+      
+        <dt id="DEFAULT_PORT-constant" class="">DEFAULT_PORT =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Default port to run the Web Server on</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='integer val'>8000</span>
+</pre></dd>
+      
+    </dl>
+  
+
+
+  
+  
+  
+  
+
+
+  
+  
+  
+  
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#any-class_method" title="any (class method)">+ (Object) <strong>any</strong>(path, options = {}) { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Route any type of request for a given URL pattern.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#default-class_method" title="default (class method)">+ (Object) <strong>default</strong> { ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets the default route.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#directories-class_method" title="directories (class method)">+ (Object) <strong>directories</strong> {|dirs| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Hosts the contents of directories.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#directory-class_method" title="directory (class method)">+ (Object) <strong>directory</strong>(remote_path, local_path) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Hosts the contents of the directory.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#file-class_method" title="file (class method)">+ (Object) <strong>file</strong>(remote_path, local_path) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Hosts the contents of a file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#files-class_method" title="files (class method)">+ (Object) <strong>files</strong> {|files| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Hosts the contents of files.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#handler-class_method" title="handler (class method)">+ (String) <strong>handler</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The default Rack Handler to run all web servers with.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#handler%3D-class_method" title="handler= (class method)">+ (String) <strong>handler=</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets the default Rack Handler to run all web servers with.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#handler_class-class_method" title="handler_class (class method)">+ (Rack::Handler) <strong>handler_class</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Attempts to load the desired Rack Handler to run the web server
+with.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#handlers-class_method" title="handlers (class method)">+ (Array) <strong>handlers</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The list of Rack Handlers to attempt to use with the web server.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#map-class_method" title="map (class method)">+ (Object) <strong>map</strong>(dir, server) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Routes all requests within a given directory into another
+web server.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#proxy-class_method" title="proxy (class method)">+ (Object) <strong>proxy</strong>(path, options = {}) {|(response), body| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Proxies requests to a given path.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#public_dir-class_method" title="public_dir (class method)">+ (Object) <strong>public_dir</strong>(path) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Hosts the static contents within a given directory.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#run%21-class_method" title="run! (class method)">+ (Object) <strong>run!</strong>(options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Run the web server using the Rack Handler returned by
+<span class='object_link'><a href="#handler_class-class_method" title="Ronin::Web::Server::Base.handler_class (method)">handler_class</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#vhost-class_method" title="vhost (class method)">+ (Object) <strong>vhost</strong>(name, server) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Routes requests with a specific Host header to another
+web server.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#default_response-instance_method" title="#default_response (instance method)">- (Object) <strong>default_response</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns an HTTP 404 response with an empty body.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="any-class_method">
+  
+    + (<tt>Object</tt>) <strong>any</strong>(path, options = {}) { ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Route any type of request for a given URL pattern.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='any identifier id'>any</span> <span class='string val'>'/submit'</span> <span class='do do kw'>do</span>
+  <span class='puts identifier id'>puts</span> <span class='request identifier id'>request</span><span class='dot token'>.</span><span class='inspect identifier id'>inspect</span>
+<span class='end end kw'>end</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The URL pattern to handle requests for.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'><p>[]
+The block that will handle the request.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+208
+209
+210
+211
+212
+213</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/base.rb', line 208</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='any identifier id'>any</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='put identifier id'>put</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='post identifier id'>post</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="default-class_method">
+  
+    + (<tt>Object</tt>) <strong>default</strong> { ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Sets the default route.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='default identifier id'>default</span> <span class='do do kw'>do</span>
+  <span class='status identifier id'>status</span> <span class='integer val'>200</span>
+  <span class='content_type identifier id'>content_type</span> <span class='symbol val'>:html</span>
+
+  <span class='string val'>%{
+  &lt;html&gt;
+    &lt;body&gt;
+      &lt;center&gt;&lt;h1&gt;YOU LOSE THE GAME&lt;/h1&gt;&lt;/center&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+  }</span>
+<span class='end end kw'>end</span>
+</pre>
+    
+  </div>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'><p>[]
+The block that will handle all other requests.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+239
+240
+241
+242</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/base.rb', line 239</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='default identifier id'>default</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='class_def identifier id'>class_def</span><span class='lparen token'>(</span><span class='symbol val'>:default_response</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="directories-class_method">
+  
+    + (<tt>Object</tt>) <strong>directories</strong> {|dirs| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Hosts the contents of directories.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='directories identifier id'>directories</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='dirs identifier id'>dirs</span><span class='bitor op'>|</span>
+  <span class='dirs identifier id'>dirs</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='string val'>'/downloads'</span><span class='comma token'>,</span> <span class='string val'>'/tmp/ronin_downloads'</span>
+  <span class='dirs identifier id'>dirs</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='string val'>'/images'</span><span class='comma token'>,</span> <span class='string val'>'/tmp/ronin_images'</span>
+  <span class='dirs identifier id'>dirs</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='string val'>'/pdfs'</span><span class='comma token'>,</span> <span class='string val'>'/tmp/ronin_pdfs'</span>
+<span class='end end kw'>end</span>
+</pre>
+    
+  </div>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>dirs</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed the directories middleware to
+configure.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>The</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Middleware/Directories.html" title="Ronin::Web::Middleware::Directories (class)">Middleware::Directories</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>directories middleware object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="../Middleware/Directories.html" title="Ronin::Web::Middleware::Directories (class)">Middleware::Directories</a></span></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+337
+338
+339</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/base.rb', line 337</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='directories identifier id'>directories</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='use identifier id'>use</span><span class='lparen token'>(</span><span class='Middleware constant id'>Middleware</span><span class='colon2 op'>::</span><span class='Directories constant id'>Directories</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="directory-class_method">
+  
+    + (<tt>Object</tt>) <strong>directory</strong>(remote_path, local_path) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Hosts the contents of the directory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='directory identifier id'>directory</span> <span class='string val'>'/download/'</span><span class='comma token'>,</span> <span class='string val'>'/tmp/files/'</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>remote_path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path the web server will host the directory at.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>local_path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path to the local directory.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="../Middleware/Directories.html" title="Ronin::Web::Middleware::Directories (class)">Middleware::Directories</a></span></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+310
+311
+312</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/base.rb', line 310</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='directory identifier id'>directory</span><span class='lparen token'>(</span><span class='remote_path identifier id'>remote_path</span><span class='comma token'>,</span><span class='local_path identifier id'>local_path</span><span class='rparen token'>)</span>
+  <span class='use identifier id'>use</span> <span class='Middleware constant id'>Middleware</span><span class='colon2 op'>::</span><span class='Directories constant id'>Directories</span><span class='comma token'>,</span> <span class='symbol val'>:paths</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrace token'>{</span><span class='remote_path identifier id'>remote_path</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='local_path identifier id'>local_path</span><span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="file-class_method">
+  
+    + (<tt>Object</tt>) <strong>file</strong>(remote_path, local_path) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Hosts the contents of a file.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='file identifier id'>file</span> <span class='string val'>'/robots.txt'</span><span class='comma token'>,</span> <span class='string val'>'/path/to/my_robots.txt'</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>remote_path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path the web server will host the file at.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>local_path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path to the local file.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="../Middleware/Files.html" title="Ronin::Web::Middleware::Files (class)">Middleware::Files</a></span></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+262
+263
+264</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/base.rb', line 262</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='file identifier id'>file</span><span class='lparen token'>(</span><span class='remote_path identifier id'>remote_path</span><span class='comma token'>,</span><span class='local_path identifier id'>local_path</span><span class='rparen token'>)</span>
+  <span class='use identifier id'>use</span> <span class='Middleware constant id'>Middleware</span><span class='colon2 op'>::</span><span class='Files constant id'>Files</span><span class='comma token'>,</span> <span class='symbol val'>:paths</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrace token'>{</span><span class='remote_path identifier id'>remote_path</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='local_path identifier id'>local_path</span><span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="files-class_method">
+  
+    + (<tt>Object</tt>) <strong>files</strong> {|files| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Hosts the contents of files.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='files identifier id'>files</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='files identifier id'>files</span><span class='bitor op'>|</span>
+  <span class='files identifier id'>files</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='string val'>'/foo.txt'</span><span class='comma token'>,</span> <span class='string val'>'foo.txt'</span>
+  <span class='files identifier id'>files</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='regexp val'>/\.exe$/</span><span class='comma token'>,</span> <span class='string val'>'trojan.exe'</span>
+<span class='end end kw'>end</span>
+</pre>
+    
+  </div>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="#files-class_method" title="Ronin::Web::Server::Base.files (method)">files</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed the files middleware to
+configure.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>The</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Middleware/Files.html" title="Ronin::Web::Middleware::Files (class)">Middleware::Files</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>files middleware object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="../Middleware/Files.html" title="Ronin::Web::Middleware::Files (class)">Middleware::Files</a></span></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+288
+289
+290</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/base.rb', line 288</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='files identifier id'>files</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='use identifier id'>use</span><span class='lparen token'>(</span><span class='Middleware constant id'>Middleware</span><span class='colon2 op'>::</span><span class='Files constant id'>Files</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="handler-class_method">
+  
+    + (<tt>String</tt>) <strong>handler</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The default Rack Handler to run all web servers with.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The class name of the Rack Handler to use.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+69
+70
+71</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/base.rb', line 69</span>
+
+<span class='def def kw'>def</span> <span class='Base constant id'>Base</span><span class='dot token'>.</span><span class='handler identifier id'>handler</span>
+  <span class='@@ronin_web_server_handler ivar id'>@@ronin_web_server_handler</span> <span class='opasgn op'>||=</span> <span class='nil nil kw'>nil</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="handler=-class_method">
+  
+    + (<tt>String</tt>) <strong>handler=</strong>(name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Sets the default Rack Handler to run all web servers with.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the handler.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the new handler.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/base.rb', line 86</span>
+
+<span class='def def kw'>def</span> <span class='Base constant id'>Base</span><span class='dot token'>.</span><span class='handler identifier id'>handler</span><span class='assign token'>=</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
+  <span class='@@ronin_web_server_handler ivar id'>@@ronin_web_server_handler</span> <span class='assign token'>=</span> <span class='name identifier id'>name</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="handler_class-class_method">
+  
+    + (<tt>Rack::Handler</tt>) <strong>handler_class</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Attempts to load the desired Rack Handler to run the web server
+with.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Rack::Handler</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The handler class to use to run the web server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>StandardError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>None of the handlers could be loaded.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/base.rb', line 124</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='handler_class identifier id'>handler_class</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='handlers identifier id'>handlers</span><span class='dot token'>.</span><span class='find identifier id'>find</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='name identifier id'>name</span><span class='bitor op'>|</span>
+    <span class='begin begin kw'>begin</span>
+      <span class='return return kw'>return</span> <span class='Rack constant id'>Rack</span><span class='colon2 op'>::</span><span class='Handler constant id'>Handler</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
+    <span class='rescue rescue kw'>rescue</span> <span class='Gem constant id'>Gem</span><span class='colon2 op'>::</span><span class='LoadError constant id'>LoadError</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='e identifier id'>e</span>
+      <span class='raise identifier id'>raise</span><span class='lparen token'>(</span><span class='e identifier id'>e</span><span class='rparen token'>)</span>
+    <span class='rescue rescue kw'>rescue</span> <span class='NameError constant id'>NameError</span><span class='comma token'>,</span> <span class='colon3 op'>::</span><span class='LoadError constant id'>LoadError</span>
+      <span class='next next kw'>next</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+
+  <span class='raise identifier id'>raise</span><span class='lparen token'>(</span><span class='StandardError constant id'>StandardError</span><span class='comma token'>,</span><span class='string val'>&quot;unable to find any Rack handlers&quot;</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="handlers-class_method">
+  
+    + (<tt>Array</tt>) <strong>handlers</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The list of Rack Handlers to attempt to use with the web server.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The names of handler classes.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+100
+101
+102
+103
+104
+105
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/base.rb', line 100</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='handlers identifier id'>handlers</span>
+  <span class='handlers identifier id'>handlers</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='server identifier id'>server</span>
+
+  <span class='if if kw'>if</span> <span class='Base constant id'>Base</span><span class='dot token'>.</span><span class='handler identifier id'>handler</span>
+    <span class='handlers identifier id'>handlers</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='Base constant id'>Base</span><span class='dot token'>.</span><span class='handler identifier id'>handler</span><span class='rbrack token'>]</span> <span class='plus op'>+</span> <span class='handlers identifier id'>handlers</span>
+  <span class='end end kw'>end</span>
+
+  <span class='return return kw'>return</span> <span class='handlers identifier id'>handlers</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="map-class_method">
+  
+    + (<tt>Object</tt>) <strong>map</strong>(dir, server) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Routes all requests within a given directory into another
+web server.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='map identifier id'>map</span> <span class='string val'>'/subapp/'</span><span class='comma token'>,</span> <span class='SubApp constant id'>SubApp</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>dir</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Regexp</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The directory that requests for will be routed from.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>server</span>
+      
+      
+        <span class='type'>(<tt>#call</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The web server to route requests to.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="../Middleware/Router.html" title="Ronin::Web::Middleware::Router (class)">Middleware::Router</a></span></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+377
+378
+379
+380
+381</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/base.rb', line 377</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='map identifier id'>map</span><span class='lparen token'>(</span><span class='dir identifier id'>dir</span><span class='comma token'>,</span><span class='server identifier id'>server</span><span class='rparen token'>)</span>
+  <span class='use identifier id'>use</span> <span class='Middleware constant id'>Middleware</span><span class='colon2 op'>::</span><span class='Router constant id'>Router</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='router identifier id'>router</span><span class='bitor op'>|</span>
+    <span class='router identifier id'>router</span><span class='dot token'>.</span><span class='draw identifier id'>draw</span> <span class='symbol val'>:path</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='dir identifier id'>dir</span><span class='comma token'>,</span> <span class='symbol val'>:to</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='server identifier id'>server</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="proxy-class_method">
+  
+    + (<tt>Object</tt>) <strong>proxy</strong>(path, options = {}) {|(response), body| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Proxies requests to a given path.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='proxy identifier id'>proxy</span> <span class='string val'>'/login.php'</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='response identifier id'>response</span><span class='comma token'>,</span><span class='body identifier id'>body</span><span class='bitor op'>|</span>
+  <span class='body identifier id'>body</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='regexp val'>/https/</span><span class='comma token'>,</span><span class='string val'>'http'</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path to proxy requests for.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>(response)</tt>, <tt>body</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed the optional
+response of the proxied request and the body received
+from the proxied request.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>response</span>
+      
+      
+        <span class='type'>(<tt>Net::HTTP::Response</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The response.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>body</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The body from the response.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="../Middleware/Proxy.html" title="Ronin::Web::Middleware::Proxy (class)">Middleware::Proxy</a></span></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+437
+438
+439</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/base.rb', line 437</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='proxy identifier id'>proxy</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='use identifier id'>use</span><span class='lparen token'>(</span><span class='Middleware constant id'>Middleware</span><span class='colon2 op'>::</span><span class='Proxy constant id'>Proxy</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="public_dir-class_method">
+  
+    + (<tt>Object</tt>) <strong>public_dir</strong>(path) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Hosts the static contents within a given directory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='public_dir identifier id'>public_dir</span> <span class='string val'>'path/to/another/public'</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path to a directory to serve static content from.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+354
+355
+356</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/base.rb', line 354</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='public_dir identifier id'>public_dir</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='rparen token'>)</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='directory identifier id'>directory</span><span class='lparen token'>(</span><span class='string val'>'/'</span><span class='comma token'>,</span><span class='path identifier id'>path</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="run!-class_method">
+  
+    + (<tt>Object</tt>) <strong>run!</strong>(options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Run the web server using the Rack Handler returned by
+<span class='object_link'><a href="#handler_class-class_method" title="Ronin::Web::Server::Base.handler_class (method)">handler_class</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:host</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The host the server will listen on.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:port</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The port the server will bind to.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="name">:background</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>false</tt>
+            
+          </span>
+          &mdash; <div class='inline'><p>Specifies wether the server will run in the background or run
+in the foreground.</p>
+</div>
+        </tr>
+      
+    </ul>
+  
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/base.rb', line 158</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='run! fid id'>run!</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='rack_options identifier id'>rack_options</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span>
+    <span class='symbol val'>:Host</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:host</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='host identifier id'>host</span><span class='rparen token'>)</span><span class='comma token'>,</span>
+    <span class='symbol val'>:Port</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:port</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='port identifier id'>port</span><span class='rparen token'>)</span>
+  <span class='rbrace token'>}</span>
+
+  <span class='runner identifier id'>runner</span> <span class='assign token'>=</span> <span class='lambda identifier id'>lambda</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='handler identifier id'>handler</span><span class='comma token'>,</span><span class='server identifier id'>server</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='bitor op'>|</span>
+    <span class='print_info identifier id'>print_info</span> <span class='dstring node'>&quot;Starting Web Server on #{options[:Host]}:#{options[:Port]}&quot;</span>
+    <span class='print_debug identifier id'>print_debug</span> <span class='dstring node'>&quot;Using Web Server handler #{handler}&quot;</span>
+
+    <span class='handler identifier id'>handler</span><span class='dot token'>.</span><span class='run identifier id'>run</span><span class='lparen token'>(</span><span class='server identifier id'>server</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='server identifier id'>server</span><span class='bitor op'>|</span>
+      <span class='trap identifier id'>trap</span><span class='lparen token'>(</span><span class='symbol val'>:INT</span><span class='rparen token'>)</span> <span class='do do kw'>do</span>
+        <span class='comment val'># Use thins' hard #stop! if available,</span>
+        <span class='comment val'># otherwise just #stop</span>
+        <span class='server identifier id'>server</span><span class='dot token'>.</span><span class='respond_to? fid id'>respond_to?</span><span class='lparen token'>(</span><span class='symbol val'>:stop!</span><span class='rparen token'>)</span> <span class='question op'>?</span> <span class='server identifier id'>server</span><span class='dot token'>.</span><span class='stop! fid id'>stop!</span> <span class='colon op'>:</span> <span class='server identifier id'>server</span><span class='dot token'>.</span><span class='stop identifier id'>stop</span>
+      <span class='end end kw'>end</span>
+
+      <span class='set identifier id'>set</span> <span class='symbol val'>:running</span><span class='comma token'>,</span> <span class='true true kw'>true</span>
+    <span class='end end kw'>end</span>
+  <span class='rbrace token'>}</span>
+
+  <span class='handler identifier id'>handler</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='handler_class identifier id'>handler_class</span>
+
+  <span class='if if kw'>if</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:background</span><span class='rbrack token'>]</span>
+    <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='handler identifier id'>handler</span><span class='comma token'>,</span><span class='self self kw'>self</span><span class='comma token'>,</span><span class='rack_options identifier id'>rack_options</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='runner identifier id'>runner</span><span class='rparen token'>)</span>
+  <span class='else else kw'>else</span>
+    <span class='runner identifier id'>runner</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='handler identifier id'>handler</span><span class='comma token'>,</span><span class='self self kw'>self</span><span class='comma token'>,</span><span class='rack_options identifier id'>rack_options</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+
+  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="vhost-class_method">
+  
+    + (<tt>Object</tt>) <strong>vhost</strong>(name, server) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Routes requests with a specific Host header to another
+web server.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='vhost identifier id'>vhost</span> <span class='string val'>'cdn.evil.com'</span><span class='comma token'>,</span> <span class='EvilServer constant id'>EvilServer</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Regexp</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The host-name to route requests for.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>server</span>
+      
+      
+        <span class='type'>(<tt>#call</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The web server to route the requests to.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+400
+401
+402
+403
+404</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/base.rb', line 400</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='vhost identifier id'>vhost</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span><span class='server identifier id'>server</span><span class='rparen token'>)</span>
+  <span class='use identifier id'>use</span> <span class='Middleware constant id'>Middleware</span><span class='colon2 op'>::</span><span class='Router constant id'>Router</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='router identifier id'>router</span><span class='bitor op'>|</span>
+    <span class='router identifier id'>router</span><span class='dot token'>.</span><span class='draw identifier id'>draw</span> <span class='symbol val'>:vhost</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='symbol val'>:to</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='server identifier id'>server</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="default_response-instance_method">
+  
+    - (<tt>Object</tt>) <strong>default_response</strong>  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns an HTTP 404 response with an empty body.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+450
+451
+452</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/base.rb', line 450</span>
+
+<span class='def def kw'>def</span> <span class='default_response identifier id'>default_response</span>
+  <span class='halt identifier id'>halt</span> <span class='integer val'>404</span><span class='comma token'>,</span> <span class='string val'>''</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Tue Jul 12 15:53:03 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.0 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
