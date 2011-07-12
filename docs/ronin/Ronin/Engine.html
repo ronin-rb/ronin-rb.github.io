@@ -64,7 +64,7 @@
   
     <dt class="r2 last">Defined in:</dt>
     <dd class="r2 last">lib/ronin/engine/engine.rb<span class="defines">,<br />
-  lib/ronin/engine/buildable.rb,<br /> lib/ronin/engine/verifiable.rb,<br /> lib/ronin/engine/deployable.rb,<br /> lib/ronin/engine/class_methods.rb,<br /> lib/ronin/engine/instance_methods.rb,<br /> lib/ronin/engine/exceptions/not_built.rb,<br /> lib/ronin/engine/exceptions/deploy_failed.rb,<br /> lib/ronin/engine/exceptions/verification_failed.rb</span>
+  lib/ronin/engine/testable.rb,<br /> lib/ronin/engine/buildable.rb,<br /> lib/ronin/engine/deployable.rb,<br /> lib/ronin/engine/class_methods.rb,<br /> lib/ronin/engine/instance_methods.rb,<br /> lib/ronin/engine/exceptions/not_built.rb,<br /> lib/ronin/engine/exceptions/test_failed.rb,<br /> lib/ronin/engine/exceptions/deploy_failed.rb</span>
 </dd>
   
 </dl>
@@ -74,11 +74,11 @@
 <p class="children">
    
     
-      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Engine/Buildable.html" title="Ronin::Engine::Buildable (module)">Buildable</a></span>, <span class='object_link'><a href="Engine/ClassMethods.html" title="Ronin::Engine::ClassMethods (module)">ClassMethods</a></span>, <span class='object_link'><a href="Engine/Deployable.html" title="Ronin::Engine::Deployable (module)">Deployable</a></span>, <span class='object_link'><a href="Engine/InstanceMethods.html" title="Ronin::Engine::InstanceMethods (module)">InstanceMethods</a></span>, <span class='object_link'><a href="Engine/Verifiable.html" title="Ronin::Engine::Verifiable (module)">Verifiable</a></span>
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Engine/Buildable.html" title="Ronin::Engine::Buildable (module)">Buildable</a></span>, <span class='object_link'><a href="Engine/ClassMethods.html" title="Ronin::Engine::ClassMethods (module)">ClassMethods</a></span>, <span class='object_link'><a href="Engine/Deployable.html" title="Ronin::Engine::Deployable (module)">Deployable</a></span>, <span class='object_link'><a href="Engine/InstanceMethods.html" title="Ronin::Engine::InstanceMethods (module)">InstanceMethods</a></span>, <span class='object_link'><a href="Engine/Testable.html" title="Ronin::Engine::Testable (module)">Testable</a></span>
     
    
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Engine/DeployFailed.html" title="Ronin::Engine::DeployFailed (class)">DeployFailed</a></span>, <span class='object_link'><a href="Engine/NotBuilt.html" title="Ronin::Engine::NotBuilt (class)">NotBuilt</a></span>, <span class='object_link'><a href="Engine/VerificationFailed.html" title="Ronin::Engine::VerificationFailed (class)">VerificationFailed</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Engine/DeployFailed.html" title="Ronin::Engine::DeployFailed (class)">DeployFailed</a></span>, <span class='object_link'><a href="Engine/NotBuilt.html" title="Ronin::Engine::NotBuilt (class)">NotBuilt</a></span>, <span class='object_link'><a href="Engine/TestFailed.html" title="Ronin::Engine::TestFailed (class)">TestFailed</a></span>
     
   
 </p>
@@ -180,6 +180,7 @@
   <li><span class='object_link'><a href="Model/HasLicense.html" title="Ronin::Model::HasLicense (module)">Model::HasLicense</a></span></li>
   <li><span class='object_link'><a href="Model/HasAuthors.html" title="Ronin::Model::HasAuthors (module)">Model::HasAuthors</a></span></li>
   <li><span class='object_link'><a href="Model/Cacheable.html" title="Ronin::Model::Cacheable (module)">Model::Cacheable</a></span></li>
+  <li><a href="http://rubydoc.info/gems/data_paths">DataPaths::Finders</a></li>
   <li><a href="http://rubydoc.info/gems/parameters">Parameters</a></li>
   <li><span class='object_link'><a href="Engine/ClassMethods.html" title="Ronin::Engine::ClassMethods (module)">ClassMethods</a></span></li>
 </ul>
@@ -195,8 +196,6 @@
       <pre class="lines">
 
 
-51
-52
 53
 54
 55
@@ -207,10 +206,13 @@
 60
 61
 62
-63</pre>
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/engine/engine.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/engine/engine.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
   <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>Engine</span><span class='op'>::</span><span class='const'>InstanceMethods</span><span class='comma'>,</span>
@@ -221,6 +223,7 @@
                       <span class='const'>Model</span><span class='op'>::</span><span class='const'>HasLicense</span><span class='comma'>,</span>
                       <span class='const'>Model</span><span class='op'>::</span><span class='const'>HasAuthors</span><span class='comma'>,</span>
                       <span class='const'>Model</span><span class='op'>::</span><span class='const'>Cacheable</span><span class='comma'>,</span>
+                      <span class='const'>DataPaths</span><span class='op'>::</span><span class='const'>Finders</span><span class='comma'>,</span>
                       <span class='const'>Parameters</span>
 
   <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:extend</span><span class='comma'>,</span> <span class='const'>ClassMethods</span>
@@ -310,12 +313,12 @@
       <pre class="lines">
 
 
-78
-79
-80</pre>
+81
+82
+83</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/engine/engine.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/engine/engine.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='const'>Engine</span><span class='period'>.</span><span class='id load_from'>load_from</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span>
   <span class='const'>Model</span><span class='op'>::</span><span class='const'>Cacheable</span><span class='period'>.</span><span class='id load_from'>load_from</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span>
@@ -330,9 +333,9 @@
 </div>
     
     <div id="footer">
-  Generated on Sun Mar 27 14:17:54 2011 by 
+  Generated on Sat Apr 23 19:27:00 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.5 (ruby-1.9.2).
+  0.6.6 (ruby-1.9.2).
 </div>
 
   </body>
