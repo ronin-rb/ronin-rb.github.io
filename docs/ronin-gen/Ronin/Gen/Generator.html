@@ -2,17 +2,27 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta name="Content-Type" content="text/html; charset=utf-8" />
-<title>Class: Ronin::Gen::Generator</title>
-<link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
-<link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title>
+  Class: Ronin::Gen::Generator
+  
+    &mdash; Ronin Gen Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
   relpath = '../..';
   if (relpath != '') relpath += '/';
 </script>
-<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
 
   </head>
   <body>
@@ -33,11 +43,14 @@
 </div>
 
       <div id="search">
-  <a id="class_list_link" href="#">Class List</a>
-  <a id="method_list_link" href="#">Method List</a>
-  <a id ="file_list_link" href="#">File List</a>
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
 </div>
-
       <div class="clear"></div>
     </div>
     
@@ -101,31 +114,31 @@ classes that extend our generator. The functionality of the generator
 is defined via instance methods, which are called sequentially when
 the generator is invoked.</p>
 
-<pre class="code"><span class='id require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ronin/gen/file_generator</span><span class='tstring_end'>'</span></span>
+<pre class="code"><span class='require identifier id'>require</span> <span class='string val'>'ronin/gen/file_generator'</span>
 
-<span class='kw'>module</span> <span class='const'>Ronin</span>
-  <span class='kw'>module</span> <span class='const'>Gen</span>
-    <span class='kw'>module</span> <span class='const'>Generators</span>
-      <span class='kw'>class</span> <span class='const'>MyGenerator</span> <span class='op'>&lt;</span> <span class='const'>FileGenerator</span>
+<span class='module module kw'>module</span> <span class='Ronin constant id'>Ronin</span>
+  <span class='module module kw'>module</span> <span class='Gen constant id'>Gen</span>
+    <span class='module module kw'>module</span> <span class='Generators constant id'>Generators</span>
+      <span class='class class kw'>class</span> <span class='MyGenerator constant id'>MyGenerator</span> <span class='lt op'>&lt;</span> <span class='FileGenerator constant id'>FileGenerator</span>
 
-        <span class='id desc'>desc</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>My generator</span><span class='tstring_end'>'</span></span>
+        <span class='desc identifier id'>desc</span> <span class='string val'>'My generator'</span>
 
-        <span class='comment'># generator options
-</span>        <span class='id class_option'>class_option</span> <span class='symbol'>:stuff</span><span class='comma'>,</span> <span class='symbol'>:type</span> <span class='op'>=&gt;</span> <span class='symbol'>:boolean</span>
-        <span class='id class_option'>class_option</span> <span class='symbol'>:syntax</span><span class='comma'>,</span> <span class='symbol'>:type</span> <span class='op'>=&gt;</span> <span class='symbol'>:string</span>
-        <span class='id class_option'>class_option</span> <span class='symbol'>:includes</span><span class='comma'>,</span> <span class='symbol'>:type</span> <span class='op'>=&gt;</span> <span class='symbol'>:array</span>
+        <span class='comment val'># generator options</span>
+        <span class='class_option identifier id'>class_option</span> <span class='symbol val'>:stuff</span><span class='comma token'>,</span> <span class='symbol val'>:type</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:boolean</span>
+        <span class='class_option identifier id'>class_option</span> <span class='symbol val'>:syntax</span><span class='comma token'>,</span> <span class='symbol val'>:type</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:string</span>
+        <span class='class_option identifier id'>class_option</span> <span class='symbol val'>:includes</span><span class='comma token'>,</span> <span class='symbol val'>:type</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:array</span>
 
-        <span class='comment'>#
-</span>        <span class='comment'># Performs the generation.
-</span>        <span class='comment'>#
-</span>        <span class='kw'>def</span> <span class='id generate'>generate</span>
-          <span class='id erb'>erb</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>some_template.erb</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span>
-        <span class='kw'>end</span>
+        <span class='comment val'>#</span>
+        <span class='comment val'># Performs the generation.</span>
+        <span class='comment val'>#</span>
+        <span class='def def kw'>def</span> <span class='generate identifier id'>generate</span>
+          <span class='erb identifier id'>erb</span> <span class='string val'>'some_template.erb'</span><span class='comma token'>,</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='path identifier id'>path</span>
+        <span class='end end kw'>end</span>
 
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span>
+      <span class='end end kw'>end</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
 </pre>
 
 <h1 id="invoking">Invoking</h1>
@@ -133,10 +146,10 @@ the generator is invoked.</p>
 <p>To invoke the generator from ruby, one can call the <span class='object_link'><a href="#generate-class_method" title="Ronin::Gen::Generator.generate (method)">generate</a></span>
 class method with the options and arguments to run the generator with:</p>
 
-<pre class="code">MyGenerator.generate(
-  {:stuff =&gt; true, :syntax =&gt; 'bla', :includes =&gt; ['other']}
-  ['path/to/file'],
-)
+<pre class="code"><span class='MyGenerator constant id'>MyGenerator</span><span class='dot token'>.</span><span class='generate identifier id'>generate</span><span class='lparen token'>(</span>
+  <span class='lbrace token'>{</span><span class='symbol val'>:stuff</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span> <span class='symbol val'>:syntax</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'bla'</span><span class='comma token'>,</span> <span class='symbol val'>:includes</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'other'</span><span class='rbrack token'>]</span><span class='rbrace token'>}</span>
+  <span class='lbrack token'>[</span><span class='string val'>'path/to/file'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+<span class='rparen token'>)</span>
 </pre>
 
 <p>To make your generator accessible to the <code>ronin-gen</code> command, simply
@@ -147,7 +160,7 @@ of any Ronin library. If your generator class is named
 <p>To run the generator using the <code>ronin-gen</code> command, simply specify
 it&rsquo;s underscored name:</p>
 
-<pre class="code">ronin-gen my_generator path/to/file --stuff --syntax bla --includes other
+<pre class="code"><span class='ronin identifier id'>ronin</span><span class='minus op'>-</span><span class='gen identifier id'>gen</span> <span class='my_generator identifier id'>my_generator</span> <span class='path identifier id'>path</span><span class='div op'>/</span><span class='to identifier id'>to</span><span class='div op'>/</span><span class='file identifier id'>file</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='stuff identifier id'>stuff</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='syntax identifier id'>syntax</span> <span class='bla identifier id'>bla</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='includes identifier id'>includes</span> <span class='other identifier id'>other</span>
 </pre>
 
 
@@ -159,6 +172,12 @@ it&rsquo;s underscored name:</p>
   <h2>Direct Known Subclasses</h2>
   <p class="children"><span class='object_link'><a href="DirGenerator.html" title="Ronin::Gen::DirGenerator (class)">DirGenerator</a></span>, <span class='object_link'><a href="FileGenerator.html" title="Ronin::Gen::FileGenerator (class)">FileGenerator</a></span></p>
 </div>
+
+
+  
+  
+  
+  
 
 
   
@@ -481,10 +500,10 @@ the tasks are invoked.</p>
   
     <li>
       
-        <span class='type'>(<tt>Array</tt>)</span>
-      
-      
         <span class='name'>arguments</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>[]</tt>)</em>
@@ -498,10 +517,10 @@ the tasks are invoked.</p>
   
     <li>
       
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
         <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>{}</tt>)</em>
@@ -515,10 +534,10 @@ the tasks are invoked.</p>
   
     <li>
       
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
         <span class='name'>config</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>{}</tt>)</em>
@@ -536,8 +555,8 @@ the tasks are invoked.</p>
   
     <li>
       
-        <span class='type'>(<tt>_self</tt>)</span>
       
+        <span class='type'>(<tt>_self</tt>)</span>
       
       
       
@@ -549,10 +568,10 @@ the tasks are invoked.</p>
   
     <li>
       
-        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Ronin::Gen::Generator</a></span></tt>)</span>
-      
-      
         <span class='name'>_self</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Ronin::Gen::Generator</a></span></tt>)</span>
       
       
       
@@ -596,13 +615,14 @@ the tasks are invoked.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 192</span>
 
-<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id arguments'>arguments</span><span class='op'>=</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='id config'>config</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='kw'>super</span><span class='lparen'>(</span><span class='id arguments'>arguments</span><span class='comma'>,</span><span class='id options'>options</span><span class='comma'>,</span><span class='id config'>config</span><span class='rparen'>)</span>
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='arguments identifier id'>arguments</span><span class='assign token'>=</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span><span class='config identifier id'>config</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='arguments identifier id'>arguments</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='comma token'>,</span><span class='config identifier id'>config</span><span class='rparen token'>)</span>
 
-  <span class='id setup'>setup</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='setup identifier id'>setup</span><span class='lparen token'>(</span><span class='rparen token'>)</span>
 
-  <span class='kw'>yield</span> <span class='kw'>self</span> <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
-<span class='kw'>end</span></pre>
+  <span class='yield yield kw'>yield</span> <span class='self self kw'>self</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+<span class='end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -636,7 +656,8 @@ the tasks are invoked.</p>
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='id gen'>gen</span><span class='period'>.</span><span class='id generate'>generate</span></pre>
+      <pre class="example code"><span class='gen identifier id'>gen</span><span class='dot token'>.</span><span class='generate identifier id'>generate</span>
+</pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -644,10 +665,10 @@ the tasks are invoked.</p>
   
     <li>
       
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
         <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>{}</tt>)</em>
@@ -661,10 +682,10 @@ the tasks are invoked.</p>
   
     <li>
       
-        <span class='type'>(<tt>Array</tt>)</span>
-      
-      
         <span class='name'>arguments</span>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>[]</tt>)</em>
@@ -682,8 +703,8 @@ the tasks are invoked.</p>
   
     <li>
       
-        <span class='type'>(<tt><span class='object_link'><a href="../Gen.html#generator-class_method" title="Ronin::Gen.generator (method)">generator</a></span></tt>)</span>
       
+        <span class='type'>(<tt><span class='object_link'><a href="../Gen.html#generator-class_method" title="Ronin::Gen.generator (method)">generator</a></span></tt>)</span>
       
       
       
@@ -699,10 +720,10 @@ the tasks are invoked.</p>
   
     <li>
       
-        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Generator</a></span></tt>)</span>
-      
-      
         <span class='name'>generator</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Generator</a></span></tt>)</span>
       
       
       
@@ -718,8 +739,8 @@ the tasks are invoked.</p>
   
     <li>
       
-        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Generator</a></span></tt>)</span>
       
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Generator</a></span></tt>)</span>
       
       
       
@@ -762,12 +783,13 @@ the tasks are invoked.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 159</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id generate'>generate</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='id arguments'>arguments</span><span class='op'>=</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='id generator'>generator</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id arguments'>arguments</span><span class='comma'>,</span><span class='id options'>options</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='id generator'>generator</span><span class='period'>.</span><span class='id invoke_all'>invoke_all</span><span class='lparen'>(</span><span class='rparen'>)</span>
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='generate identifier id'>generate</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span><span class='arguments identifier id'>arguments</span><span class='assign token'>=</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='generator identifier id'>generator</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='arguments identifier id'>arguments</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='generator identifier id'>generator</span><span class='dot token'>.</span><span class='invoke_all identifier id'>invoke_all</span><span class='lparen token'>(</span><span class='rparen token'>)</span>
 
-  <span class='kw'>return</span> <span class='id generator'>generator</span>
-<span class='kw'>end</span></pre>
+  <span class='return return kw'>return</span> <span class='generator identifier id'>generator</span>
+<span class='end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -793,10 +815,10 @@ the tasks are invoked.</p>
   
     <li>
       
-        <span class='type'>(<tt>Class</tt>)</span>
-      
-      
         <span class='name'>super_class</span>
+      
+      
+        <span class='type'>(<tt>Class</tt>)</span>
       
       
       
@@ -824,12 +846,13 @@ the tasks are invoked.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 104</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id inherited'>inherited</span><span class='lparen'>(</span><span class='id super_class'>super_class</span><span class='rparen'>)</span>
-  <span class='id class_name'>class_name</span> <span class='op'>=</span> <span class='id super_class'>super_class</span><span class='period'>.</span><span class='id name'>name</span><span class='period'>.</span><span class='id sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Ronin::Gen::Generators::</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-  <span class='id gen_name'>gen_name</span> <span class='op'>=</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Inflector</span><span class='period'>.</span><span class='id underscore'>underscore</span><span class='lparen'>(</span><span class='id class_name'>class_name</span><span class='period'>.</span><span class='id gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>::</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>:</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='inherited identifier id'>inherited</span><span class='lparen token'>(</span><span class='super_class identifier id'>super_class</span><span class='rparen token'>)</span>
+  <span class='class_name identifier id'>class_name</span> <span class='assign token'>=</span> <span class='super_class identifier id'>super_class</span><span class='dot token'>.</span><span class='name identifier id'>name</span><span class='dot token'>.</span><span class='sub identifier id'>sub</span><span class='lparen token'>(</span><span class='string val'>'Ronin::Gen::Generators::'</span><span class='comma token'>,</span><span class='string val'>''</span><span class='rparen token'>)</span>
+  <span class='gen_name identifier id'>gen_name</span> <span class='assign token'>=</span> <span class='Support constant id'>Support</span><span class='colon2 op'>::</span><span class='Inflector constant id'>Inflector</span><span class='dot token'>.</span><span class='underscore identifier id'>underscore</span><span class='lparen token'>(</span><span class='class_name identifier id'>class_name</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='string val'>'::'</span><span class='comma token'>,</span><span class='string val'>':'</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
 
-  <span class='id super_class'>super_class</span><span class='period'>.</span><span class='id namespace'>namespace</span><span class='lparen'>(</span><span class='id gen_name'>gen_name</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
+  <span class='super_class identifier id'>super_class</span><span class='dot token'>.</span><span class='namespace identifier id'>namespace</span><span class='lparen token'>(</span><span class='gen_name identifier id'>gen_name</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -880,9 +903,10 @@ working directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 117</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id source_root'>source_root</span>
-  <span class='ivar'>@generator_source_root</span> <span class='op'>||=</span> <span class='const'>Dir</span><span class='period'>.</span><span class='id pwd'>pwd</span>
-<span class='kw'>end</span></pre>
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='source_root identifier id'>source_root</span>
+  <span class='@generator_source_root ivar id'>@generator_source_root</span> <span class='opasgn op'>||=</span> <span class='Dir constant id'>Dir</span><span class='dot token'>.</span><span class='pwd identifier id'>pwd</span>
+<span class='end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -908,10 +932,10 @@ working directory.</p>
   
     <li>
       
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
         <span class='name'>new_dir</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
       
       
       
@@ -927,8 +951,8 @@ working directory.</p>
   
     <li>
       
-        <span class='type'>(<tt>String</tt>)</span>
       
+        <span class='type'>(<tt>String</tt>)</span>
       
       
       
@@ -968,9 +992,10 @@ working directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 132</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id source_root='>source_root=</span><span class='lparen'>(</span><span class='id new_dir'>new_dir</span><span class='rparen'>)</span>
-  <span class='ivar'>@genereator_source_root</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id expand_path'>expand_path</span><span class='lparen'>(</span><span class='id new_dir'>new_dir</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='source_root identifier id'>source_root</span><span class='assign token'>=</span><span class='lparen token'>(</span><span class='new_dir identifier id'>new_dir</span><span class='rparen token'>)</span>
+  <span class='@genereator_source_root ivar id'>@genereator_source_root</span> <span class='assign token'>=</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='expand_path identifier id'>expand_path</span><span class='lparen token'>(</span><span class='new_dir identifier id'>new_dir</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -1003,8 +1028,9 @@ working directory.</p>
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='id copy_file'>copy_file</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ronin/platform/generators/extension.rb</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
-          <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>myext/extension.rb</span><span class='tstring_end'>'</span></span></pre>
+      <pre class="example code"><span class='copy_file identifier id'>copy_file</span> <span class='string val'>'ronin/platform/generators/extension.rb'</span><span class='comma token'>,</span>
+          <span class='string val'>'myext/extension.rb'</span>
+</pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -1012,10 +1038,10 @@ working directory.</p>
   
     <li>
       
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
         <span class='name'>data_file</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
       
       
       
@@ -1027,10 +1053,10 @@ working directory.</p>
   
     <li>
       
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
         <span class='name'>destination</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
       
       
       
@@ -1070,9 +1096,10 @@ working directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 254</span>
 
-<span class='kw'>def</span> <span class='id cp'>cp</span><span class='lparen'>(</span><span class='id data_file'>data_file</span><span class='comma'>,</span><span class='id destination'>destination</span><span class='rparen'>)</span>
-  <span class='id copy_file'>copy_file</span><span class='lparen'>(</span><span class='id find_data_file'>find_data_file</span><span class='lparen'>(</span><span class='id data_file'>data_file</span><span class='rparen'>)</span><span class='comma'>,</span><span class='id destination'>destination</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
+<span class='def def kw'>def</span> <span class='cp identifier id'>cp</span><span class='lparen token'>(</span><span class='data_file identifier id'>data_file</span><span class='comma token'>,</span><span class='destination identifier id'>destination</span><span class='rparen token'>)</span>
+  <span class='copy_file identifier id'>copy_file</span><span class='lparen token'>(</span><span class='find_data_file identifier id'>find_data_file</span><span class='lparen token'>(</span><span class='data_file identifier id'>data_file</span><span class='rparen token'>)</span><span class='comma token'>,</span><span class='destination identifier id'>destination</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -1098,10 +1125,10 @@ working directory.</p>
   
     <li>
       
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
         <span class='name'>data_dir</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
       
       
       
@@ -1113,10 +1140,10 @@ working directory.</p>
   
     <li>
       
-        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
-      
-      
         <span class='name'>destination</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>nil</tt>)</em>
@@ -1130,10 +1157,10 @@ working directory.</p>
   
     <li>
       
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
         <span class='name'>config</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>{}</tt>)</em>
@@ -1158,8 +1185,8 @@ working directory.</p>
     <ul class="option">
       
         <li>
-          <span class="type">(<tt>Boolean</tt>)</span>
           <span class="name">:recursive</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
           <span class="default">
             
               &mdash; default:
@@ -1203,11 +1230,12 @@ working directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 275</span>
 
-<span class='kw'>def</span> <span class='id cp_r'>cp_r</span><span class='lparen'>(</span><span class='id data_dir'>data_dir</span><span class='comma'>,</span><span class='id destination'>destination</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id config'>config</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id each_data_dir'>each_data_dir</span><span class='lparen'>(</span><span class='id data_dir'>data_dir</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id dir'>dir</span><span class='op'>|</span>
-    <span class='id directory'>directory</span><span class='lparen'>(</span><span class='id dir'>dir</span><span class='comma'>,</span><span class='id destination'>destination</span> <span class='op'>||</span> <span class='id data_dir'>data_dir</span><span class='comma'>,</span><span class='id config'>config</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
+<span class='def def kw'>def</span> <span class='cp_r identifier id'>cp_r</span><span class='lparen token'>(</span><span class='data_dir identifier id'>data_dir</span><span class='comma token'>,</span><span class='destination identifier id'>destination</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='comma token'>,</span><span class='config identifier id'>config</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+  <span class='each_data_dir identifier id'>each_data_dir</span><span class='lparen token'>(</span><span class='data_dir identifier id'>data_dir</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='dir identifier id'>dir</span><span class='bitor op'>|</span>
+    <span class='directory identifier id'>directory</span><span class='lparen token'>(</span><span class='dir identifier id'>dir</span><span class='comma token'>,</span><span class='destination identifier id'>destination</span> <span class='orop op'>||</span> <span class='data_dir identifier id'>data_dir</span><span class='comma token'>,</span><span class='config identifier id'>config</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -1234,11 +1262,13 @@ working directory.</p>
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='id erb'>erb</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ronin/platform/generators/Rakefile.erb</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Rakefile.erb</span><span class='tstring_end'>'</span></span></pre>
+      <pre class="example code"><span class='erb identifier id'>erb</span> <span class='string val'>'ronin/platform/generators/Rakefile.erb'</span><span class='comma token'>,</span> <span class='string val'>'Rakefile.erb'</span>
+</pre>
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='id erb'>erb</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>_helpers.erb</span><span class='tstring_end'>'</span></span></pre>
+      <pre class="example code"><span class='erb identifier id'>erb</span> <span class='string val'>'_helpers.erb'</span>
+</pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -1246,10 +1276,10 @@ working directory.</p>
   
     <li>
       
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
         <span class='name'>template_path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
       
       
       
@@ -1261,10 +1291,10 @@ working directory.</p>
   
     <li>
       
-        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
-      
-      
         <span class='name'>destination</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>nil</tt>)</em>
@@ -1282,8 +1312,8 @@ working directory.</p>
   
     <li>
       
-        <span class='type'>(<tt>nil</tt>, <tt>String</tt>)</span>
       
+        <span class='type'>(<tt>nil</tt>, <tt>String</tt>)</span>
       
       
       
@@ -1332,17 +1362,18 @@ will be returned.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 302</span>
 
-<span class='kw'>def</span> <span class='id erb'>erb</span><span class='lparen'>(</span><span class='id template_path'>template_path</span><span class='comma'>,</span><span class='id destination'>destination</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id destination'>destination</span>
-    <span class='id enter_template'>enter_template</span><span class='lparen'>(</span><span class='id template_path'>template_path</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id path'>path</span><span class='op'>|</span>
-      <span class='id template'>template</span><span class='lparen'>(</span><span class='id path'>path</span><span class='comma'>,</span><span class='id destination'>destination</span><span class='rparen'>)</span>
-    <span class='kw'>end</span>
-  <span class='kw'>else</span>
-    <span class='id read_template'>read_template</span><span class='lparen'>(</span><span class='id template_path'>template_path</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id template'>template</span><span class='op'>|</span>
-      <span class='const'>ERB</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id template'>template</span><span class='rparen'>)</span><span class='period'>.</span><span class='id result'>result</span><span class='lparen'>(</span><span class='id binding'>binding</span><span class='rparen'>)</span><span class='period'>.</span><span class='id chomp'>chomp</span>
-    <span class='kw'>end</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
+<span class='def def kw'>def</span> <span class='erb identifier id'>erb</span><span class='lparen token'>(</span><span class='template_path identifier id'>template_path</span><span class='comma token'>,</span><span class='destination identifier id'>destination</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='destination identifier id'>destination</span>
+    <span class='enter_template identifier id'>enter_template</span><span class='lparen token'>(</span><span class='template_path identifier id'>template_path</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='path identifier id'>path</span><span class='bitor op'>|</span>
+      <span class='template identifier id'>template</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='comma token'>,</span><span class='destination identifier id'>destination</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+  <span class='else else kw'>else</span>
+    <span class='read_template identifier id'>read_template</span><span class='lparen token'>(</span><span class='template_path identifier id'>template_path</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='template identifier id'>template</span><span class='bitor op'>|</span>
+      <span class='ERB constant id'>ERB</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='template identifier id'>template</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='result identifier id'>result</span><span class='lparen token'>(</span><span class='binding identifier id'>binding</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='chomp identifier id'>chomp</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -1391,8 +1422,9 @@ will be returned.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 173</span>
 
-<span class='kw'>def</span> <span class='id generate'>generate</span>
-<span class='kw'>end</span></pre>
+<span class='def def kw'>def</span> <span class='generate identifier id'>generate</span>
+<span class='end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -1419,7 +1451,8 @@ will be returned.</p>
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='id directory'>directory</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sub/dir</span><span class='tstring_end'>'</span></span></pre>
+      <pre class="example code"><span class='directory identifier id'>directory</span> <span class='string val'>'sub/dir'</span>
+</pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -1427,10 +1460,10 @@ will be returned.</p>
   
     <li>
       
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
         <span class='name'>destination</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
       
       
       
@@ -1470,9 +1503,10 @@ will be returned.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 235</span>
 
-<span class='kw'>def</span> <span class='id mkdir'>mkdir</span><span class='lparen'>(</span><span class='id destination'>destination</span><span class='rparen'>)</span>
-  <span class='id empty_directory'>empty_directory</span><span class='lparen'>(</span><span class='id destination'>destination</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
+<span class='def def kw'>def</span> <span class='mkdir identifier id'>mkdir</span><span class='lparen token'>(</span><span class='destination identifier id'>destination</span><span class='rparen token'>)</span>
+  <span class='empty_directory identifier id'>empty_directory</span><span class='lparen token'>(</span><span class='destination identifier id'>destination</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -1522,8 +1556,9 @@ the tasks are invoked.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 206</span>
 
-<span class='kw'>def</span> <span class='id setup'>setup</span>
-<span class='kw'>end</span></pre>
+<span class='def def kw'>def</span> <span class='setup identifier id'>setup</span>
+<span class='end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -1550,7 +1585,8 @@ the tasks are invoked.</p>
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='id touch'>touch</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>TODO.txt</span><span class='tstring_end'>'</span></span></pre>
+      <pre class="example code"><span class='touch identifier id'>touch</span> <span class='string val'>'TODO.txt'</span>
+</pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -1558,10 +1594,10 @@ the tasks are invoked.</p>
   
     <li>
       
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
         <span class='name'>destination</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
       
       
       
@@ -1601,9 +1637,10 @@ the tasks are invoked.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 220</span>
 
-<span class='kw'>def</span> <span class='id touch'>touch</span><span class='lparen'>(</span><span class='id destination'>destination</span><span class='rparen'>)</span>
-  <span class='id create_file'>create_file</span><span class='lparen'>(</span><span class='id destination'>destination</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
+<span class='def def kw'>def</span> <span class='touch identifier id'>touch</span><span class='lparen token'>(</span><span class='destination identifier id'>destination</span><span class='rparen token'>)</span>
+  <span class='create_file identifier id'>create_file</span><span class='lparen token'>(</span><span class='destination identifier id'>destination</span><span class='rparen token'>)</span>
+<span class='end end kw'>end</span>
+</pre>
     </td>
   </tr>
 </table>
@@ -1614,9 +1651,9 @@ the tasks are invoked.</p>
 </div>
     
     <div id="footer">
-  Generated on Sun Mar 27 14:19:07 2011 by 
+  Generated on Tue Jul 12 15:49:53 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.6.4 (ruby-1.9.2).
+  0.7.1 (ruby-1.8.7).
 </div>
 
   </body>
