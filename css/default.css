@@ -20,10 +20,6 @@ a:hover {
 	text-decoration: underline;
 }
 
-kbd {
-	font-size: 1.15em;
-}
-
 img {
 	border: none;
 }
@@ -37,10 +33,10 @@ span.underlined {
 /* @group Header */
 
 #header {
-	float: left;
+	clear: both;
 	width: 100%;
+	height: 150px;
 	padding: 0;
-	margin: 0 0 20px 0;
 }
 
 #header > #backdrop {
@@ -64,56 +60,61 @@ span.underlined {
 	z-index: 0;
 }
 
+@media print {
+	#header {
+		height: 100px;
+	}
+
+	#header > #logo {
+		top: 0;
+		left: 0;
+	}
+
+	#header > #backdrop, #menu {
+		display: none;
+	}
+}
+
 /* @end */
 
 /* @group Page */
 
-#page {
-	float: left;
-}
-
 #content {
-	margin-left: 180px;
 	padding: 1em;
-	width: 50em;
 	color: black;
 	background-color: white;
 	border: 20px solid black;
 }
 
+#content h1, h2, h3 {
+	margin: 0 0 0.5em 0;
+	border-bottom: 2px solid #e0e0e0;
+	font-weight: bold;
+}
+
 #content h1 {
-	width: 100%;
-	margin: 0 0 0.3em 0;
-	border-bottom: 2px solid #c3c3c3;
 	color: #bd0000;
 	font-size: 1.6em;
 }
 
-#content h2 {
-	width: 100%;
-	margin: 0 0 0.3em 0;
-	border-bottom: 2px solid #c3c3c3;
-	color: black;
-	font-size: 1.2em;
-}
-
-#content h3 {
-	width: 100%;
-	margin: 0 0 0.3em 0;
-	border-bottom: 2px solid #c3c3c3;
+#content h2, h3 {
 	color: black;
 	font-size: 1.2em;
 }
 
 #content ul {
-	margin-left: 1em;
+	margin: 0 0 0 1em;
 	padding: 0;
 	list-style: none;
 }
 
 #content li {
-	margin-left: 1em;
+	margin: 0 0 0 1em;
 	padding: 0.5em 0 0.5em 0;
+}
+
+#content p {
+	margin: 0 0 1em;
 }
 
 #content a {
@@ -129,8 +130,14 @@ span.underlined {
 #content blockquote {
 	margin: 1em 2em 1em 2em;
 	padding: 0 1em 0 1em;
-	background-color: #c3c3c3;
+	background-color: #e0e0e0;
 	border: 2px solid gray;
+}
+
+#content kbd {
+	font-family: monospace;
+	font-size: 1.15em;
+	background-color: #e0e0e0;
 }
 
 #content code {
@@ -146,22 +153,19 @@ span.underlined {
 	overflow: auto;
 }
 
-#content div.note {
+#content div.note, div.warning {
 	clear: right;
 	margin: 0.5em 0 0.5em 0;
 	padding: 0.5em;
-	color: black;
-	background-color: #a8ffa8;
 	border: 10px solid black;
 }
 
+#content div.note {
+	background-color: #a8ffa8;
+}
+
 #content div.warning {
-	clear: right;
-	margin: 0.5em 0 0.5em 0;
-	padding: 0.5em;
-	color: black;
 	background-color: #ffa8a8;
-	border: 10px solid black;
 }
 
 #content div.footnote {
@@ -177,6 +181,12 @@ span.underlined {
 	height: 2px;
 	background-color: black;
 	border: none;
+}
+
+@media print {
+	#content {
+		border: none;
+	}
 }
 
 /* @end */
