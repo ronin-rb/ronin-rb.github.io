@@ -5,6 +5,11 @@ title: Contact
 
 # Contact
 
+## Twitter
+
+Need to ask a quick question? Just message
+[@ronin_ruby](http://twitter.com/ronin_ruby) on [Twitter](http://twitter.com).
+
 ## IRC
 
 Ronin also has a dedicated IRC channel for general questions or
