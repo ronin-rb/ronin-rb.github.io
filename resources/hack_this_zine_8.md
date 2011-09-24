@@ -585,7 +585,7 @@ http://ronin-ruby.github.com/howtos/ronin_on_debian.html
 
 [4] [RubyGems](http://rubygems.org) - "The premier Ruby packaging system".
 
-[5] [Ronin and Git[hub]](http://ronin-ruby.github.com/contribute/) - Detailed documentation for using git to hack on 
+[5] [Ronin and Git[hub]](http://ronin-ruby.github.com/dev/) - Detailed documentation for using git to hack on 
 Ronin is available here.
 
 [6] IRB - The Interactive Ruby Interpreter.  This is the "Ruby command Line", 
