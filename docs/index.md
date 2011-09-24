@@ -5,7 +5,29 @@ title: Documentation
 
 # Documentation
 
-API Documentation for the Ronin libraries:
+## Install
+
+* [Debian](install/debian.html) -
+  A brief set of instructions describing how to install Ronin on a vanilla
+  Debian system.
+* [Ubuntu](install/ubuntu.html) -
+  A brief set of instructions describing how to install Ronin on a vanilla
+  Ubuntu system.
+* [Ronin (Edge)](install/edge.html) -
+  Describes how to install and run the development version of Ronin into
+  your home directory.
+
+## Tutorials
+
+* [Everyday Ronin](tutorials/everyday_ronin.html) - 
+  A somewhat lengthy guide covering the everyday usage of various
+  convenience methods within the Ronin Ruby Console.
+* [Using Ronin Web](tutorials/using_ronin_web.html) -
+  A brief guide showing basic usage of the Ronin Web library.
+* [Using Ronin PHP](tutorials/using_ronin_php.html) -
+  A brief guide showing basic usage of the Ronin PHP library.
+
+## API
 
 * [ronin-support](ronin-support/) - 0.2.0
 * [ronin](ronin/) - 1.1.0

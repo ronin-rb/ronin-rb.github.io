@@ -20,5 +20,4 @@ users can browse API documentation for both
 [Ronin (Edge)](http://rubydoc.info/github/ronin-ruby/ronin/master/frames)
 and previous releases of [Ronin](http://rubydoc.info/gems/ronin/frames).
 
-Checkout the new API documentation links in the [Resources](/resources/)
-section.
+Checkout the new API documentation links in the [docs](/docs/) section.

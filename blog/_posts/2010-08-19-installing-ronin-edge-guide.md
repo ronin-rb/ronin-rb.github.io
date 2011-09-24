@@ -4,7 +4,7 @@ title: Installing Ronin (Edge) Guide
 author: postmodern
 ---
 
-We just released a new [Guide](/resources/ronin_edge.html), aimed at
+We just released a new [tutorial](/docs/install/edge.html), aimed at
 developers and users who want to run the latest changes made to Ronin.
 
 The Guide also touches on using the
