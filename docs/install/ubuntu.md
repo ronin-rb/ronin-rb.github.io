@@ -37,10 +37,3 @@ we can finally install Ronin:
 
     $ sudo gem install ronin
 
-## Developers Only
-
-If you plan on testing or contributing code to Ronin, you will need to
-install a couple extra RubyGems.
-
-    $ sudo gem install rspec
-
