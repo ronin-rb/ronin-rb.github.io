@@ -33,8 +33,14 @@ are denoted by the `.md` file extension.
 ## Requirements
 
 * [jekyll](http://github.com/mojombo/jekyll) >= 0.5.7
-* [rdiscount](http://github.com/rtomayko/rdiscount) (for markdown)
-* [watchr](http://github.com/mynyml/watchr/) (for previewing)
+* [rdiscount](http://github.com/rtomayko/rdiscount) (for Markdown)
+
+## Setup
+
+    $ gem install jekyll rdiscount
+    $ git clone git://github.com/ronin-ruby/ronin-ruby.github.com.git
+    $ cd ronin-ruby.github.com/
+    $ jekyll
 
 ## License
 
