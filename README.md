@@ -38,7 +38,7 @@ are denoted by the `.md` file extension.
 ## Setup
 
     $ gem install jekyll rdiscount
-    $ git clone git://github.com/ronin-ruby/ronin-ruby.github.com.git
+    $ git clone http://github.com/ronin-ruby/ronin-ruby.github.com.git
     $ cd ronin-ruby.github.com/
     $ jekyll
 
