@@ -21,11 +21,13 @@ those who wish to contribute code to Ronin should review the project
 [coding style guide-lines](style.html).
 
 
-## Dive right in
+## Repositories
 
 Once your familiar with Ronins coding style, and setup with
 [Git](http://git-scm.com/) and [GitHub](http://www.github.com/),
-you can dive right into Ronin. Just pick a repository, fork it and dive in:
+you can dive right into Ronin.
+
+### Libraries
 
 <ul>
 {% for library in site.libraries %}
@@ -34,10 +36,10 @@ you can dive right into Ronin. Just pick a repository, fork it and dive in:
     {{ library.description }}
   </li>
 {% endfor %}
-  <li>
-    <a href="http://github.com/ronin-ruby/ronin-ruby.github.com">ronin-ruby.github.com</a> - This website.
-  </li>
-  <li>
-    <a href="http://github.com/ronin-ruby/art">art</a> - Original Ronin artwork.
-  </li>
 </ul>
+
+### Misc
+
+* [ronin-ruby.github.com](http://github.com/ronin-ruby/ronin-ruby.github.com) -
+  This website.
+* [art](http://github.com/ronin-ruby/art) - Original Ronin artwork.
