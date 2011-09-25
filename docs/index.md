@@ -16,6 +16,9 @@ title: Documentation
 * [Fedora](install/fedora.html) -
   A brief set of instructions describing how to install Ronin on a vanilla
   Fedora Linux system.
+* [Mac OS X](install/osx.html) -
+  A brief set of instructions describing how to install Ronin on a vanilla
+  Mac OS X system.
 * [Ronin (Edge)](install/edge.html) -
   Describes how to install and run the development version of Ronin into
   your home directory.

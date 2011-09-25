@@ -22,8 +22,10 @@ Install Ronin using [RubyGems](http://rubygems.org/):
 
     $ sudo gem install ronin
 
-Install Ronin on [Debian](/docs/install/debian.html),  
-[Ubuntu](/docs/install/ubuntu.html) or [Fedora](/docs/install/fedora.html).
+Install Ronin on [Debian](/docs/install/debian.html), 
+[Ubuntu](/docs/install/ubuntu.html),
+[Fedora](/docs/install/fedora.html) or
+[Mac OS X](/docs/install/osx.html).
 
 ## Examples
 
