@@ -14,6 +14,12 @@ Ronin on a vanilla Mac OS X system.
     sudo brew install libxml2 libxslt sqlite && \
     sudo gem install ronin
 
+## Download X Code
+
+Some RubyGems contain C extensions, which are compiled during installation.
+In order to install these Gems, you will need to download
+[X Code](http://developer.apple.com/xcode/).
+
 ## Install HomeBrew
 
 In order to install the additional libraries, we must first install
