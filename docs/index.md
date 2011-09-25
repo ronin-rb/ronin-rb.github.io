@@ -7,21 +7,11 @@ title: Documentation
 
 ## Install
 
-* [Debian](install/debian.html) -
-  A brief set of instructions describing how to install Ronin on a vanilla
-  Debian Linux system.
-* [Ubuntu](install/ubuntu.html) -
-  A brief set of instructions describing how to install Ronin on a vanilla
-  Ubuntu Linux system.
-* [Fedora](install/fedora.html) -
-  A brief set of instructions describing how to install Ronin on a vanilla
-  Fedora Linux system.
-* [Mac OS X](install/osx.html) -
-  A brief set of instructions describing how to install Ronin on a vanilla
-  Mac OS X system.
-* [Ronin (Edge)](install/edge.html) -
-  Describes how to install and run the development version of Ronin into
-  your home directory.
+* [Debian](install/debian.html)
+* [Ubuntu](install/ubuntu.html)
+* [Fedora](install/fedora.html)
+* [Mac OS X](install/osx.html)
+* [Edge](install/edge.html)
 
 ## Tutorials
 
