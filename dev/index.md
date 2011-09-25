@@ -37,4 +37,7 @@ you can dive right into Ronin. Just pick a repository, fork it and dive in:
   <li>
     <a href="http://github.com/ronin-ruby/ronin-ruby.github.com">ronin-ruby.github.com</a> - This website.
   </li>
+  <li>
+    <a href="http://github.com/ronin-ruby/art">art</a> - Original Ronin artwork.
+  </li>
 </ul>
