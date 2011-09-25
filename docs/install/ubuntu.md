@@ -10,11 +10,8 @@ Ronin on a vanilla Ubuntu Linux system.
 
 ### Quick Install
 
-    echo "[-] Installing required libraries" && \
     sudo apt-get install libxml2 libxml2-dev libxslt1-dev sqlite3 libsqlite3-dev && \
-    echo "[-] Installing Ruby 1.9.2" && \
     sudo apt-get install ruby1.9.2-full rubygems1.9.2 && \
-    echo "[-] Installing Ronin" && \
     sudo gem install ronin
 
 ## Installing required Libraries
