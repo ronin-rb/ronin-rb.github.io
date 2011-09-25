@@ -22,18 +22,18 @@ Ronin on a vanilla Debian Linux system.
 dependencies of Ronin (such as do_sqlite3 and nokogiri) require certain
 libraries and their header files to be installed:
 
-    $ sudo apt-get install libxml2 libxml2-dev libxslt1-dev sqlite3 libsqlite3-dev
+    sudo apt-get install libxml2 libxml2-dev libxslt1-dev sqlite3 libsqlite3-dev
 
 ## Installing Ruby
 
 If you already have not done so, we must fully install Ruby on the system.
 
-    $ sudo apt-get install ruby1.9.2-full rubygems1.9.2
+    sudo apt-get install ruby1.9.2-full rubygems1.9.2
 
 ## Installing Ronin
 
 Now that your Debian system has been properly setup with Ruby and RubyGems,
 we can finally install Ronin:
 
-    $ sudo gem install ronin
+    sudo gem install ronin
 
