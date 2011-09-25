@@ -12,11 +12,14 @@ home directory.
 ### Quick Install
 
     bash < <(curl -s https://rvm.beginrescueend.com/install/rvm) && \
-    echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"' >> ~/.bash_profile && source ~/.bash_profile && \
-    rvm install 1.9.2 && rvm use 1.9.2 --default && \
+    echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"' >> ~/.bash_profile && \
+    source ~/.bash_profile && \
+    rvm install 1.9.2 && \
+    rvm use 1.9.2 --default && \
     git clone http://github.com/ronin-ruby/ronin.git ~/ronin && \
     gem install bundler && \
-    cd ~/ronin && bundle install && cd - && \
+    cd ~/ronin && \
+    bundle install && \
     echo 'export PATH=$PATH:$HOME/ronin/bin' >> ~/.bashrc
 
 ## Installing Ruby
