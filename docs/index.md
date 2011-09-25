@@ -49,7 +49,7 @@ title: Documentation
   class. Features the Ronin AJAX PHP-RPC Server being injected via a
   [Remote File Inclusion (RFI)](http://en.wikipedia.org/wiki/Remote_File_Inclusion).
 * [Hack This Zine #10 article - Delivering Weaponized Exploits with Ronin, 
-  RVM, and Bundler with evoltech and postmodern](articles/hack_this_zine_10.html) -
+  RVM, and Bundler](articles/hack_this_zine_10.html) -
   The [Hack This Zine #10](https://hackbloc.org/svn/htz/10/indesign_Files/htz10_Print.pdf)
   Developing with the ronin platform using rvm and bundler to release a 
   weaponized exploit.
