@@ -85,7 +85,13 @@ sql[:or, :username, :is, :not, nil, :or, :username, :eq].to_s
 Enumerating through database table names:
 
 {% highlight ruby %}
-sql[1, :and, sql.ascii(sql.lower(sql.substring( [sql[:select, :top, 1, :name, :from, :sysObjects, :where, :xtype, :eq, 'U']], 1, 1))), :gt, 116].to_s
+sql[1, :and, sql.ascii(
+  sql.lower(
+    sql.substring(
+      [sql[:select, :top, 1, :name, :from, :sysObjects, :where, :xtype, :eq, 'U']], 1, 1
+    )
+  )
+), :gt, 116].to_s
 # => "1 and ascii(lower(substring((select top 1 name from sysobjects where xtype = 'U'),1,1))) > 116"
 {% endhighlight %}
 
