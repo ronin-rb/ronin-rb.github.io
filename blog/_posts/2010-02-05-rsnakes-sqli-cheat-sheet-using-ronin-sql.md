@@ -110,9 +110,9 @@ stmt.to_s
 
 <div class="note">
   <p>
-    I cheated a little by leaving off the prefix/suffix tick-marks used in
-    SQL injections, but you get the general idea.
-  <p>
+  I cheated a little by leaving off the prefix/suffix tick-marks used in
+  SQL injections, but you get the general idea.
+  </p>
 </div>
 
 New SQL fragments are created using the `sql[...]` syntax, and new SQL
