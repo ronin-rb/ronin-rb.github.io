@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Class: Ronin::Repository
   
@@ -125,8 +125,7 @@ that can be distributed over common SCMs (<a href="http://git-scm.com/">Git</a>,
   
 </div>
         </dt>
-        <dd><pre class="code"><span class='string val'>'localhost'</span>
-</pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>localhost</span><span class='tstring_end'>'</span></span></pre></dd>
       
         <dt id="METADATA_FILE-constant" class="">METADATA_FILE =
           <div class="docstring">
@@ -140,8 +139,7 @@ that can be distributed over common SCMs (<a href="http://git-scm.com/">Git</a>,
   
 </div>
         </dt>
-        <dd><pre class="code"><span class='string val'>'ronin.yml'</span>
-</pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ronin.yml</span><span class='tstring_end'>'</span></span></pre></dd>
       
         <dt id="BIN_DIR-constant" class="">BIN_DIR =
           <div class="docstring">
@@ -155,8 +153,7 @@ that can be distributed over common SCMs (<a href="http://git-scm.com/">Git</a>,
   
 </div>
         </dt>
-        <dd><pre class="code"><span class='string val'>'bin'</span>
-</pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bin</span><span class='tstring_end'>'</span></span></pre></dd>
       
         <dt id="LIB_DIR-constant" class="">LIB_DIR =
           <div class="docstring">
@@ -170,8 +167,7 @@ that can be distributed over common SCMs (<a href="http://git-scm.com/">Git</a>,
   
 </div>
         </dt>
-        <dd><pre class="code"><span class='string val'>'lib'</span>
-</pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>lib</span><span class='tstring_end'>'</span></span></pre></dd>
       
         <dt id="INIT_FILE-constant" class="">INIT_FILE =
           <div class="docstring">
@@ -185,8 +181,7 @@ that can be distributed over common SCMs (<a href="http://git-scm.com/">Git</a>,
   
 </div>
         </dt>
-        <dd><pre class="code"><span class='string val'>'init.rb'</span>
-</pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>init.rb</span><span class='tstring_end'>'</span></span></pre></dd>
       
         <dt id="DATA_DIR-constant" class="">DATA_DIR =
           <div class="docstring">
@@ -200,8 +195,7 @@ that can be distributed over common SCMs (<a href="http://git-scm.com/">Git</a>,
   
 </div>
         </dt>
-        <dd><pre class="code"><span class='string val'>'data'</span>
-</pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>data</span><span class='tstring_end'>'</span></span></pre></dd>
       
         <dt id="SCRIPT_DIRS-constant" class="">SCRIPT_DIRS =
           <div class="docstring">
@@ -215,8 +209,70 @@ that can be distributed over common SCMs (<a href="http://git-scm.com/">Git</a>,
   
 </div>
         </dt>
-        <dd><pre class="code"><span class='dstring node'>%w[scripts cache]</span>
-</pre></dd>
+        <dd><pre class="code">l.com)
+#
+# This file is part of Ronin.
+#
+# Ronin is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Ronin is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Ronin.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+#
+
+require 'ronin/exceptions/duplicate_repository'
+require 'ronin/exceptions/repository_not_found'
+require 'ronin/script/path'
+require 'ronin/model/has_license'
+require 'ronin/model/has_authors'
+require 'ronin/model'
+require 'ronin/config'
+
+require 'pullr'
+require 'data_paths'
+require 'yaml'
+
+module Ronin
+  #
+  # Represents a container for user scripts and miscallaneous code,
+  # that can be distributed over common SCMs ([Git](http://git-scm.com/),
+  # [Mercurial (Hg)](http://mercurial.selenic.com/),
+  # [SubVersion (SVN)](http://subversion.tigris.org/), Rsync).
+  #
+  class Repository
+
+include Model
+include Model::HasAuthors
+include Model::HasLicense
+include DataPaths
+
+# The default domain that repositories are added from
+LOCAL_DOMAIN = 'localhost'
+
+# Repository metadata file name
+METADATA_FILE = 'ronin.yml'
+
+# Repository `bin/` directory
+BIN_DIR = 'bin'
+
+# Repository `lib/` directory
+LIB_DIR = 'lib'
+
+# The `init.rb` file to load from the {LIB_DIR}
+INIT_FILE = 'init.rb'
+
+# Repository `data/` directory
+DATA_DIR = 'data'
+
+# Directories containing {Script}s
+SCRIPT_DIRS = %w[scripts cache]</pre></dd>
       
     </dl>
   
@@ -1699,7 +1755,7 @@ cached files of the repository.</p>
   
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Model/HasLicense.html" title="Ronin::Model::HasLicense (module)">Model::HasLicense</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Model/HasLicense.html#included-class_method" title="Ronin::Model::HasLicense.included (method)">included</a></span>, <span class='object_link'><a href="Model/HasLicense.html#license%21-instance_method" title="Ronin::Model::HasLicense#license! (method)">#license!</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Model/HasLicense.html#included-class_method" title="Ronin::Model::HasLicense.included (method)">included</a></span></p>
 
   
   
@@ -1709,7 +1765,7 @@ cached files of the repository.</p>
   
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Model/HasAuthors.html" title="Ronin::Model::HasAuthors (module)">Model::HasAuthors</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Model/HasAuthors.html#author-instance_method" title="Ronin::Model::HasAuthors#author (method)">#author</a></span>, <span class='object_link'><a href="Model/HasAuthors.html#included-class_method" title="Ronin::Model::HasAuthors.included (method)">included</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Model/HasAuthors.html#included-class_method" title="Ronin::Model::HasAuthors.included (method)">included</a></span></p>
 
   
   
@@ -1719,7 +1775,7 @@ cached files of the repository.</p>
   
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Model.html" title="Ronin::Model (module)">Model</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Model.html#humanize_attributes-instance_method" title="Ronin::Model#humanize_attributes (method)">#humanize_attributes</a></span>, <span class='object_link'><a href="Model.html#included-class_method" title="Ronin::Model.included (method)">included</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Model.html#included-class_method" title="Ronin::Model.included (method)">included</a></span></p>
 
   
   
@@ -1875,21 +1931,20 @@ cached files of the repository.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 142</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='attributes identifier id'>attributes</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='attributes identifier id'>attributes</span><span class='rparen token'>)</span>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id attributes'>attributes</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id attributes'>attributes</span><span class='rparen'>)</span>
 
-  <span class='@bin_dir ivar id'>@bin_dir</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='path identifier id'>path</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='BIN_DIR constant id'>BIN_DIR</span><span class='rparen token'>)</span>
-  <span class='@lib_dir ivar id'>@lib_dir</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='path identifier id'>path</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='LIB_DIR constant id'>LIB_DIR</span><span class='rparen token'>)</span>
-  <span class='@data_dir ivar id'>@data_dir</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='path identifier id'>path</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='DATA_DIR constant id'>DATA_DIR</span><span class='rparen token'>)</span>
-  <span class='@script_dirs ivar id'>@script_dirs</span> <span class='assign token'>=</span> <span class='SCRIPT_DIRS constant id'>SCRIPT_DIRS</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='dir identifier id'>dir</span><span class='bitor op'>|</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='path identifier id'>path</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='dir identifier id'>dir</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+  <span class='ivar'>@bin_dir</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>BIN_DIR</span><span class='rparen'>)</span>
+  <span class='ivar'>@lib_dir</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>LIB_DIR</span><span class='rparen'>)</span>
+  <span class='ivar'>@data_dir</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>DATA_DIR</span><span class='rparen'>)</span>
+  <span class='ivar'>@script_dirs</span> <span class='op'>=</span> <span class='const'>SCRIPT_DIRS</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id dir'>dir</span><span class='op'>|</span> <span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='id dir'>dir</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 
-  <span class='@activated ivar id'>@activated</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
+  <span class='ivar'>@activated</span> <span class='op'>=</span> <span class='kw'>false</span>
 
-  <span class='initialize_metadata identifier id'>initialize_metadata</span>
+  <span class='id initialize_metadata'>initialize_metadata</span>
 
-  <span class='yield yield kw'>yield</span> <span class='self self kw'>self</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>yield</span> <span class='kw'>self</span> <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1932,10 +1987,9 @@ cached files of the repository.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 107</span>
 
-<span class='def def kw'>def</span> <span class='bin_dir identifier id'>bin_dir</span>
-  <span class='@bin_dir ivar id'>@bin_dir</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id bin_dir'>bin_dir</span>
+  <span class='ivar'>@bin_dir</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1973,10 +2027,9 @@ cached files of the repository.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 113</span>
 
-<span class='def def kw'>def</span> <span class='data_dir identifier id'>data_dir</span>
-  <span class='@data_dir ivar id'>@data_dir</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id data_dir'>data_dir</span>
+  <span class='ivar'>@data_dir</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -2014,10 +2067,9 @@ cached files of the repository.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 110</span>
 
-<span class='def def kw'>def</span> <span class='lib_dir identifier id'>lib_dir</span>
-  <span class='@lib_dir ivar id'>@lib_dir</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id lib_dir'>lib_dir</span>
+  <span class='ivar'>@lib_dir</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -2055,10 +2107,9 @@ cached files of the repository.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 116</span>
 
-<span class='def def kw'>def</span> <span class='script_dirs identifier id'>script_dirs</span>
-  <span class='@script_dirs ivar id'>@script_dirs</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id script_dirs'>script_dirs</span>
+  <span class='ivar'>@script_dirs</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -2143,10 +2194,9 @@ cached files of the repository.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 377</span>
 
-<span class='def def kw'>def</span> <span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='activate! fid id'>activate!</span>
-  <span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='repo identifier id'>repo</span><span class='bitor op'>|</span> <span class='repo identifier id'>repo</span><span class='dot token'>.</span><span class='activate! fid id'>activate!</span> <span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id activate!'>activate!</span>
+  <span class='const'>Repository</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id repo'>repo</span><span class='op'>|</span> <span class='id repo'>repo</span><span class='period'>.</span><span class='id activate!'>activate!</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -2292,42 +2342,41 @@ cached files of the repository.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 216</span>
 
-<span class='def def kw'>def</span> <span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='add! fid id'>add!</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='unless unless kw'>unless</span> <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='has_key? fid id'>has_key?</span><span class='lparen token'>(</span><span class='symbol val'>:path</span><span class='rparen token'>)</span>
-    <span class='raise identifier id'>raise</span><span class='lparen token'>(</span><span class='ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span><span class='string val'>&quot;the :path option was not given&quot;</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
+<span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id add!'>add!</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id options'>options</span><span class='period'>.</span><span class='id has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:path</span><span class='rparen'>)</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>the :path option was not given</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
-  <span class='path identifier id'>path</span> <span class='assign token'>=</span> <span class='Pathname constant id'>Pathname</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:path</span><span class='rbrack token'>]</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='expand_path identifier id'>expand_path</span>
+  <span class='id path'>path</span> <span class='op'>=</span> <span class='const'>Pathname</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:path</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id expand_path'>expand_path</span>
 
-  <span class='unless unless kw'>unless</span> <span class='path identifier id'>path</span><span class='dot token'>.</span><span class='directory? fid id'>directory?</span>
-    <span class='raise identifier id'>raise</span><span class='lparen token'>(</span><span class='RepositoryNotFound constant id'>RepositoryNotFound</span><span class='comma token'>,</span><span class='dstring node'>&quot;Repository #{path} cannot be found&quot;</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>unless</span> <span class='id path'>path</span><span class='period'>.</span><span class='id directory?'>directory?</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>RepositoryNotFound</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Repository </span><span class='embexpr_beg'>#{</span><span class='id path'>path</span><span class='rbrace'>}</span><span class='tstring_content'> cannot be found</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
-  <span class='if if kw'>if</span> <span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='count identifier id'>count</span><span class='lparen token'>(</span><span class='symbol val'>:path</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='path identifier id'>path</span><span class='rparen token'>)</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span>
-    <span class='raise identifier id'>raise</span><span class='lparen token'>(</span><span class='DuplicateRepository constant id'>DuplicateRepository</span><span class='comma token'>,</span><span class='dstring node'>&quot;a Repository at the path #{path} was already added&quot;</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>if</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id count'>count</span><span class='lparen'>(</span><span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id path'>path</span><span class='rparen'>)</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>DuplicateRepository</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a Repository at the path </span><span class='embexpr_beg'>#{</span><span class='id path'>path</span><span class='rbrace'>}</span><span class='tstring_content'> was already added</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
-  <span class='comment val'># create the repository</span>
-  <span class='repo identifier id'>repo</span> <span class='assign token'>=</span> <span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='dot token'>.</span><span class='merge identifier id'>merge</span><span class='lparen token'>(</span>
-    <span class='symbol val'>:path</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='path identifier id'>path</span><span class='comma token'>,</span>
-    <span class='symbol val'>:installed</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='false false kw'>false</span><span class='comma token'>,</span>
-    <span class='symbol val'>:domain</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='LOCAL_DOMAIN constant id'>LOCAL_DOMAIN</span>
-  <span class='rparen token'>)</span><span class='rparen token'>)</span>
+  <span class='comment'># create the repository
+</span>  <span class='id repo'>repo</span> <span class='op'>=</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id options'>options</span><span class='period'>.</span><span class='id merge'>merge</span><span class='lparen'>(</span>
+    <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id path'>path</span><span class='comma'>,</span>
+    <span class='symbol'>:installed</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='comma'>,</span>
+    <span class='symbol'>:domain</span> <span class='op'>=&gt;</span> <span class='const'>LOCAL_DOMAIN</span>
+  <span class='rparen'>)</span><span class='rparen'>)</span>
 
-  <span class='if if kw'>if</span> <span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='count identifier id'>count</span><span class='lparen token'>(</span><span class='symbol val'>:name</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='repo identifier id'>repo</span><span class='dot token'>.</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='symbol val'>:domain</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='repo identifier id'>repo</span><span class='dot token'>.</span><span class='domain identifier id'>domain</span><span class='rparen token'>)</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span>
-    <span class='raise identifier id'>raise</span><span class='lparen token'>(</span><span class='DuplicateRepository constant id'>DuplicateRepository</span><span class='comma token'>,</span><span class='dstring node'>&quot;the Repository #{repo} already exists in the database&quot;</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>if</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id count'>count</span><span class='lparen'>(</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id repo'>repo</span><span class='period'>.</span><span class='id name'>name</span><span class='comma'>,</span> <span class='symbol'>:domain</span> <span class='op'>=&gt;</span> <span class='id repo'>repo</span><span class='period'>.</span><span class='id domain'>domain</span><span class='rparen'>)</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>DuplicateRepository</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>the Repository </span><span class='embexpr_beg'>#{</span><span class='id repo'>repo</span><span class='rbrace'>}</span><span class='tstring_content'> already exists in the database</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
-  <span class='comment val'># save the repository</span>
-  <span class='if if kw'>if</span> <span class='repo identifier id'>repo</span><span class='dot token'>.</span><span class='save identifier id'>save</span>
-    <span class='comment val'># cache any files from within the `cache/` directory of the</span>
-    <span class='comment val'># repository</span>
-    <span class='repo identifier id'>repo</span><span class='dot token'>.</span><span class='cache_scripts! fid id'>cache_scripts!</span>
-  <span class='end end kw'>end</span>
+  <span class='comment'># save the repository
+</span>  <span class='kw'>if</span> <span class='id repo'>repo</span><span class='period'>.</span><span class='id save'>save</span>
+    <span class='comment'># cache any files from within the `cache/` directory of the
+</span>    <span class='comment'># repository
+</span>    <span class='id repo'>repo</span><span class='period'>.</span><span class='id cache_scripts!'>cache_scripts!</span>
+  <span class='kw'>end</span>
 
-  <span class='return return kw'>return</span> <span class='repo identifier id'>repo</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='id repo'>repo</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -2405,10 +2454,9 @@ cached files of the repository.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 393</span>
 
-<span class='def def kw'>def</span> <span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='deactivate! fid id'>deactivate!</span>
-  <span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='reverse_each identifier id'>reverse_each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='repo identifier id'>repo</span><span class='bitor op'>|</span> <span class='repo identifier id'>repo</span><span class='dot token'>.</span><span class='deactivate! fid id'>deactivate!</span> <span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id deactivate!'>deactivate!</span>
+  <span class='const'>Repository</span><span class='period'>.</span><span class='id reverse_each'>reverse_each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id repo'>repo</span><span class='op'>|</span> <span class='id repo'>repo</span><span class='period'>.</span><span class='id deactivate!'>deactivate!</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -2441,8 +2489,7 @@ cached files of the repository.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 101</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:description</span><span class='comma token'>,</span> <span class='Text constant id'>Text</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:description</span><span class='comma'>,</span> <span class='const'>Text</span></pre>
     </td>
   </tr>
 </table>
@@ -2475,8 +2522,7 @@ cached files of the repository.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 89</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:domain</span><span class='comma token'>,</span> <span class='String constant id'>String</span><span class='comma token'>,</span> <span class='symbol val'>:required</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:domain</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span></pre>
     </td>
   </tr>
 </table>
@@ -2508,13 +2554,11 @@ installed from the given domain.</p>
     
       <h4><div class='inline'><p>Load the repository with the given name</p>
 </div></h4>
-      <pre class="example code"><span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='string val'>'postmodern-repo'</span><span class='rparen token'>)</span>
-</pre>
+      <pre class="example code"><span class='const'>Repository</span><span class='period'>.</span><span class='id find'>find</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>postmodern-repo</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre>
     
       <h4><div class='inline'><p>Load the repository with the given name and domain.</p>
 </div></h4>
-      <pre class="example code"><span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='string val'>'postmodern-repo/github.com'</span><span class='rparen token'>)</span>
-</pre>
+      <pre class="example code"><span class='const'>Repository</span><span class='period'>.</span><span class='id find'>find</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>postmodern-repo/github.com</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -2612,23 +2656,22 @@ installed from the given domain.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 180</span>
 
-<span class='def def kw'>def</span> <span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-  <span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='domain identifier id'>domain</span> <span class='assign token'>=</span> <span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>'/'</span><span class='comma token'>,</span><span class='integer val'>2</span><span class='rparen token'>)</span>
+<span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id find'>find</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+  <span class='id name'>name</span><span class='comma'>,</span> <span class='id domain'>domain</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='int'>2</span><span class='rparen'>)</span>
 
-  <span class='query identifier id'>query</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='symbol val'>:name</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='name identifier id'>name</span><span class='rbrace token'>}</span>
-  <span class='query identifier id'>query</span><span class='lbrack token'>[</span><span class='symbol val'>:domain</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='domain identifier id'>domain</span> <span class='if if_mod kw'>if</span> <span class='domain identifier id'>domain</span>
+  <span class='id query'>query</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id name'>name</span><span class='rbrace'>}</span>
+  <span class='id query'>query</span><span class='lbracket'>[</span><span class='symbol'>:domain</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id domain'>domain</span> <span class='kw'>if</span> <span class='id domain'>domain</span>
 
-  <span class='unless unless kw'>unless</span> <span class='lparen token'>(</span><span class='repo identifier id'>repo</span> <span class='assign token'>=</span> <span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='lparen token'>(</span><span class='query identifier id'>query</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-    <span class='if if kw'>if</span> <span class='domain identifier id'>domain</span>
-      <span class='raise identifier id'>raise</span><span class='lparen token'>(</span><span class='RepositoryNotFound constant id'>RepositoryNotFound</span><span class='comma token'>,</span><span class='dstring node'>&quot;Repository #{name.dump} from domain #{domain.dump} cannot be found&quot;</span><span class='rparen token'>)</span>
-    <span class='else else kw'>else</span>
-      <span class='raise identifier id'>raise</span><span class='lparen token'>(</span><span class='RepositoryNotFound constant id'>RepositoryNotFound</span><span class='comma token'>,</span><span class='dstring node'>&quot;Repository #{name.dump} cannot be found&quot;</span><span class='rparen token'>)</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id repo'>repo</span> <span class='op'>=</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id first'>first</span><span class='lparen'>(</span><span class='id query'>query</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id domain'>domain</span>
+      <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>RepositoryNotFound</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Repository </span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='period'>.</span><span class='id dump'>dump</span><span class='rbrace'>}</span><span class='tstring_content'> from domain </span><span class='embexpr_beg'>#{</span><span class='id domain'>domain</span><span class='period'>.</span><span class='id dump'>dump</span><span class='rbrace'>}</span><span class='tstring_content'> cannot be found</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>RepositoryNotFound</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Repository </span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='period'>.</span><span class='id dump'>dump</span><span class='rbrace'>}</span><span class='tstring_content'> cannot be found</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 
-  <span class='return return kw'>return</span> <span class='repo identifier id'>repo</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='id repo'>repo</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -2661,8 +2704,7 @@ installed from the given domain.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 68</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:id</span><span class='comma token'>,</span> <span class='Serial constant id'>Serial</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='const'>Serial</span></pre>
     </td>
   </tr>
 </table>
@@ -2855,50 +2897,49 @@ properties.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 279</span>
 
-<span class='def def kw'>def</span> <span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='install! fid id'>install!</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='unless unless kw'>unless</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:uri</span><span class='rbrack token'>]</span>
-    <span class='raise identifier id'>raise</span><span class='lparen token'>(</span><span class='ArgumentError constant id'>ArgumentError</span><span class='comma token'>,</span><span class='string val'>&quot;:uri must be passed to Repository.install&quot;</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
+<span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id install!'>install!</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:uri</span><span class='rbracket'>]</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>:uri must be passed to Repository.install</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
-  <span class='remote_repo identifier id'>remote_repo</span> <span class='assign token'>=</span> <span class='Pullr constant id'>Pullr</span><span class='colon2 op'>::</span><span class='RemoteRepository constant id'>RemoteRepository</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span>
-  <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='remote_repo identifier id'>remote_repo</span><span class='dot token'>.</span><span class='name identifier id'>name</span>
-  <span class='domain identifier id'>domain</span> <span class='assign token'>=</span> <span class='if if kw'>if</span> <span class='remote_repo identifier id'>remote_repo</span><span class='dot token'>.</span><span class='uri identifier id'>uri</span><span class='dot token'>.</span><span class='scheme identifier id'>scheme</span>
-             <span class='remote_repo identifier id'>remote_repo</span><span class='dot token'>.</span><span class='uri identifier id'>uri</span><span class='dot token'>.</span><span class='host identifier id'>host</span>
-           <span class='else else kw'>else</span>
-             <span class='comment val'># Use a regexp to pull out the host-name, if the URI</span>
-             <span class='comment val'># lacks a scheme.</span>
-             <span class='remote_repo identifier id'>remote_repo</span><span class='dot token'>.</span><span class='uri identifier id'>uri</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='match identifier id'>match</span><span class='lparen token'>(</span><span class='regexp val'>/\@([^@:\/]+)/</span><span class='rparen token'>)</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span>
-           <span class='end end kw'>end</span>
+  <span class='id remote_repo'>remote_repo</span> <span class='op'>=</span> <span class='const'>Pullr</span><span class='op'>::</span><span class='const'>RemoteRepository</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+  <span class='id name'>name</span> <span class='op'>=</span> <span class='id remote_repo'>remote_repo</span><span class='period'>.</span><span class='id name'>name</span>
+  <span class='id domain'>domain</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id remote_repo'>remote_repo</span><span class='period'>.</span><span class='id uri'>uri</span><span class='period'>.</span><span class='id scheme'>scheme</span>
+             <span class='id remote_repo'>remote_repo</span><span class='period'>.</span><span class='id uri'>uri</span><span class='period'>.</span><span class='id host'>host</span>
+           <span class='kw'>else</span>
+             <span class='comment'># Use a regexp to pull out the host-name, if the URI
+</span>             <span class='comment'># lacks a scheme.
+</span>             <span class='id remote_repo'>remote_repo</span><span class='period'>.</span><span class='id uri'>uri</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id match'>match</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\@([^@:\/]+)</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
+           <span class='kw'>end</span>
 
-  <span class='if if kw'>if</span> <span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='count identifier id'>count</span><span class='lparen token'>(</span><span class='symbol val'>:name</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='symbol val'>:domain</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='domain identifier id'>domain</span><span class='rparen token'>)</span> <span class='gt op'>&gt;</span> <span class='integer val'>0</span>
-    <span class='raise identifier id'>raise</span><span class='lparen token'>(</span><span class='DuplicateRepository constant id'>DuplicateRepository</span><span class='comma token'>,</span><span class='dstring node'>&quot;a Repository already exists with the name #{name.dump} from domain #{domain.dump}&quot;</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>if</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id count'>count</span><span class='lparen'>(</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id name'>name</span><span class='comma'>,</span> <span class='symbol'>:domain</span> <span class='op'>=&gt;</span> <span class='id domain'>domain</span><span class='rparen'>)</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>DuplicateRepository</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>a Repository already exists with the name </span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='period'>.</span><span class='id dump'>dump</span><span class='rbrace'>}</span><span class='tstring_content'> from domain </span><span class='embexpr_beg'>#{</span><span class='id domain'>domain</span><span class='period'>.</span><span class='id dump'>dump</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
-  <span class='path identifier id'>path</span> <span class='assign token'>=</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='Config constant id'>Config</span><span class='colon2 op'>::</span><span class='REPOS_DIR constant id'>REPOS_DIR</span><span class='comma token'>,</span><span class='name identifier id'>name</span><span class='comma token'>,</span><span class='domain identifier id'>domain</span><span class='rparen token'>)</span>
+  <span class='id path'>path</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>Config</span><span class='op'>::</span><span class='const'>REPOS_DIR</span><span class='comma'>,</span><span class='id name'>name</span><span class='comma'>,</span><span class='id domain'>domain</span><span class='rparen'>)</span>
 
-  <span class='comment val'># pull down the remote repository</span>
-  <span class='local_repo identifier id'>local_repo</span> <span class='assign token'>=</span> <span class='remote_repo identifier id'>remote_repo</span><span class='dot token'>.</span><span class='pull identifier id'>pull</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='rparen token'>)</span>
+  <span class='comment'># pull down the remote repository
+</span>  <span class='id local_repo'>local_repo</span> <span class='op'>=</span> <span class='id remote_repo'>remote_repo</span><span class='period'>.</span><span class='id pull'>pull</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span>
 
-  <span class='comment val'># add the new remote repository</span>
-  <span class='repo identifier id'>repo</span> <span class='assign token'>=</span> <span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span>
-    <span class='symbol val'>:path</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='path identifier id'>path</span><span class='comma token'>,</span>
-    <span class='symbol val'>:scm</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='local_repo identifier id'>local_repo</span><span class='dot token'>.</span><span class='scm identifier id'>scm</span><span class='comma token'>,</span>
-    <span class='symbol val'>:uri</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='remote_repo identifier id'>remote_repo</span><span class='dot token'>.</span><span class='uri identifier id'>uri</span><span class='comma token'>,</span>
-    <span class='symbol val'>:installed</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span>
-    <span class='symbol val'>:name</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='name identifier id'>name</span><span class='comma token'>,</span>
-    <span class='symbol val'>:domain</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='domain identifier id'>domain</span>
-  <span class='rparen token'>)</span>
+  <span class='comment'># add the new remote repository
+</span>  <span class='id repo'>repo</span> <span class='op'>=</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span>
+    <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id path'>path</span><span class='comma'>,</span>
+    <span class='symbol'>:scm</span> <span class='op'>=&gt;</span> <span class='id local_repo'>local_repo</span><span class='period'>.</span><span class='id scm'>scm</span><span class='comma'>,</span>
+    <span class='symbol'>:uri</span> <span class='op'>=&gt;</span> <span class='id remote_repo'>remote_repo</span><span class='period'>.</span><span class='id uri'>uri</span><span class='comma'>,</span>
+    <span class='symbol'>:installed</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span>
+    <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id name'>name</span><span class='comma'>,</span>
+    <span class='symbol'>:domain</span> <span class='op'>=&gt;</span> <span class='id domain'>domain</span>
+  <span class='rparen'>)</span>
 
-  <span class='comment val'># save the repository </span>
-  <span class='if if kw'>if</span> <span class='repo identifier id'>repo</span><span class='dot token'>.</span><span class='save identifier id'>save</span>
-    <span class='comment val'># cache any files from within the `cache/` directory of the</span>
-    <span class='comment val'># repository</span>
-    <span class='repo identifier id'>repo</span><span class='dot token'>.</span><span class='cache_scripts! fid id'>cache_scripts!</span>
-  <span class='end end kw'>end</span>
+  <span class='comment'># save the repository 
+</span>  <span class='kw'>if</span> <span class='id repo'>repo</span><span class='period'>.</span><span class='id save'>save</span>
+    <span class='comment'># cache any files from within the `cache/` directory of the
+</span>    <span class='comment'># repository
+</span>    <span class='id repo'>repo</span><span class='period'>.</span><span class='id cache_scripts!'>cache_scripts!</span>
+  <span class='kw'>end</span>
 
-  <span class='return return kw'>return</span> <span class='repo identifier id'>repo</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='id repo'>repo</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -2932,8 +2973,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 81</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:installed</span><span class='comma token'>,</span> <span class='Boolean constant id'>Boolean</span><span class='comma token'>,</span> <span class='symbol val'>:default</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='false false kw'>false</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:installed</span><span class='comma'>,</span> <span class='const'>Boolean</span><span class='comma'>,</span> <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
   </tr>
 </table>
@@ -2968,10 +3008,9 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 84</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:name</span><span class='comma token'>,</span> <span class='String constant id'>String</span><span class='comma token'>,</span> <span class='symbol val'>:default</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lambda identifier id'>lambda</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='repo identifier id'>repo</span><span class='comma token'>,</span><span class='name identifier id'>name</span><span class='bitor op'>|</span>
-  <span class='repo identifier id'>repo</span><span class='dot token'>.</span><span class='path identifier id'>path</span><span class='dot token'>.</span><span class='basename identifier id'>basename</span>
-<span class='rbrace token'>}</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='id lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id repo'>repo</span><span class='comma'>,</span><span class='id name'>name</span><span class='op'>|</span>
+  <span class='id repo'>repo</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id basename'>basename</span>
+<span class='rbrace'>}</span></pre>
     </td>
   </tr>
 </table>
@@ -3004,8 +3043,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 74</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:path</span><span class='comma token'>,</span> <span class='FilePath constant id'>FilePath</span><span class='comma token'>,</span> <span class='symbol val'>:required</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span> <span class='symbol val'>:unique</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:path</span><span class='comma'>,</span> <span class='const'>FilePath</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:unique</span> <span class='op'>=&gt;</span> <span class='kw'>true</span></pre>
     </td>
   </tr>
 </table>
@@ -3038,8 +3076,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 71</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:scm</span><span class='comma token'>,</span> <span class='String constant id'>String</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:scm</span><span class='comma'>,</span> <span class='const'>String</span></pre>
     </td>
   </tr>
 </table>
@@ -3072,8 +3109,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 104</span>
 
-<span class='has identifier id'>has</span> <span class='integer val'>0</span><span class='dot2 op'>..</span><span class='n identifier id'>n</span><span class='comma token'>,</span> <span class='symbol val'>:script_paths</span><span class='comma token'>,</span> <span class='symbol val'>:model</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'Script::Path'</span>
-</pre>
+<span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:script_paths</span><span class='comma'>,</span> <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Script::Path</span><span class='tstring_end'>'</span></span></pre>
     </td>
   </tr>
 </table>
@@ -3106,8 +3142,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 95</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:source</span><span class='comma token'>,</span> <span class='URI constant id'>URI</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:source</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
     </td>
   </tr>
 </table>
@@ -3140,8 +3175,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 92</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:title</span><span class='comma token'>,</span> <span class='Text constant id'>Text</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='const'>Text</span></pre>
     </td>
   </tr>
 </table>
@@ -3172,13 +3206,11 @@ or added using a local directory.</p>
     
       <h4><div class='inline'><p>Uninstall the repository with the given name</p>
 </div></h4>
-      <pre class="example code"><span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='uninstall! fid id'>uninstall!</span><span class='lparen token'>(</span><span class='string val'>'postmodern-repo'</span><span class='rparen token'>)</span>
-</pre>
+      <pre class="example code"><span class='const'>Repository</span><span class='period'>.</span><span class='id uninstall!'>uninstall!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>postmodern-repo</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre>
     
       <h4><div class='inline'><p>Uninstall the repository with the given name and domain.</p>
 </div></h4>
-      <pre class="example code"><span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='uninstall! fid id'>uninstall!</span><span class='lparen token'>(</span><span class='string val'>'postmodern-repo/github.com'</span><span class='rparen token'>)</span>
-</pre>
+      <pre class="example code"><span class='const'>Repository</span><span class='period'>.</span><span class='id uninstall!'>uninstall!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>postmodern-repo/github.com</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -3227,10 +3259,9 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 361</span>
 
-<span class='def def kw'>def</span> <span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='uninstall! fid id'>uninstall!</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-  <span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='uninstall! fid id'>uninstall!</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id uninstall!'>uninstall!</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+  <span class='const'>Repository</span><span class='period'>.</span><span class='id find'>find</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id uninstall!'>uninstall!</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -3325,15 +3356,14 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 336</span>
 
-<span class='def def kw'>def</span> <span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='update! fid id'>update!</span>
-  <span class='Repository constant id'>Repository</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='repo identifier id'>repo</span><span class='bitor op'>|</span>
-    <span class='comment val'># update the repositories contents</span>
-    <span class='repo identifier id'>repo</span><span class='dot token'>.</span><span class='update! fid id'>update!</span>
+<span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id update!'>update!</span>
+  <span class='const'>Repository</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id repo'>repo</span><span class='op'>|</span>
+    <span class='comment'># update the repositories contents
+</span>    <span class='id repo'>repo</span><span class='period'>.</span><span class='id update!'>update!</span>
 
-    <span class='yield yield kw'>yield</span> <span class='repo identifier id'>repo</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+    <span class='kw'>yield</span> <span class='id repo'>repo</span> <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -3366,8 +3396,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 77</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:uri</span><span class='comma token'>,</span> <span class='URI constant id'>URI</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:uri</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
     </td>
   </tr>
 </table>
@@ -3400,8 +3429,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 98</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:website</span><span class='comma token'>,</span> <span class='URI constant id'>URI</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:website</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
     </td>
   </tr>
 </table>
@@ -3462,25 +3490,24 @@ global variable.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 489</span>
 
-<span class='def def kw'>def</span> <span class='activate! fid id'>activate!</span>
-  <span class='comment val'># add the data/ directory</span>
-  <span class='register_data_path identifier id'>register_data_path</span><span class='lparen token'>(</span><span class='@data_dir ivar id'>@data_dir</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='@data_dir ivar id'>@data_dir</span><span class='dot token'>.</span><span class='directory? fid id'>directory?</span>
+<span class='kw'>def</span> <span class='id activate!'>activate!</span>
+  <span class='comment'># add the data/ directory
+</span>  <span class='id register_data_path'>register_data_path</span><span class='lparen'>(</span><span class='ivar'>@data_dir</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='ivar'>@data_dir</span><span class='period'>.</span><span class='id directory?'>directory?</span>
 
-  <span class='if if kw'>if</span> <span class='@lib_dir ivar id'>@lib_dir</span><span class='dot token'>.</span><span class='directory? fid id'>directory?</span>
-    <span class='comment val'># ensure all paths added to $LOAD_PATH are Strings</span>
-    <span class='path identifier id'>path</span> <span class='assign token'>=</span> <span class='@lib_dir ivar id'>@lib_dir</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+  <span class='kw'>if</span> <span class='ivar'>@lib_dir</span><span class='period'>.</span><span class='id directory?'>directory?</span>
+    <span class='comment'># ensure all paths added to $LOAD_PATH are Strings
+</span>    <span class='id path'>path</span> <span class='op'>=</span> <span class='ivar'>@lib_dir</span><span class='period'>.</span><span class='id to_s'>to_s</span>
 
-    <span class='$LOAD_PATH gvar id'>$LOAD_PATH</span> <span class='lshft op'>&lt;&lt;</span> <span class='path identifier id'>path</span> <span class='unless unless_mod kw'>unless</span> <span class='$LOAD_PATH gvar id'>$LOAD_PATH</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
+    <span class='gvar'>$LOAD_PATH</span> <span class='op'>&lt;&lt;</span> <span class='id path'>path</span> <span class='kw'>unless</span> <span class='gvar'>$LOAD_PATH</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
-  <span class='comment val'># load the lib/init.rb file</span>
-  <span class='init_path identifier id'>init_path</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='path identifier id'>path</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='LIB_DIR constant id'>LIB_DIR</span><span class='comma token'>,</span><span class='INIT_FILE constant id'>INIT_FILE</span><span class='rparen token'>)</span>
-  <span class='require identifier id'>require</span> <span class='init_path identifier id'>init_path</span> <span class='if if_mod kw'>if</span> <span class='init_path identifier id'>init_path</span><span class='dot token'>.</span><span class='file? fid id'>file?</span>
+  <span class='comment'># load the lib/init.rb file
+</span>  <span class='id init_path'>init_path</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>LIB_DIR</span><span class='comma'>,</span><span class='const'>INIT_FILE</span><span class='rparen'>)</span>
+  <span class='id require'>require</span> <span class='id init_path'>init_path</span> <span class='kw'>if</span> <span class='id init_path'>init_path</span><span class='period'>.</span><span class='id file?'>file?</span>
 
-  <span class='@activated ivar id'>@activated</span> <span class='assign token'>=</span> <span class='true true kw'>true</span>
-  <span class='return return kw'>return</span> <span class='true true kw'>true</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='ivar'>@activated</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='kw'>return</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -3536,10 +3563,9 @@ global variable.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 479</span>
 
-<span class='def def kw'>def</span> <span class='activated? fid id'>activated?</span>
-  <span class='@activated ivar id'>@activated</span> <span class='eq op'>==</span> <span class='true true kw'>true</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id activated?'>activated?</span>
+  <span class='ivar'>@activated</span> <span class='op'>==</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -3617,16 +3643,15 @@ global variable.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 553</span>
 
-<span class='def def kw'>def</span> <span class='cache_scripts! fid id'>cache_scripts!</span>
-  <span class='clean_scripts! fid id'>clean_scripts!</span>
+<span class='kw'>def</span> <span class='id cache_scripts!'>cache_scripts!</span>
+  <span class='id clean_scripts!'>clean_scripts!</span>
 
-  <span class='each_script identifier id'>each_script</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='path identifier id'>path</span><span class='bitor op'>|</span>
-    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='script_paths identifier id'>script_paths</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='symbol val'>:path</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='path identifier id'>path</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='cache identifier id'>cache</span>
-  <span class='end end kw'>end</span>
+  <span class='id each_script'>each_script</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id path'>path</span><span class='op'>|</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id script_paths'>script_paths</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id path'>path</span><span class='rparen'>)</span><span class='period'>.</span><span class='id cache'>cache</span>
+  <span class='kw'>end</span>
 
-  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -3698,11 +3723,10 @@ global variable.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 609</span>
 
-<span class='def def kw'>def</span> <span class='clean_scripts! fid id'>clean_scripts!</span>
-  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='script_paths identifier id'>script_paths</span><span class='dot token'>.</span><span class='clear identifier id'>clear</span>
-  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id clean_scripts!'>clean_scripts!</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id script_paths'>script_paths</span><span class='period'>.</span><span class='id clear'>clear</span>
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -3747,15 +3771,14 @@ global variable.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 514</span>
 
-<span class='def def kw'>def</span> <span class='deactivate! fid id'>deactivate!</span>
-  <span class='unregister_data_paths identifier id'>unregister_data_paths</span>
+<span class='kw'>def</span> <span class='id deactivate!'>deactivate!</span>
+  <span class='id unregister_data_paths'>unregister_data_paths</span>
 
-  <span class='$LOAD_PATH gvar id'>$LOAD_PATH</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='@lib_dir ivar id'>@lib_dir</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span>
+  <span class='gvar'>$LOAD_PATH</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='ivar'>@lib_dir</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='rparen'>)</span>
 
-  <span class='@activated ivar id'>@activated</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
-  <span class='return return kw'>return</span> <span class='true true kw'>true</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='ivar'>@activated</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='kw'>return</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -3788,8 +3811,7 @@ global variable.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 101</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:description</span><span class='comma token'>,</span> <span class='Text constant id'>Text</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:description</span><span class='comma'>,</span> <span class='const'>Text</span></pre>
     </td>
   </tr>
 </table>
@@ -3822,8 +3844,7 @@ global variable.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 101</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:description</span><span class='comma token'>,</span> <span class='Text constant id'>Text</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:description</span><span class='comma'>,</span> <span class='const'>Text</span></pre>
     </td>
   </tr>
 </table>
@@ -3856,8 +3877,7 @@ global variable.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 89</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:domain</span><span class='comma token'>,</span> <span class='String constant id'>String</span><span class='comma token'>,</span> <span class='symbol val'>:required</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:domain</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span></pre>
     </td>
   </tr>
 </table>
@@ -3890,8 +3910,7 @@ global variable.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 89</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:domain</span><span class='comma token'>,</span> <span class='String constant id'>String</span><span class='comma token'>,</span> <span class='symbol val'>:required</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:domain</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span></pre>
     </td>
   </tr>
 </table>
@@ -4002,14 +4021,13 @@ global variable.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 463</span>
 
-<span class='def def kw'>def</span> <span class='each_script identifier id'>each_script</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='return return kw'>return</span> <span class='enum_for identifier id'>enum_for</span><span class='lparen token'>(</span><span class='symbol val'>:each_script</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='block identifier id'>block</span>
+<span class='kw'>def</span> <span class='id each_script'>each_script</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:each_script</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id block'>block</span>
 
-  <span class='@script_dirs ivar id'>@script_dirs</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='dir identifier id'>dir</span><span class='bitor op'>|</span>
-    <span class='Pathname constant id'>Pathname</span><span class='dot token'>.</span><span class='glob identifier id'>glob</span><span class='lparen token'>(</span><span class='dir identifier id'>dir</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>'**'</span><span class='comma token'>,</span><span class='string val'>'*.rb'</span><span class='rparen token'>)</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='ivar'>@script_dirs</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id dir'>dir</span><span class='op'>|</span>
+    <span class='const'>Pathname</span><span class='period'>.</span><span class='id glob'>glob</span><span class='lparen'>(</span><span class='id dir'>dir</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>**</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>*.rb</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -4088,18 +4106,17 @@ global variable.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 435</span>
 
-<span class='def def kw'>def</span> <span class='executables identifier id'>executables</span>
-  <span class='scripts identifier id'>scripts</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+<span class='kw'>def</span> <span class='id executables'>executables</span>
+  <span class='id scripts'>scripts</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
 
-  <span class='if if kw'>if</span> <span class='@bin_dir ivar id'>@bin_dir</span><span class='dot token'>.</span><span class='directory? fid id'>directory?</span>
-    <span class='@bin_dir ivar id'>@bin_dir</span><span class='dot token'>.</span><span class='entries identifier id'>entries</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='path identifier id'>path</span><span class='bitor op'>|</span>
-      <span class='scripts identifier id'>scripts</span> <span class='lshft op'>&lt;&lt;</span> <span class='path identifier id'>path</span><span class='dot token'>.</span><span class='basename identifier id'>basename</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span> <span class='if if_mod kw'>if</span> <span class='path identifier id'>path</span><span class='dot token'>.</span><span class='file? fid id'>file?</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>if</span> <span class='ivar'>@bin_dir</span><span class='period'>.</span><span class='id directory?'>directory?</span>
+    <span class='ivar'>@bin_dir</span><span class='period'>.</span><span class='id entries'>entries</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id path'>path</span><span class='op'>|</span>
+      <span class='id scripts'>scripts</span> <span class='op'>&lt;&lt;</span> <span class='id path'>path</span><span class='period'>.</span><span class='id basename'>basename</span><span class='period'>.</span><span class='id to_s'>to_s</span> <span class='kw'>if</span> <span class='id path'>path</span><span class='period'>.</span><span class='id file?'>file?</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 
-  <span class='return return kw'>return</span> <span class='scripts identifier id'>scripts</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='id scripts'>scripts</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -4191,12 +4208,11 @@ global variable.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 536</span>
 
-<span class='def def kw'>def</span> <span class='find_script identifier id'>find_script</span><span class='lparen token'>(</span><span class='sub_path identifier id'>sub_path</span><span class='rparen token'>)</span>
-  <span class='paths identifier id'>paths</span> <span class='assign token'>=</span> <span class='@script_dirs ivar id'>@script_dirs</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='dir identifier id'>dir</span><span class='bitor op'>|</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='dir identifier id'>dir</span><span class='comma token'>,</span><span class='sub_path identifier id'>sub_path</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+<span class='kw'>def</span> <span class='id find_script'>find_script</span><span class='lparen'>(</span><span class='id sub_path'>sub_path</span><span class='rparen'>)</span>
+  <span class='id paths'>paths</span> <span class='op'>=</span> <span class='ivar'>@script_dirs</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id dir'>dir</span><span class='op'>|</span> <span class='const'>File</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='id dir'>dir</span><span class='comma'>,</span><span class='id sub_path'>sub_path</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 
-  <span class='return return kw'>return</span> <span class='script_paths identifier id'>script_paths</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='lparen token'>(</span><span class='symbol val'>:path</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='paths identifier id'>paths</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='id script_paths'>script_paths</span><span class='period'>.</span><span class='id first'>first</span><span class='lparen'>(</span><span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id paths'>paths</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -4229,8 +4245,7 @@ global variable.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 68</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:id</span><span class='comma token'>,</span> <span class='Serial constant id'>Serial</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='const'>Serial</span></pre>
     </td>
   </tr>
 </table>
@@ -4263,8 +4278,7 @@ global variable.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 68</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:id</span><span class='comma token'>,</span> <span class='Serial constant id'>Serial</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:id</span><span class='comma'>,</span> <span class='const'>Serial</span></pre>
     </td>
   </tr>
 </table>
@@ -4352,59 +4366,58 @@ global variable.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 703</span>
 
-<span class='def def kw'>def</span> <span class='initialize_metadata identifier id'>initialize_metadata</span>
-  <span class='metadata_path identifier id'>metadata_path</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='path identifier id'>path</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='METADATA_FILE constant id'>METADATA_FILE</span><span class='rparen token'>)</span>
+<span class='kw'>def</span> <span class='id initialize_metadata'>initialize_metadata</span>
+  <span class='id metadata_path'>metadata_path</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>METADATA_FILE</span><span class='rparen'>)</span>
 
-  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='title identifier id'>title</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='name identifier id'>name</span>
-  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='description identifier id'>description</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
-  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='license identifier id'>license</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id title'>title</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id name'>name</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id description'>description</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id license'>license</span> <span class='op'>=</span> <span class='kw'>nil</span>
 
-  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='source identifier id'>source</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='uri identifier id'>uri</span>
-  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='website identifier id'>website</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='source identifier id'>source</span>
-  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='authors identifier id'>authors</span><span class='dot token'>.</span><span class='clear identifier id'>clear</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id source'>source</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id uri'>uri</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id website'>website</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id source'>source</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id authors'>authors</span><span class='period'>.</span><span class='id clear'>clear</span>
 
-  <span class='if if kw'>if</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='file? fid id'>file?</span><span class='lparen token'>(</span><span class='metadata_path identifier id'>metadata_path</span><span class='rparen token'>)</span>
-    <span class='metadata identifier id'>metadata</span> <span class='assign token'>=</span> <span class='YAML constant id'>YAML</span><span class='dot token'>.</span><span class='load_file identifier id'>load_file</span><span class='lparen token'>(</span><span class='metadata_path identifier id'>metadata_path</span><span class='rparen token'>)</span>
+  <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id file?'>file?</span><span class='lparen'>(</span><span class='id metadata_path'>metadata_path</span><span class='rparen'>)</span>
+    <span class='id metadata'>metadata</span> <span class='op'>=</span> <span class='const'>YAML</span><span class='period'>.</span><span class='id load_file'>load_file</span><span class='lparen'>(</span><span class='id metadata_path'>metadata_path</span><span class='rparen'>)</span>
 
-    <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='title identifier id'>title</span> <span class='assign token'>=</span> <span class='metadata identifier id'>metadata</span><span class='lbrack token'>[</span><span class='string val'>'title'</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-      <span class='self self kw'>self</span><span class='dot token'>.</span><span class='title identifier id'>title</span> <span class='assign token'>=</span> <span class='title identifier id'>title</span>
-    <span class='end end kw'>end</span>
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id title'>title</span> <span class='op'>=</span> <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>title</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id title'>title</span> <span class='op'>=</span> <span class='id title'>title</span>
+    <span class='kw'>end</span>
 
-    <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='description identifier id'>description</span> <span class='assign token'>=</span> <span class='metadata identifier id'>metadata</span><span class='lbrack token'>[</span><span class='string val'>'description'</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-      <span class='self self kw'>self</span><span class='dot token'>.</span><span class='description identifier id'>description</span> <span class='assign token'>=</span> <span class='description identifier id'>description</span>
-    <span class='end end kw'>end</span>
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id description'>description</span> <span class='op'>=</span> <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>description</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id description'>description</span> <span class='op'>=</span> <span class='id description'>description</span>
+    <span class='kw'>end</span>
 
-    <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='license identifier id'>license</span> <span class='assign token'>=</span> <span class='metadata identifier id'>metadata</span><span class='lbrack token'>[</span><span class='string val'>'license'</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-      <span class='self self kw'>self</span><span class='dot token'>.</span><span class='license identifier id'>license</span> <span class='assign token'>=</span> <span class='License constant id'>License</span><span class='dot token'>.</span><span class='predefined_resource_with identifier id'>predefined_resource_with</span><span class='lparen token'>(</span><span class='symbol val'>:name</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='license identifier id'>license</span><span class='rparen token'>)</span>
-    <span class='end end kw'>end</span>
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id license'>license</span> <span class='op'>=</span> <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>license</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id license'>license</span> <span class='op'>=</span> <span class='const'>License</span><span class='period'>.</span><span class='id first_or_predefined'>first_or_predefined</span><span class='lparen'>(</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id license'>license</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
 
-    <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='uri identifier id'>uri</span> <span class='assign token'>=</span> <span class='metadata identifier id'>metadata</span><span class='lbrack token'>[</span><span class='string val'>'uri'</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-      <span class='self self kw'>self</span><span class='dot token'>.</span><span class='uri identifier id'>uri</span> <span class='opasgn op'>||=</span> <span class='uri identifier id'>uri</span>
-    <span class='end end kw'>end</span>
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id uri'>uri</span> <span class='op'>=</span> <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>uri</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id uri'>uri</span> <span class='op'>||=</span> <span class='id uri'>uri</span>
+    <span class='kw'>end</span>
 
-    <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='source identifier id'>source</span> <span class='assign token'>=</span> <span class='metadata identifier id'>metadata</span><span class='lbrack token'>[</span><span class='string val'>'source'</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-      <span class='self self kw'>self</span><span class='dot token'>.</span><span class='source identifier id'>source</span> <span class='assign token'>=</span> <span class='source identifier id'>source</span>
-    <span class='end end kw'>end</span>
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id source'>source</span> <span class='op'>=</span> <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>source</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id source'>source</span> <span class='op'>=</span> <span class='id source'>source</span>
+    <span class='kw'>end</span>
 
-    <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='website identifier id'>website</span> <span class='assign token'>=</span> <span class='metadata identifier id'>metadata</span><span class='lbrack token'>[</span><span class='string val'>'website'</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-      <span class='self self kw'>self</span><span class='dot token'>.</span><span class='website identifier id'>website</span> <span class='assign token'>=</span> <span class='website identifier id'>website</span>
-    <span class='end end kw'>end</span>
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id website'>website</span> <span class='op'>=</span> <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>website</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id website'>website</span> <span class='op'>=</span> <span class='id website'>website</span>
+    <span class='kw'>end</span>
 
-    <span class='case case kw'>case</span> <span class='metadata identifier id'>metadata</span><span class='lbrack token'>[</span><span class='string val'>'authors'</span><span class='rbrack token'>]</span>
-    <span class='when when kw'>when</span> <span class='Hash constant id'>Hash</span>
-      <span class='metadata identifier id'>metadata</span><span class='lbrack token'>[</span><span class='string val'>'authors'</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='name identifier id'>name</span><span class='comma token'>,</span><span class='email identifier id'>email</span><span class='bitor op'>|</span>
-        <span class='self self kw'>self</span><span class='dot token'>.</span><span class='authors identifier id'>authors</span> <span class='lshft op'>&lt;&lt;</span> <span class='Author constant id'>Author</span><span class='dot token'>.</span><span class='first_or_new identifier id'>first_or_new</span><span class='lparen token'>(</span><span class='symbol val'>:name</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='symbol val'>:email</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='email identifier id'>email</span><span class='rparen token'>)</span>
-      <span class='end end kw'>end</span>
-    <span class='when when kw'>when</span> <span class='Array constant id'>Array</span>
-      <span class='metadata identifier id'>metadata</span><span class='lbrack token'>[</span><span class='string val'>'authors'</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='name identifier id'>name</span><span class='bitor op'>|</span>
-        <span class='self self kw'>self</span><span class='dot token'>.</span><span class='authors identifier id'>authors</span> <span class='lshft op'>&lt;&lt;</span> <span class='Author constant id'>Author</span><span class='dot token'>.</span><span class='first_or_new identifier id'>first_or_new</span><span class='lparen token'>(</span><span class='symbol val'>:name</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='name identifier id'>name</span><span class='rparen token'>)</span>
-      <span class='end end kw'>end</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
+    <span class='kw'>case</span> <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>authors</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+    <span class='kw'>when</span> <span class='const'>Hash</span>
+      <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>authors</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='comma'>,</span><span class='id email'>email</span><span class='op'>|</span>
+        <span class='kw'>self</span><span class='period'>.</span><span class='id authors'>authors</span> <span class='op'>&lt;&lt;</span> <span class='const'>Author</span><span class='period'>.</span><span class='id first_or_new'>first_or_new</span><span class='lparen'>(</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id name'>name</span><span class='comma'>,</span> <span class='symbol'>:email</span> <span class='op'>=&gt;</span> <span class='id email'>email</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>when</span> <span class='const'>Array</span>
+      <span class='id metadata'>metadata</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>authors</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='op'>|</span>
+        <span class='kw'>self</span><span class='period'>.</span><span class='id authors'>authors</span> <span class='op'>&lt;&lt;</span> <span class='const'>Author</span><span class='period'>.</span><span class='id first_or_new'>first_or_new</span><span class='lparen'>(</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id name'>name</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 
-  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -4438,8 +4451,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 81</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:installed</span><span class='comma token'>,</span> <span class='Boolean constant id'>Boolean</span><span class='comma token'>,</span> <span class='symbol val'>:default</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='false false kw'>false</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:installed</span><span class='comma'>,</span> <span class='const'>Boolean</span><span class='comma'>,</span> <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
   </tr>
 </table>
@@ -4473,8 +4485,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 81</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:installed</span><span class='comma token'>,</span> <span class='Boolean constant id'>Boolean</span><span class='comma token'>,</span> <span class='symbol val'>:default</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='false false kw'>false</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:installed</span><span class='comma'>,</span> <span class='const'>Boolean</span><span class='comma'>,</span> <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='kw'>false</span></pre>
     </td>
   </tr>
 </table>
@@ -4545,10 +4556,9 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 407</span>
 
-<span class='def def kw'>def</span> <span class='local? fid id'>local?</span>
-  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='domain identifier id'>domain</span> <span class='eq op'>==</span> <span class='LOCAL_DOMAIN constant id'>LOCAL_DOMAIN</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id local?'>local?</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id domain'>domain</span> <span class='op'>==</span> <span class='const'>LOCAL_DOMAIN</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -4583,10 +4593,9 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 84</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:name</span><span class='comma token'>,</span> <span class='String constant id'>String</span><span class='comma token'>,</span> <span class='symbol val'>:default</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lambda identifier id'>lambda</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='repo identifier id'>repo</span><span class='comma token'>,</span><span class='name identifier id'>name</span><span class='bitor op'>|</span>
-  <span class='repo identifier id'>repo</span><span class='dot token'>.</span><span class='path identifier id'>path</span><span class='dot token'>.</span><span class='basename identifier id'>basename</span>
-<span class='rbrace token'>}</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='id lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id repo'>repo</span><span class='comma'>,</span><span class='id name'>name</span><span class='op'>|</span>
+  <span class='id repo'>repo</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id basename'>basename</span>
+<span class='rbrace'>}</span></pre>
     </td>
   </tr>
 </table>
@@ -4621,10 +4630,9 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 84</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:name</span><span class='comma token'>,</span> <span class='String constant id'>String</span><span class='comma token'>,</span> <span class='symbol val'>:default</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lambda identifier id'>lambda</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='repo identifier id'>repo</span><span class='comma token'>,</span><span class='name identifier id'>name</span><span class='bitor op'>|</span>
-  <span class='repo identifier id'>repo</span><span class='dot token'>.</span><span class='path identifier id'>path</span><span class='dot token'>.</span><span class='basename identifier id'>basename</span>
-<span class='rbrace token'>}</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='id lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id repo'>repo</span><span class='comma'>,</span><span class='id name'>name</span><span class='op'>|</span>
+  <span class='id repo'>repo</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id basename'>basename</span>
+<span class='rbrace'>}</span></pre>
     </td>
   </tr>
 </table>
@@ -4657,8 +4665,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 74</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:path</span><span class='comma token'>,</span> <span class='FilePath constant id'>FilePath</span><span class='comma token'>,</span> <span class='symbol val'>:required</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span> <span class='symbol val'>:unique</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:path</span><span class='comma'>,</span> <span class='const'>FilePath</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:unique</span> <span class='op'>=&gt;</span> <span class='kw'>true</span></pre>
     </td>
   </tr>
 </table>
@@ -4691,8 +4698,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 74</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:path</span><span class='comma token'>,</span> <span class='FilePath constant id'>FilePath</span><span class='comma token'>,</span> <span class='symbol val'>:required</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span> <span class='symbol val'>:unique</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:path</span><span class='comma'>,</span> <span class='const'>FilePath</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:unique</span> <span class='op'>=&gt;</span> <span class='kw'>true</span></pre>
     </td>
   </tr>
 </table>
@@ -4763,10 +4769,9 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 421</span>
 
-<span class='def def kw'>def</span> <span class='remote? fid id'>remote?</span>
-  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='domain identifier id'>domain</span> <span class='neq op'>!=</span> <span class='LOCAL_DOMAIN constant id'>LOCAL_DOMAIN</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id remote?'>remote?</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id domain'>domain</span> <span class='op'>!=</span> <span class='const'>LOCAL_DOMAIN</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -4799,8 +4804,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 71</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:scm</span><span class='comma token'>,</span> <span class='String constant id'>String</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:scm</span><span class='comma'>,</span> <span class='const'>String</span></pre>
     </td>
   </tr>
 </table>
@@ -4833,8 +4837,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 71</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:scm</span><span class='comma token'>,</span> <span class='String constant id'>String</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:scm</span><span class='comma'>,</span> <span class='const'>String</span></pre>
     </td>
   </tr>
 </table>
@@ -4867,8 +4870,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 104</span>
 
-<span class='has identifier id'>has</span> <span class='integer val'>0</span><span class='dot2 op'>..</span><span class='n identifier id'>n</span><span class='comma token'>,</span> <span class='symbol val'>:script_paths</span><span class='comma token'>,</span> <span class='symbol val'>:model</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'Script::Path'</span>
-</pre>
+<span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:script_paths</span><span class='comma'>,</span> <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Script::Path</span><span class='tstring_end'>'</span></span></pre>
     </td>
   </tr>
 </table>
@@ -4901,8 +4903,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 104</span>
 
-<span class='has identifier id'>has</span> <span class='integer val'>0</span><span class='dot2 op'>..</span><span class='n identifier id'>n</span><span class='comma token'>,</span> <span class='symbol val'>:script_paths</span><span class='comma token'>,</span> <span class='symbol val'>:model</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'Script::Path'</span>
-</pre>
+<span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:script_paths</span><span class='comma'>,</span> <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Script::Path</span><span class='tstring_end'>'</span></span></pre>
     </td>
   </tr>
 </table>
@@ -4935,8 +4936,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 95</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:source</span><span class='comma token'>,</span> <span class='URI constant id'>URI</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:source</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
     </td>
   </tr>
 </table>
@@ -4969,8 +4969,7 @@ or added using a local directory.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 95</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:source</span><span class='comma token'>,</span> <span class='URI constant id'>URI</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:source</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
     </td>
   </tr>
 </table>
@@ -5063,31 +5062,30 @@ files.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 574</span>
 
-<span class='def def kw'>def</span> <span class='sync_scripts! fid id'>sync_scripts!</span>
-  <span class='comment val'># activates the repository before caching it's objects</span>
-  <span class='activate! fid id'>activate!</span>
+<span class='kw'>def</span> <span class='id sync_scripts!'>sync_scripts!</span>
+  <span class='comment'># activates the repository before caching it's objects
+</span>  <span class='id activate!'>activate!</span>
 
-  <span class='new_paths identifier id'>new_paths</span> <span class='assign token'>=</span> <span class='each_script identifier id'>each_script</span><span class='dot token'>.</span><span class='to_a identifier id'>to_a</span>
+  <span class='id new_paths'>new_paths</span> <span class='op'>=</span> <span class='id each_script'>each_script</span><span class='period'>.</span><span class='id to_a'>to_a</span>
 
-  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='script_paths identifier id'>script_paths</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='script_path identifier id'>script_path</span><span class='bitor op'>|</span>
-    <span class='comment val'># filter out pre-existing paths within the `cached/` directory</span>
-    <span class='new_paths identifier id'>new_paths</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='script_path identifier id'>script_path</span><span class='dot token'>.</span><span class='path identifier id'>path</span><span class='rparen token'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id script_paths'>script_paths</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id script_path'>script_path</span><span class='op'>|</span>
+    <span class='comment'># filter out pre-existing paths within the `cached/` directory
+</span>    <span class='id new_paths'>new_paths</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='id script_path'>script_path</span><span class='period'>.</span><span class='id path'>path</span><span class='rparen'>)</span>
 
-    <span class='comment val'># sync the cached file and catch any exceptions</span>
-    <span class='script_path identifier id'>script_path</span><span class='dot token'>.</span><span class='sync identifier id'>sync</span>
-  <span class='end end kw'>end</span>
+    <span class='comment'># sync the cached file and catch any exceptions
+</span>    <span class='id script_path'>script_path</span><span class='period'>.</span><span class='id sync'>sync</span>
+  <span class='kw'>end</span>
 
-  <span class='comment val'># cache the new paths within the `cache/` directory</span>
-  <span class='new_paths identifier id'>new_paths</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='path identifier id'>path</span><span class='bitor op'>|</span>
-    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='script_paths identifier id'>script_paths</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='symbol val'>:path</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='path identifier id'>path</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='cache identifier id'>cache</span>
-  <span class='end end kw'>end</span>
+  <span class='comment'># cache the new paths within the `cache/` directory
+</span>  <span class='id new_paths'>new_paths</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id path'>path</span><span class='op'>|</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id script_paths'>script_paths</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id path'>path</span><span class='rparen'>)</span><span class='period'>.</span><span class='id cache'>cache</span>
+  <span class='kw'>end</span>
 
-  <span class='comment val'># deactivates the repository</span>
-  <span class='deactivate! fid id'>deactivate!</span>
+  <span class='comment'># deactivates the repository
+</span>  <span class='id deactivate!'>deactivate!</span>
 
-  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -5120,8 +5118,7 @@ files.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 92</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:title</span><span class='comma token'>,</span> <span class='Text constant id'>Text</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='const'>Text</span></pre>
     </td>
   </tr>
 </table>
@@ -5154,8 +5151,7 @@ files.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 92</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:title</span><span class='comma token'>,</span> <span class='Text constant id'>Text</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:title</span><span class='comma'>,</span> <span class='const'>Text</span></pre>
     </td>
   </tr>
 </table>
@@ -5207,10 +5203,9 @@ files.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 692</span>
 
-<span class='def def kw'>def</span> <span class='to_s identifier id'>to_s</span>
-  <span class='dstring node'>&quot;#{self.name}/#{self.domain}&quot;</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id to_s'>to_s</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id domain'>domain</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -5329,21 +5324,20 @@ contents have been deleted.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 671</span>
 
-<span class='def def kw'>def</span> <span class='uninstall! fid id'>uninstall!</span>
-  <span class='deactivate! fid id'>deactivate!</span>
+<span class='kw'>def</span> <span class='id uninstall!'>uninstall!</span>
+  <span class='id deactivate!'>deactivate!</span>
 
-  <span class='FileUtils constant id'>FileUtils</span><span class='dot token'>.</span><span class='rm_rf identifier id'>rm_rf</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='path identifier id'>path</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='installed? fid id'>installed?</span>
+  <span class='const'>FileUtils</span><span class='period'>.</span><span class='id rm_rf'>rm_rf</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id installed?'>installed?</span>
 
-  <span class='comment val'># destroy any cached files first</span>
-  <span class='clean_scripts! fid id'>clean_scripts!</span>
+  <span class='comment'># destroy any cached files first
+</span>  <span class='id clean_scripts!'>clean_scripts!</span>
 
-  <span class='comment val'># remove the repository from the database</span>
-  <span class='destroy identifier id'>destroy</span> <span class='if if_mod kw'>if</span> <span class='saved? fid id'>saved?</span>
+  <span class='comment'># remove the repository from the database
+</span>  <span class='id destroy'>destroy</span> <span class='kw'>if</span> <span class='id saved?'>saved?</span>
 
-  <span class='yield yield kw'>yield</span> <span class='self self kw'>self</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
-  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>yield</span> <span class='kw'>self</span> <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -5470,28 +5464,27 @@ been updated.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 632</span>
 
-<span class='def def kw'>def</span> <span class='update! fid id'>update!</span>
-  <span class='local_repo identifier id'>local_repo</span> <span class='assign token'>=</span> <span class='Pullr constant id'>Pullr</span><span class='colon2 op'>::</span><span class='LocalRepository constant id'>LocalRepository</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span>
-    <span class='symbol val'>:path</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='path identifier id'>path</span><span class='comma token'>,</span>
-    <span class='symbol val'>:scm</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='scm identifier id'>scm</span>
-  <span class='rparen token'>)</span>
+<span class='kw'>def</span> <span class='id update!'>update!</span>
+  <span class='id local_repo'>local_repo</span> <span class='op'>=</span> <span class='const'>Pullr</span><span class='op'>::</span><span class='const'>LocalRepository</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span>
+    <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span><span class='comma'>,</span>
+    <span class='symbol'>:scm</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id scm'>scm</span>
+  <span class='rparen'>)</span>
 
-  <span class='comment val'># only update if we have a repository</span>
-  <span class='local_repo identifier id'>local_repo</span><span class='dot token'>.</span><span class='update identifier id'>update</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='uri identifier id'>uri</span><span class='rparen token'>)</span>
+  <span class='comment'># only update if we have a repository
+</span>  <span class='id local_repo'>local_repo</span><span class='period'>.</span><span class='id update'>update</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id uri'>uri</span><span class='rparen'>)</span>
 
-  <span class='comment val'># re-initialize the metadata</span>
-  <span class='initialize_metadata identifier id'>initialize_metadata</span>
+  <span class='comment'># re-initialize the metadata
+</span>  <span class='id initialize_metadata'>initialize_metadata</span>
 
-  <span class='comment val'># save the repository</span>
-  <span class='if if kw'>if</span> <span class='save identifier id'>save</span>
-    <span class='comment val'># syncs the cached files of the repository</span>
-    <span class='sync_scripts! fid id'>sync_scripts!</span>
-  <span class='end end kw'>end</span>
+  <span class='comment'># save the repository
+</span>  <span class='kw'>if</span> <span class='id save'>save</span>
+    <span class='comment'># syncs the cached files of the repository
+</span>    <span class='id sync_scripts!'>sync_scripts!</span>
+  <span class='kw'>end</span>
 
-  <span class='yield yield kw'>yield</span> <span class='self self kw'>self</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
-  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>yield</span> <span class='kw'>self</span> <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -5524,8 +5517,7 @@ been updated.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 77</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:uri</span><span class='comma token'>,</span> <span class='URI constant id'>URI</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:uri</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
     </td>
   </tr>
 </table>
@@ -5558,8 +5550,7 @@ been updated.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 77</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:uri</span><span class='comma token'>,</span> <span class='URI constant id'>URI</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:uri</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
     </td>
   </tr>
 </table>
@@ -5592,8 +5583,7 @@ been updated.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 98</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:website</span><span class='comma token'>,</span> <span class='URI constant id'>URI</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:website</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
     </td>
   </tr>
 </table>
@@ -5626,8 +5616,7 @@ been updated.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 98</span>
 
-<span class='property identifier id'>property</span> <span class='symbol val'>:website</span><span class='comma token'>,</span> <span class='URI constant id'>URI</span>
-</pre>
+<span class='id property'>property</span> <span class='symbol'>:website</span><span class='comma'>,</span> <span class='const'>URI</span></pre>
     </td>
   </tr>
 </table>
@@ -5638,9 +5627,9 @@ been updated.</p>
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 12 15:45:09 2011 by 
+  Generated on Sat Oct  1 17:33:31 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.0 (ruby-1.8.7).
+  0.7.2 (ruby-1.9.2).
 </div>
 
   </body>

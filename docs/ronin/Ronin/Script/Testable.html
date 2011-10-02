@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Module: Ronin::Script::Testable
   
@@ -492,10 +492,9 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/testable.rb', line 85</span>
 
-<span class='def def kw'>def</span> <span class='flunk identifier id'>flunk</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='rparen token'>)</span>
-  <span class='raise identifier id'>raise</span><span class='lparen token'>(</span><span class='TestFailed constant id'>TestFailed</span><span class='comma token'>,</span><span class='message identifier id'>message</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id flunk'>flunk</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
+  <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>TestFailed</span><span class='comma'>,</span><span class='id message'>message</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -568,12 +567,11 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/testable.rb', line 43</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='attributes identifier id'>attributes</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='attributes identifier id'>attributes</span><span class='rparen token'>)</span>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id attributes'>attributes</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id attributes'>attributes</span><span class='rparen'>)</span>
 
-  <span class='@test_blocks ivar id'>@test_blocks</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='ivar'>@test_blocks</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -659,11 +657,10 @@ The given block will be called when the script is being tested.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/testable.rb', line 102</span>
 
-<span class='def def kw'>def</span> <span class='test identifier id'>test</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='@test_blocks ivar id'>@test_blocks</span> <span class='lshft op'>&lt;&lt;</span> <span class='block identifier id'>block</span>
-  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id test'>test</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@test_blocks</span> <span class='op'>&lt;&lt;</span> <span class='id block'>block</span>
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -742,15 +739,14 @@ The given block will be called when the script is being tested.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/testable.rb', line 61</span>
 
-<span class='def def kw'>def</span> <span class='test! fid id'>test!</span>
-  <span class='print_info identifier id'>print_info</span> <span class='dstring node'>&quot;Testing #{script_type} ...&quot;</span>
+<span class='kw'>def</span> <span class='id test!'>test!</span>
+  <span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Testing </span><span class='embexpr_beg'>#{</span><span class='id script_type'>script_type</span><span class='rbrace'>}</span><span class='tstring_content'> ...</span><span class='tstring_end'>&quot;</span></span>
 
-  <span class='@test_blocks ivar id'>@test_blocks</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='block identifier id'>block</span><span class='bitor op'>|</span> <span class='block identifier id'>block</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+  <span class='ivar'>@test_blocks</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id block'>block</span><span class='op'>|</span> <span class='id block'>block</span><span class='period'>.</span><span class='id call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 
-  <span class='print_info identifier id'>print_info</span> <span class='dstring node'>&quot;#{script_type} tested!&quot;</span>
-  <span class='return return kw'>return</span> <span class='true true kw'>true</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id script_type'>script_type</span><span class='rbrace'>}</span><span class='tstring_content'> tested!</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>return</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -871,10 +867,9 @@ The given block will contain the expression to evaluate.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/testable.rb', line 126</span>
 
-<span class='def def kw'>def</span> <span class='test? fid id'>test?</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='test identifier id'>test</span> <span class='lbrace token'>{</span> <span class='flunk identifier id'>flunk</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='block identifier id'>block</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id test?'>test?</span><span class='lparen'>(</span><span class='id message'>message</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id test'>test</span> <span class='lbrace'>{</span> <span class='id flunk'>flunk</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id block'>block</span><span class='period'>.</span><span class='id call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1016,17 +1011,16 @@ The given block will contain the expression to evaluate.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/testable.rb', line 152</span>
 
-<span class='def def kw'>def</span> <span class='test_equal identifier id'>test_equal</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span><span class='expected_value identifier id'>expected_value</span><span class='comma token'>,</span><span class='message identifier id'>message</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
+<span class='kw'>def</span> <span class='id test_equal'>test_equal</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='id expected_value'>expected_value</span><span class='comma'>,</span><span class='id message'>message</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id name'>name</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
 
-  <span class='test identifier id'>test</span> <span class='do do kw'>do</span>
-    <span class='actual_value identifier id'>actual_value</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-    <span class='message identifier id'>message</span> <span class='opasgn op'>||=</span> <span class='dstring node'>&quot;#{name} (#{actual_value.inspect}) must equal #{expected_value.inspect}&quot;</span>
+  <span class='id test'>test</span> <span class='kw'>do</span>
+    <span class='id actual_value'>actual_value</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+    <span class='id message'>message</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span><span class='id actual_value'>actual_value</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_content'>) must equal </span><span class='embexpr_beg'>#{</span><span class='id expected_value'>expected_value</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
 
-    <span class='flunk identifier id'>flunk</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='actual_value identifier id'>actual_value</span> <span class='eq op'>==</span> <span class='expected_value identifier id'>expected_value</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+    <span class='id flunk'>flunk</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id actual_value'>actual_value</span> <span class='op'>==</span> <span class='id expected_value'>expected_value</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1168,17 +1162,16 @@ The given block will contain the expression to evaluate.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/testable.rb', line 320</span>
 
-<span class='def def kw'>def</span> <span class='test_in identifier id'>test_in</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span><span class='expected_values identifier id'>expected_values</span><span class='comma token'>,</span><span class='message identifier id'>message</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
+<span class='kw'>def</span> <span class='id test_in'>test_in</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='id expected_values'>expected_values</span><span class='comma'>,</span><span class='id message'>message</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id name'>name</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
 
-  <span class='test identifier id'>test</span> <span class='do do kw'>do</span>
-    <span class='actual_value identifier id'>actual_value</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-    <span class='message identifier id'>message</span> <span class='opasgn op'>||=</span> <span class='dstring node'>&quot;#{name} (#{actual_value.inspect}) must be one of #{expected_values.inspect}&quot;</span>
+  <span class='id test'>test</span> <span class='kw'>do</span>
+    <span class='id actual_value'>actual_value</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+    <span class='id message'>message</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span><span class='id actual_value'>actual_value</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_content'>) must be one of </span><span class='embexpr_beg'>#{</span><span class='id expected_values'>expected_values</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
 
-    <span class='flunk identifier id'>flunk</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='expected_values identifier id'>expected_values</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='actual_value identifier id'>actual_value</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+    <span class='id flunk'>flunk</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id expected_values'>expected_values</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='id actual_value'>actual_value</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1320,17 +1313,16 @@ The given block will contain the expression to evaluate.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/testable.rb', line 254</span>
 
-<span class='def def kw'>def</span> <span class='test_match identifier id'>test_match</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span><span class='pattern identifier id'>pattern</span><span class='comma token'>,</span><span class='message identifier id'>message</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
+<span class='kw'>def</span> <span class='id test_match'>test_match</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='id pattern'>pattern</span><span class='comma'>,</span><span class='id message'>message</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id name'>name</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
 
-  <span class='test identifier id'>test</span> <span class='do do kw'>do</span>
-    <span class='actual_value identifier id'>actual_value</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-    <span class='message identifier id'>message</span> <span class='opasgn op'>||=</span> <span class='dstring node'>&quot;#{name} (#{actual_value.inspect}) must match #{pattern.inspect}&quot;</span>
+  <span class='id test'>test</span> <span class='kw'>do</span>
+    <span class='id actual_value'>actual_value</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+    <span class='id message'>message</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span><span class='id actual_value'>actual_value</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_content'>) must match </span><span class='embexpr_beg'>#{</span><span class='id pattern'>pattern</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
 
-    <span class='flunk identifier id'>flunk</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='actual_value identifier id'>actual_value</span><span class='dot token'>.</span><span class='match identifier id'>match</span><span class='lparen token'>(</span><span class='pattern identifier id'>pattern</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+    <span class='id flunk'>flunk</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id actual_value'>actual_value</span><span class='period'>.</span><span class='id match'>match</span><span class='lparen'>(</span><span class='id pattern'>pattern</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1472,17 +1464,16 @@ The given block will contain the expression to evaluate.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/testable.rb', line 287</span>
 
-<span class='def def kw'>def</span> <span class='test_no_match identifier id'>test_no_match</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span><span class='pattern identifier id'>pattern</span><span class='comma token'>,</span><span class='message identifier id'>message</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
+<span class='kw'>def</span> <span class='id test_no_match'>test_no_match</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='id pattern'>pattern</span><span class='comma'>,</span><span class='id message'>message</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id name'>name</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
 
-  <span class='test identifier id'>test</span> <span class='do do kw'>do</span>
-    <span class='actual_value identifier id'>actual_value</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-    <span class='message identifier id'>message</span> <span class='opasgn op'>||=</span> <span class='dstring node'>&quot;#{name} (#{actual_value.inspect}) cannot match #{pattern.inspect}&quot;</span>
+  <span class='id test'>test</span> <span class='kw'>do</span>
+    <span class='id actual_value'>actual_value</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+    <span class='id message'>message</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span><span class='id actual_value'>actual_value</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_content'>) cannot match </span><span class='embexpr_beg'>#{</span><span class='id pattern'>pattern</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
 
-    <span class='flunk identifier id'>flunk</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='notop op'>!</span><span class='actual_value identifier id'>actual_value</span><span class='dot token'>.</span><span class='match identifier id'>match</span><span class='lparen token'>(</span><span class='pattern identifier id'>pattern</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+    <span class='id flunk'>flunk</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='op'>!</span><span class='id actual_value'>actual_value</span><span class='period'>.</span><span class='id match'>match</span><span class='lparen'>(</span><span class='id pattern'>pattern</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1624,17 +1615,16 @@ The given block will contain the expression to evaluate.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/testable.rb', line 185</span>
 
-<span class='def def kw'>def</span> <span class='test_not_equal identifier id'>test_not_equal</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span><span class='unexpected_value identifier id'>unexpected_value</span><span class='comma token'>,</span><span class='message identifier id'>message</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
+<span class='kw'>def</span> <span class='id test_not_equal'>test_not_equal</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='id unexpected_value'>unexpected_value</span><span class='comma'>,</span><span class='id message'>message</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id name'>name</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
 
-  <span class='test identifier id'>test</span> <span class='do do kw'>do</span>
-    <span class='actual_value identifier id'>actual_value</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-    <span class='message identifier id'>message</span> <span class='opasgn op'>||=</span> <span class='dstring node'>&quot;#{name} (#{actual_value.inspect}) cannot equal #{unexpected_value.inspect}&quot;</span>
+  <span class='id test'>test</span> <span class='kw'>do</span>
+    <span class='id actual_value'>actual_value</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+    <span class='id message'>message</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span><span class='id actual_value'>actual_value</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_content'>) cannot equal </span><span class='embexpr_beg'>#{</span><span class='id unexpected_value'>unexpected_value</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
 
-    <span class='flunk identifier id'>flunk</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='actual_value identifier id'>actual_value</span> <span class='neq op'>!=</span> <span class='unexpected_value identifier id'>unexpected_value</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+    <span class='id flunk'>flunk</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id actual_value'>actual_value</span> <span class='op'>!=</span> <span class='id unexpected_value'>unexpected_value</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1776,17 +1766,16 @@ The given block will contain the expression to evaluate.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/testable.rb', line 353</span>
 
-<span class='def def kw'>def</span> <span class='test_not_in identifier id'>test_not_in</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span><span class='unexpected_values identifier id'>unexpected_values</span><span class='comma token'>,</span><span class='message identifier id'>message</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
+<span class='kw'>def</span> <span class='id test_not_in'>test_not_in</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='id unexpected_values'>unexpected_values</span><span class='comma'>,</span><span class='id message'>message</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id name'>name</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
 
-  <span class='test identifier id'>test</span> <span class='do do kw'>do</span>
-    <span class='actual_value identifier id'>actual_value</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-    <span class='message identifier id'>message</span> <span class='opasgn op'>||=</span> <span class='dstring node'>&quot;#{name} (#{actual_value.inspect}) cannot be one of #{unexpected_values.inspect}&quot;</span>
+  <span class='id test'>test</span> <span class='kw'>do</span>
+    <span class='id actual_value'>actual_value</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+    <span class='id message'>message</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span><span class='id actual_value'>actual_value</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_content'>) cannot be one of </span><span class='embexpr_beg'>#{</span><span class='id unexpected_values'>unexpected_values</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
 
-    <span class='flunk identifier id'>flunk</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='notop op'>!</span><span class='unexpected_values identifier id'>unexpected_values</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='actual_value identifier id'>actual_value</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+    <span class='id flunk'>flunk</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='op'>!</span><span class='id unexpected_values'>unexpected_values</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='id actual_value'>actual_value</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1919,23 +1908,22 @@ The given block will contain the expression to evaluate.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/testable.rb', line 215</span>
 
-<span class='def def kw'>def</span> <span class='test_set identifier id'>test_set</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='comma token'>,</span><span class='message identifier id'>message</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_sym identifier id'>to_sym</span>
+<span class='kw'>def</span> <span class='id test_set'>test_set</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='id message'>message</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id name'>name</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
 
-  <span class='test identifier id'>test</span> <span class='do do kw'>do</span>
-    <span class='actual_value identifier id'>actual_value</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-    <span class='message identifier id'>message</span> <span class='opasgn op'>||=</span> <span class='dstring node'>&quot;#{name} is not set&quot;</span>
+  <span class='id test'>test</span> <span class='kw'>do</span>
+    <span class='id actual_value'>actual_value</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+    <span class='id message'>message</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'> is not set</span><span class='tstring_end'>&quot;</span></span>
 
-    <span class='blank identifier id'>blank</span> <span class='assign token'>=</span> <span class='if if kw'>if</span> <span class='actual_value identifier id'>actual_value</span><span class='dot token'>.</span><span class='respond_to? fid id'>respond_to?</span><span class='lparen token'>(</span><span class='symbol val'>:empty?</span><span class='rparen token'>)</span>
-              <span class='actual_value identifier id'>actual_value</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
-            <span class='else else kw'>else</span>
-              <span class='actual_value identifier id'>actual_value</span><span class='dot token'>.</span><span class='nil? fid id'>nil?</span>
-            <span class='end end kw'>end</span>
+    <span class='id blank'>blank</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id actual_value'>actual_value</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:empty?</span><span class='rparen'>)</span>
+              <span class='id actual_value'>actual_value</span><span class='period'>.</span><span class='id empty?'>empty?</span>
+            <span class='kw'>else</span>
+              <span class='id actual_value'>actual_value</span><span class='period'>.</span><span class='id nil?'>nil?</span>
+            <span class='kw'>end</span>
 
-    <span class='flunk identifier id'>flunk</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='blank identifier id'>blank</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+    <span class='id flunk'>flunk</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id blank'>blank</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1946,9 +1934,9 @@ The given block will contain the expression to evaluate.</p>
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 12 15:43:12 2011 by 
+  Generated on Sat Oct  1 17:33:42 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.0 (ruby-1.8.7).
+  0.7.2 (ruby-1.9.2).
 </div>
 
   </body>

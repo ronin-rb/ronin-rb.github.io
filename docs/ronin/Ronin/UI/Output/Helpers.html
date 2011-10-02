@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Module: Ronin::UI::Output::Helpers
   
@@ -398,14 +398,13 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 238</span>
 
-<span class='def def kw'>def</span> <span class='format_message identifier id'>format_message</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='rparen token'>)</span>
-  <span class='if if kw'>if</span> <span class='message identifier id'>message</span><span class='dot token'>.</span><span class='length identifier id'>length</span> <span class='eq op'>==</span> <span class='integer val'>1</span>
-    <span class='message identifier id'>message</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span>
-  <span class='else else kw'>else</span>
-    <span class='message identifier id'>message</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span> <span class='mod op'>%</span> <span class='message identifier id'>message</span><span class='lbrack token'>[</span><span class='float val'>1</span><span class='dot2 op'>..</span><span class='integer val'>-1</span><span class='rbrack token'>]</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id format_message'>format_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id message'>message</span><span class='period'>.</span><span class='id length'>length</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='id message'>message</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+  <span class='kw'>else</span>
+    <span class='id message'>message</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>%</span> <span class='id message'>message</span><span class='lbracket'>[</span><span class='int'>1</span><span class='op'>..</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -432,8 +431,7 @@
     
       <h4><div class='inline'><p>Print a formatted message.</p>
 </div></h4>
-      <pre class="example code"><span class='print_debug identifier id'>print_debug</span> <span class='string val'>&quot;vars: %p %p&quot;</span><span class='comma token'>,</span> <span class='vars identifier id'>vars</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='vars identifier id'>vars</span><span class='lbrack token'>[</span><span class='integer val'>1</span><span class='rbrack token'>]</span>
-</pre>
+      <pre class="example code"><span class='id print_debug'>print_debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>vars: %p %p</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id vars'>vars</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id vars'>vars</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span></pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -506,15 +504,14 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 158</span>
 
-<span class='def def kw'>def</span> <span class='print_debug identifier id'>print_debug</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='message identifier id'>message</span><span class='rparen token'>)</span>
-  <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='Output constant id'>Output</span><span class='dot token'>.</span><span class='verbose? fid id'>verbose?</span> <span class='andop op'>&amp;&amp;</span> <span class='notop op'>!</span><span class='lparen token'>(</span><span class='Output constant id'>Output</span><span class='dot token'>.</span><span class='silent? fid id'>silent?</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-    <span class='Output constant id'>Output</span><span class='dot token'>.</span><span class='handler identifier id'>handler</span><span class='dot token'>.</span><span class='print_debug identifier id'>print_debug</span><span class='lparen token'>(</span><span class='format_message identifier id'>format_message</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-    <span class='return return kw'>return</span> <span class='true true kw'>true</span>
-  <span class='end end kw'>end</span>
+<span class='kw'>def</span> <span class='id print_debug'>print_debug</span><span class='lparen'>(</span><span class='op'>*</span><span class='id message'>message</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='const'>Output</span><span class='period'>.</span><span class='id verbose?'>verbose?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='lparen'>(</span><span class='const'>Output</span><span class='period'>.</span><span class='id silent?'>silent?</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='const'>Output</span><span class='period'>.</span><span class='id handler'>handler</span><span class='period'>.</span><span class='id print_debug'>print_debug</span><span class='lparen'>(</span><span class='id format_message'>format_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>true</span>
+  <span class='kw'>end</span>
 
-  <span class='return return kw'>return</span> <span class='false false kw'>false</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -541,13 +538,11 @@
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='print_error identifier id'>print_error</span> <span class='string val'>&quot;Could not connect!&quot;</span>
-</pre>
+      <pre class="example code"><span class='id print_error'>print_error</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Could not connect!</span><span class='tstring_end'>&quot;</span></span></pre>
     
       <h4><div class='inline'><p>Print a formatted message.</p>
 </div></h4>
-      <pre class="example code"><span class='print_error identifier id'>print_error</span> <span class='string val'>&quot;%p: %s&quot;</span><span class='comma token'>,</span> <span class='error identifier id'>error</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='comma token'>,</span> <span class='error identifier id'>error</span><span class='dot token'>.</span><span class='message identifier id'>message</span>
-</pre>
+      <pre class="example code"><span class='id print_error'>print_error</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%p: %s</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id error'>error</span><span class='period'>.</span><span class='id class'>class</span><span class='comma'>,</span> <span class='id error'>error</span><span class='period'>.</span><span class='id message'>message</span></pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -620,15 +615,14 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 214</span>
 
-<span class='def def kw'>def</span> <span class='print_error identifier id'>print_error</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='message identifier id'>message</span><span class='rparen token'>)</span>
-  <span class='unless unless kw'>unless</span> <span class='Output constant id'>Output</span><span class='dot token'>.</span><span class='silent? fid id'>silent?</span>
-    <span class='Output constant id'>Output</span><span class='dot token'>.</span><span class='handler identifier id'>handler</span><span class='dot token'>.</span><span class='print_error identifier id'>print_error</span><span class='lparen token'>(</span><span class='format_message identifier id'>format_message</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-    <span class='return return kw'>return</span> <span class='true true kw'>true</span>
-  <span class='end end kw'>end</span>
+<span class='kw'>def</span> <span class='id print_error'>print_error</span><span class='lparen'>(</span><span class='op'>*</span><span class='id message'>message</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='const'>Output</span><span class='period'>.</span><span class='id silent?'>silent?</span>
+    <span class='const'>Output</span><span class='period'>.</span><span class='id handler'>handler</span><span class='period'>.</span><span class='id print_error'>print_error</span><span class='lparen'>(</span><span class='id format_message'>format_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>true</span>
+  <span class='kw'>end</span>
 
-  <span class='return return kw'>return</span> <span class='false false kw'>false</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -655,13 +649,11 @@
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='print_info identifier id'>print_info</span> <span class='string val'>&quot;Connecting ...&quot;</span>
-</pre>
+      <pre class="example code"><span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Connecting ...</span><span class='tstring_end'>&quot;</span></span></pre>
     
       <h4><div class='inline'><p>Print a formatted message.</p>
 </div></h4>
-      <pre class="example code"><span class='print_info identifier id'>print_info</span> <span class='string val'>&quot;Connected to %s&quot;</span><span class='comma token'>,</span> <span class='host identifier id'>host</span>
-</pre>
+      <pre class="example code"><span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Connected to %s</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id host'>host</span></pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -734,15 +726,14 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 133</span>
 
-<span class='def def kw'>def</span> <span class='print_info identifier id'>print_info</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='message identifier id'>message</span><span class='rparen token'>)</span>
-  <span class='unless unless kw'>unless</span> <span class='Output constant id'>Output</span><span class='dot token'>.</span><span class='silent? fid id'>silent?</span>
-    <span class='Output constant id'>Output</span><span class='dot token'>.</span><span class='handler identifier id'>handler</span><span class='dot token'>.</span><span class='print_info identifier id'>print_info</span><span class='lparen token'>(</span><span class='format_message identifier id'>format_message</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-    <span class='return return kw'>return</span> <span class='true true kw'>true</span>
-  <span class='end end kw'>end</span>
+<span class='kw'>def</span> <span class='id print_info'>print_info</span><span class='lparen'>(</span><span class='op'>*</span><span class='id message'>message</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='const'>Output</span><span class='period'>.</span><span class='id silent?'>silent?</span>
+    <span class='const'>Output</span><span class='period'>.</span><span class='id handler'>handler</span><span class='period'>.</span><span class='id print_info'>print_info</span><span class='lparen'>(</span><span class='id format_message'>format_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>true</span>
+  <span class='kw'>end</span>
 
-  <span class='return return kw'>return</span> <span class='false false kw'>false</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -769,13 +760,11 @@
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='print_warning identifier id'>print_warning</span> <span class='string val'>&quot;Detecting a restricted character in the buffer&quot;</span>
-</pre>
+      <pre class="example code"><span class='id print_warning'>print_warning</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Detecting a restricted character in the buffer</span><span class='tstring_end'>&quot;</span></span></pre>
     
       <h4><div class='inline'><p>Print a formatted message.</p>
 </div></h4>
-      <pre class="example code"><span class='print_warning identifier id'>print_warning</span> <span class='string val'>&quot;Malformed input detected: %p&quot;</span><span class='comma token'>,</span> <span class='user_input identifier id'>user_input</span>
-</pre>
+      <pre class="example code"><span class='id print_warning'>print_warning</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Malformed input detected: %p</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id user_input'>user_input</span></pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -848,15 +837,14 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 186</span>
 
-<span class='def def kw'>def</span> <span class='print_warning identifier id'>print_warning</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='message identifier id'>message</span><span class='rparen token'>)</span>
-  <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='Output constant id'>Output</span><span class='dot token'>.</span><span class='verbose? fid id'>verbose?</span> <span class='andop op'>&amp;&amp;</span> <span class='notop op'>!</span><span class='lparen token'>(</span><span class='Output constant id'>Output</span><span class='dot token'>.</span><span class='silent? fid id'>silent?</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-    <span class='Output constant id'>Output</span><span class='dot token'>.</span><span class='handler identifier id'>handler</span><span class='dot token'>.</span><span class='print_warning identifier id'>print_warning</span><span class='lparen token'>(</span><span class='format_message identifier id'>format_message</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-    <span class='return return kw'>return</span> <span class='true true kw'>true</span>
-  <span class='end end kw'>end</span>
+<span class='kw'>def</span> <span class='id print_warning'>print_warning</span><span class='lparen'>(</span><span class='op'>*</span><span class='id message'>message</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='const'>Output</span><span class='period'>.</span><span class='id verbose?'>verbose?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='lparen'>(</span><span class='const'>Output</span><span class='period'>.</span><span class='id silent?'>silent?</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='const'>Output</span><span class='period'>.</span><span class='id handler'>handler</span><span class='period'>.</span><span class='id print_warning'>print_warning</span><span class='lparen'>(</span><span class='id format_message'>format_message</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='kw'>true</span>
+  <span class='kw'>end</span>
   
-  <span class='return return kw'>return</span> <span class='false false kw'>false</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -954,11 +942,10 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 109</span>
 
-<span class='def def kw'>def</span> <span class='printf identifier id'>printf</span><span class='lparen token'>(</span><span class='format identifier id'>format</span><span class='comma token'>,</span><span class='mult op'>*</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
-  <span class='write identifier id'>write</span><span class='lparen token'>(</span><span class='format identifier id'>format</span> <span class='mod op'>%</span> <span class='data identifier id'>data</span><span class='rparen token'>)</span>
-  <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id printf'>printf</span><span class='lparen'>(</span><span class='id format'>format</span><span class='comma'>,</span><span class='op'>*</span><span class='id data'>data</span><span class='rparen'>)</span>
+  <span class='id write'>write</span><span class='lparen'>(</span><span class='id format'>format</span> <span class='op'>%</span> <span class='id data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1047,13 +1034,12 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 64</span>
 
-<span class='def def kw'>def</span> <span class='putc identifier id'>putc</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
-  <span class='char identifier id'>char</span> <span class='assign token'>=</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='chr identifier id'>chr</span> <span class='if if_mod kw'>if</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span><span class='lparen token'>(</span><span class='Integer constant id'>Integer</span><span class='rparen token'>)</span>
+<span class='kw'>def</span> <span class='id putc'>putc</span><span class='lparen'>(</span><span class='id data'>data</span><span class='rparen'>)</span>
+  <span class='id char'>char</span> <span class='op'>=</span> <span class='id data'>data</span><span class='period'>.</span><span class='id chr'>chr</span> <span class='kw'>if</span> <span class='id data'>data</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Integer</span><span class='rparen'>)</span>
 
-  <span class='write identifier id'>write</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
-  <span class='return return kw'>return</span> <span class='data identifier id'>data</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='id write'>write</span><span class='lparen'>(</span><span class='id data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id data'>data</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1080,8 +1066,7 @@
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='puts identifier id'>puts</span> <span class='string val'>'some data'</span>
-</pre>
+      <pre class="example code"><span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>some data</span><span class='tstring_end'>'</span></span></pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -1138,16 +1123,15 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 84</span>
 
-<span class='def def kw'>def</span> <span class='puts identifier id'>puts</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='messages identifier id'>messages</span><span class='rparen token'>)</span>
-  <span class='unless unless kw'>unless</span> <span class='messages identifier id'>messages</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
-    <span class='messages identifier id'>messages</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span> <span class='write identifier id'>write</span><span class='lparen token'>(</span><span class='dstring node'>&quot;#{message}#{$/}&quot;</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-  <span class='else else kw'>else</span>
-    <span class='write identifier id'>write</span><span class='lparen token'>(</span><span class='$/ gvar id'>$/</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
+<span class='kw'>def</span> <span class='id puts'>puts</span><span class='lparen'>(</span><span class='op'>*</span><span class='id messages'>messages</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id messages'>messages</span><span class='period'>.</span><span class='id empty?'>empty?</span>
+    <span class='id messages'>messages</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id message'>message</span><span class='op'>|</span> <span class='id write'>write</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id message'>message</span><span class='rbrace'>}</span><span class='embexpr_beg'>#{</span><span class='gvar'>$/</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='kw'>else</span>
+    <span class='id write'>write</span><span class='lparen'>(</span><span class='gvar'>$/</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
-  <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1238,15 +1222,14 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/output/helpers.rb', line 42</span>
 
-<span class='def def kw'>def</span> <span class='write identifier id'>write</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
-  <span class='unless unless kw'>unless</span> <span class='Output constant id'>Output</span><span class='dot token'>.</span><span class='silent? fid id'>silent?</span>
-    <span class='data identifier id'>data</span> <span class='assign token'>=</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+<span class='kw'>def</span> <span class='id write'>write</span><span class='lparen'>(</span><span class='id data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='const'>Output</span><span class='period'>.</span><span class='id silent?'>silent?</span>
+    <span class='id data'>data</span> <span class='op'>=</span> <span class='id data'>data</span><span class='period'>.</span><span class='id to_s'>to_s</span>
 
-    <span class='Output constant id'>Output</span><span class='dot token'>.</span><span class='handler identifier id'>handler</span><span class='dot token'>.</span><span class='write identifier id'>write</span><span class='lparen token'>(</span><span class='data identifier id'>data</span><span class='rparen token'>)</span>
-    <span class='return return kw'>return</span> <span class='data identifier id'>data</span><span class='dot token'>.</span><span class='length identifier id'>length</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+    <span class='const'>Output</span><span class='period'>.</span><span class='id handler'>handler</span><span class='period'>.</span><span class='id write'>write</span><span class='lparen'>(</span><span class='id data'>data</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id data'>data</span><span class='period'>.</span><span class='id length'>length</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1257,9 +1240,9 @@
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 12 15:42:55 2011 by 
+  Generated on Sat Oct  1 17:33:46 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.0 (ruby-1.8.7).
+  0.7.2 (ruby-1.9.2).
 </div>
 
   </body>

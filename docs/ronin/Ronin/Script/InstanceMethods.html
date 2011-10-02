@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Module: Ronin::Script::InstanceMethods
   
@@ -72,7 +72,7 @@
   
   
     <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">lib/ronin/script/instance_methods.rb</dd>
+    <dd class="r1 last">lib/ronin/script/script.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -421,31 +421,30 @@ caching.</p>
       <pre class="lines">
 
 
-205
-206
-207
-208
-209
-210
-211
-212
-213
-214</pre>
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/script/instance_methods.rb', line 205</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/script/script.rb', line 336</span>
 
-<span class='def def kw'>def</span> <span class='cache identifier id'>cache</span>
-  <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='block_given? fid id'>block_given?</span> <span class='andop op'>&amp;&amp;</span> <span class='notop op'>!</span><span class='lparen token'>(</span><span class='cached? fid id'>cached?</span> <span class='orop op'>||</span> <span class='prepared_for_cache? fid id'>prepared_for_cache?</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-    <span class='@cache_prepared ivar id'>@cache_prepared</span> <span class='assign token'>=</span> <span class='true true kw'>true</span>
+<span class='kw'>def</span> <span class='id cache'>cache</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id block_given?'>block_given?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id cached?'>cached?</span> <span class='op'>||</span> <span class='id prepared_for_cache?'>prepared_for_cache?</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='ivar'>@cache_prepared</span> <span class='op'>=</span> <span class='kw'>true</span>
 
-    <span class='yield yield kw'>yield</span>
-    <span class='return return kw'>return</span> <span class='true true kw'>true</span>
-  <span class='end end kw'>end</span>
+    <span class='kw'>yield</span>
+    <span class='kw'>return</span> <span class='kw'>true</span>
+  <span class='kw'>end</span>
 
-  <span class='return return kw'>return</span> <span class='false false kw'>false</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -509,17 +508,16 @@ caching.</p>
       <pre class="lines">
 
 
-124
-125
-126</pre>
+255
+256
+257</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/script/instance_methods.rb', line 124</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/script/script.rb', line 255</span>
 
-<span class='def def kw'>def</span> <span class='cached? fid id'>cached?</span>
-  <span class='lparen token'>(</span><span class='saved? fid id'>saved?</span> <span class='andop op'>&amp;&amp;</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='script_path identifier id'>script_path</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id cached?'>cached?</span>
+  <span class='lparen'>(</span><span class='id saved?'>saved?</span> <span class='op'>&amp;&amp;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id script_path'>script_path</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -581,31 +579,30 @@ caching.</p>
       <pre class="lines">
 
 
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47</pre>
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/script/instance_methods.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/script/script.rb', line 169</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='arguments identifier id'>arguments</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='@script_loaded ivar id'>@script_loaded</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
-  <span class='@cache_prepared ivar id'>@cache_prepared</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id arguments'>arguments</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@script_loaded</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='ivar'>@cache_prepared</span> <span class='op'>=</span> <span class='kw'>false</span>
 
-  <span class='if if kw'>if</span> <span class='arguments identifier id'>arguments</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='dot token'>.</span><span class='kind_of? fid id'>kind_of?</span><span class='lparen token'>(</span><span class='Hash constant id'>Hash</span><span class='rparen token'>)</span>
-    <span class='initialize_params identifier id'>initialize_params</span><span class='lparen token'>(</span><span class='arguments identifier id'>arguments</span><span class='dot token'>.</span><span class='first identifier id'>first</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>if</span> <span class='id arguments'>arguments</span><span class='period'>.</span><span class='id first'>first</span><span class='period'>.</span><span class='id kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Hash</span><span class='rparen'>)</span>
+    <span class='id initialize_params'>initialize_params</span><span class='lparen'>(</span><span class='id arguments'>arguments</span><span class='period'>.</span><span class='id first'>first</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
-  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='arguments identifier id'>arguments</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>*</span><span class='id arguments'>arguments</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -665,45 +662,44 @@ caching.</p>
       <pre class="lines">
 
 
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185</pre>
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/script/instance_methods.rb', line 169</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/script/script.rb', line 300</span>
 
-<span class='def def kw'>def</span> <span class='inspect identifier id'>inspect</span>
-  <span class='body identifier id'>body</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+<span class='kw'>def</span> <span class='id inspect'>inspect</span>
+  <span class='id body'>body</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
 
-  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='attributes identifier id'>attributes</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='name identifier id'>name</span><span class='comma token'>,</span><span class='value identifier id'>value</span><span class='bitor op'>|</span>
-    <span class='body identifier id'>body</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot;#{name}: #{value.inspect}&quot;</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id attributes'>attributes</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='comma'>,</span><span class='id value'>value</span><span class='op'>|</span>
+    <span class='id body'>body</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id value'>value</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
 
-  <span class='param_pairs identifier id'>param_pairs</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='id param_pairs'>param_pairs</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
 
-  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='params identifier id'>params</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='name identifier id'>name</span><span class='comma token'>,</span><span class='param identifier id'>param</span><span class='bitor op'>|</span>
-    <span class='param_pairs identifier id'>param_pairs</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot;#{name}: #{param.value.inspect}&quot;</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id params'>params</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='comma'>,</span><span class='id param'>param</span><span class='op'>|</span>
+    <span class='id param_pairs'>param_pairs</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id param'>param</span><span class='period'>.</span><span class='id value'>value</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
 
-  <span class='body identifier id'>body</span> <span class='lshft op'>&lt;&lt;</span> <span class='dstring node'>&quot;params: {#{param_pairs.join(', ')}}&quot;</span>
+  <span class='id body'>body</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>params: {</span><span class='embexpr_beg'>#{</span><span class='id param_pairs'>param_pairs</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>, </span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_content'>}</span><span class='tstring_end'>&quot;</span></span>
 
-  <span class='return return kw'>return</span> <span class='dstring node'>&quot;#&lt;#{self.class}: #{body.join(', ')}&gt;&quot;</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id body'>body</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>, </span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -768,33 +764,32 @@ evaluates it into the object.</p>
       <pre class="lines">
 
 
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100</pre>
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/script/instance_methods.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/script/script.rb', line 221</span>
 
-<span class='def def kw'>def</span> <span class='load_script! fid id'>load_script!</span>
-  <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='cached? fid id'>cached?</span> <span class='andop op'>&amp;&amp;</span> <span class='notop op'>!</span><span class='script_loaded? fid id'>script_loaded?</span><span class='rparen token'>)</span>
-    <span class='block identifier id'>block</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='dot token'>.</span><span class='load_object_block identifier id'>load_object_block</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='script_path identifier id'>script_path</span><span class='dot token'>.</span><span class='path identifier id'>path</span><span class='rparen token'>)</span>
+<span class='kw'>def</span> <span class='id load_script!'>load_script!</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id cached?'>cached?</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id script_loaded?'>script_loaded?</span><span class='rparen'>)</span>
+    <span class='id block'>block</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id load_object_block'>load_object_block</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id script_path'>script_path</span><span class='period'>.</span><span class='id path'>path</span><span class='rparen'>)</span>
 
-    <span class='@script_loaded ivar id'>@script_loaded</span> <span class='assign token'>=</span> <span class='true true kw'>true</span>
-    <span class='instance_eval identifier id'>instance_eval</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='block identifier id'>block</span>
-    <span class='return return kw'>return</span> <span class='true true kw'>true</span>
-  <span class='end end kw'>end</span>
+    <span class='ivar'>@script_loaded</span> <span class='op'>=</span> <span class='kw'>true</span>
+    <span class='id instance_eval'>instance_eval</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id block'>block</span>
+    <span class='kw'>return</span> <span class='kw'>true</span>
+  <span class='kw'>end</span>
 
-  <span class='return return kw'>return</span> <span class='false false kw'>false</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -858,17 +853,16 @@ evaluates it into the object.</p>
       <pre class="lines">
 
 
-110
-111
-112</pre>
+241
+242
+243</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/script/instance_methods.rb', line 110</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/script/script.rb', line 241</span>
 
-<span class='def def kw'>def</span> <span class='prepared_for_cache? fid id'>prepared_for_cache?</span>
-  <span class='@cache_prepared ivar id'>@cache_prepared</span> <span class='eq op'>==</span> <span class='true true kw'>true</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id prepared_for_cache?'>prepared_for_cache?</span>
+  <span class='ivar'>@cache_prepared</span> <span class='op'>==</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -930,15 +924,14 @@ evaluates it into the object.</p>
       <pre class="lines">
 
 
-136
-137</pre>
+267
+268</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/script/instance_methods.rb', line 136</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/script/script.rb', line 267</span>
 
-<span class='def def kw'>def</span> <span class='run identifier id'>run</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='arguments identifier id'>arguments</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id run'>run</span><span class='lparen'>(</span><span class='op'>*</span><span class='id arguments'>arguments</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1004,17 +997,16 @@ object.</p>
       <pre class="lines">
 
 
-75
-76
-77</pre>
+206
+207
+208</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/script/instance_methods.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/script/script.rb', line 206</span>
 
-<span class='def def kw'>def</span> <span class='script_loaded? fid id'>script_loaded?</span>
-  <span class='@script_loaded ivar id'>@script_loaded</span> <span class='eq op'>==</span> <span class='true true kw'>true</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id script_loaded?'>script_loaded?</span>
+  <span class='ivar'>@script_loaded</span> <span class='op'>==</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1074,17 +1066,16 @@ object.</p>
       <pre class="lines">
 
 
-59
-60
-61</pre>
+190
+191
+192</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/script/instance_methods.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/script/script.rb', line 190</span>
 
-<span class='def def kw'>def</span> <span class='script_type identifier id'>script_type</span>
-  <span class='@script_type ivar id'>@script_type</span> <span class='opasgn op'>||=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='dot token'>.</span><span class='base_model identifier id'>base_model</span><span class='dot token'>.</span><span class='name identifier id'>name</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>'::'</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='last identifier id'>last</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id script_type'>script_type</span>
+  <span class='ivar'>@script_type</span> <span class='op'>||=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id base_model'>base_model</span><span class='period'>.</span><span class='id name'>name</span><span class='period'>.</span><span class='id split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>::</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id last'>last</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1144,29 +1135,28 @@ object.</p>
       <pre class="lines">
 
 
-149
-150
-151
-152
-153
-154
-155
-156
-157</pre>
+280
+281
+282
+283
+284
+285
+286
+287
+288</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/script/instance_methods.rb', line 149</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/script/script.rb', line 280</span>
 
-<span class='def def kw'>def</span> <span class='to_s identifier id'>to_s</span>
-  <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='name identifier id'>name</span> <span class='andop op'>&amp;&amp;</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='version identifier id'>version</span><span class='rparen token'>)</span>
-    <span class='dstring node'>&quot;#{self.name} #{self.version}&quot;</span>
-  <span class='elsif elsif kw'>elsif</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='name identifier id'>name</span>
-    <span class='super super kw'>super</span>
-  <span class='elsif elsif kw'>elsif</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='version identifier id'>version</span>
-    <span class='self self kw'>self</span><span class='dot token'>.</span><span class='version identifier id'>version</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id to_s'>to_s</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id name'>name</span> <span class='op'>&amp;&amp;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id version'>version</span><span class='rparen'>)</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id version'>version</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>elsif</span> <span class='kw'>self</span><span class='period'>.</span><span class='id name'>name</span>
+    <span class='kw'>super</span>
+  <span class='kw'>elsif</span> <span class='kw'>self</span><span class='period'>.</span><span class='id version'>version</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id version'>version</span><span class='period'>.</span><span class='id to_s'>to_s</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1177,9 +1167,9 @@ object.</p>
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 12 15:44:01 2011 by 
+  Generated on Sat Oct  1 17:33:38 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.0 (ruby-1.8.7).
+  0.7.2 (ruby-1.9.2).
 </div>
 
   </body>

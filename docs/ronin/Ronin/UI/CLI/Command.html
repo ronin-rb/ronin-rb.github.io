@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Class: Ronin::UI::CLI::Command
   
@@ -98,7 +98,100 @@
 </dl>
 <div class="clear"></div>
 
-<div id="subclasses">
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>The <span class='object_link'><a href="" title="Ronin::UI::CLI::Command (class)">Command</a></span> class inherits <code>Thor::Group</code> to provide a base-class
+for defining commands for the <span class='object_link'><a href="../CLI.html" title="Ronin::UI::CLI (module)">Ronin::UI::CLI</a></span>.</p>
+
+<h1 id="extending">Extending</h1>
+
+<p>To create a new command one can inherit the <span class='object_link'><a href="" title="Ronin::UI::CLI::Command (class)">Command</a></span> class.
+The new command can define multiple <code>class_options</code> and <code>arguments</code>
+which <code>Thor::Group</code> will use to parse command-line arguments.</p>
+
+<pre class="code"><span class='id require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ronin/ui/cli/command</span><span class='tstring_end'>'</span></span>
+
+<span class='kw'>module</span> <span class='const'>Ronin</span>
+  <span class='kw'>module</span> <span class='const'>UI</span>
+    <span class='kw'>module</span> <span class='const'>CLI</span>
+      <span class='kw'>module</span> <span class='const'>Commands</span>
+        <span class='kw'>class</span> <span class='const'>MyCommand</span> <span class='op'>&lt;</span> <span class='const'>Command</span>
+
+          <span class='id desc'>desc</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>My command</span><span class='tstring_end'>'</span></span>
+
+          <span class='comment'># command options
+</span>          <span class='id class_option'>class_option</span> <span class='symbol'>:stuff</span><span class='comma'>,</span> <span class='symbol'>:type</span> <span class='op'>=&gt;</span> <span class='symbol'>:boolean</span>
+          <span class='id class_option'>class_option</span> <span class='symbol'>:syntax</span><span class='comma'>,</span> <span class='symbol'>:type</span> <span class='op'>=&gt;</span> <span class='symbol'>:string</span>
+          <span class='id class_option'>class_option</span> <span class='symbol'>:includes</span><span class='comma'>,</span> <span class='symbol'>:type</span> <span class='op'>=&gt;</span> <span class='symbol'>:array</span>
+
+          <span class='comment'># command arguments
+</span>          <span class='id argument'>argument</span> <span class='symbol'>:path</span>
+
+          <span class='comment'>#
+</span>          <span class='comment'># Executes the command.
+</span>          <span class='comment'>#
+</span>          <span class='kw'>def</span> <span class='id execute'>execute</span>
+            <span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Stuff enabled</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id options'>options</span><span class='period'>.</span><span class='id stuff?'>stuff?</span>
+
+            <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:syntax</span><span class='rbracket'>]</span>
+              <span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Using syntax </span><span class='embexpr_beg'>#{</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:syntax</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+            <span class='kw'>end</span>
+
+            <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:includes</span><span class='rbracket'>]</span>
+              <span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Including:</span><span class='tstring_end'>&quot;</span></span>
+              <span class='id print_array'>print_array</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:includes</span><span class='rbracket'>]</span>
+            <span class='kw'>end</span>
+          <span class='kw'>end</span>
+
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</pre>
+
+<h1 id="running">Running</h1>
+
+<p>To run the command from Ruby, one can call the <span class='object_link'><a href="#run-class_method" title="Ronin::UI::CLI::Command.run (method)">run</a></span> class method
+with the options and arguments to run the command with:</p>
+
+<pre class="code"><span class='const'>MyCommand</span><span class='period'>.</span><span class='id run'>run</span><span class='lparen'>(</span>
+  <span class='lbrace'>{</span><span class='symbol'>:stuff</span> <span class='op'>=&gt;</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='symbol'>:syntax</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bla</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:includes</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>other</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>some/file.txt</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+<span class='rparen'>)</span>
+</pre>
+
+<p>To run the command from Ruby, with raw command-line options, one
+can call the <code>start</code> class method:</p>
+
+<pre class="code"><span class='const'>MyCommand</span><span class='period'>.</span><span class='id start'>start</span><span class='lparen'>(</span><span class='lbracket'>[</span>
+  <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>--stuff</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>true</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>--syntax</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bla</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>--includes</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>other</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>some/file.txt</span><span class='tstring_end'>'</span></span>
+<span class='rbracket'>]</span><span class='rparen'>)</span>
+</pre>
+
+<p>Note: If <code>MyCommand.start</code> is not given any arguments, it will use
+<code>ARGV</code> instead.</p>
+
+<p>To ensure that your command is accessible to the <code>ronin</code> command,
+make sure that the ruby file the command is defined within is in
+the <code>ronin/ui/cli/commands</code> directory of a Ronin library.
+If the command class is named &lsquo;MyCommand&rsquo; it&rsquo;s ruby file must also
+be named &lsquo;my_command.rb&rsquo;.</p>
+
+<p>To run the command using the <code>ronin</code> command, simply specify it&rsquo;s
+underscored name:</p>
+
+<pre class="code">ronin my_command some/file.txt --stuff --syntax bla \
+  --includes one two
+</pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
   <p class="children"><span class='object_link'><a href="Commands/Console.html" title="Ronin::UI::CLI::Commands::Console (class)">Ronin::UI::CLI::Commands::Console</a></span>, <span class='object_link'><a href="Commands/Database.html" title="Ronin::UI::CLI::Commands::Database (class)">Ronin::UI::CLI::Commands::Database</a></span>, <span class='object_link'><a href="Commands/Help.html" title="Ronin::UI::CLI::Commands::Help (class)">Ronin::UI::CLI::Commands::Help</a></span>, <span class='object_link'><a href="ModelCommand.html" title="Ronin::UI::CLI::ModelCommand (class)">ModelCommand</a></span></p>
 </div>
@@ -550,13 +643,12 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 188</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='arguments identifier id'>arguments</span><span class='assign token'>=</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span><span class='opts identifier id'>opts</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span><span class='config identifier id'>config</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='@indent ivar id'>@indent</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id arguments'>arguments</span><span class='op'>=</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id opts'>opts</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='id config'>config</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='ivar'>@indent</span> <span class='op'>=</span> <span class='int'>0</span>
 
-  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='arguments identifier id'>arguments</span><span class='comma token'>,</span><span class='opts identifier id'>opts</span><span class='comma token'>,</span><span class='config identifier id'>config</span><span class='rparen token'>)</span>
-  <span class='setup identifier id'>setup</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id arguments'>arguments</span><span class='comma'>,</span><span class='id opts'>opts</span><span class='comma'>,</span><span class='id config'>config</span><span class='rparen'>)</span>
+  <span class='id setup'>setup</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -634,10 +726,9 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 215</span>
 
-<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='banner identifier id'>banner</span>
-  <span class='dstring node'>&quot;ronin #{self_task.formatted_usage(self,false,true)}&quot;</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id banner'>banner</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ronin </span><span class='embexpr_beg'>#{</span><span class='id self_task'>self_task</span><span class='period'>.</span><span class='id formatted_usage'>formatted_usage</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span><span class='kw'>false</span><span class='comma'>,</span><span class='kw'>true</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -672,10 +763,9 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 147</span>
 
-<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='command_name identifier id'>command_name</span>
-  <span class='Support constant id'>Support</span><span class='colon2 op'>::</span><span class='Inflector constant id'>Inflector</span><span class='dot token'>.</span><span class='underscore identifier id'>underscore</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='name identifier id'>name</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>'::'</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='last identifier id'>last</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id command_name'>command_name</span>
+  <span class='const'>Support</span><span class='op'>::</span><span class='const'>Inflector</span><span class='period'>.</span><span class='id underscore'>underscore</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id name'>name</span><span class='period'>.</span><span class='id split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>::</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id last'>last</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -733,10 +823,9 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 138</span>
 
-<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='inherited identifier id'>inherited</span><span class='lparen token'>(</span><span class='super_class identifier id'>super_class</span><span class='rparen token'>)</span>
-  <span class='super_class identifier id'>super_class</span><span class='dot token'>.</span><span class='namespace identifier id'>namespace</span><span class='lparen token'>(</span><span class='super_class identifier id'>super_class</span><span class='dot token'>.</span><span class='command_name identifier id'>command_name</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id inherited'>inherited</span><span class='lparen'>(</span><span class='id super_class'>super_class</span><span class='rparen'>)</span>
+  <span class='id super_class'>super_class</span><span class='period'>.</span><span class='id namespace'>namespace</span><span class='lparen'>(</span><span class='id super_class'>super_class</span><span class='period'>.</span><span class='id command_name'>command_name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -844,13 +933,12 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 167</span>
 
-<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='run identifier id'>run</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span><span class='arguments identifier id'>arguments</span><span class='assign token'>=</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-  <span class='command identifier id'>command</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='arguments identifier id'>arguments</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='rparen token'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id run'>run</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='id arguments'>arguments</span><span class='op'>=</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id command'>command</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id arguments'>arguments</span><span class='comma'>,</span><span class='id options'>options</span><span class='rparen'>)</span>
 
-  <span class='command identifier id'>command</span><span class='dot token'>.</span><span class='invoke_all identifier id'>invoke_all</span><span class='lparen token'>(</span><span class='rparen token'>)</span>
-  <span class='return return kw'>return</span> <span class='command identifier id'>command</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='id command'>command</span><span class='period'>.</span><span class='id invoke_all'>invoke_all</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id command'>command</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -890,9 +978,8 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 200</span>
 
-<span class='def def kw'>def</span> <span class='execute identifier id'>execute</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id execute'>execute</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -986,15 +1073,14 @@ be returned to normal.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 253</span>
 
-<span class='def def kw'>def</span> <span class='indent identifier id'>indent</span><span class='lparen token'>(</span><span class='n identifier id'>n</span><span class='assign token'>=</span><span class='integer val'>2</span><span class='rparen token'>)</span>
-  <span class='@indent ivar id'>@indent</span> <span class='opasgn op'>+=</span> <span class='n identifier id'>n</span>
+<span class='kw'>def</span> <span class='id indent'>indent</span><span class='lparen'>(</span><span class='id n'>n</span><span class='op'>=</span><span class='int'>2</span><span class='rparen'>)</span>
+  <span class='ivar'>@indent</span> <span class='op'>+=</span> <span class='id n'>n</span>
 
-  <span class='yield yield kw'>yield</span>
+  <span class='kw'>yield</span>
 
-  <span class='@indent ivar id'>@indent</span> <span class='opasgn op'>-=</span> <span class='n identifier id'>n</span>
-  <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='ivar'>@indent</span> <span class='op'>-=</span> <span class='id n'>n</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1106,17 +1192,16 @@ be returned to normal.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 318</span>
 
-<span class='def def kw'>def</span> <span class='print_array identifier id'>print_array</span><span class='lparen token'>(</span><span class='array identifier id'>array</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='print_title identifier id'>print_title</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:title</span><span class='rbrack token'>]</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:title</span><span class='rbrack token'>]</span>
+<span class='kw'>def</span> <span class='id print_array'>print_array</span><span class='lparen'>(</span><span class='id array'>array</span><span class='comma'>,</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id print_title'>print_title</span><span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:title</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:title</span><span class='rbracket'>]</span>
 
-  <span class='indent identifier id'>indent</span> <span class='do do kw'>do</span>
-    <span class='array identifier id'>array</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='value identifier id'>value</span><span class='bitor op'>|</span> <span class='puts identifier id'>puts</span> <span class='value identifier id'>value</span> <span class='rbrace token'>}</span>
-  <span class='end end kw'>end</span>
+  <span class='id indent'>indent</span> <span class='kw'>do</span>
+    <span class='id array'>array</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id value'>value</span><span class='op'>|</span> <span class='id puts'>puts</span> <span class='id value'>value</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
 
-  <span class='puts identifier id'>puts</span> <span class='if if_mod kw'>if</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:title</span><span class='rbrack token'>]</span>
-  <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='id puts'>puts</span> <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:title</span><span class='rbracket'>]</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1189,14 +1274,13 @@ be returned to normal.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 373</span>
 
-<span class='def def kw'>def</span> <span class='print_exception identifier id'>print_exception</span><span class='lparen token'>(</span><span class='exception identifier id'>exception</span><span class='rparen token'>)</span>
-  <span class='print_error identifier id'>print_error</span> <span class='exception identifier id'>exception</span><span class='dot token'>.</span><span class='message identifier id'>message</span>
+<span class='kw'>def</span> <span class='id print_exception'>print_exception</span><span class='lparen'>(</span><span class='id exception'>exception</span><span class='rparen'>)</span>
+  <span class='id print_error'>print_error</span> <span class='id exception'>exception</span><span class='period'>.</span><span class='id message'>message</span>
 
-  <span class='lparen token'>(</span><span class='integer val'>0</span><span class='dot2 op'>..</span><span class='integer val'>5</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='i identifier id'>i</span><span class='bitor op'>|</span>
-    <span class='print_error identifier id'>print_error</span> <span class='string val'>'  '</span> <span class='plus op'>+</span> <span class='exception identifier id'>exception</span><span class='dot token'>.</span><span class='backtrace identifier id'>backtrace</span><span class='lbrack token'>[</span><span class='i identifier id'>i</span><span class='rbrack token'>]</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='int'>5</span><span class='rparen'>)</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id i'>i</span><span class='op'>|</span>
+    <span class='id print_error'>print_error</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>  </span><span class='tstring_end'>'</span></span> <span class='op'>+</span> <span class='id exception'>exception</span><span class='period'>.</span><span class='id backtrace'>backtrace</span><span class='lbracket'>[</span><span class='id i'>i</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1315,24 +1399,23 @@ be returned to normal.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 345</span>
 
-<span class='def def kw'>def</span> <span class='print_hash identifier id'>print_hash</span><span class='lparen token'>(</span><span class='hash identifier id'>hash</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='align identifier id'>align</span> <span class='assign token'>=</span> <span class='hash identifier id'>hash</span><span class='dot token'>.</span><span class='keys identifier id'>keys</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='name identifier id'>name</span><span class='bitor op'>|</span>
-    <span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='length identifier id'>length</span>
-  <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='max identifier id'>max</span>
+<span class='kw'>def</span> <span class='id print_hash'>print_hash</span><span class='lparen'>(</span><span class='id hash'>hash</span><span class='comma'>,</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id align'>align</span> <span class='op'>=</span> <span class='id hash'>hash</span><span class='period'>.</span><span class='id keys'>keys</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id name'>name</span><span class='op'>|</span>
+    <span class='id name'>name</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id length'>length</span>
+  <span class='rbrace'>}</span><span class='period'>.</span><span class='id max'>max</span>
 
-  <span class='print_title identifier id'>print_title</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:title</span><span class='rbrack token'>]</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:title</span><span class='rbrack token'>]</span>
+  <span class='id print_title'>print_title</span><span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:title</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:title</span><span class='rbracket'>]</span>
 
-  <span class='indent identifier id'>indent</span> <span class='do do kw'>do</span>
-    <span class='hash identifier id'>hash</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='name identifier id'>name</span><span class='comma token'>,</span><span class='value identifier id'>value</span><span class='bitor op'>|</span>
-      <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='dstring node'>&quot;#{name}:&quot;</span><span class='dot token'>.</span><span class='ljust identifier id'>ljust</span><span class='lparen token'>(</span><span class='align identifier id'>align</span><span class='rparen token'>)</span>
-      <span class='puts identifier id'>puts</span> <span class='dstring node'>&quot;#{name}\t#{value}&quot;</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
+  <span class='id indent'>indent</span> <span class='kw'>do</span>
+    <span class='id hash'>hash</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='comma'>,</span><span class='id value'>value</span><span class='op'>|</span>
+      <span class='id name'>name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>:</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id ljust'>ljust</span><span class='lparen'>(</span><span class='id align'>align</span><span class='rparen'>)</span>
+      <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>\t</span><span class='embexpr_beg'>#{</span><span class='id value'>value</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 
-  <span class='puts identifier id'>puts</span> <span class='if if_mod kw'>if</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:title</span><span class='rbrack token'>]</span>
-  <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='id puts'>puts</span> <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:title</span><span class='rbracket'>]</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1402,11 +1485,10 @@ and indentation increased.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 297</span>
 
-<span class='def def kw'>def</span> <span class='print_section identifier id'>print_section</span><span class='lparen token'>(</span><span class='title identifier id'>title</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='print_title identifier id'>print_title</span><span class='lparen token'>(</span><span class='title identifier id'>title</span><span class='rparen token'>)</span>
-  <span class='indent identifier id'>indent</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id print_section'>print_section</span><span class='lparen'>(</span><span class='id title'>title</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id print_title'>print_title</span><span class='lparen'>(</span><span class='id title'>title</span><span class='rparen'>)</span>
+  <span class='id indent'>indent</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1460,10 +1542,9 @@ and indentation increased.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 282</span>
 
-<span class='def def kw'>def</span> <span class='print_title identifier id'>print_title</span><span class='lparen token'>(</span><span class='title identifier id'>title</span><span class='rparen token'>)</span>
-  <span class='puts identifier id'>puts</span> <span class='dstring node'>&quot;[ #{title} ]\n&quot;</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id print_title'>print_title</span><span class='lparen'>(</span><span class='id title'>title</span><span class='rparen'>)</span>
+  <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[ </span><span class='embexpr_beg'>#{</span><span class='id title'>title</span><span class='rbrace'>}</span><span class='tstring_content'> ]\n</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1517,10 +1598,9 @@ and indentation increased.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 270</span>
 
-<span class='def def kw'>def</span> <span class='puts identifier id'>puts</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='messages identifier id'>messages</span><span class='rparen token'>)</span>
-  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='lparen token'>(</span><span class='messages identifier id'>messages</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='mesg identifier id'>mesg</span><span class='bitor op'>|</span> <span class='lparen token'>(</span><span class='string val'>' '</span> <span class='mult op'>*</span> <span class='@indent ivar id'>@indent</span><span class='rparen token'>)</span> <span class='plus op'>+</span> <span class='mesg identifier id'>mesg</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span> <span class='rbrace token'>}</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id puts'>puts</span><span class='lparen'>(</span><span class='op'>*</span><span class='id messages'>messages</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>*</span><span class='lparen'>(</span><span class='id messages'>messages</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id mesg'>mesg</span><span class='op'>|</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> </span><span class='tstring_end'>'</span></span> <span class='op'>*</span> <span class='ivar'>@indent</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id mesg'>mesg</span><span class='period'>.</span><span class='id to_s'>to_s</span> <span class='rbrace'>}</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1578,18 +1658,17 @@ and indentation increased.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/command.rb', line 226</span>
 
-<span class='def def kw'>def</span> <span class='setup identifier id'>setup</span>
-  <span class='Output constant id'>Output</span><span class='dot token'>.</span><span class='verbose! fid id'>verbose!</span> <span class='if if_mod kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='options identifier id'>options</span><span class='dot token'>.</span><span class='verbose? fid id'>verbose?</span>
-  <span class='Output constant id'>Output</span><span class='dot token'>.</span><span class='quiet! fid id'>quiet!</span> <span class='if if_mod kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='options identifier id'>options</span><span class='dot token'>.</span><span class='quiet? fid id'>quiet?</span>
-  <span class='Output constant id'>Output</span><span class='dot token'>.</span><span class='silent! fid id'>silent!</span> <span class='if if_mod kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='options identifier id'>options</span><span class='dot token'>.</span><span class='silent? fid id'>silent?</span>
+<span class='kw'>def</span> <span class='id setup'>setup</span>
+  <span class='const'>Output</span><span class='period'>.</span><span class='id verbose!'>verbose!</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id options'>options</span><span class='period'>.</span><span class='id verbose?'>verbose?</span>
+  <span class='const'>Output</span><span class='period'>.</span><span class='id quiet!'>quiet!</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id options'>options</span><span class='period'>.</span><span class='id quiet?'>quiet?</span>
+  <span class='const'>Output</span><span class='period'>.</span><span class='id silent!'>silent!</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id options'>options</span><span class='period'>.</span><span class='id silent?'>silent?</span>
 
-  <span class='Output constant id'>Output</span><span class='dot token'>.</span><span class='handler identifier id'>handler</span> <span class='assign token'>=</span> <span class='if if kw'>if</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='options identifier id'>options</span><span class='dot token'>.</span><span class='color? fid id'>color?</span>
-                     <span class='Output constant id'>Output</span><span class='colon2 op'>::</span><span class='Terminal constant id'>Terminal</span><span class='colon2 op'>::</span><span class='Color constant id'>Color</span>
-                   <span class='else else kw'>else</span>
-                     <span class='Output constant id'>Output</span><span class='colon2 op'>::</span><span class='Terminal constant id'>Terminal</span><span class='colon2 op'>::</span><span class='Raw constant id'>Raw</span>
-                   <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='const'>Output</span><span class='period'>.</span><span class='id handler'>handler</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id options'>options</span><span class='period'>.</span><span class='id color?'>color?</span>
+                     <span class='const'>Output</span><span class='op'>::</span><span class='const'>Terminal</span><span class='op'>::</span><span class='const'>Color</span>
+                   <span class='kw'>else</span>
+                     <span class='const'>Output</span><span class='op'>::</span><span class='const'>Terminal</span><span class='op'>::</span><span class='const'>Raw</span>
+                   <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1600,9 +1679,9 @@ and indentation increased.</p>
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 12 15:43:01 2011 by 
+  Generated on Sat Oct  1 17:33:40 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.0 (ruby-1.8.7).
+  0.7.2 (ruby-1.9.2).
 </div>
 
   </body>

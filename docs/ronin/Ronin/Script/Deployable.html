@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Module: Ronin::Script::Deployable
   
@@ -421,11 +421,10 @@ deployed.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/deployable.rb', line 177</span>
 
-<span class='def def kw'>def</span> <span class='deploy identifier id'>deploy</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='@deploy_blocks ivar id'>@deploy_blocks</span> <span class='lshft op'>&lt;&lt;</span> <span class='block identifier id'>block</span>
-  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id deploy'>deploy</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@deploy_blocks</span> <span class='op'>&lt;&lt;</span> <span class='id block'>block</span>
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -531,22 +530,21 @@ after a successful deploy.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/deployable.rb', line 86</span>
 
-<span class='def def kw'>def</span> <span class='deploy! fid id'>deploy!</span>
-  <span class='test! fid id'>test!</span>
+<span class='kw'>def</span> <span class='id deploy!'>deploy!</span>
+  <span class='id test!'>test!</span>
 
-  <span class='print_info identifier id'>print_info</span> <span class='dstring node'>&quot;Deploying #{script_type} #{self} ...&quot;</span>
+  <span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Deploying </span><span class='embexpr_beg'>#{</span><span class='id script_type'>script_type</span><span class='rbrace'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='rbrace'>}</span><span class='tstring_content'> ...</span><span class='tstring_end'>&quot;</span></span>
 
-  <span class='@deployed ivar id'>@deployed</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
-  <span class='@deploy_blocks ivar id'>@deploy_blocks</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='block identifier id'>block</span><span class='bitor op'>|</span> <span class='block identifier id'>block</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-  <span class='@deployed ivar id'>@deployed</span> <span class='assign token'>=</span> <span class='true true kw'>true</span>
-  <span class='@evacuated ivar id'>@evacuated</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
+  <span class='ivar'>@deployed</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='ivar'>@deploy_blocks</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id block'>block</span><span class='op'>|</span> <span class='id block'>block</span><span class='period'>.</span><span class='id call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='ivar'>@deployed</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='ivar'>@evacuated</span> <span class='op'>=</span> <span class='kw'>false</span>
 
-  <span class='print_info identifier id'>print_info</span> <span class='dstring node'>&quot;#{script_type} #{self} deployed!&quot;</span>
+  <span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id script_type'>script_type</span><span class='rbrace'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='rbrace'>}</span><span class='tstring_content'> deployed!</span><span class='tstring_end'>&quot;</span></span>
 
-  <span class='yield yield kw'>yield</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
-  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>yield</span> <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -613,10 +611,9 @@ after a successful deploy.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/deployable.rb', line 158</span>
 
-<span class='def def kw'>def</span> <span class='deploy_failed! fid id'>deploy_failed!</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='rparen token'>)</span>
-  <span class='raise identifier id'>raise</span><span class='lparen token'>(</span><span class='DeployFailed constant id'>DeployFailed</span><span class='comma token'>,</span><span class='message identifier id'>message</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id deploy_failed!'>deploy_failed!</span><span class='lparen'>(</span><span class='id message'>message</span><span class='rparen'>)</span>
+  <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>DeployFailed</span><span class='comma'>,</span><span class='id message'>message</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -683,10 +680,9 @@ after a successful deploy.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/deployable.rb', line 65</span>
 
-<span class='def def kw'>def</span> <span class='deployed? fid id'>deployed?</span>
-  <span class='@deployed ivar id'>@deployed</span> <span class='eq op'>==</span> <span class='true true kw'>true</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id deployed?'>deployed?</span>
+  <span class='ivar'>@deployed</span> <span class='op'>==</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -774,11 +770,10 @@ evacuated.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/deployable.rb', line 197</span>
 
-<span class='def def kw'>def</span> <span class='evacuate identifier id'>evacuate</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='@evacuate_blocks ivar id'>@evacuate_blocks</span><span class='dot token'>.</span><span class='unshift identifier id'>unshift</span><span class='lparen token'>(</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id evacuate'>evacuate</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@evacuate_blocks</span><span class='period'>.</span><span class='id unshift'>unshift</span><span class='lparen'>(</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -881,20 +876,19 @@ evacuated.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/deployable.rb', line 132</span>
 
-<span class='def def kw'>def</span> <span class='evacuate! fid id'>evacuate!</span>
-  <span class='yield yield kw'>yield</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
+<span class='kw'>def</span> <span class='id evacuate!'>evacuate!</span>
+  <span class='kw'>yield</span> <span class='kw'>if</span> <span class='id block_given?'>block_given?</span>
 
-  <span class='print_info identifier id'>print_info</span> <span class='dstring node'>&quot;Evauating #{script_type} #{self} ...&quot;</span>
+  <span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Evauating </span><span class='embexpr_beg'>#{</span><span class='id script_type'>script_type</span><span class='rbrace'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='rbrace'>}</span><span class='tstring_content'> ...</span><span class='tstring_end'>&quot;</span></span>
 
-  <span class='@evacuated ivar id'>@evacuated</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
-  <span class='@evacuate_blocks ivar id'>@evacuate_blocks</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='block identifier id'>block</span><span class='bitor op'>|</span> <span class='block identifier id'>block</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-  <span class='@evacuated ivar id'>@evacuated</span> <span class='assign token'>=</span> <span class='true true kw'>true</span>
-  <span class='@deployed ivar id'>@deployed</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
+  <span class='ivar'>@evacuated</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='ivar'>@evacuate_blocks</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id block'>block</span><span class='op'>|</span> <span class='id block'>block</span><span class='period'>.</span><span class='id call'>call</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='ivar'>@evacuated</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='ivar'>@deployed</span> <span class='op'>=</span> <span class='kw'>false</span>
 
-  <span class='print_info identifier id'>print_info</span> <span class='dstring node'>&quot;#{script_type} #{self} evacuated.&quot;</span>
-  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id script_type'>script_type</span><span class='rbrace'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='rbrace'>}</span><span class='tstring_content'> evacuated.</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -961,10 +955,9 @@ evacuated.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/deployable.rb', line 112</span>
 
-<span class='def def kw'>def</span> <span class='evacuated? fid id'>evacuated?</span>
-  <span class='@evacuated ivar id'>@evacuated</span> <span class='eq op'>==</span> <span class='true true kw'>true</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id evacuated?'>evacuated?</span>
+  <span class='ivar'>@evacuated</span> <span class='op'>==</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1041,16 +1034,15 @@ evacuated.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/deployable.rb', line 45</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='attributes identifier id'>attributes</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='attributes identifier id'>attributes</span><span class='rparen token'>)</span>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id attributes'>attributes</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id attributes'>attributes</span><span class='rparen'>)</span>
 
-  <span class='@deploy_blocks ivar id'>@deploy_blocks</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
-  <span class='@deployed ivar id'>@deployed</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
+  <span class='ivar'>@deploy_blocks</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@deployed</span> <span class='op'>=</span> <span class='kw'>false</span>
 
-  <span class='@evacuate_blocks ivar id'>@evacuate_blocks</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
-  <span class='@evacuated ivar id'>@evacuated</span> <span class='assign token'>=</span> <span class='false false kw'>false</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='ivar'>@evacuate_blocks</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@evacuated</span> <span class='op'>=</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1061,9 +1053,9 @@ evacuated.</p>
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 12 15:43:40 2011 by 
+  Generated on Sat Oct  1 17:33:45 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.0 (ruby-1.8.7).
+  0.7.2 (ruby-1.9.2).
 </div>
 
   </body>

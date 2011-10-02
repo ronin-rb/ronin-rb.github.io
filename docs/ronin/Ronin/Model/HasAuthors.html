@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Module: Ronin::Model::HasAuthors
   
@@ -76,9 +76,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/ronin/model/has_authors/has_authors.rb<span class="defines">,<br />
-  lib/ronin/model/has_authors/class_methods.rb</span>
-</dd>
+    <dd class="r2 last">lib/ronin/model/has_authors.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -96,7 +94,7 @@
 <p class="children">
    
     
-      <strong class="modules">Modules:</strong> <span class='object_link'><a href="HasAuthors/ClassMethods.html" title="Ronin::Model::HasAuthors::ClassMethods (module)">ClassMethods</a></span>
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="HasAuthors/ClassMethods.html" title="Ronin::Model::HasAuthors::ClassMethods (module)">ClassMethods</a></span>, <span class='object_link'><a href="HasAuthors/InstanceMethods.html" title="Ronin::Model::HasAuthors::InstanceMethods (module)">InstanceMethods</a></span>
     
    
     
@@ -132,37 +130,6 @@
 
   
     <span class="summary_desc"><div class='inline'><p>Adds the <code>authors</code> relationship and <span class='object_link'><a href="HasAuthors/ClassMethods.html" title="Ronin::Model::HasAuthors::ClassMethods (module)">ClassMethods</a></span> to the model.</p>
-</div></span>
-  
-</li>
-
-      
-    </ul>
-  
-    <h2>
-      Instance Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
-    </h2>
-
-    <ul class="summary">
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#author-instance_method" title="#author (instance method)">- (Object) <strong>author</strong>(attributes) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Adds a new author to the resource.</p>
 </div></span>
   
 </li>
@@ -218,6 +185,7 @@
       <pre class="lines">
 
 
+37
 38
 39
 40
@@ -229,101 +197,24 @@
 46
 47
 48
-49
-50</pre>
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/has_authors/has_authors.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/has_authors.rb', line 37</span>
 
-<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='included identifier id'>included</span><span class='lparen token'>(</span><span class='base identifier id'>base</span><span class='rparen token'>)</span>
-  <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='symbol val'>:include</span><span class='comma token'>,</span> <span class='Model constant id'>Model</span>
-  <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='symbol val'>:extend</span><span class='comma token'>,</span> <span class='ClassMethods constant id'>ClassMethods</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
+  <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>Model</span><span class='comma'>,</span> <span class='const'>InstanceMethods</span>
+  <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:extend</span><span class='comma'>,</span> <span class='const'>ClassMethods</span>
 
-  <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='module_eval identifier id'>module_eval</span> <span class='do do kw'>do</span>
-    <span class='comment val'># The authors associated with the model.</span>
-    <span class='has identifier id'>has</span> <span class='integer val'>0</span><span class='dot2 op'>..</span><span class='n identifier id'>n</span><span class='comma token'>,</span> <span class='symbol val'>:authors</span><span class='comma token'>,</span> <span class='Ronin constant id'>Ronin</span><span class='colon2 op'>::</span><span class='Author constant id'>Author</span><span class='comma token'>,</span> <span class='symbol val'>:through</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='DataMapper constant id'>DataMapper</span><span class='colon2 op'>::</span><span class='Resource constant id'>Resource</span>
+  <span class='id base'>base</span><span class='period'>.</span><span class='id module_eval'>module_eval</span> <span class='kw'>do</span>
+    <span class='comment'># The authors associated with the model.
+</span>    <span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='symbol'>:authors</span><span class='comma'>,</span> <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>Author</span><span class='comma'>,</span> <span class='symbol'>:through</span> <span class='op'>=&gt;</span> <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Resource</span>
 
-    <span class='Ronin constant id'>Ronin</span><span class='colon2 op'>::</span><span class='Author constant id'>Author</span><span class='dot token'>.</span><span class='has identifier id'>has</span> <span class='integer val'>0</span><span class='dot2 op'>..</span><span class='n identifier id'>n</span><span class='comma token'>,</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='relationship_name identifier id'>relationship_name</span><span class='comma token'>,</span>
-                            <span class='symbol val'>:through</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='DataMapper constant id'>DataMapper</span><span class='colon2 op'>::</span><span class='Resource constant id'>Resource</span><span class='comma token'>,</span>
-                            <span class='symbol val'>:model</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='self self kw'>self</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
-
-  <div id="instance_method_details" class="method_details_list">
-    <h2>Instance Method Details</h2>
-    
-    
-      <div class="method_details first">
-  <p class="signature first" id="author-instance_method">
-  
-    - (<tt>Object</tt>) <strong>author</strong>(attributes) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>Adds a new author to the resource.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-  <div class="examples">
-    <h3>Examples:</h3>
-    
-      <h4><div class='inline'>
-</div></h4>
-      <pre class="example code"><span class='author identifier id'>author</span> <span class='symbol val'>:name</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'Anonymous'</span><span class='comma token'>,</span>
-       <span class='symbol val'>:email</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'anon@example.com'</span><span class='comma token'>,</span>
-       <span class='symbol val'>:organization</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'Anonymous LLC'</span>
-</pre>
-    
-  </div>
-<h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>attributes</span>
-      
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>Additional attributes to create the new author.</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-65
-66
-67</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/has_authors/has_authors.rb', line 65</span>
-
-<span class='def def kw'>def</span> <span class='author identifier id'>author</span><span class='lparen token'>(</span><span class='attributes identifier id'>attributes</span><span class='rparen token'>)</span>
-  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='authors identifier id'>authors</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='attributes identifier id'>attributes</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+    <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>Author</span><span class='period'>.</span><span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id relationship_name'>relationship_name</span><span class='comma'>,</span>
+                            <span class='symbol'>:through</span> <span class='op'>=&gt;</span> <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Resource</span><span class='comma'>,</span>
+                            <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -334,9 +225,9 @@
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 12 15:44:13 2011 by 
+  Generated on Sat Oct  1 17:33:45 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.0 (ruby-1.8.7).
+  0.7.2 (ruby-1.9.2).
 </div>
 
   </body>

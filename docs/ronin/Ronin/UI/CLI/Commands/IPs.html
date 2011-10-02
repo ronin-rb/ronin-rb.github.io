@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Class: Ronin::UI::CLI::Commands::IPs
   
@@ -349,16 +349,15 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/commands/ips.rb', line 67</span>
 
-<span class='def def kw'>def</span> <span class='execute identifier id'>execute</span>
-  <span class='if if kw'>if</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:import</span><span class='rbrack token'>]</span>
-    <span class='import identifier id'>import</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:import</span><span class='rbrack token'>]</span>
-  <span class='elsif elsif kw'>elsif</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:lookup</span><span class='rbrack token'>]</span>
-    <span class='lookup identifier id'>lookup</span> <span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:lookup</span><span class='rbrack token'>]</span>
-  <span class='elsif elsif kw'>elsif</span> <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='list? fid id'>list?</span>
-    <span class='super super kw'>super</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id execute'>execute</span>
+  <span class='kw'>if</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:import</span><span class='rbracket'>]</span>
+    <span class='id import'>import</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:import</span><span class='rbracket'>]</span>
+  <span class='kw'>elsif</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:lookup</span><span class='rbracket'>]</span>
+    <span class='id lookup'>lookup</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:lookup</span><span class='rbracket'>]</span>
+  <span class='kw'>elsif</span> <span class='id options'>options</span><span class='period'>.</span><span class='id list?'>list?</span>
+    <span class='kw'>super</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -439,22 +438,21 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/commands/ips.rb', line 105</span>
 
-<span class='def def kw'>def</span> <span class='import identifier id'>import</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='rparen token'>)</span>
-  <span class='File constant id'>File</span><span class='dot token'>.</span><span class='open identifier id'>open</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:import</span><span class='rbrack token'>]</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='file identifier id'>file</span><span class='bitor op'>|</span>
-    <span class='file identifier id'>file</span><span class='dot token'>.</span><span class='each_line identifier id'>each_line</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='line identifier id'>line</span><span class='bitor op'>|</span>
-      <span class='IPAddr constant id'>IPAddr</span><span class='dot token'>.</span><span class='extract identifier id'>extract</span><span class='lparen token'>(</span><span class='line identifier id'>line</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='match identifier id'>match</span><span class='bitor op'>|</span>
-        <span class='ip identifier id'>ip</span> <span class='assign token'>=</span> <span class='IPAddress constant id'>IPAddress</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='symbol val'>:address</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='match identifier id'>match</span><span class='rparen token'>)</span>
+<span class='kw'>def</span> <span class='id import'>import</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span>
+  <span class='const'>File</span><span class='period'>.</span><span class='id open'>open</span><span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:import</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id file'>file</span><span class='op'>|</span>
+    <span class='id file'>file</span><span class='period'>.</span><span class='id each_line'>each_line</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id line'>line</span><span class='op'>|</span>
+      <span class='const'>IPAddr</span><span class='period'>.</span><span class='id extract'>extract</span><span class='lparen'>(</span><span class='id line'>line</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id match'>match</span><span class='op'>|</span>
+        <span class='id ip'>ip</span> <span class='op'>=</span> <span class='const'>IPAddress</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='symbol'>:address</span> <span class='op'>=&gt;</span> <span class='id match'>match</span><span class='rparen'>)</span>
 
-        <span class='if if kw'>if</span> <span class='ip identifier id'>ip</span><span class='dot token'>.</span><span class='save identifier id'>save</span>
-          <span class='print_info identifier id'>print_info</span> <span class='dstring node'>&quot;Imported #{ip}&quot;</span>
-        <span class='else else kw'>else</span>
-          <span class='print_error identifier id'>print_error</span> <span class='dstring node'>&quot;Unable to import #{match.dump}.&quot;</span>
-        <span class='end end kw'>end</span>
-      <span class='end end kw'>end</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+        <span class='kw'>if</span> <span class='id ip'>ip</span><span class='period'>.</span><span class='id save'>save</span>
+          <span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Imported </span><span class='embexpr_beg'>#{</span><span class='id ip'>ip</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+        <span class='kw'>else</span>
+          <span class='id print_error'>print_error</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Unable to import </span><span class='embexpr_beg'>#{</span><span class='id match'>match</span><span class='period'>.</span><span class='id dump'>dump</span><span class='rbrace'>}</span><span class='tstring_content'>.</span><span class='tstring_end'>&quot;</span></span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -529,16 +527,15 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/commands/ips.rb', line 87</span>
 
-<span class='def def kw'>def</span> <span class='lookup identifier id'>lookup</span><span class='lparen token'>(</span><span class='host identifier id'>host</span><span class='rparen token'>)</span>
-  <span class='print_info identifier id'>print_info</span> <span class='dstring node'>&quot;Looking up #{host} ...&quot;</span>
+<span class='kw'>def</span> <span class='id lookup'>lookup</span><span class='lparen'>(</span><span class='id host'>host</span><span class='rparen'>)</span>
+  <span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Looking up </span><span class='embexpr_beg'>#{</span><span class='id host'>host</span><span class='rbrace'>}</span><span class='tstring_content'> ...</span><span class='tstring_end'>&quot;</span></span>
 
-  <span class='IPAddress constant id'>IPAddress</span><span class='dot token'>.</span><span class='lookup identifier id'>lookup</span><span class='lparen token'>(</span><span class='host identifier id'>host</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='ip identifier id'>ip</span><span class='bitor op'>|</span>
-    <span class='print_info identifier id'>print_info</span> <span class='dstring node'>&quot;  #{ip}&quot;</span>
-  <span class='end end kw'>end</span>
+  <span class='const'>IPAddress</span><span class='period'>.</span><span class='id lookup'>lookup</span><span class='lparen'>(</span><span class='id host'>host</span><span class='rparen'>)</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id ip'>ip</span><span class='op'>|</span>
+    <span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>  </span><span class='embexpr_beg'>#{</span><span class='id ip'>ip</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
 
-  <span class='print_info identifier id'>print_info</span> <span class='dstring node'>&quot;Looked up #{host}&quot;</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='id print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Looked up </span><span class='embexpr_beg'>#{</span><span class='id host'>host</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -639,42 +636,41 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/commands/ips.rb', line 129</span>
 
-<span class='def def kw'>def</span> <span class='print_resource identifier id'>print_resource</span><span class='lparen token'>(</span><span class='ip identifier id'>ip</span><span class='rparen token'>)</span>
-  <span class='return return kw'>return</span> <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='ip identifier id'>ip</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='verbose? fid id'>verbose?</span>
+<span class='kw'>def</span> <span class='id print_resource'>print_resource</span><span class='lparen'>(</span><span class='id ip'>ip</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>super</span><span class='lparen'>(</span><span class='id ip'>ip</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id options'>options</span><span class='period'>.</span><span class='id verbose?'>verbose?</span>
 
-  <span class='print_title identifier id'>print_title</span> <span class='ip identifier id'>ip</span><span class='dot token'>.</span><span class='address identifier id'>address</span>
+  <span class='id print_title'>print_title</span> <span class='id ip'>ip</span><span class='period'>.</span><span class='id address'>address</span>
 
-  <span class='indent identifier id'>indent</span> <span class='do do kw'>do</span>
-    <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='org identifier id'>org</span> <span class='assign token'>=</span> <span class='ip identifier id'>ip</span><span class='dot token'>.</span><span class='organization identifier id'>organization</span><span class='rparen token'>)</span>
-      <span class='print_hash identifier id'>print_hash</span><span class='lparen token'>(</span><span class='string val'>'Organization'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='org identifier id'>org</span><span class='rparen token'>)</span>
-    <span class='end end kw'>end</span>
+  <span class='id indent'>indent</span> <span class='kw'>do</span>
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id org'>org</span> <span class='op'>=</span> <span class='id ip'>ip</span><span class='period'>.</span><span class='id organization'>organization</span><span class='rparen'>)</span>
+      <span class='id print_hash'>print_hash</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Organization</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id org'>org</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
 
-    <span class='if if kw'>if</span> <span class='lparen token'>(</span><span class='last_scanned_at identifier id'>last_scanned_at</span> <span class='assign token'>=</span> <span class='ip identifier id'>ip</span><span class='dot token'>.</span><span class='last_scanned_at identifier id'>last_scanned_at</span><span class='rparen token'>)</span>
-      <span class='print_hash identifier id'>print_hash</span><span class='lparen token'>(</span><span class='string val'>'Last Scanned'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='last_scanned_at identifier id'>last_scanned_at</span><span class='rparen token'>)</span>
-    <span class='end end kw'>end</span>
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id last_scanned_at'>last_scanned_at</span> <span class='op'>=</span> <span class='id ip'>ip</span><span class='period'>.</span><span class='id last_scanned_at'>last_scanned_at</span><span class='rparen'>)</span>
+      <span class='id print_hash'>print_hash</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Last Scanned</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id last_scanned_at'>last_scanned_at</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
 
-    <span class='unless unless kw'>unless</span> <span class='ip identifier id'>ip</span><span class='dot token'>.</span><span class='mac_addresses identifier id'>mac_addresses</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
-      <span class='print_array identifier id'>print_array</span> <span class='ip identifier id'>ip</span><span class='dot token'>.</span><span class='mac_addresses identifier id'>mac_addresses</span><span class='comma token'>,</span> <span class='symbol val'>:title</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'MAC Addresses'</span>
-    <span class='end end kw'>end</span>
+    <span class='kw'>unless</span> <span class='id ip'>ip</span><span class='period'>.</span><span class='id mac_addresses'>mac_addresses</span><span class='period'>.</span><span class='id empty?'>empty?</span>
+      <span class='id print_array'>print_array</span> <span class='id ip'>ip</span><span class='period'>.</span><span class='id mac_addresses'>mac_addresses</span><span class='comma'>,</span> <span class='symbol'>:title</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>MAC Addresses</span><span class='tstring_end'>'</span></span>
+    <span class='kw'>end</span>
 
-    <span class='unless unless kw'>unless</span> <span class='ip identifier id'>ip</span><span class='dot token'>.</span><span class='host_names identifier id'>host_names</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
-      <span class='print_array identifier id'>print_array</span> <span class='ip identifier id'>ip</span><span class='dot token'>.</span><span class='host_names identifier id'>host_names</span><span class='comma token'>,</span> <span class='symbol val'>:title</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'Hostnames'</span>
-    <span class='end end kw'>end</span>
+    <span class='kw'>unless</span> <span class='id ip'>ip</span><span class='period'>.</span><span class='id host_names'>host_names</span><span class='period'>.</span><span class='id empty?'>empty?</span>
+      <span class='id print_array'>print_array</span> <span class='id ip'>ip</span><span class='period'>.</span><span class='id host_names'>host_names</span><span class='comma'>,</span> <span class='symbol'>:title</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Hostnames</span><span class='tstring_end'>'</span></span>
+    <span class='kw'>end</span>
 
-    <span class='unless unless kw'>unless</span> <span class='ip identifier id'>ip</span><span class='dot token'>.</span><span class='open_ports identifier id'>open_ports</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
-      <span class='print_section identifier id'>print_section</span> <span class='string val'>'Open Ports'</span> <span class='do do kw'>do</span>
-        <span class='ip identifier id'>ip</span><span class='dot token'>.</span><span class='open_ports identifier id'>open_ports</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='port identifier id'>port</span><span class='bitor op'>|</span>
-          <span class='if if kw'>if</span> <span class='port identifier id'>port</span><span class='dot token'>.</span><span class='service identifier id'>service</span>
-            <span class='puts identifier id'>puts</span> <span class='dstring node'>&quot;#{port}\t#{port.service}&quot;</span>
-          <span class='else else kw'>else</span>
-            <span class='puts identifier id'>puts</span> <span class='port identifier id'>port</span>
-          <span class='end end kw'>end</span>
-        <span class='end end kw'>end</span>
-      <span class='end end kw'>end</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+    <span class='kw'>unless</span> <span class='id ip'>ip</span><span class='period'>.</span><span class='id open_ports'>open_ports</span><span class='period'>.</span><span class='id empty?'>empty?</span>
+      <span class='id print_section'>print_section</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Open Ports</span><span class='tstring_end'>'</span></span> <span class='kw'>do</span>
+        <span class='id ip'>ip</span><span class='period'>.</span><span class='id open_ports'>open_ports</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id port'>port</span><span class='op'>|</span>
+          <span class='kw'>if</span> <span class='id port'>port</span><span class='period'>.</span><span class='id service'>service</span>
+            <span class='id puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id port'>port</span><span class='rbrace'>}</span><span class='tstring_content'>\t</span><span class='embexpr_beg'>#{</span><span class='id port'>port</span><span class='period'>.</span><span class='id service'>service</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+          <span class='kw'>else</span>
+            <span class='id puts'>puts</span> <span class='id port'>port</span>
+          <span class='kw'>end</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -685,9 +681,9 @@
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 12 15:43:29 2011 by 
+  Generated on Sat Oct  1 17:33:52 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.0 (ruby-1.8.7).
+  0.7.2 (ruby-1.9.2).
 </div>
 
   </body>

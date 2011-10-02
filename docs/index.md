@@ -26,7 +26,7 @@ title: Documentation
 ## API
 
 * [ronin-support](ronin-support/) - 0.2.0
-* [ronin](ronin/) - 1.1.0
+* [ronin](ronin/) - 1.2.0
   * Database Relational Diagram
     [[png]](ronin/relational_diagram.png)
     [[svg]](ronin/relational_diagram.svg)

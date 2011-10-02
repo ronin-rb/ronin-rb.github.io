@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Module: Ronin::Model::HasLicense
   
@@ -76,9 +76,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/ronin/model/has_license/has_license.rb<span class="defines">,<br />
-  lib/ronin/model/has_license/class_methods.rb</span>
-</dd>
+    <dd class="r2 last">lib/ronin/model/has_license.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -96,7 +94,7 @@
 <p class="children">
    
     
-      <strong class="modules">Modules:</strong> <span class='object_link'><a href="HasLicense/ClassMethods.html" title="Ronin::Model::HasLicense::ClassMethods (module)">ClassMethods</a></span>
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="HasLicense/ClassMethods.html" title="Ronin::Model::HasLicense::ClassMethods (module)">ClassMethods</a></span>, <span class='object_link'><a href="HasLicense/InstanceMethods.html" title="Ronin::Model::HasLicense::InstanceMethods (module)">InstanceMethods</a></span>
     
    
     
@@ -132,37 +130,6 @@
 
   
     <span class="summary_desc"><div class='inline'><p>Adds the <code>license</code> relationship and <span class='object_link'><a href="HasLicense/ClassMethods.html" title="Ronin::Model::HasLicense::ClassMethods (module)">ClassMethods</a></span> to the model.</p>
-</div></span>
-  
-</li>
-
-      
-    </ul>
-  
-    <h2>
-      Instance Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
-    </h2>
-
-    <ul class="summary">
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#license%21-instance_method" title="#license! (instance method)">- (License) <strong>license!</strong>(name) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Sets the license of the model.</p>
 </div></span>
   
 </li>
@@ -218,6 +185,7 @@
       <pre class="lines">
 
 
+37
 38
 39
 40
@@ -227,129 +195,22 @@
 44
 45
 46
-47
-48</pre>
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/has_license/has_license.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/has_license.rb', line 37</span>
 
-<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='included identifier id'>included</span><span class='lparen token'>(</span><span class='base identifier id'>base</span><span class='rparen token'>)</span>
-  <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='symbol val'>:include</span><span class='comma token'>,</span> <span class='Model constant id'>Model</span>
-  <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='send identifier id'>send</span> <span class='symbol val'>:extend</span><span class='comma token'>,</span> <span class='ClassMethods constant id'>ClassMethods</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
+  <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>Model</span><span class='comma'>,</span> <span class='const'>InstanceMethods</span>
+  <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:extend</span><span class='comma'>,</span> <span class='const'>ClassMethods</span>
 
-  <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='module_eval identifier id'>module_eval</span> <span class='do do kw'>do</span>
-    <span class='comment val'># The license</span>
-    <span class='belongs_to identifier id'>belongs_to</span> <span class='symbol val'>:license</span><span class='comma token'>,</span> <span class='Ronin constant id'>Ronin</span><span class='colon2 op'>::</span><span class='License constant id'>License</span><span class='comma token'>,</span> <span class='symbol val'>:required</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='false false kw'>false</span>
+  <span class='id base'>base</span><span class='period'>.</span><span class='id module_eval'>module_eval</span> <span class='kw'>do</span>
+    <span class='comment'># The license
+</span>    <span class='id belongs_to'>belongs_to</span> <span class='symbol'>:license</span><span class='comma'>,</span> <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>License</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
 
-    <span class='Ronin constant id'>Ronin</span><span class='colon2 op'>::</span><span class='License constant id'>License</span><span class='dot token'>.</span><span class='has identifier id'>has</span> <span class='integer val'>0</span><span class='dot2 op'>..</span><span class='n identifier id'>n</span><span class='comma token'>,</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='relationship_name identifier id'>relationship_name</span><span class='comma token'>,</span> <span class='symbol val'>:model</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='self self kw'>self</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
-
-  <div id="instance_method_details" class="method_details_list">
-    <h2>Instance Method Details</h2>
-    
-    
-      <div class="method_details first">
-  <p class="signature first" id="license!-instance_method">
-  
-    - (<tt><span class='object_link'><a href="../License.html" title="Ronin::License (class)">License</a></span></tt>) <strong>license!</strong>(name) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>Sets the license of the model.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-  <div class="examples">
-    <h3>Examples:</h3>
-    
-      <h4><div class='inline'>
-</div></h4>
-      <pre class="example code"><span class='license! fid id'>license!</span> <span class='symbol val'>:mit</span>
-</pre>
-    
-  </div>
-<h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>name</span>
-      
-      
-        <span class='type'>(<tt>Symbol</tt>, <tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The name of the license to use.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="../License.html" title="Ronin::License (class)">License</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The new license of the model.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Since:</h3>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-66
-67
-68</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/has_license/has_license.rb', line 66</span>
-
-<span class='def def kw'>def</span> <span class='license! fid id'>license!</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='license identifier id'>license</span> <span class='assign token'>=</span> <span class='Ronin constant id'>Ronin</span><span class='colon2 op'>::</span><span class='License constant id'>License</span><span class='dot token'>.</span><span class='predefined_resource identifier id'>predefined_resource</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+    <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>License</span><span class='period'>.</span><span class='id has'>has</span> <span class='int'>0</span><span class='op'>..</span><span class='id n'>n</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id relationship_name'>relationship_name</span><span class='comma'>,</span> <span class='symbol'>:model</span> <span class='op'>=&gt;</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -360,9 +221,9 @@
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 12 15:44:49 2011 by 
+  Generated on Sat Oct  1 17:33:45 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.0 (ruby-1.8.7).
+  0.7.2 (ruby-1.9.2).
 </div>
 
   </body>
