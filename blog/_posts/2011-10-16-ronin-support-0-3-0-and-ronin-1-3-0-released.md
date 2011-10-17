@@ -35,7 +35,7 @@ Some common and useful [Regular Expressions][5] were added to ronin-support:
 ## Bruteforcing and Fuzzing
 
 [String.generate][6] was added to assist in enumerating over every possible
-String, based on a format template. This method is espically useful for
+String, based on a format template. This method is especially useful for
 bruteforcing passwords or directories. The following code enumerates through
 every password starting with five alpha characters and ending in one to three
 numeric characters:
@@ -47,7 +47,7 @@ end
 {% endhighlight %}
 
 [String#fuzz][7] was added to assist in fuzzing Strings. This method will find
-all occurences of a sub-string or regular expression, and replace each one
+all occurrences of a sub-string or regular expression, and replace each one
 with one or more substitutions. The following code replaces every occurrence of
 a number with 1 to 100 `9` characters:
 
