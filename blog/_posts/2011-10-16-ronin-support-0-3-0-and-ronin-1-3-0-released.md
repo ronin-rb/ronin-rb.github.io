@@ -4,13 +4,13 @@ title: ronin-support 0.3.0 and ronin 1.3.0 released
 author: postmodern
 ---
 
-After roughly three months new versions of [ronin-support][1] and [ronin][2]
+After roughly three months, new versions of [ronin-support][1] and [ronin][2]
 have been released!
 
 ## Easier Text Processing
 
-[File.each_line][3] and [File.each_row][4] were added, to help with processing
-huge text-files:
+[File.each_line][3] and [File.each_row][4] were added to help with processing
+large text-files:
 
 {% highlight ruby %}
 File.each_line("wordlist.txt") do |word| 
@@ -35,10 +35,10 @@ Some common and useful [Regular Expressions][5] were added to ronin-support:
 ## Bruteforcing and Fuzzing
 
 [String.generate][6] was added to assist in enumerating over every possible
-String based on a template. This method is espically useful for bruteforcing
-passwords or directories. The following code enumerates through every password
-starting with five alpha characters and ending in one to three numeric
-characters:
+String, based on a format template. This method is espically useful for
+bruteforcing passwords or directories. The following code enumerates through
+every password starting with five alpha characters and ending in one to three
+numeric characters:
 
 {% highlight ruby %}
 String.generate([:alpha, 5], [:numeric, 1..3]) do |password|
@@ -93,7 +93,7 @@ url.get(:headers => {:referer => "><script>alert('XSS');</script>"})
 
 [Ronin::UI::Output][9] was moved out of ronin and down into ronin-support.
 Now developers can use `print_info`, `print_warning` `print_error` methods
-in [ronin-support][1]:
+from [ronin-support][1]:
 
 {% highlight ruby %}
 require 'ronin/ui/output'
