@@ -175,7 +175,7 @@ IPAddress.import("ips.txt") { |ip| puts ip }
 The Ronin Console received some significant improvements in 1.3.0.
 
 Inline Commands were added to the Ronin Console, allowing you to quickly execute
-system commands:
+system commands. Simply prefix the command to run with a `!`:
 
     >> "olleh".reverse
     # => "hello"
