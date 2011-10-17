@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Module: Ronin::Network
   
@@ -73,7 +73,7 @@
   
     <dt class="r1 last">Defined in:</dt>
     <dd class="r1 last">lib/ronin/network/network.rb<span class="defines">,<br />
-  lib/ronin/network/ssl.rb,<br /> lib/ronin/network/pop3.rb,<br /> lib/ronin/network/imap.rb,<br /> lib/ronin/network/telnet.rb,<br /> lib/ronin/network/smtp/smtp.rb,<br /> lib/ronin/network/http/http.rb,<br /> lib/ronin/network/http/proxy.rb,<br /> lib/ronin/network/smtp/email.rb,<br /> lib/ronin/network/http/exceptions/unknown_request.rb</span>
+  lib/ronin/network/ssl.rb,<br /> lib/ronin/network/pop3.rb,<br /> lib/ronin/network/imap.rb,<br /> lib/ronin/network/telnet.rb,<br /> lib/ronin/network/smtp/smtp.rb,<br /> lib/ronin/network/http/http.rb,<br /> lib/ronin/network/smtp/email.rb,<br /> lib/ronin/network/mixins/tcp.rb,<br /> lib/ronin/network/mixins/udp.rb,<br /> lib/ronin/network/http/proxy.rb,<br /> lib/ronin/network/mixins/http.rb,<br /> lib/ronin/network/mixins/pop3.rb,<br /> lib/ronin/network/mixins/smtp.rb,<br /> lib/ronin/network/mixins/imap.rb,<br /> lib/ronin/network/mixins/esmtp.rb,<br /> lib/ronin/network/mixins/telnet.rb,<br /> lib/ronin/network/http/exceptions/unknown_request.rb</span>
 </dd>
   
 </dl>
@@ -92,7 +92,7 @@
 <p class="children">
    
     
-      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Network/HTTP.html" title="Ronin::Network::HTTP (module)">HTTP</a></span>, <span class='object_link'><a href="Network/IMAP.html" title="Ronin::Network::IMAP (module)">IMAP</a></span>, <span class='object_link'><a href="Network/POP3.html" title="Ronin::Network::POP3 (module)">POP3</a></span>, <span class='object_link'><a href="Network/SMTP.html" title="Ronin::Network::SMTP (module)">SMTP</a></span>, <span class='object_link'><a href="Network/SSL.html" title="Ronin::Network::SSL (module)">SSL</a></span>, <span class='object_link'><a href="Network/Telnet.html" title="Ronin::Network::Telnet (module)">Telnet</a></span>
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Network/HTTP.html" title="Ronin::Network::HTTP (module)">HTTP</a></span>, <span class='object_link'><a href="Network/IMAP.html" title="Ronin::Network::IMAP (module)">IMAP</a></span>, <span class='object_link'><a href="Network/Mixins.html" title="Ronin::Network::Mixins (module)">Mixins</a></span>, <span class='object_link'><a href="Network/POP3.html" title="Ronin::Network::POP3 (module)">POP3</a></span>, <span class='object_link'><a href="Network/SMTP.html" title="Ronin::Network::SMTP (module)">SMTP</a></span>, <span class='object_link'><a href="Network/SSL.html" title="Ronin::Network::SSL (module)">SSL</a></span>, <span class='object_link'><a href="Network/Telnet.html" title="Ronin::Network::Telnet (module)">Telnet</a></span>
     
    
     
@@ -106,8 +106,7 @@
         <dt id="IP_URL-constant" class="">IP_URL =
           
         </dt>
-        <dd><pre class="code"><span class='URI constant id'>URI</span><span class='dot token'>.</span><span class='parse identifier id'>parse</span><span class='lparen token'>(</span><span class='string val'>'http://checkip.dyndns.org/'</span><span class='rparen token'>)</span>
-</pre></dd>
+        <dd><pre class="code"><span class='const'>URI</span><span class='period'>.</span><span class='id parse'>parse</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>http://checkip.dyndns.org/</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre></dd>
       
     </dl>
   
@@ -201,10 +200,9 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/network/network.rb', line 40</span>
 
-<span class='def def kw'>def</span> <span class='Network constant id'>Network</span><span class='dot token'>.</span><span class='ip identifier id'>ip</span>
-  <span class='IPAddr constant id'>IPAddr</span><span class='dot token'>.</span><span class='extract identifier id'>extract</span><span class='lparen token'>(</span><span class='Net constant id'>Net</span><span class='colon2 op'>::</span><span class='HTTP constant id'>HTTP</span><span class='dot token'>.</span><span class='get identifier id'>get</span><span class='lparen token'>(</span><span class='IP_URL constant id'>IP_URL</span><span class='rparen token'>)</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='const'>Network</span><span class='period'>.</span><span class='id ip'>ip</span>
+  <span class='const'>IPAddr</span><span class='period'>.</span><span class='id extract'>extract</span><span class='lparen'>(</span><span class='const'>Net</span><span class='op'>::</span><span class='const'>HTTP</span><span class='period'>.</span><span class='id get'>get</span><span class='lparen'>(</span><span class='const'>IP_URL</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id first'>first</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -215,9 +213,9 @@
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 12 15:39:39 2011 by 
+  Generated on Sun Oct 16 23:40:55 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.0 (ruby-1.8.7).
+  0.7.0 (ruby-1.9.2).
 </div>
 
   </body>

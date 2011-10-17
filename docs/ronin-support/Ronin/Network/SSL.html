@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Module: Ronin::Network::SSL
   
@@ -87,149 +87,83 @@
 <div class="tags">
   
 </div>
-
-
-
-
+  <h2>Constant Summary</h2>
   
-    <h2>
-      Class Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
-    </h2>
-
-    <ul class="summary">
+    <dl class="constants">
       
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#verify-class_method" title="verify (class method)">+ (Integer) <strong>verify</strong>(mode = nil) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  <span class="private note title">Private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>Returns the OpenSSL verify mode.</p>
-</div></span>
-  
-</li>
-
-      
-    </ul>
-  
-
-
-
-  <div id="class_method_details" class="method_details_list">
-    <h2>Class Method Details</h2>
-    
-    
-      <div class="method_details first">
-  <p class="signature first" id="verify-class_method">
-  
-    + (<tt><span class='object_link'><a href="../../Integer.html" title="Integer (class)">Integer</a></span></tt>) <strong>verify</strong>(mode = nil) 
-  
-
-  
-</p><div class="docstring">
+        <dt id="VERIFY-constant" class="">VERIFY =
+          <div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
+  <strong>This constant is part of a private API.</strong> 
+  You should avoid using this constant if possible, as it may be removed or be changed in the future.
 </p>
-<p>Returns the OpenSSL verify mode.</p>
+<p>Maps SSL verify modes to <code>OpenSSL::SSL::VERIFY_*</code> constants.</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>mode</span>
-      
-      
-        <span class='type'>(<tt>Symbol</tt>, <tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>The name of the verify mode.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Returns:</h3>
+  <h3>Returns:</h3>
 <ul class="return">
   
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+        <span class='type'>(<tt>Hash{Symbol =&gt; <span class='object_link'><a href="../../Integer.html" title="Integer (class)">Integer</a></span>}</tt>)</span>
       
       
       
-        &mdash;
-        <div class='inline'><p>The verify mode number used by OpenSSL.</p>
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.3.0</p>
 </div>
       
     </li>
   
 </ul>
 
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-39
-40
-41
-42
-43
-44
-45
-46
-47</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/ssl.rb', line 39</span>
-
-<span class='def def kw'>def</span> <span class='SSL constant id'>SSL</span><span class='dot token'>.</span><span class='verify identifier id'>verify</span><span class='lparen token'>(</span><span class='mode identifier id'>mode</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='verify_mode identifier id'>verify_mode</span> <span class='assign token'>=</span> <span class='string val'>'VERIFY_'</span> <span class='plus op'>+</span> <span class='lparen token'>(</span><span class='mode identifier id'>mode</span> <span class='orop op'>||</span> <span class='symbol val'>:none</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='upcase identifier id'>upcase</span>
-
-  <span class='unless unless kw'>unless</span> <span class='OpenSSL constant id'>OpenSSL</span><span class='colon2 op'>::</span><span class='SSL constant id'>SSL</span><span class='dot token'>.</span><span class='const_defined? fid id'>const_defined?</span><span class='lparen token'>(</span><span class='verify_mode identifier id'>verify_mode</span><span class='rparen token'>)</span>
-    <span class='raise identifier id'>raise</span><span class='lparen token'>(</span><span class='RuntimeError constant id'>RuntimeError</span><span class='comma token'>,</span><span class='dstring node'>&quot;unknown verify mode #{mode}&quot;</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
-
-  <span class='return return kw'>return</span> <span class='OpenSSL constant id'>OpenSSL</span><span class='colon2 op'>::</span><span class='SSL constant id'>SSL</span><span class='dot token'>.</span><span class='const_get identifier id'>const_get</span><span class='lparen token'>(</span><span class='verify_mode identifier id'>verify_mode</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
 </div>
-    
-  </div>
+        </dt>
+        <dd><pre class="code"><span class='const'>Hash</span><span class='period'>.</span><span class='id new'>new</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id hash'>hash</span><span class='comma'>,</span><span class='id key'>key</span><span class='op'>|</span>
+  <span class='id verify_const'>verify_const</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id key'>key</span>
+                   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>VERIFY_</span><span class='embexpr_beg'>#{</span><span class='id key'>key</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id upcase'>upcase</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+                 <span class='kw'>else</span>
+                   <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>VERIFY_NONE</span><span class='tstring_end'>'</span></span>
+                 <span class='kw'>end</span>
+
+  <span class='kw'>unless</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>SSL</span><span class='period'>.</span><span class='id const_defined?'>const_defined?</span><span class='lparen'>(</span><span class='id verify_const'>verify_const</span><span class='rparen'>)</span>
+    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>RuntimeError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown verify mode </span><span class='embexpr_beg'>#{</span><span class='id key'>key</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id hash'>hash</span><span class='lbracket'>[</span><span class='id key'>key</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>SSL</span><span class='period'>.</span><span class='id const_get'>const_get</span><span class='lparen'>(</span><span class='id verify_const'>verify_const</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
 
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 12 15:40:01 2011 by 
+  Generated on Sun Oct 16 23:40:55 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.0 (ruby-1.8.7).
+  0.7.0 (ruby-1.9.2).
 </div>
 
   </body>

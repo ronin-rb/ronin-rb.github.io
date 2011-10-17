@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Class: IPAddr
   
@@ -84,7 +84,7 @@
   
     
       <dt class="r2">Includes:</dt>
-      <dd class="r2">Enumerable</dd>
+      <dd class="r2"><span class='object_link'><a href="Enumerable.html" title="Enumerable (module)">Enumerable</a></span></dd>
       
     
   
@@ -101,10 +101,10 @@
   
     <dl class="constants">
       
-        <dt id="IPV4_REGEXP-constant" class="">IPV4_REGEXP =
+        <dt id="MASKS-constant" class="">MASKS =
           <div class="docstring">
   <div class="discussion">
-    <p>A regular expression for matching IPv4 Addresses.</p>
+    <p>Socket families and IP address masks</p>
 
 
   </div>
@@ -113,46 +113,23 @@
   
 </div>
         </dt>
-        <dd><pre class="code"><span class='regexp val'>/[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}/</span>
-</pre></dd>
-      
-        <dt id="IPV6_REGEXP-constant" class="">IPV6_REGEXP =
-          <div class="docstring">
-  <div class="discussion">
-    <p>A regular expression for matching IPv6 Addresses.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-</div>
-        </dt>
-        <dd><pre class="code"><span class='dregexp node'>/:(:[0-9a-f]{1,4}){1,7}|([0-9a-f]{1,4}::?){1,7}[0-9a-f]{1,4}(:#{IPV4_REGEXP})?/</span>
-</pre></dd>
-      
-        <dt id="REGEXP-constant" class="">REGEXP =
-          <div class="docstring">
-  <div class="discussion">
-    <p>A regular expression for matching IP Addresses.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-</div>
-        </dt>
-        <dd><pre class="code"><span class='dregexp node'>/#{IPV4_REGEXP}|#{IPV6_REGEXP}/</span>
-</pre></dd>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='const'>Socket</span><span class='op'>::</span><span class='const'>AF_INET</span>  <span class='op'>=&gt;</span> <span class='const'>IN4MASK</span><span class='comma'>,</span>
+  <span class='const'>Socket</span><span class='op'>::</span><span class='const'>AF_INET6</span> <span class='op'>=&gt;</span> <span class='const'>IN6MASK</span>
+<span class='rbrace'>}</span></pre></dd>
       
     </dl>
   
 
 
   
+  
+  
+  
 
 
+  
+  
   
 
   
@@ -242,7 +219,7 @@ netmask.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#lookup-instance_method" title="#lookup (instance method)">- (Array&lt;String&gt;) <strong>lookup</strong> </a>
+      <a href="#lookup-instance_method" title="#lookup (instance method)">- (Array&lt;String&gt;) <strong>lookup</strong>(nameserver = nil) </a>
     
 
     
@@ -266,6 +243,15 @@ netmask.</p>
 
 
   
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Enumerable.html" title="Enumerable (module)">Enumerable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Enumerable.html#map_hash-instance_method" title="Enumerable#map_hash (method)">#map_hash</a></span></p>
+
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
@@ -293,24 +279,21 @@ both IPv4 and IPv6 address ranges.</p>
     
       <h4><div class='inline'><p>Enumerate through a CIDR range</p>
 </div></h4>
-      <pre class="example code"><span class='IPAddr constant id'>IPAddr</span><span class='dot token'>.</span><span class='each identifier id'>each</span><span class='lparen token'>(</span><span class='string val'>'10.1.1.1/24'</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='ip identifier id'>ip</span><span class='bitor op'>|</span>
-  <span class='puts identifier id'>puts</span> <span class='ip identifier id'>ip</span>
-<span class='end end kw'>end</span>
-</pre>
+      <pre class="example code"><span class='const'>IPAddr</span><span class='period'>.</span><span class='id each'>each</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>10.1.1.1/24</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id ip'>ip</span><span class='op'>|</span>
+  <span class='id puts'>puts</span> <span class='id ip'>ip</span>
+<span class='kw'>end</span></pre>
     
       <h4><div class='inline'><p>Enumerate through a globbed IP range</p>
 </div></h4>
-      <pre class="example code"><span class='IPAddr constant id'>IPAddr</span><span class='dot token'>.</span><span class='each identifier id'>each</span><span class='lparen token'>(</span><span class='string val'>'10.1.1-5.*'</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='ip identifier id'>ip</span><span class='bitor op'>|</span>
-  <span class='puts identifier id'>puts</span> <span class='ip identifier id'>ip</span>
-<span class='end end kw'>end</span>
-</pre>
+      <pre class="example code"><span class='const'>IPAddr</span><span class='period'>.</span><span class='id each'>each</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>10.1.1-5.*</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id ip'>ip</span><span class='op'>|</span>
+  <span class='id puts'>puts</span> <span class='id ip'>ip</span>
+<span class='kw'>end</span></pre>
     
       <h4><div class='inline'><p>Enumerate through a globbed IPv6 range</p>
 </div></h4>
-      <pre class="example code"><span class='IPAddr constant id'>IPAddr</span><span class='dot token'>.</span><span class='each identifier id'>each</span><span class='lparen token'>(</span><span class='string val'>'::ff::02-0a::c3'</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='ip identifier id'>ip</span><span class='bitor op'>|</span>
-  <span class='puts identifier id'>puts</span> <span class='ip identifier id'>ip</span>
-<span class='end end kw'>end</span>
-</pre>
+      <pre class="example code"><span class='const'>IPAddr</span><span class='period'>.</span><span class='id each'>each</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>::ff::02-0a::c3</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id ip'>ip</span><span class='op'>|</span>
+  <span class='id puts'>puts</span> <span class='id ip'>ip</span>
+<span class='kw'>end</span></pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -390,12 +373,6 @@ IP address range.</p>
       <pre class="lines">
 
 
-115
-116
-117
-118
-119
-120
 121
 122
 123
@@ -442,65 +419,62 @@ IP address range.</p>
 164
 165
 166
-167</pre>
+167
+168
+169</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/extensions/ip_addr.rb', line 115</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/extensions/ip_addr.rb', line 121</span>
 
-<span class='def def kw'>def</span> <span class='IPAddr constant id'>IPAddr</span><span class='dot token'>.</span><span class='each identifier id'>each</span><span class='lparen token'>(</span><span class='cidr_or_glob identifier id'>cidr_or_glob</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='unless unless kw'>unless</span> <span class='lparen token'>(</span><span class='cidr_or_glob identifier id'>cidr_or_glob</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='string val'>'*'</span><span class='rparen token'>)</span> <span class='orop op'>||</span> <span class='cidr_or_glob identifier id'>cidr_or_glob</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='string val'>'-'</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-    <span class='return return kw'>return</span> <span class='IPAddr constant id'>IPAddr</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='cidr_or_glob identifier id'>cidr_or_glob</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='each identifier id'>each</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
+<span class='kw'>def</span> <span class='const'>IPAddr</span><span class='period'>.</span><span class='id each'>each</span><span class='lparen'>(</span><span class='id cidr_or_glob'>cidr_or_glob</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id cidr_or_glob'>cidr_or_glob</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>*</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id cidr_or_glob'>cidr_or_glob</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='const'>IPAddr</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id cidr_or_glob'>cidr_or_glob</span><span class='rparen'>)</span><span class='period'>.</span><span class='id each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
-  <span class='return return kw'>return</span> <span class='enum_for identifier id'>enum_for</span><span class='lparen token'>(</span><span class='symbol val'>:each</span><span class='comma token'>,</span><span class='cidr_or_glob identifier id'>cidr_or_glob</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='block identifier id'>block</span>
+  <span class='kw'>return</span> <span class='id enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:each</span><span class='comma'>,</span><span class='id cidr_or_glob'>cidr_or_glob</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id block'>block</span>
 
-  <span class='if if kw'>if</span> <span class='cidr_or_glob identifier id'>cidr_or_glob</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='string val'>'::'</span><span class='rparen token'>)</span>
-    <span class='prefix identifier id'>prefix</span> <span class='assign token'>=</span> <span class='if if kw'>if</span> <span class='cidr_or_glob identifier id'>cidr_or_glob</span><span class='lbrack token'>[</span><span class='integer val'>0</span><span class='comma token'>,</span><span class='integer val'>2</span><span class='rbrack token'>]</span> <span class='eq op'>==</span> <span class='string val'>'::'</span>
-               <span class='string val'>'::'</span>
-             <span class='else else kw'>else</span>
-               <span class='string val'>''</span>
-             <span class='end end kw'>end</span>
+  <span class='kw'>if</span> <span class='id cidr_or_glob'>cidr_or_glob</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>::</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+    <span class='id separator'>separator</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>::</span><span class='tstring_end'>'</span></span>
+    <span class='id base'>base</span>      <span class='op'>=</span> <span class='int'>16</span>
 
-    <span class='separator identifier id'>separator</span> <span class='assign token'>=</span> <span class='string val'>'::'</span>
-    <span class='base identifier id'>base</span> <span class='assign token'>=</span> <span class='integer val'>16</span>
+    <span class='id prefix'>prefix</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id cidr_or_glob'>cidr_or_glob</span><span class='period'>.</span><span class='id start_with?'>start_with?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>::</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+               <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>::</span><span class='tstring_end'>'</span></span>
+             <span class='kw'>else</span>
+               <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span>
+             <span class='kw'>end</span>
 
-    <span class='format identifier id'>format</span> <span class='assign token'>=</span> <span class='lambda identifier id'>lambda</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='address identifier id'>address</span><span class='bitor op'>|</span>
-      <span class='prefix identifier id'>prefix</span> <span class='plus op'>+</span> <span class='address identifier id'>address</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='i identifier id'>i</span><span class='bitor op'>|</span> <span class='string val'>'%.2x'</span> <span class='mod op'>%</span> <span class='i identifier id'>i</span> <span class='rbrace token'>}</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>'::'</span><span class='rparen token'>)</span>
-    <span class='rbrace token'>}</span>
-  <span class='else else kw'>else</span>
-    <span class='separator identifier id'>separator</span> <span class='assign token'>=</span> <span class='string val'>'.'</span>
-    <span class='base identifier id'>base</span> <span class='assign token'>=</span> <span class='integer val'>10</span>
+    <span class='id format'>format</span> <span class='op'>=</span> <span class='id lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id address'>address</span><span class='op'>|</span>
+      <span class='id prefix'>prefix</span> <span class='op'>+</span> <span class='id address'>address</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id i'>i</span><span class='op'>|</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>%.2x</span><span class='tstring_end'>'</span></span> <span class='op'>%</span> <span class='id i'>i</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>::</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+    <span class='rbrace'>}</span>
+  <span class='kw'>else</span>
+    <span class='id separator'>separator</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.</span><span class='tstring_end'>'</span></span>
+    <span class='id base'>base</span>      <span class='op'>=</span> <span class='int'>10</span>
+    <span class='id format'>format</span>    <span class='op'>=</span> <span class='id lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id address'>address</span><span class='op'>|</span> <span class='id address'>address</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
 
-    <span class='format identifier id'>format</span> <span class='assign token'>=</span> <span class='lambda identifier id'>lambda</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='address identifier id'>address</span><span class='bitor op'>|</span> <span class='address identifier id'>address</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>'.'</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-  <span class='end end kw'>end</span>
-
-  <span class='comment val'># split the address</span>
-  <span class='segments identifier id'>segments</span> <span class='assign token'>=</span> <span class='cidr_or_glob identifier id'>cidr_or_glob</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='separator identifier id'>separator</span><span class='rparen token'>)</span>
-  <span class='ranges identifier id'>ranges</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='comment'># split the address
+</span>  <span class='id segments'>segments</span> <span class='op'>=</span> <span class='id cidr_or_glob'>cidr_or_glob</span><span class='period'>.</span><span class='id split'>split</span><span class='lparen'>(</span><span class='id separator'>separator</span><span class='rparen'>)</span>
+  <span class='id ranges'>ranges</span>   <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
   
-  <span class='comment val'># map the components of the address to numeric ranges</span>
-  <span class='segments identifier id'>segments</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='segment identifier id'>segment</span><span class='bitor op'>|</span>
-    <span class='next next kw'>next</span> <span class='if if_mod kw'>if</span> <span class='segment identifier id'>segment</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
+  <span class='comment'># map the components of the address to numeric ranges
+</span>  <span class='id segments'>segments</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id segment'>segment</span><span class='op'>|</span>
+    <span class='kw'>next</span> <span class='kw'>if</span> <span class='id segment'>segment</span><span class='period'>.</span><span class='id empty?'>empty?</span>
 
-    <span class='ranges identifier id'>ranges</span> <span class='lshft op'>&lt;&lt;</span> <span class='if if kw'>if</span> <span class='segment identifier id'>segment</span> <span class='eq op'>==</span> <span class='string val'>'*'</span>
-                <span class='lparen token'>(</span><span class='float val'>1</span><span class='dot2 op'>..</span><span class='integer val'>254</span><span class='rparen token'>)</span>
-              <span class='elsif elsif kw'>elsif</span> <span class='segment identifier id'>segment</span><span class='dot token'>.</span><span class='include? fid id'>include?</span><span class='lparen token'>(</span><span class='string val'>'-'</span><span class='rparen token'>)</span>
-                <span class='start identifier id'>start</span><span class='comma token'>,</span> <span class='stop identifier id'>stop</span> <span class='assign token'>=</span> <span class='segment identifier id'>segment</span><span class='dot token'>.</span><span class='split identifier id'>split</span><span class='lparen token'>(</span><span class='string val'>'-'</span><span class='comma token'>,</span><span class='integer val'>2</span><span class='rparen token'>)</span>
+    <span class='id ranges'>ranges</span> <span class='op'>&lt;&lt;</span> <span class='kw'>if</span> <span class='id segment'>segment</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>*</span><span class='tstring_end'>'</span></span>
+                <span class='lparen'>(</span><span class='int'>1</span><span class='op'>..</span><span class='int'>254</span><span class='rparen'>)</span>
+              <span class='kw'>elsif</span> <span class='id segment'>segment</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+                <span class='id start'>start</span><span class='comma'>,</span> <span class='id stop'>stop</span> <span class='op'>=</span> <span class='id segment'>segment</span><span class='period'>.</span><span class='id split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='int'>2</span><span class='rparen'>)</span>
 
-                <span class='lparen token'>(</span><span class='start identifier id'>start</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span><span class='lparen token'>(</span><span class='base identifier id'>base</span><span class='rparen token'>)</span><span class='dot2 op'>..</span><span class='stop identifier id'>stop</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span><span class='lparen token'>(</span><span class='base identifier id'>base</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-              <span class='else else kw'>else</span>
-                <span class='segment identifier id'>segment</span><span class='dot token'>.</span><span class='to_i identifier id'>to_i</span><span class='lparen token'>(</span><span class='base identifier id'>base</span><span class='rparen token'>)</span>
-              <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
+                <span class='lparen'>(</span><span class='id start'>start</span><span class='period'>.</span><span class='id to_i'>to_i</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span><span class='op'>..</span><span class='id stop'>stop</span><span class='period'>.</span><span class='id to_i'>to_i</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span><span class='rparen'>)</span>
+              <span class='kw'>else</span>
+                <span class='id segment'>segment</span><span class='period'>.</span><span class='id to_i'>to_i</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
+              <span class='kw'>end</span>
+  <span class='kw'>end</span>
 
-  <span class='comment val'># cycle through the address ranges</span>
-  <span class='ranges identifier id'>ranges</span><span class='dot token'>.</span><span class='comprehension identifier id'>comprehension</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='address identifier id'>address</span><span class='bitor op'>|</span>
-    <span class='yield yield kw'>yield</span> <span class='format identifier id'>format</span><span class='lbrack token'>[</span><span class='address identifier id'>address</span><span class='rbrack token'>]</span>
-  <span class='end end kw'>end</span>
-
-  <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='comment'># cycle through the address ranges
+</span>  <span class='id ranges'>ranges</span><span class='period'>.</span><span class='id comprehension'>comprehension</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id address'>address</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id format'>format</span><span class='lbracket'>[</span><span class='id address'>address</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -521,7 +495,23 @@ IP address range.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='const'>IPAddr</span><span class='period'>.</span><span class='id extract'>extract</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Host: 127.0.0.1\n\rHost: 10.1.1.1\n\r</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='comment'># =&gt; [&quot;127.0.0.1&quot;, &quot;10.1.1.1&quot;]</span></pre>
+    
+      <h4><div class='inline'><p>Extract only IPv4 addresses from a large amount of text.</p>
+</div></h4>
+      <pre class="example code"><span class='const'>IPAddr</span><span class='period'>.</span><span class='id extract'>extract</span><span class='lparen'>(</span><span class='id text'>text</span><span class='comma'>,</span><span class='symbol'>:v4</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id ip'>ip</span><span class='op'>|</span>
+  <span class='id puts'>puts</span> <span class='id ip'>ip</span>
+<span class='kw'>end</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
 <ul class="param">
   
     <li>
@@ -544,14 +534,14 @@ IP address range.</p>
         <span class='name'>version</span>
       
       
-        <span class='type'>(<tt>Symbol</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></tt>, <tt>Symbol</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
         &mdash;
-        <div class='inline'><p>The version of IP Address to scan for (<code>:ipv4</code> or <code>:ipv6</code>).</p>
+        <div class='inline'><p>The version of IP Address to scan for (<code>4</code>, <code>6</code>, <code>:v4</code> or <code>:v6</code>).</p>
 </div>
       
     </li>
@@ -617,14 +607,6 @@ IP address range.</p>
       <pre class="lines">
 
 
-58
-59
-60
-61
-62
-63
-64
-65
 66
 67
 68
@@ -638,34 +620,37 @@ IP address range.</p>
 76
 77
 78
-79</pre>
+79
+80
+81
+82
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/extensions/ip_addr.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/extensions/ip_addr.rb', line 66</span>
 
-<span class='def def kw'>def</span> <span class='IPAddr constant id'>IPAddr</span><span class='dot token'>.</span><span class='extract identifier id'>extract</span><span class='lparen token'>(</span><span class='text identifier id'>text</span><span class='comma token'>,</span><span class='version identifier id'>version</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='regexp identifier id'>regexp</span> <span class='assign token'>=</span> <span class='case case kw'>case</span> <span class='version identifier id'>version</span>
-           <span class='when when kw'>when</span> <span class='symbol val'>:ipv4</span>
-             <span class='IPV4_REGEXP constant id'>IPV4_REGEXP</span>
-           <span class='when when kw'>when</span> <span class='symbol val'>:ipv6</span>
-             <span class='IPV6_REGEXP constant id'>IPV6_REGEXP</span>
-           <span class='else else kw'>else</span>
-             <span class='REGEXP constant id'>REGEXP</span>
-           <span class='end end kw'>end</span>
+<span class='kw'>def</span> <span class='const'>IPAddr</span><span class='period'>.</span><span class='id extract'>extract</span><span class='lparen'>(</span><span class='id text'>text</span><span class='comma'>,</span><span class='id version'>version</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:extract</span><span class='comma'>,</span><span class='id text'>text</span><span class='comma'>,</span><span class='id version'>version</span><span class='rparen'>)</span><span class='period'>.</span><span class='id to_a'>to_a</span> <span class='kw'>unless</span> <span class='id block_given?'>block_given?</span>
 
-  <span class='parser identifier id'>parser</span> <span class='assign token'>=</span> <span class='StringScanner constant id'>StringScanner</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='text identifier id'>text</span><span class='rparen token'>)</span>
+  <span class='id regexp'>regexp</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id version'>version</span>
+           <span class='kw'>when</span> <span class='symbol'>:ipv4</span><span class='comma'>,</span> <span class='symbol'>:v4</span><span class='comma'>,</span> <span class='int'>4</span>
+             <span class='const'>Regexp</span><span class='op'>::</span><span class='const'>IPv4</span>
+           <span class='kw'>when</span> <span class='symbol'>:ipv6</span><span class='comma'>,</span> <span class='symbol'>:v6</span><span class='comma'>,</span> <span class='int'>6</span>
+             <span class='const'>Regexp</span><span class='op'>::</span><span class='const'>IPv6</span>
+           <span class='kw'>else</span>
+             <span class='const'>Regexp</span><span class='op'>::</span><span class='const'>IP</span>
+           <span class='kw'>end</span>
 
-  <span class='if if kw'>if</span> <span class='block_given? fid id'>block_given?</span>
-    <span class='yield yield kw'>yield</span> <span class='parser identifier id'>parser</span><span class='dot token'>.</span><span class='matched identifier id'>matched</span> <span class='while while_mod kw'>while</span> <span class='parser identifier id'>parser</span><span class='dot token'>.</span><span class='skip_until identifier id'>skip_until</span><span class='lparen token'>(</span><span class='regexp identifier id'>regexp</span><span class='rparen token'>)</span>
-    <span class='return return kw'>return</span> <span class='nil nil kw'>nil</span>
-  <span class='else else kw'>else</span>
-    <span class='ips identifier id'>ips</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
+  <span class='id scanner'>scanner</span> <span class='op'>=</span> <span class='const'>StringScanner</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id text'>text</span><span class='rparen'>)</span>
 
-    <span class='ips identifier id'>ips</span> <span class='lshft op'>&lt;&lt;</span> <span class='parser identifier id'>parser</span><span class='dot token'>.</span><span class='matched identifier id'>matched</span> <span class='while while_mod kw'>while</span> <span class='parser identifier id'>parser</span><span class='dot token'>.</span><span class='skip_until identifier id'>skip_until</span><span class='lparen token'>(</span><span class='regexp identifier id'>regexp</span><span class='rparen token'>)</span>
-    <span class='return return kw'>return</span> <span class='ips identifier id'>ips</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>while</span> <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id skip_until'>skip_until</span><span class='lparen'>(</span><span class='id regexp'>regexp</span><span class='rparen'>)</span>
+    <span class='kw'>yield</span> <span class='id scanner'>scanner</span><span class='period'>.</span><span class='id matched'>matched</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -699,12 +684,11 @@ netmask. Supports both IPv4 and IPv6 addresses.</p>
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='netblock identifier id'>netblock</span> <span class='assign token'>=</span> <span class='IPAddr constant id'>IPAddr</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='string val'>'10.1.1.1/24'</span><span class='rparen token'>)</span>
+      <pre class="example code"><span class='id netblock'>netblock</span> <span class='op'>=</span> <span class='const'>IPAddr</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>10.1.1.1/24</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 
-<span class='netblock identifier id'>netblock</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='ip identifier id'>ip</span><span class='bitor op'>|</span>
-  <span class='puts identifier id'>puts</span> <span class='ip identifier id'>ip</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='id netblock'>netblock</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id ip'>ip</span><span class='op'>|</span>
+  <span class='id puts'>puts</span> <span class='id ip'>ip</span>
+<span class='kw'>end</span></pre>
     
   </div>
 <h3>Yields:</h3>
@@ -751,11 +735,6 @@ netmask of the IPAddr object.</p>
       <pre class="lines">
 
 
-201
-202
-203
-204
-205
 206
 207
 208
@@ -769,25 +748,19 @@ netmask of the IPAddr object.</p>
 216</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/extensions/ip_addr.rb', line 201</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/extensions/ip_addr.rb', line 206</span>
 
-<span class='def def kw'>def</span> <span class='each identifier id'>each</span>
-  <span class='return return kw'>return</span> <span class='enum_for identifier id'>enum_for</span><span class='lparen token'>(</span><span class='symbol val'>:each</span><span class='rparen token'>)</span> <span class='unless unless_mod kw'>unless</span> <span class='block_given? fid id'>block_given?</span>
+<span class='kw'>def</span> <span class='id each'>each</span>
+  <span class='kw'>return</span> <span class='id enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:each</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id block_given?'>block_given?</span>
 
-  <span class='case case kw'>case</span> <span class='@family ivar id'>@family</span>
-  <span class='when when kw'>when</span> <span class='Socket constant id'>Socket</span><span class='colon2 op'>::</span><span class='AF_INET constant id'>AF_INET</span>
-    <span class='family_mask identifier id'>family_mask</span> <span class='assign token'>=</span> <span class='IN4MASK constant id'>IN4MASK</span>
-  <span class='when when kw'>when</span> <span class='Socket constant id'>Socket</span><span class='colon2 op'>::</span><span class='AF_INET6 constant id'>AF_INET6</span>
-    <span class='family_mask identifier id'>family_mask</span> <span class='assign token'>=</span> <span class='IN6MASK constant id'>IN6MASK</span>
-  <span class='end end kw'>end</span>
+  <span class='id family_mask'>family_mask</span> <span class='op'>=</span> <span class='const'>MASKS</span><span class='lbracket'>[</span><span class='ivar'>@family</span><span class='rbracket'>]</span>
 
-  <span class='lparen token'>(</span><span class='integer val'>0</span><span class='dot2 op'>..</span><span class='lparen token'>(</span><span class='lparen token'>(</span><span class='bitnot op'>~@</span><span class='mask_addr identifier id'>mask_addr</span><span class='rparen token'>)</span> <span class='bitand op'>&amp;</span> <span class='family_mask identifier id'>family_mask</span><span class='rparen token'>)</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='i identifier id'>i</span><span class='bitor op'>|</span>
-    <span class='yield yield kw'>yield</span> <span class='_to_string identifier id'>_to_string</span><span class='lparen token'>(</span><span class='@addr ivar id'>@addr</span> <span class='bitor op'>|</span> <span class='i identifier id'>i</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
+  <span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='op'>~</span><span class='ivar'>@mask_addr</span><span class='rparen'>)</span> <span class='op'>&amp;</span> <span class='id family_mask'>family_mask</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id i'>i</span><span class='op'>|</span>
+    <span class='kw'>yield</span> <span class='id _to_string'>_to_string</span><span class='lparen'>(</span><span class='ivar'>@addr</span> <span class='op'>|</span> <span class='id i'>i</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
-  <span class='return return kw'>return</span> <span class='self self kw'>self</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -796,7 +769,7 @@ netmask of the IPAddr object.</p>
       <div class="method_details ">
   <p class="signature " id="lookup-instance_method">
   
-    - (<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="String.html" title="String (class)">String</a></span>&gt;</tt>) <strong>lookup</strong> 
+    - (<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="String.html" title="String (class)">String</a></span>&gt;</tt>) <strong>lookup</strong>(nameserver = nil) 
   
 
   
@@ -808,7 +781,28 @@ netmask of the IPAddr object.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Returns:</h3>
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>nameserver</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The optional nameserver to query.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -832,17 +826,16 @@ netmask of the IPAddr object.</p>
       <pre class="lines">
 
 
-177
-178
-179</pre>
+182
+183
+184</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/extensions/ip_addr.rb', line 177</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/extensions/ip_addr.rb', line 182</span>
 
-<span class='def def kw'>def</span> <span class='lookup identifier id'>lookup</span>
-  <span class='Resolv constant id'>Resolv</span><span class='dot token'>.</span><span class='getnames identifier id'>getnames</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id lookup'>lookup</span><span class='lparen'>(</span><span class='id nameserver'>nameserver</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='const'>Resolv</span><span class='period'>.</span><span class='id resolver'>resolver</span><span class='lparen'>(</span><span class='id nameserver'>nameserver</span><span class='rparen'>)</span><span class='period'>.</span><span class='id getnames'>getnames</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -853,9 +846,9 @@ netmask of the IPAddr object.</p>
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 12 15:40:01 2011 by 
+  Generated on Sun Oct 16 23:40:58 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.0 (ruby-1.8.7).
+  0.7.0 (ruby-1.9.2).
 </div>
 
   </body>

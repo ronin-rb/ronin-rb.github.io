@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Module: Ronin::Mixin
   
@@ -70,9 +70,13 @@
     
   
   
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="Network/Mixins/ESMTP.html" title="Ronin::Network::Mixins::ESMTP (module)">Network::Mixins::ESMTP</a></span>, <span class='object_link'><a href="Network/Mixins/HTTP.html" title="Ronin::Network::Mixins::HTTP (module)">Network::Mixins::HTTP</a></span>, <span class='object_link'><a href="Network/Mixins/IMAP.html" title="Ronin::Network::Mixins::IMAP (module)">Network::Mixins::IMAP</a></span>, <span class='object_link'><a href="Network/Mixins/POP3.html" title="Ronin::Network::Mixins::POP3 (module)">Network::Mixins::POP3</a></span>, <span class='object_link'><a href="Network/Mixins/SMTP.html" title="Ronin::Network::Mixins::SMTP (module)">Network::Mixins::SMTP</a></span>, <span class='object_link'><a href="Network/Mixins/TCP.html" title="Ronin::Network::Mixins::TCP (module)">Network::Mixins::TCP</a></span>, <span class='object_link'><a href="Network/Mixins/Telnet.html" title="Ronin::Network::Mixins::Telnet (module)">Network::Mixins::Telnet</a></span>, <span class='object_link'><a href="Network/Mixins/UDP.html" title="Ronin::Network::Mixins::UDP (module)">Network::Mixins::UDP</a></span></dd>
+    
   
-    <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">lib/ronin/mixin.rb</dd>
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/ronin/mixin.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -83,15 +87,15 @@
 which includes/extends other Modules and evaluates a block of
 code, within any Classes/Objects it is included/extended into.</p>
 
-<pre class="code"><span class='module module kw'>module</span> <span class='MyMixin constant id'>MyMixin</span>
-  <span class='include identifier id'>include</span> <span class='Mixin constant id'>Mixin</span>
+<pre class="code"><span class='kw'>module</span> <span class='const'>MyMixin</span>
+  <span class='id include'>include</span> <span class='const'>Mixin</span>
 
-  <span class='mixin identifier id'>mixin</span> <span class='Paremters constant id'>Paremters</span>
+  <span class='id mixin'>mixin</span> <span class='const'>Paremters</span>
 
-  <span class='mixin identifier id'>mixin</span> <span class='do do kw'>do</span>
-    <span class='parameter identifier id'>parameter</span> <span class='symbol val'>:user</span><span class='comma token'>,</span> <span class='symbol val'>:default</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'admin'</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
+  <span class='id mixin'>mixin</span> <span class='kw'>do</span>
+    <span class='id parameter'>parameter</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='symbol'>:default</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>admin</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
 </pre>
 
 
@@ -243,51 +247,50 @@ code, within any Classes/Objects it is included/extended into.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/mixin.rb', line 44</span>
 
-<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='included identifier id'>included</span><span class='lparen token'>(</span><span class='base identifier id'>base</span><span class='rparen token'>)</span>
-  <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='module_eval identifier id'>module_eval</span> <span class='do do kw'>do</span>
-    <span class='protected identifier id'>protected</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
+  <span class='id base'>base</span><span class='period'>.</span><span class='id module_eval'>module_eval</span> <span class='kw'>do</span>
+    <span class='id protected'>protected</span>
 
-    <span class='comment val'>#</span>
-    <span class='comment val'># Mixins in the modules or code block into other modules that the</span>
-    <span class='comment val'># module might be included or extended into.</span>
-    <span class='comment val'>#</span>
-    <span class='comment val'># @param [Array&lt;Module&gt;] modules</span>
-    <span class='comment val'>#   Other modules to mixin.</span>
-    <span class='comment val'>#</span>
-    <span class='comment val'># @yield []</span>
-    <span class='comment val'>#   The given code block will be evaluated into the modules</span>
-    <span class='comment val'>#   the module is included or extended into.</span>
-    <span class='comment val'>#</span>
-    <span class='comment val'># @since 0.2.0</span>
-    <span class='comment val'>#</span>
-    <span class='comment val'># @api semipublic</span>
-    <span class='comment val'>#</span>
-    <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='mixin identifier id'>mixin</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='modules identifier id'>modules</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-      <span class='unless unless kw'>unless</span> <span class='modules identifier id'>modules</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
-        <span class='@mixin_modules ivar id'>@mixin_modules</span> <span class='assign token'>=</span> <span class='modules identifier id'>modules</span>
-      <span class='end end kw'>end</span>
+    <span class='comment'>#
+</span>    <span class='comment'># Mixins in the modules or code block into other modules that the
+</span>    <span class='comment'># module might be included or extended into.
+</span>    <span class='comment'>#
+</span>    <span class='comment'># @param [Array&lt;Module&gt;] modules
+</span>    <span class='comment'>#   Other modules to mixin.
+</span>    <span class='comment'>#
+</span>    <span class='comment'># @yield []
+</span>    <span class='comment'>#   The given code block will be evaluated into the modules
+</span>    <span class='comment'>#   the module is included or extended into.
+</span>    <span class='comment'>#
+</span>    <span class='comment'># @since 0.2.0
+</span>    <span class='comment'>#
+</span>    <span class='comment'># @api semipublic
+</span>    <span class='comment'>#
+</span>    <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id mixin'>mixin</span><span class='lparen'>(</span><span class='op'>*</span><span class='id modules'>modules</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+      <span class='kw'>unless</span> <span class='id modules'>modules</span><span class='period'>.</span><span class='id empty?'>empty?</span>
+        <span class='ivar'>@mixin_modules</span> <span class='op'>=</span> <span class='id modules'>modules</span>
+      <span class='kw'>end</span>
 
-      <span class='@mixin_block ivar id'>@mixin_block</span> <span class='assign token'>=</span> <span class='block identifier id'>block</span> <span class='if if_mod kw'>if</span> <span class='block identifier id'>block</span>
+      <span class='ivar'>@mixin_block</span> <span class='op'>=</span> <span class='id block'>block</span> <span class='kw'>if</span> <span class='id block'>block</span>
 
-      <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='included identifier id'>included</span><span class='lparen token'>(</span><span class='base identifier id'>base</span><span class='rparen token'>)</span>
-        <span class='if if kw'>if</span> <span class='@mixin_modules ivar id'>@mixin_modules</span>
-          <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='symbol val'>:include</span><span class='comma token'>,</span><span class='mult op'>*</span><span class='@mixin_modules ivar id'>@mixin_modules</span><span class='rparen token'>)</span>
-        <span class='end end kw'>end</span>
+      <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
+        <span class='kw'>if</span> <span class='ivar'>@mixin_modules</span>
+          <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='symbol'>:include</span><span class='comma'>,</span><span class='op'>*</span><span class='ivar'>@mixin_modules</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
 
-        <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='module_eval identifier id'>module_eval</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='@mixin_block ivar id'>@mixin_block</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='@mixin_block ivar id'>@mixin_block</span>
-      <span class='end end kw'>end</span>
+        <span class='id base'>base</span><span class='period'>.</span><span class='id module_eval'>module_eval</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='ivar'>@mixin_block</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='ivar'>@mixin_block</span>
+      <span class='kw'>end</span>
 
-      <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='extended identifier id'>extended</span><span class='lparen token'>(</span><span class='base identifier id'>base</span><span class='rparen token'>)</span>
-        <span class='if if kw'>if</span> <span class='@mixin_modules ivar id'>@mixin_modules</span>
-          <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='send identifier id'>send</span><span class='lparen token'>(</span><span class='symbol val'>:extend</span><span class='comma token'>,</span><span class='mult op'>*</span><span class='@mixin_modules ivar id'>@mixin_modules</span><span class='rparen token'>)</span>
-        <span class='end end kw'>end</span>
+      <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id extended'>extended</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
+        <span class='kw'>if</span> <span class='ivar'>@mixin_modules</span>
+          <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='symbol'>:extend</span><span class='comma'>,</span><span class='op'>*</span><span class='ivar'>@mixin_modules</span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
 
-        <span class='base identifier id'>base</span><span class='dot token'>.</span><span class='instance_eval identifier id'>instance_eval</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='@mixin_block ivar id'>@mixin_block</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='@mixin_block ivar id'>@mixin_block</span>
-      <span class='end end kw'>end</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+        <span class='id base'>base</span><span class='period'>.</span><span class='id instance_eval'>instance_eval</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='ivar'>@mixin_block</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='ivar'>@mixin_block</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -298,9 +301,9 @@ code, within any Classes/Objects it is included/extended into.</p>
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 12 15:39:47 2011 by 
+  Generated on Sun Oct 16 23:40:54 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.0 (ruby-1.8.7).
+  0.7.0 (ruby-1.9.2).
 </div>
 
   </body>
