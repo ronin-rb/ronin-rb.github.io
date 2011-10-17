@@ -73,7 +73,7 @@
   
     <dt class="r1 last">Defined in:</dt>
     <dd class="r1 last">lib/ronin/database/database.rb<span class="defines">,<br />
-  lib/ronin/database/migrations/1.1.0.rb,<br /> lib/ronin/database/migrations/1.0.0.rb,<br /> lib/ronin/database/migrations/graph.rb,<br /> lib/ronin/database/migrations/migration.rb,<br /> lib/ronin/database/migrations/migrations.rb,<br /> lib/ronin/database/exceptions/invalid_config.rb,<br /> lib/ronin/database/exceptions/unknown_repository.rb,<br /> lib/ronin/database/migrations/exceptions/unknown_migration.rb,<br /> lib/ronin/database/migrations/exceptions/duplicate_migration.rb</span>
+  lib/ronin/database/migrations/graph.rb,<br /> lib/ronin/database/migrations/1.1.0.rb,<br /> lib/ronin/database/migrations/1.0.0.rb,<br /> lib/ronin/database/migrations/migration.rb,<br /> lib/ronin/database/migrations/migrations.rb,<br /> lib/ronin/database/exceptions/invalid_config.rb,<br /> lib/ronin/database/exceptions/unknown_repository.rb,<br /> lib/ronin/database/migrations/exceptions/unknown_migration.rb,<br /> lib/ronin/database/migrations/exceptions/duplicate_migration.rb</span>
 </dd>
   
 </dl>
@@ -521,21 +521,21 @@ repository has been cleared.</p>
       <pre class="lines">
 
 
-268
-269
-270
-271
-272
-273
-274
-275
 276
 277
 278
-279</pre>
+279
+280
+281
+282
+283
+284
+285
+286
+287</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 268</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 276</span>
 
 <span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id clear'>clear</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
   <span class='id name'>name</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
@@ -628,21 +628,21 @@ repository.</p>
       <pre class="lines">
 
 
-296
-297
-298
-299
-300
-301
-302
-303
 304
 305
 306
-307</pre>
+307
+308
+309
+310
+311
+312
+313
+314
+315</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 296</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 304</span>
 
 <span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id map'>map</span>
   <span class='id results'>results</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -873,18 +873,18 @@ repository.</p>
       <pre class="lines">
 
 
-239
-240
-241
-242
-243
-244
-245
-246
-247</pre>
+247
+248
+249
+250
+251
+252
+253
+254
+255</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 239</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 247</span>
 
 <span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id repository'>repository</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='id name'>name</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_sym'>to_sym</span>
@@ -1129,11 +1129,6 @@ configuration is saved.</p>
       <pre class="lines">
 
 
-204
-205
-206
-207
-208
 209
 210
 211
@@ -1146,10 +1141,18 @@ configuration is saved.</p>
 218
 219
 220
-221</pre>
+221
+222
+223
+224
+225
+226
+227
+228
+229</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 204</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 209</span>
 
 <span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id setup'>setup</span>
   <span class='comment'># setup the database log
@@ -1165,6 +1168,9 @@ configuration is saved.</p>
 </span>  <span class='id repositories'>repositories</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='comma'>,</span><span class='id uri'>uri</span><span class='op'>|</span>
     <span class='const'>DataMapper</span><span class='period'>.</span><span class='id setup'>setup</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='id uri'>uri</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
+
+  <span class='comment'># finalize the Models
+</span>  <span class='const'>DataMapper</span><span class='period'>.</span><span class='id finalize'>finalize</span>
 
   <span class='comment'># apply any new migrations to the database
 </span>  <span class='id upgrade!'>upgrade!</span>
@@ -1221,7 +1227,7 @@ configuration is saved.</p>
       
       
         &mdash;
-        <div class='inline'><p>Specifies wether or not the Database is setup.</p>
+        <div class='inline'><p>Specifies whether or not the Database is setup.</p>
 </div>
       
     </li>
@@ -1234,14 +1240,14 @@ configuration is saved.</p>
       <pre class="lines">
 
 
-173
-174
-175
-176
-177</pre>
+178
+179
+180
+181
+182</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 173</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 178</span>
 
 <span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id setup?'>setup?</span><span class='lparen'>(</span><span class='id name'>name</span><span class='op'>=</span><span class='symbol'>:default</span><span class='rparen'>)</span>
   <span class='id repository'>repository</span> <span class='op'>=</span> <span class='const'>DataMapper</span><span class='period'>.</span><span class='id repository'>repository</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
@@ -1329,8 +1335,15 @@ configuration is saved.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The level of messages to log.
-May be either <code>:fatal</code>, <code>:error</code>, <code>:warn</code>, <code>:info</code> or <code>:debug</code>.</p>
+          &mdash; <div class='inline'><p>The level of messages to log. May one of:</p>
+
+<ul>
+  <li><code>:fatal</code></li>
+  <li><code>:error</code></li>
+  <li><code>:warn</code></li>
+  <li><code>:info</code></li>
+  <li><code>:debug</code></li>
+</ul>
 </div>
         </tr>
       
@@ -1360,17 +1373,17 @@ May be either <code>:fatal</code>, <code>:error</code>, <code>:warn</code>, <cod
       <pre class="lines">
 
 
-153
-154
-155
-156
-157
 158
 159
-160</pre>
+160
+161
+162
+163
+164
+165</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 153</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 158</span>
 
 <span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id setup_log'>setup_log</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id path'>path</span> <span class='op'>=</span> <span class='id options'>options</span><span class='period'>.</span><span class='id fetch'>fetch</span><span class='lparen'>(</span><span class='symbol'>:path</span><span class='comma'>,</span><span class='const'>DEFAULT_LOG_PATH</span><span class='rparen'>)</span>
@@ -1426,16 +1439,16 @@ not setup.</p>
       <pre class="lines">
 
 
-189
-190
-191
-192
-193
 194
-195</pre>
+195
+196
+197
+198
+199
+200</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 189</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 194</span>
 
 <span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id upgrade!'>upgrade!</span>
   <span class='kw'>if</span> <span class='id setup?'>setup?</span>
@@ -1454,7 +1467,7 @@ not setup.</p>
 </div>
     
     <div id="footer">
-  Generated on Sat Oct  1 17:33:44 2011 by 
+  Generated on Sun Oct 16 23:42:56 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.2 (ruby-1.9.2).
 </div>

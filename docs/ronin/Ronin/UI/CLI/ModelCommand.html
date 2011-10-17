@@ -118,13 +118,8 @@
   
   
   
-  
-  
-  
 
 
-  
-  
   
   
   
@@ -165,7 +160,7 @@
         <li class="protected ">
   <span class="summary_signature">
     
-      <a href="#model-class_method" title="model (class method)">+ (DataMapper::Resource) <strong>model</strong>(model) </a>
+      <a href="#model-class_method" title="model (class method)">+ (DataMapper::Resource) <strong>model</strong>(model = nil) </a>
     
 
     
@@ -178,29 +173,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Sets the model to query.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#query_model-class_method" title="query_model (class method)">+ (DataMapper::Resource) <strong>query_model</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>The model to query.</p>
+    <span class="summary_desc"><div class='inline'><p>Sets or gets the model to query.</p>
 </div></span>
   
 </li>
@@ -319,15 +292,6 @@
 
   
   
-  
-  
-  
-  
-  
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Output/Helpers.html" title="Ronin::UI::Output::Helpers (module)">Output::Helpers</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Output/Helpers.html#format_message-instance_method" title="Ronin::UI::Output::Helpers#format_message (method)">#format_message</a></span>, <span class='object_link'><a href="../Output/Helpers.html#print_debug-instance_method" title="Ronin::UI::Output::Helpers#print_debug (method)">#print_debug</a></span>, <span class='object_link'><a href="../Output/Helpers.html#print_error-instance_method" title="Ronin::UI::Output::Helpers#print_error (method)">#print_error</a></span>, <span class='object_link'><a href="../Output/Helpers.html#print_info-instance_method" title="Ronin::UI::Output::Helpers#print_info (method)">#print_info</a></span>, <span class='object_link'><a href="../Output/Helpers.html#print_warning-instance_method" title="Ronin::UI::Output::Helpers#print_warning (method)">#print_warning</a></span>, <span class='object_link'><a href="../Output/Helpers.html#printf-instance_method" title="Ronin::UI::Output::Helpers#printf (method)">#printf</a></span>, <span class='object_link'><a href="../Output/Helpers.html#putc-instance_method" title="Ronin::UI::Output::Helpers#putc (method)">#putc</a></span>, <span class='object_link'><a href="../Output/Helpers.html#puts-instance_method" title="Ronin::UI::Output::Helpers#puts (method)">#puts</a></span>, <span class='object_link'><a href="../Output/Helpers.html#write-instance_method" title="Ronin::UI::Output::Helpers#write (method)">#write</a></span></p>
-
-  
   <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -430,18 +394,18 @@
       <pre class="lines">
 
 
-78
-79
-80
-81
-82
-83
-84
-85
-86</pre>
+62
+63
+64
+65
+66
+67
+68
+69
+70</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/model_command.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/model_command.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id each_query_option'>each_query_option</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:each_query_option</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id block'>block</span>
@@ -460,13 +424,13 @@
       <div class="method_details ">
   <p class="signature " id="model-class_method">
   
-    + (<tt>DataMapper::Resource</tt>) <strong>model</strong>(model)  <span class="extras">(protected)</span>
+    + (<tt>DataMapper::Resource</tt>) <strong>model</strong>(model = nil)  <span class="extras">(protected)</span>
   
 
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>Sets the model to query.</p>
+    <p>Sets or gets the model to query.</p>
 
 
   </div>
@@ -480,8 +444,10 @@
         <span class='name'>model</span>
       
       
-        <span class='type'>(<tt>DataMapper::Resource</tt>)</span>
+        <span class='type'>(<tt>DataMapper::Resource</tt>, <tt>nil</tt>)</span>
       
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
         &mdash;
@@ -530,88 +496,27 @@
       <pre class="lines">
 
 
-103
-104
-105</pre>
+87
+88
+89
+90
+91
+92
+93
+94
+95</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/model_command.rb', line 103</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/model_command.rb', line 87</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id model'>model</span><span class='lparen'>(</span><span class='id model'>model</span><span class='rparen'>)</span>
-  <span class='ivar'>@query_model</span> <span class='op'>=</span> <span class='id model'>model</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="query_model-class_method">
-  
-    + (<tt>DataMapper::Resource</tt>) <strong>query_model</strong> 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>The model to query.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>DataMapper::Resource</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The model that will be queried.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Since:</h3>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.1.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-44
-45
-46
-47
-48</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/model_command.rb', line 44</span>
-
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id query_model'>query_model</span>
-  <span class='ivar'>@query_model</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id superclass'>superclass</span> <span class='op'>&lt;</span> <span class='const'>ModelCommand</span>
-               <span class='kw'>self</span><span class='period'>.</span><span class='id superclass'>superclass</span><span class='period'>.</span><span class='id query_model'>query_model</span>
-             <span class='kw'>end</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id model'>model</span><span class='lparen'>(</span><span class='id model'>model</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id model'>model</span>
+    <span class='ivar'>@model</span> <span class='op'>=</span> <span class='id model'>model</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@model</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='id superclass'>superclass</span> <span class='op'>&lt;</span> <span class='const'>ModelCommand</span>
+                 <span class='id superclass'>superclass</span><span class='period'>.</span><span class='id model'>model</span>
+               <span class='kw'>end</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -691,17 +596,17 @@
       <pre class="lines">
 
 
-120
-121
-122
-123</pre>
+110
+111
+112
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/model_command.rb', line 120</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/model_command.rb', line 110</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id query_option'>query_option</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id query_options'>query_options</span> <span class='op'>&lt;&lt;</span> <span class='id name'>name</span>
-  <span class='id class_option'>class_option</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='id options'>options</span><span class='rparen'>)</span>
+  <span class='id class_option'>class_option</span> <span class='id name'>name</span><span class='comma'>,</span> <span class='id options'>options</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -762,12 +667,12 @@
       <pre class="lines">
 
 
-60
-61
-62</pre>
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/model_command.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/model_command.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id query_options'>query_options</span>
   <span class='ivar'>@query_options</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -855,6 +760,16 @@ defined in the Model.</p>
       <pre class="lines">
 
 
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
 156
 157
 158
@@ -877,27 +792,17 @@ defined in the Model.</p>
 175
 176
 177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188</pre>
+178</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/model_command.rb', line 156</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/model_command.rb', line 146</span>
 
 <span class='kw'>def</span> <span class='id query'>query</span>
-  <span class='kw'>unless</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id query_model'>query_model</span>
+  <span class='kw'>unless</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id model'>model</span>
     <span class='id raise'>raise</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>query model not defined for </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
-  <span class='id query'>query</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id query_model'>query_model</span><span class='period'>.</span><span class='id all'>all</span>
+  <span class='id query'>query</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id model'>model</span><span class='period'>.</span><span class='id all'>all</span>
 
   <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id each_query_option'>each_query_option</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='op'>|</span>
     <span class='id value'>value</span> <span class='op'>=</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='id name'>name</span><span class='rbracket'>]</span>
@@ -905,10 +810,10 @@ defined in the Model.</p>
     <span class='comment'># skip unset options
 </span>    <span class='kw'>next</span> <span class='kw'>if</span> <span class='id value'>value</span><span class='period'>.</span><span class='id nil?'>nil?</span>
 
-    <span class='kw'>if</span> <span class='id query_model'>query_model</span><span class='period'>.</span><span class='id properties'>properties</span><span class='period'>.</span><span class='id named?'>named?</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id model'>model</span><span class='period'>.</span><span class='id properties'>properties</span><span class='period'>.</span><span class='id named?'>named?</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
       <span class='id query'>query</span> <span class='op'>=</span> <span class='id query'>query</span><span class='period'>.</span><span class='id all'>all</span><span class='lparen'>(</span><span class='id name'>name</span> <span class='op'>=&gt;</span> <span class='id value'>value</span><span class='rparen'>)</span>
-    <span class='kw'>elsif</span> <span class='id query_model'>query_model</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
-      <span class='id query_method'>query_method</span> <span class='op'>=</span> <span class='id query_model'>query_model</span><span class='period'>.</span><span class='id method'>method</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+    <span class='kw'>elsif</span> <span class='id model'>model</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+      <span class='id query_method'>query_method</span> <span class='op'>=</span> <span class='id model'>model</span><span class='period'>.</span><span class='id method'>method</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
 
       <span class='id query'>query</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id query_method'>query_method</span><span class='period'>.</span><span class='id arity'>arity</span>
               <span class='kw'>when</span> <span class='int'>0</span>
@@ -919,7 +824,7 @@ defined in the Model.</p>
                 <span class='id query'>query</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='op'>*</span><span class='id value'>value</span><span class='rparen'>)</span>
               <span class='kw'>end</span>
     <span class='kw'>else</span>
-      <span class='id raise'>raise</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown query method or property </span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'> for </span><span class='embexpr_beg'>#{</span><span class='id query_model'>query_model</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='id raise'>raise</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown query method or property </span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'> for </span><span class='embexpr_beg'>#{</span><span class='id model'>model</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
@@ -967,18 +872,18 @@ defined in the Model.</p>
       <pre class="lines">
 
 
-132
-133
-134
-135
-136
-137
-138
-139
-140</pre>
+122
+123
+124
+125
+126
+127
+128
+129
+130</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/model_command.rb', line 132</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/model_command.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id setup'>setup</span>
   <span class='kw'>super</span>
@@ -999,7 +904,7 @@ defined in the Model.</p>
 </div>
     
     <div id="footer">
-  Generated on Sat Oct  1 17:33:55 2011 by 
+  Generated on Sun Oct 16 23:42:59 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.2 (ruby-1.9.2).
 </div>

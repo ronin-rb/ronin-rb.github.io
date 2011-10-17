@@ -1848,8 +1848,14 @@ cached files of the repository.</p>
       
       
         &mdash;
-        <div class='inline'><p>The SCM used by the repository. Can be either <code>:git</code>, <code>:mercurial</code>,
-<code>:sub_version</code> or <code>:rsync</code>.</p>
+        <div class='inline'><p>The SCM used by the repository. Can be either:</p>
+
+<ul>
+  <li><code>:git</code></li>
+  <li><code>:mercurial</code> / <code>:hg</code></li>
+  <li><code>:sub_version</code> / <code>:svn</code></li>
+  <li><code>:rsync</code></li>
+</ul>
 </div>
       
     </li>
@@ -1913,10 +1919,6 @@ cached files of the repository.</p>
       <pre class="lines">
 
 
-142
-143
-144
-145
 146
 147
 148
@@ -1926,10 +1928,14 @@ cached files of the repository.</p>
 152
 153
 154
-155</pre>
+155
+156
+157
+158
+159</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 142</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 146</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id attributes'>attributes</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id attributes'>attributes</span><span class='rparen'>)</span>
@@ -2187,12 +2193,12 @@ cached files of the repository.</p>
       <pre class="lines">
 
 
-377
-378
-379</pre>
+385
+386
+387</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 377</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 385</span>
 
 <span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id activate!'>activate!</span>
   <span class='const'>Repository</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id repo'>repo</span><span class='op'>|</span> <span class='id repo'>repo</span><span class='period'>.</span><span class='id activate!'>activate!</span> <span class='rbrace'>}</span>
@@ -2303,10 +2309,6 @@ cached files of the repository.</p>
       <pre class="lines">
 
 
-216
-217
-218
-219
 220
 221
 222
@@ -2337,10 +2339,14 @@ cached files of the repository.</p>
 247
 248
 249
-250</pre>
+250
+251
+252
+253
+254</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 216</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 220</span>
 
 <span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id add!'>add!</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='id options'>options</span><span class='period'>.</span><span class='id has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:path</span><span class='rparen'>)</span>
@@ -2447,12 +2453,12 @@ cached files of the repository.</p>
       <pre class="lines">
 
 
-393
-394
-395</pre>
+401
+402
+403</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 393</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 401</span>
 
 <span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id deactivate!'>deactivate!</span>
   <span class='const'>Repository</span><span class='period'>.</span><span class='id reverse_each'>reverse_each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id repo'>repo</span><span class='op'>|</span> <span class='id repo'>repo</span><span class='period'>.</span><span class='id deactivate!'>deactivate!</span> <span class='rbrace'>}</span>
@@ -2636,10 +2642,6 @@ installed from the given domain.</p>
       <pre class="lines">
 
 
-180
-181
-182
-183
 184
 185
 186
@@ -2651,10 +2653,14 @@ installed from the given domain.</p>
 192
 193
 194
-195</pre>
+195
+196
+197
+198
+199</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 180</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 184</span>
 
 <span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id find'>find</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
   <span class='id name'>name</span><span class='comma'>,</span> <span class='id domain'>domain</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='period'>.</span><span class='id split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='int'>2</span><span class='rparen'>)</span>
@@ -2773,8 +2779,14 @@ installed from the given domain.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The SCM used by the repository. May be either <code>:git</code>, <code>:mercurial</code>,
-<code>:sub_version</code> or <code>:rsync</code>.</p>
+          &mdash; <div class='inline'><p>The SCM used by the repository. May be either:</p>
+
+<ul>
+  <li><code>:git</code></li>
+  <li><code>:mercurial</code> / <code>:hg</code></li>
+  <li><code>:sub_version</code> / <code>:svn</code></li>
+  <li><code>:rsync</code></li>
+</ul>
 </div>
         </tr>
       
@@ -2850,14 +2862,6 @@ properties.</p>
       <pre class="lines">
 
 
-279
-280
-281
-282
-283
-284
-285
-286
 287
 288
 289
@@ -2892,10 +2896,18 @@ properties.</p>
 318
 319
 320
-321</pre>
+321
+322
+323
+324
+325
+326
+327
+328
+329</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 279</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 287</span>
 
 <span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id install!'>install!</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:uri</span><span class='rbracket'>]</span>
@@ -3252,12 +3264,12 @@ or added using a local directory.</p>
       <pre class="lines">
 
 
-361
-362
-363</pre>
+369
+370
+371</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 361</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 369</span>
 
 <span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id uninstall!'>uninstall!</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
   <span class='const'>Repository</span><span class='period'>.</span><span class='id find'>find</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id uninstall!'>uninstall!</span>
@@ -3344,17 +3356,17 @@ or added using a local directory.</p>
       <pre class="lines">
 
 
-336
-337
-338
-339
-340
-341
-342
-343</pre>
+344
+345
+346
+347
+348
+349
+350
+351</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 336</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 344</span>
 
 <span class='kw'>def</span> <span class='const'>Repository</span><span class='period'>.</span><span class='id update!'>update!</span>
   <span class='const'>Repository</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id repo'>repo</span><span class='op'>|</span>
@@ -3468,14 +3480,6 @@ global variable.</p>
       <pre class="lines">
 
 
-489
-490
-491
-492
-493
-494
-495
-496
 497
 498
 499
@@ -3485,10 +3489,18 @@ global variable.</p>
 503
 504
 505
-506</pre>
+506
+507
+508
+509
+510
+511
+512
+513
+514</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 489</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 497</span>
 
 <span class='kw'>def</span> <span class='id activate!'>activate!</span>
   <span class='comment'># add the data/ directory
@@ -3556,12 +3568,12 @@ global variable.</p>
       <pre class="lines">
 
 
-479
-480
-481</pre>
+487
+488
+489</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 479</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 487</span>
 
 <span class='kw'>def</span> <span class='id activated?'>activated?</span>
   <span class='ivar'>@activated</span> <span class='op'>==</span> <span class='kw'>true</span>
@@ -3630,18 +3642,18 @@ global variable.</p>
       <pre class="lines">
 
 
-553
-554
-555
-556
-557
-558
-559
-560
-561</pre>
+561
+562
+563
+564
+565
+566
+567
+568
+569</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 553</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 561</span>
 
 <span class='kw'>def</span> <span class='id cache_scripts!'>cache_scripts!</span>
   <span class='id clean_scripts!'>clean_scripts!</span>
@@ -3715,13 +3727,13 @@ global variable.</p>
       <pre class="lines">
 
 
-609
-610
-611
-612</pre>
+617
+618
+619
+620</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 609</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 617</span>
 
 <span class='kw'>def</span> <span class='id clean_scripts!'>clean_scripts!</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id script_paths'>script_paths</span><span class='period'>.</span><span class='id clear'>clear</span>
@@ -3759,17 +3771,17 @@ global variable.</p>
       <pre class="lines">
 
 
-514
-515
-516
-517
-518
-519
-520
-521</pre>
+522
+523
+524
+525
+526
+527
+528
+529</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 514</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 522</span>
 
 <span class='kw'>def</span> <span class='id deactivate!'>deactivate!</span>
   <span class='id unregister_data_paths'>unregister_data_paths</span>
@@ -4010,16 +4022,16 @@ global variable.</p>
       <pre class="lines">
 
 
-463
-464
-465
-466
-467
-468
-469</pre>
+471
+472
+473
+474
+475
+476
+477</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 463</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 471</span>
 
 <span class='kw'>def</span> <span class='id each_script'>each_script</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:each_script</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id block'>block</span>
@@ -4091,20 +4103,20 @@ global variable.</p>
       <pre class="lines">
 
 
-435
-436
-437
-438
-439
-440
-441
-442
 443
 444
-445</pre>
+445
+446
+447
+448
+449
+450
+451
+452
+453</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 435</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 443</span>
 
 <span class='kw'>def</span> <span class='id executables'>executables</span>
   <span class='id scripts'>scripts</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -4199,14 +4211,14 @@ global variable.</p>
       <pre class="lines">
 
 
-536
-537
-538
-539
-540</pre>
+544
+545
+546
+547
+548</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 536</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 544</span>
 
 <span class='kw'>def</span> <span class='id find_script'>find_script</span><span class='lparen'>(</span><span class='id sub_path'>sub_path</span><span class='rparen'>)</span>
   <span class='id paths'>paths</span> <span class='op'>=</span> <span class='ivar'>@script_dirs</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id dir'>dir</span><span class='op'>|</span> <span class='const'>File</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='id dir'>dir</span><span class='comma'>,</span><span class='id sub_path'>sub_path</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -4310,14 +4322,6 @@ global variable.</p>
       <pre class="lines">
 
 
-703
-704
-705
-706
-707
-708
-709
-710
 711
 712
 713
@@ -4361,10 +4365,18 @@ global variable.</p>
 751
 752
 753
-754</pre>
+754
+755
+756
+757
+758
+759
+760
+761
+762</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 703</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 711</span>
 
 <span class='kw'>def</span> <span class='id initialize_metadata'>initialize_metadata</span>
   <span class='id metadata_path'>metadata_path</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id path'>path</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='const'>METADATA_FILE</span><span class='rparen'>)</span>
@@ -4549,12 +4561,12 @@ or added using a local directory.</p>
       <pre class="lines">
 
 
-407
-408
-409</pre>
+415
+416
+417</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 407</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 415</span>
 
 <span class='kw'>def</span> <span class='id local?'>local?</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id domain'>domain</span> <span class='op'>==</span> <span class='const'>LOCAL_DOMAIN</span>
@@ -4762,12 +4774,12 @@ or added using a local directory.</p>
       <pre class="lines">
 
 
-421
-422
-423</pre>
+429
+430
+431</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 421</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 429</span>
 
 <span class='kw'>def</span> <span class='id remote?'>remote?</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id domain'>domain</span> <span class='op'>!=</span> <span class='const'>LOCAL_DOMAIN</span>
@@ -5034,14 +5046,6 @@ files.</p>
       <pre class="lines">
 
 
-574
-575
-576
-577
-578
-579
-580
-581
 582
 583
 584
@@ -5057,10 +5061,18 @@ files.</p>
 594
 595
 596
-597</pre>
+597
+598
+599
+600
+601
+602
+603
+604
+605</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 574</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 582</span>
 
 <span class='kw'>def</span> <span class='id sync_scripts!'>sync_scripts!</span>
   <span class='comment'># activates the repository before caching it's objects
@@ -5196,12 +5208,12 @@ files.</p>
       <pre class="lines">
 
 
-692
-693
-694</pre>
+700
+701
+702</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 692</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 700</span>
 
 <span class='kw'>def</span> <span class='id to_s'>to_s</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id domain'>domain</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -5306,23 +5318,23 @@ contents have been deleted.</p>
       <pre class="lines">
 
 
-671
-672
-673
-674
-675
-676
-677
-678
 679
 680
 681
 682
 683
-684</pre>
+684
+685
+686
+687
+688
+689
+690
+691
+692</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 671</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 679</span>
 
 <span class='kw'>def</span> <span class='id uninstall!'>uninstall!</span>
   <span class='id deactivate!'>deactivate!</span>
@@ -5439,14 +5451,6 @@ been updated.</p>
       <pre class="lines">
 
 
-632
-633
-634
-635
-636
-637
-638
-639
 640
 641
 642
@@ -5459,10 +5463,18 @@ been updated.</p>
 649
 650
 651
-652</pre>
+652
+653
+654
+655
+656
+657
+658
+659
+660</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 632</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repository.rb', line 640</span>
 
 <span class='kw'>def</span> <span class='id update!'>update!</span>
   <span class='id local_repo'>local_repo</span> <span class='op'>=</span> <span class='const'>Pullr</span><span class='op'>::</span><span class='const'>LocalRepository</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span>
@@ -5627,7 +5639,7 @@ been updated.</p>
 </div>
     
     <div id="footer">
-  Generated on Sat Oct  1 17:33:31 2011 by 
+  Generated on Sun Oct 16 23:42:43 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.2 (ruby-1.9.2).
 </div>
