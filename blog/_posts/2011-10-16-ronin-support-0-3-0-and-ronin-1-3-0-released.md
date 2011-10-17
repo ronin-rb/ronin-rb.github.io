@@ -7,6 +7,10 @@ author: postmodern
 After roughly three months, new versions of [ronin-support][1] and [ronin][2]
 have been released!
 
+## Upgrade
+
+    $ gem update ronin
+
 ## Easier Text Processing
 
 [File.each_line][3] and [File.each_row][4] were added to help with processing
