@@ -19,7 +19,7 @@ The topics that we will cover are:
 This webcast will take place from 16:00 PDT to 20:00 PDT. All Ronin webcasts are
 free and requires no registration. Just go to
 [yuuguu.com/share](http://yuuguu.com/share) and join the conference-call 
-at `1-415-363-0849`, using the PIN `272335` for both.
+at **1-415-363-0849**, using the PIN **272335** for both.
 
 This is the first time that we have done a Ronin webcast, and was a spur of the
 moment decision. We will probably be doing more webcasts in the future, so don't
