@@ -25,7 +25,11 @@ This is the first time that we have done a Ronin webcast, and was a spur of the
 moment decision. We will probably be doing more webcasts in the future, so don't
 worry if you missed the first one. ;)
 
+**Update:** The last 3rd of the webcast was [recorded][5], although the audio
+quality is not the best.
+
 [1]: http://github.com/ronin-ruby/ronin-support
 [2]: http://github.com/ronin-ruby/ronin
 [3]: http://github.com/ronin-ruby/ronin-exploits
 [4]: http://github.com/ronin-ruby/ronin-scanners
+[5]: http://vimeo.com/31666052
