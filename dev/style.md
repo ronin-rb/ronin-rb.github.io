@@ -169,17 +169,19 @@ end
 
 Avoid using global variables, instead use class or instance-variables.
 
-    class Important
-      
-      def Important.data
-        @@data ||= {}
-      end
+{% highlight ruby %}
+class Important
 
-      def self.metadata
-        @metadata ||= {}
-      end
-      
-    end
+  def Important.data
+    @@data ||= {}
+  end
+
+  def self.metadata
+    @metadata ||= {}
+  end
+
+end
+{% endhighlight %}
 
 ## Blocks (aka Closures)
 
