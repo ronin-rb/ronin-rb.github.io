@@ -51,12 +51,18 @@ Please try to use english words for method arguments or variable names.
 
 Try not use names such as `tmp`, `var`, `x`, `i`, `foo` or `bar`.
 
-## Indentation
+## Spacing
+
+### Width
+
+Code should try to be no wider than 80 columns.
+
+### Indentation
 
 **Two space** indentation Ruby, XML, XSL, HTML and Javascript source-code.
 Tab indentation for other programming languages.
 
-Code should try to be no wider than 80 columns.
+### Vertical Alignment
 
 Vertical alignment improves readability.
 
