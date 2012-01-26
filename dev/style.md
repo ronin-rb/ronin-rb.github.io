@@ -49,7 +49,7 @@ end
 
 Please try to use english words for method arguments or variable names.
 
-Try not use names such as `tmp`, `var`, `x`, `i`, `foo` or `bar`.
+Try not to use names such as `tmp`, `var`, `x`, `i`, `foo` or `bar`.
 
 ## Spacing
 
