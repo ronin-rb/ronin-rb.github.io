@@ -94,6 +94,14 @@ Use the `%{...}` syntax when embedding large strings into Ruby code.
 %{I find this style to be particularly clean.}
 {% endhighlight %}
 
+## Arrays of Strings
+
+Use `%w[]` to define an Array of words:
+
+{% highlight ruby %}
+%w[foo bar baz]
+{% endhighlight %}
+
 ## Expressions
 
 The `and`, `or`, `not` keywords are not the same as their `&&`, `||`, `!`
