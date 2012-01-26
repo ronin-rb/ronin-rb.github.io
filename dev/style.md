@@ -189,9 +189,9 @@ Use `&block` syntax to explicitly receive and pass blocks. This allows
 for maximum control of where blocks are passed to.
 
 {% highlight ruby %}
-def explicit_block(var,&amp;block)
+def explicit_block(var,&block)
   # ...
-  compute(var,&amp;block)
+  compute(var,&block)
   # ...
 end
 {% endhighlight %}
