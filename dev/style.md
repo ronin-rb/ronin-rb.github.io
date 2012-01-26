@@ -121,6 +121,16 @@ end
 @var ||= 'default'
 {% endhighlight %}
 
+## Assignment Statements
+
+In Ruby everything has a return value, even `if` statements:
+
+{% highlight ruby %}
+flag = if options[:flag]
+         "--#{options[:flag]}"
+       end
+{% endhighlight %}
+
 ## Defining Modules/Classes
 
 ### Bad
