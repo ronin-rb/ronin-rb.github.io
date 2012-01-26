@@ -55,7 +55,7 @@ Try not use names such as `tmp`, `var`, `x`, `i`, `foo` or `bar`.
 
 ### Width
 
-Code should try to be no wider than 80 columns.
+Code should try to be no wider than **80 columns**.
 
 ### Indentation
 
