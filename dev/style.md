@@ -105,7 +105,7 @@ Ruby provides various short-hand statements, that lessen repetitive typing.
 Please use the short-hand statements
 when appropriate, it helps DRY (Dont Repeat Yourself) up the code.
 
-### Repetitive
+### Verbose
 
 {% highlight ruby %}
 if !(@var)
@@ -159,12 +159,16 @@ end
 
 ## Global Variables
 
-Avoid using global variables, instead use class variables.
+Avoid using global variables, instead use class or instance-variables.
 
     class Important
       
       def Important.data
         @@data ||= {}
+      end
+
+      def self.metadata
+        @metadata ||= {}
       end
       
     end
