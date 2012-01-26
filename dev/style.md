@@ -56,7 +56,19 @@ Try not use names such as `tmp`, `var`, `x`, `i`, `foo` or `bar`.
 **Two space** indentation Ruby, XML, XSL, HTML and Javascript source-code.
 Tab indentation for other programming languages.
 
-Also, all code should try to be no wider than 80 columns.
+Code should try to be no wider than 80 columns.
+
+Vertical alignment improves readability.
+
+{% highlight ruby %}
+options = {
+  :thing       => 'foo',
+  :other_thing => 'bar'
+}
+
+options[:more]       = 'baz'
+options[:more_stuff] = 'bax'
+{% endhighlight %}
 
 ## Strings
 
