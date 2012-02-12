@@ -77,7 +77,7 @@
   
     <dt class="r2 last">Defined in:</dt>
     <dd class="r2 last">lib/ronin/script/script.rb<span class="defines">,<br />
-  lib/ronin/script/path.rb,<br /> lib/ronin/script/testable.rb,<br /> lib/ronin/script/buildable.rb,<br /> lib/ronin/script/deployable.rb,<br /> lib/ronin/script/exceptions/exception.rb,<br /> lib/ronin/script/exceptions/not_built.rb,<br /> lib/ronin/script/exceptions/test_failed.rb,<br /> lib/ronin/script/exceptions/deploy_failed.rb</span>
+  lib/ronin/script/path.rb,<br /> lib/ronin/script/testable.rb,<br /> lib/ronin/script/buildable.rb,<br /> lib/ronin/script/deployable.rb,<br /> lib/ronin/script/exceptions/exception.rb,<br /> lib/ronin/script/exceptions/not_built.rb,<br /> lib/ronin/script/exceptions/test_failed.rb,<br /> lib/ronin/script/exceptions/build_failed.rb,<br /> lib/ronin/script/exceptions/deploy_failed.rb</span>
 </dd>
   
 </dl>
@@ -100,7 +100,8 @@ that define behaviors of the Script Class:</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Since:</h3>
+  
+<h3>Since:</h3>
 <ul class="since">
   
     <li>
@@ -124,16 +125,16 @@ that define behaviors of the Script Class:</p>
     
    
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Script/DeployFailed.html" title="Ronin::Script::DeployFailed (class)">DeployFailed</a></span>, <span class='object_link'><a href="Script/Exception.html" title="Ronin::Script::Exception (class)">Exception</a></span>, <span class='object_link'><a href="Script/NotBuilt.html" title="Ronin::Script::NotBuilt (class)">NotBuilt</a></span>, <span class='object_link'><a href="Script/Path.html" title="Ronin::Script::Path (class)">Path</a></span>, <span class='object_link'><a href="Script/TestFailed.html" title="Ronin::Script::TestFailed (class)">TestFailed</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Script/BuildFailed.html" title="Ronin::Script::BuildFailed (class)">BuildFailed</a></span>, <span class='object_link'><a href="Script/DeployFailed.html" title="Ronin::Script::DeployFailed (class)">DeployFailed</a></span>, <span class='object_link'><a href="Script/Exception.html" title="Ronin::Script::Exception (class)">Exception</a></span>, <span class='object_link'><a href="Script/NotBuilt.html" title="Ronin::Script::NotBuilt (class)">NotBuilt</a></span>, <span class='object_link'><a href="Script/Path.html" title="Ronin::Script::Path (class)">Path</a></span>, <span class='object_link'><a href="Script/TestFailed.html" title="Ronin::Script::TestFailed (class)">TestFailed</a></span>
     
   
 </p>
 
 
-  
 
 
-  
+
+
 
   
     <h2>
@@ -226,7 +227,8 @@ that define behaviors of the Script Class:</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Since:</h3>
+  
+<h3>Since:</h3>
 <ul class="since">
   
     <li>
@@ -271,13 +273,16 @@ that define behaviors of the Script Class:</p>
 86
 87
 88
-89</pre>
+89
+90
+91
+92</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/script/script.rb', line 66</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
-  <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>InstanceMethods</span><span class='comma'>,</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_included'>included</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>InstanceMethods</span><span class='comma'>,</span>
                       <span class='const'>Model</span><span class='comma'>,</span>
                       <span class='const'>Model</span><span class='op'>::</span><span class='const'>HasName</span><span class='comma'>,</span>
                       <span class='const'>Model</span><span class='op'>::</span><span class='const'>HasDescription</span><span class='comma'>,</span>
@@ -288,17 +293,20 @@ that define behaviors of the Script Class:</p>
                       <span class='const'>DataPaths</span><span class='op'>::</span><span class='const'>Finders</span><span class='comma'>,</span>
                       <span class='const'>Parameters</span>
 
-  <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:extend</span><span class='comma'>,</span> <span class='const'>ClassMethods</span>
+  <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:extend</span><span class='comma'>,</span> <span class='const'>ClassMethods</span>
 
-  <span class='id base'>base</span><span class='period'>.</span><span class='id module_eval'>module_eval</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_module_eval'>module_eval</span> <span class='kw'>do</span>
     <span class='comment'># The class-name of the cached object
-</span>    <span class='id property'>property</span> <span class='symbol'>:type</span><span class='comma'>,</span> <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Property</span><span class='op'>::</span><span class='const'>Discriminator</span>
+</span>    <span class='id identifier rubyid_property'>property</span> <span class='symbol'>:type</span><span class='comma'>,</span> <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Property</span><span class='op'>::</span><span class='const'>Discriminator</span>
 
     <span class='comment'># The cached file of the object
-</span>    <span class='id belongs_to'>belongs_to</span> <span class='symbol'>:script_path</span><span class='comma'>,</span> <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>Script</span><span class='op'>::</span><span class='const'>Path</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
+</span>    <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:script_path</span><span class='comma'>,</span> <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>Script</span><span class='op'>::</span><span class='const'>Path</span><span class='comma'>,</span> <span class='symbol'>:required</span> <span class='op'>=&gt;</span> <span class='kw'>false</span>
+
+    <span class='comment'># Validations
+</span>    <span class='id identifier rubyid_validates_uniqueness_of'>validates_uniqueness_of</span> <span class='symbol'>:version</span><span class='comma'>,</span> <span class='symbol'>:scope</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span>
   <span class='kw'>end</span>
 
-  <span class='const'>Path</span><span class='period'>.</span><span class='id has'>has</span> <span class='int'>1</span><span class='comma'>,</span> <span class='id base'>base</span><span class='period'>.</span><span class='id relationship_name'>relationship_name</span><span class='comma'>,</span> <span class='id base'>base</span><span class='comma'>,</span> <span class='symbol'>:child_key</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='symbol'>:script_path_id</span><span class='rbracket'>]</span>
+  <span class='const'>Path</span><span class='period'>.</span><span class='id identifier rubyid_has'>has</span> <span class='int'>1</span><span class='comma'>,</span> <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_relationship_name'>relationship_name</span><span class='comma'>,</span> <span class='id identifier rubyid_base'>base</span><span class='comma'>,</span> <span class='symbol'>:child_key</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='symbol'>:script_path_id</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -339,6 +347,7 @@ that define behaviors of the Script Class:</p>
     </li>
   
 </ul>
+
 <h3>Returns:</h3>
 <ul class="return">
   
@@ -378,9 +387,6 @@ that define behaviors of the Script Class:</p>
       <pre class="lines">
 
 
-361
-362
-363
 364
 365
 366
@@ -396,29 +402,32 @@ that define behaviors of the Script Class:</p>
 376
 377
 378
-379</pre>
+379
+380
+381
+382</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/script/script.rb', line 361</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/script/script.rb', line 364</span>
 
-<span class='kw'>def</span> <span class='const'>Script</span><span class='period'>.</span><span class='id load_from'>load_from</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span>
-  <span class='id path'>path</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id expand_path'>expand_path</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span>
-  <span class='id script'>script</span> <span class='op'>=</span> <span class='const'>ObjectLoader</span><span class='period'>.</span><span class='id load_objects'>load_objects</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span><span class='period'>.</span><span class='id find'>find</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id obj'>obj</span><span class='op'>|</span>
-    <span class='id obj'>obj</span><span class='period'>.</span><span class='id class'>class</span> <span class='op'>&lt;</span> <span class='const'>Script</span>
+<span class='kw'>def</span> <span class='const'>Script</span><span class='period'>.</span><span class='id identifier rubyid_load_from'>load_from</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_script'>script</span> <span class='op'>=</span> <span class='const'>ObjectLoader</span><span class='period'>.</span><span class='id identifier rubyid_load_objects'>load_objects</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_obj'>obj</span><span class='op'>|</span>
+    <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>&lt;</span> <span class='const'>Script</span>
   <span class='kw'>end</span>
 
-  <span class='kw'>unless</span> <span class='id script'>script</span>
-    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No cacheable object defined in </span><span class='embexpr_beg'>#{</span><span class='id path'>path</span><span class='period'>.</span><span class='id dump'>dump</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_script'>script</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>No cacheable object defined in </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
-  <span class='id script'>script</span><span class='period'>.</span><span class='id instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>@script_loaded</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='kw'>true</span><span class='rparen'>)</span>
-  <span class='id script'>script</span><span class='period'>.</span><span class='id script_path'>script_path</span> <span class='op'>=</span> <span class='const'>Path</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span>
-    <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id path'>path</span><span class='comma'>,</span>
-    <span class='symbol'>:timestamp</span> <span class='op'>=&gt;</span> <span class='const'>File</span><span class='period'>.</span><span class='id mtime'>mtime</span><span class='lparen'>(</span><span class='id path'>path</span><span class='rparen'>)</span><span class='comma'>,</span>
-    <span class='symbol'>:class_name</span> <span class='op'>=&gt;</span> <span class='id script'>script</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id to_s'>to_s</span>
+  <span class='id identifier rubyid_script'>script</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>@script_loaded</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_script'>script</span><span class='period'>.</span><span class='id identifier rubyid_script_path'>script_path</span> <span class='op'>=</span> <span class='const'>Path</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+    <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_path'>path</span><span class='comma'>,</span>
+    <span class='symbol'>:timestamp</span> <span class='op'>=&gt;</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_mtime'>mtime</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='comma'>,</span>
+    <span class='symbol'>:class_name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_script'>script</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
   <span class='rparen'>)</span>
 
-  <span class='kw'>return</span> <span class='id script'>script</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_script'>script</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -430,9 +439,9 @@ that define behaviors of the Script Class:</p>
 </div>
     
     <div id="footer">
-  Generated on Sun Oct 16 23:42:46 2011 by 
+  Generated on Sun Feb 12 14:13:08 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.2 (ruby-1.9.2).
+  0.7.5 (ruby-1.9.3).
 </div>
 
   </body>

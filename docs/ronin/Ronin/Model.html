@@ -81,7 +81,7 @@
   
     <dt class="r1 last">Defined in:</dt>
     <dd class="r1 last">lib/ronin/model/model.rb<span class="defines">,<br />
-  lib/ronin/model/has_name.rb,<br /> lib/ronin/model/has_title.rb,<br /> lib/ronin/model/importable.rb,<br /> lib/ronin/model/has_authors.rb,<br /> lib/ronin/model/has_version.rb,<br /> lib/ronin/model/has_license.rb,<br /> lib/ronin/model/has_description.rb,<br /> lib/ronin/model/has_unique_name.rb,<br /> lib/ronin/model/types/description.rb</span>
+  lib/ronin/model/has_name.rb,<br /> lib/ronin/model/has_title.rb,<br /> lib/ronin/model/importable.rb,<br /> lib/ronin/model/has_license.rb,<br /> lib/ronin/model/has_version.rb,<br /> lib/ronin/model/has_authors.rb,<br /> lib/ronin/model/has_unique_name.rb,<br /> lib/ronin/model/has_description.rb,<br /> lib/ronin/model/types/description.rb</span>
 </dd>
   
 </dl>
@@ -97,6 +97,7 @@
 </div>
 <div class="tags">
   
+
 </div><h2>Defined Under Namespace</h2>
 <p class="children">
    
@@ -109,15 +110,10 @@
 </p>
 
 
-  
-  
-  
-  
 
 
-  
-  
-  
+
+
 
   
     <h2>
@@ -200,13 +196,13 @@
   
 </ul>
 
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-45
 46
 47
 48
@@ -217,22 +213,29 @@
 53
 54
 55
-56</pre>
+56
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/model/model.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/model/model.rb', line 46</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
-  <span class='kw'>unless</span> <span class='id base'>base</span> <span class='op'>&lt;</span> <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Resource</span>
-    <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Resource</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_included'>included</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_base'>base</span> <span class='op'>&lt;</span> <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Resource</span>
+    <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Resource</span>
   <span class='kw'>end</span>
 
-  <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>DataMapper</span><span class='comma'>,</span>
-                      <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Migrations</span><span class='comma'>,</span>
+  <span class='comment'># include DataMapper plugins
+</span>  <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Migrations</span><span class='comma'>,</span>
                       <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Serialize</span><span class='comma'>,</span>
-                      <span class='const'>Model</span><span class='op'>::</span><span class='const'>Types</span><span class='comma'>,</span>
-                      <span class='const'>InstanceMethods</span>
-  <span class='id base'>base</span><span class='period'>.</span><span class='id send'>send</span> <span class='symbol'>:extend</span><span class='comma'>,</span> <span class='const'>ClassMethods</span>
+                      <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Timestamps</span>
+
+  <span class='comment'># include Model types / methods
+</span>  <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>Model</span><span class='op'>::</span><span class='const'>Types</span>
+  <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:include</span><span class='comma'>,</span> <span class='const'>InstanceMethods</span>
+  <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:extend</span><span class='comma'>,</span>  <span class='const'>ClassMethods</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -244,9 +247,9 @@
 </div>
     
     <div id="footer">
-  Generated on Sun Oct 16 23:42:48 2011 by 
+  Generated on Sun Feb 12 14:13:07 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.2 (ruby-1.9.2).
+  0.7.5 (ruby-1.9.3).
 </div>
 
   </body>

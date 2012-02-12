@@ -71,24 +71,39 @@
 Ronin allows for the rapid development and distribution of code, exploits
 or payloads over many common Source-Code-Management (SCM) systems.</p>
 
-<h3 id="hack-with-ruby">Hack with Ruby</h3>
+<h3 id="customized-console">Customized Console</h3>
 
-<p>Ronin combines the flexibility of Ruby with countless convenience methods
-and libraries, to make Ruby usable for Offensive Security or Research work.</p>
+<p>Ronin provides users with a customized Ruby Console, pre-loaded with powerful
+convenience methods. In the Console one can work with data and automate
+complex tasks, with greater ease than the command-line.</p>
 
-<h3 id="organize-your-data">Organize Your Data</h3>
+<pre class="code ruby"><code>&gt;&gt; File.read('data').base64_decode
+</code></pre>
 
-<p>Ronin comes with a Database designed for Security data and accessible from
-Ruby using <a href="http://datamapper.org">DataMapper</a>. With Ronin, storing or
-querying IP addresses, Hosts, Ports, URLs, Passwords is as simple as a
-single line of Ruby.</p>
+<h3 id="integrated-database">Integrated Database</h3>
 
-<h3 id="share-code">Share Code</h3>
+<p>Ronin ships with a preconfigured Database, that one can interact with from Ruby,
+without having to write any SQL.</p>
 
-<p>Ronin allows sharing code with the community, or just your friends, via
-Ronin Repositories. Ronin Repositories are like lazier versions of
-<a href="http://rubygems.org/">RubyGems</a>, that can be hosted with SubVersion,
-Mercurial or Git.</p>
+<pre class="code ruby"><code>&gt;&gt; HostName.tld('eu').urls.with_query_param('id')
+</code></pre>
+
+<h3 id="repositories">Repositories</h3>
+
+<p>Ronin supports a Repository system, allowing users to organize and share
+miscallaneous Data, Code, Exploits, Payloads, Scanners, etc.</p>
+
+<pre class="code ruby"><code>$ ronin install git://github.com/user/exploits.git
+</code></pre>
+
+<h3 id="libraries">Libraries</h3>
+
+<p>Ronin provides libraries with additional functionality, such as
+<a href="http://github.com/ronin-ruby/ronin-exploits#readme">Exploitation</a>
+and <a href="http://github.com/ronin-ruby/ronin-scanners#readme">Scanning</a>.</p>
+
+<pre class="code ruby"><code>$ gem install ronin-exploits
+</code></pre>
 
 <h2 id="features">Features</h2>
 
@@ -162,58 +177,58 @@ output helper methods with color-output.</li>
 
 <p>Start the Ronin console:</p>
 
-<pre class="code">$ ronin
-</pre>
+<pre class="code ruby"><code>$ ronin
+</code></pre>
 
 <p>Run a Ruby script in Ronin:</p>
 
-<pre class="code">$ ronin exec script.rb
-</pre>
+<pre class="code ruby"><code>$ ronin exec script.rb
+</code></pre>
 
 <p>View available commands:</p>
 
-<pre class="code">$ ronin help
-</pre>
+<pre class="code ruby"><code>$ ronin help
+</code></pre>
 
 <p>Install a Repository:</p>
 
-<pre class="code">$ ronin repos --install svn://example.com/path/to/repo
-</pre>
+<pre class="code ruby"><code>$ ronin repos --install svn://example.com/path/to/repo
+</code></pre>
 
 <p>List installed Repositories:</p>
 
-<pre class="code">$ ronin repos
-</pre>
+<pre class="code ruby"><code>$ ronin repos
+</code></pre>
 
 <p>Update all installed Repositories:</p>
 
-<pre class="code">$ ronin repos --update
-</pre>
+<pre class="code ruby"><code>$ ronin repos --update
+</code></pre>
 
 <p>Update a specific Repositories:</p>
 
-<pre class="code">$ ronin repos --update repo-name
-</pre>
+<pre class="code ruby"><code>$ ronin repos --update repo-name
+</code></pre>
 
 <p>Uninstall a specific Repositories:</p>
 
-<pre class="code">$ ronin repos --uninstall repo-name
-</pre>
+<pre class="code ruby"><code>$ ronin repos --uninstall repo-name
+</code></pre>
 
 <p>List available Databases:</p>
 
-<pre class="code">$ ronin database
-</pre>
+<pre class="code ruby"><code>$ ronin database
+</code></pre>
 
 <p>Add a new Database:</p>
 
-<pre class="code">$ ronin database --add team --uri mysql://user:pass@vpn.example.com/db
-</pre>
+<pre class="code ruby"><code>$ ronin database --add team --uri mysql://user:pass@vpn.example.com/db
+</code></pre>
 
 <p>Remove a Database:</p>
 
-<pre class="code">$ ronin database --remove team
-</pre>
+<pre class="code ruby"><code>$ ronin database --remove team
+</code></pre>
 
 <h2 id="requirements">Requirements</h2>
 
@@ -244,13 +259,15 @@ output helper methods with color-output.</li>
   <li><a href="http://github.com/postmodern/dm-is-predefined#readme">dm-is-predefined</a>
 ~&gt; 0.4</li>
   <li><a href="http://github.com/postmodern/uri-query_params#readme">uri-query_params</a>
-~&gt; 0.5, &gt;= 0.5.2</li>
+~&gt; 0.6</li>
   <li><a href="http://github.com/postmodern/open_namespace#readme">open_namespace</a>
-~&gt; 0.3</li>
+~&gt; 0.4</li>
   <li><a href="http://github.com/postmodern/data_paths#readme">data_paths</a>
 ~&gt; 0.3</li>
   <li><a href="http://github.com/postmodern/object_loader#readme">object_loader</a>
 ~&gt; 1.0</li>
+  <li><a href="http://github.com/postmodern/parameters#readme">parameters</a>
+~&gt; 0.4</li>
   <li><a href="http://github.com/postmodern/env#readme">env</a>
 ~&gt; 0.2</li>
   <li><a href="http://github.com/postmodern/pullr#readme">pullr</a>
@@ -265,45 +282,28 @@ output helper methods with color-output.</li>
 ~&gt; 0.1</li>
   <li><a href="https://github.com/janlelis/ripl-color_result#readme">ripl-color_result</a>
 ~&gt; 0.3</li>
-  <li><a href="http://github.com/wycats/thor#readme">thor</a>
-~&gt; 0.14.3</li>
   <li><a href="http://github.com/ronin-ruby/ronin-support#readme">ronin-support</a>
-~&gt; 0.3</li>
+~&gt; 0.4</li>
 </ul>
 
 <h2 id="install">Install</h2>
 
-<pre class="code">$ gem install ronin
-</pre>
+<h3 id="stable">Stable</h3>
 
-<h2 id="additional-libraries">Additional Libraries</h2>
+<pre class="code ruby"><code>$ gem install ronin
+</code></pre>
 
-<h3 id="ronin-gen">Ronin Gen</h3>
+<h3 id="edge">Edge</h3>
 
-<p><a href="http://github.com/ronin-ruby/ronin-gen#readme">Ronin Gen</a> is a Ruby library
-for Ronin that provides various generators.</p>
-
-<h3 id="ronin-web">Ronin Web</h3>
-
-<p><a href="http://github.com/ronin-ruby/ronin-web#readme">Ronin Web</a> is a Ruby library
-for Ronin that provides support for web scraping and spidering
-functionality.</p>
-
-<h3 id="ronin-exploits">Ronin Exploits</h3>
-
-<p><a href="http://github.com/ronin-ruby/ronin-exploits#readme">Ronin Exploits</a> is a
-Ruby library for Ronin that provides exploitation and payload crafting
-functionality.</p>
-
-<h3 id="ronin-scanners">Ronin Scanners</h3>
-
-<p><a href="http://github.com/ronin-ruby/ronin-scanners#readme">Ronin Scanners</a>
-is a Ruby library for Ronin that provides Ruby interfaces to
-various third-party security scanners.</p>
+<pre class="code ruby"><code>$ git clone git://github.com/ronin-ruby/ronin.git
+$ cd ronin/
+$ bundle install
+$ ./bin/ronin
+</code></pre>
 
 <h2 id="license">License</h2>
 
-<p>Copyright (c) 2006-2011 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
+<p>Copyright (c) 2006-2012 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
 
 <p>This file is part of Ronin.</p>
 
@@ -322,9 +322,9 @@ along with Ronin.  If not, see <a href="http://www.gnu.org/licenses/">http://www
 </div></div>
     
     <div id="footer">
-  Generated on Sun Oct 16 23:42:25 2011 by 
+  Generated on Sun Feb 12 14:12:51 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.2 (ruby-1.9.2).
+  0.7.5 (ruby-1.9.3).
 </div>
 
   </body>

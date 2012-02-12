@@ -76,8 +76,8 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/ronin/database/migrations/graph.rb<span class="defines">,<br />
-  lib/ronin/database/migrations/1.1.0.rb,<br /> lib/ronin/database/migrations/1.0.0.rb,<br /> lib/ronin/database/migrations/migration.rb,<br /> lib/ronin/database/migrations/migrations.rb,<br /> lib/ronin/database/migrations/exceptions/unknown_migration.rb,<br /> lib/ronin/database/migrations/exceptions/duplicate_migration.rb</span>
+    <dd class="r2 last">lib/ronin/database/migrations/1.1.0.rb<span class="defines">,<br />
+  lib/ronin/database/migrations/1.0.0.rb,<br /> lib/ronin/database/migrations/graph.rb,<br /> lib/ronin/database/migrations/migration.rb,<br /> lib/ronin/database/migrations/migrations.rb,<br /> lib/ronin/database/migrations/exceptions/unknown_migration.rb,<br /> lib/ronin/database/migrations/exceptions/duplicate_migration.rb</span>
 </dd>
   
 </dl>
@@ -95,10 +95,10 @@
 </p>
 
 
-  
 
 
-  
+
+
 
   
     <h2>
@@ -248,6 +248,7 @@ name.</p>
     </li>
   
 </ul>
+
 <h3>Returns:</h3>
 <ul class="return">
   
@@ -315,9 +316,9 @@ name.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/database/migrations/migrations.rb', line 176</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id migrate_down!'>migrate_down!</span><span class='lparen'>(</span><span class='id position_or_name'>position_or_name</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id migrations'>migrations</span><span class='period'>.</span><span class='id downto'>downto</span><span class='lparen'>(</span><span class='id position_or_name'>position_or_name</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id migration'>migration</span><span class='op'>|</span>
-    <span class='id migration'>migration</span><span class='period'>.</span><span class='id perform_down'>perform_down</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_migrate_down!'>migrate_down!</span><span class='lparen'>(</span><span class='id identifier rubyid_position_or_name'>position_or_name</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_migrations'>migrations</span><span class='period'>.</span><span class='id identifier rubyid_downto'>downto</span><span class='lparen'>(</span><span class='id identifier rubyid_position_or_name'>position_or_name</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_migration'>migration</span><span class='op'>|</span>
+    <span class='id identifier rubyid_migration'>migration</span><span class='period'>.</span><span class='id identifier rubyid_perform_down'>perform_down</span>
   <span class='kw'>end</span>
 
   <span class='kw'>return</span> <span class='kw'>true</span>
@@ -367,6 +368,7 @@ name.</p>
     </li>
   
 </ul>
+
 <h3>Returns:</h3>
 <ul class="return">
   
@@ -434,9 +436,9 @@ name.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/database/migrations/migrations.rb', line 151</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id migrate_up!'>migrate_up!</span><span class='lparen'>(</span><span class='id position_or_name'>position_or_name</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id migrations'>migrations</span><span class='period'>.</span><span class='id upto'>upto</span><span class='lparen'>(</span><span class='id position_or_name'>position_or_name</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id migration'>migration</span><span class='op'>|</span>
-    <span class='id migration'>migration</span><span class='period'>.</span><span class='id perform_up'>perform_up</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_migrate_up!'>migrate_up!</span><span class='lparen'>(</span><span class='id identifier rubyid_position_or_name'>position_or_name</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_migrations'>migrations</span><span class='period'>.</span><span class='id identifier rubyid_upto'>upto</span><span class='lparen'>(</span><span class='id identifier rubyid_position_or_name'>position_or_name</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_migration'>migration</span><span class='op'>|</span>
+    <span class='id identifier rubyid_migration'>migration</span><span class='period'>.</span><span class='id identifier rubyid_perform_up'>perform_up</span>
   <span class='kw'>end</span>
 
   <span class='kw'>return</span> <span class='kw'>true</span>
@@ -477,48 +479,48 @@ will no longer work. Using SQL will always work.</p>
     
       <h4><div class='inline'><p>Defining a migration at a position</p>
 </div></h4>
-      <pre class="example code"><span class='id migration'>migration</span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span> <span class='symbol'>:create_people_table</span><span class='rparen'>)</span> <span class='kw'>do</span>
-  <span class='id up'>up</span> <span class='kw'>do</span>
-    <span class='id create_table'>create_table</span> <span class='symbol'>:people</span> <span class='kw'>do</span>
-      <span class='id column'>column</span> <span class='symbol'>:id</span><span class='comma'>,</span>   <span class='const'>Integer</span><span class='comma'>,</span> <span class='symbol'>:serial</span> <span class='op'>=&gt;</span> <span class='kw'>true</span>
-      <span class='id column'>column</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:size</span> <span class='op'>=&gt;</span> <span class='int'>50</span>
-      <span class='id column'>column</span> <span class='symbol'>:age</span><span class='comma'>,</span>  <span class='const'>Integer</span>
+      <pre class="example code"><span class='id identifier rubyid_migration'>migration</span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span> <span class='symbol'>:create_people_table</span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_up'>up</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_create_table'>create_table</span> <span class='symbol'>:people</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_column'>column</span> <span class='symbol'>:id</span><span class='comma'>,</span>   <span class='const'>Integer</span><span class='comma'>,</span> <span class='symbol'>:serial</span> <span class='op'>=&gt;</span> <span class='kw'>true</span>
+      <span class='id identifier rubyid_column'>column</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:size</span> <span class='op'>=&gt;</span> <span class='int'>50</span>
+      <span class='id identifier rubyid_column'>column</span> <span class='symbol'>:age</span><span class='comma'>,</span>  <span class='const'>Integer</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
-  <span class='id down'>down</span> <span class='kw'>do</span>
-    <span class='id drop_table'>drop_table</span> <span class='symbol'>:people</span>
+  <span class='id identifier rubyid_down'>down</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_drop_table'>drop_table</span> <span class='symbol'>:people</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     
       <h4><div class='inline'><p>Defining a migration with a name</p>
 </div></h4>
-      <pre class="example code"><span class='id migration'>migration</span><span class='lparen'>(</span><span class='symbol'>:create_people_table</span><span class='rparen'>)</span> <span class='kw'>do</span>
-  <span class='id up'>up</span> <span class='kw'>do</span>
-    <span class='id create_table'>create_table</span> <span class='symbol'>:people</span> <span class='kw'>do</span>
-      <span class='id column'>column</span> <span class='symbol'>:id</span><span class='comma'>,</span>   <span class='const'>Integer</span><span class='comma'>,</span> <span class='symbol'>:serial</span> <span class='op'>=&gt;</span> <span class='kw'>true</span>
-      <span class='id column'>column</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:size</span> <span class='op'>=&gt;</span> <span class='int'>50</span>
-      <span class='id column'>column</span> <span class='symbol'>:age</span><span class='comma'>,</span>  <span class='const'>Integer</span>
+      <pre class="example code"><span class='id identifier rubyid_migration'>migration</span><span class='lparen'>(</span><span class='symbol'>:create_people_table</span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_up'>up</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_create_table'>create_table</span> <span class='symbol'>:people</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_column'>column</span> <span class='symbol'>:id</span><span class='comma'>,</span>   <span class='const'>Integer</span><span class='comma'>,</span> <span class='symbol'>:serial</span> <span class='op'>=&gt;</span> <span class='kw'>true</span>
+      <span class='id identifier rubyid_column'>column</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='symbol'>:size</span> <span class='op'>=&gt;</span> <span class='int'>50</span>
+      <span class='id identifier rubyid_column'>column</span> <span class='symbol'>:age</span><span class='comma'>,</span>  <span class='const'>Integer</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
-  <span class='id down'>down</span> <span class='kw'>do</span>
-    <span class='id drop_table'>drop_table</span> <span class='symbol'>:people</span>
+  <span class='id identifier rubyid_down'>down</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_drop_table'>drop_table</span> <span class='symbol'>:people</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     
       <h4><div class='inline'><p>Defining a migration with dependencies</p>
 </div></h4>
-      <pre class="example code"><span class='id migration'>migration</span><span class='lparen'>(</span><span class='symbol'>:add_salary_column</span><span class='comma'>,</span> <span class='symbol'>:needs</span> <span class='op'>=&gt;</span> <span class='symbol'>:create_people_table</span><span class='rparen'>)</span> <span class='kw'>do</span>
-  <span class='id up'>up</span> <span class='kw'>do</span>
-    <span class='id modify_table'>modify_table</span> <span class='symbol'>:people</span> <span class='kw'>do</span>
-      <span class='id add_column'>add_column</span> <span class='symbol'>:salary</span><span class='comma'>,</span> <span class='const'>Integer</span>
+      <pre class="example code"><span class='id identifier rubyid_migration'>migration</span><span class='lparen'>(</span><span class='symbol'>:add_salary_column</span><span class='comma'>,</span> <span class='symbol'>:needs</span> <span class='op'>=&gt;</span> <span class='symbol'>:create_people_table</span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_up'>up</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_modify_table'>modify_table</span> <span class='symbol'>:people</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_add_column'>add_column</span> <span class='symbol'>:salary</span><span class='comma'>,</span> <span class='const'>Integer</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
-  <span class='id down'>down</span> <span class='kw'>do</span>
-    <span class='id modify_table'>modify_table</span> <span class='symbol'>:people</span> <span class='kw'>do</span>
-      <span class='id drop_column'>drop_column</span> <span class='symbol'>:salary</span>
+  <span class='id identifier rubyid_down'>down</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_modify_table'>modify_table</span> <span class='symbol'>:people</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_drop_column'>drop_column</span> <span class='symbol'>:salary</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -543,6 +545,7 @@ will no longer work. Using SQL will always work.</p>
     </li>
   
 </ul>
+
 <h3>Yields:</h3>
 <ul class="yield">
   
@@ -652,21 +655,21 @@ position.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/database/migrations/migrations.rb', line 117</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id migration'>migration</span><span class='lparen'>(</span><span class='op'>*</span><span class='id arguments'>arguments</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id arguments'>arguments</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_migration'>migration</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
   <span class='kw'>when</span> <span class='const'>Integer</span>
-    <span class='id position'>position</span> <span class='op'>=</span> <span class='id arguments'>arguments</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
-    <span class='id name'>name</span> <span class='op'>=</span> <span class='id arguments'>arguments</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
-    <span class='id options'>options</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id arguments'>arguments</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_position'>position</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
 
-    <span class='kw'>self</span><span class='period'>.</span><span class='id migrations'>migrations</span><span class='period'>.</span><span class='id migration_at'>migration_at</span><span class='lparen'>(</span><span class='id position'>position</span><span class='comma'>,</span><span class='id name'>name</span><span class='comma'>,</span><span class='id options'>options</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_migrations'>migrations</span><span class='period'>.</span><span class='id identifier rubyid_migration_at'>migration_at</span><span class='lparen'>(</span><span class='id identifier rubyid_position'>position</span><span class='comma'>,</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>when</span> <span class='const'>Symbol</span><span class='comma'>,</span> <span class='const'>String</span>
-    <span class='id name'>name</span> <span class='op'>=</span> <span class='id arguments'>arguments</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
-    <span class='id options'>options</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id arguments'>arguments</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_arguments'>arguments</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
 
-    <span class='kw'>self</span><span class='period'>.</span><span class='id migrations'>migrations</span><span class='period'>.</span><span class='id migration_named'>migration_named</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='id options'>options</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_migrations'>migrations</span><span class='period'>.</span><span class='id identifier rubyid_migration_named'>migration_named</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
-    <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>first argument must be an Integer, Symbol or a String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id caller'>caller</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>first argument must be an Integer, Symbol or a String</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_caller'>caller</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -693,7 +696,8 @@ position.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Returns:</h3>
+  
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -739,8 +743,8 @@ position.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/database/migrations/migrations.rb', line 39</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id migrations'>migrations</span>
-  <span class='ivar'>@migrations</span> <span class='op'>||=</span> <span class='const'>Graph</span><span class='period'>.</span><span class='id new'>new</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_migrations'>migrations</span>
+  <span class='ivar'>@migrations</span> <span class='op'>||=</span> <span class='const'>Graph</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -752,9 +756,9 @@ position.</p>
 </div>
     
     <div id="footer">
-  Generated on Sun Oct 16 23:43:05 2011 by 
+  Generated on Sun Feb 12 14:13:29 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.2 (ruby-1.9.2).
+  0.7.5 (ruby-1.9.3).
 </div>
 
   </body>

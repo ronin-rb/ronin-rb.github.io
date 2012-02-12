@@ -100,7 +100,8 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Since:</h3>
+  
+<h3>Since:</h3>
 <ul class="since">
   
     <li>
@@ -117,6 +118,8 @@
 </ul>
 
 </div>
+
+
 
 
 
@@ -145,7 +148,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Catches missing constants and searches the <span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span> namespace.</p>
+    <span class="summary_desc"><div class='inline'>
 </div></span>
   
 </li>
@@ -235,65 +238,21 @@
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>Catches missing constants and searches the <span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span> namespace.</p>
+    
+  <div class="note notetag">
+    <strong>Note:</strong> 
+    <div class='inline'><p>Ruby 1.8.x requires <span class='object_link'><a href="#const_missing-class_method" title="Ronin::UI::Console::Context.const_missing (method)">const_missing</a></span> to be defined as an
+instance-method.</p>
+</div>
+  </div>
+
+
 
 
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
   
-    <li>
-      
-        <span class='name'>name</span>
-      
-      
-        <span class='type'>(<tt>Symbol</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The constant name.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Object</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The found constant.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Raises:</h3>
-<ul class="raise">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>NameError</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The constant could not be found within <span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span>.</p>
-</div>
-      
-    </li>
-  
-</ul>
 <h3>Since:</h3>
 <ul class="since">
   
@@ -303,7 +262,7 @@
       
       
         
-        <div class='inline'><p>1.0.0</p>
+        <div class='inline'><p>1.2.0</p>
 </div>
       
     </li>
@@ -323,8 +282,8 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/console/context.rb', line 55</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id const_missing'>const_missing</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
-  <span class='const'>Ronin</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='symbol'>:const_missing</span><span class='comma'>,</span><span class='id name'>name</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_const_missing'>const_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='const'>Ronin</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:const_missing</span><span class='comma'>,</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -346,7 +305,8 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Returns:</h3>
+  
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -385,27 +345,31 @@
       <pre class="lines">
 
 
-81
-82
-83
-84
-85
-86
-87
-88
-89</pre>
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/console/context.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/console/context.rb', line 90</span>
 
-<span class='kw'>def</span> <span class='id inspect'>inspect</span>
-  <span class='id body'>body</span> <span class='op'>=</span> <span class='kw'>unless</span> <span class='id instance_variables'>instance_variables</span><span class='period'>.</span><span class='id empty?'>empty?</span>
-           <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>: </span><span class='tstring_end'>'</span></span> <span class='op'>&lt;&lt;</span> <span class='id instance_variables'>instance_variables</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id name'>name</span><span class='op'>|</span>
-             <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>=</span><span class='embexpr_beg'>#{</span><span class='id instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
-           <span class='rbrace'>}</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>, </span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-         <span class='kw'>end</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_instance_variables'>instance_variables</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='id identifier rubyid_body'>body</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>:</span><span class='tstring_end'>'</span></span>
 
-  <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;Ronin::UI::Console</span><span class='embexpr_beg'>#{</span><span class='id body'>body</span><span class='rbrace'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_instance_variables'>instance_variables</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
+      <span class='id identifier rubyid_body'>body</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;Ronin::UI::Console</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_body'>body</span><span class='rbrace'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -446,6 +410,7 @@
     </li>
   
 </ul>
+
 <h3>Since:</h3>
 <ul class="since">
   
@@ -468,18 +433,18 @@
       <pre class="lines">
 
 
-65
-66
-67
-68
-69</pre>
+74
+75
+76
+77
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/ui/console/context.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/console/context.rb', line 74</span>
 
-<span class='kw'>def</span> <span class='id instance_variables='>instance_variables=</span><span class='lparen'>(</span><span class='id variables'>variables</span><span class='rparen'>)</span>
-  <span class='id variables'>variables</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id name'>name</span><span class='comma'>,</span><span class='id value'>value</span><span class='op'>|</span>
-    <span class='id instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>@</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id to_sym'>to_sym</span><span class='comma'>,</span><span class='id value'>value</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_instance_variables='>instance_variables=</span><span class='lparen'>(</span><span class='id identifier rubyid_variables'>variables</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_variables'>variables</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+    <span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='symbol'>:@</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -502,7 +467,8 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Returns:</h3>
+  
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -548,7 +514,7 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/ui/console/context.rb', line 34</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id new'>new</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
   <span class='kw'>class</span> <span class='op'>&lt;&lt;</span> <span class='kw'>super</span><span class='semicolon'>;</span> <span class='kw'>self</span><span class='semicolon'>;</span> <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -561,9 +527,9 @@
 </div>
     
     <div id="footer">
-  Generated on Sun Oct 16 23:42:58 2011 by 
+  Generated on Sun Feb 12 14:13:19 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.2 (ruby-1.9.2).
+  0.7.5 (ruby-1.9.3).
 </div>
 
   </body>
