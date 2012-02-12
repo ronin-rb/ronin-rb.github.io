@@ -1,0 +1,2432 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Ronin::Fuzzing
+  
+    &mdash; Ronin Support Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (F)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../Ronin.html" title="Ronin (module)">Ronin</a></span></span>
+     &raquo; 
+    <span class="title">Fuzzing</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Ronin::Fuzzing
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/ronin/fuzzing/fuzzing.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Contains class-methods which generate malicious data for fuzzing.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#%5B%5D-class_method" title="Ronin::Fuzzing.[] (method)">[]</a></span></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="SHORT_LENGTHS-constant" class="">SHORT_LENGTHS =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Short String lengths</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'>SortedSet</span><span class='lbracket'>[</span><span class='int'>1</span><span class='comma'>,</span> <span class='int'>100</span><span class='comma'>,</span> <span class='int'>500</span><span class='comma'>,</span> <span class='int'>1_000</span><span class='comma'>,</span> <span class='int'>10_000</span><span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="LONG_LENGTHS-constant" class="">LONG_LENGTHS =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Long String lengths</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'>SortedSet</span><span class='lbracket'>[</span>
+  <span class='int'>128</span><span class='comma'>,</span> <span class='int'>255</span><span class='comma'>,</span> <span class='int'>256</span><span class='comma'>,</span> <span class='int'>257</span><span class='comma'>,</span> <span class='int'>511</span><span class='comma'>,</span> <span class='int'>512</span><span class='comma'>,</span> <span class='int'>513</span><span class='comma'>,</span> <span class='int'>1023</span><span class='comma'>,</span> <span class='int'>1024</span><span class='comma'>,</span> <span class='int'>2048</span><span class='comma'>,</span> <span class='int'>2049</span><span class='comma'>,</span> <span class='int'>4095</span><span class='comma'>,</span>
+  <span class='int'>4096</span><span class='comma'>,</span> <span class='int'>4097</span><span class='comma'>,</span> <span class='int'>5_000</span><span class='comma'>,</span> <span class='int'>10_000</span><span class='comma'>,</span> <span class='int'>20_000</span><span class='comma'>,</span> <span class='int'>32762</span><span class='comma'>,</span> <span class='int'>32763</span><span class='comma'>,</span> <span class='int'>32764</span><span class='comma'>,</span> <span class='int'>32765</span><span class='comma'>,</span> <span class='int'>32766</span><span class='comma'>,</span>
+  <span class='int'>32767</span><span class='comma'>,</span> <span class='int'>32768</span><span class='comma'>,</span> <span class='int'>32769</span><span class='comma'>,</span>
+  <span class='int'>0xffff</span><span class='op'>-</span><span class='int'>2</span><span class='comma'>,</span> <span class='int'>0xffff</span><span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span> <span class='int'>0xffff</span><span class='comma'>,</span> <span class='int'>0xffff</span><span class='op'>+</span><span class='int'>1</span><span class='comma'>,</span> <span class='int'>0xffff</span><span class='op'>+</span><span class='int'>2</span><span class='comma'>,</span>
+  <span class='int'>99_999</span><span class='comma'>,</span> <span class='int'>100_000</span><span class='comma'>,</span> <span class='int'>500_000</span><span class='comma'>,</span> <span class='int'>1_000_000</span>
+<span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="NULL_BYTES-constant" class="">NULL_BYTES =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Null bytes in various encodings</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>%00</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>%u0000</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\x00</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="NEW_LINES-constant" class="">NEW_LINES =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Newline characters</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\r</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n\r</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="FORMAT_STRINGS-constant" class="">FORMAT_STRINGS =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Format String flags</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>%p</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>%s</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>%n</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%5B%5D-class_method" title="[] (class method)">+ (Enumerator) <strong>[]</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns a fuzzer method.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bad_paths-class_method" title="bad_paths (class method)">+ (Object) <strong>bad_paths</strong> {|path| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Various bad paths and directory traversals.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bad_strings-class_method" title="bad_strings (class method)">+ (Object) <strong>bad_strings</strong> {|string| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Various bad-strings.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bit_fields-class_method" title="bit_fields (class method)">+ (Object) <strong>bit_fields</strong> {|bitfield| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The range of bit-fields.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#format_strings-class_method" title="format_strings (class method)">+ (Object) <strong>format_strings</strong> {|fmt_string| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Various format-strings.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#int16-class_method" title="int16 (class method)">+ (Object) <strong>int16</strong> {|int| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The range of signed 16bit integers.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#int32-class_method" title="int32 (class method)">+ (Object) <strong>int32</strong> {|int| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The range of signed 32bit integers.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#int64-class_method" title="int64 (class method)">+ (Object) <strong>int64</strong> {|int| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The range of signed 64bit integers.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#int8-class_method" title="int8 (class method)">+ (Object) <strong>int8</strong> {|int| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The range of signed 8bit integers.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#signed_bit_fields-class_method" title="signed_bit_fields (class method)">+ (Object) <strong>signed_bit_fields</strong> {|bitfield| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The range of signed bit-fields.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sint16-class_method" title="sint16 (class method)">+ (Object) <strong>sint16</strong> {|int| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The range of negative-signed 16bit integers.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sint32-class_method" title="sint32 (class method)">+ (Object) <strong>sint32</strong> {|int| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The range of negative-signed 32bit integers.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sint64-class_method" title="sint64 (class method)">+ (Object) <strong>sint64</strong> {|int| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The range of negative-signed 64bit integers.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sint8-class_method" title="sint8 (class method)">+ (Object) <strong>sint8</strong> {|int| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The range of negative-signed 8bit integers.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#uint16-class_method" title="uint16 (class method)">+ (Object) <strong>uint16</strong> {|int| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The range of unsigned 16bit integers.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#uint32-class_method" title="uint32 (class method)">+ (Object) <strong>uint32</strong> {|int| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The range of unsigned 32bit integers.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#uint64-class_method" title="uint64 (class method)">+ (Object) <strong>uint64</strong> {|int| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The range of unsigned 64bit integers.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#uint8-class_method" title="uint8 (class method)">+ (Object) <strong>uint8</strong> {|int| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The range of unsigned 8bit integers.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="[]-class_method">
+  
+    + (<tt>Enumerator</tt>) <strong>[]</strong>(name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Returns a fuzzer method.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the fuzzer to return.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Enumerator</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>An Enumerator for the fuzzer method.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+63
+64
+65
+66
+67</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 63</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='op'>[]</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='op'>!</span><span class='const'>Object</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="bad_paths-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>bad_paths</strong> {|path| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Various bad paths and directory traversals.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>path</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each path.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A known bad path.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 139</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_bad_paths'>bad_paths</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_padding'>padding</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>A</span><span class='tstring_end'>'</span></span> <span class='op'>*</span> <span class='int'>5_000</span>
+
+  <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/.:/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_padding'>padding</span><span class='rbrace'>}</span><span class='tstring_content'>\x00\x00</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/.../</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_padding'>padding</span><span class='rbrace'>}</span><span class='tstring_content'>\x00\x00</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\\\\*</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\\\\?\\</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/\\</span><span class='tstring_end'>&quot;</span></span> <span class='op'>*</span> <span class='int'>5_000</span>
+  <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/.</span><span class='tstring_end'>'</span></span>  <span class='op'>*</span> <span class='int'>5_000</span>
+
+  <span class='const'>NULL_BYTES</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_start_with?'>start_with?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>%</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+      <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_c'>c</span><span class='rbrace'>}</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_c'>c</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_c'>c</span><span class='rbrace'>}</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="bad_strings-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>bad_strings</strong> {|string| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Various bad-strings.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>string</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each bad-string.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A bad-string containing known control characters, deliminators
+or null-bytes (see <span class='object_link'><a href="#NULL_BYTES-constant" title="Ronin::Fuzzing::NULL_BYTES (constant)">NULL_BYTES</a></span>), of varying length
+(see <span class='object_link'><a href="#SHORT_LENGTHS-constant" title="Ronin::Fuzzing::SHORT_LENGTHS (constant)">SHORT_LENGTHS</a></span> and <span class='object_link'><a href="#LONG_LENGTHS-constant" title="Ronin::Fuzzing::LONG_LENGTHS (constant)">LONG_LENGTHS</a></span>).</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 80</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_bad_strings'>bad_strings</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span>
+
+  <span class='id identifier rubyid_chars'>chars</span> <span class='op'>=</span> <span class='lbracket'>[</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>A</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>a</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>1</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>&lt;</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>&quot;</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>'</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\\</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>?</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>=</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>a=</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>&amp;</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>,</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>(</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>)</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>]</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>[</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>%</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>*</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>+</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>{</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>}</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\x14</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\xfe</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\xff</span><span class='tstring_end'>&quot;</span></span>
+  <span class='rbracket'>]</span>
+  
+  <span class='id identifier rubyid_chars'>chars</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
+    <span class='const'>LONG_LENGTHS</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_length'>length</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>*</span> <span class='id identifier rubyid_length'>length</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>!@#$%%^#$%#$@#$%$$@#$%^^**(()</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>%01%02%03%04%0a%0d%0aADSF</span><span class='tstring_end'>'</span></span>
+  <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>%01%02%03@%04%0a%0d%0aADSF</span><span class='tstring_end'>'</span></span>
+
+  <span class='const'>NULL_BYTES</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
+    <span class='const'>SHORT_LENGTHS</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_length'>length</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>*</span> <span class='id identifier rubyid_length'>length</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%\xfe\xf0%\x00\xff</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%\xfe\xf0%\x00\xff</span><span class='tstring_end'>&quot;</span></span> <span class='op'>*</span> <span class='int'>20</span>
+
+  <span class='const'>SHORT_LENGTHS</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_length'>length</span><span class='op'>|</span>
+    <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\xde\xad\xbe\xef</span><span class='tstring_end'>&quot;</span></span> <span class='op'>*</span> <span class='id identifier rubyid_length'>length</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n\r</span><span class='tstring_end'>&quot;</span></span> <span class='op'>*</span> <span class='int'>100</span>
+  <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;&gt;</span><span class='tstring_end'>&quot;</span></span>   <span class='op'>*</span> <span class='int'>500</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="bit_fields-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>bit_fields</strong> {|bitfield| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The range of bit-fields.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>bitfield</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each bit-field.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>bitfield</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A bit-field (8bit - 64bit).</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+169
+170
+171
+172
+173
+174
+175
+176</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 169</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_bit_fields'>bit_fields</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\x00</span><span class='tstring_end'>&quot;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\xff</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_c'>c</span> <span class='comment'># x2
+</span>    <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_c'>c</span> <span class='comment'># x4
+</span>    <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_c'>c</span> <span class='comment'># x8
+</span>  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="format_strings-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>format_strings</strong> {|fmt_string| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Various format-strings.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>fmt_string</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each format-string.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>fmt_string</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A format-string containing format operators (see <span class='object_link'><a href="#FORMAT_STRINGS-constant" title="Ronin::Fuzzing::FORMAT_STRINGS (constant)">FORMAT_STRINGS</a></span>).</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+121
+122
+123
+124
+125
+126
+127
+128</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 121</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_format_strings'>format_strings</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='const'>FORMAT_STRINGS</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_fmt'>fmt</span><span class='op'>|</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid_fmt'>fmt</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid_fmt'>fmt</span> <span class='op'>*</span> <span class='int'>100</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid_fmt'>fmt</span> <span class='op'>*</span> <span class='int'>500</span>
+    <span class='kw'>yield</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_fmt'>fmt</span><span class='rbrace'>}</span><span class='tstring_content'>\&quot;</span><span class='tstring_end'>&quot;</span></span> <span class='op'>*</span> <span class='int'>500</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="int16-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>int16</strong> {|int| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The range of signed 16bit integers.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>int</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A signed 16bit integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+270
+271
+272</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 270</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_int16'>int16</span>
+  <span class='id identifier rubyid_int8'>int8</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>*</span> <span class='int'>2</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="int32-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>int32</strong> {|int| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The range of signed 32bit integers.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>int</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A signed 32bit integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+283
+284
+285</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 283</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_int32'>int32</span>
+  <span class='id identifier rubyid_int8'>int8</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>*</span> <span class='int'>4</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="int64-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>int64</strong> {|int| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The range of signed 64bit integers.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>int</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A signed 64bit integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+296
+297
+298</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 296</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_int64'>int64</span>
+  <span class='id identifier rubyid_int8'>int8</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>*</span> <span class='int'>8</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="int8-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>int8</strong> {|int| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The range of signed 8bit integers.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>int</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A signed 8bit integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+257
+258
+259</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 257</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_int8'>int8</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\x00</span><span class='tstring_end'>&quot;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\x70</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="signed_bit_fields-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>signed_bit_fields</strong> {|bitfield| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The range of signed bit-fields.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>bitfield</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each bit-field.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>bitfield</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A signed bit-field (8bit - 64bit).</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+187
+188
+189
+190
+191
+192
+193
+194</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 187</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_signed_bit_fields'>signed_bit_fields</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\x80</span><span class='tstring_end'>&quot;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\xff</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_c'>c</span> <span class='comment'># x2
+</span>    <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_c'>c</span> <span class='comment'># x4
+</span>    <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_c'>c</span> <span class='comment'># x8
+</span>  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="sint16-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>sint16</strong> {|int| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The range of negative-signed 16bit integers.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>int</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A negative-signed 16bit integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+322
+323
+324</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 322</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sint16'>sint16</span>
+  <span class='id identifier rubyid_sint8'>sint8</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>*</span> <span class='int'>2</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="sint32-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>sint32</strong> {|int| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The range of negative-signed 32bit integers.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>int</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A negative-signed 32bit integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+335
+336
+337</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 335</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sint32'>sint32</span>
+  <span class='id identifier rubyid_sint8'>sint8</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>*</span> <span class='int'>4</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="sint64-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>sint64</strong> {|int| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The range of negative-signed 64bit integers.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>int</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A negative-signed 64bit integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+348
+349
+350</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 348</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sint64'>sint64</span>
+  <span class='id identifier rubyid_sint8'>sint8</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>*</span> <span class='int'>8</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="sint8-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>sint8</strong> {|int| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The range of negative-signed 8bit integers.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>int</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A negative-signed 8bit integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+309
+310
+311</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 309</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sint8'>sint8</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\x80</span><span class='tstring_end'>&quot;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\xff</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="uint16-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>uint16</strong> {|int| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The range of unsigned 16bit integers.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>int</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A unsigned 16bit integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+218
+219
+220</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 218</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_uint16'>uint16</span>
+  <span class='id identifier rubyid_uint8'>uint8</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>*</span> <span class='int'>2</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="uint32-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>uint32</strong> {|int| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The range of unsigned 32bit integers.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>int</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A unsigned 32bit integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+231
+232
+233</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 231</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_uint32'>uint32</span>
+  <span class='id identifier rubyid_uint8'>uint8</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>*</span> <span class='int'>4</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="uint64-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>uint64</strong> {|int| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The range of unsigned 64bit integers.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>int</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A unsigned 64bit integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+244
+245
+246</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 244</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_uint64'>uint64</span>
+  <span class='id identifier rubyid_uint8'>uint8</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_c'>c</span> <span class='op'>*</span> <span class='int'>8</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="uint8-class_method">
+  
+    + (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>uint8</strong> {|int| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The range of unsigned 8bit integers.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>int</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A unsigned 8bit integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.4.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+205
+206
+207</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzing.rb', line 205</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_uint8'>uint8</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\x00</span><span class='tstring_end'>&quot;</span></span><span class='op'>..</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\xff</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Sun Feb 12 14:10:41 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.4 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

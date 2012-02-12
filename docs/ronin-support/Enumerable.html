@@ -71,7 +71,7 @@
   
   
     <dt class="r1">Included in:</dt>
-    <dd class="r1"><span class='object_link'><a href="IPAddr.html" title="IPAddr (class)">IPAddr</a></span></dd>
+    <dd class="r1"><span class='object_link'><a href="IPAddr.html" title="IPAddr (class)">IPAddr</a></span>, <span class='object_link'><a href="Ronin/Wordlist.html" title="Ronin::Wordlist (class)">Ronin::Wordlist</a></span></dd>
     
   
   
@@ -83,7 +83,7 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>Copyright (c) 2006-2011 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
+    <p>Copyright (c) 2006-2012 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
 
 <p>This file is part of Ronin Support.</p>
 
@@ -105,6 +105,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 </div>
 <div class="tags">
   
+
 </div>
 
 
@@ -170,12 +171,13 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='id host_names'>host_names</span> <span class='op'>=</span> <span class='qwords_beg'>%w[</span><span class='tstring_content'>www.wired.com</span><span class='words_sep'> </span><span class='tstring_content'>www.google.com</span><span class='words_sep'>]</span>
-<span class='id host_names'>host_names</span><span class='period'>.</span><span class='id map_hash'>map_hash</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id name'>name</span><span class='op'>|</span> <span class='const'>Resolv</span><span class='period'>.</span><span class='id getaddresses'>getaddresses</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+      <pre class="example code"><span class='id identifier rubyid_host_names'>host_names</span> <span class='op'>=</span> <span class='qwords_beg'>%w[</span><span class='tstring_content'>www.wired.com</span><span class='words_sep'> </span><span class='tstring_content'>www.google.com</span><span class='words_sep'>]</span>
+<span class='id identifier rubyid_host_names'>host_names</span><span class='period'>.</span><span class='id identifier rubyid_map_hash'>map_hash</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span> <span class='const'>Resolv</span><span class='period'>.</span><span class='id identifier rubyid_getaddresses'>getaddresses</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='comment'># {&quot;www.wired.com&quot;=&gt;[&quot;184.84.183.17&quot;, &quot;184.84.183.91&quot;],
 </span><span class='comment'>#  &quot;www.google.com&quot;=&gt;[&quot;173.194.33.18&quot;, &quot;173.194.33.17&quot;, &quot;173.194.33.19&quot;, &quot;173.194.33.20&quot;, &quot;173.194.33.16&quot;]}</span></pre>
     
   </div>
+
 <h3>Yields:</h3>
 <ul class="yield">
   
@@ -264,13 +266,13 @@ The return value from the block will be stored in the hash.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/extensions/enumerable.rb', line 45</span>
 
-<span class='kw'>def</span> <span class='id map_hash'>map_hash</span>
-  <span class='id new_hash'>new_hash</span> <span class='op'>=</span> <span class='const'>Hash</span><span class='period'>.</span><span class='id new'>new</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id hash'>hash</span><span class='comma'>,</span><span class='id key'>key</span><span class='op'>|</span>
-    <span class='id hash'>hash</span><span class='lbracket'>[</span><span class='id key'>key</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id key'>key</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_map_hash'>map_hash</span>
+  <span class='id identifier rubyid_new_hash'>new_hash</span> <span class='op'>=</span> <span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span><span class='id identifier rubyid_key'>key</span><span class='op'>|</span>
+    <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>yield</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
-  <span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id element'>element</span><span class='op'>|</span> <span class='id new_hash'>new_hash</span><span class='lbracket'>[</span><span class='id element'>element</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
-  <span class='kw'>return</span> <span class='id new_hash'>new_hash</span>
+  <span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_element'>element</span><span class='op'>|</span> <span class='id identifier rubyid_new_hash'>new_hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_element'>element</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_new_hash'>new_hash</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -282,9 +284,9 @@ The return value from the block will be stored in the hash.</p>
 </div>
     
     <div id="footer">
-  Generated on Sun Oct 16 23:41:00 2011 by 
+  Generated on Sun Feb 12 14:10:53 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.0 (ruby-1.9.2).
+  0.7.4 (ruby-1.9.3).
 </div>
 
   </body>
