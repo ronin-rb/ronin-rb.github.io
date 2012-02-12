@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Class: Ronin::Gen::Generator
   
@@ -66,12 +66,10 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName">Thor::Group</span>
+      <span class="inheritName">Object</span>
       
         <ul class="fullTree">
           <li>Object</li>
-          
-            <li class="next">Thor::Group</li>
           
             <li class="next">Ronin::Gen::Generator</li>
           
@@ -86,7 +84,7 @@
   
     
       <dt class="r2">Includes:</dt>
-      <dd class="r2">DataPaths::Finders, Templates::Template, Thor::Actions</dd>
+      <dd class="r2">DataPaths::Finders, FileUtils, Parameters, Templates::Erb</dd>
       
     
   
@@ -100,10 +98,8 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>The <span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Generator</a></span> class leverages <code>Thor::Group</code> and <code>Thor::Actions</code>
-to create a generic generator class. The generator class can
-define <code>class_options</code> that can be used to parse command-line
-arguments or set directly in Ruby.</p>
+    <p>The <span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Generator</a></span> class is a generate base-class for all file,
+source-code or directory generators.</p>
 
 <h1 id="extending">Extending</h1>
 
@@ -114,43 +110,43 @@ classes that extend our generator. The functionality of the generator
 is defined via instance methods, which are called sequentially when
 the generator is invoked.</p>
 
-<pre class="code"><span class='require identifier id'>require</span> <span class='string val'>'ronin/gen/file_generator'</span>
+<pre class="code ruby"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ronin/gen/file_generator</span><span class='tstring_end'>'</span></span>
 
-<span class='module module kw'>module</span> <span class='Ronin constant id'>Ronin</span>
-  <span class='module module kw'>module</span> <span class='Gen constant id'>Gen</span>
-    <span class='module module kw'>module</span> <span class='Generators constant id'>Generators</span>
-      <span class='class class kw'>class</span> <span class='MyGenerator constant id'>MyGenerator</span> <span class='lt op'>&lt;</span> <span class='FileGenerator constant id'>FileGenerator</span>
+<span class='kw'>module</span> <span class='const'>Ronin</span>
+  <span class='kw'>module</span> <span class='const'>Gen</span>
+    <span class='kw'>module</span> <span class='const'>Generators</span>
+      <span class='kw'>class</span> <span class='const'>MyGenerator</span> <span class='op'>&lt;</span> <span class='const'>FileGenerator</span>
 
-        <span class='desc identifier id'>desc</span> <span class='string val'>'My generator'</span>
+        <span class='comment'># generator options
+</span>        <span class='id identifier rubyid_parameter'>parameter</span> <span class='symbol'>:stuff</span><span class='comma'>,</span> <span class='symbol'>:type</span> <span class='op'>=&gt;</span> <span class='kw'>true</span>
+        <span class='id identifier rubyid_parameter'>parameter</span> <span class='symbol'>:syntax</span><span class='comma'>,</span> <span class='symbol'>:type</span> <span class='op'>=&gt;</span> <span class='const'>String</span>
+        <span class='id identifier rubyid_parameter'>parameter</span> <span class='symbol'>:includes</span><span class='comma'>,</span> <span class='symbol'>:type</span> <span class='op'>=&gt;</span> <span class='const'>Array</span>
 
-        <span class='comment val'># generator options</span>
-        <span class='class_option identifier id'>class_option</span> <span class='symbol val'>:stuff</span><span class='comma token'>,</span> <span class='symbol val'>:type</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:boolean</span>
-        <span class='class_option identifier id'>class_option</span> <span class='symbol val'>:syntax</span><span class='comma token'>,</span> <span class='symbol val'>:type</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:string</span>
-        <span class='class_option identifier id'>class_option</span> <span class='symbol val'>:includes</span><span class='comma token'>,</span> <span class='symbol val'>:type</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='symbol val'>:array</span>
+        <span class='comment'>#
+</span>        <span class='comment'># Performs the generation.
+</span>        <span class='comment'>#
+</span>        <span class='kw'>def</span> <span class='id identifier rubyid_generate'>generate</span>
+          <span class='id identifier rubyid_erb'>erb</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>some_template.erb</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_path'>path</span>
+        <span class='kw'>end</span>
 
-        <span class='comment val'>#</span>
-        <span class='comment val'># Performs the generation.</span>
-        <span class='comment val'>#</span>
-        <span class='def def kw'>def</span> <span class='generate identifier id'>generate</span>
-          <span class='erb identifier id'>erb</span> <span class='string val'>'some_template.erb'</span><span class='comma token'>,</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='path identifier id'>path</span>
-        <span class='end end kw'>end</span>
-
-      <span class='end end kw'>end</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
 
 <h1 id="invoking">Invoking</h1>
 
 <p>To invoke the generator from ruby, one can call the <span class='object_link'><a href="#generate-class_method" title="Ronin::Gen::Generator.generate (method)">generate</a></span>
 class method with the options and arguments to run the generator with:</p>
 
-<pre class="code"><span class='MyGenerator constant id'>MyGenerator</span><span class='dot token'>.</span><span class='generate identifier id'>generate</span><span class='lparen token'>(</span>
-  <span class='lbrace token'>{</span><span class='symbol val'>:stuff</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='comma token'>,</span> <span class='symbol val'>:syntax</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'bla'</span><span class='comma token'>,</span> <span class='symbol val'>:includes</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='string val'>'other'</span><span class='rbrack token'>]</span><span class='rbrace token'>}</span>
-  <span class='lbrack token'>[</span><span class='string val'>'path/to/file'</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
-<span class='rparen token'>)</span>
-</pre>
+<pre class="code ruby"><code>MyGenerator.generate(
+  :stuff    =&gt; true,
+  :syntax   =&gt; 'bla',
+  :includes =&gt; ['other']
+  :path     =&gt; 'path/to/file',
+)
+</code></pre>
 
 <p>To make your generator accessible to the <code>ronin-gen</code> command, simply
 place your generator file within the <code>ronin/gen/generators</code> directory
@@ -160,30 +156,79 @@ of any Ronin library. If your generator class is named
 <p>To run the generator using the <code>ronin-gen</code> command, simply specify
 it&rsquo;s underscored name:</p>
 
-<pre class="code"><span class='ronin identifier id'>ronin</span><span class='minus op'>-</span><span class='gen identifier id'>gen</span> <span class='my_generator identifier id'>my_generator</span> <span class='path identifier id'>path</span><span class='div op'>/</span><span class='to identifier id'>to</span><span class='div op'>/</span><span class='file identifier id'>file</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='stuff identifier id'>stuff</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='syntax identifier id'>syntax</span> <span class='bla identifier id'>bla</span> <span class='minus op'>-</span><span class='minus op'>-</span><span class='includes identifier id'>includes</span> <span class='other identifier id'>other</span>
-</pre>
+<pre class="code ruby"><code>ronin-gen my_generator path/to/file --stuff \
+                                    --syntax bla \
+                                    --includes other
+</code></pre>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
   <p class="children"><span class='object_link'><a href="DirGenerator.html" title="Ronin::Gen::DirGenerator (class)">DirGenerator</a></span>, <span class='object_link'><a href="FileGenerator.html" title="Ronin::Gen::FileGenerator (class)">FileGenerator</a></span></p>
 </div>
 
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="BOLD-constant" class="">BOLD =
+          <div class="docstring">
+  <div class="discussion">
+    <p>ANSI Bold code</p>
 
+
+  </div>
+</div>
+<div class="tags">
   
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[1m</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+        <dt id="GREEN-constant" class="">GREEN =
+          <div class="docstring">
+  <div class="discussion">
+    <p>ANSI Green code</p>
+
+
+  </div>
+</div>
+<div class="tags">
   
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[32m</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+        <dt id="CLEAR-constant" class="">CLEAR =
+          <div class="docstring">
+  <div class="discussion">
+    <p>ANSI Clear code</p>
+
+
+  </div>
+</div>
+<div class="tags">
   
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\e[0m</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+    </dl>
   
 
 
-  
-  
-  
-  
+
+
+
+
 
   
     <h2>
@@ -196,7 +241,29 @@ it&rsquo;s underscored name:</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#generate-class_method" title="generate (class method)">+ (Generator) <strong>generate</strong>(options = {}, arguments = []) {|generator| ... }</a>
+      <a href="#data_dir-class_method" title="data_dir (class method)">+ (String<sup>?</sup>) <strong>data_dir</strong>(new_dir = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The default data directory of the generator.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#generate-class_method" title="generate (class method)">+ (Generator) <strong>generate</strong>(options = {}) {|generator| ... }</a>
     
 
     
@@ -218,7 +285,7 @@ it&rsquo;s underscored name:</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#inherited-class_method" title="inherited (class method)">+ (Object) <strong>inherited</strong>(super_class) </a>
+      <a href="#generator_name-class_method" title="generator_name (class method)">+ (String) <strong>generator_name</strong> </a>
     
 
     
@@ -231,52 +298,7 @@ it&rsquo;s underscored name:</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Sets the namespace of new <span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Generator</a></span> classes.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#source_root-class_method" title="source_root (class method)">+ (Object) <strong>source_root</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Defines the default source root of the generator as the current
-working directory.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#source_root%3D-class_method" title="source_root= (class method)">+ (String) <strong>source_root=</strong>(new_dir) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Sets the source root of the generator.</p>
+    <span class="summary_desc"><div class='inline'><p>The name of the generator.</p>
 </div></span>
   
 </li>
@@ -294,7 +316,95 @@ working directory.</p>
         <li class="protected ">
   <span class="summary_signature">
     
-      <a href="#cp-instance_method" title="#cp (instance method)">- (Object) <strong>cp</strong>(data_file, destination) </a>
+      <a href="#chmod-instance_method" title="#chmod (instance method)">- (Object) <strong>chmod</strong>(mode, paths) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Changes the permissions of a files or directories.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#chmod_R-instance_method" title="#chmod_R (instance method)">- (Object) <strong>chmod_R</strong>(mode, paths) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Changes the permissions of files/directories, recursively.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#chown-instance_method" title="#chown (instance method)">- (Object) <strong>chown</strong>(user, group, paths) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Changes ownership of files or directories.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#chown_R-instance_method" title="#chown_R (instance method)">- (Object) <strong>chown_R</strong>(user, group, paths) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Changes ownership of files/directories, recursively.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#cp-instance_method" title="#cp (instance method)">- (Object) <strong>cp</strong>(file, destination = file) </a>
     
 
     
@@ -316,7 +426,7 @@ working directory.</p>
         <li class="protected ">
   <span class="summary_signature">
     
-      <a href="#cp_r-instance_method" title="#cp_r (instance method)">- (Object) <strong>cp_r</strong>(data_dir, destination = nil, config = {}) </a>
+      <a href="#cp_r-instance_method" title="#cp_r (instance method)">- (Object) <strong>cp_r</strong>(directory, destination = directory) </a>
     
 
     
@@ -330,28 +440,6 @@ working directory.</p>
 
   
     <span class="summary_desc"><div class='inline'><p>Copies the contents of all data directories.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="protected ">
-  <span class="summary_signature">
-    
-      <a href="#erb-instance_method" title="#erb (instance method)">- (nil, String) <strong>erb</strong>(template_path, destination = nil) </a>
-    
-
-    
-  </span>
-  
-  
-  <span class="note title protected">protected</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Renders the ERB template and saves the result.</p>
 </div></span>
   
 </li>
@@ -379,10 +467,32 @@ working directory.</p>
 </li>
 
       
-        <li class="protected ">
+        <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Generator) <strong>initialize</strong>(arguments = [], options = {}, config = {}) {|_self| ... }</a>
+      <a href="#generate%21-instance_method" title="#generate! (instance method)">- (Object) <strong>generate!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets up the generator and calls <span class='object_link'><a href="#generate-instance_method" title="Ronin::Gen::Generator#generate (method)">#generate</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Generator) <strong>initialize</strong>(options = {}) {|generator| ... }</a>
     
 
     
@@ -391,7 +501,7 @@ working directory.</p>
     <span class="note title constructor">constructor</span>
   
   
-  <span class="note title protected">protected</span>
+  
   
   
   
@@ -406,7 +516,95 @@ working directory.</p>
         <li class="protected ">
   <span class="summary_signature">
     
-      <a href="#mkdir-instance_method" title="#mkdir (instance method)">- (Object) <strong>mkdir</strong>(destination) </a>
+      <a href="#install-instance_method" title="#install (instance method)">- (Object) <strong>install</strong>(src, dest, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Installs a file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#ln-instance_method" title="#ln (instance method)">- (Object) <strong>ln</strong>(src, dest) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a hard link.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#ln_s-instance_method" title="#ln_s (instance method)">- (Object) <strong>ln_s</strong>(src, dest) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a symbolic link.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#ln_sf-instance_method" title="#ln_sf (instance method)">- (Object) <strong>ln_sf</strong>(src, dest) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Forcibly creates a symbolic link.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#mkdir-instance_method" title="#mkdir (instance method)">- (Object) <strong>mkdir</strong>(dir) </a>
     
 
     
@@ -428,7 +626,7 @@ working directory.</p>
         <li class="protected ">
   <span class="summary_signature">
     
-      <a href="#setup-instance_method" title="#setup (instance method)">- (Object) <strong>setup</strong> </a>
+      <a href="#mkdir_p-instance_method" title="#mkdir_p (instance method)">- (Object) <strong>mkdir_p</strong>(dir) </a>
     
 
     
@@ -436,6 +634,160 @@ working directory.</p>
   
   
   <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates an empty directory.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#mv-instance_method" title="#mv (instance method)">- (Object) <strong>mv</strong>(src, dest) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Moves a file or directory.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#rm-instance_method" title="#rm (instance method)">- (Object) <strong>rm</strong>(paths, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Removes one or more files.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#rm_r-instance_method" title="#rm_r (instance method)">- (Object) <strong>rm_r</strong>(paths, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Recursively removes files and directories.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#rm_rf-instance_method" title="#rm_rf (instance method)">- (Object) <strong>rm_rf</strong>(paths) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Forcibly removes files and directories, recursively.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#rmdir-instance_method" title="#rmdir (instance method)">- (Object) <strong>rmdir</strong>(dirs) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Removes one or more directories.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#run-instance_method" title="#run (instance method)">- (Object) <strong>run</strong>(command, *arguments) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Runs a command.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#setup-instance_method" title="#setup (instance method)">- (Object) <strong>setup</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
   
   
   
@@ -451,7 +803,29 @@ the tasks are invoked.</p>
         <li class="protected ">
   <span class="summary_signature">
     
-      <a href="#touch-instance_method" title="#touch (instance method)">- (Object) <strong>touch</strong>(destination) </a>
+      <a href="#template-instance_method" title="#template (instance method)">- (nil, String) <strong>template</strong>(template_path, dest = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Renders the ERB template and saves the result.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#touch-instance_method" title="#touch (instance method)">- (Object) <strong>touch</strong>(file) </a>
     
 
     
@@ -470,6 +844,28 @@ the tasks are invoked.</p>
 </li>
 
       
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#write-instance_method" title="#write (instance method)">- (Object) <strong>write</strong>(path) {|file| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Opens a file for writing.</p>
+</div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -483,7 +879,7 @@ the tasks are invoked.</p>
     <div class="method_details first">
   <p class="signature first" id="initialize-instance_method">
   
-    - (<tt><span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Generator</a></span></tt>) <strong>initialize</strong>(arguments = [], options = {}, config = {}) {|_self| ... } <span class="extras">(protected)</span>
+    - (<tt><span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Generator</a></span></tt>) <strong>initialize</strong>(options = {}) {|generator| ... }
   
 
   
@@ -500,17 +896,15 @@ the tasks are invoked.</p>
   
     <li>
       
-        <span class='name'>arguments</span>
+        <span class='name'>path</span>
       
       
-        <span class='type'>(<tt>Array</tt>)</span>
+        <span class='type'>(<tt>String</tt>)</span>
       
-      
-        <em class="default">(defaults to: <tt>[]</tt>)</em>
       
       
         &mdash;
-        <div class='inline'><p>Additional arguments for the generator.</p>
+        <div class='inline'><p>The destination path for the generator.</p>
 </div>
       
     </li>
@@ -520,45 +914,33 @@ the tasks are invoked.</p>
         <span class='name'>options</span>
       
       
-        <span class='type'>(<tt>Hash</tt>)</span>
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>{}</tt>)</em>
       
       
         &mdash;
-        <div class='inline'><p>Options to pass to the generator.</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>config</span>
-      
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>{}</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>Additional configuration for the generator.</p>
+        <div class='inline'><p>The options for the generator.</p>
 </div>
       
     </li>
   
 </ul>
+
 <h3>Yields:</h3>
 <ul class="yield">
   
     <li>
       
       
-        <span class='type'>(<tt>_self</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="../Gen.html#generator-class_method" title="Ronin::Gen.generator (method)">generator</a></span></tt>)</span>
       
       
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed the newly created generator.</p>
+</div>
       
     </li>
   
@@ -568,15 +950,103 @@ the tasks are invoked.</p>
   
     <li>
       
-        <span class='name'>_self</span>
+        <span class='name'>The</span>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Ronin::Gen::Generator</a></span></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Generator</a></span></tt>)</span>
       
       
       
         &mdash;
-        <div class='inline'><p>the object that the method was called on</p>
+        <div class='inline'><p>newly created generator.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+116
+117
+118
+119
+120</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 116</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_initialize_params'>initialize_params</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+
+  <span class='kw'>yield</span> <span class='kw'>self</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="data_dir-class_method">
+  
+    + (<tt>String</tt><sup>?</sup>) <strong>data_dir</strong>(new_dir = nil) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>The default data directory of the generator.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>new_dir</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The new data directory.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The data directory that the generator will search for source files
+within.</p>
 </div>
       
     </li>
@@ -591,7 +1061,7 @@ the tasks are invoked.</p>
       
       
         
-        <div class='inline'><p>1.0.0</p>
+        <div class='inline'><p>1.1.0</p>
 </div>
       
     </li>
@@ -604,41 +1074,37 @@ the tasks are invoked.</p>
       <pre class="lines">
 
 
-192
-193
-194
-195
-196
-197
-198</pre>
+152
+153
+154
+155
+156
+157
+158
+159
+160</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 192</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 152</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='arguments identifier id'>arguments</span><span class='assign token'>=</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span><span class='config identifier id'>config</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='arguments identifier id'>arguments</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='comma token'>,</span><span class='config identifier id'>config</span><span class='rparen token'>)</span>
-
-  <span class='setup identifier id'>setup</span><span class='lparen token'>(</span><span class='rparen token'>)</span>
-
-  <span class='yield yield kw'>yield</span> <span class='self self kw'>self</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_data_dir'>data_dir</span><span class='lparen'>(</span><span class='id identifier rubyid_new_dir'>new_dir</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_new_dir'>new_dir</span>
+    <span class='ivar'>@data_dir</span> <span class='op'>=</span> <span class='id identifier rubyid_new_dir'>new_dir</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@data_dir</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='id identifier rubyid_superclass'>superclass</span> <span class='op'>&lt;</span> <span class='const'>Generator</span>
+                    <span class='id identifier rubyid_superclass'>superclass</span><span class='period'>.</span><span class='id identifier rubyid_data_dir'>data_dir</span>
+                  <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
-  
-</div>
-
-
-  <div id="class_method_details" class="method_details_list">
-    <h2>Class Method Details</h2>
     
-    
-      <div class="method_details first">
-  <p class="signature first" id="generate-class_method">
+      <div class="method_details ">
+  <p class="signature " id="generate-class_method">
   
-    + (<tt><span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Generator</a></span></tt>) <strong>generate</strong>(options = {}, arguments = []) {|generator| ... }
+    + (<tt><span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Generator</a></span></tt>) <strong>generate</strong>(options = {}) {|generator| ... }
   
 
   
@@ -656,8 +1122,7 @@ the tasks are invoked.</p>
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='gen identifier id'>gen</span><span class='dot token'>.</span><span class='generate identifier id'>generate</span>
-</pre>
+      <pre class="example code"><span class='id identifier rubyid_gen'>gen</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span></pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -688,8 +1153,6 @@ the tasks are invoked.</p>
         <span class='type'>(<tt>Array</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>[]</tt>)</em>
-      
       
         &mdash;
         <div class='inline'><p>Additional arguments for the generator.</p>
@@ -698,6 +1161,7 @@ the tasks are invoked.</p>
     </li>
   
 </ul>
+
 <h3>Yields:</h3>
 <ul class="yield">
   
@@ -773,179 +1237,43 @@ the tasks are invoked.</p>
       <pre class="lines">
 
 
-159
-160
-161
-162
-163
-164</pre>
+187
+188
+189
+190
+191
+192</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 159</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 187</span>
 
-<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='generate identifier id'>generate</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span><span class='arguments identifier id'>arguments</span><span class='assign token'>=</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='generator identifier id'>generator</span> <span class='assign token'>=</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='arguments identifier id'>arguments</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='generator identifier id'>generator</span><span class='dot token'>.</span><span class='invoke_all identifier id'>invoke_all</span><span class='lparen token'>(</span><span class='rparen token'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_generator'>generator</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
 
-  <span class='return return kw'>return</span> <span class='generator identifier id'>generator</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='id identifier rubyid_generator'>generator</span><span class='period'>.</span><span class='id identifier rubyid_generate!'>generate!</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_generator'>generator</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="inherited-class_method">
+  <p class="signature " id="generator_name-class_method">
   
-    + (<tt>Object</tt>) <strong>inherited</strong>(super_class) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>Sets the namespace of new <span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Ronin::Gen::Generator</a></span> classes.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>super_class</span>
-      
-      
-        <span class='type'>(<tt>Class</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The new <span class='object_link'><a href="" title="Ronin::Gen::Generator (class)">Ronin::Gen::Generator</a></span> class.</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-104
-105
-106
-107
-108
-109</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 104</span>
-
-<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='inherited identifier id'>inherited</span><span class='lparen token'>(</span><span class='super_class identifier id'>super_class</span><span class='rparen token'>)</span>
-  <span class='class_name identifier id'>class_name</span> <span class='assign token'>=</span> <span class='super_class identifier id'>super_class</span><span class='dot token'>.</span><span class='name identifier id'>name</span><span class='dot token'>.</span><span class='sub identifier id'>sub</span><span class='lparen token'>(</span><span class='string val'>'Ronin::Gen::Generators::'</span><span class='comma token'>,</span><span class='string val'>''</span><span class='rparen token'>)</span>
-  <span class='gen_name identifier id'>gen_name</span> <span class='assign token'>=</span> <span class='Support constant id'>Support</span><span class='colon2 op'>::</span><span class='Inflector constant id'>Inflector</span><span class='dot token'>.</span><span class='underscore identifier id'>underscore</span><span class='lparen token'>(</span><span class='class_name identifier id'>class_name</span><span class='dot token'>.</span><span class='gsub identifier id'>gsub</span><span class='lparen token'>(</span><span class='string val'>'::'</span><span class='comma token'>,</span><span class='string val'>':'</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-
-  <span class='super_class identifier id'>super_class</span><span class='dot token'>.</span><span class='namespace identifier id'>namespace</span><span class='lparen token'>(</span><span class='gen_name identifier id'>gen_name</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="source_root-class_method">
-  
-    + (<tt>Object</tt>) <strong>source_root</strong> 
+    + (<tt>String</tt>) <strong>generator_name</strong> 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
-    <p>Defines the default source root of the generator as the current
-working directory.</p>
+    <p>The name of the generator.</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <h3>Since:</h3>
-<ul class="since">
   
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>0.2.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-117
-118
-119</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 117</span>
-
-<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='source_root identifier id'>source_root</span>
-  <span class='@generator_source_root ivar id'>@generator_source_root</span> <span class='opasgn op'>||=</span> <span class='Dir constant id'>Dir</span><span class='dot token'>.</span><span class='pwd identifier id'>pwd</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="source_root=-class_method">
-  
-    + (<tt>String</tt>) <strong>source_root=</strong>(new_dir) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>Sets the source root of the generator.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>new_dir</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The new source root directory.</p>
-</div>
-      
-    </li>
-  
-</ul>
 <h3>Returns:</h3>
 <ul class="return">
   
@@ -957,7 +1285,7 @@ working directory.</p>
       
       
         &mdash;
-        <div class='inline'><p>The source root directory of the generator.</p>
+        <div class='inline'><p>The generator name.</p>
 </div>
       
     </li>
@@ -972,7 +1300,7 @@ working directory.</p>
       
       
         
-        <div class='inline'><p>1.0.0</p>
+        <div class='inline'><p>1.1.0</p>
 </div>
       
     </li>
@@ -987,15 +1315,18 @@ working directory.</p>
 
 132
 133
-134</pre>
+134
+135
+136</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 132</span>
 
-<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='source_root identifier id'>source_root</span><span class='assign token'>=</span><span class='lparen token'>(</span><span class='new_dir identifier id'>new_dir</span><span class='rparen token'>)</span>
-  <span class='@genereator_source_root ivar id'>@genereator_source_root</span> <span class='assign token'>=</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='expand_path identifier id'>expand_path</span><span class='lparen token'>(</span><span class='new_dir identifier id'>new_dir</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_generator_name'>generator_name</span>
+  <span class='id identifier rubyid_class_name'>class_name</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Ronin::Gen::Generators::</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+
+  <span class='kw'>return</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Inflector</span><span class='period'>.</span><span class='id identifier rubyid_underscore'>underscore</span><span class='lparen'>(</span><span class='id identifier rubyid_class_name'>class_name</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>::</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>:</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1008,9 +1339,431 @@ working directory.</p>
     
     
       <div class="method_details first">
-  <p class="signature first" id="cp-instance_method">
+  <p class="signature first" id="chmod-instance_method">
   
-    - (<tt>Object</tt>) <strong>cp</strong>(data_file, destination)  <span class="extras">(protected)</span>
+    - (<tt>Object</tt>) <strong>chmod</strong>(mode, paths)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Changes the permissions of a files or directories.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>mode</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new permissions for the files or directories.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>paths</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path to the files or directories.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#chmod-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#chmod-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#chmod-instance_method</a></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+266
+267
+268
+269
+270</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 266</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_chmod'>chmod</span><span class='lparen'>(</span><span class='id identifier rubyid_mode'>mode</span><span class='comma'>,</span><span class='id identifier rubyid_paths'>paths</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>chmod</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_mode'>mode</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='lparen'>(</span><span class='int'>8</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_paths'>paths</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_mode'>mode</span><span class='comma'>,</span><span class='id identifier rubyid_paths'>paths</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="chmod_R-instance_method">
+  
+    - (<tt>Object</tt>) <strong>chmod_R</strong>(mode, paths)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Changes the permissions of files/directories, recursively.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>mode</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new permissions for the files or directories.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>paths</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path to the files or directories.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#chmod_R-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#chmod_R-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#chmod_R-instance_method</a></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+287
+288
+289
+290
+291</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 287</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_chmod_R'>chmod_R</span><span class='lparen'>(</span><span class='id identifier rubyid_mode'>mode</span><span class='comma'>,</span><span class='id identifier rubyid_paths'>paths</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>chmod -R</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_mode'>mode</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='lparen'>(</span><span class='int'>8</span><span class='rparen'>)</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_mode'>mode</span><span class='comma'>,</span><span class='id identifier rubyid_paths'>paths</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="chown-instance_method">
+  
+    - (<tt>Object</tt>) <strong>chown</strong>(user, group, paths)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Changes ownership of files or directories.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>user</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new owner of the files or directories.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>group</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new group for the files or directories.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>paths</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path to the files or directories.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#chown-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#chown-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#chown-instance_method</a></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+311
+312
+313
+314
+315</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 311</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_chown'>chown</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span><span class='id identifier rubyid_group'>group</span><span class='comma'>,</span><span class='id identifier rubyid_paths'>paths</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>chown</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user'>user</span><span class='rbrace'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_group'>group</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_paths'>paths</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span><span class='id identifier rubyid_group'>group</span><span class='comma'>,</span><span class='id identifier rubyid_paths'>paths</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="chown_R-instance_method">
+  
+    - (<tt>Object</tt>) <strong>chown_R</strong>(user, group, paths)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Changes ownership of files/directories, recursively.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>user</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new owner of the files or directories.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>group</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new group for the files or directories.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>paths</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path to the files or directories.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#chown_R-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#chown_R-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#chown_R-instance_method</a></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+335
+336
+337
+338
+339</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 335</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_chown_R'>chown_R</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span><span class='id identifier rubyid_group'>group</span><span class='comma'>,</span><span class='id identifier rubyid_paths'>paths</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>chown -R</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_user'>user</span><span class='rbrace'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_group'>group</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_paths'>paths</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span><span class='id identifier rubyid_group'>group</span><span class='comma'>,</span><span class='id identifier rubyid_paths'>paths</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="cp-instance_method">
+  
+    - (<tt>Object</tt>) <strong>cp</strong>(file, destination = file)  <span class="extras">(protected)</span>
   
 
   
@@ -1022,23 +1775,12 @@ working directory.</p>
   </div>
 </div>
 <div class="tags">
-  
-  <div class="examples">
-    <h3>Examples:</h3>
-    
-      <h4><div class='inline'>
-</div></h4>
-      <pre class="example code"><span class='copy_file identifier id'>copy_file</span> <span class='string val'>'ronin/platform/generators/extension.rb'</span><span class='comma token'>,</span>
-          <span class='string val'>'myext/extension.rb'</span>
-</pre>
-    
-  </div>
-<h3>Parameters:</h3>
+  <h3>Parameters:</h3>
 <ul class="param">
   
     <li>
       
-        <span class='name'>data_file</span>
+        <span class='name'>file</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -1059,6 +1801,8 @@ working directory.</p>
         <span class='type'>(<tt>String</tt>)</span>
       
       
+        <em class="default">(defaults to: <tt>file</tt>)</em>
+      
       
         &mdash;
         <div class='inline'><p>The destination to copy the data file to.</p>
@@ -1067,6 +1811,14 @@ working directory.</p>
     </li>
   
 </ul>
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#cp-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#cp-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#cp-instance_method</a></li>
+    
+  </ul>
 <h3>Since:</h3>
 <ul class="since">
   
@@ -1089,17 +1841,20 @@ working directory.</p>
       <pre class="lines">
 
 
-254
-255
-256</pre>
+354
+355
+356
+357
+358</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 254</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 354</span>
 
-<span class='def def kw'>def</span> <span class='cp identifier id'>cp</span><span class='lparen token'>(</span><span class='data_file identifier id'>data_file</span><span class='comma token'>,</span><span class='destination identifier id'>destination</span><span class='rparen token'>)</span>
-  <span class='copy_file identifier id'>copy_file</span><span class='lparen token'>(</span><span class='find_data_file identifier id'>find_data_file</span><span class='lparen token'>(</span><span class='data_file identifier id'>data_file</span><span class='rparen token'>)</span><span class='comma token'>,</span><span class='destination identifier id'>destination</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_cp'>cp</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='comma'>,</span><span class='id identifier rubyid_destination'>destination</span><span class='op'>=</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>cp</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_destination'>destination</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_data_file'>data_file</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span><span class='comma'>,</span><span class='id identifier rubyid_destination'>destination</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1108,7 +1863,7 @@ working directory.</p>
       <div class="method_details ">
   <p class="signature " id="cp_r-instance_method">
   
-    - (<tt>Object</tt>) <strong>cp_r</strong>(data_dir, destination = nil, config = {})  <span class="extras">(protected)</span>
+    - (<tt>Object</tt>) <strong>cp_r</strong>(directory, destination = directory)  <span class="extras">(protected)</span>
   
 
   
@@ -1125,7 +1880,7 @@ working directory.</p>
   
     <li>
       
-        <span class='name'>data_dir</span>
+        <span class='name'>directory</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -1146,7 +1901,7 @@ working directory.</p>
         <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
+        <em class="default">(defaults to: <tt>directory</tt>)</em>
       
       
         &mdash;
@@ -1163,8 +1918,6 @@ working directory.</p>
         <span class='type'>(<tt>Hash</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>{}</tt>)</em>
-      
       
         &mdash;
         <div class='inline'><p>The optional configuration information.</p>
@@ -1179,25 +1932,1415 @@ working directory.</p>
     
     
     
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#cp_r-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#cp_r-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#cp_r-instance_method</a></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+379
+380
+381
+382
+383
+384
+385</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 379</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cp_r'>cp_r</span><span class='lparen'>(</span><span class='id identifier rubyid_directory'>directory</span><span class='comma'>,</span><span class='id identifier rubyid_destination'>destination</span><span class='op'>=</span><span class='id identifier rubyid_directory'>directory</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>cp -r</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_destination'>destination</span>
+
+  <span class='id identifier rubyid_data_dirs'>data_dirs</span><span class='lparen'>(</span><span class='id identifier rubyid_directory'>directory</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_dir'>dir</span><span class='op'>|</span>
+    <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_dir'>dir</span><span class='comma'>,</span><span class='id identifier rubyid_destination'>destination</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="generate-instance_method">
+  
+    - (<tt>Object</tt>) <strong>generate</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Default generator method.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+227
+228</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 227</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_generate'>generate</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="generate!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>generate!</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Sets up the generator and calls <span class='object_link'><a href="#generate-instance_method" title="Ronin::Gen::Generator#generate (method)">#generate</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#setup-instance_method" title="Ronin::Gen::Generator#setup (method)">#setup</a></span></li>
+    
+      <li><span class='object_link'><a href="#generate-instance_method" title="Ronin::Gen::Generator#generate (method)">#generate</a></span></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+204
+205
+206
+207</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 204</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_generate!'>generate!</span>
+  <span class='id identifier rubyid_setup'>setup</span>
+  <span class='id identifier rubyid_generate'>generate</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="install-instance_method">
+  
+    - (<tt>Object</tt>) <strong>install</strong>(src, dest, options = {})  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Installs a file.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>src</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The file to install.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>dest</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The destination path for the file.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
     
     
-    <h3>Options Hash (<tt>config</tt>):</h3>
+    
+    
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
     <ul class="option">
       
         <li>
-          <span class="name">:recursive</span>
+          <span class="name">:mode</span>
+          <span class="type">(<tt>String</tt>, <tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>The permissions of the installed file.</p>
+</div>
+        </li>
+      
+    </ul>
+  
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#install-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#install-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#install-instance_method</a></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+408
+409
+410
+411
+412
+413
+414</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 408</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_install'>install</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='comma'>,</span><span class='id identifier rubyid_dest'>dest</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:mode</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:mode</span><span class='rbracket'>]</span><span class='rbrace'>}</span> <span class='comment'># only pass in :mode
+</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>install</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_src'>src</span><span class='comma'>,</span> <span class='id identifier rubyid_dest'>dest</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_data_file'>data_file</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='rparen'>)</span><span class='comma'>,</span><span class='id identifier rubyid_dest'>dest</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="ln-instance_method">
+  
+    - (<tt>Object</tt>) <strong>ln</strong>(src, dest)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Creates a hard link.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>src</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path file/directory for the hard link.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>dest</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The destination file/directory of the hard link.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#ln-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#ln-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#ln-instance_method</a></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+431
+432
+433
+434
+435</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 431</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ln'>ln</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='comma'>,</span><span class='id identifier rubyid_dest'>dest</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ln</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_src'>src</span><span class='comma'>,</span> <span class='id identifier rubyid_dest'>dest</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='comma'>,</span><span class='id identifier rubyid_dest'>dest</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="ln_s-instance_method">
+  
+    - (<tt>Object</tt>) <strong>ln_s</strong>(src, dest)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Creates a symbolic link.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>src</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path file/directory for the symbolic link.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>dest</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The destination file/directory of the symbolic link.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#ln_s-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#ln_s-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#ln_s-instance_method</a></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+452
+453
+454
+455
+456</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 452</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ln_s'>ln_s</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='comma'>,</span><span class='id identifier rubyid_dest'>dest</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ln -s</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_src'>src</span><span class='comma'>,</span> <span class='id identifier rubyid_dest'>dest</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='comma'>,</span><span class='id identifier rubyid_dest'>dest</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="ln_sf-instance_method">
+  
+    - (<tt>Object</tt>) <strong>ln_sf</strong>(src, dest)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Forcibly creates a symbolic link.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>src</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path file/directory for the symbolic link.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>dest</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The destination file/directory of the symbolic link.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#ln_sf-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#ln_sf-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#ln_sf-instance_method</a></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+473
+474
+475
+476
+477</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 473</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ln_sf'>ln_sf</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='comma'>,</span><span class='id identifier rubyid_dest'>dest</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ln -sf</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_src'>src</span><span class='comma'>,</span> <span class='id identifier rubyid_dest'>dest</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='comma'>,</span><span class='id identifier rubyid_dest'>dest</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="mkdir-instance_method">
+  
+    - (<tt>Object</tt>) <strong>mkdir</strong>(dir)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Creates an empty directory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='id identifier rubyid_mkdir'>mkdir</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sub/dir</span><span class='tstring_end'>'</span></span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>dir</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The relative path of the directory to create.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#mkdir-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#mkdir-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#mkdir-instance_method</a></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+492
+493
+494
+495
+496</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 492</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_mkdir'>mkdir</span><span class='lparen'>(</span><span class='id identifier rubyid_dir'>dir</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>mkdir</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_dir'>dir</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_dir'>dir</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="mkdir_p-instance_method">
+  
+    - (<tt>Object</tt>) <strong>mkdir_p</strong>(dir)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Creates an empty directory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='id identifier rubyid_mkdir'>mkdir</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sub/dir</span><span class='tstring_end'>'</span></span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>dir</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The relative path of the directory to create.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#mkdir_p-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#mkdir_p-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#mkdir_p-instance_method</a></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+511
+512
+513
+514
+515</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 511</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_mkdir_p'>mkdir_p</span><span class='lparen'>(</span><span class='id identifier rubyid_dir'>dir</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>mkdir -p</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_dir'>dir</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_dir'>dir</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="mv-instance_method">
+  
+    - (<tt>Object</tt>) <strong>mv</strong>(src, dest)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Moves a file or directory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>src</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path to the file or directory.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>dest</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new path to move the file or directory to.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#mv-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#mv-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#mv-instance_method</a></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+532
+533
+534
+535
+536</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 532</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_mv'>mv</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='comma'>,</span><span class='id identifier rubyid_dest'>dest</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>mv</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_src'>src</span><span class='comma'>,</span> <span class='id identifier rubyid_dest'>dest</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_src'>src</span><span class='comma'>,</span><span class='id identifier rubyid_dest'>dest</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="rm-instance_method">
+  
+    - (<tt>Object</tt>) <strong>rm</strong>(paths, options = {})  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Removes one or more files.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>paths</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The paths of the files and directories to remove.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:force</span>
           <span class="type">(<tt>Boolean</tt>)</span>
           <span class="default">
             
-              &mdash; default:
-              <tt>false</tt>
-            
           </span>
-          &mdash; <div class='inline'><p>Recursively copies the contents.</p>
+          &mdash; <div class='inline'><p>Specifies whether to forcible remove the files.</p>
 </div>
-        </tr>
+        </li>
       
     </ul>
+  
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#rm-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#rm-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#rm-instance_method</a></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+556
+557
+558
+559
+560
+561
+562</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 556</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_rm'>rm</span><span class='lparen'>(</span><span class='id identifier rubyid_paths'>paths</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:force</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:force</span><span class='rbracket'>]</span><span class='rbrace'>}</span> <span class='comment'># only pass in :force
+</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>rm</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_paths'>paths</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_paths'>paths</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="rm_r-instance_method">
+  
+    - (<tt>Object</tt>) <strong>rm_r</strong>(paths, options = {})  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Recursively removes files and directories.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>paths</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The paths of the files and directories to remove.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:force</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          &mdash; <div class='inline'><p>Specifies whether to forcible remove the files.</p>
+</div>
+        </li>
+      
+    </ul>
+  
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#rm_r-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#rm_r-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#rm_r-instance_method</a></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+582
+583
+584
+585
+586
+587
+588</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 582</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_rm_r'>rm_r</span><span class='lparen'>(</span><span class='id identifier rubyid_paths'>paths</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:force</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:force</span><span class='rbracket'>]</span><span class='rbrace'>}</span> <span class='comment'># only pass in :force
+</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>rm -r</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_paths'>paths</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_paths'>paths</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="rm_rf-instance_method">
+  
+    - (<tt>Object</tt>) <strong>rm_rf</strong>(paths)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Forcibly removes files and directories, recursively.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>paths</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The paths of the files and directories to remove.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#rm_rf-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#rm_rf-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#rm_rf-instance_method</a></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+602
+603
+604
+605
+606</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 602</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_rm_rf'>rm_rf</span><span class='lparen'>(</span><span class='id identifier rubyid_paths'>paths</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>rm -rf</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_paths'>paths</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_paths'>paths</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="rmdir-instance_method">
+  
+    - (<tt>Object</tt>) <strong>rmdir</strong>(dirs)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Removes one or more directories.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>dirs</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The paths of the directories.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#rmdir-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#rmdir-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#rmdir-instance_method</a></li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+620
+621
+622
+623
+624</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 620</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_rmdir'>rmdir</span><span class='lparen'>(</span><span class='id identifier rubyid_dirs'>dirs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>rmdir</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_dirs'>dirs</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_dirs'>dirs</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="run-instance_method">
+  
+    - (<tt>Object</tt>) <strong>run</strong>(command, *arguments)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Runs a command.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>command</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The command or program to run.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>arguments</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional arguments to run the program with.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+245
+246
+247
+248
+249</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 245</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='comma'>,</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='id identifier rubyid_command'>command</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span>
+
+  <span class='id identifier rubyid_system'>system</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='comma'>,</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="setup-instance_method">
+  
+    - (<tt>Object</tt>) <strong>setup</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Default method to initialize any instance variables before any of
+the tasks are invoked.</p>
+
+
+  </div>
+</div>
+<div class="tags">
   
 <h3>Since:</h3>
 <ul class="since">
@@ -1221,30 +3364,23 @@ working directory.</p>
       <pre class="lines">
 
 
-275
-276
-277
-278
-279</pre>
+217
+218</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 275</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 217</span>
 
-<span class='def def kw'>def</span> <span class='cp_r identifier id'>cp_r</span><span class='lparen token'>(</span><span class='data_dir identifier id'>data_dir</span><span class='comma token'>,</span><span class='destination identifier id'>destination</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='comma token'>,</span><span class='config identifier id'>config</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='each_data_dir identifier id'>each_data_dir</span><span class='lparen token'>(</span><span class='data_dir identifier id'>data_dir</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='dir identifier id'>dir</span><span class='bitor op'>|</span>
-    <span class='directory identifier id'>directory</span><span class='lparen token'>(</span><span class='dir identifier id'>dir</span><span class='comma token'>,</span><span class='destination identifier id'>destination</span> <span class='orop op'>||</span> <span class='data_dir identifier id'>data_dir</span><span class='comma token'>,</span><span class='config identifier id'>config</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_setup'>setup</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="erb-instance_method">
+  <p class="signature " id="template-instance_method">
   
-    - (<tt>nil</tt>, <tt>String</tt>) <strong>erb</strong>(template_path, destination = nil)  <span class="extras">(protected)</span>
+    - (<tt>nil</tt>, <tt>String</tt>) <strong>template</strong>(template_path, dest = nil)  <span class="extras">(protected)</span>
   
 
   
@@ -1262,13 +3398,11 @@ working directory.</p>
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='erb identifier id'>erb</span> <span class='string val'>'ronin/platform/generators/Rakefile.erb'</span><span class='comma token'>,</span> <span class='string val'>'Rakefile.erb'</span>
-</pre>
+      <pre class="example code"><span class='id identifier rubyid_erb'>erb</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Rakefile.erb</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Rakefile</span><span class='tstring_end'>'</span></span></pre>
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='erb identifier id'>erb</span> <span class='string val'>'_helpers.erb'</span>
-</pre>
+      <pre class="example code"><span class='id identifier rubyid_erb'>erb</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>_helpers.erb</span><span class='tstring_end'>'</span></span></pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -1297,8 +3431,6 @@ working directory.</p>
         <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
-      
       
         &mdash;
         <div class='inline'><p>The destination to write the result of the rendered template to.</p>
@@ -1307,6 +3439,7 @@ working directory.</p>
     </li>
   
 </ul>
+
 <h3>Returns:</h3>
 <ul class="return">
   
@@ -1347,218 +3480,36 @@ will be returned.</p>
       <pre class="lines">
 
 
-302
-303
-304
-305
-306
-307
-308
-309
-310
-311
-312</pre>
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 302</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 686</span>
 
-<span class='def def kw'>def</span> <span class='erb identifier id'>erb</span><span class='lparen token'>(</span><span class='template_path identifier id'>template_path</span><span class='comma token'>,</span><span class='destination identifier id'>destination</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='if if kw'>if</span> <span class='destination identifier id'>destination</span>
-    <span class='enter_template identifier id'>enter_template</span><span class='lparen token'>(</span><span class='template_path identifier id'>template_path</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='path identifier id'>path</span><span class='bitor op'>|</span>
-      <span class='template identifier id'>template</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='comma token'>,</span><span class='destination identifier id'>destination</span><span class='rparen token'>)</span>
-    <span class='end end kw'>end</span>
-  <span class='else else kw'>else</span>
-    <span class='read_template identifier id'>read_template</span><span class='lparen token'>(</span><span class='template_path identifier id'>template_path</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='template identifier id'>template</span><span class='bitor op'>|</span>
-      <span class='ERB constant id'>ERB</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='template identifier id'>template</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='result identifier id'>result</span><span class='lparen token'>(</span><span class='binding identifier id'>binding</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='chomp identifier id'>chomp</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="generate-instance_method">
-  
-    - (<tt>Object</tt>) <strong>generate</strong> 
-  
+<span class='kw'>def</span> <span class='id identifier rubyid_template'>template</span><span class='lparen'>(</span><span class='id identifier rubyid_template_path'>template_path</span><span class='comma'>,</span><span class='id identifier rubyid_dest'>dest</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_template_path'>template_path</span> <span class='op'>=</span> <span class='id identifier rubyid_data_path'>data_path</span><span class='lparen'>(</span><span class='id identifier rubyid_template_path'>template_path</span><span class='rparen'>)</span>
 
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>Default generator method.</p>
+  <span class='kw'>if</span> <span class='id identifier rubyid_dest'>dest</span>
+    <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>erb</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_dest'>dest</span>
 
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Since:</h3>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>0.2.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-173
-174</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 173</span>
-
-<span class='def def kw'>def</span> <span class='generate identifier id'>generate</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="mkdir-instance_method">
-  
-    - (<tt>Object</tt>) <strong>mkdir</strong>(destination)  <span class="extras">(protected)</span>
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>Creates an empty directory.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-  <div class="examples">
-    <h3>Examples:</h3>
-    
-      <h4><div class='inline'>
-</div></h4>
-      <pre class="example code"><span class='directory identifier id'>directory</span> <span class='string val'>'sub/dir'</span>
-</pre>
-    
-  </div>
-<h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>destination</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The relative path of the directory to create.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Since:</h3>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>0.2.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-235
-236
-237</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 235</span>
-
-<span class='def def kw'>def</span> <span class='mkdir identifier id'>mkdir</span><span class='lparen token'>(</span><span class='destination identifier id'>destination</span><span class='rparen token'>)</span>
-  <span class='empty_directory identifier id'>empty_directory</span><span class='lparen token'>(</span><span class='destination identifier id'>destination</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="setup-instance_method">
-  
-    - (<tt>Object</tt>) <strong>setup</strong>  <span class="extras">(protected)</span>
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>Default method to initialize any instance variables before any of
-the tasks are invoked.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Since:</h3>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-206
-207</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 206</span>
-
-<span class='def def kw'>def</span> <span class='setup identifier id'>setup</span>
-<span class='end end kw'>end</span>
-</pre>
+    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_dest'>dest</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
+      <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_erb_file'>erb_file</span><span class='lparen'>(</span><span class='id identifier rubyid_template_path'>template_path</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_erb_file'>erb_file</span><span class='lparen'>(</span><span class='id identifier rubyid_template_path'>template_path</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1567,7 +3518,7 @@ the tasks are invoked.</p>
       <div class="method_details ">
   <p class="signature " id="touch-instance_method">
   
-    - (<tt>Object</tt>) <strong>touch</strong>(destination)  <span class="extras">(protected)</span>
+    - (<tt>Object</tt>) <strong>touch</strong>(file)  <span class="extras">(protected)</span>
   
 
   
@@ -1585,8 +3536,7 @@ the tasks are invoked.</p>
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='touch identifier id'>touch</span> <span class='string val'>'TODO.txt'</span>
-</pre>
+      <pre class="example code"><span class='id identifier rubyid_touch'>touch</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>TODO.txt</span><span class='tstring_end'>'</span></span></pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -1608,6 +3558,14 @@ the tasks are invoked.</p>
     </li>
   
 </ul>
+
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/fileutils/FileUtils#touch-instance_method" target="_parent" title="http://rubydoc.info/stdlib/fileutils/FileUtils#touch-instance_method">http://rubydoc.info/stdlib/fileutils/FileUtils#touch-instance_method</a></li>
+    
+  </ul>
 <h3>Since:</h3>
 <ul class="since">
   
@@ -1630,17 +3588,128 @@ the tasks are invoked.</p>
       <pre class="lines">
 
 
-220
-221
-222</pre>
+639
+640
+641
+642
+643</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 220</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 639</span>
 
-<span class='def def kw'>def</span> <span class='touch identifier id'>touch</span><span class='lparen token'>(</span><span class='destination identifier id'>destination</span><span class='rparen token'>)</span>
-  <span class='create_file identifier id'>create_file</span><span class='lparen token'>(</span><span class='destination identifier id'>destination</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_touch'>touch</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_action'>print_action</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>touch</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_file'>file</span>
+
+  <span class='kw'>return</span> <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="write-instance_method">
+  
+    - (<tt>Object</tt>) <strong>write</strong>(path) {|file| ... } <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Opens a file for writing.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path of the file to write to.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>file</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed the newly opened file.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Yield Parameters:</h3>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>The</span>
+      
+      
+        <span class='type'>(<tt>File</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>new file file, opened for writing.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+661
+662
+663</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/gen/generator.rb', line 661</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>wb</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1651,9 +3720,9 @@ the tasks are invoked.</p>
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 12 15:49:53 2011 by 
+  Generated on Sun Feb 12 14:15:30 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.1 (ruby-1.8.7).
+  0.7.5 (ruby-1.9.3).
 </div>
 
   </body>

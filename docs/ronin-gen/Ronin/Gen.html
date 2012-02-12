@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Module: Ronin::Gen
   
@@ -73,7 +73,7 @@
   
     <dt class="r1 last">Defined in:</dt>
     <dd class="r1 last">lib/ronin/gen/gen.rb<span class="defines">,<br />
-  lib/ronin/gen/config.rb,<br /> lib/ronin/gen/version.rb,<br /> lib/ronin/gen/generator.rb,<br /> lib/ronin/gen/generators.rb,<br /> lib/ronin/gen/dir_generator.rb,<br /> lib/ronin/gen/file_generator.rb,<br /> lib/ronin/gen/ruby_generator.rb,<br /> lib/ronin/gen/generators/library.rb,<br /> lib/ronin/gen/generators/repository.rb,<br /> lib/ronin/gen/source_code_generator.rb,<br /> lib/ronin/gen/exceptions/unknown_generator.rb</span>
+  lib/ronin/gen/config.rb,<br /> lib/ronin/gen/version.rb,<br /> lib/ronin/gen/generator.rb,<br /> lib/ronin/gen/generators.rb,<br /> lib/ronin/gen/dir_generator.rb,<br /> lib/ronin/gen/ruby_generator.rb,<br /> lib/ronin/gen/file_generator.rb,<br /> lib/ronin/gen/generators/library.rb,<br /> lib/ronin/gen/source_code_generator.rb,<br /> lib/ronin/gen/generators/repository.rb,<br /> lib/ronin/gen/exceptions/unknown_generator.rb</span>
 </dd>
   
 </dl>
@@ -106,13 +106,15 @@
 </div>
 <div class="tags">
   
+
 </div>
         </dt>
-        <dd><pre class="code"><span class='string val'>'1.0.1'</span>
-</pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>1.1.0</span><span class='tstring_end'>'</span></span></pre></dd>
       
     </dl>
   
+
+
 
 
 
@@ -200,15 +202,13 @@
     
       <h4><div class='inline'>
 </div></h4>
-      <pre class="example code"><span class='Gen constant id'>Gen</span><span class='dot token'>.</span><span class='generator identifier id'>generator</span> <span class='string val'>'library'</span>
-<span class='comment val'># =&gt; Ronin::Gen::Generators::Library</span>
-</pre>
+      <pre class="example code"><span class='const'>Gen</span><span class='period'>.</span><span class='id identifier rubyid_generator'>generator</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>library</span><span class='tstring_end'>'</span></span>
+<span class='comment'># =&gt; Ronin::Gen::Generators::Library</span></pre>
     
       <h4><div class='inline'><p>Load a generator within a namespace</p>
 </div></h4>
-      <pre class="example code"><span class='Gen constant id'>Gen</span><span class='dot token'>.</span><span class='generator identifier id'>generator</span> <span class='string val'>'exploits:remote_tcp'</span>
-<span class='comment val'># =&gt; Ronin::Gen::Generators::Exploits::RemoteTcp</span>
-</pre>
+      <pre class="example code"><span class='const'>Gen</span><span class='period'>.</span><span class='id identifier rubyid_generator'>generator</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>exploits:remote_tcp</span><span class='tstring_end'>'</span></span>
+<span class='comment'># =&gt; Ronin::Gen::Generators::Exploits::RemoteTcp</span></pre>
     
   </div>
 <h3>Parameters:</h3>
@@ -230,6 +230,7 @@
     </li>
   
 </ul>
+
 <h3>Returns:</h3>
 <ul class="return">
   
@@ -300,16 +301,15 @@ could not be found.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/gen/gen.rb', line 54</span>
 
-<span class='def def kw'>def</span> <span class='Gen constant id'>Gen</span><span class='dot token'>.</span><span class='generator identifier id'>generator</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-  <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
+<span class='kw'>def</span> <span class='const'>Gen</span><span class='period'>.</span><span class='id identifier rubyid_generator'>generator</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
 
-  <span class='unless unless kw'>unless</span> <span class='lparen token'>(</span><span class='generator identifier id'>generator</span> <span class='assign token'>=</span> <span class='Generators constant id'>Generators</span><span class='dot token'>.</span><span class='require_const identifier id'>require_const</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
-    <span class='raise identifier id'>raise</span><span class='lparen token'>(</span><span class='UnknownGenerator constant id'>UnknownGenerator</span><span class='comma token'>,</span><span class='dstring node'>&quot;unknown generator #{name.dump}&quot;</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id identifier rubyid_generator'>generator</span> <span class='op'>=</span> <span class='const'>Generators</span><span class='period'>.</span><span class='id identifier rubyid_require_const'>require_const</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>UnknownGenerator</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown generator </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
-  <span class='return return kw'>return</span> <span class='generator identifier id'>generator</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='id identifier rubyid_generator'>generator</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -330,7 +330,8 @@ could not be found.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Returns:</h3>
+  
+<h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -391,25 +392,24 @@ could not be found.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/gen/gen.rb', line 72</span>
 
-<span class='def def kw'>def</span> <span class='Gen constant id'>Gen</span><span class='dot token'>.</span><span class='generators identifier id'>generators</span>
-  <span class='if if kw'>if</span> <span class='@generators ivar id'>@generators</span><span class='dot token'>.</span><span class='empty? fid id'>empty?</span>
-    <span class='directory identifier id'>directory</span> <span class='assign token'>=</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>'lib'</span><span class='comma token'>,</span><span class='Generators constant id'>Generators</span><span class='dot token'>.</span><span class='namespace_root identifier id'>namespace_root</span><span class='rparen token'>)</span>
+<span class='kw'>def</span> <span class='const'>Gen</span><span class='period'>.</span><span class='id identifier rubyid_generators'>generators</span>
+  <span class='kw'>if</span> <span class='ivar'>@generators</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='id identifier rubyid_directory'>directory</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>lib</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='const'>Generators</span><span class='period'>.</span><span class='id identifier rubyid_namespace_root'>namespace_root</span><span class='rparen'>)</span>
 
-    <span class='Installation constant id'>Installation</span><span class='dot token'>.</span><span class='each_file_in identifier id'>each_file_in</span><span class='lparen token'>(</span><span class='directory identifier id'>directory</span><span class='comma token'>,</span><span class='symbol val'>:rb</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='path identifier id'>path</span><span class='bitor op'>|</span>
-      <span class='comment val'># strip the tailing '.rb' file extension</span>
-      <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='path identifier id'>path</span><span class='dot token'>.</span><span class='chomp identifier id'>chomp</span><span class='lparen token'>(</span><span class='string val'>'.rb'</span><span class='rparen token'>)</span>
+    <span class='const'>Installation</span><span class='period'>.</span><span class='id identifier rubyid_each_file_in'>each_file_in</span><span class='lparen'>(</span><span class='id identifier rubyid_directory'>directory</span><span class='comma'>,</span><span class='symbol'>:rb</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_path'>path</span><span class='op'>|</span>
+      <span class='comment'># strip the tailing '.rb' file extension
+</span>      <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.rb</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 
-      <span class='comment val'># replace any file separators with a ':', to mimic the</span>
-      <span class='comment val'># naming convention of Rake/Thor.</span>
-      <span class='name identifier id'>name</span><span class='dot token'>.</span><span class='tr! fid id'>tr!</span><span class='lparen token'>(</span><span class='File constant id'>File</span><span class='colon2 op'>::</span><span class='SEPARATOR constant id'>SEPARATOR</span><span class='comma token'>,</span><span class='string val'>':'</span><span class='rparen token'>)</span>
+      <span class='comment'># replace any file separators with a ':', to mimic the
+</span>      <span class='comment'># Rake task naming convention
+</span>      <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_tr!'>tr!</span><span class='lparen'>(</span><span class='const'>File</span><span class='op'>::</span><span class='const'>SEPARATOR</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>:</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 
-      <span class='@generators ivar id'>@generators</span> <span class='lshft op'>&lt;&lt;</span> <span class='name identifier id'>name</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
+      <span class='ivar'>@generators</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_name'>name</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 
-  <span class='return return kw'>return</span> <span class='@generators ivar id'>@generators</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='ivar'>@generators</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -420,9 +420,9 @@ could not be found.</p>
 </div>
     
     <div id="footer">
-  Generated on Tue Jul 12 15:49:55 2011 by 
+  Generated on Sun Feb 12 14:15:29 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.1 (ruby-1.8.7).
+  0.7.5 (ruby-1.9.3).
 </div>
 
   </body>
