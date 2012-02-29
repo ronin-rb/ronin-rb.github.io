@@ -32,8 +32,8 @@ you can dive right into Ronin.
 <ul>
 {% for library in site.libraries %}
   <li>
-    <a href="http://github.com/ronin-ruby/{{ library.slug }}/">{{ library.name }}</a> -
-    {{ library.description }}
+    <a href="http://github.com/ronin-ruby/{{ library[0] }}/">{{ library[1].name }}</a> -
+    {{ library[1].description }}
   </li>
 {% endfor %}
 </ul>
