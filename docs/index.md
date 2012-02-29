@@ -25,17 +25,17 @@ title: Documentation
 
 ## API
 
-* [ronin-support](ronin-support/) - 0.2.0
-* [ronin](ronin/) - 1.2.0
+* [ronin-support](ronin-support/) - {{ site.libraries.ronin-support.version }}
+* [ronin](ronin/) - {{ site.libraries.ronin.version }}
   * Database Relational Diagram
     [[png]](ronin/relational_diagram.png)
     [[svg]](ronin/relational_diagram.svg)
   * Database Schema Diagram
     [[png]](ronin/schema_diagram.png)
     [[svg]](ronin/schema_diagram.svg)
-* [ronin-gen](ronin-gen/) - 1.0.1
-* [ronin-web](ronin-web/) - 0.3.0.rc1
-* [ronin-exploits](ronin-exploits/) - 1.0.0.pre1
+* [ronin-gen](ronin-gen/) - {{ site.libraries.ronin-gen.version }}
+* [ronin-web](ronin-web/) - {{ site.libraries.ronin-web.version }}
+* [ronin-exploits](ronin-exploits/) - {{ site.libraries.ronin-exploits.version }}
 
 ## Media
 
