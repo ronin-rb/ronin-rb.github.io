@@ -14,7 +14,7 @@ js:
 Ronin is a [Ruby](http://ruby-lang.org/) platform for exploit
 development and security research. Ronin allows for the rapid development
 and distribution of code, [exploits or payloads](http://www.exploit-db.com)
-over many common [Source-Code-Management (SCM)](http://git-scm.com) systems.
+via [Repositories](https://github.com/postmodern/postmodern).
 
 ## Install
 
