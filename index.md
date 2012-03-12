@@ -20,7 +20,7 @@ via [Repositories](https://github.com/postmodern/postmodern).
 
 ## Install
 
-Install Ronin using [RubyGems](http://rubygems.org/):
+Install Ronin using [RubyGems](http://rubygems.org/gems/ronin):
 
     $ sudo gem install ronin
 
