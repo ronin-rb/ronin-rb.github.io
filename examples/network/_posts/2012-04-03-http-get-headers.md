@@ -1,5 +1,4 @@
 ---
-layout: nil
 title: Return the response Headers of a HTTP GET Request
 ---
 

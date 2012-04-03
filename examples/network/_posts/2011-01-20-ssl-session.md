@@ -1,5 +1,4 @@
 ---
-layout: nil
 title: Create a SSL Session
 ---
 

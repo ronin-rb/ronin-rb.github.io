@@ -1,5 +1,4 @@
 ---
-layout: nil
 title: Grabbing a Service banner
 ---
 

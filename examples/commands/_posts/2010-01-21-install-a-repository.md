@@ -1,5 +1,4 @@
 ---
-layout: nil
 title: Installing a Ronin Repository
 ---
 

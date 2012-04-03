@@ -1,5 +1,4 @@
 ---
-layout: nil
 title: File.each_row
 ---
 

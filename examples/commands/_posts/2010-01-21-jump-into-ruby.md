@@ -1,5 +1,4 @@
 ---
-layout: nil
 title: Jump into Ruby
 ---
 

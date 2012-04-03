@@ -1,5 +1,4 @@
 ---
-layout: nil
 title: Connect to a SSL Socket
 ---
 
