@@ -1,4 +1,5 @@
 ---
+layout: nil
 title: Update all Ronin Repositories 
 ---
 

@@ -1,4 +1,5 @@
 ---
+layout: nil
 title: Return the response body from a HTTP GET Request
 ---
 

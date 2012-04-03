@@ -1,4 +1,5 @@
 ---
+layout: nil
 title: Lookup all addresses of a Domain name
 ---
 
