@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '../..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../../_index.html">Index (U)</a> &raquo; 
+    <a href="../../_index.html">Index (U)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Network.html" title="Ronin::Network (module)">Network</a></span></span>
      &raquo; 
     <span class="title">UDP</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Module: Ronin::Network::UDP
   
   
@@ -76,7 +83,9 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/ronin/network/udp.rb</dd>
+    <dd class="r2 last">lib/ronin/network/udp/udp.rb<span class="defines">,<br />
+  lib/ronin/network/udp/proxy.rb</span>
+</dd>
   
 </dl>
 <div class="clear"></div>
@@ -91,7 +100,19 @@
 <div class="tags">
   
 
-</div>
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="UDP/Proxy.html" title="Ronin::Network::UDP::Proxy (class)">Proxy</a></span>
+    
+  
+</p>
+
+
+
 
 
 
@@ -112,6 +133,7 @@
 
     
   </span>
+  
   
   
   
@@ -140,6 +162,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Creates a new UDPSocket object connected to a given host and port.</p>
@@ -162,9 +185,57 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Creates a new UDPSocket object, connected to a given host and port.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#udp_open%3F-instance_method" title="#udp_open? (instance method)">- (Boolean<sup>?</sup>) <strong>udp_open?</strong>(host, port, local_host = nil, local_port = nil, timeout = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Tests whether a remote UDP port is open.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#udp_recv-instance_method" title="#udp_recv (instance method)">- (nil) <strong>udp_recv</strong>(port = nil, host = nil) {|server, (client_host, client_port), mesg| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new UDPServer listening on a given host and port,
+accepts only one message from a client.</p>
 </div></span>
   
 </li>
@@ -178,6 +249,7 @@
 
     
   </span>
+  
   
   
   
@@ -207,9 +279,34 @@ closes the connection.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Creates a new UDPServer listening on a given host and port.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#udp_server_loop-instance_method" title="#udp_server_loop (instance method)">- (nil) <strong>udp_server_loop</strong>(port = nil, host = nil) {|server, (client_host, client_port), mesg| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new UDPServer listening on a given host and port,
+accepting messages from clients in a loop.</p>
 </div></span>
   
 </li>
@@ -223,6 +320,7 @@ closes the connection.</p>
 
     
   </span>
+  
   
   
   
@@ -251,10 +349,34 @@ closes the connection.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Creates a new temporary UDPSocket object, connected to the given host
 and port.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public deprecated">
+  <span class="summary_signature">
+    
+      <a href="#udp_single_server-instance_method" title="#udp_single_server (instance method)">- (Object) <strong>udp_single_server</strong>(port = nil, host = nil) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  <span class="deprecated note title">deprecated</span>
+  
+
+  
+    <span class="summary_desc"><strong>Deprecated.</strong> <div class='inline'><p>Deprecated as of 0.5.0. Use <span class='object_link'><a href="#udp_recv-instance_method" title="Ronin::Network::UDP#udp_recv (method)">#udp_recv</a></span> instead.</p>
 </div></span>
   
 </li>
@@ -267,16 +389,18 @@ and port.</p>
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="udp_banner-instance_method">
+  <h3 class="signature first" id="udp_banner-instance_method">
   
     - (<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>) <strong>udp_banner</strong>(host, port, local_host = nil, local_port = nil) {|banner| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Reads the banner from the service running on the given host and port.</p>
 
@@ -284,7 +408,7 @@ and port.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -355,7 +479,7 @@ The local port to bind to.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -372,7 +496,7 @@ The local port to bind to.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -391,7 +515,7 @@ The local port to bind to.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -415,19 +539,19 @@ The local port to bind to.</p>
       <pre class="lines">
 
 
-214
-215
-216
-217
-218
-219
-220
-221
-222
-223</pre>
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp.rb', line 214</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp/udp.rb', line 269</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_udp_banner'>udp_banner</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_local_host'>local_host</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_local_port'>local_port</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_banner'>banner</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -445,13 +569,15 @@ The local port to bind to.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="udp_connect-instance_method">
+  <h3 class="signature " id="udp_connect-instance_method">
   
     - (<tt>UDPSocket</tt>) <strong>udp_connect</strong>(host, port, local_host = nil, local_port = nil) {|socket| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Creates a new UDPSocket object connected to a given host and port.</p>
 
@@ -461,21 +587,19 @@ The local port to bind to.</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='id identifier rubyid_udp_connect'>udp_connect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>www.hackety.org</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='int'>80</span><span class='rparen'>)</span>
 <span class='comment'># =&gt; UDPSocket</span></pre>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='id identifier rubyid_udp_connect'>udp_connect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>www.wired.com</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='int'>80</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_socket'>socket</span><span class='op'>|</span>
   <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_readlines'>readlines</span>
 <span class='kw'>end</span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -546,7 +670,7 @@ The local port to bind to.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -563,7 +687,7 @@ The local port to bind to.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -582,7 +706,7 @@ The local port to bind to.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -600,30 +724,41 @@ The local port to bind to.</p>
   
 </ul>
 
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/socket/UDPSocket" target="_parent" title="http://rubydoc.info/stdlib/socket/UDPSocket">http://rubydoc.info/stdlib/socket/UDPSocket</a></li>
+    
+  </ul>
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73</pre>
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp/udp.rb', line 117</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_udp_connect'>udp_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_local_host'>local_host</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_local_port'>local_port</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_host'>host</span>       <span class='op'>=</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='id identifier rubyid_port'>port</span>       <span class='op'>=</span> <span class='id identifier rubyid_port'>port</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
   <span class='id identifier rubyid_local_host'>local_host</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_local_host'>local_host</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>0.0.0.0</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='id identifier rubyid_local_port'>local_port</span> <span class='op'>=</span> <span class='id identifier rubyid_local_port'>local_port</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
 
   <span class='id identifier rubyid_socket'>socket</span> <span class='op'>=</span> <span class='const'>UDPSocket</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
   <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_bind'>bind</span><span class='lparen'>(</span><span class='id identifier rubyid_local_host'>local_host</span><span class='comma'>,</span><span class='id identifier rubyid_local_port'>local_port</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_local_host'>local_host</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_local_port'>local_port</span><span class='rparen'>)</span>
@@ -638,13 +773,15 @@ The local port to bind to.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="udp_connect_and_send-instance_method">
+  <h3 class="signature " id="udp_connect_and_send-instance_method">
   
     - (<tt>UDPSocket</tt>) <strong>udp_connect_and_send</strong>(data, host, port, local_host = nil, local_port = nil) {|socket| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Creates a new UDPSocket object, connected to a given host and port.
 The given data will then be written to the newly created UDPSocket.</p>
@@ -653,7 +790,7 @@ The given data will then be written to the newly created UDPSocket.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -739,7 +876,7 @@ The local port to bind to.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -756,7 +893,7 @@ The local port to bind to.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -775,7 +912,7 @@ The local port to bind to.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -799,16 +936,16 @@ The local port to bind to.</p>
       <pre class="lines">
 
 
-105
-106
-107
-108
-109
-110
-111</pre>
+161
+162
+163
+164
+165
+166
+167</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp/udp.rb', line 161</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_udp_connect_and_send'>udp_connect_and_send</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_local_host'>local_host</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_local_port'>local_port</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_socket'>socket</span> <span class='op'>=</span> <span class='id identifier rubyid_udp_connect'>udp_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_local_host'>local_host</span><span class='comma'>,</span><span class='id identifier rubyid_local_port'>local_port</span><span class='rparen'>)</span>
@@ -823,13 +960,425 @@ The local port to bind to.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="udp_send-instance_method">
+  <h3 class="signature " id="udp_open?-instance_method">
+  
+    - (<tt>Boolean</tt><sup>?</sup>) <strong>udp_open?</strong>(host, port, local_host = nil, local_port = nil, timeout = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Tests whether a remote UDP port is open.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The host to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>port</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The port to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>local_host</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>(nil)
+The local host to bind to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>local_port</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>(nil)
+The local port to bind to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>timeout</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>(5)
+The maximum time to attempt connecting.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether the remote UDP port is open.
+If no data or ICMP error were received, <code>nil</code> will be returned.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp/udp.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_udp_open?'>udp_open?</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_local_host'>local_host</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_local_port'>local_port</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_timeout'>timeout</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_timeout'>timeout</span> <span class='op'>||=</span> <span class='int'>5</span>
+
+  <span class='kw'>begin</span>
+    <span class='const'>Timeout</span><span class='period'>.</span><span class='id identifier rubyid_timeout'>timeout</span><span class='lparen'>(</span><span class='id identifier rubyid_timeout'>timeout</span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_udp_session'>udp_session</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_local_host'>local_host</span><span class='comma'>,</span><span class='id identifier rubyid_local_port'>local_port</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_socket'>socket</span><span class='op'>|</span>
+        <span class='comment'># send an empty UDP packet, just like nmap
+</span>        <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_syswrite'>syswrite</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+
+        <span class='comment'># send junk data, to elicit an error message
+</span>        <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_syswrite'>syswrite</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\0</span><span class='tstring_end'>&quot;</span></span> <span class='op'>*</span> <span class='int'>64</span><span class='rparen'>)</span>
+
+        <span class='comment'># test if we've received any data
+</span>        <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_sysread'>sysread</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>return</span> <span class='kw'>true</span>
+  <span class='kw'>rescue</span> <span class='const'>Timeout</span><span class='op'>::</span><span class='const'>Error</span>
+    <span class='kw'>return</span> <span class='kw'>nil</span>
+  <span class='kw'>rescue</span> <span class='const'>SocketError</span><span class='comma'>,</span> <span class='const'>SystemCallError</span>
+    <span class='kw'>return</span> <span class='kw'>false</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="udp_recv-instance_method">
+  
+    - (<tt>nil</tt>) <strong>udp_recv</strong>(port = nil, host = nil) {|server, (client_host, client_port), mesg| ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new UDPServer listening on a given host and port,
+accepts only one message from a client.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><span class='id identifier rubyid_udp_recv'>udp_recv</span><span class='lparen'>(</span><span class='int'>1337</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='rparen'>)</span><span class='comma'>,</span><span class='id identifier rubyid_mesg'>mesg</span><span class='op'>|</span>
+  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>hello</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>port</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The port the UDPServer will listen on.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The optional host the UDPServer will bind to.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>server</tt>, <tt>(client_host, client_port)</tt>, <tt>mesg</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed the client host/port and the received
+message.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>server</span>
+      
+      
+        <span class='type'>(<tt>UDPServer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The UDPServer.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>client_host</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The source host of the message.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>client_port</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The source port of the message.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>mesg</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The received message.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+425
+426
+427
+428
+429
+430
+431</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp/udp.rb', line 425</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_udp_recv'>udp_recv</span><span class='lparen'>(</span><span class='id identifier rubyid_port'>port</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_udp_server_session'>udp_server_session</span><span class='lparen'>(</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+    <span class='id identifier rubyid_mesg'>mesg</span><span class='comma'>,</span> <span class='id identifier rubyid_addrinfo'>addrinfo</span> <span class='op'>=</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_recvfrom'>recvfrom</span><span class='lparen'>(</span><span class='int'>4096</span><span class='rparen'>)</span>
+
+    <span class='kw'>yield</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_addrinfo'>addrinfo</span><span class='lbracket'>[</span><span class='int'>3</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_addrinfo'>addrinfo</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_mesg'>mesg</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="udp_send-instance_method">
   
     - (<tt>true</tt>) <strong>udp_send</strong>(data, host, port, local_host = nil, local_port = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Connects to a specified host and port, sends the given data and then
 closes the connection.</p>
@@ -840,16 +1389,15 @@ closes the connection.</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='id identifier rubyid_buffer'>buffer</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GET /</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>A</span><span class='tstring_end'>'</span></span> <span class='op'>*</span> <span class='int'>4096</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n\r</span><span class='tstring_end'>&quot;</span></span>
 <span class='id identifier rubyid_udp_send'>udp_send</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>victim.com</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='int'>80</span><span class='rparen'>)</span>
 <span class='comment'># =&gt; true</span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -935,7 +1483,7 @@ The local port to bind to.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -952,7 +1500,7 @@ The local port to bind to.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -974,16 +1522,16 @@ The local port to bind to.</p>
       <pre class="lines">
 
 
-180
-181
-182
-183
-184
-185
-186</pre>
+235
+236
+237
+238
+239
+240
+241</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp.rb', line 180</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp/udp.rb', line 235</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_udp_send'>udp_send</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_local_host'>local_host</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_local_port'>local_port</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_udp_session'>udp_session</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_local_host'>local_host</span><span class='comma'>,</span><span class='id identifier rubyid_local_port'>local_port</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_socket'>socket</span><span class='op'>|</span>
@@ -998,13 +1546,15 @@ The local port to bind to.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="udp_server-instance_method">
+  <h3 class="signature " id="udp_server-instance_method">
   
     - (<tt>UDPServer</tt>) <strong>udp_server</strong>(port = nil, host = nil) {|server| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Creates a new UDPServer listening on a given host and port.</p>
 
@@ -1014,14 +1564,13 @@ The local port to bind to.</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='id identifier rubyid_udp_server'>udp_server</span><span class='lparen'>(</span><span class='int'>1337</span><span class='rparen'>)</span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1061,7 +1610,7 @@ The host to bind to.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -1074,7 +1623,7 @@ The host to bind to.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1092,29 +1641,38 @@ The host to bind to.</p>
   
 </ul>
 
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/socket/UDPSocket" target="_parent" title="http://rubydoc.info/stdlib/socket/UDPSocket">http://rubydoc.info/stdlib/socket/UDPSocket</a></li>
+    
+  </ul>
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-242
-243
-244
-245
-246
-247
-248
-249
-250</pre>
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp.rb', line 242</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp/udp.rb', line 299</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_udp_server'>udp_server</span><span class='lparen'>(</span><span class='id identifier rubyid_port'>port</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_port'>port</span>   <span class='op'>=</span> <span class='id identifier rubyid_port'>port</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
   <span class='id identifier rubyid_host'>host</span>   <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>0.0.0.0</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
-  <span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='const'>UDPSocket</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
 
+  <span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='const'>UDPSocket</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
   <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_bind'>bind</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='rparen'>)</span>
 
   <span class='kw'>yield</span> <span class='id identifier rubyid_server'>server</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1126,13 +1684,226 @@ The host to bind to.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="udp_server_session-instance_method">
+  <h3 class="signature " id="udp_server_loop-instance_method">
+  
+    - (<tt>nil</tt>) <strong>udp_server_loop</strong>(port = nil, host = nil) {|server, (client_host, client_port), mesg| ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new UDPServer listening on a given host and port,
+accepting messages from clients in a loop.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><span class='id identifier rubyid_udp_server_loop'>udp_server_loop</span><span class='lparen'>(</span><span class='int'>1337</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='rparen'>)</span><span class='comma'>,</span><span class='id identifier rubyid_mesg'>mesg</span><span class='op'>|</span>
+  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>hello</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>port</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The port the UDPServer will listen on.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The optional host the UDPServer will bind to.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>server</tt>, <tt>(client_host, client_port)</tt>, <tt>mesg</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed the client host/port and the received
+message.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>server</span>
+      
+      
+        <span class='type'>(<tt>UDPServer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The UDPServer.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>client_host</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The source host of the message.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>client_port</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The source port of the message.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>mesg</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The received message.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+378
+379
+380
+381
+382
+383
+384
+385
+386</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp/udp.rb', line 378</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_udp_server_loop'>udp_server_loop</span><span class='lparen'>(</span><span class='id identifier rubyid_port'>port</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_udp_server_session'>udp_server_session</span><span class='lparen'>(</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+    <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_mesg'>mesg</span><span class='comma'>,</span> <span class='id identifier rubyid_addrinfo'>addrinfo</span> <span class='op'>=</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_recvfrom'>recvfrom</span><span class='lparen'>(</span><span class='int'>4096</span><span class='rparen'>)</span>
+
+      <span class='kw'>yield</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_addrinfo'>addrinfo</span><span class='lbracket'>[</span><span class='int'>3</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_addrinfo'>addrinfo</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_mesg'>mesg</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="udp_server_session-instance_method">
   
     - (<tt>nil</tt>) <strong>udp_server_session</strong>(port = nil, host = nil) {|server| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Creates a new temporary UDPServer listening on a given host and port.</p>
 
@@ -1142,16 +1913,15 @@ The host to bind to.</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='id identifier rubyid_udp_server_session'>udp_server_session</span><span class='lparen'>(</span><span class='int'>1337</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
   <span class='id identifier rubyid_data'>data</span><span class='comma'>,</span> <span class='id identifier rubyid_sender'>sender</span> <span class='op'>=</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_recvfrom'>recvfrom</span><span class='lparen'>(</span><span class='int'>1024</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1191,7 +1961,7 @@ The host to bind to.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -1209,7 +1979,7 @@ After the block has finished, the server will be closed.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -1228,7 +1998,7 @@ After the block has finished, the server will be closed.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1248,19 +2018,17 @@ After the block has finished, the server will be closed.</p>
       <pre class="lines">
 
 
-277
-278
-279
-280
-281
-282</pre>
+335
+336
+337
+338
+339</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp.rb', line 277</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp/udp.rb', line 335</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_udp_server_session'>udp_server_session</span><span class='lparen'>(</span><span class='id identifier rubyid_port'>port</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='id identifier rubyid_udp_server'>udp_server</span><span class='lparen'>(</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-
   <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span><span class='lparen'>(</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>nil</span>
 <span class='kw'>end</span></pre>
@@ -1270,13 +2038,15 @@ After the block has finished, the server will be closed.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="udp_session-instance_method">
+  <h3 class="signature " id="udp_session-instance_method">
   
     - (<tt>nil</tt>) <strong>udp_session</strong>(host, port, local_host = nil, local_port = nil) {|socket| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Creates a new temporary UDPSocket object, connected to the given host
 and port.</p>
@@ -1285,7 +2055,7 @@ and port.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1356,7 +2126,7 @@ The local port to bind to.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -1374,7 +2144,7 @@ After the block has returned, the socket will then be closed.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -1393,7 +2163,7 @@ After the block has returned, the socket will then be closed.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1413,25 +2183,65 @@ After the block has returned, the socket will then be closed.</p>
       <pre class="lines">
 
 
-140
-141
-142
-143
-144
-145
-146
-147</pre>
+196
+197
+198
+199
+200
+201
+202</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp.rb', line 140</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp/udp.rb', line 196</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_udp_session'>udp_session</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_local_host'>local_host</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_local_port'>local_port</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_socket'>socket</span> <span class='op'>=</span> <span class='id identifier rubyid_udp_connect'>udp_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_local_host'>local_host</span><span class='comma'>,</span><span class='id identifier rubyid_local_port'>local_port</span><span class='rparen'>)</span>
 
   <span class='kw'>yield</span> <span class='id identifier rubyid_socket'>socket</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
-
   <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
   <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="udp_single_server-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>udp_single_server</strong>(port = nil, host = nil) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'><p>Deprecated as of 0.5.0. Use <span class='object_link'><a href="#udp_recv-instance_method" title="Ronin::Network::UDP#udp_recv (method)">#udp_recv</a></span> instead.</p>
+</div></div>
+
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+437
+438
+439</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/udp/udp.rb', line 437</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_udp_single_server'>udp_single_server</span><span class='lparen'>(</span><span class='id identifier rubyid_port'>port</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_udp_recv'>udp_recv</span><span class='lparen'>(</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1441,11 +2251,11 @@ After the block has returned, the socket will then be closed.</p>
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sun Feb 12 14:10:39 2012 by 
+  Generated on Sat Jun 16 20:51:12 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.9.3).
+  0.8.2 (ruby-1.9.3).
 </div>
 
   </body>

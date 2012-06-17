@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (A)</a> &raquo; 
+    <a href="../_index.html">Index (A)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../Ronin.html" title="Ronin (module)">Ronin</a></span></span>
      &raquo; 
     <span class="title">Arch</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: Ronin::Arch
   
   
@@ -98,9 +105,9 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>Represents a Computer Architecture and pre-defines many other common
-architectures (<span class='object_link'><a href="#x86-class_method" title="Ronin::Arch.x86 (method)">x86</a></span>, <span class='object_link'><a href="#x86_64-class_method" title="Ronin::Arch.x86_64 (method)">x86_64</a></span>, <span class='object_link'><a href="#ia64-class_method" title="Ronin::Arch.ia64 (method)">ia64</a></span>, <span class='object_link'><a href="#ppc-class_method" title="Ronin::Arch.ppc (method)">ppc</a></span>, <span class='object_link'><a href="#ppc64-class_method" title="Ronin::Arch.ppc64 (method)">ppc64</a></span>, <span class='object_link'><a href="#sparc-class_method" title="Ronin::Arch.sparc (method)">sparc</a></span>,
-<span class='object_link'><a href="#sparc64-class_method" title="Ronin::Arch.sparc64 (method)">sparc64</a></span>, <span class='object_link'><a href="#mips-class_method" title="Ronin::Arch.mips (method)">mips</a></span> and <span class='object_link'><a href="#arm-class_method" title="Ronin::Arch.arm (method)">arm</a></span>).</p>
+    <p>Represents a Computer Architecture and predefines many other common
+architectures (<span class='object_link'><a href="#x86-class_method" title="Ronin::Arch.x86 (method)">Arch.x86</a></span>, <span class='object_link'><a href="#x86_64-class_method" title="Ronin::Arch.x86_64 (method)">Arch.x86_64</a></span>, <span class='object_link'><a href="#ia64-class_method" title="Ronin::Arch.ia64 (method)">Arch.ia64</a></span>, <span class='object_link'><a href="#ppc-class_method" title="Ronin::Arch.ppc (method)">Arch.ppc</a></span>, <span class='object_link'><a href="#ppc64-class_method" title="Ronin::Arch.ppc64 (method)">Arch.ppc64</a></span>, <span class='object_link'><a href="#sparc-class_method" title="Ronin::Arch.sparc (method)">Arch.sparc</a></span>,
+<span class='object_link'><a href="#sparc64-class_method" title="Ronin::Arch.sparc64 (method)">Arch.sparc64</a></span>, <span class='object_link'><a href="#mips-class_method" title="Ronin::Arch.mips (method)">Arch.mips</a></span> and <span class='object_link'><a href="#arm-class_method" title="Ronin::Arch.arm (method)">Arch.arm</a></span>).</p>
 
 
   </div>
@@ -137,6 +144,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Address length of the architecture.</p>
@@ -159,9 +167,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
-    <span class="summary_desc"><div class='inline'><p>Alias to <span class='object_link'><a href="#arm_be-class_method" title="Ronin::Arch.arm_be (method)">arm_be</a></span>.</p>
+    <span class="summary_desc"><div class='inline'><p>Alias to <span class='object_link'><a href="#arm_be-class_method" title="Ronin::Arch.arm_be (method)">Arch.arm_be</a></span>.</p>
 </div></span>
   
 </li>
@@ -181,9 +190,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
-    <span class="summary_desc"><div class='inline'><p>The ARM (big-endian) Architecture.</p>
+    <span class="summary_desc"><div class='inline'><p>The ARM (big endian) Architecture.</p>
 </div></span>
   
 </li>
@@ -203,9 +213,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
-    <span class="summary_desc"><div class='inline'><p>The ARM (little-endian) Architecture.</p>
+    <span class="summary_desc"><div class='inline'><p>The ARM (little endian) Architecture.</p>
 </div></span>
   
 </li>
@@ -219,6 +230,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 
     
   </span>
+  
   
   
   
@@ -247,9 +259,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
-    <span class="summary_desc"><div class='inline'><p>Alias to <span class='object_link'><a href="#x86-class_method" title="Ronin::Arch.x86 (method)">x86</a></span>.</p>
+    <span class="summary_desc"><div class='inline'><p>Alias to <span class='object_link'><a href="#x86-class_method" title="Ronin::Arch.x86 (method)">Arch.x86</a></span>.</p>
 </div></span>
   
 </li>
@@ -269,9 +282,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
-    <span class="summary_desc"><div class='inline'><p>Alias to <span class='object_link'><a href="#x86-class_method" title="Ronin::Arch.x86 (method)">x86</a></span>.</p>
+    <span class="summary_desc"><div class='inline'><p>Alias to <span class='object_link'><a href="#x86-class_method" title="Ronin::Arch.x86 (method)">Arch.x86</a></span>.</p>
 </div></span>
   
 </li>
@@ -291,9 +305,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
-    <span class="summary_desc"><div class='inline'><p>Alias to <span class='object_link'><a href="#x86-class_method" title="Ronin::Arch.x86 (method)">x86</a></span>.</p>
+    <span class="summary_desc"><div class='inline'><p>Alias to <span class='object_link'><a href="#x86-class_method" title="Ronin::Arch.x86 (method)">Arch.x86</a></span>.</p>
 </div></span>
   
 </li>
@@ -313,9 +328,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
-    <span class="summary_desc"><div class='inline'><p>Alias to <span class='object_link'><a href="#x86-class_method" title="Ronin::Arch.x86 (method)">x86</a></span>.</p>
+    <span class="summary_desc"><div class='inline'><p>Alias to <span class='object_link'><a href="#x86-class_method" title="Ronin::Arch.x86 (method)">Arch.x86</a></span>.</p>
 </div></span>
   
 </li>
@@ -329,6 +345,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 
     
   </span>
+  
   
   
   
@@ -357,6 +374,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Primary key.</p>
@@ -379,9 +397,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
-    <span class="summary_desc"><div class='inline'><p>Alias to <span class='object_link'><a href="#mips_be-class_method" title="Ronin::Arch.mips_be (method)">mips_be</a></span>.</p>
+    <span class="summary_desc"><div class='inline'><p>Alias to <span class='object_link'><a href="#mips_be-class_method" title="Ronin::Arch.mips_be (method)">Arch.mips_be</a></span>.</p>
 </div></span>
   
 </li>
@@ -401,9 +420,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
-    <span class="summary_desc"><div class='inline'><p>The MIPS (big-endian) Architecture.</p>
+    <span class="summary_desc"><div class='inline'><p>The MIPS (big endian) Architecture.</p>
 </div></span>
   
 </li>
@@ -423,9 +443,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
-    <span class="summary_desc"><div class='inline'><p>The MIPS (little-endian) Architecture.</p>
+    <span class="summary_desc"><div class='inline'><p>The MIPS (little endian) Architecture.</p>
 </div></span>
   
 </li>
@@ -439,6 +460,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 
     
   </span>
+  
   
   
   
@@ -467,6 +489,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The 64-bit PowerPC Architecture.</p>
@@ -488,7 +511,8 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Defines a new pre-defined Arch.</p>
@@ -505,6 +529,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 
     
   </span>
+  
   
   
   
@@ -533,6 +558,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The 64-bit SPARC Architecture.</p>
@@ -555,6 +581,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The x86 Architecture.</p>
@@ -571,6 +598,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 
     
   </span>
+  
   
   
   
@@ -608,6 +636,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Address length of the architecture.</p>
@@ -624,6 +653,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 
     
   </span>
+  
   
   
   
@@ -652,6 +682,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Endianness of the architecture.</p>
@@ -668,6 +699,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 
     
   </span>
+  
   
   
   
@@ -696,6 +728,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Primary key.</p>
@@ -718,31 +751,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Primary key.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#to_ary-instance_method" title="#to_ary (instance method)">- (Array) <strong>to_ary</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Splats the architecture into multiple variables.</p>
 </div></span>
   
 </li>
@@ -752,6 +764,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
 
 
+  
   
   
   
@@ -769,6 +782,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Model.html" title="Ronin::Model (module)">Model</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Model.html#included-class_method" title="Ronin::Model.included (method)">included</a></span></p>
 
@@ -777,19 +791,22 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
   
   
   
+  
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="address_length-class_method">
+  <h3 class="signature first" id="address_length-class_method">
   
     + (<tt>Object</tt>) <strong>address_length</strong>(repository = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Address length of the architecture</p>
 
@@ -817,13 +834,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="arm-class_method">
+  <h3 class="signature " id="arm-class_method">
   
     + (<tt>Object</tt>) <strong>arm</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Alias to <span class='object_link'><a href="#arm_be-class_method" title="Ronin::Arch.arm_be (method)">arm_be</a></span>.</p>
 
@@ -839,10 +858,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-155</pre>
+133</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 155</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 133</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:arm</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>arn_be</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:big</span><span class='comma'>,</span> <span class='symbol'>:address_length</span> <span class='op'>=&gt;</span> <span class='int'>4</span></pre>
     </td>
@@ -851,15 +870,17 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="arm_be-class_method">
+  <h3 class="signature " id="arm_be-class_method">
   
     + (<tt>Object</tt>) <strong>arm_be</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
-    <p>The ARM (big-endian) Architecture</p>
+    <p>The ARM (big endian) Architecture</p>
 
 
   </div>
@@ -873,10 +894,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-152</pre>
+130</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 152</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 130</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:arm_be</span><span class='comma'>,</span> <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:big</span><span class='comma'>,</span> <span class='symbol'>:address_length</span> <span class='op'>=&gt;</span> <span class='int'>4</span></pre>
     </td>
@@ -885,15 +906,17 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="arm_le-class_method">
+  <h3 class="signature " id="arm_le-class_method">
   
     + (<tt>Object</tt>) <strong>arm_le</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
-    <p>The ARM (little-endian) Architecture</p>
+    <p>The ARM (little endian) Architecture</p>
 
 
   </div>
@@ -907,10 +930,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-149</pre>
+127</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 149</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 127</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:arm_le</span><span class='comma'>,</span> <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:little</span><span class='comma'>,</span> <span class='symbol'>:address_length</span> <span class='op'>=&gt;</span> <span class='int'>4</span></pre>
     </td>
@@ -919,13 +942,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="endian-class_method">
+  <h3 class="signature " id="endian-class_method">
   
     + (<tt>Object</tt>) <strong>endian</strong>(repository = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Endianness of the architecture</p>
 
@@ -953,13 +978,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="i386-class_method">
+  <h3 class="signature " id="i386-class_method">
   
     + (<tt>Object</tt>) <strong>i386</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Alias to <span class='object_link'><a href="#x86-class_method" title="Ronin::Arch.x86 (method)">x86</a></span>.</p>
 
@@ -975,12 +1002,12 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-100
-101
-102</pre>
+78
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 78</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:i386</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>x86</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
 <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:little</span><span class='comma'>,</span>
@@ -991,13 +1018,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="i486-class_method">
+  <h3 class="signature " id="i486-class_method">
   
     + (<tt>Object</tt>) <strong>i486</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Alias to <span class='object_link'><a href="#x86-class_method" title="Ronin::Arch.x86 (method)">x86</a></span>.</p>
 
@@ -1013,12 +1042,12 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-105
-106
-107</pre>
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 83</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:i486</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>x86</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
 <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:little</span><span class='comma'>,</span>
@@ -1029,13 +1058,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="i686-class_method">
+  <h3 class="signature " id="i686-class_method">
   
     + (<tt>Object</tt>) <strong>i686</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Alias to <span class='object_link'><a href="#x86-class_method" title="Ronin::Arch.x86 (method)">x86</a></span>.</p>
 
@@ -1051,12 +1082,12 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-110
-111
-112</pre>
+88
+89
+90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 110</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 88</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:i686</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>x86</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
 <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:little</span><span class='comma'>,</span>
@@ -1067,13 +1098,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="i986-class_method">
+  <h3 class="signature " id="i986-class_method">
   
     + (<tt>Object</tt>) <strong>i986</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Alias to <span class='object_link'><a href="#x86-class_method" title="Ronin::Arch.x86 (method)">x86</a></span>.</p>
 
@@ -1089,12 +1122,12 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-115
-116
-117</pre>
+93
+94
+95</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 115</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 93</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:i986</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>x86</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
 <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:little</span><span class='comma'>,</span>
@@ -1105,13 +1138,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="ia64-class_method">
+  <h3 class="signature " id="ia64-class_method">
   
     + (<tt>Object</tt>) <strong>ia64</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The ia64 Architecture</p>
 
@@ -1127,10 +1162,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-125</pre>
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 125</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 103</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:ia64</span><span class='comma'>,</span> <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:little</span><span class='comma'>,</span> <span class='symbol'>:address_length</span> <span class='op'>=&gt;</span> <span class='int'>8</span></pre>
     </td>
@@ -1139,13 +1174,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="id-class_method">
+  <h3 class="signature " id="id-class_method">
   
     + (<tt>Object</tt>) <strong>id</strong>(repository = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Primary key</p>
 
@@ -1173,13 +1210,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="mips-class_method">
+  <h3 class="signature " id="mips-class_method">
   
     + (<tt>Object</tt>) <strong>mips</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Alias to <span class='object_link'><a href="#mips_be-class_method" title="Ronin::Arch.mips_be (method)">mips_be</a></span>.</p>
 
@@ -1195,10 +1234,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-146</pre>
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 146</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 124</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:mips</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>mips_be</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:big</span><span class='comma'>,</span> <span class='symbol'>:address_length</span> <span class='op'>=&gt;</span> <span class='int'>4</span></pre>
     </td>
@@ -1207,15 +1246,17 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="mips_be-class_method">
+  <h3 class="signature " id="mips_be-class_method">
   
     + (<tt>Object</tt>) <strong>mips_be</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
-    <p>The MIPS (big-endian) Architecture</p>
+    <p>The MIPS (big endian) Architecture</p>
 
 
   </div>
@@ -1229,10 +1270,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-143</pre>
+121</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 143</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 121</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:mips_be</span><span class='comma'>,</span> <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:big</span><span class='comma'>,</span> <span class='symbol'>:address_length</span> <span class='op'>=&gt;</span> <span class='int'>4</span></pre>
     </td>
@@ -1241,15 +1282,17 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="mips_le-class_method">
+  <h3 class="signature " id="mips_le-class_method">
   
     + (<tt>Object</tt>) <strong>mips_le</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
-    <p>The MIPS (little-endian) Architecture</p>
+    <p>The MIPS (little endian) Architecture</p>
 
 
   </div>
@@ -1263,10 +1306,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-140</pre>
+118</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 140</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 118</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:mips_le</span><span class='comma'>,</span> <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:little</span><span class='comma'>,</span> <span class='symbol'>:address_length</span> <span class='op'>=&gt;</span> <span class='int'>4</span></pre>
     </td>
@@ -1275,13 +1318,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="ppc-class_method">
+  <h3 class="signature " id="ppc-class_method">
   
     + (<tt>Object</tt>) <strong>ppc</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The 32-bit PowerPC Architecture</p>
 
@@ -1297,10 +1342,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-128</pre>
+106</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 128</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 106</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:ppc</span><span class='comma'>,</span> <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:big</span><span class='comma'>,</span> <span class='symbol'>:address_length</span> <span class='op'>=&gt;</span> <span class='int'>4</span></pre>
     </td>
@@ -1309,13 +1354,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="ppc64-class_method">
+  <h3 class="signature " id="ppc64-class_method">
   
     + (<tt>Object</tt>) <strong>ppc64</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The 64-bit PowerPC Architecture</p>
 
@@ -1331,10 +1378,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-131</pre>
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 131</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 109</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:ppc64</span><span class='comma'>,</span> <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:big</span><span class='comma'>,</span> <span class='symbol'>:address_length</span> <span class='op'>=&gt;</span> <span class='int'>8</span></pre>
     </td>
@@ -1343,16 +1390,18 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="predefine-class_method">
+  <h3 class="signature " id="predefine-class_method">
   
     + (<tt>Object</tt>) <strong>predefine</strong>(name, options = {}) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Defines a new pre-defined Arch.</p>
@@ -1363,18 +1412,22 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'><p>Defining a pre-defined Arch</p>
-</div></h4>
+      
+        <p class="example_title"><div class='inline'><p>Defining a pre-defined Arch</p>
+</div></p>
+      
       <pre class="example code"><span class='const'>Arch</span><span class='period'>.</span><span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:alpha</span><span class='comma'>,</span> <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:big</span><span class='comma'>,</span> <span class='symbol'>:address_length</span> <span class='op'>=&gt;</span> <span class='int'>8</span></pre>
     
-      <h4><div class='inline'><p>Retrieving a pre-defined Arch</p>
-</div></h4>
+      
+        <p class="example_title"><div class='inline'><p>Retrieving a pre-defined Arch</p>
+</div></p>
+      
       <pre class="example code"><span class='const'>Arch</span><span class='period'>.</span><span class='id identifier rubyid_alpha'>alpha</span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1416,7 +1469,7 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
     
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -1425,8 +1478,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The endianness of the architecture.</p>
+          
+            &mdash; <div class='inline'><p>The endianness of the architecture.</p>
 </div>
+          
         </li>
       
         <li>
@@ -1435,8 +1490,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The address-length of the architecture.</p>
+          
+            &mdash; <div class='inline'><p>The address-length of the architecture.</p>
 </div>
+          
         </li>
       
     </ul>
@@ -1449,12 +1506,12 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-92
-93
-94</pre>
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 92</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_predefine'>predefine</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='lbrace'>{</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -1465,13 +1522,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="sparc-class_method">
+  <h3 class="signature " id="sparc-class_method">
   
     + (<tt>Object</tt>) <strong>sparc</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The 32-bit SPARC Architecture</p>
 
@@ -1487,10 +1546,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-134</pre>
+112</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 134</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 112</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:sparc</span><span class='comma'>,</span> <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:big</span><span class='comma'>,</span> <span class='symbol'>:address_length</span> <span class='op'>=&gt;</span> <span class='int'>4</span></pre>
     </td>
@@ -1499,13 +1558,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="sparc64-class_method">
+  <h3 class="signature " id="sparc64-class_method">
   
     + (<tt>Object</tt>) <strong>sparc64</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The 64-bit SPARC Architecture</p>
 
@@ -1521,10 +1582,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-137</pre>
+115</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 137</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 115</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:sparc64</span><span class='comma'>,</span> <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:big</span><span class='comma'>,</span> <span class='symbol'>:address_length</span> <span class='op'>=&gt;</span> <span class='int'>8</span></pre>
     </td>
@@ -1533,13 +1594,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="x86-class_method">
+  <h3 class="signature " id="x86-class_method">
   
     + (<tt>Object</tt>) <strong>x86</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The x86 Architecture</p>
 
@@ -1555,10 +1618,10 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-97</pre>
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 97</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 75</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:x86</span><span class='comma'>,</span> <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:little</span><span class='comma'>,</span> <span class='symbol'>:address_length</span> <span class='op'>=&gt;</span> <span class='int'>4</span></pre>
     </td>
@@ -1567,13 +1630,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="x86_64-class_method">
+  <h3 class="signature " id="x86_64-class_method">
   
     + (<tt>Object</tt>) <strong>x86_64</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The x86_64 Architecture</p>
 
@@ -1589,12 +1654,12 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
       <pre class="lines">
 
 
-120
-121
-122</pre>
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 120</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 98</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:x86_64</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>x86-64</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
 <span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:little</span><span class='comma'>,</span>
@@ -1608,16 +1673,18 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="address_length-instance_method">
+  <h3 class="signature first" id="address_length-instance_method">
   
     - (<tt>Object</tt>) <strong>address_length</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Address length of the architecture</p>
 
@@ -1645,13 +1712,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="address_length=-instance_method">
+  <h3 class="signature " id="address_length=-instance_method">
   
     - (<tt>Object</tt>) <strong>address_length=</strong>(value) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Address length of the architecture</p>
 
@@ -1679,13 +1748,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="endian-instance_method">
+  <h3 class="signature " id="endian-instance_method">
   
     - (<tt>Object</tt>) <strong>endian</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Endianness of the architecture</p>
 
@@ -1713,13 +1784,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="endian=-instance_method">
+  <h3 class="signature " id="endian=-instance_method">
   
     - (<tt>Object</tt>) <strong>endian=</strong>(value) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Endianness of the architecture</p>
 
@@ -1747,13 +1820,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="id-instance_method">
+  <h3 class="signature " id="id-instance_method">
   
     - (<tt>Object</tt>) <strong>id</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Primary key</p>
 
@@ -1781,13 +1856,15 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="id=-instance_method">
+  <h3 class="signature " id="id=-instance_method">
   
     - (<tt>Object</tt>) <strong>id=</strong>(value) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Primary key</p>
 
@@ -1814,98 +1891,14 @@ architectures (<span class='object_link'><a href="#x86-class_method" title="Roni
 </table>
 </div>
     
-      <div class="method_details ">
-  <p class="signature " id="to_ary-instance_method">
-  
-    - (<tt>Array</tt>) <strong>to_ary</strong> 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>Splats the architecture into multiple variables.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-  <div class="examples">
-    <h3>Examples:</h3>
-    
-      <h4><div class='inline'>
-</div></h4>
-      <pre class="example code"><span class='id identifier rubyid_endian'>endian</span><span class='comma'>,</span> <span class='id identifier rubyid_address_length'>address_length</span> <span class='op'>=</span> <span class='const'>Arch</span><span class='period'>.</span><span class='id identifier rubyid_x86'>x86</span>
-
-<span class='id identifier rubyid_endian'>endian</span>
-<span class='comment'># =&gt; 'little'
-</span><span class='id identifier rubyid_address_length'>address_length</span>
-<span class='comment'># =&gt; 4</span></pre>
-    
-  </div>
-
-<h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The <span class='object_link'><a href="#endian-instance_method" title="Ronin::Arch#endian (method)">#endian</a></span> and <span class='object_link'><a href="#address_length-instance_method" title="Ronin::Arch#address_length (method)">#address_length</a></span> of the architecture.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Since:</h3>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-65
-66
-67</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/arch.rb', line 65</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_to_ary'>to_ary</span>
-  <span class='lbracket'>[</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_endian'>endian</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_address_length'>address_length</span><span class='rbracket'>]</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sun Feb 12 14:12:55 2012 by 
+  Generated on Sat Jun 16 20:51:34 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.2.1 (ruby-1.9.3).
 </div>
 
   </body>

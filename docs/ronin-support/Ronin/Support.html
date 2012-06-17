@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (S)</a> &raquo; 
+    <a href="../_index.html">Index (S)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../Ronin.html" title="Ronin (module)">Ronin</a></span></span>
      &raquo; 
     <span class="title">Support</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Module: Ronin::Support
   
   
@@ -69,7 +76,7 @@
   
     
       <dt class="r1">Includes:</dt>
-      <dd class="r1"><span class='object_link'><a href="Network/DNS.html" title="Ronin::Network::DNS (module)">Network::DNS</a></span>, <span class='object_link'><a href="Network/ESMTP.html" title="Ronin::Network::ESMTP (module)">Network::ESMTP</a></span>, <span class='object_link'><a href="Network/HTTP.html" title="Ronin::Network::HTTP (module)">Network::HTTP</a></span>, <span class='object_link'><a href="Network/IMAP.html" title="Ronin::Network::IMAP (module)">Network::IMAP</a></span>, <span class='object_link'><a href="Network/POP3.html" title="Ronin::Network::POP3 (module)">Network::POP3</a></span>, <span class='object_link'><a href="Network/SMTP.html" title="Ronin::Network::SMTP (module)">Network::SMTP</a></span>, <span class='object_link'><a href="Network/TCP.html" title="Ronin::Network::TCP (module)">Network::TCP</a></span>, <span class='object_link'><a href="Network/Telnet.html" title="Ronin::Network::Telnet (module)">Network::Telnet</a></span>, <span class='object_link'><a href="Network/UDP.html" title="Ronin::Network::UDP (module)">Network::UDP</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html" title="Ronin::UI::Output::Helpers (module)">UI::Output::Helpers</a></span></dd>
+      <dd class="r1"><span class='object_link'><a href="Network/DNS.html" title="Ronin::Network::DNS (module)">Network::DNS</a></span>, <span class='object_link'><a href="Network/ESMTP.html" title="Ronin::Network::ESMTP (module)">Network::ESMTP</a></span>, <span class='object_link'><a href="Network/FTP.html" title="Ronin::Network::FTP (module)">Network::FTP</a></span>, <span class='object_link'><a href="Network/HTTP.html" title="Ronin::Network::HTTP (module)">Network::HTTP</a></span>, <span class='object_link'><a href="Network/IMAP.html" title="Ronin::Network::IMAP (module)">Network::IMAP</a></span>, <span class='object_link'><a href="Network/POP3.html" title="Ronin::Network::POP3 (module)">Network::POP3</a></span>, <span class='object_link'><a href="Network/SMTP.html" title="Ronin::Network::SMTP (module)">Network::SMTP</a></span>, <span class='object_link'><a href="Network/SSL.html" title="Ronin::Network::SSL (module)">Network::SSL</a></span>, <span class='object_link'><a href="Network/TCP.html" title="Ronin::Network::TCP (module)">Network::TCP</a></span>, <span class='object_link'><a href="Network/Telnet.html" title="Ronin::Network::Telnet (module)">Network::Telnet</a></span>, <span class='object_link'><a href="Network/UDP.html" title="Ronin::Network::UDP (module)">Network::UDP</a></span>, <span class='object_link'><a href="Network/UNIX.html" title="Ronin::Network::UNIX (module)">Network::UNIX</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html" title="Ronin::UI::Output::Helpers (module)">UI::Output::Helpers</a></span></dd>
       
     
   
@@ -111,7 +118,7 @@
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>0.4.0</span><span class='tstring_end'>'</span></span></pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>0.5.0</span><span class='tstring_end'>'</span></span></pre></dd>
       
         <dt id="INFLECTORS-constant" class="">INFLECTORS =
           <div class="docstring">
@@ -127,17 +134,13 @@
 </div>
         </dt>
         <dd><pre class="code"><span class='lbrace'>{</span>
-  <span class='symbol'>:datamapper</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span>
+  <span class='symbol'>:data_mapper</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span>
     <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>dm-core</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
     <span class='symbol'>:const</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>DataMapper::Inflector</span><span class='tstring_end'>'</span></span>
   <span class='rbrace'>}</span><span class='comma'>,</span>
   <span class='symbol'>:active_support</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span>
     <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>active_support/inflector</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
     <span class='symbol'>:const</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ActiveSupport::Inflector</span><span class='tstring_end'>'</span></span>
-  <span class='rbrace'>}</span><span class='comma'>,</span>
-  <span class='symbol'>:extlib</span> <span class='op'>=&gt;</span> <span class='lbrace'>{</span>
-    <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>extlib/inflection</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
-    <span class='symbol'>:const</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Extlib::Inflection</span><span class='tstring_end'>'</span></span>
   <span class='rbrace'>}</span>
 <span class='rbrace'>}</span></pre></dd>
       
@@ -145,90 +148,46 @@
   
 
 
-  
-  
-  
-  
-  
-  
-  
-  
-  <h3 class="inherited">Constants included from <span class='object_link'><a href="Network/Telnet.html" title="Ronin::Network::Telnet (module)">Network::Telnet</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Network/Telnet.html#DEFAULT_PORT-constant" title="Ronin::Network::Telnet::DEFAULT_PORT (constant)">DEFAULT_PORT</a></span>, <span class='object_link'><a href="Network/Telnet.html#DEFAULT_PROMPT-constant" title="Ronin::Network::Telnet::DEFAULT_PROMPT (constant)">DEFAULT_PROMPT</a></span>, <span class='object_link'><a href="Network/Telnet.html#DEFAULT_TIMEOUT-constant" title="Ronin::Network::Telnet::DEFAULT_TIMEOUT (constant)">DEFAULT_TIMEOUT</a></span></p>
 
   
   
-  
-  
-  <h3 class="inherited">Constants included from <span class='object_link'><a href="Network/IMAP.html" title="Ronin::Network::IMAP (module)">Network::IMAP</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Network/IMAP.html#DEFAULT_PORT-constant" title="Ronin::Network::IMAP::DEFAULT_PORT (constant)">DEFAULT_PORT</a></span></p>
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Network/FTP.html" title="Ronin::Network::FTP (module)">Network::FTP</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Network/FTP.html#DEFAULT_PORT-constant" title="Ronin::Network::FTP::DEFAULT_PORT (constant)">Network::FTP::DEFAULT_PORT</a></span>, <span class='object_link'><a href="Network/FTP.html#DEFAULT_USER-constant" title="Ronin::Network::FTP::DEFAULT_USER (constant)">Network::FTP::DEFAULT_USER</a></span></p>
 
   
   
-  
-  
-  <h3 class="inherited">Constants included from <span class='object_link'><a href="Network/POP3.html" title="Ronin::Network::POP3 (module)">Network::POP3</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Network/POP3.html#DEFAULT_PORT-constant" title="Ronin::Network::POP3::DEFAULT_PORT (constant)">DEFAULT_PORT</a></span></p>
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Network/Telnet.html" title="Ronin::Network::Telnet (module)">Network::Telnet</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Network/Telnet.html#DEFAULT_PORT-constant" title="Ronin::Network::Telnet::DEFAULT_PORT (constant)">Network::Telnet::DEFAULT_PORT</a></span>, <span class='object_link'><a href="Network/Telnet.html#DEFAULT_PROMPT-constant" title="Ronin::Network::Telnet::DEFAULT_PROMPT (constant)">Network::Telnet::DEFAULT_PROMPT</a></span>, <span class='object_link'><a href="Network/Telnet.html#DEFAULT_TIMEOUT-constant" title="Ronin::Network::Telnet::DEFAULT_TIMEOUT (constant)">Network::Telnet::DEFAULT_TIMEOUT</a></span></p>
 
   
   
-  
-  
-  
-  
-  
-  
-  <h3 class="inherited">Constants included from <span class='object_link'><a href="Network/SMTP.html" title="Ronin::Network::SMTP (module)">Network::SMTP</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Network/SMTP.html#DEFAULT_PORT-constant" title="Ronin::Network::SMTP::DEFAULT_PORT (constant)">DEFAULT_PORT</a></span></p>
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Network/IMAP.html" title="Ronin::Network::IMAP (module)">Network::IMAP</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Network/IMAP.html#DEFAULT_PORT-constant" title="Ronin::Network::IMAP::DEFAULT_PORT (constant)">Network::IMAP::DEFAULT_PORT</a></span></p>
 
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Network/POP3.html" title="Ronin::Network::POP3 (module)">Network::POP3</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Network/POP3.html#DEFAULT_PORT-constant" title="Ronin::Network::POP3::DEFAULT_PORT (constant)">Network::POP3::DEFAULT_PORT</a></span></p>
 
   
   
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Network/SMTP.html" title="Ronin::Network::SMTP (module)">Network::SMTP</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Network/SMTP.html#DEFAULT_PORT-constant" title="Ronin::Network::SMTP::DEFAULT_PORT (constant)">Network::SMTP::DEFAULT_PORT</a></span></p>
+
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Network/SSL.html" title="Ronin::Network::SSL (module)">Network::SSL</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Network/SSL.html#VERIFY-constant" title="Ronin::Network::SSL::VERIFY (constant)">Network::SSL::VERIFY</a></span></p>
+
+
+
+
 
   
     <h2>
@@ -251,7 +210,8 @@
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Loads an Inflector library and sets the <code>Ronin::Support::Inflector</code>
@@ -272,9 +232,22 @@ constant.</p>
   
   
   
+  
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Network/HTTP.html" title="Ronin::Network::HTTP (module)">Network::HTTP</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Network/HTTP.html#expand_options-class_method" title="Ronin::Network::HTTP.expand_options (method)">expand_options</a></span>, <span class='object_link'><a href="Network/HTTP.html#expand_url-class_method" title="Ronin::Network::HTTP.expand_url (method)">expand_url</a></span>, <span class='object_link'><a href="Network/HTTP.html#header_name-class_method" title="Ronin::Network::HTTP.header_name (method)">header_name</a></span>, <span class='object_link'><a href="Network/HTTP.html#headers-class_method" title="Ronin::Network::HTTP.headers (method)">headers</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_connect-instance_method" title="Ronin::Network::HTTP#http_connect (method)">#http_connect</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_copy-instance_method" title="Ronin::Network::HTTP#http_copy (method)">#http_copy</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_delete-instance_method" title="Ronin::Network::HTTP#http_delete (method)">#http_delete</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_get-instance_method" title="Ronin::Network::HTTP#http_get (method)">#http_get</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_get_body-instance_method" title="Ronin::Network::HTTP#http_get_body (method)">#http_get_body</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_get_headers-instance_method" title="Ronin::Network::HTTP#http_get_headers (method)">#http_get_headers</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_head-instance_method" title="Ronin::Network::HTTP#http_head (method)">#http_head</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_lock-instance_method" title="Ronin::Network::HTTP#http_lock (method)">#http_lock</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_mkcol-instance_method" title="Ronin::Network::HTTP#http_mkcol (method)">#http_mkcol</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_move-instance_method" title="Ronin::Network::HTTP#http_move (method)">#http_move</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_ok%3F-instance_method" title="Ronin::Network::HTTP#http_ok? (method)">#http_ok?</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_options-instance_method" title="Ronin::Network::HTTP#http_options (method)">#http_options</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_post-instance_method" title="Ronin::Network::HTTP#http_post (method)">#http_post</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_post_body-instance_method" title="Ronin::Network::HTTP#http_post_body (method)">#http_post_body</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_post_headers-instance_method" title="Ronin::Network::HTTP#http_post_headers (method)">#http_post_headers</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_powered_by-instance_method" title="Ronin::Network::HTTP#http_powered_by (method)">#http_powered_by</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_prop_find-instance_method" title="Ronin::Network::HTTP#http_prop_find (method)">#http_prop_find</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_prop_patch-instance_method" title="Ronin::Network::HTTP#http_prop_patch (method)">#http_prop_patch</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_put-instance_method" title="Ronin::Network::HTTP#http_put (method)">#http_put</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_server-instance_method" title="Ronin::Network::HTTP#http_server (method)">#http_server</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_session-instance_method" title="Ronin::Network::HTTP#http_session (method)">#http_session</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_status-instance_method" title="Ronin::Network::HTTP#http_status (method)">#http_status</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_trace-instance_method" title="Ronin::Network::HTTP#http_trace (method)">#http_trace</a></span>, <span class='object_link'><a href="Network/HTTP.html#http_unlock-instance_method" title="Ronin::Network::HTTP#http_unlock (method)">#http_unlock</a></span>, <span class='object_link'><a href="Network/HTTP.html#proxy-class_method" title="Ronin::Network::HTTP.proxy (method)">proxy</a></span>, <span class='object_link'><a href="Network/HTTP.html#proxy%3D-class_method" title="Ronin::Network::HTTP.proxy= (method)">proxy=</a></span>, <span class='object_link'><a href="Network/HTTP.html#request-class_method" title="Ronin::Network::HTTP.request (method)">request</a></span>, <span class='object_link'><a href="Network/HTTP.html#user_agent-class_method" title="Ronin::Network::HTTP.user_agent (method)">user_agent</a></span>, <span class='object_link'><a href="Network/HTTP.html#user_agent%3D-class_method" title="Ronin::Network::HTTP.user_agent= (method)">user_agent=</a></span></p>
 
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Network/FTP.html" title="Ronin::Network::FTP (module)">Network::FTP</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Network/FTP.html#default_port-class_method" title="Ronin::Network::FTP.default_port (method)">default_port</a></span>, <span class='object_link'><a href="Network/FTP.html#default_port%3D-class_method" title="Ronin::Network::FTP.default_port= (method)">default_port=</a></span>, <span class='object_link'><a href="Network/FTP.html#ftp_connect-instance_method" title="Ronin::Network::FTP#ftp_connect (method)">#ftp_connect</a></span>, <span class='object_link'><a href="Network/FTP.html#ftp_session-instance_method" title="Ronin::Network::FTP#ftp_session (method)">#ftp_session</a></span></p>
+
+  
   
   
   
@@ -292,9 +265,11 @@ constant.</p>
   
   
   
+  
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Network/IMAP.html" title="Ronin::Network::IMAP (module)">Network::IMAP</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Network/IMAP.html#default_port-class_method" title="Ronin::Network::IMAP.default_port (method)">default_port</a></span>, <span class='object_link'><a href="Network/IMAP.html#default_port%3D-class_method" title="Ronin::Network::IMAP.default_port= (method)">default_port=</a></span>, <span class='object_link'><a href="Network/IMAP.html#imap_connect-instance_method" title="Ronin::Network::IMAP#imap_connect (method)">#imap_connect</a></span>, <span class='object_link'><a href="Network/IMAP.html#imap_session-instance_method" title="Ronin::Network::IMAP#imap_session (method)">#imap_session</a></span></p>
 
+  
   
   
   
@@ -312,9 +287,11 @@ constant.</p>
   
   
   
+  
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Network/ESMTP.html" title="Ronin::Network::ESMTP (module)">Network::ESMTP</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Network/ESMTP.html#esmtp_connect-instance_method" title="Ronin::Network::ESMTP#esmtp_connect (method)">#esmtp_connect</a></span>, <span class='object_link'><a href="Network/ESMTP.html#esmtp_message-instance_method" title="Ronin::Network::ESMTP#esmtp_message (method)">#esmtp_message</a></span>, <span class='object_link'><a href="Network/ESMTP.html#esmtp_session-instance_method" title="Ronin::Network::ESMTP#esmtp_session (method)">#esmtp_session</a></span></p>
 
+  
   
   
   
@@ -332,9 +309,22 @@ constant.</p>
   
   
   
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="Network/UDP.html" title="Ronin::Network::UDP (module)">Network::UDP</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Network/UDP.html#udp_banner-instance_method" title="Ronin::Network::UDP#udp_banner (method)">#udp_banner</a></span>, <span class='object_link'><a href="Network/UDP.html#udp_connect-instance_method" title="Ronin::Network::UDP#udp_connect (method)">#udp_connect</a></span>, <span class='object_link'><a href="Network/UDP.html#udp_connect_and_send-instance_method" title="Ronin::Network::UDP#udp_connect_and_send (method)">#udp_connect_and_send</a></span>, <span class='object_link'><a href="Network/UDP.html#udp_send-instance_method" title="Ronin::Network::UDP#udp_send (method)">#udp_send</a></span>, <span class='object_link'><a href="Network/UDP.html#udp_server-instance_method" title="Ronin::Network::UDP#udp_server (method)">#udp_server</a></span>, <span class='object_link'><a href="Network/UDP.html#udp_server_session-instance_method" title="Ronin::Network::UDP#udp_server_session (method)">#udp_server_session</a></span>, <span class='object_link'><a href="Network/UDP.html#udp_session-instance_method" title="Ronin::Network::UDP#udp_session (method)">#udp_session</a></span></p>
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Network/UNIX.html" title="Ronin::Network::UNIX (module)">Network::UNIX</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Network/UNIX.html#unix_accept-instance_method" title="Ronin::Network::UNIX#unix_accept (method)">#unix_accept</a></span>, <span class='object_link'><a href="Network/UNIX.html#unix_connect-instance_method" title="Ronin::Network::UNIX#unix_connect (method)">#unix_connect</a></span>, <span class='object_link'><a href="Network/UNIX.html#unix_connect_and_send-instance_method" title="Ronin::Network::UNIX#unix_connect_and_send (method)">#unix_connect_and_send</a></span>, <span class='object_link'><a href="Network/UNIX.html#unix_open%3F-instance_method" title="Ronin::Network::UNIX#unix_open? (method)">#unix_open?</a></span>, <span class='object_link'><a href="Network/UNIX.html#unix_send-instance_method" title="Ronin::Network::UNIX#unix_send (method)">#unix_send</a></span>, <span class='object_link'><a href="Network/UNIX.html#unix_server-instance_method" title="Ronin::Network::UNIX#unix_server (method)">#unix_server</a></span>, <span class='object_link'><a href="Network/UNIX.html#unix_server_loop-instance_method" title="Ronin::Network::UNIX#unix_server_loop (method)">#unix_server_loop</a></span>, <span class='object_link'><a href="Network/UNIX.html#unix_server_session-instance_method" title="Ronin::Network::UNIX#unix_server_session (method)">#unix_server_session</a></span>, <span class='object_link'><a href="Network/UNIX.html#unix_session-instance_method" title="Ronin::Network::UNIX#unix_session (method)">#unix_session</a></span></p>
 
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Network/SSL.html" title="Ronin::Network::SSL (module)">Network::SSL</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Network/SSL.html#ssl_connect-instance_method" title="Ronin::Network::SSL#ssl_connect (method)">#ssl_connect</a></span>, <span class='object_link'><a href="Network/SSL.html#ssl_session-instance_method" title="Ronin::Network::SSL#ssl_session (method)">#ssl_session</a></span></p>
+
+  
   
   
   
@@ -343,8 +333,20 @@ constant.</p>
   
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Network/TCP.html" title="Ronin::Network::TCP (module)">Network::TCP</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Network/TCP.html#tcp_banner-instance_method" title="Ronin::Network::TCP#tcp_banner (method)">#tcp_banner</a></span>, <span class='object_link'><a href="Network/TCP.html#tcp_connect-instance_method" title="Ronin::Network::TCP#tcp_connect (method)">#tcp_connect</a></span>, <span class='object_link'><a href="Network/TCP.html#tcp_connect_and_send-instance_method" title="Ronin::Network::TCP#tcp_connect_and_send (method)">#tcp_connect_and_send</a></span>, <span class='object_link'><a href="Network/TCP.html#tcp_send-instance_method" title="Ronin::Network::TCP#tcp_send (method)">#tcp_send</a></span>, <span class='object_link'><a href="Network/TCP.html#tcp_server-instance_method" title="Ronin::Network::TCP#tcp_server (method)">#tcp_server</a></span>, <span class='object_link'><a href="Network/TCP.html#tcp_server_session-instance_method" title="Ronin::Network::TCP#tcp_server_session (method)">#tcp_server_session</a></span>, <span class='object_link'><a href="Network/TCP.html#tcp_session-instance_method" title="Ronin::Network::TCP#tcp_session (method)">#tcp_session</a></span>, <span class='object_link'><a href="Network/TCP.html#tcp_single_server-instance_method" title="Ronin::Network::TCP#tcp_single_server (method)">#tcp_single_server</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Network/TCP.html#tcp_accept-instance_method" title="Ronin::Network::TCP#tcp_accept (method)">#tcp_accept</a></span>, <span class='object_link'><a href="Network/TCP.html#tcp_banner-instance_method" title="Ronin::Network::TCP#tcp_banner (method)">#tcp_banner</a></span>, <span class='object_link'><a href="Network/TCP.html#tcp_connect-instance_method" title="Ronin::Network::TCP#tcp_connect (method)">#tcp_connect</a></span>, <span class='object_link'><a href="Network/TCP.html#tcp_connect_and_send-instance_method" title="Ronin::Network::TCP#tcp_connect_and_send (method)">#tcp_connect_and_send</a></span>, <span class='object_link'><a href="Network/TCP.html#tcp_open%3F-instance_method" title="Ronin::Network::TCP#tcp_open? (method)">#tcp_open?</a></span>, <span class='object_link'><a href="Network/TCP.html#tcp_send-instance_method" title="Ronin::Network::TCP#tcp_send (method)">#tcp_send</a></span>, <span class='object_link'><a href="Network/TCP.html#tcp_server-instance_method" title="Ronin::Network::TCP#tcp_server (method)">#tcp_server</a></span>, <span class='object_link'><a href="Network/TCP.html#tcp_server_loop-instance_method" title="Ronin::Network::TCP#tcp_server_loop (method)">#tcp_server_loop</a></span>, <span class='object_link'><a href="Network/TCP.html#tcp_server_session-instance_method" title="Ronin::Network::TCP#tcp_server_session (method)">#tcp_server_session</a></span>, <span class='object_link'><a href="Network/TCP.html#tcp_session-instance_method" title="Ronin::Network::TCP#tcp_session (method)">#tcp_session</a></span>, <span class='object_link'><a href="Network/TCP.html#tcp_single_server-instance_method" title="Ronin::Network::TCP#tcp_single_server (method)">#tcp_single_server</a></span></p>
 
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Network/UDP.html" title="Ronin::Network::UDP (module)">Network::UDP</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Network/UDP.html#udp_banner-instance_method" title="Ronin::Network::UDP#udp_banner (method)">#udp_banner</a></span>, <span class='object_link'><a href="Network/UDP.html#udp_connect-instance_method" title="Ronin::Network::UDP#udp_connect (method)">#udp_connect</a></span>, <span class='object_link'><a href="Network/UDP.html#udp_connect_and_send-instance_method" title="Ronin::Network::UDP#udp_connect_and_send (method)">#udp_connect_and_send</a></span>, <span class='object_link'><a href="Network/UDP.html#udp_open%3F-instance_method" title="Ronin::Network::UDP#udp_open? (method)">#udp_open?</a></span>, <span class='object_link'><a href="Network/UDP.html#udp_recv-instance_method" title="Ronin::Network::UDP#udp_recv (method)">#udp_recv</a></span>, <span class='object_link'><a href="Network/UDP.html#udp_send-instance_method" title="Ronin::Network::UDP#udp_send (method)">#udp_send</a></span>, <span class='object_link'><a href="Network/UDP.html#udp_server-instance_method" title="Ronin::Network::UDP#udp_server (method)">#udp_server</a></span>, <span class='object_link'><a href="Network/UDP.html#udp_server_loop-instance_method" title="Ronin::Network::UDP#udp_server_loop (method)">#udp_server_loop</a></span>, <span class='object_link'><a href="Network/UDP.html#udp_server_session-instance_method" title="Ronin::Network::UDP#udp_server_session (method)">#udp_server_session</a></span>, <span class='object_link'><a href="Network/UDP.html#udp_session-instance_method" title="Ronin::Network::UDP#udp_session (method)">#udp_session</a></span>, <span class='object_link'><a href="Network/UDP.html#udp_single_server-instance_method" title="Ronin::Network::UDP#udp_single_server (method)">#udp_single_server</a></span></p>
+
+  
   
   
   
@@ -362,25 +364,28 @@ constant.</p>
   
   
   
+  
   <h3 class="inherited">Methods included from <span class='object_link'><a href="UI/Output/Helpers.html" title="Ronin::UI::Output::Helpers (module)">UI::Output::Helpers</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="UI/Output/Helpers.html#format_message-instance_method" title="Ronin::UI::Output::Helpers#format_message (method)">#format_message</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#print_debug-instance_method" title="Ronin::UI::Output::Helpers#print_debug (method)">#print_debug</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#print_error-instance_method" title="Ronin::UI::Output::Helpers#print_error (method)">#print_error</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#print_exception-instance_method" title="Ronin::UI::Output::Helpers#print_exception (method)">#print_exception</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#print_info-instance_method" title="Ronin::UI::Output::Helpers#print_info (method)">#print_info</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#print_warning-instance_method" title="Ronin::UI::Output::Helpers#print_warning (method)">#print_warning</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#printf-instance_method" title="Ronin::UI::Output::Helpers#printf (method)">#printf</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#putc-instance_method" title="Ronin::UI::Output::Helpers#putc (method)">#putc</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#puts-instance_method" title="Ronin::UI::Output::Helpers#puts (method)">#puts</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#write-instance_method" title="Ronin::UI::Output::Helpers#write (method)">#write</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="UI/Output/Helpers.html#format-class_method" title="Ronin::UI::Output::Helpers.format (method)">format</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#print_debug-instance_method" title="Ronin::UI::Output::Helpers#print_debug (method)">#print_debug</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#print_error-instance_method" title="Ronin::UI::Output::Helpers#print_error (method)">#print_error</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#print_exception-instance_method" title="Ronin::UI::Output::Helpers#print_exception (method)">#print_exception</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#print_info-instance_method" title="Ronin::UI::Output::Helpers#print_info (method)">#print_info</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#print_warning-instance_method" title="Ronin::UI::Output::Helpers#print_warning (method)">#print_warning</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#printf-instance_method" title="Ronin::UI::Output::Helpers#printf (method)">#printf</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#putc-instance_method" title="Ronin::UI::Output::Helpers#putc (method)">#putc</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#puts-instance_method" title="Ronin::UI::Output::Helpers#puts (method)">#puts</a></span>, <span class='object_link'><a href="UI/Output/Helpers.html#write-instance_method" title="Ronin::UI::Output::Helpers#write (method)">#write</a></span></p>
 
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="load_inflector!-class_method">
+  <h3 class="signature first" id="load_inflector!-class_method">
   
     + (<tt>true</tt>) <strong>load_inflector!</strong>(name) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Loads an Inflector library and sets the <code>Ronin::Support::Inflector</code>
@@ -390,7 +395,7 @@ constant.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -404,14 +409,14 @@ constant.</p>
       
         &mdash;
         <div class='inline'><p>The name of the Inflector library to load. May be either
-<code>:datamapper</code>, <code>:active_support</code> or <code>:extlib</code>.</p>
+<code>:datamapper</code> or <code>:active_support</code>.</p>
 </div>
       
     </li>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -428,7 +433,7 @@ constant.</p>
     </li>
   
 </ul>
-<h3>Raises:</h3>
+<p class="tag_title">Raises:</p>
 <ul class="raise">
   
     <li>
@@ -478,6 +483,10 @@ constant.</p>
       <pre class="lines">
 
 
+56
+57
+58
+59
 60
 61
 62
@@ -496,14 +505,10 @@ constant.</p>
 75
 76
 77
-78
-79
-80
-81
-82</pre>
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/inflector.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/inflector.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='const'>Support</span><span class='period'>.</span><span class='id identifier rubyid_load_inflector!'>load_inflector!</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
@@ -536,11 +541,11 @@ constant.</p>
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sun Feb 12 14:10:41 2012 by 
+  Generated on Sat Jun 16 20:51:09 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.9.3).
+  0.8.2 (ruby-1.9.3).
 </div>
 
   </body>

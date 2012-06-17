@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '../../..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../../../_index.html">Index (C)</a> &raquo; 
+    <a href="../../../_index.html">Index (C)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Model.html" title="Ronin::Model (module)">Model</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Importable.html" title="Ronin::Model::Importable (module)">Importable</a></span></span>
      &raquo; 
     <span class="title">ClassMethods</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../../../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../../../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Module: Ronin::Model::Importable::ClassMethods
   
   
@@ -81,12 +88,11 @@
   <div class="discussion">
     
 
-
   </div>
 </div>
 <div class="tags">
   
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -131,6 +137,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Extracts and imports resources from the given file.</p>
@@ -146,16 +153,18 @@
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="import-instance_method">
+  <h3 class="signature first" id="import-instance_method">
   
     - (<tt>Array&lt;<span class='object_link'><a href="../../Model.html" title="Ronin::Model (module)">Model</a></span>&gt;</tt>) <strong>import</strong>(path) {|resource| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Extracts and imports resources from the given file.</p>
 
@@ -163,7 +172,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -183,7 +192,7 @@
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -200,7 +209,7 @@
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -219,7 +228,7 @@
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -236,7 +245,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -274,7 +283,7 @@
       <pre class="code"><span class="info file"># File 'lib/ronin/model/importable.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_import'>import</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:import</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
 
   <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
     <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_each_line'>each_line</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='op'>|</span>
@@ -292,11 +301,11 @@
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sun Feb 12 14:13:16 2012 by 
+  Generated on Sat Jun 16 20:51:27 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.2.1 (ruby-1.9.3).
 </div>
 
   </body>

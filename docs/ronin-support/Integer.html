@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
   relpath = '';
-  if (relpath != '') relpath += '/';
+  framesUrl = "frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="_index.html">Index (I)</a> &raquo; 
+    <a href="_index.html">Index (I)</a> &raquo;
     
     
     <span class="title">Integer</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: Integer
   
   
@@ -87,39 +94,14 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/ronin/formatting/extensions/binary/integer.rb<span class="defines">,<br />
-  lib/ronin/formatting/extensions/http/integer.rb,<br /> lib/ronin/formatting/extensions/html/integer.rb</span>
+    <dd class="r2 last">lib/ronin/formatting/extensions/html/integer.rb<span class="defines">,<br />
+  lib/ronin/formatting/extensions/http/integer.rb,<br /> lib/ronin/formatting/extensions/binary/integer.rb</span>
 </dd>
   
 </dl>
 <div class="clear"></div>
 
-<h2>Overview</h2><div class="docstring">
-  <div class="discussion">
-    <p>Copyright (c) 2006-2012 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
 
-<p>This file is part of Ronin Support.</p>
-
-<p>Ronin Support is free software: you can redistribute it and/or modify
-it under the terms of the GNU Lesser General Public License as published
-by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.</p>
-
-<p>Ronin Support is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Lesser General Public License for more details.</p>
-
-<p>You should have received a copy of the GNU Lesser General Public License
-along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div>
   <h2>Constant Summary</h2>
   
     <dl class="constants">
@@ -181,6 +163,8 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 
 
 
+
+
   
     <h2>
       Instance Method Summary
@@ -192,11 +176,12 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#bytes-instance_method" title="#bytes (instance method)">- (Array) <strong>bytes</strong>(address_length, endian = :little) </a>
+      <a href="#bytes-instance_method" title="#bytes (instance method)">- (Array) <strong>bytes</strong>(length, endian = :little) </a>
     
 
     
   </span>
+  
   
   
   
@@ -225,6 +210,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Formats the Integer as a HTML String.</p>
@@ -241,6 +227,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 
     
   </span>
+  
   
   
   
@@ -269,6 +256,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Formats the Integer as a JavaScript escaped String.</p>
@@ -285,6 +273,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 
     
   </span>
+  
   
   
   
@@ -313,6 +302,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Escapes the Integer as an HTML String.</p>
@@ -335,6 +325,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Escapes the Integer as a JavaScript String.</p>
@@ -346,7 +337,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#pack-instance_method" title="#pack (instance method)">- (String) <strong>pack</strong>(arch, address_length = nil) </a>
+      <a href="#pack-instance_method" title="#pack (instance method)">- (String) <strong>pack</strong>(*arguments) </a>
     
 
     
@@ -357,10 +348,10 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
   
   
+  
 
   
-    <span class="summary_desc"><div class='inline'><p>Packs the Integer into a String, for a specific architecture and
-address-length.</p>
+    <span class="summary_desc"><div class='inline'><p>Packs the Integer into a String.</p>
 </div></span>
   
 </li>
@@ -374,6 +365,7 @@ address-length.</p>
 
     
   </span>
+  
   
   
   
@@ -402,6 +394,7 @@ address-length.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>URI escapes the byte.</p>
@@ -417,16 +410,18 @@ address-length.</p>
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="bytes-instance_method">
+  <h3 class="signature first" id="bytes-instance_method">
   
-    - (<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span></tt>) <strong>bytes</strong>(address_length, endian = :little) 
+    - (<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span></tt>) <strong>bytes</strong>(length, endian = :little) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Extracts a sequence of bytes which represent the Integer.</p>
 
@@ -436,25 +431,23 @@ address-length.</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='int'>0xff41</span><span class='period'>.</span><span class='id identifier rubyid_bytes'>bytes</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span>
 <span class='comment'># =&gt; [65, 255]</span></pre>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='int'>0xff41</span><span class='period'>.</span><span class='id identifier rubyid_bytes'>bytes</span><span class='lparen'>(</span><span class='int'>4</span><span class='comma'>,</span> <span class='symbol'>:big</span><span class='rparen'>)</span>
 <span class='comment'># =&gt; [0, 0, 255, 65]</span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
       
-        <span class='name'>address_length</span>
+        <span class='name'>length</span>
       
       
         <span class='type'>(<tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt>)</span>
@@ -483,9 +476,9 @@ address-length.</p>
 May be one of:</p>
 
 <ul>
-  <li><code>:big</code> / <code>"big"</code></li>
-  <li><code>:little</code> / <code>"little"</code></li>
-  <li><code>:net</code> / <code>"net"</code></li>
+  <li><code>big</code></li>
+  <li><code>little</code></li>
+  <li><code>net</code></li>
 </ul>
 </div>
       
@@ -493,7 +486,7 @@ May be one of:</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -510,7 +503,7 @@ May be one of:</p>
     </li>
   
 </ul>
-<h3>Raises:</h3>
+<p class="tag_title">Raises:</p>
 <ul class="raise">
   
     <li>
@@ -524,9 +517,9 @@ May be one of:</p>
         <div class='inline'><p>The given <code>endian</code> was not one of:</p>
 
 <ul>
-  <li><code>:little</code> / <code>"little"</code></li>
-  <li><code>:net</code> / <code>"net"</code></li>
-  <li><code>:big</code> / <code>"big"</code></li>
+  <li><code>little</code></li>
+  <li><code>net</code></li>
+  <li><code>big</code></li>
 </ul>
 </div>
       
@@ -540,8 +533,6 @@ May be one of:</p>
       <pre class="lines">
 
 
-56
-57
 58
 59
 60
@@ -570,31 +561,33 @@ May be one of:</p>
 83
 84
 85
-86</pre>
+86
+87
+88</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/formatting/extensions/binary/integer.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/formatting/extensions/binary/integer.rb', line 58</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_bytes'>bytes</span><span class='lparen'>(</span><span class='id identifier rubyid_address_length'>address_length</span><span class='comma'>,</span><span class='id identifier rubyid_endian'>endian</span><span class='op'>=</span><span class='symbol'>:little</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_bytes'>bytes</span><span class='lparen'>(</span><span class='id identifier rubyid_length'>length</span><span class='comma'>,</span><span class='id identifier rubyid_endian'>endian</span><span class='op'>=</span><span class='symbol'>:little</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_endian'>endian</span> <span class='op'>=</span> <span class='id identifier rubyid_endian'>endian</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
   <span class='id identifier rubyid_buffer'>buffer</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
 
   <span class='kw'>case</span> <span class='id identifier rubyid_endian'>endian</span>
-  <span class='kw'>when</span> <span class='symbol'>:little</span><span class='comma'>,</span> <span class='symbol'>:net</span>
+  <span class='kw'>when</span> <span class='symbol'>:little</span>
     <span class='id identifier rubyid_mask'>mask</span>  <span class='op'>=</span> <span class='int'>0xff</span>
     <span class='id identifier rubyid_shift'>shift</span> <span class='op'>=</span> <span class='int'>0</span>
 
-    <span class='id identifier rubyid_address_length'>address_length</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
+    <span class='id identifier rubyid_length'>length</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
       <span class='id identifier rubyid_buffer'>buffer</span> <span class='op'>&lt;&lt;</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='kw'>self</span> <span class='op'>&amp;</span> <span class='id identifier rubyid_mask'>mask</span><span class='rparen'>)</span> <span class='op'>&gt;&gt;</span> <span class='id identifier rubyid_shift'>shift</span><span class='rparen'>)</span>
 
       <span class='id identifier rubyid_mask'>mask</span> <span class='op'>&lt;&lt;=</span> <span class='int'>8</span>
       <span class='id identifier rubyid_shift'>shift</span> <span class='op'>+=</span> <span class='int'>8</span>
     <span class='kw'>end</span>
-  <span class='kw'>when</span> <span class='symbol'>:big</span>
-    <span class='id identifier rubyid_shift'>shift</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_address_length'>address_length</span> <span class='op'>-</span> <span class='int'>1</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>8</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:big</span><span class='comma'>,</span> <span class='symbol'>:net</span>
+    <span class='id identifier rubyid_shift'>shift</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_length'>length</span> <span class='op'>-</span> <span class='int'>1</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>8</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_mask'>mask</span>  <span class='op'>=</span> <span class='lparen'>(</span><span class='int'>0xff</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_shift'>shift</span><span class='rparen'>)</span>
 
-    <span class='id identifier rubyid_address_length'>address_length</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
+    <span class='id identifier rubyid_length'>length</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
       <span class='id identifier rubyid_buffer'>buffer</span> <span class='op'>&lt;&lt;</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='kw'>self</span> <span class='op'>&amp;</span> <span class='id identifier rubyid_mask'>mask</span><span class='rparen'>)</span> <span class='op'>&gt;&gt;</span> <span class='id identifier rubyid_shift'>shift</span><span class='rparen'>)</span>
 
       <span class='id identifier rubyid_mask'>mask</span> <span class='op'>&gt;&gt;=</span> <span class='int'>8</span>
@@ -612,13 +605,15 @@ May be one of:</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="format_html-instance_method">
+  <h3 class="signature " id="format_html-instance_method">
   
     - (<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>) <strong>format_html</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Formats the Integer as a HTML String.</p>
 
@@ -628,16 +623,15 @@ May be one of:</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='int'>0x41</span><span class='period'>.</span><span class='id identifier rubyid_format_html'>format_html</span>
 <span class='comment'># =&gt; &quot;&amp;#65;&quot;</span></pre>
     
   </div>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -654,7 +648,7 @@ May be one of:</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -692,13 +686,15 @@ May be one of:</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="format_http-instance_method">
+  <h3 class="signature " id="format_http-instance_method">
   
     - (<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>) <strong>format_http</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Formats the byte for HTTP.</p>
 
@@ -708,16 +704,15 @@ May be one of:</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='int'>0x41</span><span class='period'>.</span><span class='id identifier rubyid_format_http'>format_http</span>
 <span class='comment'># =&gt; &quot;%41&quot;</span></pre>
     
   </div>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -757,13 +752,15 @@ May be one of:</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="format_js-instance_method">
+  <h3 class="signature " id="format_js-instance_method">
   
     - (<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>) <strong>format_js</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Formats the Integer as a JavaScript escaped String.</p>
 
@@ -773,16 +770,15 @@ May be one of:</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='int'>0x41</span><span class='period'>.</span><span class='id identifier rubyid_format_js'>format_js</span>
 <span class='comment'># =&gt; &quot;%41&quot;</span></pre>
     
   </div>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -799,7 +795,7 @@ May be one of:</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -845,13 +841,15 @@ May be one of:</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="hex_escape-instance_method">
+  <h3 class="signature " id="hex_escape-instance_method">
   
     - (<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>) <strong>hex_escape</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The hex escaped version of the Integer.</p>
 
@@ -861,16 +859,15 @@ May be one of:</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='int'>42</span><span class='period'>.</span><span class='id identifier rubyid_hex_escape'>hex_escape</span>
 <span class='comment'># =&gt; &quot;\\x2a&quot;</span></pre>
     
   </div>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -894,12 +891,12 @@ May be one of:</p>
       <pre class="lines">
 
 
-158
-159
-160</pre>
+171
+172
+173</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/formatting/extensions/binary/integer.rb', line 158</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/formatting/extensions/binary/integer.rb', line 171</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hex_escape'>hex_escape</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\\x%.2x</span><span class='tstring_end'>&quot;</span></span> <span class='op'>%</span> <span class='kw'>self</span>
@@ -910,13 +907,15 @@ May be one of:</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="html_escape-instance_method">
+  <h3 class="signature " id="html_escape-instance_method">
   
     - (<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>) <strong>html_escape</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Escapes the Integer as an HTML String.</p>
 
@@ -926,16 +925,15 @@ May be one of:</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='int'>0x26</span><span class='period'>.</span><span class='id identifier rubyid_html_escape'>html_escape</span>
 <span class='comment'># =&gt; &quot;&amp;amp;&quot;</span></pre>
     
   </div>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -952,7 +950,7 @@ May be one of:</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -990,13 +988,15 @@ May be one of:</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="js_escape-instance_method">
+  <h3 class="signature " id="js_escape-instance_method">
   
     - (<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>) <strong>js_escape</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Escapes the Integer as a JavaScript String.</p>
 
@@ -1006,21 +1006,19 @@ May be one of:</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='int'>0x22</span><span class='period'>.</span><span class='id identifier rubyid_js_escape'>js_escape</span>
 <span class='comment'># =&gt; &quot;\\\&quot;&quot;</span></pre>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='int'>0x7f</span><span class='period'>.</span><span class='id identifier rubyid_js_escape'>js_escape</span>
 <span class='comment'># =&gt; &quot;\x7F&quot;</span></pre>
     
   </div>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1037,7 +1035,7 @@ May be one of:</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -1083,16 +1081,17 @@ May be one of:</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="pack-instance_method">
+  <h3 class="signature " id="pack-instance_method">
   
-    - (<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>) <strong>pack</strong>(arch, address_length = nil) 
+    - (<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>) <strong>pack</strong>(*arguments) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
-    <p>Packs the Integer into a String, for a specific architecture and
-address-length.</p>
+    <p>Packs the Integer into a String.</p>
 
 
   </div>
@@ -1100,69 +1099,67 @@ address-length.</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'><p>using archs other than <code>Ronin::Arch</code>.</p>
-</div></h4>
+      
+        <p class="example_title"><div class='inline'><p>using a <code>Array#pack</code> template:</p>
+</div></p>
+      
+      <pre class="example code"><span class='int'>0x41</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>V</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='comment'># =&gt; &quot;A\0\0\0&quot;</span></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>using <span class='object_link'><a href="Ronin/Binary/Template.html" title="Ronin::Binary::Template (class)">Ronin::Binary::Template</a></span> types:</p>
+</div></p>
+      
+      <pre class="example code"><span class='int'>0x41</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='symbol'>:uint32_le</span><span class='rparen'>)</span></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>using archs other than <code>Ronin::Arch</code> (<strong>deprecated</strong>):</p>
+</div></p>
+      
       <pre class="example code"><span class='id identifier rubyid_arch'>arch</span> <span class='op'>=</span> <span class='const'>OpenStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:endian</span> <span class='op'>=&gt;</span> <span class='symbol'>:little</span><span class='comma'>,</span> <span class='symbol'>:address_length</span> <span class='op'>=&gt;</span> <span class='int'>4</span><span class='rparen'>)</span>
 
 <span class='int'>0x41</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='id identifier rubyid_arch'>arch</span><span class='rparen'>)</span>
 <span class='comment'># =&gt; &quot;A\0\0\0&quot;</span></pre>
     
-      <h4><div class='inline'><p>using a <code>Ronin::Arch</code> arch.</p>
-</div></h4>
+      
+        <p class="example_title"><div class='inline'><p>using a <code>Ronin::Arch</code> arch (<strong>deprecated</strong>):</p>
+</div></p>
+      
       <pre class="example code"><span class='int'>0x41</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='const'>Arch</span><span class='period'>.</span><span class='id identifier rubyid_i686'>i686</span><span class='rparen'>)</span>
 <span class='comment'># =&gt; &quot;A\0\0\0&quot;</span></pre>
     
-      <h4><div class='inline'><p>specifying a custom address-length.</p>
-</div></h4>
+      
+        <p class="example_title"><div class='inline'><p>specifying a custom address-length (<strong>deprecated</strong>):</p>
+</div></p>
+      
       <pre class="example code"><span class='int'>0x41</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='const'>Arch</span><span class='period'>.</span><span class='id identifier rubyid_ppc'>ppc</span><span class='comma'>,</span><span class='int'>2</span><span class='rparen'>)</span>
 <span class='comment'># =&gt; &quot;\0A&quot;</span></pre>
     
-      <h4><div class='inline'><p>using a <code>Array#pack</code> template String for the arch.</p>
-</div></h4>
-      <pre class="example code"><span class='int'>0x41</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>L</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-<span class='comment'># =&gt; &quot;A\0\0\0&quot;</span></pre>
-    
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
       
-        <span class='name'>arch</span>
+        <span class='name'>arguments</span>
       
       
-        <span class='type'>(<tt>Ronin::Arch</tt>, <tt>#endian</tt>, <tt>#address_length</tt>, <tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>, <tt>Symbol</tt>, <tt>arch</tt>)</span>
       
-      
-      
-        &mdash;
-        <div class='inline'><p>The architecture to pack the Integer for.</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>address_length</span>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
         &mdash;
-        <div class='inline'><p>The number of bytes to pack.</p>
+        <div class='inline'><p>The <code>Array#pack</code> code, <span class='object_link'><a href="Ronin/Binary/Template.html" title="Ronin::Binary::Template (class)">Ronin::Binary::Template</a></span> type or Architecture
+object with <code>#endian</code> and <code>#address_length</code> methods.</p>
 </div>
       
     </li>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1179,7 +1176,7 @@ address-length.</p>
     </li>
   
 </ul>
-<h3>Raises:</h3>
+<p class="tag_title">Raises:</p>
 <ul class="raise">
   
     <li>
@@ -1190,18 +1187,17 @@ address-length.</p>
       
       
         &mdash;
-        <div class='inline'><p>The given <code>arch</code> does not respond to the <code>endian</code> or
-<code>address_length</code> methods.</p>
+        <div class='inline'><p>The arguments were not a String, Symbol or Architecture object.</p>
 </div>
       
     </li>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><a href="http://ruby-doc.org/core/classes/Array.html#M002222" target="_parent" title="http://ruby-doc.org/core/classes/Array.html#M002222">http://ruby-doc.org/core/classes/Array.html#M002222</a></li>
+      <li><a href="http://rubydoc.info/stdlib/core/Array:pack" target="_parent" title="http://rubydoc.info/stdlib/core/Array:pack">http://rubydoc.info/stdlib/core/Array:pack</a></li>
     
   </ul>
 
@@ -1211,7 +1207,6 @@ address-length.</p>
       <pre class="lines">
 
 
-127
 128
 129
 130
@@ -1230,30 +1225,55 @@ address-length.</p>
 143
 144
 145
-146</pre>
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/formatting/extensions/binary/integer.rb', line 127</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/formatting/extensions/binary/integer.rb', line 128</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='id identifier rubyid_arch'>arch</span><span class='comma'>,</span><span class='id identifier rubyid_address_length'>address_length</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_arch'>arch</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>String</span><span class='rparen'>)</span>
-    <span class='kw'>return</span> <span class='lbracket'>[</span><span class='kw'>self</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='id identifier rubyid_arch'>arch</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_argument'>argument</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+
+  <span class='kw'>case</span> <span class='id identifier rubyid_argument'>argument</span>
+  <span class='kw'>when</span> <span class='const'>String</span>
+    <span class='lbracket'>[</span><span class='kw'>self</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='id identifier rubyid_argument'>argument</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='const'>Symbol</span>
+    <span class='kw'>unless</span> <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>Binary</span><span class='op'>::</span><span class='const'>Template</span><span class='op'>::</span><span class='const'>INT_TYPES</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_argument'>argument</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unsupported integer type: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_argument'>argument</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='lbracket'>[</span><span class='kw'>self</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='const'>Ronin</span><span class='op'>::</span><span class='const'>Binary</span><span class='op'>::</span><span class='const'>Template</span><span class='op'>::</span><span class='const'>TYPES</span><span class='lbracket'>[</span><span class='id identifier rubyid_argument'>argument</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='comment'># TODO: deprecate this calling convention
+</span>    <span class='id identifier rubyid_arch'>arch</span><span class='comma'>,</span> <span class='id identifier rubyid_address_length'>address_length</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span>
+
+    <span class='kw'>unless</span> <span class='id identifier rubyid_arch'>arch</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:address_length</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>first argument to Ineger#pack must respond to address_length</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>unless</span> <span class='id identifier rubyid_arch'>arch</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:endian</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>first argument to Ineger#pack must respond to endian</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_address_length'>address_length</span> <span class='op'>||=</span> <span class='id identifier rubyid_arch'>arch</span><span class='period'>.</span><span class='id identifier rubyid_address_length'>address_length</span>
+
+    <span class='id identifier rubyid_integer_bytes'>integer_bytes</span> <span class='op'>=</span> <span class='id identifier rubyid_bytes'>bytes</span><span class='lparen'>(</span><span class='id identifier rubyid_address_length'>address_length</span><span class='comma'>,</span><span class='id identifier rubyid_arch'>arch</span><span class='period'>.</span><span class='id identifier rubyid_endian'>endian</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_integer_bytes'>integer_bytes</span><span class='period'>.</span><span class='id identifier rubyid_map!'>map!</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_b'>b</span><span class='op'>|</span> <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_chr'>chr</span> <span class='rbrace'>}</span>
+
+    <span class='kw'>return</span> <span class='id identifier rubyid_integer_bytes'>integer_bytes</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
   <span class='kw'>end</span>
-
-  <span class='kw'>unless</span> <span class='id identifier rubyid_arch'>arch</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:address_length</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>first argument to Ineger#pack must respond to address_length</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-
-  <span class='kw'>unless</span> <span class='id identifier rubyid_arch'>arch</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:endian</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>first argument to Ineger#pack must respond to endian</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_address_length'>address_length</span> <span class='op'>||=</span> <span class='id identifier rubyid_arch'>arch</span><span class='period'>.</span><span class='id identifier rubyid_address_length'>address_length</span>
-
-  <span class='id identifier rubyid_integer_bytes'>integer_bytes</span> <span class='op'>=</span> <span class='id identifier rubyid_bytes'>bytes</span><span class='lparen'>(</span><span class='id identifier rubyid_address_length'>address_length</span><span class='comma'>,</span><span class='id identifier rubyid_arch'>arch</span><span class='period'>.</span><span class='id identifier rubyid_endian'>endian</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_integer_bytes'>integer_bytes</span><span class='period'>.</span><span class='id identifier rubyid_map!'>map!</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_b'>b</span><span class='op'>|</span> <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_chr'>chr</span> <span class='rbrace'>}</span>
-
-  <span class='kw'>return</span> <span class='id identifier rubyid_integer_bytes'>integer_bytes</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1261,13 +1281,15 @@ address-length.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="uri_encode-instance_method">
+  <h3 class="signature " id="uri_encode-instance_method">
   
     - (<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>) <strong>uri_encode</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>URI encodes the byte.</p>
 
@@ -1276,7 +1298,7 @@ address-length.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1316,13 +1338,15 @@ address-length.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="uri_escape-instance_method">
+  <h3 class="signature " id="uri_escape-instance_method">
   
     - (<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>) <strong>uri_escape</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>URI escapes the byte.</p>
 
@@ -1332,16 +1356,15 @@ address-length.</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='int'>0x3d</span><span class='period'>.</span><span class='id identifier rubyid_uri_escape'>uri_escape</span>
 <span class='comment'># =&gt; &quot;%3D&quot;</span></pre>
     
   </div>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1383,11 +1406,11 @@ address-length.</p>
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sun Feb 12 14:10:55 2012 by 
+  Generated on Sat Jun 16 20:52:27 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.9.3).
+  0.8.2 (ruby-1.9.3).
 </div>
 
   </body>

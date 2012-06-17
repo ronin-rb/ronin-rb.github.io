@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (I)</a> &raquo; 
+    <a href="../_index.html">Index (I)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../Ronin.html" title="Ronin (module)">Ronin</a></span></span>
      &raquo; 
     <span class="title">Installation</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Module: Ronin::Installation
   
   
@@ -117,6 +124,7 @@ installation of Ronin on the system.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Enumerates over all files within a given directory found in any
@@ -134,6 +142,7 @@ of the installed Ronin libraries.</p>
 
     
   </span>
+  
   
   
   
@@ -162,6 +171,7 @@ of the installed Ronin libraries.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Finds the installed Ronin libraries via RubyGems.</p>
@@ -178,6 +188,7 @@ of the installed Ronin libraries.</p>
 
     
   </span>
+  
   
   
   
@@ -202,10 +213,11 @@ of the installed Ronin libraries.</p>
   </span>
   
   
+  
   <span class="note title protected">protected</span>
   
   
-  <span class="private note title">Private</span>
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Finds the installed Ronin libraries.</p>
@@ -224,10 +236,11 @@ of the installed Ronin libraries.</p>
   </span>
   
   
+  
   <span class="note title protected">protected</span>
   
   
-  <span class="private note title">Private</span>
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Finds the installed Ronin gems.</p>
@@ -246,10 +259,11 @@ of the installed Ronin libraries.</p>
   </span>
   
   
+  
   <span class="note title protected">protected</span>
   
   
-  <span class="private note title">Private</span>
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Loads the gemspecs of Ronin libraries from the <code>$LOAD_PATH</code>.</p>
@@ -272,6 +286,7 @@ of the installed Ronin libraries.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The paths of the installed Ronin libraries.</p>
@@ -287,16 +302,18 @@ of the installed Ronin libraries.</p>
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="each_file-class_method">
+  <h3 class="signature first" id="each_file-class_method">
   
     + (<tt>Enumerator</tt>) <strong>each_file</strong>(pattern) {|file| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Enumerates over all files within a given directory found in any
 of the installed Ronin libraries.</p>
@@ -305,12 +322,12 @@ of the installed Ronin libraries.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
       
-        <span class='name'>directory</span>
+        <span class='name'>pattern</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -318,14 +335,14 @@ of the installed Ronin libraries.</p>
       
       
         &mdash;
-        <div class='inline'><p>The directory path to search within.</p>
+        <div class='inline'><p>The glob pattern to search for.</p>
 </div>
       
     </li>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -342,7 +359,7 @@ of the installed Ronin libraries.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -361,7 +378,7 @@ of the installed Ronin libraries.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -378,7 +395,7 @@ of the installed Ronin libraries.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -418,8 +435,8 @@ of the installed Ronin libraries.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/installation.rb', line 96</span>
 
-<span class='kw'>def</span> <span class='const'>Installation</span><span class='period'>.</span><span class='id identifier rubyid_each_file'>each_file</span><span class='lparen'>(</span><span class='id identifier rubyid_pattern'>pattern</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:each_file</span><span class='comma'>,</span><span class='id identifier rubyid_pattern'>pattern</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_each_file'>each_file</span><span class='lparen'>(</span><span class='id identifier rubyid_pattern'>pattern</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='comma'>,</span><span class='id identifier rubyid_pattern'>pattern</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
 
   <span class='comment'># query the installed gems
 </span>  <span class='id identifier rubyid_paths'>paths</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_gem_path'>gem_path</span><span class='op'>|</span>
@@ -438,13 +455,15 @@ of the installed Ronin libraries.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="each_file_in-class_method">
+  <h3 class="signature " id="each_file_in-class_method">
   
     + (<tt>Enumerator</tt>) <strong>each_file_in</strong>(directory, ext = nil) {|name| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Enumerates over every file in a directory.</p>
 
@@ -452,7 +471,7 @@ of the installed Ronin libraries.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -489,7 +508,7 @@ of the installed Ronin libraries.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -506,7 +525,7 @@ of the installed Ronin libraries.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -525,7 +544,7 @@ of the installed Ronin libraries.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -542,7 +561,7 @@ of the installed Ronin libraries.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -580,16 +599,16 @@ of the installed Ronin libraries.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/installation.rb', line 133</span>
 
-<span class='kw'>def</span> <span class='const'>Installation</span><span class='period'>.</span><span class='id identifier rubyid_each_file_in'>each_file_in</span><span class='lparen'>(</span><span class='id identifier rubyid_directory'>directory</span><span class='comma'>,</span><span class='id identifier rubyid_ext'>ext</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:each_file_in</span><span class='comma'>,</span><span class='id identifier rubyid_directory'>directory</span><span class='comma'>,</span><span class='id identifier rubyid_ext'>ext</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_each_file_in'>each_file_in</span><span class='lparen'>(</span><span class='id identifier rubyid_directory'>directory</span><span class='comma'>,</span><span class='id identifier rubyid_ext'>ext</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='comma'>,</span><span class='id identifier rubyid_directory'>directory</span><span class='comma'>,</span><span class='id identifier rubyid_ext'>ext</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+
+  <span class='id identifier rubyid_directory'>directory</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_directory'>directory</span><span class='comma'>,</span><span class='const'>File</span><span class='op'>::</span><span class='const'>SEPARATOR</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_pattern'>pattern</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_directory'>directory</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>**</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>*</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_pattern'>pattern</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_ext'>ext</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_ext'>ext</span>
 
-  <span class='id identifier rubyid_slice_index'>slice_index</span> <span class='op'>=</span> <span class='id identifier rubyid_directory'>directory</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>+</span> <span class='int'>1</span>
-
   <span class='id identifier rubyid_each_file'>each_file</span><span class='lparen'>(</span><span class='id identifier rubyid_pattern'>pattern</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_path'>path</span><span class='op'>|</span>
-    <span class='kw'>yield</span> <span class='id identifier rubyid_path'>path</span><span class='lbracket'>[</span><span class='id identifier rubyid_slice_index'>slice_index</span><span class='op'>..</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='id identifier rubyid_directory'>directory</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -598,13 +617,15 @@ of the installed Ronin libraries.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="gems-class_method">
+  <h3 class="signature " id="gems-class_method">
   
     + (<tt>Hash{String =&gt; Gem::Specification}</tt>) <strong>gems</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Finds the installed Ronin libraries via RubyGems.</p>
 
@@ -613,7 +634,7 @@ of the installed Ronin libraries.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -630,7 +651,7 @@ of the installed Ronin libraries.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -660,7 +681,7 @@ of the installed Ronin libraries.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/installation.rb', line 42</span>
 
-<span class='kw'>def</span> <span class='const'>Installation</span><span class='period'>.</span><span class='id identifier rubyid_gems'>gems</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_gems'>gems</span>
   <span class='id identifier rubyid_load!'>load!</span> <span class='kw'>if</span> <span class='ivar'>@gems</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
   <span class='kw'>return</span> <span class='ivar'>@gems</span>
 <span class='kw'>end</span></pre>
@@ -670,13 +691,15 @@ of the installed Ronin libraries.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="libraries-class_method">
+  <h3 class="signature " id="libraries-class_method">
   
     + (<tt>Array&lt;String&gt;</tt>) <strong>libraries</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The names of the additional Ronin libraries installed on the system.</p>
 
@@ -685,7 +708,7 @@ of the installed Ronin libraries.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -702,7 +725,7 @@ of the installed Ronin libraries.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -731,7 +754,7 @@ of the installed Ronin libraries.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/installation.rb', line 72</span>
 
-<span class='kw'>def</span> <span class='const'>Installation</span><span class='period'>.</span><span class='id identifier rubyid_libraries'>libraries</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_libraries'>libraries</span>
   <span class='id identifier rubyid_gems'>gems</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -740,16 +763,18 @@ of the installed Ronin libraries.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="load!-class_method">
+  <h3 class="signature " id="load!-class_method">
   
     + (<tt>true</tt>) <strong>load!</strong>  <span class="extras">(protected)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Finds the installed Ronin libraries.</p>
@@ -759,7 +784,7 @@ of the installed Ronin libraries.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -776,7 +801,7 @@ of the installed Ronin libraries.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -809,7 +834,7 @@ of the installed Ronin libraries.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/installation.rb', line 219</span>
 
-<span class='kw'>def</span> <span class='const'>Installation</span><span class='period'>.</span><span class='id identifier rubyid_load!'>load!</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_load!'>load!</span>
   <span class='kw'>if</span> <span class='const'>Gem</span><span class='period'>.</span><span class='id identifier rubyid_loaded_specs'>loaded_specs</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ronin</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
     <span class='id identifier rubyid_load_gems!'>load_gems!</span>
   <span class='kw'>else</span>
@@ -822,16 +847,18 @@ of the installed Ronin libraries.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="load_gems!-class_method">
+  <h3 class="signature " id="load_gems!-class_method">
   
     + (<tt>true</tt>) <strong>load_gems!</strong>  <span class="extras">(protected)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Finds the installed Ronin gems.</p>
@@ -841,7 +868,7 @@ of the installed Ronin libraries.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -858,7 +885,7 @@ of the installed Ronin libraries.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -902,7 +929,7 @@ of the installed Ronin libraries.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/installation.rb', line 158</span>
 
-<span class='kw'>def</span> <span class='const'>Installation</span><span class='period'>.</span><span class='id identifier rubyid_load_gems!'>load_gems!</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_load_gems!'>load_gems!</span>
   <span class='id identifier rubyid_register_gem'>register_gem</span> <span class='op'>=</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_gem'>gem</span><span class='op'>|</span>
     <span class='ivar'>@gems</span><span class='lbracket'>[</span><span class='id identifier rubyid_gem'>gem</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_gem'>gem</span>
     <span class='ivar'>@paths</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_gem'>gem</span><span class='period'>.</span><span class='id identifier rubyid_full_gem_path'>full_gem_path</span>
@@ -926,16 +953,18 @@ of the installed Ronin libraries.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="load_gemspecs!-class_method">
+  <h3 class="signature " id="load_gemspecs!-class_method">
   
     + (<tt>true</tt>) <strong>load_gemspecs!</strong>  <span class="extras">(protected)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Loads the gemspecs of Ronin libraries from the <code>$LOAD_PATH</code>.</p>
@@ -945,7 +974,7 @@ of the installed Ronin libraries.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -962,7 +991,7 @@ of the installed Ronin libraries.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -1009,7 +1038,7 @@ of the installed Ronin libraries.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/installation.rb', line 187</span>
 
-<span class='kw'>def</span> <span class='const'>Installation</span><span class='period'>.</span><span class='id identifier rubyid_load_gemspecs!'>load_gemspecs!</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_load_gemspecs!'>load_gemspecs!</span>
   <span class='gvar'>$LOAD_PATH</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_lib_dir'>lib_dir</span><span class='op'>|</span>
     <span class='id identifier rubyid_root_dir'>root_dir</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_lib_dir'>lib_dir</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>..</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_gemspec_path'>gemspec_path</span> <span class='op'>=</span> <span class='const'>Dir</span><span class='lbracket'>[</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_root_dir'>root_dir</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ronin*.gemspec</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
@@ -1036,13 +1065,15 @@ of the installed Ronin libraries.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="paths-class_method">
+  <h3 class="signature " id="paths-class_method">
   
     + (<tt>Set&lt;String&gt;</tt>) <strong>paths</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The paths of the installed Ronin libraries.</p>
 
@@ -1051,7 +1082,7 @@ of the installed Ronin libraries.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1068,7 +1099,7 @@ of the installed Ronin libraries.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -1098,7 +1129,7 @@ of the installed Ronin libraries.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/installation.rb', line 57</span>
 
-<span class='kw'>def</span> <span class='const'>Installation</span><span class='period'>.</span><span class='id identifier rubyid_paths'>paths</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_paths'>paths</span>
   <span class='id identifier rubyid_load!'>load!</span> <span class='kw'>if</span> <span class='ivar'>@paths</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
   <span class='kw'>return</span> <span class='ivar'>@paths</span>
 <span class='kw'>end</span></pre>
@@ -1110,11 +1141,11 @@ of the installed Ronin libraries.</p>
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sun Feb 12 14:13:09 2012 by 
+  Generated on Sat Jun 16 20:51:23 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.2.1 (ruby-1.9.3).
 </div>
 
   </body>

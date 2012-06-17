@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (O)</a> &raquo; 
+    <a href="../_index.html">Index (O)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../Ronin.html" title="Ronin (module)">Ronin</a></span></span>
      &raquo; 
     <span class="title">OS</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: Ronin::OS
   
   
@@ -99,8 +106,8 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     <p>Represents an Operating System and pre-defines other common ones
-(<span class='object_link'><a href="#linux-class_method" title="Ronin::OS.linux (method)">linux</a></span>, <span class='object_link'><a href="#freebsd-class_method" title="Ronin::OS.freebsd (method)">freebsd</a></span>, <span class='object_link'><a href="#openbsd-class_method" title="Ronin::OS.openbsd (method)">openbsd</a></span>, <span class='object_link'><a href="#netbsd-class_method" title="Ronin::OS.netbsd (method)">netbsd</a></span>, <span class='object_link'><a href="#osx-class_method" title="Ronin::OS.osx (method)">osx</a></span>, <span class='object_link'><a href="#solaris-class_method" title="Ronin::OS.solaris (method)">solaris</a></span>, <span class='object_link'><a href="#windows-class_method" title="Ronin::OS.windows (method)">windows</a></span>
-and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix (method)">unix</a></span>).</p>
+(<span class='object_link'><a href="#linux-class_method" title="Ronin::OS.linux (method)">OS.linux</a></span>, <span class='object_link'><a href="#freebsd-class_method" title="Ronin::OS.freebsd (method)">OS.freebsd</a></span>, <span class='object_link'><a href="#openbsd-class_method" title="Ronin::OS.openbsd (method)">OS.openbsd</a></span>, <span class='object_link'><a href="#netbsd-class_method" title="Ronin::OS.netbsd (method)">OS.netbsd</a></span>, <span class='object_link'><a href="#osx-class_method" title="Ronin::OS.osx (method)">OS.osx</a></span>, <span class='object_link'><a href="#solaris-class_method" title="Ronin::OS.solaris (method)">OS.solaris</a></span>, <span class='object_link'><a href="#windows-class_method" title="Ronin::OS.windows (method)">OS.windows</a></span>
+and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix (method)">OS.unix</a></span>).</p>
 
 
   </div>
@@ -137,6 +144,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The FreeBSD OS.</p>
@@ -153,6 +161,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
 
     
   </span>
+  
   
   
   
@@ -181,6 +190,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Any IP Addresses that might be running the Operating System.</p>
@@ -197,6 +207,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
 
     
   </span>
+  
   
   
   
@@ -225,6 +236,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The NetBSD OS.</p>
@@ -241,6 +253,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
 
     
   </span>
+  
   
   
   
@@ -269,6 +282,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Any OS guesses for the Operating System.</p>
@@ -285,6 +299,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
 
     
   </span>
+  
   
   
   
@@ -312,7 +327,8 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Defines a new predefined OS.</p>
@@ -329,6 +345,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
 
     
   </span>
+  
   
   
   
@@ -357,6 +374,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The family UNIX OSes.</p>
@@ -379,6 +397,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Version of the Operating System.</p>
@@ -395,6 +414,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
 
     
   </span>
+  
   
   
   
@@ -432,6 +452,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Primary key.</p>
@@ -448,6 +469,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
 
     
   </span>
+  
   
   
   
@@ -476,6 +498,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Any IP Addresses that might be running the Operating System.</p>
@@ -492,6 +515,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
 
     
   </span>
+  
   
   
   
@@ -520,6 +544,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Any OS guesses for the Operating System.</p>
@@ -536,6 +561,7 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
 
     
   </span>
+  
   
   
   
@@ -564,32 +590,11 @@ and <span class='object_link'><a href="#unix-class_method" title="Ronin::OS.unix
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The IP Address that was most recently guessed to be using the
 Operating System.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#to_ary-instance_method" title="#to_ary (instance method)">- (Array&lt;String&gt;) <strong>to_ary</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Splits the Operating System into multiple variables.</p>
 </div></span>
   
 </li>
@@ -603,6 +608,7 @@ Operating System.</p>
 
     
   </span>
+  
   
   
   
@@ -631,6 +637,7 @@ Operating System.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Version of the Operating System.</p>
@@ -647,6 +654,7 @@ Operating System.</p>
 
     
   </span>
+  
   
   
   
@@ -672,9 +680,11 @@ Operating System.</p>
   
   
   
+  
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Model/HasName.html" title="Ronin::Model::HasName (module)">Model::HasName</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Model/HasName.html#included-class_method" title="Ronin::Model::HasName.included (method)">included</a></span></p>
 
+  
   
   
   
@@ -690,19 +700,22 @@ Operating System.</p>
   
   
   
+  
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="freebsd-class_method">
+  <h3 class="signature first" id="freebsd-class_method">
   
     + (<tt>Object</tt>) <strong>freebsd</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The FreeBSD OS</p>
 
@@ -718,10 +731,10 @@ Operating System.</p>
       <pre class="lines">
 
 
-161</pre>
+138</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 161</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 138</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:freebsd</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>FreeBSD</span><span class='tstring_end'>'</span></span></pre>
     </td>
@@ -730,13 +743,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="id-class_method">
+  <h3 class="signature " id="id-class_method">
   
     + (<tt>Object</tt>) <strong>id</strong>(repository = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Primary key</p>
 
@@ -764,13 +779,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="ip_addresses-class_method">
+  <h3 class="signature " id="ip_addresses-class_method">
   
     + (<tt>Object</tt>) <strong>ip_addresses</strong>(repository = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Any IP Addresses that might be running the Operating System</p>
 
@@ -802,13 +819,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="linux-class_method">
+  <h3 class="signature " id="linux-class_method">
   
     + (<tt>Object</tt>) <strong>linux</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The Linux OS</p>
 
@@ -824,10 +843,10 @@ Operating System.</p>
       <pre class="lines">
 
 
-158</pre>
+135</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 158</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 135</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:linux</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Linux</span><span class='tstring_end'>'</span></span></pre>
     </td>
@@ -836,13 +855,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="netbsd-class_method">
+  <h3 class="signature " id="netbsd-class_method">
   
     + (<tt>Object</tt>) <strong>netbsd</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The NetBSD OS</p>
 
@@ -858,10 +879,10 @@ Operating System.</p>
       <pre class="lines">
 
 
-167</pre>
+144</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 167</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 144</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:netbsd</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>NetBSD</span><span class='tstring_end'>'</span></span></pre>
     </td>
@@ -870,13 +891,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="openbsd-class_method">
+  <h3 class="signature " id="openbsd-class_method">
   
     + (<tt>Object</tt>) <strong>openbsd</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The OpenBSD OS</p>
 
@@ -892,10 +915,10 @@ Operating System.</p>
       <pre class="lines">
 
 
-164</pre>
+141</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 164</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 141</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:openbsd</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>OpenBSD</span><span class='tstring_end'>'</span></span></pre>
     </td>
@@ -904,13 +927,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="os_guesses-class_method">
+  <h3 class="signature " id="os_guesses-class_method">
   
     + (<tt>Object</tt>) <strong>os_guesses</strong>(repository = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Any OS guesses for the Operating System</p>
 
@@ -938,13 +963,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="osx-class_method">
+  <h3 class="signature " id="osx-class_method">
   
     + (<tt>Object</tt>) <strong>osx</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>OSX</p>
 
@@ -960,10 +987,10 @@ Operating System.</p>
       <pre class="lines">
 
 
-170</pre>
+147</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 147</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:osx</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>OSX</span><span class='tstring_end'>'</span></span></pre>
     </td>
@@ -972,16 +999,18 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="predefine-class_method">
+  <h3 class="signature " id="predefine-class_method">
   
     + (<tt>nil</tt>) <strong>predefine</strong>(name, attributes) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Defines a new predefined OS.</p>
@@ -992,14 +1021,13 @@ Operating System.</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='const'>OS</span><span class='period'>.</span><span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:freebsd</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>FreeBSD</span><span class='tstring_end'>'</span></span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1019,22 +1047,22 @@ Operating System.</p>
   
     <li>
       
-        <span class='name'>os_name</span>
+        <span class='name'>attributes</span>
       
       
-        <span class='type'>(<tt>String</tt>)</span>
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
       
       
       
         &mdash;
-        <div class='inline'><p>The name of the OS.</p>
+        <div class='inline'><p>Additional attributes for the OS.</p>
 </div>
       
     </li>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1054,33 +1082,33 @@ Operating System.</p>
       <pre class="lines">
 
 
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155</pre>
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 132</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 109</span>
 
 <span class='kw'>def</span> <span class='const'>OS</span><span class='period'>.</span><span class='id identifier rubyid_predefine'>predefine</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_attributes'>attributes</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span>
@@ -1112,13 +1140,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="solaris-class_method">
+  <h3 class="signature " id="solaris-class_method">
   
     + (<tt>Object</tt>) <strong>solaris</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The Solaris OS</p>
 
@@ -1134,10 +1164,10 @@ Operating System.</p>
       <pre class="lines">
 
 
-173</pre>
+150</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 173</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 150</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:solaris</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Solaris</span><span class='tstring_end'>'</span></span></pre>
     </td>
@@ -1146,13 +1176,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="unix-class_method">
+  <h3 class="signature " id="unix-class_method">
   
     + (<tt>Object</tt>) <strong>unix</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The family UNIX OSes</p>
 
@@ -1168,10 +1200,10 @@ Operating System.</p>
       <pre class="lines">
 
 
-179</pre>
+156</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 179</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 156</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:unix</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>UNIX</span><span class='tstring_end'>'</span></span></pre>
     </td>
@@ -1180,13 +1212,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="version-class_method">
+  <h3 class="signature " id="version-class_method">
   
     + (<tt>Object</tt>) <strong>version</strong>(repository = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Version of the Operating System</p>
 
@@ -1214,13 +1248,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="windows-class_method">
+  <h3 class="signature " id="windows-class_method">
   
     + (<tt>Object</tt>) <strong>windows</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The Windows OS</p>
 
@@ -1236,10 +1272,10 @@ Operating System.</p>
       <pre class="lines">
 
 
-176</pre>
+153</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 176</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 153</span>
 
 <span class='id identifier rubyid_predefine'>predefine</span> <span class='symbol'>:windows</span><span class='comma'>,</span> <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Windows</span><span class='tstring_end'>'</span></span></pre>
     </td>
@@ -1251,16 +1287,18 @@ Operating System.</p>
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="id-instance_method">
+  <h3 class="signature first" id="id-instance_method">
   
     - (<tt>Object</tt>) <strong>id</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Primary key</p>
 
@@ -1288,13 +1326,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="id=-instance_method">
+  <h3 class="signature " id="id=-instance_method">
   
     - (<tt>Object</tt>) <strong>id=</strong>(value) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Primary key</p>
 
@@ -1322,13 +1362,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="ip_addresses-instance_method">
+  <h3 class="signature " id="ip_addresses-instance_method">
   
     - (<tt>Object</tt>) <strong>ip_addresses</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Any IP Addresses that might be running the Operating System</p>
 
@@ -1360,13 +1402,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="ip_addresses=-instance_method">
+  <h3 class="signature " id="ip_addresses=-instance_method">
   
     - (<tt>Object</tt>) <strong>ip_addresses=</strong>(new_ip_addresses) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Any IP Addresses that might be running the Operating System</p>
 
@@ -1398,13 +1442,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="os_guesses-instance_method">
+  <h3 class="signature " id="os_guesses-instance_method">
   
     - (<tt>Object</tt>) <strong>os_guesses</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Any OS guesses for the Operating System</p>
 
@@ -1432,13 +1478,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="os_guesses=-instance_method">
+  <h3 class="signature " id="os_guesses=-instance_method">
   
     - (<tt>Object</tt>) <strong>os_guesses=</strong>(new_os_guesses) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Any OS guesses for the Operating System</p>
 
@@ -1466,13 +1514,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="recent_ip_address-instance_method">
+  <h3 class="signature " id="recent_ip_address-instance_method">
   
     - (<tt><span class='object_link'><a href="IPAddress.html" title="Ronin::IPAddress (class)">IPAddress</a></span></tt>) <strong>recent_ip_address</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The IP Address that was most recently guessed to be using the
 Operating System.</p>
@@ -1482,7 +1532,7 @@ Operating System.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1500,7 +1550,7 @@ Operating System.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -1546,98 +1596,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="to_ary-instance_method">
-  
-    - (<tt>Array&lt;String&gt;</tt>) <strong>to_ary</strong> 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p>Splits the Operating System into multiple variables.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-  <div class="examples">
-    <h3>Examples:</h3>
-    
-      <h4><div class='inline'>
-</div></h4>
-      <pre class="example code"><span class='id identifier rubyid_os'>os</span> <span class='op'>=</span> <span class='const'>OS</span><span class='period'>.</span><span class='id identifier rubyid_linux'>linux</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>2.6.31</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
-<span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_version'>version</span> <span class='op'>=</span> <span class='id identifier rubyid_os'>os</span>
-
-<span class='id identifier rubyid_name'>name</span>
-<span class='comment'># =&gt; &quot;Linux&quot;
-</span><span class='id identifier rubyid_version'>version</span>
-<span class='comment'># =&gt; &quot;2.6.31&quot;</span></pre>
-    
-  </div>
-
-<h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The name and version of the Operating System.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Since:</h3>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-112
-113
-114</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/os.rb', line 112</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_to_ary'>to_ary</span>
-  <span class='lbracket'>[</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_version'>version</span><span class='rbracket'>]</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="to_s-instance_method">
+  <h3 class="signature " id="to_s-instance_method">
   
     - (<tt>String</tt>) <strong>to_s</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Converts the Operating System to a String.</p>
 
@@ -1647,16 +1614,15 @@ Operating System.</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='id identifier rubyid_os'>os</span> <span class='op'>=</span> <span class='const'>OS</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Linux</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:version</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>2.6.11</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 <span class='id identifier rubyid_os'>os</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='comment'># =&gt; &quot;Linux 2.6.11&quot;</span></pre>
     
   </div>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1704,13 +1670,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="version-instance_method">
+  <h3 class="signature " id="version-instance_method">
   
     - (<tt>Object</tt>) <strong>version</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Version of the Operating System</p>
 
@@ -1738,13 +1706,15 @@ Operating System.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="version=-instance_method">
+  <h3 class="signature " id="version=-instance_method">
   
     - (<tt>Object</tt>) <strong>version=</strong>(value) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Version of the Operating System</p>
 
@@ -1774,11 +1744,11 @@ Operating System.</p>
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sun Feb 12 14:12:53 2012 by 
+  Generated on Sat Jun 16 20:51:31 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.2.1 (ruby-1.9.3).
 </div>
 
   </body>

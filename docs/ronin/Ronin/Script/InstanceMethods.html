@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '../..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../../_index.html">Index (I)</a> &raquo; 
+    <a href="../../_index.html">Index (I)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Script.html" title="Ronin::Script (module)">Script</a></span></span>
      &raquo; 
     <span class="title">InstanceMethods</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Module: Ronin::Script::InstanceMethods
   
   
@@ -86,7 +93,7 @@
 </div>
 <div class="tags">
   
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -127,6 +134,7 @@
   </span>
   
   
+  
   <span class="note title protected">protected</span>
   
   
@@ -153,7 +161,8 @@ object for caching.</p>
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Indicates whether the object has been cached.</p>
@@ -170,6 +179,7 @@ object for caching.</p>
 
     
   </span>
+  
   
   
   
@@ -198,6 +208,7 @@ object for caching.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Inspects both the properties and parameters of the Ronin Script.</p>
@@ -219,7 +230,8 @@ object for caching.</p>
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Loads the code from the cached file for the object, and instance
@@ -242,7 +254,8 @@ evaluates it into the object.</p>
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Specifies whether the object has been prepared to be cached,.</p>
@@ -259,6 +272,7 @@ evaluates it into the object.</p>
 
     
   </span>
+  
   
   
   
@@ -286,7 +300,8 @@ evaluates it into the object.</p>
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Determines if the original code, from the cache file, has been
@@ -310,6 +325,7 @@ loaded into the object.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Converts the script to a String.</p>
@@ -325,16 +341,18 @@ loaded into the object.</p>
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="cache-instance_method">
+  <h3 class="signature first" id="cache-instance_method">
   
     - (<tt>Boolean</tt>) <strong>cache</strong> { ... } <span class="extras">(protected)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Will call the given block only once, in order to prepare the
 object for caching.</p>
@@ -344,7 +362,7 @@ object for caching.</p>
 </div>
 <div class="tags">
   
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -363,7 +381,7 @@ prepared for caching.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -381,7 +399,7 @@ caching.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -433,16 +451,18 @@ caching.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="cached?-instance_method">
+  <h3 class="signature " id="cached?-instance_method">
   
     - (<tt>Boolean</tt>) <strong>cached?</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Indicates whether the object has been cached.</p>
@@ -452,7 +472,7 @@ caching.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -469,7 +489,7 @@ caching.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -507,13 +527,15 @@ caching.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="initialize-instance_method">
+  <h3 class="signature " id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="Ronin::Script::InstanceMethods (module)">InstanceMethods</a></span></tt>) <strong>initialize</strong>(*arguments, &amp;block) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Initializes the Ronin Script.</p>
 
@@ -521,7 +543,7 @@ caching.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -541,7 +563,7 @@ caching.</p>
   
 </ul>
 
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -593,13 +615,15 @@ caching.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="inspect-instance_method">
+  <h3 class="signature " id="inspect-instance_method">
   
     - (<tt>String</tt>) <strong>inspect</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Inspects both the properties and parameters of the Ronin Script.</p>
 
@@ -608,7 +632,7 @@ caching.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -625,7 +649,7 @@ caching.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -691,16 +715,18 @@ caching.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="load_script!-instance_method">
+  <h3 class="signature " id="load_script!-instance_method">
   
     - (<tt>Boolean</tt>) <strong>load_script!</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Loads the code from the cached file for the object, and instance
@@ -711,7 +737,7 @@ evaluates it into the object.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -728,7 +754,7 @@ evaluates it into the object.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -782,16 +808,18 @@ evaluates it into the object.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="prepared_for_cache?-instance_method">
+  <h3 class="signature " id="prepared_for_cache?-instance_method">
   
     - (<tt>Boolean</tt>) <strong>prepared_for_cache?</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Specifies whether the object has been prepared to be cached,</p>
@@ -801,7 +829,7 @@ evaluates it into the object.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -818,7 +846,7 @@ evaluates it into the object.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -856,13 +884,15 @@ evaluates it into the object.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="run-instance_method">
+  <h3 class="signature " id="run-instance_method">
   
     - (<tt>Object</tt>) <strong>run</strong>(*arguments) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Default method which invokes the script.</p>
 
@@ -870,7 +900,7 @@ evaluates it into the object.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -890,7 +920,7 @@ evaluates it into the object.</p>
   
 </ul>
 
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -926,16 +956,18 @@ evaluates it into the object.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="script_loaded?-instance_method">
+  <h3 class="signature " id="script_loaded?-instance_method">
   
     - (<tt>Boolean</tt>) <strong>script_loaded?</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Determines if the original code, from the cache file, has been
@@ -946,7 +978,7 @@ loaded into the object.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -964,7 +996,7 @@ object.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -1002,13 +1034,15 @@ object.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="to_s-instance_method">
+  <h3 class="signature " id="to_s-instance_method">
   
     - (<tt>String</tt>) <strong>to_s</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Converts the script to a String.</p>
 
@@ -1017,7 +1051,7 @@ object.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1034,7 +1068,7 @@ object.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -1086,11 +1120,11 @@ object.</p>
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sun Feb 12 14:13:10 2012 by 
+  Generated on Sat Jun 16 20:51:24 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.2.1 (ruby-1.9.3).
 </div>
 
   </body>

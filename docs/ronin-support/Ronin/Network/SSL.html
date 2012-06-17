@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '../..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../../_index.html">Index (S)</a> &raquo; 
+    <a href="../../_index.html">Index (S)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Network.html" title="Ronin::Network (module)">Network</a></span></span>
      &raquo; 
     <span class="title">SSL</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Module: Ronin::Network::SSL
   
   
@@ -66,16 +73,16 @@
   
   
     
-      <dt class="r1">Extended by:</dt>
+  
+    
+      <dt class="r1">Includes:</dt>
       <dd class="r1"><span class='object_link'><a href="TCP.html" title="Ronin::Network::TCP (module)">TCP</a></span></dd>
       
     
   
-    
-  
   
     <dt class="r2">Included in:</dt>
-    <dd class="r2"><span class='object_link'><a href="../../Net.html" title="Net (module)">Net</a></span>, <span class='object_link'><a href="Mixins/SSL.html" title="Ronin::Network::Mixins::SSL (module)">Mixins::SSL</a></span></dd>
+    <dd class="r2"><span class='object_link'><a href="../../Net.html" title="Net (module)">Net</a></span>, <span class='object_link'><a href="Mixins/SSL.html" title="Ronin::Network::Mixins::SSL (module)">Mixins::SSL</a></span>, <span class='object_link'><a href="../Support.html" title="Ronin::Support (module)">Support</a></span></dd>
     
   
   
@@ -104,7 +111,7 @@
           <div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This constant is part of a private API.</strong> 
+  <strong>This constant is part of a private API.</strong>
   You should avoid using this constant if possible, as it may be removed or be changed in the future.
 </p>
 <p>Maps SSL verify modes to <code>OpenSSL::SSL::VERIFY_*</code> constants.</p>
@@ -114,7 +121,7 @@
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -127,7 +134,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -163,34 +170,615 @@
   
 
 
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ssl_connect-instance_method" title="#ssl_connect (instance method)">- (OpenSSL::SSL::SSLSocket) <strong>ssl_connect</strong>(host, port, options = {}) {|ssl_socket| ... }</a>
+    
+
+    
+  </span>
   
   
   
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Establishes a SSL connection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ssl_session-instance_method" title="#ssl_session (instance method)">- (nil) <strong>ssl_session</strong>(host, port, options = {}) {|ssl_socket| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new temporary SSL connection.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
   
 
 
   
   
   
-
-
   
   
   
   
-  
-  <h2>Method Summary</h2>
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="TCP.html" title="Ronin::Network::TCP (module)">TCP</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="TCP.html#tcp_banner-instance_method" title="Ronin::Network::TCP#tcp_banner (method)">tcp_banner</a></span>, <span class='object_link'><a href="TCP.html#tcp_connect-instance_method" title="Ronin::Network::TCP#tcp_connect (method)">tcp_connect</a></span>, <span class='object_link'><a href="TCP.html#tcp_connect_and_send-instance_method" title="Ronin::Network::TCP#tcp_connect_and_send (method)">tcp_connect_and_send</a></span>, <span class='object_link'><a href="TCP.html#tcp_send-instance_method" title="Ronin::Network::TCP#tcp_send (method)">tcp_send</a></span>, <span class='object_link'><a href="TCP.html#tcp_server-instance_method" title="Ronin::Network::TCP#tcp_server (method)">tcp_server</a></span>, <span class='object_link'><a href="TCP.html#tcp_server_session-instance_method" title="Ronin::Network::TCP#tcp_server_session (method)">tcp_server_session</a></span>, <span class='object_link'><a href="TCP.html#tcp_session-instance_method" title="Ronin::Network::TCP#tcp_session (method)">tcp_session</a></span>, <span class='object_link'><a href="TCP.html#tcp_single_server-instance_method" title="Ronin::Network::TCP#tcp_single_server (method)">tcp_single_server</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="TCP.html#tcp_accept-instance_method" title="Ronin::Network::TCP#tcp_accept (method)">#tcp_accept</a></span>, <span class='object_link'><a href="TCP.html#tcp_banner-instance_method" title="Ronin::Network::TCP#tcp_banner (method)">#tcp_banner</a></span>, <span class='object_link'><a href="TCP.html#tcp_connect-instance_method" title="Ronin::Network::TCP#tcp_connect (method)">#tcp_connect</a></span>, <span class='object_link'><a href="TCP.html#tcp_connect_and_send-instance_method" title="Ronin::Network::TCP#tcp_connect_and_send (method)">#tcp_connect_and_send</a></span>, <span class='object_link'><a href="TCP.html#tcp_open%3F-instance_method" title="Ronin::Network::TCP#tcp_open? (method)">#tcp_open?</a></span>, <span class='object_link'><a href="TCP.html#tcp_send-instance_method" title="Ronin::Network::TCP#tcp_send (method)">#tcp_send</a></span>, <span class='object_link'><a href="TCP.html#tcp_server-instance_method" title="Ronin::Network::TCP#tcp_server (method)">#tcp_server</a></span>, <span class='object_link'><a href="TCP.html#tcp_server_loop-instance_method" title="Ronin::Network::TCP#tcp_server_loop (method)">#tcp_server_loop</a></span>, <span class='object_link'><a href="TCP.html#tcp_server_session-instance_method" title="Ronin::Network::TCP#tcp_server_session (method)">#tcp_server_session</a></span>, <span class='object_link'><a href="TCP.html#tcp_session-instance_method" title="Ronin::Network::TCP#tcp_session (method)">#tcp_session</a></span>, <span class='object_link'><a href="TCP.html#tcp_single_server-instance_method" title="Ronin::Network::TCP#tcp_single_server (method)">#tcp_single_server</a></span></p>
 
 
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="ssl_connect-instance_method">
+  
+    - (<tt>OpenSSL::SSL::SSLSocket</tt>) <strong>ssl_connect</strong>(host, port, options = {}) {|ssl_socket| ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Establishes a SSL connection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><span class='id identifier rubyid_socket'>socket</span> <span class='op'>=</span> <span class='id identifier rubyid_ssl_connect'>ssl_connect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>twitter.com</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='int'>443</span><span class='rparen'>)</span></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The host to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>port</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The port to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:local_host</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The local host to bind to.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:local_port</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The local port to bind to.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:verify</span>
+          <span class="type">(<tt>Symbol</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether to verify the SSL certificate.
+May be one of the following:</p>
+
+<ul>
+  <li><code>:none</code></li>
+  <li><code>:peer</code></li>
+  <li><code>:client_once</code></li>
+  <li><code>:fail_if_no_peer_cert</code></li>
+</ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL certificate.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL key.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ssl_socket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed the new SSL Socket.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>ssl_socket</span>
+      
+      
+        <span class='type'>(<tt>OpenSSL::SSL::SSLSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new SSL Socket.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>OpenSSL::SSL::SSLSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the new SSL Socket.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/openssl/OpenSSL/SSL/SSLSocket" target="_parent" title="http://rubydoc.info/stdlib/openssl/OpenSSL/SSL/SSLSocket">http://rubydoc.info/stdlib/openssl/OpenSSL/SSL/SSLSocket</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/ssl.rb', line 107</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ssl_connect'>ssl_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_local_host'>local_host</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:local_host</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_local_port'>local_port</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:local_port</span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_socket'>socket</span> <span class='op'>=</span> <span class='id identifier rubyid_tcp_connect'>tcp_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_local_host'>local_host</span><span class='comma'>,</span><span class='id identifier rubyid_local_port'>local_port</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_ssl_context'>ssl_context</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>SSLContext</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ssl_context'>ssl_context</span><span class='period'>.</span><span class='id identifier rubyid_verify_mode'>verify_mode</span> <span class='op'>=</span> <span class='const'>SSL</span><span class='op'>::</span><span class='const'>VERIFY</span><span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:verify</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:cert</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_cert_file'>cert_file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:cert</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_ssl_context'>ssl_context</span><span class='period'>.</span><span class='id identifier rubyid_cert'>cert</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>X509</span><span class='op'>::</span><span class='const'>Certificate</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_cert_file'>cert_file</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:key</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_key_file'>key_file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:key</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_ssl_context'>ssl_context</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>PKey</span><span class='op'>::</span><span class='const'>RSA</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_key_file'>key_file</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_ssl_socket'>ssl_socket</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>SSLSocket</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span><span class='id identifier rubyid_ssl_context'>ssl_context</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ssl_socket'>ssl_socket</span><span class='period'>.</span><span class='id identifier rubyid_sync_close'>sync_close</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='id identifier rubyid_ssl_socket'>ssl_socket</span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span>
+
+  <span class='kw'>yield</span> <span class='id identifier rubyid_ssl_socket'>ssl_socket</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_ssl_socket'>ssl_socket</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="ssl_session-instance_method">
+  
+    - (<tt>nil</tt>) <strong>ssl_session</strong>(host, port, options = {}) {|ssl_socket| ... }
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new temporary SSL connection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><span class='id identifier rubyid_ssl_session'>ssl_session</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>twitter.com</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='int'>443</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_sock'>sock</span><span class='op'>|</span>
+  <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GET / HTTP/1.1\n\r\n\r</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_each_line'>each_line</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='op'>|</span> <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_line'>line</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The host to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>port</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The port to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:local_host</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The local host to bind to.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:local_port</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The local port to bind to.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:verify</span>
+          <span class="type">(<tt>Symbol</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether to verify the SSL certificate.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL certificate.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL key.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ssl_socket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed the temporary SSL Socket.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>ssl_socket</span>
+      
+      
+        <span class='type'>(<tt>OpenSSL::SSL::SSLSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The temporary SSL Socket.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/openssl/OpenSSL/SSL/SSLSocket" target="_parent" title="http://rubydoc.info/stdlib/openssl/OpenSSL/SSL/SSLSocket">http://rubydoc.info/stdlib/openssl/OpenSSL/SSL/SSLSocket</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+180
+181
+182
+183
+184</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/ssl.rb', line 180</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ssl_session'>ssl_session</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ssl_socket'>ssl_socket</span> <span class='op'>=</span> <span class='id identifier rubyid_ssl_connect'>ssl_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ssl_socket'>ssl_socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
     <div id="footer">
-  Generated on Sun Feb 12 14:10:39 2012 by 
+  Generated on Sat Jun 16 20:51:03 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.9.3).
+  0.8.2 (ruby-1.9.3).
 </div>
 
   </body>

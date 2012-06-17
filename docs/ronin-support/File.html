@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
   relpath = '';
-  if (relpath != '') relpath += '/';
+  framesUrl = "frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="_index.html">Index (F)</a> &raquo; 
+    <a href="_index.html">Index (F)</a> &raquo;
     
     
     <span class="title">File</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: File
   
   
@@ -88,7 +95,7 @@
   
     <dt class="r2 last">Defined in:</dt>
     <dd class="r2 last">lib/ronin/extensions/file.rb<span class="defines">,<br />
-  lib/ronin/formatting/extensions/binary/file.rb,<br /> lib/ronin/formatting/extensions/digest/file.rb</span>
+  lib/ronin/formatting/extensions/digest/file.rb,<br /> lib/ronin/formatting/extensions/binary/file.rb</span>
 </dd>
   
 </dl>
@@ -124,6 +131,8 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 
 
 
+
+
   
     <h2>
       Class Method Summary
@@ -140,6 +149,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 
     
   </span>
+  
   
   
   
@@ -168,6 +178,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Reads each row from the file.</p>
@@ -184,6 +195,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 
     
   </span>
+  
   
   
   
@@ -212,6 +224,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Calculates the MD5 checksum of a file.</p>
@@ -228,6 +241,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 
     
   </span>
+  
   
   
   
@@ -256,6 +270,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'>
@@ -272,6 +287,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 
     
   </span>
+  
   
   
   
@@ -300,6 +316,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Calculates the SHA256 checksum of a file.</p>
@@ -316,6 +333,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 
     
   </span>
+  
   
   
   
@@ -344,6 +362,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Calculates the SHA512 checksum of a file.</p>
@@ -360,6 +379,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 
     
   </span>
+  
   
   
   
@@ -388,6 +408,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Writes the given data to a specified path.</p>
@@ -403,16 +424,18 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="each_line-class_method">
+  <h3 class="signature first" id="each_line-class_method">
   
     + (<tt>Enumerator</tt>) <strong>each_line</strong>(path) {|line| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Reads each line from the file.</p>
 
@@ -422,16 +445,15 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_each_line'>each_line</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>passwords.txt</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='op'>|</span>
   <span class='comment'># ...
 </span><span class='kw'>end</span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -451,7 +473,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -468,7 +490,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -487,7 +509,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -504,7 +526,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -538,7 +560,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
       <pre class="code"><span class="info file"># File 'lib/ronin/extensions/file.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_each_line'>each_line</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:each_line</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
 
   <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
     <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_each_line'>each_line</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span> <span class='rbrace'>}</span>
@@ -550,13 +572,15 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="each_row-class_method">
+  <h3 class="signature " id="each_row-class_method">
   
     + (<tt>Enumerator</tt>) <strong>each_row</strong>(path, separator = /\s+/) {|row| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Reads each row from the file.</p>
 
@@ -566,16 +590,15 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_each_row'>each_row</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>db_dump.txt</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>|</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_row'>row</span><span class='op'>|</span>
   <span class='comment'># ...
 </span><span class='kw'>end</span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -612,7 +635,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -629,7 +652,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -648,7 +671,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -665,7 +688,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -697,7 +720,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
       <pre class="code"><span class="info file"># File 'lib/ronin/extensions/file.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_each_row'>each_row</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='id identifier rubyid_separator'>separator</span><span class='op'>=</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\s+</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:each_row</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='id identifier rubyid_separator'>separator</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='id identifier rubyid_separator'>separator</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
 
   <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_each_line'>each_line</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='id identifier rubyid_separator'>separator</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
@@ -707,13 +730,15 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="escape_path-class_method">
+  <h3 class="signature " id="escape_path-class_method">
   
     + (<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>) <strong>escape_path</strong>(path) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Escapes a path.</p>
 
@@ -721,7 +746,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -741,7 +766,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -803,13 +828,15 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="md5-class_method">
+  <h3 class="signature " id="md5-class_method">
   
     + (<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>) <strong>md5</strong>(path) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Calculates the MD5 checksum of a file.</p>
 
@@ -819,15 +846,14 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_md5'>md5</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>data.txt</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 <span class='comment'># =&gt; &quot;5d41402abc4b2a76b9719d911017c592&quot;</span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -847,7 +873,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -887,13 +913,15 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="sha1-class_method">
+  <h3 class="signature " id="sha1-class_method">
   
     + (<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>) <strong>sha1</strong>(path) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Calculates the SHA1 checksum of a file.</p>
 
@@ -903,15 +931,14 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_sha1'>sha1</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>data.txt</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 <span class='comment'># =&gt; &quot;aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d&quot;</span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -931,7 +958,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -971,13 +998,15 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="sha128-class_method">
+  <h3 class="signature " id="sha128-class_method">
   
     + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>sha128</strong>(path) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 
@@ -987,7 +1016,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 <div class="tags">
   
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
       <li><span class='object_link'><a href="#sha1-class_method" title="File.sha1 (method)">sha1</a></span></li>
@@ -1016,13 +1045,15 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="sha2-class_method">
+  <h3 class="signature " id="sha2-class_method">
   
     + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>sha2</strong>(path) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 
@@ -1032,7 +1063,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 <div class="tags">
   
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
       <li><span class='object_link'><a href="#sha256-class_method" title="File.sha256 (method)">sha256</a></span></li>
@@ -1061,13 +1092,15 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="sha256-class_method">
+  <h3 class="signature " id="sha256-class_method">
   
     + (<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>) <strong>sha256</strong>(path) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Calculates the SHA256 checksum of a file.</p>
 
@@ -1077,15 +1110,14 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_sha256'>sha256</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>data.txt</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 <span class='comment'># =&gt; &quot;2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824&quot;</span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1105,7 +1137,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1145,13 +1177,15 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="sha5-class_method">
+  <h3 class="signature " id="sha5-class_method">
   
     + (<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>) <strong>sha5</strong>(path) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
 
@@ -1161,7 +1195,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 <div class="tags">
   
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
       <li><span class='object_link'><a href="#sha512-class_method" title="File.sha512 (method)">sha512</a></span></li>
@@ -1190,13 +1224,15 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="sha512-class_method">
+  <h3 class="signature " id="sha512-class_method">
   
     + (<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>) <strong>sha512</strong>(path) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Calculates the SHA512 checksum of a file.</p>
 
@@ -1206,15 +1242,14 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_sha512'>sha512</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>data.txt</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 <span class='comment'># =&gt; &quot;9b71d224bd62f3785d96d46ad3ea3d73319bfbc2890caadae2dff72519673ca72323c3d99ba5c11d7c7acc6e14b8c5da0c4663475c2e5c3adef46f73bcdec043&quot;</span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1234,7 +1269,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1274,13 +1309,15 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="unhexdump-class_method">
+  <h3 class="signature " id="unhexdump-class_method">
   
     + (<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>) <strong>unhexdump</strong>(path, options = {}) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Converts a hexdump file to it&rsquo;s original binary data.</p>
 
@@ -1288,7 +1325,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1318,14 +1355,104 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
       
       
         &mdash;
-        <div class='inline'><p>Hexdump options.</p>
+        <div class='inline'><p>Additional options.</p>
 </div>
       
     </li>
   
 </ul>
 
-<h3>Returns:</h3>
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:format</span>
+          <span class="type">(<tt>Symbol</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The expected format of the hexdump. Must be either <code>:od</code> or
+<code>:hexdump</code>.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:encoding</span>
+          <span class="type">(<tt>Symbol</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Denotes the encoding used for the bytes within the hexdump.
+Must be one of the following:</p>
+
+<ul>
+  <li><code>:binary</code></li>
+  <li><code>:octal</code></li>
+  <li><code>:octal_bytes</code></li>
+  <li><code>:octal_shorts</code></li>
+  <li><code>:octal_ints</code></li>
+  <li><code>:octal_quads</code> (Ruby 1.9 only)</li>
+  <li><code>:decimal</code></li>
+  <li><code>:decimal_bytes</code></li>
+  <li><code>:decimal_shorts</code></li>
+  <li><code>:decimal_ints</code></li>
+  <li><code>:decimal_quads</code> (Ruby 1.9 only)</li>
+  <li><code>:hex</code></li>
+  <li><code>:hex_chars</code></li>
+  <li><code>:hex_bytes</code></li>
+  <li><code>:hex_shorts</code></li>
+  <li><code>:hex_ints</code></li>
+  <li><code>:hex_quads</code></li>
+  <li><code>:named_chars</code> (Ruby 1.9 only)</li>
+  <li><code>:floats</code></li>
+  <li><code>:doubles</code></li>
+</ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:endian</span>
+          <span class="type">(<tt>:little</tt>, <tt>:big</tt>, <tt>:network</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>:little</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The endianness of the words.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:segment</span>
+          <span class="type">(<tt><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>16</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The length in bytes of each segment in the hexdump.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1336,19 +1463,12 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
       
       
         &mdash;
-        <div class='inline'><p>The original binary data.</p>
+        <div class='inline'><p>The raw-data from the hexdump.</p>
 </div>
       
     </li>
   
 </ul>
-
-  <h3>See Also:</h3>
-  <ul class="see">
-    
-      <li>String#unhexdump.</li>
-    
-  </ul>
 
 </div><table class="source_code">
   <tr>
@@ -1356,15 +1476,15 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
       <pre class="lines">
 
 
-40
-41
-42</pre>
+73
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/formatting/extensions/binary/file.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/formatting/extensions/binary/file.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_unhexdump'>unhexdump</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_unhexdump'>unhexdump</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>Binary</span><span class='op'>::</span><span class='const'>Hexdump</span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1372,13 +1492,15 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="write-class_method">
+  <h3 class="signature " id="write-class_method">
   
     + (<tt>nil</tt>) <strong>write</strong>(path, data) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Writes the given data to a specified path.</p>
 
@@ -1388,14 +1510,13 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>dump.txt</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1430,7 +1551,7 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1468,11 +1589,11 @@ along with Ronin Support.  If not, see <a href="http://www.gnu.org/licenses/">ht
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sun Feb 12 14:10:42 2012 by 
+  Generated on Sat Jun 16 20:51:54 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.9.3).
+  0.8.2 (ruby-1.9.3).
 </div>
 
   </body>

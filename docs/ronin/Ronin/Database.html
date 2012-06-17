@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (D)</a> &raquo; 
+    <a href="../_index.html">Index (D)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../Ronin.html" title="Ronin (module)">Ronin</a></span></span>
      &raquo; 
     <span class="title">Database</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Module: Ronin::Database
   
   
@@ -93,11 +100,11 @@ auto-upgrading and querying <span class='object_link'><a href="" title="Ronin::D
 
 </div><h2>Defined Under Namespace</h2>
 <p class="children">
-   
+  
     
       <strong class="modules">Modules:</strong> <span class='object_link'><a href="Database/Migrations.html" title="Ronin::Database::Migrations (module)">Migrations</a></span>
     
-   
+  
     
       <strong class="classes">Classes:</strong> <span class='object_link'><a href="Database/InvalidConfig.html" title="Ronin::Database::InvalidConfig (class)">InvalidConfig</a></span>, <span class='object_link'><a href="Database/UnknownRepository.html" title="Ronin::Database::UnknownRepository (class)">UnknownRepository</a></span>
     
@@ -201,10 +208,34 @@ auto-upgrading and querying <span class='object_link'><a href="" title="Ronin::D
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Clears the Database, by running destructive auto-migrations.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#log-class_method" title="log (class method)">+ (DataMapper::Logger) <strong>log</strong>(options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns or sets up the Database log.</p>
 </div></span>
   
 </li>
@@ -218,6 +249,7 @@ auto-upgrading and querying <span class='object_link'><a href="" title="Ronin::D
 
     
   </span>
+  
   
   
   
@@ -246,7 +278,8 @@ repositories.</p>
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Returns the Database repositories to use.</p>
@@ -263,6 +296,7 @@ repositories.</p>
 
     
   </span>
+  
   
   
   
@@ -291,6 +325,7 @@ repositories.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Determines if the Database provides a specific repository.</p>
@@ -312,7 +347,8 @@ repositories.</p>
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Saves the Database configuration to <code>CONFIG_FILE</code>.</p>
@@ -324,11 +360,12 @@ repositories.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#setup-class_method" title="setup (class method)">+ (Object) <strong>setup</strong> </a>
+      <a href="#setup-class_method" title="setup (class method)">+ (Object) <strong>setup</strong>(uri = nil) </a>
     
 
     
   </span>
+  
   
   
   
@@ -357,31 +394,10 @@ repositories.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Determines if a specific database repository is setup.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#setup_log-class_method" title="setup_log (class method)">+ (true) <strong>setup_log</strong>(options = {}) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  <span class="private note title">Private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>Setup the Database log.</p>
 </div></span>
   
 </li>
@@ -395,6 +411,7 @@ repositories.</p>
 
     
   </span>
+  
   
   
   
@@ -417,19 +434,21 @@ ronin library, but only if the Database has been setup.</p>
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="clear-class_method">
+  <h3 class="signature first" id="clear-class_method">
   
     + (<tt>nil</tt>) <strong>clear</strong>(name) { ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Clears the Database, by running destructive auto-migrations.</p>
@@ -438,7 +457,7 @@ ronin library, but only if the Database has been setup.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -458,7 +477,7 @@ ronin library, but only if the Database has been setup.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -477,7 +496,7 @@ repository has been cleared.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -490,7 +509,7 @@ repository has been cleared.</p>
     </li>
   
 </ul>
-<h3>Raises:</h3>
+<p class="tag_title">Raises:</p>
 <ul class="raise">
   
     <li>
@@ -507,7 +526,7 @@ repository has been cleared.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -529,23 +548,23 @@ repository has been cleared.</p>
       <pre class="lines">
 
 
-277
-278
-279
-280
-281
-282
-283
-284
-285
-286
-287
-288</pre>
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 277</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 288</span>
 
-<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
 
   <span class='kw'>unless</span> <span class='id identifier rubyid_repository?'>repository?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -563,13 +582,165 @@ repository has been cleared.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="map-class_method">
+  <h3 class="signature " id="log-class_method">
+  
+    + (<tt>DataMapper::Logger</tt>) <strong>log</strong>(options = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns or sets up the Database log.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:path</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>DEFAULT_LOG_PATH</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path of the log file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:stream</span>
+          <span class="type">(<tt>IO</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The stream to use for the log.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:level</span>
+          <span class="type">(<tt>Symbol</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The level of messages to log. May one of:</p>
+
+<ul>
+<li><code>:fatal</code></li>
+<li><code>:error</code></li>
+<li><code>:warn</code></li>
+<li><code>:info</code></li>
+<li><code>:debug</code></li>
+</ul>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>DataMapper::Logger</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Database Logger.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 159</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='lparen'>(</span><span class='ivar'>@log</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_path'>path</span>   <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbol'>:path</span><span class='comma'>,</span><span class='const'>DEFAULT_LOG_PATH</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_stream'>stream</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbol'>:stream</span><span class='comma'>,</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w+</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_level'>level</span>  <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbol'>:level</span><span class='comma'>,</span><span class='const'>DEFAULT_LOG_LEVEL</span><span class='rparen'>)</span>
+
+    <span class='ivar'>@log</span> <span class='op'>=</span> <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_stream'>stream</span><span class='comma'>,</span><span class='id identifier rubyid_level'>level</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='ivar'>@log</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="map-class_method">
   
     + (<tt>Array</tt>) <strong>map</strong> { ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs Database transactions in each of the Database
 repositories.</p>
@@ -579,7 +750,7 @@ repositories.</p>
 </div>
 <div class="tags">
   
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -598,7 +769,7 @@ repository.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -615,7 +786,7 @@ repository.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -637,23 +808,23 @@ repository.</p>
       <pre class="lines">
 
 
-305
-306
-307
-308
-309
-310
-311
-312
-313
-314
-315
-316</pre>
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 305</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 316</span>
 
-<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span>
   <span class='id identifier rubyid_results'>results</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
 
   <span class='id identifier rubyid_repositories'>repositories</span><span class='period'>.</span><span class='id identifier rubyid_each_key'>each_key</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
@@ -671,16 +842,18 @@ repository.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="repositories-class_method">
+  <h3 class="signature " id="repositories-class_method">
   
     + (<tt>Hash{Symbol =&gt; Hash}</tt>) <strong>repositories</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Returns the Database repositories to use.</p>
@@ -690,7 +863,7 @@ repository.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -707,7 +880,7 @@ repository.</p>
     </li>
   
 </ul>
-<h3>Raises:</h3>
+<p class="tag_title">Raises:</p>
 <ul class="raise">
   
     <li>
@@ -724,7 +897,7 @@ repository.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -769,7 +942,7 @@ repository.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 67</span>
 
-<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_repositories'>repositories</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_repositories'>repositories</span>
   <span class='kw'>if</span> <span class='ivar'>@repositories</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
     <span class='ivar'>@repositories</span><span class='lbracket'>[</span><span class='symbol'>:default</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>DEFAULT_REPOSITORY</span>
 
@@ -794,13 +967,15 @@ repository.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="repository-class_method">
+  <h3 class="signature " id="repository-class_method">
   
     + (<tt>DataMapper::Repository</tt>) <strong>repository</strong>(name, &amp;block) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs Database transactions within a given repository.</p>
 
@@ -808,7 +983,7 @@ repository.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -828,7 +1003,7 @@ repository.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -845,7 +1020,7 @@ repository.</p>
     </li>
   
 </ul>
-<h3>Raises:</h3>
+<p class="tag_title">Raises:</p>
 <ul class="raise">
   
     <li>
@@ -862,7 +1037,7 @@ repository.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -884,20 +1059,20 @@ repository.</p>
       <pre class="lines">
 
 
-248
-249
-250
-251
-252
-253
-254
-255
-256</pre>
+259
+260
+261
+262
+263
+264
+265
+266
+267</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 248</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 259</span>
 
-<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_repository'>repository</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_repository'>repository</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
 
   <span class='kw'>unless</span> <span class='id identifier rubyid_repository?'>repository?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -912,13 +1087,15 @@ repository.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="repository?-class_method">
+  <h3 class="signature " id="repository?-class_method">
   
     + (<tt>Boolean</tt>) <strong>repository?</strong>(name) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Determines if the Database provides a specific repository.</p>
 
@@ -926,7 +1103,7 @@ repository.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -946,7 +1123,7 @@ repository.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -963,7 +1140,7 @@ repository.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -992,7 +1169,7 @@ repository.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 100</span>
 
-<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_repository?'>repository?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_repository?'>repository?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_repositories'>repositories</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1001,16 +1178,18 @@ repository.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="save-class_method">
+  <h3 class="signature " id="save-class_method">
   
     + (<tt>true</tt>) <strong>save</strong> { ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Saves the Database configuration to <code>CONFIG_FILE</code>.</p>
@@ -1020,7 +1199,7 @@ repository.</p>
 </div>
 <div class="tags">
   
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -1039,7 +1218,7 @@ configuration is saved.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1052,7 +1231,7 @@ configuration is saved.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -1093,7 +1272,7 @@ configuration is saved.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 117</span>
 
-<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
   <span class='kw'>yield</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
 
   <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='const'>CONFIG_FILE</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
@@ -1114,13 +1293,15 @@ configuration is saved.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="setup-class_method">
+  <h3 class="signature " id="setup-class_method">
   
-    + (<tt>Object</tt>) <strong>setup</strong> 
+    + (<tt>Object</tt>) <strong>setup</strong>(uri = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Sets up the Database.</p>
 
@@ -1128,9 +1309,30 @@ configuration is saved.</p>
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>uri</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The optional default repository to setup instead of <span class='object_link'><a href="#repositories-class_method" title="Ronin::Database.repositories (method)">repositories</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
-  <h3>See Also:</h3>
+
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
       <li><span class='object_link'><a href="#upgrade%21-class_method" title="Ronin::Database.upgrade! (method)">upgrade!</a></span></li>
@@ -1143,12 +1345,6 @@ configuration is saved.</p>
       <pre class="lines">
 
 
-210
-211
-212
-213
-214
-215
 216
 217
 218
@@ -1163,24 +1359,40 @@ configuration is saved.</p>
 227
 228
 229
-230</pre>
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 210</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 216</span>
 
-<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_setup'>setup</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_setup'>setup</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='comment'># setup the database log
 </span>  <span class='kw'>unless</span> <span class='ivar'>@log</span>
-    <span class='kw'>if</span> <span class='lparen'>(</span><span class='gvar'>$DEBUG</span> <span class='op'>||</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>DEBUG</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_setup_log'>setup_log</span><span class='lparen'>(</span><span class='symbol'>:stream</span> <span class='op'>=&gt;</span> <span class='gvar'>$stderr</span><span class='comma'>,</span> <span class='symbol'>:level</span> <span class='op'>=&gt;</span> <span class='symbol'>:debug</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='gvar'>$DEBUG</span>
+      <span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='symbol'>:stream</span> <span class='op'>=&gt;</span> <span class='gvar'>$stderr</span><span class='comma'>,</span> <span class='symbol'>:level</span> <span class='op'>=&gt;</span> <span class='symbol'>:debug</span><span class='rparen'>)</span>
     <span class='kw'>else</span>
-      <span class='id identifier rubyid_setup_log'>setup_log</span>
+      <span class='id identifier rubyid_log'>log</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
-  <span class='comment'># setup the database repositories
-</span>  <span class='id identifier rubyid_repositories'>repositories</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_uri'>uri</span><span class='op'>|</span>
-    <span class='const'>DataMapper</span><span class='period'>.</span><span class='id identifier rubyid_setup'>setup</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_uri'>uri</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_uri'>uri</span>
+    <span class='comment'># only setup the default database repositories
+</span>    <span class='const'>DataMapper</span><span class='period'>.</span><span class='id identifier rubyid_setup'>setup</span><span class='lparen'>(</span><span class='symbol'>:default</span><span class='comma'>,</span><span class='id identifier rubyid_uri'>uri</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='comment'># setup the database repositories
+</span>    <span class='id identifier rubyid_repositories'>repositories</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_uri'>uri</span><span class='op'>|</span>
+      <span class='const'>DataMapper</span><span class='period'>.</span><span class='id identifier rubyid_setup'>setup</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_uri'>uri</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
   <span class='kw'>end</span>
 
   <span class='comment'># finalize the Models
@@ -1195,13 +1407,15 @@ configuration is saved.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="setup?-class_method">
+  <h3 class="signature " id="setup?-class_method">
   
     + (<tt>Boolean</tt>) <strong>setup?</strong>(name = :default) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Determines if a specific database repository is setup.</p>
 
@@ -1209,7 +1423,7 @@ configuration is saved.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1231,7 +1445,7 @@ configuration is saved.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1255,16 +1469,16 @@ configuration is saved.</p>
       <pre class="lines">
 
 
-179
-180
-181
 182
-183</pre>
+183
+184
+185
+186</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 179</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 182</span>
 
-<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_setup?'>setup?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='op'>=</span><span class='symbol'>:default</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_setup?'>setup?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='op'>=</span><span class='symbol'>:default</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_repository'>repository</span> <span class='op'>=</span> <span class='const'>DataMapper</span><span class='period'>.</span><span class='id identifier rubyid_repository'>repository</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
 
   <span class='kw'>return</span> <span class='id identifier rubyid_repository'>repository</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_adapters'>adapters</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='id identifier rubyid_repository'>repository</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -1275,153 +1489,15 @@ configuration is saved.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="setup_log-class_method">
-  
-    + (<tt>true</tt>) <strong>setup_log</strong>(options = {}) 
-  
-
-  
-</p><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong> 
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-<p>Setup the Database log.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>options</span>
-      
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>{}</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>Additional options.</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-  
-    
-    
-    <h3>Options Hash (<tt>options</tt>):</h3>
-    <ul class="option">
-      
-        <li>
-          <span class="name">:path</span>
-          <span class="type">(<tt>String</tt>)</span>
-          <span class="default">
-            
-              &mdash; default:
-              <tt>DEFAULT_LOG_PATH</tt>
-            
-          </span>
-          &mdash; <div class='inline'><p>The path of the log file.</p>
-</div>
-        </li>
-      
-        <li>
-          <span class="name">:stream</span>
-          <span class="type">(<tt>IO</tt>)</span>
-          <span class="default">
-            
-          </span>
-          &mdash; <div class='inline'><p>The stream to use for the log.</p>
-</div>
-        </li>
-      
-        <li>
-          <span class="name">:level</span>
-          <span class="type">(<tt>Symbol</tt>)</span>
-          <span class="default">
-            
-          </span>
-          &mdash; <div class='inline'><p>The level of messages to log. May one of:</p>
-
-<ul>
-  <li><code>:fatal</code></li>
-  <li><code>:error</code></li>
-  <li><code>:warn</code></li>
-  <li><code>:info</code></li>
-  <li><code>:debug</code></li>
-</ul>
-</div>
-        </li>
-      
-    </ul>
-  
-
-<h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>true</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>Specifies that the log has been setup.</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-159
-160
-161
-162
-163
-164
-165
-166</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 159</span>
-
-<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_setup_log'>setup_log</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbol'>:path</span><span class='comma'>,</span><span class='const'>DEFAULT_LOG_PATH</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_stream'>stream</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbol'>:stream</span><span class='comma'>,</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>w+</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_level'>level</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbol'>:level</span><span class='comma'>,</span><span class='const'>DEFAULT_LOG_LEVEL</span><span class='rparen'>)</span>
-
-  <span class='ivar'>@log</span> <span class='op'>=</span> <span class='const'>DataMapper</span><span class='op'>::</span><span class='const'>Logger</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_stream'>stream</span><span class='comma'>,</span><span class='id identifier rubyid_level'>level</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='kw'>true</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="upgrade!-class_method">
+  <h3 class="signature " id="upgrade!-class_method">
   
     + (<tt>Boolean</tt>) <strong>upgrade!</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Upgrades the Database, by running migrations for a given
 ronin library, but only if the Database has been setup.</p>
@@ -1431,7 +1507,7 @@ ronin library, but only if the Database has been setup.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1456,18 +1532,18 @@ not setup.</p>
       <pre class="lines">
 
 
-195
-196
-197
 198
 199
 200
-201</pre>
+201
+202
+203
+204</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 195</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/database/database.rb', line 198</span>
 
-<span class='kw'>def</span> <span class='const'>Database</span><span class='period'>.</span><span class='id identifier rubyid_upgrade!'>upgrade!</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_upgrade!'>upgrade!</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_setup?'>setup?</span>
     <span class='const'>Migrations</span><span class='period'>.</span><span class='id identifier rubyid_migrate_up!'>migrate_up!</span>
   <span class='kw'>else</span>
@@ -1482,11 +1558,11 @@ not setup.</p>
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sun Feb 12 14:13:18 2012 by 
+  Generated on Sat Jun 16 20:51:29 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.2.1 (ruby-1.9.3).
 </div>
 
   </body>

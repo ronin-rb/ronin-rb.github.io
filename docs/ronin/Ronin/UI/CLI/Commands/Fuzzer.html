@@ -1,0 +1,1275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Ronin::UI::CLI::Commands::Fuzzer
+  
+    &mdash; Ronin Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../../';
+  framesUrl = "../../../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../../_index.html">Index (F)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../../UI.html" title="Ronin::UI (module)">UI</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../CLI.html" title="Ronin::UI::CLI (module)">CLI</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Commands.html" title="Ronin::UI::CLI::Commands (module)">Commands</a></span></span>
+     &raquo; 
+    <span class="title">Fuzzer</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Ronin::UI::CLI::Commands::Fuzzer
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../Command.html" title="Ronin::UI::CLI::Command (class)">Ronin::UI::CLI::Command</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="../Command.html" title="Ronin::UI::CLI::Command (class)">Ronin::UI::CLI::Command</a></span></li>
+          
+            <li class="next">Ronin::UI::CLI::Commands::Fuzzer</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2">Shellwords</dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/ronin/ui/cli/commands/fuzzer.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Performs basic fuzzing of files, commands or TCP/UDP services.</p>
+
+<h2>Usage</h2>
+
+<pre class="code ruby"><code><span class='id identifier rubyid_ronin'>ronin</span> <span class='id identifier rubyid_fuzzer'>fuzzer</span> <span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='rbracket'>]</span>
+</code></pre>
+
+<h2>Options</h2>
+
+<p>-v, --[no-]verbose               Enable verbose output.
+   -q, --[no-]quiet                 Disable verbose output.
+       --[no-]silent                Silence all output.
+       --[no-]color                 Enables color output.
+                                    Default: true
+   -r [[PATTERN|/REGEXP/]:[METHOD|STRING*N[-M]]],
+       --rule                       Fuzzing rules.
+   -i, --input [FILE]               Input file to fuzz.
+   -o, --output [FILE]              Output file path.
+   -c [PROGRAM [OPTIONS|#string#|#path#] ...],
+       --command                    Template command to run.
+   -t, --tcp [HOST:PORT]            TCP service to fuzz.
+   -u, --udp [HOST:PORT]            UDP service to fuzz.</p>
+
+<h2>Examples</h2>
+
+<pre class="code ruby"><code>ronin fuzzer -i request.txt -r unix_path:bad_strings -o bad.txt
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#execute-instance_method" title="#execute (instance method)">- (Object) <strong>execute</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#fuzz_command-instance_method" title="#fuzz_command (instance method)">- (Object) <strong>fuzz_command</strong>(string, index) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Runs the fuzzed string in a command.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#fuzz_file-instance_method" title="#fuzz_file (instance method)">- (Object) <strong>fuzz_file</strong>(string, index) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Writes the fuzzed string to a file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#fuzz_network-instance_method" title="#fuzz_network (instance method)">- (Object) <strong>fuzz_network</strong>(string, index) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sends the fuzzed string to a TCP/UDP Service.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#parse_pattern-instance_method" title="#parse_pattern (instance method)">- (Regexp, String) <strong>parse_pattern</strong>(string) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Parses a fuzz pattern.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#parse_substitution-instance_method" title="#parse_substitution (instance method)">- (Enumerator) <strong>parse_substitution</strong>(string) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Parses a fuzz substitution Enumerator.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#print_fuzz-instance_method" title="#print_fuzz (instance method)">- (Object) <strong>print_fuzz</strong>(string, index) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Prints the fuzzed string to STDOUT.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#setup-instance_method" title="#setup (instance method)">- (Object) <strong>setup</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets up the fuzz command.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Command.html" title="Ronin::UI::CLI::Command (class)">Ronin::UI::CLI::Command</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Command.html#argument-class_method" title="Ronin::UI::CLI::Command.argument (method)">argument</a></span>, <span class='object_link'><a href="../Command.html#arguments-class_method" title="Ronin::UI::CLI::Command.arguments (method)">arguments</a></span>, <span class='object_link'><a href="../Command.html#arguments%3F-class_method" title="Ronin::UI::CLI::Command.arguments? (method)">arguments?</a></span>, <span class='object_link'><a href="../Command.html#cleanup-instance_method" title="Ronin::UI::CLI::Command#cleanup (method)">#cleanup</a></span>, <span class='object_link'><a href="../Command.html#command_name-class_method" title="Ronin::UI::CLI::Command.command_name (method)">command_name</a></span>, <span class='object_link'><a href="../Command.html#each_argument-class_method" title="Ronin::UI::CLI::Command.each_argument (method)">each_argument</a></span>, <span class='object_link'><a href="../Command.html#each_option-class_method" title="Ronin::UI::CLI::Command.each_option (method)">each_option</a></span>, <span class='object_link'><a href="../Command.html#examples-class_method" title="Ronin::UI::CLI::Command.examples (method)">examples</a></span>, <span class='object_link'><a href="../Command.html#initialize-instance_method" title="Ronin::UI::CLI::Command#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../Command.html#option-class_method" title="Ronin::UI::CLI::Command.option (method)">option</a></span>, <span class='object_link'><a href="../Command.html#option_parser-instance_method" title="Ronin::UI::CLI::Command#option_parser (method)">#option_parser</a></span>, <span class='object_link'><a href="../Command.html#options-class_method" title="Ronin::UI::CLI::Command.options (method)">options</a></span>, <span class='object_link'><a href="../Command.html#options%3F-class_method" title="Ronin::UI::CLI::Command.options? (method)">options?</a></span>, <span class='object_link'><a href="../Command.html#run-class_method" title="Ronin::UI::CLI::Command.run (method)">run</a></span>, <span class='object_link'><a href="../Command.html#run-instance_method" title="Ronin::UI::CLI::Command#run (method)">#run</a></span>, <span class='object_link'><a href="../Command.html#start-instance_method" title="Ronin::UI::CLI::Command#start (method)">#start</a></span>, <span class='object_link'><a href="../Command.html#start-class_method" title="Ronin::UI::CLI::Command.start (method)">start</a></span>, <span class='object_link'><a href="../Command.html#summary-class_method" title="Ronin::UI::CLI::Command.summary (method)">summary</a></span>, <span class='object_link'><a href="../Command.html#usage-class_method" title="Ronin::UI::CLI::Command.usage (method)">usage</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Printing.html" title="Ronin::UI::CLI::Printing (module)">Printing</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Printing.html#indent-instance_method" title="Ronin::UI::CLI::Printing#indent (method)">#indent</a></span>, <span class='object_link'><a href="../Printing.html#initialize-instance_method" title="Ronin::UI::CLI::Printing#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../Printing.html#print_array-instance_method" title="Ronin::UI::CLI::Printing#print_array (method)">#print_array</a></span>, <span class='object_link'><a href="../Printing.html#print_hash-instance_method" title="Ronin::UI::CLI::Printing#print_hash (method)">#print_hash</a></span>, <span class='object_link'><a href="../Printing.html#print_section-instance_method" title="Ronin::UI::CLI::Printing#print_section (method)">#print_section</a></span>, <span class='object_link'><a href="../Printing.html#print_title-instance_method" title="Ronin::UI::CLI::Printing#print_title (method)">#print_title</a></span>, <span class='object_link'><a href="../Printing.html#puts-instance_method" title="Ronin::UI::CLI::Printing#puts (method)">#puts</a></span></p>
+
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <p class="notice">This class inherits a constructor from <span class='object_link'><a href="../Command.html#initialize-instance_method" title="Ronin::UI::CLI::Command#initialize (method)">Ronin::UI::CLI::Command</a></span></p>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="execute-instance_method">
+  
+    - (<tt>Object</tt>) <strong>execute</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/commands/fuzzer.rb', line 129</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_execute'>execute</span>
+  <span class='id identifier rubyid_data'>data</span>   <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_input?'>input?</span> <span class='kw'>then</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='ivar'>@input</span><span class='rparen'>)</span>
+           <span class='kw'>else</span>           <span class='gvar'>$stdin</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span>
+           <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_method'>method</span> <span class='op'>=</span> <span class='kw'>if</span>    <span class='id identifier rubyid_output?'>output?</span>        <span class='kw'>then</span> <span class='id identifier rubyid_method'>method</span><span class='lparen'>(</span><span class='symbol'>:fuzz_file</span><span class='rparen'>)</span>
+           <span class='kw'>elsif</span> <span class='id identifier rubyid_command?'>command?</span>       <span class='kw'>then</span> <span class='id identifier rubyid_method'>method</span><span class='lparen'>(</span><span class='symbol'>:fuzz_command</span><span class='rparen'>)</span>
+           <span class='kw'>elsif</span> <span class='lparen'>(</span><span class='id identifier rubyid_tcp?'>tcp?</span> <span class='op'>||</span> <span class='id identifier rubyid_udp?'>udp?</span><span class='rparen'>)</span> <span class='kw'>then</span> <span class='id identifier rubyid_method'>method</span><span class='lparen'>(</span><span class='symbol'>:fuzz_network</span><span class='rparen'>)</span>
+           <span class='kw'>else</span>                      <span class='id identifier rubyid_method'>method</span><span class='lparen'>(</span><span class='symbol'>:print_fuzz</span><span class='rparen'>)</span>
+           <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_fuzzer'>fuzzer</span> <span class='op'>=</span> <span class='const'>Fuzzing</span><span class='op'>::</span><span class='const'>Fuzzer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@rules</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_fuzzer'>fuzzer</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each_with_index'>each_with_index</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span><span class='id identifier rubyid_index'>index</span><span class='op'>|</span>
+    <span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='id identifier rubyid_index'>index</span> <span class='op'>+</span> <span class='int'>1</span>
+
+    <span class='id identifier rubyid_method'>method</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="fuzz_command-instance_method">
+  
+    - (<tt>Object</tt>) <strong>fuzz_command</strong>(string, index)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Runs the fuzzed string in a command.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The fuzzed string.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>index</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The iteration number.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/commands/fuzzer.rb', line 180</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_fuzz_command'>fuzz_command</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span>
+  <span class='const'>Tempfile</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ronin-fuzzer-</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index'>index</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_tempfile'>tempfile</span><span class='op'>|</span>
+    <span class='id identifier rubyid_tempfile'>tempfile</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_tempfile'>tempfile</span><span class='period'>.</span><span class='id identifier rubyid_flush'>flush</span>
+
+    <span class='id identifier rubyid_arguments'>arguments</span> <span class='op'>=</span> <span class='ivar'>@command</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_argument'>argument</span><span class='op'>|</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_argument'>argument</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#path#</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_argument'>argument</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#path#</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='id identifier rubyid_tempfile'>tempfile</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+      <span class='kw'>elsif</span> <span class='id identifier rubyid_argument'>argument</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#string#</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_argument'>argument</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>#string#</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+      <span class='kw'>else</span>
+        <span class='id identifier rubyid_argument'>argument</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Running command </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index'>index</span><span class='rbrace'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_arguments'>arguments</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> </span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_content'> ...</span><span class='tstring_end'>&quot;</span></span>
+
+    <span class='comment'># run the command as it's own process
+</span>    <span class='kw'>unless</span> <span class='id identifier rubyid_system'>system</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_status'>status</span> <span class='op'>=</span> <span class='gvar'>$?</span>
+
+      <span class='kw'>if</span> <span class='id identifier rubyid_status'>status</span><span class='period'>.</span><span class='id identifier rubyid_coredump?'>coredump?</span>
+        <span class='comment'># jack pot!
+</span>        <span class='id identifier rubyid_print_error'>print_error</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Process #</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_status'>status</span><span class='period'>.</span><span class='id identifier rubyid_pid'>pid</span><span class='rbrace'>}</span><span class='tstring_content'> coredumped!</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>else</span>
+        <span class='comment'># process errored out
+</span>        <span class='id identifier rubyid_print_warning'>print_warning</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Process #</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_status'>status</span><span class='period'>.</span><span class='id identifier rubyid_pid'>pid</span><span class='rbrace'>}</span><span class='tstring_content'> exited with status </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_status'>status</span><span class='period'>.</span><span class='id identifier rubyid_exitstatus'>exitstatus</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="fuzz_file-instance_method">
+  
+    - (<tt>Object</tt>) <strong>fuzz_file</strong>(string, index)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Writes the fuzzed string to a file.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The fuzzed string.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>index</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The iteration number.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+161
+162
+163
+164
+165
+166
+167
+168
+169</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/commands/fuzzer.rb', line 161</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_fuzz_file'>fuzz_file</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@file_name</span><span class='rbrace'>}</span><span class='tstring_content'>-</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index'>index</span><span class='rbrace'>}</span><span class='embexpr_beg'>#{</span><span class='ivar'>@file_ext</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='id identifier rubyid_print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Creating file #</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index'>index</span><span class='rbrace'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='rbrace'>}</span><span class='tstring_content'> ...</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>wb</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
+    <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span> <span class='id identifier rubyid_string'>string</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="fuzz_network-instance_method">
+  
+    - (<tt>Object</tt>) <strong>fuzz_network</strong>(string, index)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sends the fuzzed string to a TCP/UDP Service.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The fuzzed string.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>index</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The iteration number.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/commands/fuzzer.rb', line 221</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_fuzz_network'>fuzz_network</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_debug'>print_debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Connecting to </span><span class='embexpr_beg'>#{</span><span class='ivar'>@host</span><span class='rbrace'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='ivar'>@port</span><span class='rbrace'>}</span><span class='tstring_content'> ...</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_socket'>socket</span> <span class='op'>=</span> <span class='ivar'>@socket_class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@host</span><span class='comma'>,</span><span class='ivar'>@port</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Sending message #</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index'>index</span><span class='rbrace'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_content'> ...</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_flush'>flush</span>
+
+  <span class='id identifier rubyid_print_debug'>print_debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Disconnecting from </span><span class='embexpr_beg'>#{</span><span class='ivar'>@host</span><span class='rbrace'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='ivar'>@port</span><span class='rbrace'>}</span><span class='tstring_content'> ...</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_pattern-instance_method">
+  
+    - (<tt>Regexp</tt>, <tt>String</tt>) <strong>parse_pattern</strong>(string)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Parses a fuzz pattern.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The string to parse.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Regexp</tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The parsed pattern.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/commands/fuzzer.rb', line 257</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_pattern'>parse_pattern</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_string'>string</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\/.+\/$</span><span class='regexp_end'>/</span></span>
+    <span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='lbracket'>[</span><span class='int'>1</span><span class='op'>..</span><span class='op'>-</span><span class='int'>2</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^[a-z][a-z_]+$</span><span class='regexp_end'>/</span></span>
+    <span class='id identifier rubyid_const'>const</span> <span class='op'>=</span> <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_upcase'>upcase</span>
+
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_const_defined?'>const_defined?</span><span class='lparen'>(</span><span class='id identifier rubyid_const'>const</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+        <span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_const_get'>const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_const'>const</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Regexp</span><span class='rparen'>)</span><span class='rparen'>)</span>
+      <span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_const_get'>const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_const'>const</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_string'>string</span>
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_string'>string</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_substitution-instance_method">
+  
+    - (<tt>Enumerator</tt>) <strong>parse_substitution</strong>(string)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Parses a fuzz substitution Enumerator.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The string to parse.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Enumerator</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The parsed substitution Enumerator.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/commands/fuzzer.rb', line 284</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_substitution'>parse_substitution</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>*</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='id identifier rubyid_lengths'>lengths</span> <span class='op'>=</span> <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>*</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='int'>2</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_lengths'>lengths</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_lengths'>lengths</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+                <span class='id identifier rubyid_min'>min</span><span class='comma'>,</span> <span class='id identifier rubyid_max'>max</span> <span class='op'>=</span> <span class='id identifier rubyid_lengths'>lengths</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>-</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='int'>2</span><span class='rparen'>)</span>
+
+                <span class='lparen'>(</span><span class='id identifier rubyid_min'>min</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>..</span> <span class='id identifier rubyid_max'>max</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='rparen'>)</span>
+              <span class='kw'>else</span>
+                <span class='id identifier rubyid_lengths'>lengths</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+              <span class='kw'>end</span>
+
+    <span class='const'>Fuzzing</span><span class='op'>::</span><span class='const'>Repeater</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_lengths'>lengths</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='const'>Fuzzing</span><span class='lbracket'>[</span><span class='id identifier rubyid_string'>string</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="print_fuzz-instance_method">
+  
+    - (<tt>Object</tt>) <strong>print_fuzz</strong>(string, index)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Prints the fuzzed string to STDOUT.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The fuzzed string.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>index</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The iteration number.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+242
+243
+244
+245
+246</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/commands/fuzzer.rb', line 242</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_print_fuzz'>print_fuzz</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_print_debug'>print_debug</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>String #</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_index'>index</span><span class='rbrace'>}</span><span class='tstring_content'> ...</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_string'>string</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="setup-instance_method">
+  
+    - (<tt>Object</tt>) <strong>setup</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sets up the fuzz command.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/ui/cli/commands/fuzzer.rb', line 102</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_setup'>setup</span>
+  <span class='kw'>super</span>
+
+  <span class='kw'>unless</span> <span class='id identifier rubyid_rules?'>rules?</span>
+    <span class='id identifier rubyid_print_error'>print_error</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Must specify at least one fuzzing rule</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_exit'>exit</span> <span class='op'>-</span><span class='int'>1</span>
+  <span class='kw'>end</span>
+
+  <span class='ivar'>@rules</span> <span class='op'>=</span> <span class='const'>Hash</span><span class='lbracket'>[</span><span class='ivar'>@rules</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pattern'>pattern</span><span class='comma'>,</span><span class='id identifier rubyid_substitution'>substitution</span><span class='op'>|</span>
+    <span class='lbracket'>[</span><span class='id identifier rubyid_parse_pattern'>parse_pattern</span><span class='lparen'>(</span><span class='id identifier rubyid_pattern'>pattern</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_parse_substitution'>parse_substitution</span><span class='lparen'>(</span><span class='id identifier rubyid_substitution'>substitution</span><span class='rparen'>)</span><span class='rbracket'>]</span>
+  <span class='rbrace'>}</span><span class='rbracket'>]</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_output?'>output?</span>
+    <span class='ivar'>@file_ext</span>  <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_extname'>extname</span><span class='lparen'>(</span><span class='ivar'>@output</span><span class='rparen'>)</span>
+    <span class='ivar'>@file_name</span> <span class='op'>=</span> <span class='ivar'>@file</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span><span class='lparen'>(</span><span class='ivar'>@file_ext</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_command?'>command?</span>
+    <span class='ivar'>@command</span> <span class='op'>=</span> <span class='id identifier rubyid_shellwords'>shellwords</span><span class='lparen'>(</span><span class='ivar'>@command</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='lparen'>(</span><span class='id identifier rubyid_tcp?'>tcp?</span> <span class='op'>||</span> <span class='id identifier rubyid_udp?'>udp?</span><span class='rparen'>)</span>
+    <span class='ivar'>@socket_class</span> <span class='op'>=</span> <span class='kw'>if</span>    <span class='id identifier rubyid_tcp?'>tcp?</span> <span class='kw'>then</span> <span class='const'>TCPSocket</span>
+                    <span class='kw'>elsif</span> <span class='id identifier rubyid_udp?'>udp?</span> <span class='kw'>then</span> <span class='const'>UDPSocket</span>
+                    <span class='kw'>end</span>
+
+    <span class='ivar'>@host</span><span class='comma'>,</span> <span class='ivar'>@port</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='ivar'>@tcp</span> <span class='op'>||</span> <span class='ivar'>@udp</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>:</span><span class='tstring_end'>'</span></span><span class='comma'>,</span><span class='int'>2</span><span class='rparen'>)</span>
+    <span class='ivar'>@port</span> <span class='op'>=</span> <span class='ivar'>@port</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sat Jun 16 20:52:13 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.2.1 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

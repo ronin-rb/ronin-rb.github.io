@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (U)</a> &raquo; 
+    <a href="../_index.html">Index (U)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../Ronin.html" title="Ronin (module)">Ronin</a></span></span>
      &raquo; 
     <span class="title">URL</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: Ronin::URL
   
   
@@ -126,8 +133,8 @@
         </dt>
         <dd><pre class="code"><span class='lbrace'>{</span>
   <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>https</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='op'>::</span><span class='const'>URI</span><span class='op'>::</span><span class='const'>HTTPS</span><span class='comma'>,</span>
-  <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>http</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='op'>::</span><span class='const'>URI</span><span class='op'>::</span><span class='const'>HTTP</span><span class='comma'>,</span>
-  <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ftp</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='op'>::</span><span class='const'>URI</span><span class='op'>::</span><span class='const'>FTP</span>
+  <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>http</span><span class='tstring_end'>'</span></span>  <span class='op'>=&gt;</span> <span class='op'>::</span><span class='const'>URI</span><span class='op'>::</span><span class='const'>HTTP</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ftp</span><span class='tstring_end'>'</span></span>   <span class='op'>=&gt;</span> <span class='op'>::</span><span class='const'>URI</span><span class='op'>::</span><span class='const'>FTP</span>
 <span class='rbrace'>}</span></pre></dd>
       
     </dl>
@@ -161,6 +168,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Searches for a URL.</p>
@@ -172,11 +180,12 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#directory-class_method" title="directory (class method)">+ (Array&lt;URL&gt;) <strong>directory</strong>(sub_dir) </a>
+      <a href="#directory-class_method" title="directory (class method)">+ (Array&lt;URL&gt;) <strong>directory</strong>(root_dir) </a>
     
 
     
   </span>
+  
   
   
   
@@ -205,6 +214,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Searches for all URLs with a common file-extension.</p>
@@ -221,6 +231,7 @@
 
     
   </span>
+  
   
   
   
@@ -249,6 +260,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The fragment of the URL.</p>
@@ -265,6 +277,7 @@
 
     
   </span>
+  
   
   
   
@@ -293,6 +306,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The host name of the URL.</p>
@@ -309,6 +323,7 @@
 
     
   </span>
+  
   
   
   
@@ -337,6 +352,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Searches for all URLs using HTTP.</p>
@@ -353,6 +369,7 @@
 
     
   </span>
+  
   
   
   
@@ -381,6 +398,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Primary key of the URL.</p>
@@ -397,6 +415,7 @@
 
     
   </span>
+  
   
   
   
@@ -421,10 +440,11 @@
   </span>
   
   
+  
   <span class="note title protected">protected</span>
   
   
-  <span class="private note title">Private</span>
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Normalizes the path of a URI.</p>
@@ -441,6 +461,7 @@
 
     
   </span>
+  
   
   
   
@@ -469,6 +490,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Path of the URL.</p>
@@ -485,6 +507,7 @@
 
     
   </span>
+  
   
   
   
@@ -513,6 +536,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Searches for URLs with the specific port number(s).</p>
@@ -533,7 +557,8 @@
   
   
   
-  <span class="deprecated note title">Deprecated</span>
+  
+  <span class="deprecated note title">deprecated</span>
   
 
   
@@ -551,6 +576,7 @@
 
     
   </span>
+  
   
   
   
@@ -577,7 +603,8 @@
   
   
   
-  <span class="deprecated note title">Deprecated</span>
+  
+  <span class="deprecated note title">deprecated</span>
   
 
   
@@ -595,6 +622,7 @@
 
     
   </span>
+  
   
   
   
@@ -623,6 +651,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Any credentials used with the URL.</p>
@@ -645,6 +674,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Searches for URLs with the given query param.</p>
@@ -661,6 +691,7 @@
 
     
   </span>
+  
   
   
   
@@ -698,6 +729,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The fragment of the URL.</p>
@@ -714,6 +746,7 @@
 
     
   </span>
+  
   
   
   
@@ -742,6 +775,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The host name of the URL.</p>
@@ -758,6 +792,7 @@
 
     
   </span>
+  
   
   
   
@@ -786,6 +821,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The host name of the URL.</p>
@@ -802,6 +838,7 @@
 
     
   </span>
+  
   
   
   
@@ -830,6 +867,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Primary key of the URL.</p>
@@ -846,6 +884,7 @@
 
     
   </span>
+  
   
   
   
@@ -874,6 +913,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>When the URL was last scanned.</p>
@@ -890,6 +930,7 @@
 
     
   </span>
+  
   
   
   
@@ -918,6 +959,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Path of the URL.</p>
@@ -934,6 +976,7 @@
 
     
   </span>
+  
   
   
   
@@ -962,6 +1005,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Port of the URL.</p>
@@ -978,6 +1022,7 @@
 
     
   </span>
+  
   
   
   
@@ -1006,6 +1051,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The port number used by the URL.</p>
@@ -1022,6 +1068,7 @@
 
     
   </span>
+  
   
   
   
@@ -1050,6 +1097,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The query params of the URL.</p>
@@ -1066,6 +1114,7 @@
 
     
   </span>
+  
   
   
   
@@ -1094,6 +1143,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Sets the query params of the URL.</p>
@@ -1110,6 +1160,7 @@
 
     
   </span>
+  
   
   
   
@@ -1138,6 +1189,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The scheme of the URL.</p>
@@ -1154,6 +1206,7 @@
 
     
   </span>
+  
   
   
   
@@ -1182,6 +1235,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Builds a URI object from the URL.</p>
@@ -1198,6 +1252,7 @@
 
     
   </span>
+  
   
   
   
@@ -1226,6 +1281,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Any credentials used with the URL.</p>
@@ -1245,9 +1301,11 @@
   
   
   
+  
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Model/Importable.html" title="Ronin::Model::Importable (module)">Model::Importable</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Model/Importable.html#included-class_method" title="Ronin::Model::Importable.included (method)">included</a></span></p>
 
+  
   
   
   
@@ -1263,19 +1321,22 @@
   
   
   
+  
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="[]-class_method">
+  <h3 class="signature first" id="[]-class_method">
   
     + (<tt><span class='object_link'><a href="" title="Ronin::URL (class)">URL</a></span></tt><sup>?</sup>) <strong>[]</strong>(url) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Searches for a URL.</p>
 
@@ -1283,7 +1344,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1303,7 +1364,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1320,7 +1381,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -1385,10 +1446,10 @@
 
   <span class='comment'># create the initial query
 </span>  <span class='id identifier rubyid_query'>query</span> <span class='op'>=</span> <span class='id identifier rubyid_all'>all</span><span class='lparen'>(</span>
-    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>scheme.name</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_scheme'>scheme</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>scheme.name</span><span class='tstring_end'>'</span></span>       <span class='op'>=&gt;</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_scheme'>scheme</span><span class='comma'>,</span>
     <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>host_name.address</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span>
-    <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_normalized_path'>normalized_path</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span><span class='comma'>,</span>
-    <span class='symbol'>:fragment</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_fragment'>fragment</span>
+    <span class='symbol'>:path</span>               <span class='op'>=&gt;</span> <span class='id identifier rubyid_normalized_path'>normalized_path</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span><span class='comma'>,</span>
+    <span class='symbol'>:fragment</span>           <span class='op'>=&gt;</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_fragment'>fragment</span>
   <span class='rparen'>)</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_port'>port</span>
@@ -1398,10 +1459,10 @@
 
   <span class='kw'>if</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_query'>query</span>
     <span class='comment'># add the query params to the query
-</span>    <span class='const'>URI</span><span class='op'>::</span><span class='const'>QueryParams</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+</span>    <span class='op'>::</span><span class='const'>URI</span><span class='op'>::</span><span class='const'>QueryParams</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
       <span class='id identifier rubyid_query'>query</span> <span class='op'>=</span> <span class='id identifier rubyid_query'>query</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='lparen'>(</span>
         <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>query_params.name.name</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
-        <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>query_params.value</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_value'>value</span> 
+        <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>query_params.value</span><span class='tstring_end'>'</span></span>     <span class='op'>=&gt;</span> <span class='id identifier rubyid_value'>value</span> 
       <span class='rparen'>)</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
@@ -1414,13 +1475,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="directory-class_method">
+  <h3 class="signature " id="directory-class_method">
   
-    + (<tt>Array&lt;<span class='object_link'><a href="" title="Ronin::URL (class)">URL</a></span>&gt;</tt>) <strong>directory</strong>(sub_dir) 
+    + (<tt>Array&lt;<span class='object_link'><a href="" title="Ronin::URL (class)">URL</a></span>&gt;</tt>) <strong>directory</strong>(root_dir) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Searches for all URLs sharing a common sub-directory.</p>
 
@@ -1428,12 +1491,12 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
       
-        <span class='name'>sub_dir</span>
+        <span class='name'>root_dir</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -1448,7 +1511,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1465,7 +1528,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -1494,8 +1557,8 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 194</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_directory'>directory</span><span class='lparen'>(</span><span class='id identifier rubyid_sub_dir'>sub_dir</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_all'>all</span><span class='lparen'>(</span><span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_sub_dir'>sub_dir</span><span class='rparen'>)</span> <span class='op'>|</span> <span class='id identifier rubyid_all'>all</span><span class='lparen'>(</span><span class='symbol'>:path</span><span class='period'>.</span><span class='id identifier rubyid_like'>like</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_sub_dir'>sub_dir</span><span class='rbrace'>}</span><span class='tstring_content'>/%</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_directory'>directory</span><span class='lparen'>(</span><span class='id identifier rubyid_root_dir'>root_dir</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_all'>all</span><span class='lparen'>(</span><span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_root_dir'>root_dir</span><span class='rparen'>)</span> <span class='op'>|</span> <span class='id identifier rubyid_all'>all</span><span class='lparen'>(</span><span class='symbol'>:path</span><span class='period'>.</span><span class='id identifier rubyid_like'>like</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_root_dir'>root_dir</span><span class='rbrace'>}</span><span class='tstring_content'>/%</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1503,13 +1566,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="extension-class_method">
+  <h3 class="signature " id="extension-class_method">
   
     + (<tt>Array&lt;<span class='object_link'><a href="" title="Ronin::URL (class)">URL</a></span>&gt;</tt>) <strong>extension</strong>(ext) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Searches for all URLs with a common file-extension.</p>
 
@@ -1517,7 +1582,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1537,7 +1602,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1554,7 +1619,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -1592,13 +1657,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="extract-class_method">
+  <h3 class="signature " id="extract-class_method">
   
     + (<tt>Array&lt;<span class='object_link'><a href="" title="Ronin::URL (class)">URL</a></span>&gt;</tt>) <strong>extract</strong>(text) {|url| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Extracts URLs from the given text.</p>
 
@@ -1606,7 +1673,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1626,7 +1693,7 @@
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -1643,7 +1710,7 @@
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -1662,7 +1729,7 @@
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1680,7 +1747,7 @@
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
       <li><a href="http://rubydoc.info/stdlib/uri/URI#extract-class_method" target="_parent" title="http://rubydoc.info/stdlib/uri/URI#extract-class_method">http://rubydoc.info/stdlib/uri/URI#extract-class_method</a></li>
@@ -1688,7 +1755,7 @@
       <li><span class='object_link'><a href="#parse-class_method" title="Ronin::URL.parse (method)">parse</a></span></li>
     
   </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -1731,7 +1798,7 @@
       <pre class="code"><span class="info file"># File 'lib/ronin/url.rb', line 102</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_extract'>extract</span><span class='lparen'>(</span><span class='id identifier rubyid_text'>text</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:extract</span><span class='comma'>,</span><span class='id identifier rubyid_text'>text</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='comma'>,</span><span class='id identifier rubyid_text'>text</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
 
   <span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_extract'>extract</span><span class='lparen'>(</span><span class='id identifier rubyid_text'>text</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_uri'>uri</span><span class='op'>|</span>
     <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>begin</span>
@@ -1752,13 +1819,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="fragment-class_method">
+  <h3 class="signature " id="fragment-class_method">
   
     + (<tt>Object</tt>) <strong>fragment</strong>(repository = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The fragment of the URL</p>
 
@@ -1786,13 +1855,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="from-class_method">
+  <h3 class="signature " id="from-class_method">
   
     + (<tt><span class='object_link'><a href="" title="Ronin::URL (class)">URL</a></span></tt>) <strong>from</strong>(uri) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Creates a new URL.</p>
 
@@ -1800,7 +1871,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1820,7 +1891,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1837,7 +1908,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -1898,13 +1969,13 @@
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_from'>from</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='rparen'>)</span>
   <span class='comment'># find or create the URL scheme, host_name and port
-</span>  <span class='id identifier rubyid_scheme'>scheme</span> <span class='op'>=</span> <span class='const'>URLScheme</span><span class='period'>.</span><span class='id identifier rubyid_first_or_new'>first_or_new</span><span class='lparen'>(</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_scheme'>scheme</span><span class='rparen'>)</span>
+</span>  <span class='id identifier rubyid_scheme'>scheme</span>    <span class='op'>=</span> <span class='const'>URLScheme</span><span class='period'>.</span><span class='id identifier rubyid_first_or_new'>first_or_new</span><span class='lparen'>(</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_scheme'>scheme</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_host_name'>host_name</span> <span class='op'>=</span> <span class='const'>HostName</span><span class='period'>.</span><span class='id identifier rubyid_first_or_new'>first_or_new</span><span class='lparen'>(</span><span class='symbol'>:address</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_port'>port</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_port'>port</span>
-           <span class='const'>TCPPort</span><span class='period'>.</span><span class='id identifier rubyid_first_or_new'>first_or_new</span><span class='lparen'>(</span><span class='symbol'>:number</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_port'>port</span><span class='rparen'>)</span>
-         <span class='kw'>end</span>
+  <span class='id identifier rubyid_port'>port</span>      <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_port'>port</span>
+                <span class='const'>TCPPort</span><span class='period'>.</span><span class='id identifier rubyid_first_or_new'>first_or_new</span><span class='lparen'>(</span><span class='symbol'>:number</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_port'>port</span><span class='rparen'>)</span>
+              <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_normalized_path'>normalized_path</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path'>path</span>     <span class='op'>=</span> <span class='id identifier rubyid_normalized_path'>normalized_path</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_fragment'>fragment</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_fragment'>fragment</span>
 
   <span class='id identifier rubyid_query_params'>query_params</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -1913,7 +1984,7 @@
     <span class='comment'># find or create the URL query params
 </span>    <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_query_params'>query_params</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
       <span class='id identifier rubyid_query_params'>query_params</span> <span class='op'>&lt;&lt;</span> <span class='lbrace'>{</span>
-        <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='const'>URLQueryParamName</span><span class='period'>.</span><span class='id identifier rubyid_first_or_new'>first_or_new</span><span class='lparen'>(</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='comma'>,</span>
+        <span class='symbol'>:name</span>  <span class='op'>=&gt;</span> <span class='const'>URLQueryParamName</span><span class='period'>.</span><span class='id identifier rubyid_first_or_new'>first_or_new</span><span class='lparen'>(</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='comma'>,</span>
         <span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_value'>value</span>
       <span class='rbrace'>}</span>
     <span class='kw'>end</span>
@@ -1921,11 +1992,11 @@
 
   <span class='comment'># find or create the URL
 </span>  <span class='kw'>return</span> <span class='id identifier rubyid_first_or_new'>first_or_new</span><span class='lparen'>(</span>
-    <span class='symbol'>:scheme</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_scheme'>scheme</span><span class='comma'>,</span>
-    <span class='symbol'>:host_name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_host_name'>host_name</span><span class='comma'>,</span>
-    <span class='symbol'>:port</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_port'>port</span><span class='comma'>,</span>
-    <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_path'>path</span><span class='comma'>,</span>
-    <span class='symbol'>:fragment</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_fragment'>fragment</span><span class='comma'>,</span>
+    <span class='symbol'>:scheme</span>       <span class='op'>=&gt;</span> <span class='id identifier rubyid_scheme'>scheme</span><span class='comma'>,</span>
+    <span class='symbol'>:host_name</span>    <span class='op'>=&gt;</span> <span class='id identifier rubyid_host_name'>host_name</span><span class='comma'>,</span>
+    <span class='symbol'>:port</span>         <span class='op'>=&gt;</span> <span class='id identifier rubyid_port'>port</span><span class='comma'>,</span>
+    <span class='symbol'>:path</span>         <span class='op'>=&gt;</span> <span class='id identifier rubyid_path'>path</span><span class='comma'>,</span>
+    <span class='symbol'>:fragment</span>     <span class='op'>=&gt;</span> <span class='id identifier rubyid_fragment'>fragment</span><span class='comma'>,</span>
     <span class='symbol'>:query_params</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_query_params'>query_params</span>
   <span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -1935,13 +2006,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="host_name-class_method">
+  <h3 class="signature " id="host_name-class_method">
   
     + (<tt>Object</tt>) <strong>host_name</strong>(repository = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The host name of the URL</p>
 
@@ -1969,13 +2042,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="hosts-class_method">
+  <h3 class="signature " id="hosts-class_method">
   
     + (<tt>Array&lt;<span class='object_link'><a href="" title="Ronin::URL (class)">URL</a></span>&gt;</tt>) <strong>hosts</strong>(names) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Searches for URLs with specific host name(s).</p>
 
@@ -1983,7 +2058,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2003,7 +2078,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2020,7 +2095,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -2058,13 +2133,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http-class_method">
+  <h3 class="signature " id="http-class_method">
   
     + (<tt>Array&lt;<span class='object_link'><a href="" title="Ronin::URL (class)">URL</a></span>&gt;</tt>) <strong>http</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Searches for all URLs using HTTP.</p>
 
@@ -2073,7 +2150,7 @@
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2090,7 +2167,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -2128,13 +2205,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="https-class_method">
+  <h3 class="signature " id="https-class_method">
   
     + (<tt>Array&lt;<span class='object_link'><a href="" title="Ronin::URL (class)">URL</a></span>&gt;</tt>) <strong>https</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Searches for all URLs using HTTPS.</p>
 
@@ -2143,7 +2222,7 @@
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2160,7 +2239,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -2198,13 +2277,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="id-class_method">
+  <h3 class="signature " id="id-class_method">
   
     + (<tt>Object</tt>) <strong>id</strong>(repository = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Primary key of the URL</p>
 
@@ -2232,13 +2313,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="last_scanned_at-class_method">
+  <h3 class="signature " id="last_scanned_at-class_method">
   
     + (<tt>Object</tt>) <strong>last_scanned_at</strong>(repository = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>When the URL was last scanned</p>
 
@@ -2266,16 +2349,18 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="normalized_path-class_method">
+  <h3 class="signature " id="normalized_path-class_method">
   
     + (<tt>String</tt><sup>?</sup>) <strong>normalized_path</strong>(uri)  <span class="extras">(protected)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Normalizes the path of a URI.</p>
@@ -2284,7 +2369,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2304,7 +2389,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2321,7 +2406,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -2362,7 +2447,7 @@
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_normalized_path'>normalized_path</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_uri'>uri</span>
-  <span class='kw'>when</span> <span class='const'>URI</span><span class='op'>::</span><span class='const'>HTTP</span>
+  <span class='kw'>when</span> <span class='op'>::</span><span class='const'>URI</span><span class='op'>::</span><span class='const'>HTTP</span>
     <span class='comment'># map empty HTTP paths to '/'
 </span>    <span class='kw'>unless</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
       <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span>
@@ -2379,13 +2464,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="parse-class_method">
+  <h3 class="signature " id="parse-class_method">
   
     + (<tt><span class='object_link'><a href="" title="Ronin::URL (class)">URL</a></span></tt>) <strong>parse</strong>(url) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Parses the URL.</p>
 
@@ -2393,7 +2480,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2413,7 +2500,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2431,13 +2518,13 @@
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
       <li><span class='object_link'><a href="#from-class_method" title="Ronin::URL.from (method)">from</a></span></li>
     
   </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -2475,13 +2562,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="path-class_method">
+  <h3 class="signature " id="path-class_method">
   
     + (<tt>Object</tt>) <strong>path</strong>(repository = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Path of the URL</p>
 
@@ -2509,13 +2598,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="port-class_method">
+  <h3 class="signature " id="port-class_method">
   
     + (<tt>Object</tt>) <strong>port</strong>(repository = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Port of the URL</p>
 
@@ -2543,13 +2634,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="ports-class_method">
+  <h3 class="signature " id="ports-class_method">
   
     + (<tt>Array&lt;<span class='object_link'><a href="" title="Ronin::URL (class)">URL</a></span>&gt;</tt>) <strong>ports</strong>(numbers) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Searches for URLs with the specific port number(s).</p>
 
@@ -2557,7 +2650,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2577,7 +2670,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2594,7 +2687,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -2632,17 +2725,18 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="query_param-class_method">
+  <h3 class="signature " id="query_param-class_method">
   
     + (<tt>Object</tt>) <strong>query_param</strong>(name) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'><p>Deprecated as of 1.4.0 and will be removed in 2.0.0.</p>
 </div></div>
-
 
 
   </div>
@@ -2650,7 +2744,7 @@
 <div class="tags">
   
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
       <li><span class='object_link'><a href="#with_query_param-class_method" title="Ronin::URL.with_query_param (method)">with_query_param</a></span></li>
@@ -2679,13 +2773,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="query_params-class_method">
+  <h3 class="signature " id="query_params-class_method">
   
     + (<tt>Object</tt>) <strong>query_params</strong>(repository = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The query params of the URL</p>
 
@@ -2713,17 +2809,18 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="query_value-class_method">
+  <h3 class="signature " id="query_value-class_method">
   
     + (<tt>Object</tt>) <strong>query_value</strong>(value) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'><p>Deprecated as of 1.4.0 and will be removed in 2.0.0.</p>
 </div></div>
-
 
 
   </div>
@@ -2731,7 +2828,7 @@
 <div class="tags">
   
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
       <li><span class='object_link'><a href="#with_query_value-class_method" title="Ronin::URL.with_query_value (method)">with_query_value</a></span></li>
@@ -2760,13 +2857,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="scheme-class_method">
+  <h3 class="signature " id="scheme-class_method">
   
     + (<tt>Object</tt>) <strong>scheme</strong>(repository = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The scheme of the URL</p>
 
@@ -2794,13 +2893,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="web_credentials-class_method">
+  <h3 class="signature " id="web_credentials-class_method">
   
     + (<tt>Object</tt>) <strong>web_credentials</strong>(repository = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Any credentials used with the URL</p>
 
@@ -2828,13 +2929,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="with_query_param-class_method">
+  <h3 class="signature " id="with_query_param-class_method">
   
     + (<tt>Array&lt;<span class='object_link'><a href="" title="Ronin::URL (class)">URL</a></span>&gt;</tt>) <strong>with_query_param</strong>(name) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Searches for URLs with the given query param.</p>
 
@@ -2842,7 +2945,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2862,7 +2965,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2879,7 +2982,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -2917,13 +3020,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="with_query_value-class_method">
+  <h3 class="signature " id="with_query_value-class_method">
   
     + (<tt>Array&lt;<span class='object_link'><a href="" title="Ronin::URL (class)">URL</a></span>&gt;</tt>) <strong>with_query_value</strong>(value) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Search for all URLs with a given query param value.</p>
 
@@ -2931,7 +3036,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2951,7 +3056,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2968,7 +3073,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -3009,16 +3114,18 @@
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="fragment-instance_method">
+  <h3 class="signature first" id="fragment-instance_method">
   
     - (<tt>Object</tt>) <strong>fragment</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The fragment of the URL</p>
 
@@ -3046,13 +3153,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="fragment=-instance_method">
+  <h3 class="signature " id="fragment=-instance_method">
   
     - (<tt>Object</tt>) <strong>fragment=</strong>(value) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The fragment of the URL</p>
 
@@ -3080,13 +3189,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="host-instance_method">
+  <h3 class="signature " id="host-instance_method">
   
     - (<tt>String</tt>) <strong>host</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The host name of the URL.</p>
 
@@ -3095,7 +3206,7 @@
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -3112,7 +3223,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -3150,13 +3261,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="host_name-instance_method">
+  <h3 class="signature " id="host_name-instance_method">
   
     - (<tt>Object</tt>) <strong>host_name</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The host name of the URL</p>
 
@@ -3184,13 +3297,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="host_name=-instance_method">
+  <h3 class="signature " id="host_name=-instance_method">
   
     - (<tt>Object</tt>) <strong>host_name=</strong>(resource) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The host name of the URL</p>
 
@@ -3218,13 +3333,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="id-instance_method">
+  <h3 class="signature " id="id-instance_method">
   
     - (<tt>Object</tt>) <strong>id</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Primary key of the URL</p>
 
@@ -3252,13 +3369,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="id=-instance_method">
+  <h3 class="signature " id="id=-instance_method">
   
     - (<tt>Object</tt>) <strong>id=</strong>(value) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Primary key of the URL</p>
 
@@ -3286,13 +3405,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="inspect-instance_method">
+  <h3 class="signature " id="inspect-instance_method">
   
     - (<tt>String</tt>) <strong>inspect</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Inspects the URL.</p>
 
@@ -3301,7 +3422,7 @@
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -3318,7 +3439,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -3356,13 +3477,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="last_scanned_at-instance_method">
+  <h3 class="signature " id="last_scanned_at-instance_method">
   
     - (<tt>Object</tt>) <strong>last_scanned_at</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>When the URL was last scanned</p>
 
@@ -3390,13 +3513,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="last_scanned_at=-instance_method">
+  <h3 class="signature " id="last_scanned_at=-instance_method">
   
     - (<tt>Object</tt>) <strong>last_scanned_at=</strong>(value) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>When the URL was last scanned</p>
 
@@ -3424,13 +3549,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="path-instance_method">
+  <h3 class="signature " id="path-instance_method">
   
     - (<tt>Object</tt>) <strong>path</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Path of the URL</p>
 
@@ -3458,13 +3585,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="path=-instance_method">
+  <h3 class="signature " id="path=-instance_method">
   
     - (<tt>Object</tt>) <strong>path=</strong>(value) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Path of the URL</p>
 
@@ -3492,13 +3621,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="port-instance_method">
+  <h3 class="signature " id="port-instance_method">
   
     - (<tt>Object</tt>) <strong>port</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Port of the URL</p>
 
@@ -3526,13 +3657,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="port=-instance_method">
+  <h3 class="signature " id="port=-instance_method">
   
     - (<tt>Object</tt>) <strong>port=</strong>(resource) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Port of the URL</p>
 
@@ -3560,13 +3693,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="port_number-instance_method">
+  <h3 class="signature " id="port_number-instance_method">
   
     - (<tt>Integer</tt><sup>?</sup>) <strong>port_number</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The port number used by the URL.</p>
 
@@ -3575,7 +3710,7 @@
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -3592,7 +3727,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -3630,13 +3765,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="query_params-instance_method">
+  <h3 class="signature " id="query_params-instance_method">
   
     - (<tt>Object</tt>) <strong>query_params</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The query params of the URL</p>
 
@@ -3664,13 +3801,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="query_params=-instance_method">
+  <h3 class="signature " id="query_params=-instance_method">
   
     - (<tt>Object</tt>) <strong>query_params=</strong>(new_query_params) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The query params of the URL</p>
 
@@ -3698,13 +3837,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="query_string-instance_method">
+  <h3 class="signature " id="query_string-instance_method">
   
     - (<tt>String</tt>) <strong>query_string</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Dumps the URL query params into a URI query string.</p>
 
@@ -3713,7 +3854,7 @@
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -3730,7 +3871,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -3772,7 +3913,7 @@
     <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='id identifier rubyid_param'>param</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_param'>param</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span>
   <span class='kw'>end</span>
 
-  <span class='kw'>return</span> <span class='const'>URI</span><span class='op'>::</span><span class='const'>QueryParams</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='op'>::</span><span class='const'>URI</span><span class='op'>::</span><span class='const'>QueryParams</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3780,13 +3921,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="query_string=-instance_method">
+  <h3 class="signature " id="query_string=-instance_method">
   
     - (<tt>String</tt>) <strong>query_string=</strong>(query) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Sets the query params of the URL.</p>
 
@@ -3794,7 +3937,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -3814,7 +3957,7 @@
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -3831,7 +3974,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -3872,9 +4015,9 @@
 <span class='kw'>def</span> <span class='id identifier rubyid_query_string='>query_string=</span><span class='lparen'>(</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_query_params'>query_params</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
 
-  <span class='const'>URI</span><span class='op'>::</span><span class='const'>QueryParams</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+  <span class='op'>::</span><span class='const'>URI</span><span class='op'>::</span><span class='const'>QueryParams</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
     <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_query_params'>query_params</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
-      <span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='const'>URLQueryParamName</span><span class='period'>.</span><span class='id identifier rubyid_first_or_new'>first_or_new</span><span class='lparen'>(</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='comma'>,</span>
+      <span class='symbol'>:name</span>  <span class='op'>=&gt;</span> <span class='const'>URLQueryParamName</span><span class='period'>.</span><span class='id identifier rubyid_first_or_new'>first_or_new</span><span class='lparen'>(</span><span class='symbol'>:name</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='comma'>,</span>
       <span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_value'>value</span>
     <span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -3887,13 +4030,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="scheme-instance_method">
+  <h3 class="signature " id="scheme-instance_method">
   
     - (<tt>Object</tt>) <strong>scheme</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The scheme of the URL</p>
 
@@ -3921,13 +4066,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="scheme=-instance_method">
+  <h3 class="signature " id="scheme=-instance_method">
   
     - (<tt>Object</tt>) <strong>scheme=</strong>(resource) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The scheme of the URL</p>
 
@@ -3955,13 +4102,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="to_s-instance_method">
+  <h3 class="signature " id="to_s-instance_method">
   
     - (<tt>String</tt>) <strong>to_s</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Converts the URL to a String.</p>
 
@@ -3970,7 +4119,7 @@
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -3987,7 +4136,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -4025,13 +4174,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="to_uri-instance_method">
+  <h3 class="signature " id="to_uri-instance_method">
   
     - (<tt>URI::HTTP</tt>, <tt>URI::HTTPS</tt>) <strong>to_uri</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Builds a URI object from the URL.</p>
 
@@ -4040,7 +4191,7 @@
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -4057,7 +4208,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -4125,11 +4276,11 @@
 
   <span class='comment'># build the URI
 </span>  <span class='kw'>return</span> <span class='id identifier rubyid_url_class'>url_class</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span>
-    <span class='symbol'>:scheme</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_scheme'>scheme</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
-    <span class='symbol'>:host</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_host'>host</span><span class='comma'>,</span>
-    <span class='symbol'>:port</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_port'>port</span><span class='comma'>,</span>
-    <span class='symbol'>:path</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span>
-    <span class='symbol'>:query</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_query'>query</span><span class='comma'>,</span>
+    <span class='symbol'>:scheme</span>   <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_scheme'>scheme</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
+    <span class='symbol'>:host</span>     <span class='op'>=&gt;</span> <span class='id identifier rubyid_host'>host</span><span class='comma'>,</span>
+    <span class='symbol'>:port</span>     <span class='op'>=&gt;</span> <span class='id identifier rubyid_port'>port</span><span class='comma'>,</span>
+    <span class='symbol'>:path</span>     <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span>
+    <span class='symbol'>:query</span>    <span class='op'>=&gt;</span> <span class='id identifier rubyid_query'>query</span><span class='comma'>,</span>
     <span class='symbol'>:fragment</span> <span class='op'>=&gt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_fragment'>fragment</span>
   <span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -4139,13 +4290,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="web_credentials-instance_method">
+  <h3 class="signature " id="web_credentials-instance_method">
   
     - (<tt>Object</tt>) <strong>web_credentials</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Any credentials used with the URL</p>
 
@@ -4173,13 +4326,15 @@
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="web_credentials=-instance_method">
+  <h3 class="signature " id="web_credentials=-instance_method">
   
     - (<tt>Object</tt>) <strong>web_credentials=</strong>(new_web_credentials) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Any credentials used with the URL</p>
 
@@ -4209,11 +4364,11 @@
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sun Feb 12 14:12:54 2012 by 
+  Generated on Sat Jun 16 20:51:32 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.2.1 (ruby-1.9.3).
 </div>
 
   </body>

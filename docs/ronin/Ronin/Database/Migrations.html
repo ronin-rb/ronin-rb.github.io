@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '../..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../../_index.html">Index (M)</a> &raquo; 
+    <a href="../../_index.html">Index (M)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Database.html" title="Ronin::Database (module)">Database</a></span></span>
      &raquo; 
     <span class="title">Migrations</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Module: Ronin::Database::Migrations
   
   
@@ -85,9 +92,9 @@
 
 <h2>Defined Under Namespace</h2>
 <p class="children">
-   
+  
     
-   
+  
     
       <strong class="classes">Classes:</strong> <span class='object_link'><a href="Migrations/DuplicateMigration.html" title="Ronin::Database::Migrations::DuplicateMigration (class)">DuplicateMigration</a></span>, <span class='object_link'><a href="Migrations/Graph.html" title="Ronin::Database::Migrations::Graph (class)">Graph</a></span>, <span class='object_link'><a href="Migrations/Migration.html" title="Ronin::Database::Migrations::Migration (class)">Migration</a></span>, <span class='object_link'><a href="Migrations/UnknownMigration.html" title="Ronin::Database::Migrations::UnknownMigration (class)">UnknownMigration</a></span>
     
@@ -121,7 +128,8 @@
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Migrates the database downwards to a certain migration position or
@@ -144,7 +152,8 @@ name.</p>
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Migrates the database upward to a given migration position or name.</p>
@@ -161,6 +170,7 @@ name.</p>
 
     
   </span>
+  
   
   
   
@@ -188,7 +198,8 @@ name.</p>
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>The defined migrations.</p>
@@ -205,19 +216,21 @@ name.</p>
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="migrate_down!-class_method">
+  <h3 class="signature first" id="migrate_down!-class_method">
   
     + (<tt>true</tt>) <strong>migrate_down!</strong>(position_or_name = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Migrates the database downwards to a certain migration position or
@@ -227,7 +240,7 @@ name.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -249,7 +262,7 @@ name.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -266,7 +279,7 @@ name.</p>
     </li>
   
 </ul>
-<h3>Raises:</h3>
+<p class="tag_title">Raises:</p>
 <ul class="raise">
   
     <li>
@@ -283,7 +296,7 @@ name.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -329,16 +342,18 @@ name.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="migrate_up!-class_method">
+  <h3 class="signature " id="migrate_up!-class_method">
   
     + (<tt>true</tt>) <strong>migrate_up!</strong>(position_or_name = nil) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Migrates the database upward to a given migration position or name.</p>
@@ -347,7 +362,7 @@ name.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -369,7 +384,7 @@ name.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -386,7 +401,7 @@ name.</p>
     </li>
   
 </ul>
-<h3>Raises:</h3>
+<p class="tag_title">Raises:</p>
 <ul class="raise">
   
     <li>
@@ -403,7 +418,7 @@ name.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -449,20 +464,22 @@ name.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="migration-class_method">
+  <h3 class="signature " id="migration-class_method">
   
     + (<tt><span class='object_link'><a href="Migrations/Migration.html" title="Ronin::Database::Migrations::Migration (class)">Migration</a></span></tt>) <strong>migration</strong>(*arguments) { ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
   <div class="note notetag">
-    <strong>Note:</strong> 
+    <strong>Note:</strong>
     <div class='inline'><p>Its recommended that you stick with raw SQL for migrations that
 manipulate data. If you write a migration using a model, then
-later change the model, there&rsquo;s a possibility the migration
+later change the model, there&#39;s a possibility the migration
 will no longer work. Using SQL will always work.</p>
 </div>
   </div>
@@ -475,10 +492,12 @@ will no longer work. Using SQL will always work.</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'><p>Defining a migration at a position</p>
-</div></h4>
+      
+        <p class="example_title"><div class='inline'><p>Defining a migration at a position</p>
+</div></p>
+      
       <pre class="example code"><span class='id identifier rubyid_migration'>migration</span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span> <span class='symbol'>:create_people_table</span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_up'>up</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_create_table'>create_table</span> <span class='symbol'>:people</span> <span class='kw'>do</span>
@@ -493,8 +512,10 @@ will no longer work. Using SQL will always work.</p>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     
-      <h4><div class='inline'><p>Defining a migration with a name</p>
-</div></h4>
+      
+        <p class="example_title"><div class='inline'><p>Defining a migration with a name</p>
+</div></p>
+      
       <pre class="example code"><span class='id identifier rubyid_migration'>migration</span><span class='lparen'>(</span><span class='symbol'>:create_people_table</span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_up'>up</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_create_table'>create_table</span> <span class='symbol'>:people</span> <span class='kw'>do</span>
@@ -509,8 +530,10 @@ will no longer work. Using SQL will always work.</p>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     
-      <h4><div class='inline'><p>Defining a migration with dependencies</p>
-</div></h4>
+      
+        <p class="example_title"><div class='inline'><p>Defining a migration with dependencies</p>
+</div></p>
+      
       <pre class="example code"><span class='id identifier rubyid_migration'>migration</span><span class='lparen'>(</span><span class='symbol'>:add_salary_column</span><span class='comma'>,</span> <span class='symbol'>:needs</span> <span class='op'>=&gt;</span> <span class='symbol'>:create_people_table</span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_up'>up</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_modify_table'>modify_table</span> <span class='symbol'>:people</span> <span class='kw'>do</span>
@@ -526,7 +549,7 @@ will no longer work. Using SQL will always work.</p>
 <span class='kw'>end</span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -546,7 +569,7 @@ will no longer work. Using SQL will always work.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -564,7 +587,7 @@ The given block will define the migration.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -581,7 +604,7 @@ The given block will define the migration.</p>
     </li>
   
 </ul>
-<h3>Raises:</h3>
+<p class="tag_title">Raises:</p>
 <ul class="raise">
   
     <li>
@@ -612,7 +635,7 @@ position.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -678,16 +701,18 @@ position.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="migrations-class_method">
+  <h3 class="signature " id="migrations-class_method">
   
     + (<tt><span class='object_link'><a href="Migrations/Graph.html" title="Ronin::Database::Migrations::Graph (class)">Graph</a></span></tt>) <strong>migrations</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>The defined migrations.</p>
@@ -697,7 +722,7 @@ position.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -714,7 +739,7 @@ position.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -754,11 +779,11 @@ position.</p>
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sun Feb 12 14:13:29 2012 by 
+  Generated on Sat Jun 16 20:51:30 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.2.1 (ruby-1.9.3).
 </div>
 
   </body>

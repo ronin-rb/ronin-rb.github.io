@@ -1,0 +1,1660 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Ronin::Binary::Template
+  
+    &mdash; Ronin Support Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (T)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Binary.html" title="Ronin::Binary (module)">Binary</a></span></span>
+     &raquo; 
+    <span class="title">Template</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Ronin::Binary::Template
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Ronin::Binary::Template</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/ronin/binary/template.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Provides a translation layer between C types and Ruby <code>Array#pack</code>
+codes.</p>
+
+<h2 id="types">Types</h2>
+
+<ul>
+  <li><code>:uint8</code> (<code>C</code>) - unsigned 8-bit integer.</li>
+  <li><code>:uint16</code> (<code>S</code>) - unsigned 16-bit integer.</li>
+  <li><code>:uint32</code> (<code>L</code>) - unsigned 32-bit integer.</li>
+  <li><code>:uint64</code> (<code>Q</code>) - unsigned 64-bit integer.</li>
+  <li><code>:int8</code> (<code>c</code>) - signed 8-bit integer.</li>
+  <li><code>:int16</code> (<code>s</code>) - signed 16-bit integer.</li>
+  <li><code>:int32</code> (<code>l</code>) - signed 32-bit integer.</li>
+  <li><code>:int64</code> (<code>q</code>) - signed 64-bit integer.</li>
+  <li><code>:uint16_le</code> (<code>v</code>) - unsigned 16-bit integer, little endian.</li>
+  <li><code>:uint32_le</code> (<code>V</code>) - unsigned 32-bit integer, little endian.</li>
+  <li><code>:uint16_be</code> (<code>n</code>) - unsigned 16-bit integer, big endian.</li>
+  <li><code>:uint32_be</code> (<code>N</code>) - unsigned 32-bit integer, big endian.</li>
+  <li><code>:uchar</code> (<code>Z</code>) - unsigned character.</li>
+  <li><code>:ushort</code> (<code>S!</code>) - unsigned short integer, native endian.</li>
+  <li><code>:uint</code> (<code>I!</code>) - unsigned integer, native endian.</li>
+  <li><code>:ulong</code> (<code>L!</code>) - unsigned long integer, native endian.</li>
+  <li><code>:ulong_long</code> (<code>Q</code>) - unsigned quad integer, native endian.</li>
+  <li><code>:char</code> (<code>Z</code>) - signed character.</li>
+  <li><code>:short</code> (<code>s!</code>) - signed short integer, native endian.</li>
+  <li><code>:int</code> (<code>i!</code>) - signed integer, native endian.</li>
+  <li><code>:long</code> (<code>l!</code>) - signed long integer, native endian.</li>
+  <li><code>:long_long</code> (<code>q</code>) - signed quad integer, native endian.</li>
+  <li><code>:utf8</code> (<code>U</code>) - UTF8 character.</li>
+  <li><code>:float</code> (<code>F</code>) - single-precision float, native format.</li>
+  <li><code>:double</code> (<code>D</code>) - double-precision float, native format.</li>
+  <li><code>:float_le</code> (<code>e</code>) - single-precision float, little endian.</li>
+  <li><code>:double_le</code> (<code>E</code>) - double-precision float, little endian.</li>
+  <li><code>:float_be</code> (<code>g</code>) - single-precision float, big endian.</li>
+  <li><code>:double_be</code> (<code>G</code>) - double-precision float, big endian.</li>
+  <li><code>:ubyte</code> (<code>C</code>) - unsigned byte.</li>
+  <li><code>:byte</code> (<code>c</code>) - signed byte.</li>
+  <li><code>:string</code> (<code>Z*</code>) - binary String, <code>\0</code> terminated.</li>
+</ul>
+
+<h3 id="ruby-19-specific-types">Ruby 1.9 specific types</h3>
+
+<ul>
+  <li><code>:uint16_le</code> (<code>S&lt;</code>) - unsigned 16-bit integer, little endian.</li>
+  <li><code>:uint32_le</code> (<code>L&lt;</code>) - unsigned 32-bit integer, little endian.</li>
+  <li><code>:uint64_le</code> (<code>Q&lt;</code>) - unsigned 64-bit integer, little endian.</li>
+  <li><code>:int16_le</code> (<code>s&lt;</code>) - signed 16-bit integer, little endian.</li>
+  <li><code>:int32_le</code> (<code>l&lt;</code>) - signed 32-bit integer, little endian.</li>
+  <li><code>:int64_le</code> (<code>q&lt;</code>) - signed 64-bit integer, little endian.</li>
+  <li><code>:uint16_be</code> (<code>S&gt;</code>) - unsigned 16-bit integer, big endian.</li>
+  <li><code>:uint32_be</code> (<code>L&gt;</code>) - unsigned 32-bit integer, big endian.</li>
+  <li><code>:uint64_be</code> (<code>Q&gt;</code>) - unsigned 64-bit integer, big endian.</li>
+  <li><code>:int16_be</code> (<code>s&gt;</code>) - signed 16-bit integer, big endian.</li>
+  <li><code>:int32_be</code> (<code>l&gt;</code>) - signed 32-bit integer, big endian.</li>
+  <li><code>:int64_be</code> (<code>q&gt;</code>) - signed 64-bit integer, big endian.</li>
+  <li><code>:ushort_le</code> (<code>S&lt;</code>) - unsigned short integer, little endian.</li>
+  <li><code>:uint_le</code> (<code>I&lt;</code>) - unsigned integer, little endian.</li>
+  <li><code>:ulong_le</code> (<code>L&lt;</code>) - unsigned long integer, little endian.</li>
+  <li><code>:ulong_long_le</code> (<code>Q&lt;</code>) - unsigned quad integer, little endian.</li>
+  <li><code>:short_le</code> (<code>s&lt;</code>) - signed short integer, little endian.</li>
+  <li><code>:int_le</code> (<code>i&lt;</code>) - signed integer, little endian.</li>
+  <li><code>:long_le</code> (<code>l&lt;</code>) - signed long integer, little endian.</li>
+  <li><code>:long_long_le</code> (<code>q&lt;</code>) - signed quad integer, little endian.</li>
+  <li><code>:ushort_be</code> (<code>S&gt;</code>) - unsigned short integer, little endian.</li>
+  <li><code>:uint_be</code> (<code>I&gt;</code>) - unsigned integer, little endian.</li>
+  <li><code>:ulong_be</code> (<code>L&gt;</code>) - unsigned long integer, little endian.</li>
+  <li><code>:ulong_long_be</code> (<code>Q&gt;</code>) - unsigned quad integer, little endian.</li>
+  <li><code>:short_be</code> (<code>s&gt;</code>) - signed short integer, little endian.</li>
+  <li><code>:int_be</code> (<code>i&gt;</code>) - signed integer, little endian.</li>
+  <li><code>:long_be</code> (<code>l&gt;</code>) - signed long integer, little endian.</li>
+  <li><code>:long_long_be</code> (<code>q&gt;</code>) - signed quad integer, little endian.</li>
+</ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/core/Array:pack" target="_parent" title="http://rubydoc.info/stdlib/core/Array:pack">http://rubydoc.info/stdlib/core/Array:pack</a></li>
+    
+  </ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="TYPES-constant" class="">TYPES =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Supported types and corresponding <code>Array#pack</code> codes.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='symbol'>:uint8</span>  <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>C</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:uint16</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>S</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:uint32</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>L</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:uint64</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Q</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:int8</span>   <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>c</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:int16</span>  <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>s</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:int32</span>  <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>l</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:int64</span>  <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>q</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:uint16_le</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>v</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:uint32_le</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>V</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:uint16_be</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>n</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:uint32_be</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>N</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:uchar</span>      <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Z</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:ushort</span>     <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>S!</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:uint</span>       <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>I!</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:ulong</span>      <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>L!</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:ulong_long</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Q</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:char</span>      <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Z</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:short</span>     <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>s!</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:int</span>       <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>i!</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:long</span>      <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>l!</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:long_long</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>q</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:utf8</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>U</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:float</span>     <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>F</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:double</span>    <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>D</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:float_le</span>  <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>e</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:double_le</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>E</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:float_be</span>  <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>g</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:double_be</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>G</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:ubyte</span>  <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>C</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:byte</span>   <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>c</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:string</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Z*</span><span class='tstring_end'>'</span></span>
+<span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="INT_TYPES-constant" class="">INT_TYPES =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Integer types</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'>Set</span><span class='lbracket'>[</span>
+  <span class='symbol'>:uint8</span><span class='comma'>,</span>
+  <span class='symbol'>:uint16</span><span class='comma'>,</span>
+  <span class='symbol'>:uint32</span><span class='comma'>,</span>
+  <span class='symbol'>:uint64</span><span class='comma'>,</span>
+
+  <span class='symbol'>:int8</span><span class='comma'>,</span>
+  <span class='symbol'>:int16</span><span class='comma'>,</span>
+  <span class='symbol'>:int32</span><span class='comma'>,</span>
+  <span class='symbol'>:int64</span><span class='comma'>,</span>
+
+  <span class='symbol'>:ubyte</span><span class='comma'>,</span>
+  <span class='symbol'>:ushort</span><span class='comma'>,</span>
+  <span class='symbol'>:uint</span><span class='comma'>,</span>
+  <span class='symbol'>:ulong</span><span class='comma'>,</span>
+  <span class='symbol'>:ulong_long</span><span class='comma'>,</span>
+
+  <span class='symbol'>:byte</span><span class='comma'>,</span>
+  <span class='symbol'>:short</span><span class='comma'>,</span>
+  <span class='symbol'>:int</span><span class='comma'>,</span>
+  <span class='symbol'>:long</span><span class='comma'>,</span>
+  <span class='symbol'>:long_long</span><span class='comma'>,</span>
+
+  <span class='symbol'>:uint16_le</span><span class='comma'>,</span>
+  <span class='symbol'>:uint32_le</span><span class='comma'>,</span>
+  <span class='symbol'>:uint64_le</span><span class='comma'>,</span>
+
+  <span class='symbol'>:int16_le</span><span class='comma'>,</span>
+  <span class='symbol'>:int32_le</span><span class='comma'>,</span>
+  <span class='symbol'>:int64_le</span><span class='comma'>,</span>
+
+  <span class='symbol'>:ushort_le</span><span class='comma'>,</span>
+  <span class='symbol'>:uint_le</span><span class='comma'>,</span>
+  <span class='symbol'>:ulong_le</span><span class='comma'>,</span>
+  <span class='symbol'>:ulong_long_le</span><span class='comma'>,</span>
+
+  <span class='symbol'>:short_le</span><span class='comma'>,</span>
+  <span class='symbol'>:int_le</span><span class='comma'>,</span>
+  <span class='symbol'>:long_le</span><span class='comma'>,</span>
+  <span class='symbol'>:long_long_le</span><span class='comma'>,</span>
+
+  <span class='symbol'>:uint16_be</span><span class='comma'>,</span>
+  <span class='symbol'>:uint32_be</span><span class='comma'>,</span>
+  <span class='symbol'>:uint64_be</span><span class='comma'>,</span>
+
+  <span class='symbol'>:int16_be</span><span class='comma'>,</span>
+  <span class='symbol'>:int32_be</span><span class='comma'>,</span>
+  <span class='symbol'>:int64_be</span><span class='comma'>,</span>
+
+  <span class='symbol'>:ushort_be</span><span class='comma'>,</span>
+  <span class='symbol'>:uint_be</span><span class='comma'>,</span>
+  <span class='symbol'>:ulong_be</span><span class='comma'>,</span>
+  <span class='symbol'>:ulong_long_be</span><span class='comma'>,</span>
+
+  <span class='symbol'>:short_be</span><span class='comma'>,</span>
+  <span class='symbol'>:int_be</span><span class='comma'>,</span>
+  <span class='symbol'>:long_be</span><span class='comma'>,</span>
+  <span class='symbol'>:long_long_be</span>
+<span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="FLOAT_TYPES-constant" class="">FLOAT_TYPES =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Float types</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'>Set</span><span class='lbracket'>[</span>
+  <span class='symbol'>:float</span><span class='comma'>,</span>    <span class='symbol'>:double</span><span class='comma'>,</span>
+  <span class='symbol'>:float_le</span><span class='comma'>,</span> <span class='symbol'>:double_le</span><span class='comma'>,</span>
+  <span class='symbol'>:float_be</span><span class='comma'>,</span> <span class='symbol'>:double_be</span>
+<span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="CHAR_TYPES-constant" class="">CHAR_TYPES =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Character types</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'>Set</span><span class='lbracket'>[</span><span class='symbol'>:uchar</span><span class='comma'>,</span> <span class='symbol'>:char</span><span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="STRING_TYPES-constant" class="">STRING_TYPES =
+          <div class="docstring">
+  <div class="discussion">
+    <p>String types</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'>CHAR_TYPES</span> <span class='op'>+</span> <span class='const'>Set</span><span class='lbracket'>[</span><span class='symbol'>:string</span><span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="ENDIAN_TYPES-constant" class="">ENDIAN_TYPES =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Types which have little and big endian forms</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'>Set</span><span class='lbracket'>[</span>
+  <span class='symbol'>:uint16</span><span class='comma'>,</span> <span class='symbol'>:uint32</span><span class='comma'>,</span> <span class='symbol'>:uint64</span><span class='comma'>,</span>
+  <span class='symbol'>:int16</span><span class='comma'>,</span> <span class='symbol'>:int32</span><span class='comma'>,</span> <span class='symbol'>:int64</span><span class='comma'>,</span>
+  <span class='symbol'>:ushort</span><span class='comma'>,</span> <span class='symbol'>:uint</span><span class='comma'>,</span> <span class='symbol'>:ulong</span><span class='comma'>,</span> <span class='symbol'>:ulong_long</span><span class='comma'>,</span>
+  <span class='symbol'>:short</span><span class='comma'>,</span> <span class='symbol'>:int</span><span class='comma'>,</span> <span class='symbol'>:long</span><span class='comma'>,</span> <span class='symbol'>:long_long</span><span class='comma'>,</span>
+  <span class='symbol'>:float</span><span class='comma'>,</span> <span class='symbol'>:double</span>
+<span class='rbracket'>]</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#fields-instance_method" title="#fields (instance method)">- (Object) <strong>fields</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The fields of the template.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%5B%5D-class_method" title="[] (class method)">+ (Object) <strong>[]</strong>(*fields) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#compile-class_method" title="compile (class method)">+ (String) <strong>compile</strong>(types, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Compiles binary types into an <code>Array#pack</code> / <code>String#unpack</code>
+template.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#translate-class_method" title="translate (class method)">+ (Symbol) <strong>translate</strong>(type, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Translates the type of the field.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Template) <strong>initialize</strong>(fields, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new Binary Template.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#pack-instance_method" title="#pack (instance method)">- (String) <strong>pack</strong>(*data) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Packs the data.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_s-instance_method" title="#to_s (instance method)">- (String) <strong>to_s</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Converts the template to a <code>Array#pack</code> template String.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unpack-instance_method" title="#unpack (instance method)">- (Array) <strong>unpack</strong>(string) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Unpacks the string.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Ronin::Binary::Template (class)">Template</a></span></tt>) <strong>initialize</strong>(fields, options = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>The following types are <strong>not supported</strong> on Ruby 1.8:</p>
+
+<ul>
+  <li><code>:uint16_le</code></li>
+  <li><code>:uint32_le</code></li>
+  <li><code>:uint64_le</code></li>
+  <li><code>:int16_le</code></li>
+  <li><code>:int32_le</code></li>
+  <li><code>:int64_le</code></li>
+  <li><code>:uint16_be</code></li>
+  <li><code>:uint32_be</code></li>
+  <li><code>:uint64_be</code></li>
+  <li><code>:int16_be</code></li>
+  <li><code>:int32_be</code></li>
+  <li><code>:int64_be</code></li>
+  <li><code>:ushort_le</code></li>
+  <li><code>:uint_le</code></li>
+  <li><code>:ulong_le</code></li>
+  <li><code>:ulong_long_le</code></li>
+  <li><code>:short_le</code></li>
+  <li><code>:int_le</code></li>
+  <li><code>:long_le</code></li>
+  <li><code>:long_long_le</code></li>
+  <li><code>:ushort_be</code></li>
+  <li><code>:uint_be</code></li>
+  <li><code>:ulong_be</code></li>
+  <li><code>:ulong_long_be</code></li>
+  <li><code>:short_be</code></li>
+  <li><code>:int_be</code></li>
+  <li><code>:long_be</code></li>
+  <li><code>:long_long_be</code></li>
+</ul>
+</div>
+  </div>
+
+<p>Creates a new Binary Template.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><span class='const'>Template</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:uint32</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:char</span><span class='comma'>,</span> <span class='int'>100</span><span class='rbracket'>]</span><span class='rparen'>)</span></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>fields</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Array.html" title="Array (class)">Array</a></span>&lt;type, (type, length)&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The types which the packer will use.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Template options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:endian</span>
+          <span class="type">(<tt>:little</tt>, <tt>:big</tt>, <tt>:network</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The endianness to apply to types.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A given type is not known.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+324
+325
+326
+327</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 324</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_fields'>fields</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='ivar'>@fields</span>   <span class='op'>=</span> <span class='id identifier rubyid_fields'>fields</span>
+  <span class='ivar'>@template</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_compile'>compile</span><span class='lparen'>(</span><span class='ivar'>@fields</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="fields-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>fields</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The fields of the template</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+272
+273
+274</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 272</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_fields'>fields</span>
+  <span class='ivar'>@fields</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="[]-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>[]</strong>(*fields) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#initialize-instance_method" title="Ronin::Binary::Template#initialize (method)">#initialize</a></span></li>
+    
+  </ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+332
+333
+334</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 332</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='op'>[]</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_fields'>fields</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_fields'>fields</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="compile-class_method">
+  
+    + (<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>) <strong>compile</strong>(types, options = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Compiles binary types into an <code>Array#pack</code> / <code>String#unpack</code>
+template.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>types</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Array.html" title="Array (class)">Array</a></span>&lt;type, (type, length)&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The types which the packer will use.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Type options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:endian</span>
+          <span class="type">(<tt>:little</tt>, <tt>:big</tt>, <tt>:network</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The endianness to apply to types.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The <code>Array#pack</code> / <code>String#unpack</code> template.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A given type is not known.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 388</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_compile'>compile</span><span class='lparen'>(</span><span class='id identifier rubyid_types'>types</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_string'>string</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span>
+
+  <span class='id identifier rubyid_types'>types</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span><span class='op'>|</span>
+    <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='id identifier rubyid_translate'>translate</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+
+    <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span> <span class='op'>=</span> <span class='const'>TYPES</span><span class='lbracket'>[</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_content'> not supported</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_string'>string</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_code'>code</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_length'>length</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_string'>string</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="translate-class_method">
+  
+    + (<tt>Symbol</tt>) <strong>translate</strong>(type, options = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Translates the type of the field.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The type to translate.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Translation options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:endian</span>
+          <span class="type">(<tt>:little</tt>, <tt>:big</tt>, <tt>:network</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The endianness to apply to types.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The translated type.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The value of <code>:endian</code> is unknown.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 354</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:endian</span><span class='rbracket'>]</span> <span class='op'>&amp;&amp;</span> <span class='const'>ENDIAN_TYPES</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:endian</span><span class='rbracket'>]</span>
+           <span class='kw'>when</span> <span class='symbol'>:little</span>
+             <span class='symbol'>:#{</span><span class='id identifier rubyid_type'>type</span><span class='rbrace'>}</span><span class='tstring_content'>_le</span><span class='tstring_end'>&quot;</span></span>
+           <span class='kw'>when</span> <span class='symbol'>:big</span><span class='comma'>,</span> <span class='symbol'>:network</span>
+             <span class='symbol'>:#{</span><span class='id identifier rubyid_type'>type</span><span class='rbrace'>}</span><span class='tstring_content'>_be</span><span class='tstring_end'>&quot;</span></span>
+           <span class='kw'>else</span>
+             <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown endianness: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_type'>type</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+           <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_type'>type</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="pack-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>) <strong>pack</strong>(*data) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Packs the data.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Array.html" title="Array (class)">Array</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The data to pack.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The packed data.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+413
+414
+415</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 413</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='ivar'>@template</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_s-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>) <strong>to_s</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Converts the template to a <code>Array#pack</code> template String.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The template String.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/core/Array:pack" target="_parent" title="http://rubydoc.info/stdlib/core/Array:pack">http://rubydoc.info/stdlib/core/Array:pack</a></li>
+    
+  </ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+438
+439
+440</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 438</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='ivar'>@template</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="unpack-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../Array.html" title="Array (class)">Array</a></span></tt>) <strong>unpack</strong>(string) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Unpacks the string.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The raw String to unpack.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Array.html" title="Array (class)">Array</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The unpacked data.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+426
+427
+428</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 426</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='ivar'>@template</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sat Jun 16 20:51:52 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.2 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

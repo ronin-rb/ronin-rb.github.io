@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../_index.html">Index (P)</a> &raquo; 
+    <a href="../_index.html">Index (P)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../Ronin.html" title="Ronin (module)">Ronin</a></span></span>
      &raquo; 
     <span class="title">Path</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: Ronin::Path
   
   
@@ -107,7 +114,8 @@ traversal paths.</p>
 
 </div>
 
-  
+
+
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
   <ul class="summary">
     
@@ -119,6 +127,7 @@ traversal paths.</p>
 
     
   </span>
+  
   
   
     
@@ -140,7 +149,6 @@ traversal paths.</p>
 
 
 
-  
 
   
     <h2>
@@ -164,6 +172,7 @@ traversal paths.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The root path.</p>
@@ -180,6 +189,7 @@ traversal paths.</p>
 
     
   </span>
+  
   
   
   
@@ -212,6 +222,7 @@ traversal paths.</p>
     
   </span>
   
+  
     <span class="note title constructor">constructor</span>
   
   
@@ -243,6 +254,7 @@ traversal paths.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Joins directory names together with the path, but does not resolve
@@ -260,13 +272,15 @@ the resulting path.</p>
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <p class="signature first" id="initialize-instance_method">
+  <h3 class="signature first" id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="Ronin::Path (class)">Path</a></span></tt>) <strong>initialize</strong>(path) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>A new instance of Path</p>
 
@@ -308,15 +322,16 @@ the resulting path.</p>
     
       
       <span id="separator=-instance_method"></span>
-      <span id="separator-instance_method"></span>
       <div class="method_details first">
-  <p class="signature first" id="separator-instance_method">
+  <h3 class="signature first" id="separator-instance_method">
   
     - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>separator</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The separator to join paths together with</p>
 
@@ -352,16 +367,18 @@ the resulting path.</p>
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="root-class_method">
+  <h3 class="signature first" id="root-class_method">
   
     + (<tt><span class='object_link'><a href="" title="Ronin::Path (class)">Path</a></span></tt>) <strong>root</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The root path.</p>
 
@@ -370,7 +387,7 @@ the resulting path.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -410,13 +427,15 @@ the resulting path.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="up-class_method">
+  <h3 class="signature " id="up-class_method">
   
     + (<tt><span class='object_link'><a href="" title="Ronin::Path (class)">Path</a></span></tt>) <strong>up</strong>(n, separator = File::SEPARATOR) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Creates a new path object for upward directory traversal.</p>
 
@@ -426,21 +445,25 @@ the resulting path.</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'><p>Generate a relative path that goes up 7 directories.</p>
-</div></h4>
+      
+        <p class="example_title"><div class='inline'><p>Generate a relative path that goes up 7 directories:</p>
+</div></p>
+      
       <pre class="example code"><span class='const'>Path</span><span class='period'>.</span><span class='id identifier rubyid_up'>up</span><span class='lparen'>(</span><span class='int'>7</span><span class='rparen'>)</span>
 <span class='comment'># =&gt; #&lt;Ronin::Path:../../../../../../..&gt;</span></pre>
     
-      <h4><div class='inline'><p>Generate multiple relative paths, going up 1 to 3 directories.</p>
-</div></h4>
+      
+        <p class="example_title"><div class='inline'><p>Generate multiple relative paths, going up 1 to 3 directories:</p>
+</div></p>
+      
       <pre class="example code"><span class='const'>Path</span><span class='period'>.</span><span class='id identifier rubyid_up'>up</span><span class='lparen'>(</span><span class='int'>1</span><span class='op'>..</span><span class='int'>3</span><span class='rparen'>)</span>
 <span class='comment'># =&gt; [#&lt;Ronin::Path:..&gt;, #&lt;Ronin::Path:../..&gt;,
 </span><span class='comment'>#&lt;Ronin::Path:../../..&gt;]</span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -477,7 +500,7 @@ the resulting path.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -494,7 +517,7 @@ the resulting path.</p>
     </li>
   
 </ul>
-<h3>Raises:</h3>
+<p class="tag_title">Raises:</p>
 <ul class="raise">
   
     <li>
@@ -573,10 +596,10 @@ the resulting path.</p>
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="join-instance_method">
+  <h3 class="signature first" id="join-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="Ronin::Path (class)">Path</a></span></tt>) <strong>join</strong>(*names) 
   
@@ -586,7 +609,9 @@ the resulting path.</p>
     <span class="names"><span id='/-instance_method'>/</span></span>
     </span>
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Joins directory names together with the path, but does not resolve
 the resulting path.</p>
@@ -597,15 +622,14 @@ the resulting path.</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'>
-</div></h4>
+      
       <pre class="example code"><span class='const'>Path</span><span class='period'>.</span><span class='id identifier rubyid_up'>up</span><span class='lparen'>(</span><span class='int'>7</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>etc/passwd</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
 <span class='comment'># =&gt; #&lt;Ronin::Path:../../../../../../../etc/passwd&gt;</span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -625,7 +649,7 @@ the resulting path.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -699,11 +723,11 @@ the resulting path.</p>
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sun Feb 12 14:10:38 2012 by 
+  Generated on Sat Jun 16 20:51:41 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.9.3).
+  0.8.2 (ruby-1.9.3).
 </div>
 
   </body>

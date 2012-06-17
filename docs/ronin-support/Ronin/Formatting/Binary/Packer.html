@@ -1,0 +1,636 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Ronin::Formatting::Binary::Packer
+  
+    &mdash; Ronin Support Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (P)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Formatting.html" title="Ronin::Formatting (module)">Formatting</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Binary.html" title="Ronin::Formatting::Binary (module)">Binary</a></span></span>
+     &raquo; 
+    <span class="title">Packer</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Ronin::Formatting::Binary::Packer
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../../../Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../../../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Ronin::Formatting::Binary::Packer</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/ronin/formatting/binary/packer.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Provides a translation layer between C types and Ruby <a href="http://rubydoc.info/stdlib/core/Array:pack">Array#pack</a>
+codes.</p>
+
+<h2 id="types">Types</h2>
+
+<ul>
+  <li><code>:uint8</code> (<code>C</code>) - unsigned 8-bit integer.</li>
+  <li><code>:uint16</code> (<code>S</code>) - unsigned 16-bit integer.</li>
+  <li><code>:uint32</code> (<code>L</code>) - unsigned 32-bit integer.</li>
+  <li><code>:uint64</code> (<code>Q</code>) - unsigned 64-bit integer.</li>
+  <li><code>:int8</code> (<code>c</code>) - signed 8-bit integer.</li>
+  <li><code>:int16</code> (<code>s</code>) - signed 16-bit integer.</li>
+  <li><code>:int32</code> (<code>l</code>) - signed 32-bit integer.</li>
+  <li><code>:int64</code> (<code>q</code>) - signed 64-bit integer.</li>
+  <li><code>:uint16_le</code> (<code>v</code>) - unsigned 16-bit integer, little endian.</li>
+  <li><code>:uint32_le</code> (<code>V</code>) - unsigned 32-bit integer, little endian.</li>
+  <li><code>:uint16_be</code> (<code>n</code>) - unsigned 16-bit integer, big endian.</li>
+  <li><code>:uint32_be</code> (<code>N</code>) - unsigned 32-bit integer, big endian.</li>
+  <li><code>:uchar</code> (<code>C</code>) - unsigned character.</li>
+  <li><code>:ushort</code> (<code>S!</code>) - unsigned short integer, native endian.</li>
+  <li><code>:uint</code> (<code>I!</code>) - unsigned integer, native endian.</li>
+  <li><code>:ulong</code> (<code>L!</code>) - unsigned long integer, native endian.</li>
+  <li><code>:ulong_long</code> (<code>Q</code>) - unsigned quad integer, native endian.</li>
+  <li><code>:char</code> (<code>c</code>) - signed character.</li>
+  <li><code>:short</code> (<code>s!</code>) - signed short integer, native endian.</li>
+  <li><code>:int</code> (<code>i!</code>) - signed integer, native endian.</li>
+  <li><code>:long</code> (<code>l!</code>) - signed long integer, native endian.</li>
+  <li><code>:long_long</code> (<code>q</code>) - signed quad integer, native endian.</li>
+  <li><code>:pointer</code> (<code>L!</code>) - pointer, native endian.</li>
+  <li><code>:wchar</code> (<code>U</code>) - UTF8 character.</li>
+  <li><code>:float</code> (<code>F</code>) - single-percision float, native format.</li>
+  <li><code>:double</code> (<code>D</code>) - double-percision float, native format.</li>
+  <li><code>:float_le</code> (<code>e</code>) - single-percision float, little endian.</li>
+  <li><code>:double_le</code> (<code>E</code>) - double-percision float, little endian.</li>
+  <li><code>:float_be</code> (<code>g</code>) - single-percision float, big endian.</li>
+  <li><code>:double_be</code> (<code>G</code>) - double-percision float, big endian.</li>
+  <li><code>:string</code> (<code>a</code>) - binary String, <code>\0</code> padded.</li>
+</ul>
+
+<h3 id="ruby-19-specific-types">Ruby 1.9 specific types</h3>
+
+<ul>
+  <li><code>:uint16_le</code> (<code>S&lt;</code>) - unsigned 16-bit integer, little endian.</li>
+  <li><code>:uint32_le</code> (<code>L&lt;</code>) - unsigned 32-bit integer, little endian.</li>
+  <li><code>:uint64_le</code> (<code>Q&lt;</code>) - unsigned 64-bit integer, little endian.</li>
+  <li><code>:int16_le</code> (<code>s&lt;</code>) - signed 16-bit integer, little endian.</li>
+  <li><code>:int32_le</code> (<code>l&lt;</code>) - signed 32-bit integer, little endian.</li>
+  <li><code>:int64_le</code> (<code>q&lt;</code>) - signed 64-bit integer, little endian.</li>
+  <li><code>:uint16_be</code> (<code>S&gt;</code>) - unsigned 16-bit integer, big endian.</li>
+  <li><code>:uint32_be</code> (<code>L&gt;</code>) - unsigned 32-bit integer, big endian.</li>
+  <li><code>:uint64_be</code> (<code>Q&gt;</code>) - unsigned 64-bit integer, big endian.</li>
+  <li><code>:int16_be</code> (<code>s&gt;</code>) - signed 16-bit integer, big endian.</li>
+  <li><code>:int32_be</code> (<code>l&gt;</code>) - signed 32-bit integer, big endian.</li>
+  <li><code>:int64_be</code> (<code>q&gt;</code>) - signed 64-bit integer, big endian.</li>
+  <li><code>:ushort_le</code> (<code>S&lt;</code>) - unsigned short integer, little endian.</li>
+  <li><code>:uint_le</code> (<code>I&lt;</code>) - unsigned integer, little endian.</li>
+  <li><code>:ulong_le</code> (<code>L&lt;</code>) - unsigned long integer, little endian.</li>
+  <li><code>:ulong_long_le</code> (<code>Q&lt;</code>) - unsigned quad integer, little endian.</li>
+  <li><code>:short_le</code> (<code>s&lt;</code>) - signed short integer, little endian.</li>
+  <li><code>:int_le</code> (<code>i&lt;</code>) - signed integer, little endian.</li>
+  <li><code>:long_le</code> (<code>l&lt;</code>) - signed long integer, little endian.</li>
+  <li><code>:long_long_le</code> (<code>q&lt;</code>) - signed quad integer, little endian.</li>
+  <li><code>:ushort_be</code> (<code>S&gt;</code>) - unsigned short integer, little endian.</li>
+  <li><code>:uint_be</code> (<code>I&gt;</code>) - unsigned integer, little endian.</li>
+  <li><code>:ulong_be</code> (<code>L&gt;</code>) - unsigned long integer, little endian.</li>
+  <li><code>:ulong_long_be</code> (<code>Q&gt;</code>) - unsigned quad integer, little endian.</li>
+  <li><code>:short_be</code> (<code>s&gt;</code>) - signed short integer, little endian.</li>
+  <li><code>:int_be</code> (<code>i&gt;</code>) - signed integer, little endian.</li>
+  <li><code>:long_be</code> (<code>l&gt;</code>) - signed long integer, little endian.</li>
+  <li><code>:long_long_be</code> (<code>q&gt;</code>) - signed quad integer, little endian.</li>
+</ul>
+
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="TYPES-constant" class="">TYPES =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Supported types and corresponding <code>Array#pack</code> codes.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='symbol'>:uint8</span>  <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>C</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:uint16</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>S</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:uint32</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>L</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:uint64</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Q</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:int8</span>   <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>c</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:int16</span>  <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>s</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:int32</span>  <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>l</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:int64</span>  <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>q</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:uint16_le</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>v</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:uint16_le</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>V</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:uint16_be</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>n</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:uint32_be</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>N</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:uchar</span>      <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>C</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:ushort</span>     <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>S!</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:uint</span>       <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>I!</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:ulong</span>      <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>L!</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:ulong_long</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Q</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:char</span>      <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>C</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:short</span>     <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>S!</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:int</span>       <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>I!</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:long</span>      <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>L!</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:long_long</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Q</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:pointer</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>L!</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:wchar</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>U</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:float</span>     <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>F</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:double</span>    <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>D</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:float_le</span>  <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>e</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:double_le</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>E</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:float_be</span>  <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>g</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:double_be</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>G</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+
+  <span class='symbol'>:string</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>a</span><span class='tstring_end'>'</span></span>
+<span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Packer) <strong>initialize</strong>(*template) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new Binary Packer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#pack-instance_method" title="#pack (instance method)">- (String) <strong>pack</strong>(*data) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Packs the data.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unpack-instance_method" title="#unpack (instance method)">- (Array) <strong>unpack</strong>(string) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Unpacks the string.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Ronin::Formatting::Binary::Packer (class)">Packer</a></span></tt>) <strong>initialize</strong>(*template) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong> 
+    <div class='inline'><p>The following types are <strong>not supported</strong> on Ruby 1.8:</p>
+
+<ul>
+  <li><code>:uint16_le</code></li>
+  <li><code>:uint32_le</code></li>
+  <li><code>:uint64_le</code></li>
+  <li><code>:int16_le</code></li>
+  <li><code>:int32_le</code></li>
+  <li><code>:int64_le</code></li>
+  <li><code>:uint16_be</code></li>
+  <li><code>:uint32_be</code></li>
+  <li><code>:uint64_be</code></li>
+  <li><code>:int16_be</code></li>
+  <li><code>:int32_be</code></li>
+  <li><code>:int64_be</code></li>
+  <li><code>:ushort_le</code></li>
+  <li><code>:uint_le</code></li>
+  <li><code>:ulong_le</code></li>
+  <li><code>:ulong_long_le</code></li>
+  <li><code>:short_le</code></li>
+  <li><code>:int_le</code></li>
+  <li><code>:long_le</code></li>
+  <li><code>:long_long_le</code></li>
+  <li><code>:ushort_be</code></li>
+  <li><code>:uint_be</code></li>
+  <li><code>:ulong_be</code></li>
+  <li><code>:ulong_long_be</code></li>
+  <li><code>:short_be</code></li>
+  <li><code>:int_be</code></li>
+  <li><code>:long_be</code></li>
+  <li><code>:long_long_be</code></li>
+</ul>
+</div>
+  </div>
+
+<p>Creates a new Binary Packer.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4><div class='inline'>
+</div></h4>
+      <pre class="example code"><span class='const'>Packer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:uint32</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:char</span><span class='comma'>,</span> <span class='int'>100</span><span class='rbracket'>]</span><span class='rparen'>)</span></pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>template</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Array.html" title="Array (class)">Array</a></span>&lt;type, (type, length)&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The template for the packer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A given type is not known.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/formatting/binary/packer.rb', line 228</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_template'>template</span><span class='rparen'>)</span>
+  <span class='ivar'>@template</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span>
+
+  <span class='id identifier rubyid_template'>template</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_format'>format</span><span class='op'>|</span>
+    <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_length'>length</span> <span class='op'>=</span> <span class='id identifier rubyid_format'>format</span>
+
+    <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id identifier rubyid_code'>code</span> <span class='op'>=</span> <span class='const'>TYPES</span><span class='lbracket'>[</span><span class='id identifier rubyid_type'>type</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_code'>code</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_content'> not supported</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='ivar'>@template</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_code'>code</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_length'>length</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="pack-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>) <strong>pack</strong>(*data) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Packs the data.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Array.html" title="Array (class)">Array</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The data to pack.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The packed data.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+251
+252
+253</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/formatting/binary/packer.rb', line 251</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='ivar'>@template</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="unpack-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../Array.html" title="Array (class)">Array</a></span></tt>) <strong>unpack</strong>(string) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Unpacks the string.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The raw String to unpack.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Array.html" title="Array (class)">Array</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The unpacked data.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+264
+265
+266</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/formatting/binary/packer.rb', line 264</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='ivar'>@template</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Mon Apr 30 19:00:32 2012 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.5 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

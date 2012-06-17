@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
   relpath = '';
-  if (relpath != '') relpath += '/';
+  framesUrl = "frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
 
@@ -26,158 +28,198 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <a href="_index.html">Index</a> &raquo; 
     <span class="title">File: ChangeLog</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
-    <div id="content"><div id='filecontents'><h3 id="section">1.1.0 / 2012-02-12</h3>
+
+    <div id="content"><div id='filecontents'><h3>1.2.0 / 2012-06-16</h3>
 
 <ul>
-  <li>Require parameters ~&gt; 0.4.</li>
-  <li>Require ronin-support ~&gt; 0.4.</li>
-  <li>Require ronin ~&gt; 1.4.</li>
-  <li>Added <span class='object_link'><a href="Ronin/Gen/SourceCodeGenerator.html#template-class_method" title="Ronin::Gen::SourceCodeGenerator.template (method)">Ronin::Gen::SourceCodeGenerator.template</a></span>.</li>
-  <li>Added <span class='object_link'><a href="Ronin/Gen/Generators/Repository.html#svn-instance_method" title="Ronin::Gen::Generators::Repository#svn (method)">Ronin::Gen::Generators::Repository#svn</a></span>.</li>
-  <li>Added <span class='object_link'><a href="Ronin/Gen/Generators/Repository.html#git-instance_method" title="Ronin::Gen::Generators::Repository#git (method)">Ronin::Gen::Generators::Repository#git</a></span>.</li>
-  <li>Added <span class='object_link'><a href="Ronin/Gen/Generators/Repository.html#hg-instance_method" title="Ronin::Gen::Generators::Repository#hg (method)">Ronin::Gen::Generators::Repository#hg</a></span>.</li>
-  <li>Renamed <code>Ronin::Gen::SourceCodeGenerator#no_edit</code> to
+<li>Require ronin-support ~&gt; 0.5.</li>
+<li>Require ronin ~&gt; 1.5.</li>
+<li>Added <span class='object_link'><a href="Ronin/Gen/Actions.html#print_command-instance_method" title="Ronin::Gen::Actions#print_command (method)">Ronin::Gen::Actions#print_command</a></span>.</li>
+<li>Added <code>ronin/spec/gen</code>.</li>
+<li>Added a man-page for <code>ronin-gen</code>.</li>
+<li>Moved all <code>FileUtils</code> methods into <span class='object_link'><a href="Ronin/Gen/Actions.html" title="Ronin::Gen::Actions (module)">Ronin::Gen::Actions</a></span>.</li>
+<li>Changed <span class='object_link'><a href="Ronin/Gen/Generator.html#generate-class_method" title="Ronin::Gen::Generator.generate (method)">Ronin::Gen::Generator.generate</a></span> to pass arbitrary arguments down to
+<span class='object_link'><a href="Ronin/Gen/Generator.html#initialize-instance_method" title="Ronin::Gen::Generator#initialize (method)">Ronin::Gen::Generator#initialize</a></span>.</li>
+<li>Overrode <span class='object_link'><a href="Ronin/Gen/FileGenerator.html#initialize-instance_method" title="Ronin::Gen::FileGenerator#initialize (method)">Ronin::Gen::FileGenerator#initialize</a></span> to accept a <code>path</code> argument.</li>
+<li>Overrode <span class='object_link'><a href="Ronin/Gen/DirGenerator.html#initialize-instance_method" title="Ronin::Gen::DirGenerator#initialize (method)">Ronin::Gen::DirGenerator#initialize</a></span> to accept a <code>path</code> argument.</li>
+<li><span class='object_link'><a href="Ronin/Gen/FileGenerator.html#path-instance_method" title="Ronin::Gen::FileGenerator#path (method)">Ronin::Gen::FileGenerator#path</a></span> is now an instance variable.</li>
+<li><span class='object_link'><a href="Ronin/Gen/DirGenerator.html#path-instance_method" title="Ronin::Gen::DirGenerator#path (method)">Ronin::Gen::DirGenerator#path</a></span> is now an instance variable.</li>
+<li>Improved the <code>ronin-gen</code> command:
+
+<ul>
+<li>Properly set the <code>path</code> of File/Dir generators.</li>
+<li>Rescue and print exceptions.</li>
+</ul></li>
+<li>Include <a href="https://github.com/postmodern/rubygems-tasks#readme">rubygems-tasks</a> in generated ronin libraries.</li>
+<li>Simplified the <code>name.gemspec</code> template used by the
+<span class='object_link'><a href="Ronin/Gen/Generators/Library.html" title="Ronin::Gen::Generators::Library (class)">library</a></span> generator.</li>
+<li>Fixed typos in the <code>Gemfile</code> template used by the
+<span class='object_link'><a href="Ronin/Gen/Generators/Library.html" title="Ronin::Gen::Generators::Library (class)">library</a></span> generator.</li>
+</ul>
+
+<h3>1.1.1 / 2012-03-03</h3>
+
+<ul>
+<li>Fixed multiple typos in the Library and Repository templates.</li>
+<li>Fixed a template lookup bug in <code>Ronin::Gen::Generator#template</code>.</li>
+</ul>
+
+<h3>1.1.0 / 2012-02-12</h3>
+
+<ul>
+<li>Require parameters ~&gt; 0.4.</li>
+<li>Require ronin-support ~&gt; 0.4.</li>
+<li>Require ronin ~&gt; 1.4.</li>
+<li>Added <span class='object_link'><a href="Ronin/Gen/SourceCodeGenerator.html#template-class_method" title="Ronin::Gen::SourceCodeGenerator.template (method)">Ronin::Gen::SourceCodeGenerator.template</a></span>.</li>
+<li>Added <span class='object_link'><a href="Ronin/Gen/Generators/Repository.html#svn-instance_method" title="Ronin::Gen::Generators::Repository#svn (method)">Ronin::Gen::Generators::Repository#svn</a></span>.</li>
+<li>Added <span class='object_link'><a href="Ronin/Gen/Generators/Repository.html#git-instance_method" title="Ronin::Gen::Generators::Repository#git (method)">Ronin::Gen::Generators::Repository#git</a></span>.</li>
+<li>Added <span class='object_link'><a href="Ronin/Gen/Generators/Repository.html#hg-instance_method" title="Ronin::Gen::Generators::Repository#hg (method)">Ronin::Gen::Generators::Repository#hg</a></span>.</li>
+<li>Renamed <code>Ronin::Gen::SourceCodeGenerator#no_edit</code> to
 <span class='object_link'><a href="Ronin/Gen/SourceCodeGenerator.html#edit-instance_method" title="Ronin::Gen::SourceCodeGenerator#edit (method)">Ronin::Gen::SourceCodeGenerator#edit</a></span>.</li>
-  <li>Renamed <code>Ronin::Gen::Generators::Library#no_git</code> to
+<li>Renamed <code>Ronin::Gen::Generators::Library#no_git</code> to
 <span class='object_link'><a href="Ronin/Gen/Generators/Library.html#git-instance_method" title="Ronin::Gen::Generators::Library#git (method)">Ronin::Gen::Generators::Library#git</a></span>.</li>
-  <li>Removed thor from the dependencies.</li>
-  <li>Refactored <span class='object_link'><a href="Ronin/Gen/Generator.html" title="Ronin::Gen::Generator (class)">Ronin::Gen::Generator</a></span> to use
+<li>Removed thor from the dependencies.</li>
+<li>Refactored <span class='object_link'><a href="Ronin/Gen/Generator.html" title="Ronin::Gen::Generator (class)">Ronin::Gen::Generator</a></span> to use
 <a href="http://github.com/postmodern/parameters">Parameters</a> and
 <a href="http://rubydoc.info/stdlib/fileutils/1.9.2/file/README.rdoc">FileUtils</a>.</li>
-  <li>Refactored the <code>ronin gen</code> command to use
+<li>Refactored the <code>ronin gen</code> command to use
 <a href="http://rubydoc.info/gems/parameters/0.4.0/Parameters/Options">Parameters::Options</a>.</li>
 </ul>
 
-<h3 id="section-1">1.0.1 / 2011-07-04</h3>
+<h3>1.0.1 / 2011-07-04</h3>
 
 <ul>
-  <li>Require data_paths ~&gt; 0.3.</li>
-  <li>Require ronin-support ~&gt; 0.1.</li>
-  <li>Require ronin ~&gt; 1.0.</li>
-  <li>Include <code>Ronin::AutoLoad</code> into <span class='object_link'><a href="Ronin/Gen/Generators.html" title="Ronin::Gen::Generators (module)">Ronin::Gen::Generators</a></span>.</li>
-  <li><span class='object_link'><a href="Ronin/Gen/Generators/Library.html" title="Ronin::Gen::Generators::Library (class)">Ronin::Gen::Generators::Library</a></span>:
-    <ul>
-      <li>Ensure that <code>git</code> commands are executed within the destination
+<li>Require data_paths ~&gt; 0.3.</li>
+<li>Require ronin-support ~&gt; 0.1.</li>
+<li>Require ronin ~&gt; 1.0.</li>
+<li>Include <code>Ronin::AutoLoad</code> into <span class='object_link'><a href="Ronin/Gen/Generators.html" title="Ronin::Gen::Generators (module)">Ronin::Gen::Generators</a></span>.</li>
+<li><span class='object_link'><a href="Ronin/Gen/Generators/Library.html" title="Ronin::Gen::Generators::Library (class)">Ronin::Gen::Generators::Library</a></span>:
+
+<ul>
+<li>Ensure that <code>git</code> commands are executed within the destination
 directory.</li>
-      <li>Call <code>git add .</code> then <code>git commit</code>.</li>
-      <li>Generate a pure-ruby <code>.gemspec</code> file which loads the <code>gemspec.yml</code> file.</li>
-      <li>Generate libraries that require ronin ~&gt; 1.0 and ronin-gen ~&gt; 1.0.</li>
-    </ul>
-  </li>
-  <li><span class='object_link'><a href="Ronin/Gen/Generators/Repository.html" title="Ronin::Gen::Generators::Repository (class)">Ronin::Gen::Generators::Repository</a></span>:
-    <ul>
-      <li>Create the new <code>scripts/</code> directory.</li>
-    </ul>
-  </li>
+<li>Call <code>git add .</code> then <code>git commit</code>.</li>
+<li>Generate a pure-ruby <code>.gemspec</code> file which loads the <code>gemspec.yml</code> file.</li>
+<li>Generate libraries that require ronin ~&gt; 1.0 and ronin-gen ~&gt; 1.0.</li>
+</ul></li>
+<li><span class='object_link'><a href="Ronin/Gen/Generators/Repository.html" title="Ronin::Gen::Generators::Repository (class)">Ronin::Gen::Generators::Repository</a></span>:
+
+<ul>
+<li>Create the new <code>scripts/</code> directory.</li>
+</ul></li>
 </ul>
 
-<h3 id="section-2">1.0.0 / 2011-03-25</h3>
+<h3>1.0.0 / 2011-03-25</h3>
 
 <ul>
-  <li>Upgraded to the GPL-3 license.</li>
-  <li>Require open_namespace ~&gt; 0.3.</li>
-  <li>Require data_paths ~&gt; 0.2, &gt;= 0.2.1.</li>
-  <li>Require thor ~&gt; 0.14.3.</li>
-  <li>Require ronin-support ~&gt; 0.1.0.</li>
-  <li>Require ronin ~&gt; 1.0.0.</li>
-  <li>Added <span class='object_link'><a href="Ronin/Gen/SourceCodeGenerator.html" title="Ronin::Gen::SourceCodeGenerator (class)">Ronin::Gen::SourceCodeGenerator</a></span>.</li>
-  <li>Added <span class='object_link'><a href="Ronin/Gen/RubyGenerator.html" title="Ronin::Gen::RubyGenerator (class)">Ronin::Gen::RubyGenerator</a></span>.</li>
-  <li>Switched from <a href="https://github.com/technicalpickles/jeweler">Jeweler</a>
+<li>Upgraded to the GPL-3 license.</li>
+<li>Require open_namespace ~&gt; 0.3.</li>
+<li>Require data_paths ~&gt; 0.2, &gt;= 0.2.1.</li>
+<li>Require thor ~&gt; 0.14.3.</li>
+<li>Require ronin-support ~&gt; 0.1.0.</li>
+<li>Require ronin ~&gt; 1.0.0.</li>
+<li>Added <span class='object_link'><a href="Ronin/Gen/SourceCodeGenerator.html" title="Ronin::Gen::SourceCodeGenerator (class)">Ronin::Gen::SourceCodeGenerator</a></span>.</li>
+<li>Added <span class='object_link'><a href="Ronin/Gen/RubyGenerator.html" title="Ronin::Gen::RubyGenerator (class)">Ronin::Gen::RubyGenerator</a></span>.</li>
+<li>Switched from <a href="https://github.com/technicalpickles/jeweler">Jeweler</a>
 to <a href="http://github.com/ruby-ore/ore">Ore</a> and <a href="http://gembundler.com">Bundler</a>.</li>
-  <li>Renamed <code>Ronin::Gen::Generators::Overlay</code> to
+<li>Renamed <code>Ronin::Gen::Generators::Overlay</code> to
 <span class='object_link'><a href="Ronin/Gen/Generators/Repository.html" title="Ronin::Gen::Generators::Repository (class)">Ronin::Gen::Generators::Repository</a></span>.</li>
-  <li>Changed <span class='object_link'><a href="Ronin/Gen/Generators/Library.html" title="Ronin::Gen::Generators::Library (class)">Ronin::Gen::Generators::Library</a></span> to generate libraries managed
+<li>Changed <span class='object_link'><a href="Ronin/Gen/Generators/Library.html" title="Ronin::Gen::Generators::Library (class)">Ronin::Gen::Generators::Library</a></span> to generate libraries managed
 by Ore and Bundler.</li>
-  <li><span class='object_link'><a href="Ronin/Gen/Generators/Library.html" title="Ronin::Gen::Generators::Library (class)">Ronin::Gen::Generators::Library</a></span> now initializes the new library as a
+<li><span class='object_link'><a href="Ronin/Gen/Generators/Library.html" title="Ronin::Gen::Generators::Library (class)">Ronin::Gen::Generators::Library</a></span> now initializes the new library as a
 Git repository.</li>
 </ul>
 
-<h3 id="section-3">0.2.0 / 2009-09-24</h3>
+<h3>0.2.0 / 2009-09-24</h3>
 
 <ul>
-  <li>Require ronin &gt;= 0.3.0.</li>
-  <li>Require rspec &gt;= 1.2.8.</li>
-  <li>Require yard &gt;= 0.2.3.5.</li>
-  <li>Updated the project summary and 3-point description of Ronin Gen.</li>
-  <li>Moved to YARD based documentation.</li>
-  <li>Refactored <code>Ronin::Generators::Generator</code> to inherit from Thor.</li>
-  <li>Refactored <code>Ronin::Generators::DirGenerator</code>.</li>
-  <li>Refactored <code>Ronin::Generators::Platform::Extension</code>.</li>
-  <li>Refactored <code>Ronin::Generators::Platform::Overlay</code>.</li>
-  <li>Rewrote the <code>Ronin::UI::CommandLine</code> generator commands to simply inherit
+<li>Require ronin &gt;= 0.3.0.</li>
+<li>Require rspec &gt;= 1.2.8.</li>
+<li>Require yard &gt;= 0.2.3.5.</li>
+<li>Updated the project summary and 3-point description of Ronin Gen.</li>
+<li>Moved to YARD based documentation.</li>
+<li>Refactored <code>Ronin::Generators::Generator</code> to inherit from Thor.</li>
+<li>Refactored <code>Ronin::Generators::DirGenerator</code>.</li>
+<li>Refactored <code>Ronin::Generators::Platform::Extension</code>.</li>
+<li>Refactored <code>Ronin::Generators::Platform::Overlay</code>.</li>
+<li>Rewrote the <code>Ronin::UI::CommandLine</code> generator commands to simply inherit
 from the new Thor based generator classes within Ronin::Generators.</li>
 </ul>
 
-<h3 id="section-4">0.1.1 / 2009-07-02</h3>
+<h3>0.1.1 / 2009-07-02</h3>
 
 <ul>
-  <li>Use hoe &gt;= 2.0.0.</li>
-  <li>Require ronin &gt;= 0.2.4.</li>
-  <li>Added <code>Ronin::Generators::Generator#touch</code>.</li>
-  <li>Added <code>Ronin::UI::CommandLine::Commands::Gen</code> for listing and
+<li>Use hoe &gt;= 2.0.0.</li>
+<li>Require ronin &gt;= 0.2.4.</li>
+<li>Added <code>Ronin::Generators::Generator#touch</code>.</li>
+<li>Added <code>Ronin::UI::CommandLine::Commands::Gen</code> for listing and
 invoking generators.</li>
-  <li>Added more defaults to <code>Ronin::Generators::Platform::Overlay</code>:
-    <ul>
-      <li>Default maintainer.</li>
-      <li>Default license.</li>
-      <li>Default description.</li>
-    </ul>
-  </li>
-  <li>Added the <code>--version</code> option to the <code>ronin-gen</code> command.</li>
-  <li>Removed the <code>--list</code> option from the <code>ronin-gen</code> command.</li>
-  <li>Make sure <code>Ronin::Generators::Platform::Overlay</code> creates an
+<li>Added more defaults to <code>Ronin::Generators::Platform::Overlay</code>:
+
+<ul>
+<li>Default maintainer.</li>
+<li>Default license.</li>
+<li>Default description.</li>
+</ul></li>
+<li>Added the <code>--version</code> option to the <code>ronin-gen</code> command.</li>
+<li>Removed the <code>--list</code> option from the <code>ronin-gen</code> command.</li>
+<li>Make sure <code>Ronin::Generators::Platform::Overlay</code> creates an
 empty lib/init.rb file.</li>
-  <li>Fixed a bug in the <code>ronin-gen</code> command, where generator names
+<li>Fixed a bug in the <code>ronin-gen</code> command, where generator names
 were not being sanitized.</li>
 </ul>
 
-<h3 id="section-5">0.1.0 / 2009-03-27</h3>
+<h3>0.1.0 / 2009-03-27</h3>
 
 <ul>
-  <li>Initial release.
-    <ul>
-      <li>Provides the <code>Ronin::Generators::Platform::Overlay</code> generator.</li>
-      <li>Provides the <code>Ronin::Generators::Platform::Extension</code> generator.</li>
-      <li>Provides sub-commands for invoking the Overlay and Extension generator.</li>
-      <li>Provides the <code>ronin-gen</code> sub-command to invoke other generator
+<li>Initial release.
+
+<ul>
+<li>Provides the <code>Ronin::Generators::Platform::Overlay</code> generator.</li>
+<li>Provides the <code>Ronin::Generators::Platform::Extension</code> generator.</li>
+<li>Provides sub-commands for invoking the Overlay and Extension generator.</li>
+<li>Provides the <code>ronin-gen</code> sub-command to invoke other generator
 sub-commands.</li>
-    </ul>
-  </li>
+</ul></li>
 </ul>
 </div></div>
-    
+
     <div id="footer">
-  Generated on Sun Feb 12 14:15:29 2012 by 
+  Generated on Sat Jun 16 20:52:07 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.5 (ruby-1.9.3).
+  0.8.2.1 (ruby-1.9.3).
 </div>
 
   </body>

@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '../..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../';
+  framesUrl = "../../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../../_index.html">Index (H)</a> &raquo; 
+    <a href="../../_index.html">Index (H)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Network.html" title="Ronin::Network (module)">Network</a></span></span>
      &raquo; 
     <span class="title">HTTP</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Module: Ronin::Network::HTTP
   
   
@@ -71,7 +78,7 @@
   
   
     <dt class="r1">Included in:</dt>
-    <dd class="r1"><span class='object_link'><a href="../../Net.html" title="Net (module)">Net</a></span>, <span class='object_link'><a href="Mixins/HTTP.html" title="Ronin::Network::Mixins::HTTP (module)">Mixins::HTTP</a></span>, <span class='object_link'><a href="../Support.html" title="Ronin::Support (module)">Support</a></span></dd>
+    <dd class="r1"><span class='object_link'><a href="../../Net.html" title="Net (module)">Net</a></span>, <span class='object_link'><a href="Mixins/HTTP.html" title="Ronin::Network::Mixins::HTTP (module)">Mixins::HTTP</a></span>, <span class='object_link'><a href="../Support.html" title="Ronin::Support (module)">Support</a></span>, <span class='object_link'><a href="../../URI/HTTP.html" title="URI::HTTP (class)">URI::HTTP</a></span></dd>
     
   
   
@@ -95,14 +102,16 @@
 
 </div><h2>Defined Under Namespace</h2>
 <p class="children">
-   
+  
     
-   
+  
     
       <strong class="classes">Classes:</strong> <span class='object_link'><a href="HTTP/Proxy.html" title="Ronin::Network::HTTP::Proxy (class)">Proxy</a></span>, <span class='object_link'><a href="HTTP/UnknownRequest.html" title="Ronin::Network::HTTP::UnknownRequest (class)">UnknownRequest</a></span>
     
   
 </p>
+
+
 
 
 
@@ -129,7 +138,8 @@
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Expands the given HTTP options.</p>
@@ -151,7 +161,8 @@
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Expands the URL into options.</p>
@@ -173,7 +184,8 @@
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Converts an underscored, dashed, lowercase or uppercase HTTP header
@@ -196,7 +208,8 @@ name to the standard camel-case HTTP header name.</p>
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Converts underscored, dashed, lowercase and uppercase HTTP headers
@@ -214,6 +227,7 @@ to standard camel-cased HTTP headers.</p>
 
     
   </span>
+  
   
   
   
@@ -242,6 +256,7 @@ to standard camel-cased HTTP headers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Sets the Ronin HTTP proxy to use.</p>
@@ -263,7 +278,8 @@ to standard camel-cased HTTP headers.</p>
   
   
   
-  <span class="private note title">Private</span>
+  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Creates a specific type of HTTP request object.</p>
@@ -286,6 +302,7 @@ to standard camel-cased HTTP headers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>The default Ronin HTTP User-Agent string.</p>
@@ -302,6 +319,7 @@ to standard camel-cased HTTP headers.</p>
 
     
   </span>
+  
   
   
   
@@ -339,6 +357,7 @@ to standard camel-cased HTTP headers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Starts a HTTP connection with the server.</p>
@@ -355,6 +374,7 @@ to standard camel-cased HTTP headers.</p>
 
     
   </span>
+  
   
   
   
@@ -383,6 +403,7 @@ to standard camel-cased HTTP headers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Performs an HTTP Delete request.</p>
@@ -399,6 +420,7 @@ to standard camel-cased HTTP headers.</p>
 
     
   </span>
+  
   
   
   
@@ -427,6 +449,7 @@ to standard camel-cased HTTP headers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Performs an HTTP Get request and returns the Respond Body.</p>
@@ -443,6 +466,7 @@ to standard camel-cased HTTP headers.</p>
 
     
   </span>
+  
   
   
   
@@ -471,6 +495,7 @@ to standard camel-cased HTTP headers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Performs an HTTP Head request.</p>
@@ -487,6 +512,7 @@ to standard camel-cased HTTP headers.</p>
 
     
   </span>
+  
   
   
   
@@ -515,6 +541,7 @@ to standard camel-cased HTTP headers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Performs an HTTP Mkcol request.</p>
@@ -531,6 +558,7 @@ to standard camel-cased HTTP headers.</p>
 
     
   </span>
+  
   
   
   
@@ -559,6 +587,7 @@ to standard camel-cased HTTP headers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Checks if the response has an HTTP OK status code.</p>
@@ -575,6 +604,7 @@ to standard camel-cased HTTP headers.</p>
 
     
   </span>
+  
   
   
   
@@ -603,6 +633,7 @@ to standard camel-cased HTTP headers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Performs an HTTP Post request.</p>
@@ -619,6 +650,7 @@ to standard camel-cased HTTP headers.</p>
 
     
   </span>
+  
   
   
   
@@ -647,6 +679,7 @@ to standard camel-cased HTTP headers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Performs an HTTP Post request and returns the Response Headers.</p>
@@ -663,6 +696,7 @@ to standard camel-cased HTTP headers.</p>
 
     
   </span>
+  
   
   
   
@@ -691,6 +725,7 @@ to standard camel-cased HTTP headers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Performs an HTTP Propfind request.</p>
@@ -707,6 +742,7 @@ to standard camel-cased HTTP headers.</p>
 
     
   </span>
+  
   
   
   
@@ -735,6 +771,7 @@ to standard camel-cased HTTP headers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Performs an HTTP PUT request.</p>
@@ -751,6 +788,7 @@ to standard camel-cased HTTP headers.</p>
 
     
   </span>
+  
   
   
   
@@ -779,6 +817,7 @@ to standard camel-cased HTTP headers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Sends a HTTP Head request and returns the HTTP Server header.</p>
@@ -795,6 +834,7 @@ to standard camel-cased HTTP headers.</p>
 
     
   </span>
+  
   
   
   
@@ -823,6 +863,7 @@ to standard camel-cased HTTP headers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Returns the Status Code of the Response.</p>
@@ -839,6 +880,7 @@ to standard camel-cased HTTP headers.</p>
 
     
   </span>
+  
   
   
   
@@ -867,6 +909,7 @@ to standard camel-cased HTTP headers.</p>
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Performs an HTTP Unlock request.</p>
@@ -882,19 +925,21 @@ to standard camel-cased HTTP headers.</p>
 
   <div id="class_method_details" class="method_details_list">
     <h2>Class Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="expand_options-class_method">
+  <h3 class="signature first" id="expand_options-class_method">
   
     + (<tt>Hash</tt>) <strong>expand_options</strong>(options = {}) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Expands the given HTTP options.</p>
@@ -903,7 +948,7 @@ to standard camel-cased HTTP headers.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -928,7 +973,7 @@ to standard camel-cased HTTP headers.</p>
   
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -937,8 +982,10 @@ to standard camel-cased HTTP headers.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The URL to request.</p>
+          
+            &mdash; <div class='inline'><p>The URL to request.</p>
 </div>
+          
         </li>
       
         <li>
@@ -947,8 +994,10 @@ to standard camel-cased HTTP headers.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The host to connect to.</p>
+          
+            &mdash; <div class='inline'><p>The host to connect to.</p>
 </div>
+          
         </li>
       
         <li>
@@ -957,11 +1006,13 @@ to standard camel-cased HTTP headers.</p>
           <span class="default">
             
               &mdash; default:
-              <tt>::Net::HTTP.default_port</tt>
+              <tt>Net::HTTP.default_port</tt>
             
           </span>
-          &mdash; <div class='inline'><p>The port to connect to.</p>
+          
+            &mdash; <div class='inline'><p>The port to connect to.</p>
 </div>
+          
         </li>
       
         <li>
@@ -970,8 +1021,10 @@ to standard camel-cased HTTP headers.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The user to authenticate as.</p>
+          
+            &mdash; <div class='inline'><p>The user to authenticate as.</p>
 </div>
+          
         </li>
       
         <li>
@@ -980,8 +1033,10 @@ to standard camel-cased HTTP headers.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The password to authenticate with.</p>
+          
+            &mdash; <div class='inline'><p>The password to authenticate with.</p>
 </div>
+          
         </li>
       
         <li>
@@ -993,8 +1048,10 @@ to standard camel-cased HTTP headers.</p>
               <tt>'/'</tt>
             
           </span>
-          &mdash; <div class='inline'><p>The path to request.</p>
+          
+            &mdash; <div class='inline'><p>The path to request.</p>
 </div>
+          
         </li>
       
         <li>
@@ -1006,14 +1063,16 @@ to standard camel-cased HTTP headers.</p>
               <tt>HTTP.proxy</tt>
             
           </span>
-          &mdash; <div class='inline'><p>The Proxy information.</p>
+          
+            &mdash; <div class='inline'><p>The Proxy information.</p>
 </div>
+          
         </li>
       
     </ul>
   
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1037,7 +1096,6 @@ to standard camel-cased HTTP headers.</p>
       <pre class="lines">
 
 
-177
 178
 179
 180
@@ -1058,12 +1116,13 @@ to standard camel-cased HTTP headers.</p>
 195
 196
 197
-198</pre>
+198
+199</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 177</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 178</span>
 
-<span class='kw'>def</span> <span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_expand_options'>expand_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_expand_options'>expand_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_new_options'>new_options</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
 
   <span class='id identifier rubyid_new_options'>new_options</span><span class='lbracket'>[</span><span class='symbol'>:port</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='const'>Net</span><span class='op'>::</span><span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_default_port'>default_port</span>
@@ -1091,16 +1150,18 @@ to standard camel-cased HTTP headers.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="expand_url-class_method">
+  <h3 class="signature " id="expand_url-class_method">
   
     + (<tt>Hash{Symbol =&gt; <span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span>}</tt>) <strong>expand_url</strong>(url) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Expands the URL into options.</p>
@@ -1109,7 +1170,7 @@ to standard camel-cased HTTP headers.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1129,7 +1190,7 @@ to standard camel-cased HTTP headers.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1153,7 +1214,6 @@ to standard camel-cased HTTP headers.</p>
       <pre class="lines">
 
 
-115
 116
 117
 118
@@ -1181,12 +1241,13 @@ to standard camel-cased HTTP headers.</p>
 140
 141
 142
-143</pre>
+143
+144</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 115</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 116</span>
 
-<span class='kw'>def</span> <span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_expand_url'>expand_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_expand_url'>expand_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_new_options'>new_options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
 
   <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
@@ -1211,7 +1272,7 @@ to standard camel-cased HTTP headers.</p>
                        <span class='kw'>else</span>
                          <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/</span><span class='tstring_end'>'</span></span>
                        <span class='kw'>end</span>
-  <span class='id identifier rubyid_new_options'>new_options</span><span class='lbracket'>[</span><span class='symbol'>:path</span><span class='rbracket'>]</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>?</span><span class='embexpr_beg'>#{</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_query'>query</span>
+  <span class='id identifier rubyid_new_options'>new_options</span><span class='lbracket'>[</span><span class='symbol'>:path</span><span class='rbracket'>]</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>?</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_query'>query</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_query'>query</span>
 
   <span class='kw'>return</span> <span class='id identifier rubyid_new_options'>new_options</span>
 <span class='kw'>end</span></pre>
@@ -1221,16 +1282,18 @@ to standard camel-cased HTTP headers.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="header_name-class_method">
+  <h3 class="signature " id="header_name-class_method">
   
     + (<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>) <strong>header_name</strong>(name) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Converts an underscored, dashed, lowercase or uppercase HTTP header
@@ -1240,7 +1303,7 @@ name to the standard camel-case HTTP header name.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1260,7 +1323,7 @@ name to the standard camel-case HTTP header name.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1284,17 +1347,17 @@ name to the standard camel-case HTTP header name.</p>
       <pre class="lines">
 
 
-212
 213
 214
 215
 216
-217</pre>
+217
+218</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 212</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 213</span>
 
-<span class='kw'>def</span> <span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_header_name'>header_name</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_header_name'>header_name</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_words'>words</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[\s+_-]</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_words'>words</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_word'>word</span><span class='op'>|</span> <span class='id identifier rubyid_word'>word</span><span class='period'>.</span><span class='id identifier rubyid_capitalize!'>capitalize!</span> <span class='rbrace'>}</span>
@@ -1306,16 +1369,18 @@ name to the standard camel-case HTTP header name.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="headers-class_method">
+  <h3 class="signature " id="headers-class_method">
   
     + (<tt>Hash</tt>) <strong>headers</strong>(options = {}) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Converts underscored, dashed, lowercase and uppercase HTTP headers
@@ -1325,7 +1390,7 @@ to standard camel-cased HTTP headers.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1347,7 +1412,7 @@ to standard camel-cased HTTP headers.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1371,7 +1436,6 @@ to standard camel-cased HTTP headers.</p>
       <pre class="lines">
 
 
-231
 232
 233
 234
@@ -1385,16 +1449,17 @@ to standard camel-cased HTTP headers.</p>
 242
 243
 244
-245</pre>
+245
+246</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 231</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 232</span>
 
-<span class='kw'>def</span> <span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
 
-  <span class='kw'>if</span> <span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_user_agent'>user_agent</span>
-    <span class='id identifier rubyid_headers'>headers</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>User-Agent</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_user_agent'>user_agent</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_user_agent'>user_agent</span>
+    <span class='id identifier rubyid_headers'>headers</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>User-Agent</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_user_agent'>user_agent</span>
   <span class='kw'>end</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span>
@@ -1411,17 +1476,19 @@ to standard camel-cased HTTP headers.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="proxy-class_method">
+  <h3 class="signature " id="proxy-class_method">
   
     + (<tt><span class='object_link'><a href="HTTP/Proxy.html" title="Ronin::Network::HTTP::Proxy (class)">Proxy</a></span></tt>) <strong>proxy</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     
   <div class="note notetag">
-    <strong>Note:</strong> 
+    <strong>Note:</strong>
     <div class='inline'><p>If the <code>HTTP_PROXY</code> environment variable is specified, it will
 be used as the default value.</p>
 </div>
@@ -1434,7 +1501,7 @@ be used as the default value.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1452,7 +1519,7 @@ be used as the default value.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
       <li>Proxy.new</li>
@@ -1467,18 +1534,18 @@ be used as the default value.</p>
       <pre class="lines">
 
 
-53
 54
 55
 56
 57
 58
-59</pre>
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 54</span>
 
-<span class='kw'>def</span> <span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span>
   <span class='ivar'>@proxy</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>HTTP_PROXY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
                <span class='const'>Proxy</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>HTTP_PROXY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
              <span class='kw'>else</span>
@@ -1491,13 +1558,15 @@ be used as the default value.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="proxy=-class_method">
+  <h3 class="signature " id="proxy=-class_method">
   
     + (<tt><span class='object_link'><a href="HTTP/Proxy.html" title="Ronin::Network::HTTP::Proxy (class)">Proxy</a></span></tt>) <strong>proxy=</strong>(new_proxy) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Sets the Ronin HTTP proxy to use.</p>
 
@@ -1505,7 +1574,7 @@ be used as the default value.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1525,7 +1594,7 @@ be used as the default value.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1542,7 +1611,7 @@ be used as the default value.</p>
     </li>
   
 </ul>
-<h3>Raises:</h3>
+<p class="tag_title">Raises:</p>
 <ul class="raise">
   
     <li>
@@ -1567,14 +1636,14 @@ be used as the default value.</p>
       <pre class="lines">
 
 
-76
 77
-78</pre>
+78
+79</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 77</span>
 
-<span class='kw'>def</span> <span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_proxy='>proxy=</span><span class='lparen'>(</span><span class='id identifier rubyid_new_proxy'>new_proxy</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy='>proxy=</span><span class='lparen'>(</span><span class='id identifier rubyid_new_proxy'>new_proxy</span><span class='rparen'>)</span>
   <span class='ivar'>@proxy</span> <span class='op'>=</span> <span class='const'>Proxy</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_new_proxy'>new_proxy</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1583,16 +1652,18 @@ be used as the default value.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="request-class_method">
+  <h3 class="signature " id="request-class_method">
   
     + (<tt>HTTP::Request</tt>) <strong>request</strong>(options = {}) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p class="note private">
-  <strong>This method is part of a private API.</strong> 
+  <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
 <p>Creates a specific type of HTTP request object.</p>
@@ -1601,7 +1672,7 @@ be used as the default value.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1626,7 +1697,7 @@ be used as the default value.</p>
   
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -1635,8 +1706,10 @@ be used as the default value.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The HTTP method to use for the request.</p>
+          
+            &mdash; <div class='inline'><p>The HTTP method to use for the request.</p>
 </div>
+          
         </li>
       
         <li>
@@ -1648,8 +1721,10 @@ be used as the default value.</p>
               <tt>'/'</tt>
             
           </span>
-          &mdash; <div class='inline'><p>The path to request.</p>
+          
+            &mdash; <div class='inline'><p>The path to request.</p>
 </div>
+          
         </li>
       
         <li>
@@ -1658,8 +1733,10 @@ be used as the default value.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The query-string to append to the request path.</p>
+          
+            &mdash; <div class='inline'><p>The query-string to append to the request path.</p>
 </div>
+          
         </li>
       
         <li>
@@ -1668,8 +1745,10 @@ be used as the default value.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The query-params to append to the request path.</p>
+          
+            &mdash; <div class='inline'><p>The query-params to append to the request path.</p>
 </div>
+          
         </li>
       
         <li>
@@ -1678,8 +1757,10 @@ be used as the default value.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The body of the request.</p>
+          
+            &mdash; <div class='inline'><p>The body of the request.</p>
 </div>
+          
         </li>
       
         <li>
@@ -1688,8 +1769,10 @@ be used as the default value.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The form data that may be sent in the body of the request.</p>
+          
+            &mdash; <div class='inline'><p>The form data that may be sent in the body of the request.</p>
 </div>
+          
         </li>
       
         <li>
@@ -1698,8 +1781,10 @@ be used as the default value.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The user to authenticate as.</p>
+          
+            &mdash; <div class='inline'><p>The user to authenticate as.</p>
 </div>
+          
         </li>
       
         <li>
@@ -1708,8 +1793,10 @@ be used as the default value.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The password to authenticate with.</p>
+          
+            &mdash; <div class='inline'><p>The password to authenticate with.</p>
 </div>
+          
         </li>
       
         <li>
@@ -1718,14 +1805,16 @@ be used as the default value.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>Additional HTTP headers to use for the request.</p>
+          
+            &mdash; <div class='inline'><p>Additional HTTP headers to use for the request.</p>
 </div>
+          
         </li>
       
     </ul>
   
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1742,7 +1831,7 @@ be used as the default value.</p>
     </li>
   
 </ul>
-<h3>Raises:</h3>
+<p class="tag_title">Raises:</p>
 <ul class="raise">
   
     <li>
@@ -1774,7 +1863,7 @@ class.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
       <li><span class='object_link'><a href="#expand_options-class_method" title="Ronin::Network::HTTP.expand_options (method)">expand_options</a></span></li>
@@ -1787,7 +1876,6 @@ class.</p>
       <pre class="lines">
 
 
-294
 295
 296
 297
@@ -1835,12 +1923,13 @@ class.</p>
 339
 340
 341
-342</pre>
+342
+343</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 294</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 295</span>
 
-<span class='kw'>def</span> <span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:method</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>the :method option must be specified</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
@@ -1851,7 +1940,7 @@ class.</p>
     <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>UnknownRequest</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown HTTP request type </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:headers</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='id identifier rubyid_headers'>headers</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:headers</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_path'>path</span>    <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:path</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_query'>query</span>   <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:query</span><span class='rbracket'>]</span>
               <span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:query</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -1895,13 +1984,15 @@ class.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="user_agent-class_method">
+  <h3 class="signature " id="user_agent-class_method">
   
     + (<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt><sup>?</sup>) <strong>user_agent</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The default Ronin HTTP User-Agent string.</p>
 
@@ -1910,7 +2001,7 @@ class.</p>
 </div>
 <div class="tags">
   
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -1934,14 +2025,14 @@ class.</p>
       <pre class="lines">
 
 
-88
 89
-90</pre>
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 89</span>
 
-<span class='kw'>def</span> <span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_user_agent'>user_agent</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_user_agent'>user_agent</span>
   <span class='ivar'>@user_agent</span> <span class='op'>||=</span> <span class='kw'>nil</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1950,13 +2041,15 @@ class.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="user_agent=-class_method">
+  <h3 class="signature " id="user_agent=-class_method">
   
     + (<tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>) <strong>user_agent=</strong>(agent) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Sets the default Ronin HTTP User-Agent string.</p>
 
@@ -1964,7 +2057,7 @@ class.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -1991,14 +2084,14 @@ class.</p>
       <pre class="lines">
 
 
-100
 101
-102</pre>
+102
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 101</span>
 
-<span class='kw'>def</span> <span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_user_agent='>user_agent=</span><span class='lparen'>(</span><span class='id identifier rubyid_agent'>agent</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_user_agent='>user_agent=</span><span class='lparen'>(</span><span class='id identifier rubyid_agent'>agent</span><span class='rparen'>)</span>
   <span class='ivar'>@user_agent</span> <span class='op'>=</span> <span class='id identifier rubyid_agent'>agent</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -2010,16 +2103,18 @@ class.</p>
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="http_connect-instance_method">
+  <h3 class="signature first" id="http_connect-instance_method">
   
     - (<tt>Net::HTTP</tt>) <strong>http_connect</strong>(options = {}) {|http| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Starts a HTTP connection with the server.</p>
 
@@ -2027,7 +2122,7 @@ class.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2067,7 +2162,7 @@ class.</p>
   
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -2076,8 +2171,10 @@ class.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The full URL to request.</p>
+          
+            &mdash; <div class='inline'><p>The full URL to request.</p>
 </div>
+          
         </li>
       
         <li>
@@ -2086,8 +2183,10 @@ class.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The host the HTTP server is running on.</p>
+          
+            &mdash; <div class='inline'><p>The host the HTTP server is running on.</p>
 </div>
+          
         </li>
       
         <li>
@@ -2099,8 +2198,10 @@ class.</p>
               <tt>Net::HTTP.default_port</tt>
             
           </span>
-          &mdash; <div class='inline'><p>The port the HTTP server is listening on.</p>
+          
+            &mdash; <div class='inline'><p>The port the HTTP server is listening on.</p>
 </div>
+          
         </li>
       
         <li>
@@ -2112,8 +2213,10 @@ class.</p>
               <tt>HTTP.proxy</tt>
             
           </span>
-          &mdash; <div class='inline'><p>A Hash of proxy settings to use when connecting to the HTTP server.</p>
+          
+            &mdash; <div class='inline'><p>A Hash of proxy settings to use when connecting to the HTTP server.</p>
 </div>
+          
         </li>
       
         <li>
@@ -2122,8 +2225,10 @@ class.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The user to authenticate with when connecting to the HTTP server.</p>
+          
+            &mdash; <div class='inline'><p>The user to authenticate with when connecting to the HTTP server.</p>
 </div>
+          
         </li>
       
         <li>
@@ -2132,8 +2237,10 @@ class.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The password to authenticate with when connecting to the HTTP server.</p>
+          
+            &mdash; <div class='inline'><p>The password to authenticate with when connecting to the HTTP server.</p>
 </div>
+          
         </li>
       
         <li>
@@ -2142,14 +2249,16 @@ class.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>Enables SSL for the HTTP connection.</p>
+          
+            &mdash; <div class='inline'><p>Enables SSL for the HTTP connection.</p>
 </div>
+          
         </li>
       
     </ul>
   
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -2167,7 +2276,7 @@ session object.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -2186,7 +2295,7 @@ session object.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2210,7 +2319,6 @@ session object.</p>
       <pre class="lines">
 
 
-386
 387
 388
 389
@@ -2243,10 +2351,11 @@ session object.</p>
 416
 417
 418
-419</pre>
+419
+420</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 386</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 387</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_connect'>http_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_expand_options'>expand_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -2288,13 +2397,15 @@ session object.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_copy-instance_method">
+  <h3 class="signature " id="http_copy-instance_method">
   
     - (<tt>Net::HTTP::Response</tt>) <strong>http_copy</strong>(options = {}) {|response| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP Copy request.</p>
 
@@ -2302,7 +2413,7 @@ session object.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2324,7 +2435,7 @@ session object.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -2342,7 +2453,7 @@ from the request.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -2361,7 +2472,7 @@ from the request.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2379,10 +2490,10 @@ from the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_request</li>
+      <li><span class='object_link'><a href="#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span></li>
     
   </ul>
 
@@ -2392,15 +2503,15 @@ from the request.</p>
       <pre class="lines">
 
 
-648
 649
 650
 651
 652
-653</pre>
+653
+654</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 648</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 649</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_copy'>http_copy</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_http_request'>http_request</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:copy</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -2414,13 +2525,15 @@ from the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_delete-instance_method">
+  <h3 class="signature " id="http_delete-instance_method">
   
     - (<tt>Net::HTTP::Response</tt>) <strong>http_delete</strong>(options = {}) {|response| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP Delete request.</p>
 
@@ -2428,7 +2541,7 @@ from the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2450,7 +2563,7 @@ from the request.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -2468,7 +2581,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -2487,7 +2600,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2505,10 +2618,10 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_request</li>
+      <li><span class='object_link'><a href="#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span></li>
     
   </ul>
 
@@ -2518,7 +2631,6 @@ the request.</p>
       <pre class="lines">
 
 
-675
 676
 677
 678
@@ -2532,10 +2644,11 @@ the request.</p>
 686
 687
 688
-689</pre>
+689
+690</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 675</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 676</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_delete'>http_delete</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_original_headers'>original_headers</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:headers</span><span class='rbracket'>]</span>
@@ -2558,13 +2671,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_get-instance_method">
+  <h3 class="signature " id="http_get-instance_method">
   
     - (<tt>Net::HTTP::Response</tt>) <strong>http_get</strong>(options = {}) {|response| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP Get request.</p>
 
@@ -2572,7 +2687,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2594,7 +2709,7 @@ the request.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -2612,7 +2727,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -2631,7 +2746,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2649,10 +2764,10 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_request</li>
+      <li><span class='object_link'><a href="#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span></li>
     
   </ul>
 
@@ -2662,15 +2777,15 @@ the request.</p>
       <pre class="lines">
 
 
-711
 712
 713
 714
 715
-716</pre>
+716
+717</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 711</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 712</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_http_request'>http_request</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:get</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -2684,13 +2799,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_get_body-instance_method">
+  <h3 class="signature " id="http_get_body-instance_method">
   
     - (<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>) <strong>http_get_body</strong>(options = {}) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP Get request and returns the Respond Body.</p>
 
@@ -2698,7 +2815,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2720,7 +2837,7 @@ the request.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2738,10 +2855,10 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_get</li>
+      <li><span class='object_link'><a href="#http_get-instance_method" title="Ronin::Network::HTTP#http_get (method)">#http_get</a></span></li>
     
   </ul>
 
@@ -2751,12 +2868,12 @@ the request.</p>
       <pre class="lines">
 
 
-756
 757
-758</pre>
+758
+759</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 756</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 757</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_get_body'>http_get_body</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span>
@@ -2767,13 +2884,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_get_headers-instance_method">
+  <h3 class="signature " id="http_get_headers-instance_method">
   
     - (<tt>Hash{<span class='object_link'><a href="../../String.html" title="String (class)">String</a></span> =&gt; <span class='object_link'><a href="../../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../String.html" title="String (class)">String</a></span>&gt;}</tt>) <strong>http_get_headers</strong>(options = {}) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP Get request and returns the Response Headers.</p>
 
@@ -2781,7 +2900,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2803,7 +2922,7 @@ the request.</p>
   
 </ul>
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2821,13 +2940,13 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_get</li>
+      <li><span class='object_link'><a href="#http_get-instance_method" title="Ronin::Network::HTTP#http_get (method)">#http_get</a></span></li>
     
   </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -2849,7 +2968,6 @@ the request.</p>
       <pre class="lines">
 
 
-733
 734
 735
 736
@@ -2857,10 +2975,11 @@ the request.</p>
 738
 739
 740
-741</pre>
+741
+742</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 733</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 734</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_get_headers'>http_get_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -2877,13 +2996,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_head-instance_method">
+  <h3 class="signature " id="http_head-instance_method">
   
     - (<tt>Net::HTTP::Response</tt>) <strong>http_head</strong>(options = {}) {|response| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP Head request.</p>
 
@@ -2891,7 +3012,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -2913,7 +3034,7 @@ the request.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -2931,7 +3052,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -2950,7 +3071,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -2968,10 +3089,10 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_request</li>
+      <li><span class='object_link'><a href="#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span></li>
     
   </ul>
 
@@ -2981,15 +3102,15 @@ the request.</p>
       <pre class="lines">
 
 
-780
 781
 782
 783
 784
-785</pre>
+785
+786</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 780</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 781</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_head'>http_head</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_http_request'>http_request</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:head</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -3003,13 +3124,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_lock-instance_method">
+  <h3 class="signature " id="http_lock-instance_method">
   
     - (<tt>Net::HTTP::Response</tt>) <strong>http_lock</strong>(options = {}) {|response| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP Lock request.</p>
 
@@ -3017,7 +3140,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -3039,7 +3162,7 @@ the request.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -3057,7 +3180,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -3076,7 +3199,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -3094,10 +3217,10 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_request</li>
+      <li><span class='object_link'><a href="#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span></li>
     
   </ul>
 
@@ -3107,15 +3230,15 @@ the request.</p>
       <pre class="lines">
 
 
-807
 808
 809
 810
 811
-812</pre>
+812
+813</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 807</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 808</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_lock'>http_lock</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_http_request'>http_request</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:lock</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -3129,13 +3252,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_mkcol-instance_method">
+  <h3 class="signature " id="http_mkcol-instance_method">
   
     - (<tt>Net::HTTP::Response</tt>) <strong>http_mkcol</strong>(options = {}) {|response| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP Mkcol request.</p>
 
@@ -3143,7 +3268,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -3165,7 +3290,7 @@ the request.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -3183,7 +3308,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -3202,7 +3327,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -3220,10 +3345,10 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_request</li>
+      <li><span class='object_link'><a href="#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span></li>
     
   </ul>
 
@@ -3233,15 +3358,15 @@ the request.</p>
       <pre class="lines">
 
 
-834
 835
 836
 837
 838
-839</pre>
+839
+840</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 834</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 835</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_mkcol'>http_mkcol</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_http_request'>http_request</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:mkcol</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -3255,13 +3380,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_move-instance_method">
+  <h3 class="signature " id="http_move-instance_method">
   
     - (<tt>Net::HTTP::Response</tt>) <strong>http_move</strong>(options = {}) {|response| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP Move request.</p>
 
@@ -3269,7 +3396,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -3291,7 +3418,7 @@ the request.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -3309,7 +3436,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -3328,7 +3455,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -3346,10 +3473,10 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_request</li>
+      <li><span class='object_link'><a href="#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span></li>
     
   </ul>
 
@@ -3359,15 +3486,15 @@ the request.</p>
       <pre class="lines">
 
 
-861
 862
 863
 864
 865
-866</pre>
+866
+867</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 861</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 862</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_move'>http_move</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_http_request'>http_request</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:move</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -3381,13 +3508,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_ok?-instance_method">
+  <h3 class="signature " id="http_ok?-instance_method">
   
     - (<tt>Boolean</tt>) <strong>http_ok?</strong>(options = {}) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Checks if the response has an HTTP OK status code.</p>
 
@@ -3395,7 +3524,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -3420,7 +3549,7 @@ the request.</p>
   
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -3432,14 +3561,16 @@ the request.</p>
               <tt>:head</tt>
             
           </span>
-          &mdash; <div class='inline'><p>The method to use for the request.</p>
+          
+            &mdash; <div class='inline'><p>The method to use for the request.</p>
 </div>
+          
         </li>
       
     </ul>
   
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -3457,10 +3588,10 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_status</li>
+      <li><span class='object_link'><a href="#http_status-instance_method" title="Ronin::Network::HTTP#http_status (method)">#http_status</a></span></li>
     
   </ul>
 
@@ -3470,12 +3601,12 @@ the request.</p>
       <pre class="lines">
 
 
-580
 581
-582</pre>
+582
+583</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 580</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 581</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_ok?'>http_ok?</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_http_status'>http_status</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>200</span>
@@ -3486,13 +3617,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_options-instance_method">
+  <h3 class="signature " id="http_options-instance_method">
   
     - (<tt>Net::HTTP::Response</tt>) <strong>http_options</strong>(options = {}) {|response| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP Options request.</p>
 
@@ -3500,7 +3633,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -3522,7 +3655,7 @@ the request.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -3540,7 +3673,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -3559,7 +3692,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -3577,10 +3710,10 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_request</li>
+      <li><span class='object_link'><a href="#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span></li>
     
   </ul>
 
@@ -3590,15 +3723,15 @@ the request.</p>
       <pre class="lines">
 
 
-888
 889
 890
 891
 892
-893</pre>
+893
+894</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 888</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 889</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_options'>http_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_http_request'>http_request</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:options</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -3612,13 +3745,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_post-instance_method">
+  <h3 class="signature " id="http_post-instance_method">
   
     - (<tt>Net::HTTP::Response</tt>) <strong>http_post</strong>(options = {}) {|response| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP Post request.</p>
 
@@ -3626,7 +3761,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -3651,7 +3786,7 @@ the request.</p>
   
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -3660,14 +3795,16 @@ the request.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The form data to send with the HTTP Post request.</p>
+          
+            &mdash; <div class='inline'><p>The form data to send with the HTTP Post request.</p>
 </div>
+          
         </li>
       
     </ul>
   
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -3685,7 +3822,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -3704,7 +3841,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -3722,10 +3859,10 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_request</li>
+      <li><span class='object_link'><a href="#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span></li>
     
   </ul>
 
@@ -3735,15 +3872,15 @@ the request.</p>
       <pre class="lines">
 
 
-918
 919
 920
 921
 922
-923</pre>
+923
+924</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 918</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 919</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_http_request'>http_request</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:post</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -3757,13 +3894,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_post_body-instance_method">
+  <h3 class="signature " id="http_post_body-instance_method">
   
     - (<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>) <strong>http_post_body</strong>(options = {}) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP Post request and returns the Response Body.</p>
 
@@ -3771,7 +3910,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -3796,7 +3935,7 @@ the request.</p>
   
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -3805,14 +3944,16 @@ the request.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The form data to send with the HTTP Post request.</p>
+          
+            &mdash; <div class='inline'><p>The form data to send with the HTTP Post request.</p>
 </div>
+          
         </li>
       
     </ul>
   
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -3830,10 +3971,10 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_post</li>
+      <li><span class='object_link'><a href="#http_post-instance_method" title="Ronin::Network::HTTP#http_post (method)">#http_post</a></span></li>
     
   </ul>
 
@@ -3843,12 +3984,12 @@ the request.</p>
       <pre class="lines">
 
 
-969
 970
-971</pre>
+971
+972</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 969</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 970</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_post_body'>http_post_body</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span>
@@ -3859,13 +4000,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_post_headers-instance_method">
+  <h3 class="signature " id="http_post_headers-instance_method">
   
     - (<tt>Hash{<span class='object_link'><a href="../../String.html" title="String (class)">String</a></span> =&gt; <span class='object_link'><a href="../../Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../String.html" title="String (class)">String</a></span>&gt;}</tt>) <strong>http_post_headers</strong>(options = {}) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP Post request and returns the Response Headers.</p>
 
@@ -3873,7 +4016,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -3898,7 +4041,7 @@ the request.</p>
   
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -3907,14 +4050,16 @@ the request.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The form data to send with the HTTP Post request.</p>
+          
+            &mdash; <div class='inline'><p>The form data to send with the HTTP Post request.</p>
 </div>
+          
         </li>
       
     </ul>
   
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -3932,13 +4077,13 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_post</li>
+      <li><span class='object_link'><a href="#http_post-instance_method" title="Ronin::Network::HTTP#http_post (method)">#http_post</a></span></li>
     
   </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -3960,7 +4105,6 @@ the request.</p>
       <pre class="lines">
 
 
-943
 944
 945
 946
@@ -3968,10 +4112,11 @@ the request.</p>
 948
 949
 950
-951</pre>
+951
+952</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 943</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 944</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_post_headers'>http_post_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -3988,13 +4133,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_powered_by-instance_method">
+  <h3 class="signature " id="http_powered_by-instance_method">
   
     - (<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>) <strong>http_powered_by</strong>(options = {}) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Sends an HTTP Head request and returns the HTTP X-Powered-By header.</p>
 
@@ -4002,7 +4149,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -4027,7 +4174,7 @@ the request.</p>
   
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -4039,14 +4186,16 @@ the request.</p>
               <tt>:get</tt>
             
           </span>
-          &mdash; <div class='inline'><p>The method to use for the request.</p>
+          
+            &mdash; <div class='inline'><p>The method to use for the request.</p>
 </div>
+          
         </li>
       
     </ul>
   
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -4064,10 +4213,10 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_request</li>
+      <li><span class='object_link'><a href="#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span></li>
     
   </ul>
 
@@ -4077,14 +4226,14 @@ the request.</p>
       <pre class="lines">
 
 
-622
 623
 624
 625
-626</pre>
+626
+627</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 622</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 623</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_powered_by'>http_powered_by</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:get</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -4097,13 +4246,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_prop_find-instance_method">
+  <h3 class="signature " id="http_prop_find-instance_method">
   
     - (<tt>Net::HTTP::Response</tt>) <strong>http_prop_find</strong>(options = {}) {|response| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP Propfind request.</p>
 
@@ -4111,7 +4262,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -4133,7 +4284,7 @@ the request.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -4151,7 +4302,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -4170,7 +4321,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -4188,10 +4339,10 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_request</li>
+      <li><span class='object_link'><a href="#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span></li>
     
   </ul>
 
@@ -4201,7 +4352,6 @@ the request.</p>
       <pre class="lines">
 
 
-1028
 1029
 1030
 1031
@@ -4215,10 +4365,11 @@ the request.</p>
 1039
 1040
 1041
-1042</pre>
+1042
+1043</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 1028</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 1029</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_prop_find'>http_prop_find</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_original_headers'>original_headers</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:headers</span><span class='rbracket'>]</span>
@@ -4241,13 +4392,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_prop_patch-instance_method">
+  <h3 class="signature " id="http_prop_patch-instance_method">
   
     - (<tt>Net::HTTP::Response</tt>) <strong>http_prop_patch</strong>(options = {}) {|response| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP Proppatch request.</p>
 
@@ -4255,7 +4408,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -4277,7 +4430,7 @@ the request.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -4295,7 +4448,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -4314,7 +4467,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -4332,10 +4485,10 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_request</li>
+      <li><span class='object_link'><a href="#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span></li>
     
   </ul>
 
@@ -4345,15 +4498,15 @@ the request.</p>
       <pre class="lines">
 
 
-1064
 1065
 1066
 1067
 1068
-1069</pre>
+1069
+1070</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 1064</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 1065</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_prop_patch'>http_prop_patch</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_http_request'>http_request</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:proppatch</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -4367,13 +4520,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_put-instance_method">
+  <h3 class="signature " id="http_put-instance_method">
   
     - (<tt>Net::HTTP::Response</tt>) <strong>http_put</strong>(options = {}) {|response| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP PUT request.</p>
 
@@ -4381,7 +4536,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -4406,7 +4561,7 @@ the request.</p>
   
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -4415,8 +4570,10 @@ the request.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The body for the request.</p>
+          
+            &mdash; <div class='inline'><p>The body for the request.</p>
 </div>
+          
         </li>
       
         <li>
@@ -4425,14 +4582,16 @@ the request.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The form data to send with the HTTP PUT request.</p>
+          
+            &mdash; <div class='inline'><p>The form data to send with the HTTP PUT request.</p>
 </div>
+          
         </li>
       
     </ul>
   
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -4450,7 +4609,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -4469,7 +4628,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -4487,13 +4646,13 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_request</li>
+      <li><span class='object_link'><a href="#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span></li>
     
   </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -4515,15 +4674,15 @@ the request.</p>
       <pre class="lines">
 
 
-1001
 1002
 1003
 1004
 1005
-1006</pre>
+1006
+1007</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 1001</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 1002</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_put'>http_put</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_http_request'>http_request</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:put</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -4537,13 +4696,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_request-instance_method">
+  <h3 class="signature " id="http_request-instance_method">
   
     - (<tt>Net::HTTP::Response</tt>) <strong>http_request</strong>(options = {}) {|request, (options)| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Connects to the HTTP server and sends an HTTP Request.</p>
 
@@ -4551,7 +4712,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -4576,7 +4737,7 @@ the request.</p>
   
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -4585,8 +4746,10 @@ the request.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The HTTP method to use in the request.</p>
+          
+            &mdash; <div class='inline'><p>The HTTP method to use in the request.</p>
 </div>
+          
         </li>
       
         <li>
@@ -4595,8 +4758,10 @@ the request.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The path to request from the HTTP server.</p>
+          
+            &mdash; <div class='inline'><p>The path to request from the HTTP server.</p>
 </div>
+          
         </li>
       
         <li>
@@ -4605,9 +4770,11 @@ the request.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The Hash of the HTTP headers to send with the request.
+          
+            &mdash; <div class='inline'><p>The Hash of the HTTP headers to send with the request.
 May contain either Strings or Symbols, lower-case or camel-case keys.</p>
 </div>
+          
         </li>
       
         <li>
@@ -4616,8 +4783,10 @@ May contain either Strings or Symbols, lower-case or camel-case keys.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The body of the request.</p>
+          
+            &mdash; <div class='inline'><p>The body of the request.</p>
 </div>
+          
         </li>
       
         <li>
@@ -4626,14 +4795,16 @@ May contain either Strings or Symbols, lower-case or camel-case keys.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The form data that may be sent in the body of the request.</p>
+          
+            &mdash; <div class='inline'><p>The form data that may be sent in the body of the request.</p>
 </div>
+          
         </li>
       
     </ul>
   
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -4652,7 +4823,7 @@ version of the given <em>options</em>.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -4686,7 +4857,7 @@ version of the given <em>options</em>.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -4704,10 +4875,10 @@ version of the given <em>options</em>.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_session</li>
+      <li><span class='object_link'><a href="#http_session-instance_method" title="Ronin::Network::HTTP#http_session (method)">#http_session</a></span></li>
     
   </ul>
 
@@ -4717,7 +4888,6 @@ version of the given <em>options</em>.</p>
       <pre class="lines">
 
 
-520
 521
 522
 523
@@ -4735,10 +4905,11 @@ version of the given <em>options</em>.</p>
 535
 536
 537
-538</pre>
+538
+539</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 520</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 521</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_request'>http_request</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -4765,13 +4936,15 @@ version of the given <em>options</em>.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_server-instance_method">
+  <h3 class="signature " id="http_server-instance_method">
   
     - (<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>) <strong>http_server</strong>(options = {}) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Sends a HTTP Head request and returns the HTTP Server header.</p>
 
@@ -4779,7 +4952,7 @@ version of the given <em>options</em>.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -4804,7 +4977,7 @@ version of the given <em>options</em>.</p>
   
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -4816,14 +4989,16 @@ version of the given <em>options</em>.</p>
               <tt>:head</tt>
             
           </span>
-          &mdash; <div class='inline'><p>The method to use for the request.</p>
+          
+            &mdash; <div class='inline'><p>The method to use for the request.</p>
 </div>
+          
         </li>
       
     </ul>
   
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -4841,10 +5016,10 @@ version of the given <em>options</em>.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_request</li>
+      <li><span class='object_link'><a href="#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span></li>
     
   </ul>
 
@@ -4854,14 +5029,14 @@ version of the given <em>options</em>.</p>
       <pre class="lines">
 
 
-600
 601
 602
 603
-604</pre>
+604
+605</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 600</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 601</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_server'>http_server</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:head</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -4874,13 +5049,15 @@ version of the given <em>options</em>.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_session-instance_method">
+  <h3 class="signature " id="http_session-instance_method">
   
     - (<tt>nil</tt>) <strong>http_session</strong>(options = {}) {|http| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Creates a new temporary HTTP session with the server.</p>
 
@@ -4888,7 +5065,7 @@ version of the given <em>options</em>.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -4928,7 +5105,7 @@ version of the given <em>options</em>.</p>
   
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -4937,8 +5114,10 @@ version of the given <em>options</em>.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The full URL to request.</p>
+          
+            &mdash; <div class='inline'><p>The full URL to request.</p>
 </div>
+          
         </li>
       
         <li>
@@ -4947,8 +5126,10 @@ version of the given <em>options</em>.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The host the HTTP server is running on.</p>
+          
+            &mdash; <div class='inline'><p>The host the HTTP server is running on.</p>
 </div>
+          
         </li>
       
         <li>
@@ -4960,8 +5141,10 @@ version of the given <em>options</em>.</p>
               <tt>Net::HTTP.default_port</tt>
             
           </span>
-          &mdash; <div class='inline'><p>The port the HTTP server is listening on.</p>
+          
+            &mdash; <div class='inline'><p>The port the HTTP server is listening on.</p>
 </div>
+          
         </li>
       
         <li>
@@ -4970,8 +5153,10 @@ version of the given <em>options</em>.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The user to authenticate with when connecting to the HTTP server.</p>
+          
+            &mdash; <div class='inline'><p>The user to authenticate with when connecting to the HTTP server.</p>
 </div>
+          
         </li>
       
         <li>
@@ -4980,8 +5165,10 @@ version of the given <em>options</em>.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The password to authenticate with when connecting to the HTTP server.</p>
+          
+            &mdash; <div class='inline'><p>The password to authenticate with when connecting to the HTTP server.</p>
 </div>
+          
         </li>
       
         <li>
@@ -4993,8 +5180,10 @@ version of the given <em>options</em>.</p>
               <tt>HTTP.proxy</tt>
             
           </span>
-          &mdash; <div class='inline'><p>A Hash of proxy settings to use when connecting to the HTTP server.</p>
+          
+            &mdash; <div class='inline'><p>A Hash of proxy settings to use when connecting to the HTTP server.</p>
 </div>
+          
         </li>
       
         <li>
@@ -5003,14 +5192,16 @@ version of the given <em>options</em>.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>Enables SSL for the HTTP connection.</p>
+          
+            &mdash; <div class='inline'><p>Enables SSL for the HTTP connection.</p>
 </div>
+          
         </li>
       
     </ul>
   
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -5028,7 +5219,7 @@ session object.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -5047,7 +5238,7 @@ session object.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -5061,10 +5252,10 @@ session object.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_connect</li>
+      <li><span class='object_link'><a href="#http_connect-instance_method" title="Ronin::Network::HTTP#http_connect (method)">#http_connect</a></span></li>
     
   </ul>
 
@@ -5074,7 +5265,6 @@ session object.</p>
       <pre class="lines">
 
 
-464
 465
 466
 467
@@ -5088,10 +5278,11 @@ session object.</p>
 475
 476
 477
-478</pre>
+478
+479</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 464</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 465</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_session'>http_session</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_http_connect'>http_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_http'>http</span><span class='comma'>,</span><span class='id identifier rubyid_expanded_options'>expanded_options</span><span class='op'>|</span>
@@ -5114,13 +5305,15 @@ session object.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_status-instance_method">
+  <h3 class="signature " id="http_status-instance_method">
   
     - (<tt><span class='object_link'><a href="../../Integer.html" title="Integer (class)">Integer</a></span></tt>) <strong>http_status</strong>(options = {}) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Returns the Status Code of the Response.</p>
 
@@ -5128,7 +5321,7 @@ session object.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -5153,7 +5346,7 @@ session object.</p>
   
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -5165,14 +5358,16 @@ session object.</p>
               <tt>:head</tt>
             
           </span>
-          &mdash; <div class='inline'><p>The method to use for the request.</p>
+          
+            &mdash; <div class='inline'><p>The method to use for the request.</p>
 </div>
+          
         </li>
       
     </ul>
   
 
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -5190,13 +5385,13 @@ session object.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_request</li>
+      <li><span class='object_link'><a href="#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span></li>
     
   </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -5218,14 +5413,14 @@ session object.</p>
       <pre class="lines">
 
 
-558
 559
 560
 561
-562</pre>
+562
+563</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 558</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 559</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_status'>http_status</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:head</span><span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -5238,13 +5433,15 @@ session object.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_trace-instance_method">
+  <h3 class="signature " id="http_trace-instance_method">
   
     - (<tt>Net::HTTP::Response</tt>) <strong>http_trace</strong>(options = {}) {|response| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP Trace request.</p>
 
@@ -5252,7 +5449,7 @@ session object.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -5274,7 +5471,7 @@ session object.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -5292,7 +5489,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -5311,7 +5508,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -5329,10 +5526,10 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_request</li>
+      <li><span class='object_link'><a href="#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span></li>
     
   </ul>
 
@@ -5342,15 +5539,15 @@ the request.</p>
       <pre class="lines">
 
 
-1091
 1092
 1093
 1094
 1095
-1096</pre>
+1096
+1097</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 1091</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 1092</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_trace'>http_trace</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_http_request'>http_request</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:trace</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -5364,13 +5561,15 @@ the request.</p>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="http_unlock-instance_method">
+  <h3 class="signature " id="http_unlock-instance_method">
   
     - (<tt>Net::HTTP::Response</tt>) <strong>http_unlock</strong>(options = {}) {|response| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Performs an HTTP Unlock request.</p>
 
@@ -5378,7 +5577,7 @@ the request.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -5400,7 +5599,7 @@ the request.</p>
   
 </ul>
 
-<h3>Yields:</h3>
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -5418,7 +5617,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -5437,7 +5636,7 @@ the request.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -5455,10 +5654,10 @@ the request.</p>
   
 </ul>
 
-  <h3>See Also:</h3>
+  <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li>http_request</li>
+      <li><span class='object_link'><a href="#http_request-instance_method" title="Ronin::Network::HTTP#http_request (method)">#http_request</a></span></li>
     
   </ul>
 
@@ -5468,15 +5667,15 @@ the request.</p>
       <pre class="lines">
 
 
-1118
 1119
 1120
 1121
 1122
-1123</pre>
+1123
+1124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 1118</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/http/http.rb', line 1119</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_unlock'>http_unlock</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_http_request'>http_request</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='symbol'>:method</span> <span class='op'>=&gt;</span> <span class='symbol'>:unlock</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -5492,11 +5691,11 @@ the request.</p>
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Sun Feb 12 14:10:44 2012 by 
+  Generated on Sat Jun 16 20:51:18 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.4 (ruby-1.9.3).
+  0.8.2 (ruby-1.9.3).
 </div>
 
   </body>
