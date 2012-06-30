@@ -998,11 +998,7 @@ Must be one of the following:</p>
 166
 167
 168
-169
-170
-171
-172
-173</pre>
+169</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/binary/hexdump/parser.rb', line 135</span>
@@ -1012,10 +1008,8 @@ Must be one of the following:</p>
   <span class='ivar'>@encoding</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:encoding</span><span class='rbracket'>]</span>
 
   <span class='ivar'>@type</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='ivar'>@encoding</span>
-          <span class='kw'>when</span> <span class='symbol'>:floats</span><span class='comma'>,</span> <span class='symbol'>:doubles</span>
-            <span class='symbol'>:float</span>
-          <span class='kw'>else</span>
-            <span class='symbol'>:integer</span>
+          <span class='kw'>when</span> <span class='symbol'>:floats</span><span class='comma'>,</span> <span class='symbol'>:doubles</span> <span class='kw'>then</span> <span class='symbol'>:float</span>
+          <span class='kw'>else</span>                        <span class='symbol'>:integer</span>
           <span class='kw'>end</span>
   <span class='ivar'>@endian</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbol'>:endian</span><span class='comma'>,</span><span class='symbol'>:little</span><span class='rparen'>)</span>
 
@@ -1039,12 +1033,10 @@ Must be one of the following:</p>
     <span class='ivar'>@word_size</span> <span class='op'>=</span> <span class='const'>WORD_SIZES</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:encoding</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
-  <span class='kw'>case</span> <span class='ivar'>@encoding</span>
-  <span class='kw'>when</span> <span class='symbol'>:hex_chars</span>
-    <span class='ivar'>@chars</span> <span class='op'>=</span> <span class='const'>CHARS</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='const'>ESCAPED_CHARS</span><span class='rparen'>)</span>
-  <span class='kw'>when</span> <span class='symbol'>:named_chars</span>
-    <span class='ivar'>@chars</span> <span class='op'>=</span> <span class='const'>CHARS</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='const'>NAMED_CHARS</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='ivar'>@chars</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='ivar'>@encoding</span>
+           <span class='kw'>when</span> <span class='symbol'>:hex_chars</span>   <span class='kw'>then</span> <span class='const'>CHARS</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='const'>ESCAPED_CHARS</span><span class='rparen'>)</span>
+           <span class='kw'>when</span> <span class='symbol'>:named_chars</span> <span class='kw'>then</span> <span class='const'>CHARS</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='const'>NAMED_CHARS</span><span class='rparen'>)</span>
+           <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1542,12 +1534,12 @@ Must be one of the following:</p>
       <pre class="lines">
 
 
-404
-405
-406</pre>
+396
+397
+398</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/hexdump/parser.rb', line 404</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/hexdump/parser.rb', line 396</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='const'>FORMATS</span><span class='lbracket'>[</span><span class='ivar'>@type</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='ivar'>@endian</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='ivar'>@word_size</span><span class='rbracket'>]</span> <span class='op'>*</span> <span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span>
@@ -1633,6 +1625,10 @@ Must be one of the following:</p>
       <pre class="lines">
 
 
+180
+181
+182
+183
 184
 185
 186
@@ -1665,14 +1661,10 @@ Must be one of the following:</p>
 213
 214
 215
-216
-217
-218
-219
-220</pre>
+216</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/hexdump/parser.rb', line 184</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/hexdump/parser.rb', line 180</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_hexdump'>hexdump</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_current_addr'>current_addr</span> <span class='op'>=</span> <span class='id identifier rubyid_last_addr'>last_addr</span> <span class='op'>=</span> <span class='id identifier rubyid_first_addr'>first_addr</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -1796,12 +1788,12 @@ Must be one of the following:</p>
       <pre class="lines">
 
 
-324
-325
-326</pre>
+320
+321
+322</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/hexdump/parser.rb', line 324</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/hexdump/parser.rb', line 320</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parse_address'>parse_address</span><span class='lparen'>(</span><span class='id identifier rubyid_address'>address</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_address'>address</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='lparen'>(</span><span class='ivar'>@address_base</span><span class='rparen'>)</span>
@@ -1887,14 +1879,14 @@ Must be one of the following:</p>
       <pre class="lines">
 
 
-337
-338
-339
-340
-341</pre>
+333
+334
+335
+336
+337</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/hexdump/parser.rb', line 337</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/hexdump/parser.rb', line 333</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parse_char'>parse_char</span><span class='lparen'>(</span><span class='id identifier rubyid_char'>char</span><span class='rparen'>)</span>
   <span class='ivar'>@chars</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_char'>char</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_hex_byte'>hex_byte</span><span class='op'>|</span>
@@ -1982,12 +1974,12 @@ Must be one of the following:</p>
       <pre class="lines">
 
 
-371
-372
-373</pre>
+365
+366
+367</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/hexdump/parser.rb', line 371</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/hexdump/parser.rb', line 365</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parse_float'>parse_float</span><span class='lparen'>(</span><span class='id identifier rubyid_float'>float</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_float'>float</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
@@ -2077,22 +2069,18 @@ Must be one of the following:</p>
       <pre class="lines">
 
 
-354
-355
-356
-357
-358
-359
-360</pre>
+350
+351
+352
+353
+354</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/hexdump/parser.rb', line 354</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/hexdump/parser.rb', line 350</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parse_int'>parse_int</span><span class='lparen'>(</span><span class='id identifier rubyid_int'>int</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='ivar'>@chars</span>
-    <span class='id identifier rubyid_parse_char'>parse_char</span><span class='lparen'>(</span><span class='id identifier rubyid_int'>int</span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_int'>int</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='lparen'>(</span><span class='ivar'>@base</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='ivar'>@chars</span> <span class='kw'>then</span> <span class='id identifier rubyid_parse_char'>parse_char</span><span class='lparen'>(</span><span class='id identifier rubyid_int'>int</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>           <span class='id identifier rubyid_int'>int</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='lparen'>(</span><span class='ivar'>@base</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -2176,24 +2164,20 @@ Must be one of the following:</p>
       <pre class="lines">
 
 
-384
-385
-386
-387
-388
-389
-390
-391</pre>
+378
+379
+380
+381
+382
+383</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/hexdump/parser.rb', line 384</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/hexdump/parser.rb', line 378</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parse_word'>parse_word</span><span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='ivar'>@type</span>
-  <span class='kw'>when</span> <span class='symbol'>:integer</span>
-    <span class='id identifier rubyid_parse_int'>parse_int</span><span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span><span class='rparen'>)</span>
-  <span class='kw'>when</span> <span class='symbol'>:float</span>
-    <span class='id identifier rubyid_parse_float'>parse_float</span><span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:integer</span> <span class='kw'>then</span> <span class='id identifier rubyid_parse_int'>parse_int</span><span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:float</span>   <span class='kw'>then</span> <span class='id identifier rubyid_parse_float'>parse_float</span><span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -2206,7 +2190,7 @@ Must be one of the following:</p>
 </div>
 
     <div id="footer">
-  Generated on Sat Jun 16 20:52:18 2012 by
+  Generated on Fri Jun 29 19:43:06 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2 (ruby-1.9.3).
 </div>

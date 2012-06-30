@@ -101,7 +101,7 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>Provides a translation layer between C types and Ruby <code>Array#pack</code>
+    <p>Provides a translation layer between C-types and Ruby <code>Array#pack</code>
 codes.</p>
 
 <h2 id="types">Types</h2>
@@ -141,7 +141,7 @@ codes.</p>
   <li><code>:string</code> (<code>Z*</code>) - binary String, <code>\0</code> terminated.</li>
 </ul>
 
-<h3 id="ruby-19-specific-types">Ruby 1.9 specific types</h3>
+<h3 id="ruby-19-specific-c-types">Ruby 1.9 specific C-types</h3>
 
 <ul>
   <li><code>:uint16_le</code> (<code>S&lt;</code>) - unsigned 16-bit integer, little endian.</li>
@@ -210,7 +210,7 @@ codes.</p>
         <dt id="TYPES-constant" class="">TYPES =
           <div class="docstring">
   <div class="discussion">
-    <p>Supported types and corresponding <code>Array#pack</code> codes.</p>
+    <p>Supported C-types and corresponding <code>Array#pack</code> codes.</p>
 
 
   </div>
@@ -282,7 +282,7 @@ codes.</p>
         <dt id="INT_TYPES-constant" class="">INT_TYPES =
           <div class="docstring">
   <div class="discussion">
-    <p>Integer types</p>
+    <p>Integer C-types</p>
 
 
   </div>
@@ -370,7 +370,7 @@ codes.</p>
         <dt id="FLOAT_TYPES-constant" class="">FLOAT_TYPES =
           <div class="docstring">
   <div class="discussion">
-    <p>Float types</p>
+    <p>Float C-types</p>
 
 
   </div>
@@ -404,7 +404,7 @@ codes.</p>
         <dt id="CHAR_TYPES-constant" class="">CHAR_TYPES =
           <div class="docstring">
   <div class="discussion">
-    <p>Character types</p>
+    <p>Character C-types</p>
 
 
   </div>
@@ -434,7 +434,7 @@ codes.</p>
         <dt id="STRING_TYPES-constant" class="">STRING_TYPES =
           <div class="docstring">
   <div class="discussion">
-    <p>String types</p>
+    <p>String C-types</p>
 
 
   </div>
@@ -587,7 +587,7 @@ codes.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Compiles binary types into an <code>Array#pack</code> / <code>String#unpack</code>
+    <span class="summary_desc"><div class='inline'><p>Compiles C-types into an <code>Array#pack</code> / <code>String#unpack</code>
 template.</p>
 </div></span>
   
@@ -646,6 +646,29 @@ template.</p>
 
   
     <span class="summary_desc"><div class='inline'><p>Creates a new Binary Template.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#inspect-instance_method" title="#inspect (instance method)">- (String) <strong>inspect</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Inspects the template.</p>
 </div></span>
   
 </li>
@@ -740,7 +763,7 @@ template.</p>
     
   <div class="note notetag">
     <strong>Note:</strong>
-    <div class='inline'><p>The following types are <strong>not supported</strong> on Ruby 1.8:</p>
+    <div class='inline'><p>The following C-types are <strong>not supported</strong> on Ruby 1.8:</p>
 
 <ul>
   <li><code>:uint16_le</code></li>
@@ -802,7 +825,7 @@ template.</p>
       
       
         &mdash;
-        <div class='inline'><p>The types which the packer will use.</p>
+        <div class='inline'><p>The C-types which the packer will use.</p>
 </div>
       
     </li>
@@ -841,7 +864,7 @@ template.</p>
             
           </span>
           
-            &mdash; <div class='inline'><p>The endianness to apply to types.</p>
+            &mdash; <div class='inline'><p>The endianness to apply to the C-types.</p>
 </div>
           
         </li>
@@ -1047,7 +1070,7 @@ template.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Compiles binary types into an <code>Array#pack</code> / <code>String#unpack</code>
+    <p>Compiles C-types into an <code>Array#pack</code> / <code>String#unpack</code>
 template.</p>
 
 
@@ -1067,7 +1090,7 @@ template.</p>
       
       
         &mdash;
-        <div class='inline'><p>The types which the packer will use.</p>
+        <div class='inline'><p>The C-types which the packer will use.</p>
 </div>
       
     </li>
@@ -1106,7 +1129,7 @@ template.</p>
             
           </span>
           
-            &mdash; <div class='inline'><p>The endianness to apply to types.</p>
+            &mdash; <div class='inline'><p>The endianness to apply to the C-types.</p>
 </div>
           
         </li>
@@ -1170,6 +1193,8 @@ template.</p>
       <pre class="lines">
 
 
+386
+387
 388
 389
 390
@@ -1182,12 +1207,10 @@ template.</p>
 397
 398
 399
-400
-401
-402</pre>
+400</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 388</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 386</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_compile'>compile</span><span class='lparen'>(</span><span class='id identifier rubyid_types'>types</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_string'>string</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span>
@@ -1278,7 +1301,7 @@ template.</p>
             
           </span>
           
-            &mdash; <div class='inline'><p>The endianness to apply to types.</p>
+            &mdash; <div class='inline'><p>The endianness to apply to the C-types.</p>
 </div>
           
         </li>
@@ -1353,9 +1376,7 @@ template.</p>
 362
 363
 364
-365
-366
-367</pre>
+365</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 354</span>
@@ -1363,10 +1384,8 @@ template.</p>
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:endian</span><span class='rbracket'>]</span> <span class='op'>&amp;&amp;</span> <span class='const'>ENDIAN_TYPES</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:endian</span><span class='rbracket'>]</span>
-           <span class='kw'>when</span> <span class='symbol'>:little</span>
-             <span class='symbol'>:#{</span><span class='id identifier rubyid_type'>type</span><span class='rbrace'>}</span><span class='tstring_content'>_le</span><span class='tstring_end'>&quot;</span></span>
-           <span class='kw'>when</span> <span class='symbol'>:big</span><span class='comma'>,</span> <span class='symbol'>:network</span>
-             <span class='symbol'>:#{</span><span class='id identifier rubyid_type'>type</span><span class='rbrace'>}</span><span class='tstring_content'>_be</span><span class='tstring_end'>&quot;</span></span>
+           <span class='kw'>when</span> <span class='symbol'>:little</span>        <span class='kw'>then</span> <span class='symbol'>:#{</span><span class='id identifier rubyid_type'>type</span><span class='rbrace'>}</span><span class='tstring_content'>_le</span><span class='tstring_end'>&quot;</span></span>
+           <span class='kw'>when</span> <span class='symbol'>:big</span><span class='comma'>,</span> <span class='symbol'>:network</span> <span class='kw'>then</span> <span class='symbol'>:#{</span><span class='id identifier rubyid_type'>type</span><span class='rbrace'>}</span><span class='tstring_content'>_be</span><span class='tstring_end'>&quot;</span></span>
            <span class='kw'>else</span>
              <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown endianness: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_type'>type</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
            <span class='kw'>end</span>
@@ -1386,7 +1405,79 @@ template.</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="pack-instance_method">
+  <h3 class="signature first" id="inspect-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>) <strong>inspect</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Inspects the template.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The inspected template.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.5.1</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+448
+449
+450</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 448</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@fields</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="pack-instance_method">
   
     - (<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>) <strong>pack</strong>(*data) 
   
@@ -1461,12 +1552,12 @@ template.</p>
       <pre class="lines">
 
 
-413
-414
-415</pre>
+411
+412
+413</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 413</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 411</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='ivar'>@template</span><span class='rparen'>)</span>
@@ -1540,12 +1631,12 @@ template.</p>
       <pre class="lines">
 
 
-438
-439
-440</pre>
+436
+437
+438</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 438</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 436</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
   <span class='ivar'>@template</span>
@@ -1631,12 +1722,12 @@ template.</p>
       <pre class="lines">
 
 
-426
-427
-428</pre>
+424
+425
+426</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 426</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/template.rb', line 424</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='ivar'>@template</span><span class='rparen'>)</span>
@@ -1651,7 +1742,7 @@ template.</p>
 </div>
 
     <div id="footer">
-  Generated on Sat Jun 16 20:51:52 2012 by
+  Generated on Fri Jun 29 19:42:56 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2 (ruby-1.9.3).
 </div>

@@ -191,7 +191,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Creates a new UNIXSocket object, connected to the given path.</p>
+    <span class="summary_desc"><div class='inline'><p>Connects to a UNIX Socket and sends the given data.</p>
 </div></span>
   
 </li>
@@ -307,7 +307,7 @@ socket.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Opens a UNIX socket temporarily.</p>
+    <span class="summary_desc"><div class='inline'><p>Temporarily opens a UNIX socket.</p>
 </div></span>
   
 </li>
@@ -330,7 +330,7 @@ socket.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Connects temporarily to a UNIX socket.</p>
+    <span class="summary_desc"><div class='inline'><p>Temporarily connects to a UNIX socket.</p>
 </div></span>
   
 </li>
@@ -367,7 +367,7 @@ socket.</p>
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code"><span class='id identifier rubyid_unix_single_server'>unix_single_server</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/tmp/test.socket</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='op'>|</span>
+      <pre class="example code"><span class='id identifier rubyid_unix_accept'>unix_accept</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/tmp/test.socket</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='op'>|</span>
   <span class='comment'># ...
 </span><span class='kw'>end</span></pre>
     
@@ -450,17 +450,17 @@ socket.</p>
       <pre class="lines">
 
 
+276
 277
 278
 279
 280
 281
 282
-283
-284</pre>
+283</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/unix.rb', line 277</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/unix.rb', line 276</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unix_accept'>unix_accept</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_unix_server_session'>unix_server_session</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
@@ -634,8 +634,7 @@ socket.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Creates a new UNIXSocket object, connected to the given path.
-The given data will then be written to the newly created UNIXSocket.</p>
+    <p>Connects to a UNIX Socket and sends the given data.</p>
 
 
   </div>
@@ -751,16 +750,16 @@ The given data will then be written to the newly created UNIXSocket.</p>
       <pre class="lines">
 
 
+110
 111
 112
 113
 114
 115
-116
-117</pre>
+116</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/unix.rb', line 111</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/unix.rb', line 110</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unix_connect_and_send'>unix_connect_and_send</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_socket'>socket</span> <span class='op'>=</span> <span class='id identifier rubyid_unix_connect'>unix_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
@@ -1004,16 +1003,16 @@ socket.</p>
       <pre class="lines">
 
 
+165
 166
 167
 168
 169
 170
-171
-172</pre>
+171</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/unix.rb', line 166</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/unix.rb', line 165</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unix_send'>unix_send</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_unix_session'>unix_session</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_socket'>socket</span><span class='op'>|</span>
@@ -1154,15 +1153,15 @@ socket.</p>
       <pre class="lines">
 
 
+195
 196
 197
 198
 199
-200
-201</pre>
+200</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/unix.rb', line 196</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/unix.rb', line 195</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unix_server'>unix_server</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_socket'>socket</span> <span class='op'>=</span> <span class='const'>UNIXServer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
@@ -1280,6 +1279,7 @@ socket.</p>
       <pre class="lines">
 
 
+246
 247
 248
 249
@@ -1288,11 +1288,10 @@ socket.</p>
 252
 253
 254
-255
-256</pre>
+255</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/unix.rb', line 247</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/unix.rb', line 246</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unix_server_loop'>unix_server_loop</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_unix_server_session'>unix_server_session</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
@@ -1320,7 +1319,7 @@ socket.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Opens a UNIX socket temporarily.</p>
+    <p>Temporarily opens a UNIX socket.</p>
 
 
   </div>
@@ -1414,14 +1413,14 @@ socket.</p>
       <pre class="lines">
 
 
+221
 222
 223
 224
-225
-226</pre>
+225</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/unix.rb', line 222</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/unix.rb', line 221</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unix_server_session'>unix_server_session</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_socket'>socket</span> <span class='op'>=</span> <span class='id identifier rubyid_unix_server'>unix_server</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -1444,7 +1443,7 @@ socket.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Connects temporarily to a UNIX socket.</p>
+    <p>Temporarily connects to a UNIX socket.</p>
 
 
   </div>
@@ -1538,16 +1537,16 @@ socket.</p>
       <pre class="lines">
 
 
+137
 138
 139
 140
 141
 142
-143
-144</pre>
+143</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/unix.rb', line 138</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/unix.rb', line 137</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unix_session'>unix_session</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_socket'>socket</span> <span class='op'>=</span> <span class='id identifier rubyid_unix_connect'>unix_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
@@ -1566,7 +1565,7 @@ socket.</p>
 </div>
 
     <div id="footer">
-  Generated on Sat Jun 16 20:51:05 2012 by
+  Generated on Fri Jun 29 19:42:29 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2 (ruby-1.9.3).
 </div>

@@ -610,6 +610,8 @@ be passed to the block.</p>
       <pre class="lines">
 
 
+97
+98
 99
 100
 101
@@ -618,12 +620,10 @@ be passed to the block.</p>
 104
 105
 106
-107
-108
-109</pre>
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/dns.rb', line 99</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/dns.rb', line 97</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dns_lookup'>dns_lookup</span><span class='lparen'>(</span><span class='id identifier rubyid_hostname'>hostname</span><span class='comma'>,</span><span class='id identifier rubyid_nameserver'>nameserver</span><span class='op'>=</span><span class='const'>DNS</span><span class='period'>.</span><span class='id identifier rubyid_nameserver'>nameserver</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_hostname'>hostname</span> <span class='op'>=</span> <span class='id identifier rubyid_hostname'>hostname</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -771,16 +771,16 @@ block.</p>
       <pre class="lines">
 
 
+130
+131
 132
 133
 134
 135
-136
-137
-138</pre>
+136</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/dns.rb', line 132</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/dns.rb', line 130</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dns_lookup_all'>dns_lookup_all</span><span class='lparen'>(</span><span class='id identifier rubyid_hostname'>hostname</span><span class='comma'>,</span><span class='id identifier rubyid_nameserver'>nameserver</span><span class='op'>=</span><span class='const'>DNS</span><span class='period'>.</span><span class='id identifier rubyid_nameserver'>nameserver</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_hostname'>hostname</span>  <span class='op'>=</span> <span class='id identifier rubyid_hostname'>hostname</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -876,18 +876,14 @@ block.</p>
 71
 72
 73
-74
-75
-76</pre>
+74</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/network/dns.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dns_resolver'>dns_resolver</span><span class='lparen'>(</span><span class='id identifier rubyid_nameserver'>nameserver</span><span class='op'>=</span><span class='const'>DNS</span><span class='period'>.</span><span class='id identifier rubyid_nameserver'>nameserver</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_nameserver'>nameserver</span>
-    <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:nameserver</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_nameserver'>nameserver</span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
-    <span class='const'>Resolv</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_nameserver'>nameserver</span> <span class='kw'>then</span> <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:nameserver</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_nameserver'>nameserver</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>               <span class='const'>Resolv</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1025,6 +1021,8 @@ the resolved hostname will be passed to the block.</p>
       <pre class="lines">
 
 
+159
+160
 161
 162
 163
@@ -1033,12 +1031,10 @@ the resolved hostname will be passed to the block.</p>
 166
 167
 168
-169
-170
-171</pre>
+169</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/dns.rb', line 161</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/dns.rb', line 159</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dns_reverse_lookup'>dns_reverse_lookup</span><span class='lparen'>(</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span><span class='id identifier rubyid_nameserver'>nameserver</span><span class='op'>=</span><span class='const'>DNS</span><span class='period'>.</span><span class='id identifier rubyid_nameserver'>nameserver</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_address'>address</span>  <span class='op'>=</span> <span class='id identifier rubyid_address'>address</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -1186,16 +1182,16 @@ each hostname will be passed to the block.</p>
       <pre class="lines">
 
 
+192
+193
 194
 195
 196
 197
-198
-199
-200</pre>
+198</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/dns.rb', line 194</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/dns.rb', line 192</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dns_reverse_lookup_all'>dns_reverse_lookup_all</span><span class='lparen'>(</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span><span class='id identifier rubyid_nameserver'>nameserver</span><span class='op'>=</span><span class='const'>DNS</span><span class='period'>.</span><span class='id identifier rubyid_nameserver'>nameserver</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_address'>address</span>   <span class='op'>=</span> <span class='id identifier rubyid_address'>address</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -1214,7 +1210,7 @@ each hostname will be passed to the block.</p>
 </div>
 
     <div id="footer">
-  Generated on Sat Jun 16 20:51:04 2012 by
+  Generated on Fri Jun 29 19:42:28 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2 (ruby-1.9.3).
 </div>

@@ -116,7 +116,7 @@
 
 <span class='id identifier rubyid_pkt'>pkt</span> <span class='op'>=</span> <span class='const'>Packet</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
 <span class='id identifier rubyid_pkt'>pkt</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>=</span> <span class='int'>5</span>
-<span class='id identifier rubyid_pkt'>pkt</span><span class='period'>.</span><span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>hello</span><span class='tstring_end'>'</span></span>
+<span class='id identifier rubyid_pkt'>pkt</span><span class='period'>.</span><span class='id identifier rubyid_data'>data</span>   <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>hello</span><span class='tstring_end'>'</span></span>
 
 <span class='id identifier rubyid_buffer'>buffer</span> <span class='op'>=</span> <span class='id identifier rubyid_pkt'>pkt</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span>
 <span class='comment'># =&gt; &quot;\x00\x00\x00\x05hello\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00&quot;
@@ -810,6 +810,16 @@
       <pre class="lines">
 
 
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
 474
 475
 476
@@ -822,24 +832,10 @@
 483
 484
 485
-486
-487
-488
-489
-490
-491
-492
-493
-494
-495
-496
-497
-498
-499
-500</pre>
+486</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 474</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 464</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_default'>default</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_length'>length</span> <span class='op'>=</span> <span class='id identifier rubyid_type'>type</span>
@@ -854,14 +850,10 @@
     <span class='kw'>end</span>
   <span class='kw'>else</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>Symbol</span><span class='rparen'>)</span>
-      <span class='kw'>if</span> <span class='const'>Template</span><span class='op'>::</span><span class='const'>INT_TYPES</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
-        <span class='int'>0</span>
-      <span class='kw'>elsif</span> <span class='const'>Template</span><span class='op'>::</span><span class='const'>FLOAT_TYPES</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
-        <span class='float'>0.0</span>
-      <span class='kw'>elsif</span> <span class='const'>Template</span><span class='op'>::</span><span class='const'>CHAR_TYPES</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
-        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\0</span><span class='tstring_end'>&quot;</span></span>
-      <span class='kw'>elsif</span> <span class='const'>Template</span><span class='op'>::</span><span class='const'>STRING_TYPES</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
-        <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span>
+      <span class='kw'>if</span>    <span class='const'>Template</span><span class='op'>::</span><span class='const'>INT_TYPES</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>    <span class='kw'>then</span> <span class='int'>0</span>
+      <span class='kw'>elsif</span> <span class='const'>Template</span><span class='op'>::</span><span class='const'>FLOAT_TYPES</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>  <span class='kw'>then</span> <span class='float'>0.0</span>
+      <span class='kw'>elsif</span> <span class='const'>Template</span><span class='op'>::</span><span class='const'>CHAR_TYPES</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>   <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\0</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>elsif</span> <span class='const'>Template</span><span class='op'>::</span><span class='const'>STRING_TYPES</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span>
       <span class='kw'>end</span>
     <span class='kw'>elsif</span> <span class='id identifier rubyid_type'>type</span> <span class='op'>&lt;</span> <span class='const'>Struct</span>
       <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -986,26 +978,26 @@ type.</p>
       <pre class="lines">
 
 
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
 523
 524
-525
-526
-527
-528
-529
-530
-531
-532
-533
-534
-535
-536
-537
-538
-539</pre>
+525</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 523</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 509</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_each_field'>each_field</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block'>block</span>
@@ -1092,22 +1084,18 @@ type.</p>
       <pre class="lines">
 
 
-385
-386
-387
-388
-389
-390
-391</pre>
+377
+378
+379
+380
+381</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 385</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 377</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_endian'>endian</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_type'>type</span>
-    <span class='ivar'>@endian</span> <span class='op'>=</span> <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
-  <span class='kw'>else</span>
-    <span class='ivar'>@endian</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_type'>type</span> <span class='kw'>then</span> <span class='ivar'>@endian</span> <span class='op'>=</span> <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
+  <span class='kw'>else</span>         <span class='ivar'>@endian</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1322,6 +1310,16 @@ type.</p>
       <pre class="lines">
 
 
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
 406
 407
 408
@@ -1332,20 +1330,10 @@ type.</p>
 413
 414
 415
-416
-417
-418
-419
-420
-421
-422
-423
-424
-425
-426</pre>
+416</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 406</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 396</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_layout'>layout</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_fields'>fields</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='id identifier rubyid_fields'>fields</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -1451,12 +1439,12 @@ type.</p>
       <pre class="lines">
 
 
-459
-460
-461</pre>
+449
+450
+451</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 459</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 449</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_template'>template</span><span class='lparen'>(</span><span class='id identifier rubyid_fields'>fields</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='const'>Template</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_fields'>fields</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -1508,17 +1496,17 @@ type.</p>
       <pre class="lines">
 
 
-436
-437
-438
-439
-440
-441
-442
-443</pre>
+426
+427
+428
+429
+430
+431
+432
+433</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 436</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 426</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_templates'>templates</span>
   <span class='ivar'>@templates</span> <span class='op'>||=</span> <span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>|</span>
@@ -1592,18 +1580,18 @@ type.</p>
       <pre class="lines">
 
 
-304
-305
-306
-307
-308
-309
-310
-311
-312</pre>
+296
+297
+298
+299
+300
+301
+302
+303
+304</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 304</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 296</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_typedef'>typedef</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span><span class='id identifier rubyid_type_alias'>type_alias</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='id identifier rubyid_typedefs'>typedefs</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
@@ -1665,12 +1653,12 @@ type.</p>
       <pre class="lines">
 
 
-291
-292
-293</pre>
+283
+284
+285</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 291</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 283</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_typedefs'>typedefs</span>
   <span class='cvar'>@@typedefs</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -1749,7 +1737,7 @@ type.</p>
             
           </span>
           
-            &mdash; <div class='inline'><p>The endianness to apply to types.</p>
+            &mdash; <div class='inline'><p>The endianness to apply to the types.</p>
 </div>
           
         </li>
@@ -1884,18 +1872,14 @@ type.</p>
 134
 135
 136
-137
-138
-139</pre>
+137</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 133</span>
 
 <span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_field?'>field?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>no such field '</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>'</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_field?'>field?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='kw'>then</span> <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>                 <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>no such field '</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>'</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1996,22 +1980,18 @@ type.</p>
       <pre class="lines">
 
 
+154
+155
 156
 157
-158
-159
-160
-161
-162</pre>
+158</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 156</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 154</span>
 
 <span class='kw'>def</span> <span class='op'>[]=</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_field?'>field?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>=</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>no such field '</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>'</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_field?'>field?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='kw'>then</span> <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>=</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>                 <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>no such field '</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>'</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -2061,16 +2041,16 @@ type.</p>
       <pre class="lines">
 
 
-196
-197
-198
-199
-200
-201
-202</pre>
+188
+189
+190
+191
+192
+193
+194</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 196</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 188</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clear'>clear</span>
   <span class='id identifier rubyid_each_field'>each_field</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_struct'>struct</span><span class='comma'>,</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_field'>field</span><span class='op'>|</span>
@@ -2196,26 +2176,26 @@ type.</p>
       <pre class="lines">
 
 
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
 561
 562
-563
-564
-565
-566
-567
-568
-569
-570
-571
-572
-573
-574
-575
-576
-577</pre>
+563</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 561</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 547</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each_field'>each_field</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block'>block</span>
@@ -2357,14 +2337,14 @@ type.</p>
       <pre class="lines">
 
 
-275
-276
-277
-278
-279</pre>
+267
+268
+269
+270
+271</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 275</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 267</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rbrace'>}</span><span class='tstring_content'>: </span><span class='tstring_end'>&quot;</span></span> <span class='op'>&lt;&lt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_layout'>layout</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
@@ -2428,7 +2408,7 @@ type.</p>
             
           </span>
           
-            &mdash; <div class='inline'><p>The endianness to apply to types.</p>
+            &mdash; <div class='inline'><p>The endianness to apply to the types.</p>
 </div>
           
         </li>
@@ -2460,12 +2440,12 @@ type.</p>
       <pre class="lines">
 
 
-216
-217
-218</pre>
+208
+209
+210</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 216</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 208</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_templates'>templates</span><span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span><span class='rparen'>)</span>
@@ -2507,12 +2487,12 @@ type.</p>
       <pre class="lines">
 
 
-258
-259
-260</pre>
+250
+251
+252</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 258</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 250</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_pack'>pack</span>
@@ -2554,12 +2534,12 @@ type.</p>
       <pre class="lines">
 
 
-265
-266
-267</pre>
+257
+258
+259</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 265</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 257</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_str'>to_str</span>
   <span class='id identifier rubyid_pack'>pack</span>
@@ -2638,7 +2618,7 @@ type.</p>
             
           </span>
           
-            &mdash; <div class='inline'><p>The endianness to apply to types.</p>
+            &mdash; <div class='inline'><p>The endianness to apply to the types.</p>
 </div>
           
         </li>
@@ -2670,6 +2650,14 @@ type.</p>
       <pre class="lines">
 
 
+227
+228
+229
+230
+231
+232
+233
+234
 235
 236
 237
@@ -2680,18 +2668,10 @@ type.</p>
 242
 243
 244
-245
-246
-247
-248
-249
-250
-251
-252
-253</pre>
+245</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 235</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 227</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_values'>values</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_templates'>templates</span><span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
@@ -2759,6 +2739,10 @@ type.</p>
       <pre class="lines">
 
 
+166
+167
+168
+169
 170
 171
 172
@@ -2769,35 +2753,23 @@ type.</p>
 177
 178
 179
-180
-181
-182
-183
-184
-185
-186
-187
-188</pre>
+180</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/binary/struct.rb', line 166</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_values'>values</span>
   <span class='id identifier rubyid_normalize'>normalize</span> <span class='op'>=</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
     <span class='kw'>case</span> <span class='id identifier rubyid_value'>value</span>
-    <span class='kw'>when</span> <span class='const'>Struct</span>
-      <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span>
-    <span class='kw'>else</span>
-      <span class='id identifier rubyid_value'>value</span>
+    <span class='kw'>when</span> <span class='const'>Struct</span> <span class='kw'>then</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span>
+    <span class='kw'>else</span>             <span class='id identifier rubyid_value'>value</span>
     <span class='kw'>end</span>
   <span class='rbrace'>}</span>
 
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_layout'>layout</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
     <span class='kw'>case</span> <span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='kw'>self</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-    <span class='kw'>when</span> <span class='const'>Array</span>
-      <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_normalize'>normalize</span><span class='rparen'>)</span>
-    <span class='kw'>else</span>
-      <span class='id identifier rubyid_normalize'>normalize</span><span class='lbracket'>[</span><span class='id identifier rubyid_value'>value</span><span class='rbracket'>]</span>
+    <span class='kw'>when</span> <span class='const'>Array</span> <span class='kw'>then</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_normalize'>normalize</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>            <span class='id identifier rubyid_normalize'>normalize</span><span class='lbracket'>[</span><span class='id identifier rubyid_value'>value</span><span class='rbracket'>]</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -2811,7 +2783,7 @@ type.</p>
 </div>
 
     <div id="footer">
-  Generated on Sat Jun 16 20:51:50 2012 by
+  Generated on Fri Jun 29 19:42:54 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2 (ruby-1.9.3).
 </div>

@@ -230,7 +230,8 @@
       
       
         &mdash;
-        <div class='inline'><p>The argument was not a String code or a Symbol.</p>
+        <div class='inline'><p>The given Symbol could not be found in
+<span class='object_link'><a href="Ronin/Binary/Template.html#FLOAT_TYPES-constant" title="Ronin::Binary::Template::FLOAT_TYPES (constant)">Ronin::Binary::Template::FLOAT_TYPES</a></span>.</p>
 </div>
       
     </li>
@@ -241,6 +242,8 @@
   <ul class="see">
     
       <li><a href="http://rubydoc.info/stdlib/core/Array:pack" target="_parent" title="http://rubydoc.info/stdlib/core/Array:pack">http://rubydoc.info/stdlib/core/Array:pack</a></li>
+    
+      <li><span class='object_link'><a href="Ronin/Binary/Template.html" title="Ronin::Binary::Template (class)">Ronin::Binary::Template</a></span></li>
     
   </ul>
 <p class="tag_title">Since:</p>
@@ -265,8 +268,6 @@
       <pre class="lines">
 
 
-50
-51
 52
 53
 54
@@ -281,20 +282,18 @@
 63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/formatting/extensions/binary/float.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/formatting/extensions/binary/float.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='id identifier rubyid_argument'>argument</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_argument'>argument</span>
   <span class='kw'>when</span> <span class='const'>String</span>
     <span class='lbracket'>[</span><span class='kw'>self</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='id identifier rubyid_argument'>argument</span><span class='rparen'>)</span>
-  <span class='kw'>when</span> <span class='const'>Symbol</span>
+  <span class='kw'>else</span>
     <span class='kw'>unless</span> <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>Binary</span><span class='op'>::</span><span class='const'>Template</span><span class='op'>::</span><span class='const'>FLOAT_TYPES</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_argument'>argument</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unsupported integer type: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_argument'>argument</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>end</span>
 
     <span class='lbracket'>[</span><span class='kw'>self</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='const'>Ronin</span><span class='op'>::</span><span class='const'>Binary</span><span class='op'>::</span><span class='const'>Template</span><span class='op'>::</span><span class='const'>TYPES</span><span class='lbracket'>[</span><span class='id identifier rubyid_argument'>argument</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>argument must be a String or a Symbol</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -307,7 +306,7 @@
 </div>
 
     <div id="footer">
-  Generated on Sat Jun 16 20:52:25 2012 by
+  Generated on Fri Jun 29 19:43:08 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2 (ruby-1.9.3).
 </div>

@@ -90,7 +90,7 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>Provides helper methods for communicating with FTP services.</p>
+    <p>Provides helper methods for communicating with FTP servers.</p>
 
 
   </div>
@@ -581,6 +581,21 @@
           
         </li>
       
+        <li>
+          <span class="name">:passive</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>true</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether the FTP session should use passive mode.</p>
+</div>
+          
+        </li>
+      
     </ul>
   
 
@@ -659,9 +674,6 @@
       <pre class="lines">
 
 
-95
-96
-97
 98
 99
 100
@@ -672,10 +684,14 @@
 105
 106
 107
-108</pre>
+108
+109
+110
+111
+112</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/ftp.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/ftp.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ftp_connect'>ftp_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_host'>host</span>     <span class='op'>=</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -687,6 +703,7 @@
   <span class='id identifier rubyid_session'>session</span> <span class='op'>=</span> <span class='const'>Net</span><span class='op'>::</span><span class='const'>FTP</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
   <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_login'>login</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span><span class='id identifier rubyid_password'>password</span><span class='comma'>,</span><span class='id identifier rubyid_acct'>acct</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_session'>session</span><span class='period'>.</span><span class='id identifier rubyid_passive'>passive</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbol'>:passive</span><span class='comma'>,</span><span class='kw'>true</span><span class='rparen'>)</span>
 
   <span class='kw'>yield</span> <span class='id identifier rubyid_session'>session</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_session'>session</span>
@@ -826,17 +843,17 @@ After the block has returned, the session will be closed.</p>
       <pre class="lines">
 
 
-135
-136
-137
-138
 139
 140
 141
-142</pre>
+142
+143
+144
+145
+146</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/network/ftp.rb', line 135</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/network/ftp.rb', line 139</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ftp_session'>ftp_session</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ftp'>ftp</span> <span class='op'>=</span> <span class='id identifier rubyid_ftp_connect'>ftp_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
@@ -856,7 +873,7 @@ After the block has returned, the session will be closed.</p>
 </div>
 
     <div id="footer">
-  Generated on Sat Jun 16 20:51:03 2012 by
+  Generated on Fri Jun 29 19:42:27 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2 (ruby-1.9.3).
 </div>

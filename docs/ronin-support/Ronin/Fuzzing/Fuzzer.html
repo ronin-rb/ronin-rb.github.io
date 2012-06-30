@@ -307,12 +307,7 @@ rules.</p>
 64
 65
 66
-67
-68
-69
-70
-71
-72</pre>
+67</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzer.rb', line 46</span>
@@ -322,21 +317,16 @@ rules.</p>
   
   <span class='id identifier rubyid_rules'>rules</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_pattern'>pattern</span><span class='comma'>,</span><span class='id identifier rubyid_substitution'>substitution</span><span class='op'>|</span>
     <span class='id identifier rubyid_pattern'>pattern</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_pattern'>pattern</span>
-              <span class='kw'>when</span> <span class='const'>Regexp</span>
-                <span class='id identifier rubyid_pattern'>pattern</span>
-              <span class='kw'>when</span> <span class='const'>String</span>
-                <span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='id identifier rubyid_pattern'>pattern</span><span class='rparen'>)</span><span class='rparen'>)</span>
-              <span class='kw'>when</span> <span class='const'>Symbol</span>
-                <span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_const_get'>const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_pattern'>pattern</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_upcase'>upcase</span><span class='rparen'>)</span>
+              <span class='kw'>when</span> <span class='const'>Regexp</span> <span class='kw'>then</span> <span class='id identifier rubyid_pattern'>pattern</span>
+              <span class='kw'>when</span> <span class='const'>String</span> <span class='kw'>then</span> <span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='id identifier rubyid_pattern'>pattern</span><span class='rparen'>)</span><span class='rparen'>)</span>
+              <span class='kw'>when</span> <span class='const'>Symbol</span> <span class='kw'>then</span> <span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_const_get'>const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_pattern'>pattern</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_upcase'>upcase</span><span class='rparen'>)</span>
               <span class='kw'>else</span>
                 <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>TypeError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>cannot convert </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_pattern'>pattern</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_content'> to a Regexp</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
               <span class='kw'>end</span>
 
     <span class='id identifier rubyid_substitution'>substitution</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_substitution'>substitution</span>
-                   <span class='kw'>when</span> <span class='const'>Enumerable</span>
-                     <span class='id identifier rubyid_substitution'>substitution</span>
-                   <span class='kw'>when</span> <span class='const'>Symbol</span>
-                     <span class='const'>Fuzzing</span><span class='lbracket'>[</span><span class='id identifier rubyid_substitution'>substitution</span><span class='rbracket'>]</span>
+                   <span class='kw'>when</span> <span class='const'>Enumerable</span> <span class='kw'>then</span> <span class='id identifier rubyid_substitution'>substitution</span>
+                   <span class='kw'>when</span> <span class='const'>Symbol</span>     <span class='kw'>then</span> <span class='const'>Fuzzing</span><span class='lbracket'>[</span><span class='id identifier rubyid_substitution'>substitution</span><span class='rbracket'>]</span>
                    <span class='kw'>else</span>
                      <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>TypeError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>substitutions must be Enumerable or a Symbol</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
                    <span class='kw'>end</span>
@@ -511,6 +501,11 @@ rules.</p>
       <pre class="lines">
 
 
+81
+82
+83
+84
+85
 86
 87
 88
@@ -531,18 +526,10 @@ rules.</p>
 103
 104
 105
-106
-107
-108
-109
-110
-111
-112
-113
-114</pre>
+106</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzer.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/fuzzer.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='comma'>,</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -558,12 +545,9 @@ rules.</p>
     <span class='id identifier rubyid_indices'>indices</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_index'>index</span><span class='comma'>,</span><span class='id identifier rubyid_length'>length</span><span class='op'>|</span>
       <span class='id identifier rubyid_substitution'>substitution</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_substitute'>substitute</span><span class='op'>|</span>
         <span class='id identifier rubyid_substitute'>substitute</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_substitute'>substitute</span>
-                     <span class='kw'>when</span> <span class='const'>Proc</span>
-                       <span class='id identifier rubyid_substitute'>substitute</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='comma'>,</span><span class='id identifier rubyid_length'>length</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-                     <span class='kw'>when</span> <span class='const'>Integer</span>
-                       <span class='id identifier rubyid_substitute'>substitute</span><span class='period'>.</span><span class='id identifier rubyid_chr'>chr</span>
-                     <span class='kw'>else</span>
-                       <span class='id identifier rubyid_substitute'>substitute</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+                     <span class='kw'>when</span> <span class='const'>Proc</span>    <span class='kw'>then</span> <span class='id identifier rubyid_substitute'>substitute</span><span class='lbracket'>[</span><span class='id identifier rubyid_string'>string</span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='comma'>,</span><span class='id identifier rubyid_length'>length</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+                     <span class='kw'>when</span> <span class='const'>Integer</span> <span class='kw'>then</span> <span class='id identifier rubyid_substitute'>substitute</span><span class='period'>.</span><span class='id identifier rubyid_chr'>chr</span>
+                     <span class='kw'>else</span>              <span class='id identifier rubyid_substitute'>substitute</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
                      <span class='kw'>end</span>
 
         <span class='id identifier rubyid_fuzzed'>fuzzed</span> <span class='op'>=</span> <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
@@ -583,7 +567,7 @@ rules.</p>
 </div>
 
     <div id="footer">
-  Generated on Sat Jun 16 20:51:51 2012 by
+  Generated on Fri Jun 29 19:42:54 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2 (ruby-1.9.3).
 </div>
