@@ -5,6 +5,6 @@ title: File Hexdump
 
 Hexdump a File:
 
-    >> File.hexdump('foo.bin')
-    ...
-
+{% highlight ruby %}
+File.hexdump('foo.bin')
+{% endhighlight %}
