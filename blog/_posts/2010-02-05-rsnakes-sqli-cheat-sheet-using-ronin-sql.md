@@ -15,7 +15,7 @@ The Ruby->SQL encoder has gotten to the point
 of being able to recreate most of the examples from
 [RSnake's SQL Injection Cheat Sheet](http://ha.ckers.org/sqlinjection/):
 
-Load `ronin-sql`:
+Load `ronin/code/sql`:
 
 {% highlight ruby %}
 require 'ronin/code/sql' 
