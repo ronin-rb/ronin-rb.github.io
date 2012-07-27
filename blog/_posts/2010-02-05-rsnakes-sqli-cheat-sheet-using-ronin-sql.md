@@ -52,11 +52,11 @@ sql[1, :and, 1, :eq, 1].to_sql
 # => "1 and 1 = 1"
 {% endhighlight %}
 
-Blind SQL Injection to attempt to locate tablenames by brute-force
-iteration through potential names:
+Blind SQL Injection to attempt to locate `table_name` by brute-force
+iteration through table name permutations:
 
 {% highlight ruby %}
-sql['1', :and, 1, :eq, [sql[:select, sql.count(:all), :from, :tablenames]]].to_sql
+sql['1', :and, 1, :eq, [sql[:select, sql.count(:all), :from, :table_name]]].to_sql
 # => "'1' and 1 = (select count(*) from tablenames)"
 {% endhighlight %}
 
