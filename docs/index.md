@@ -36,6 +36,7 @@ title: Documentation
     [[svg]](ronin/schema_diagram.svg)
 * [ronin-gen](ronin-gen/frames) - {{ site.libraries.ronin-gen.version }}
 * [ronin-web](ronin-web/frames) - {{ site.libraries.ronin-web.version }}
+* [ronin-asm](ronin-asm/frames) - {{ site.libraries.ronin-asm.version }}
 * [ronin-exploits](ronin-exploits/frames) -
   {{ site.libraries.ronin-exploits.version }}
 

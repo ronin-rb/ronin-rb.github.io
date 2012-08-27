@@ -1,0 +1,966 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Ronin::ASM::Archs::X86
+  
+    &mdash; Ronin ASM Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (X)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../ASM.html" title="Ronin::ASM (module)">ASM</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Archs.html" title="Ronin::ASM::Archs (module)">Archs</a></span></span>
+     &raquo; 
+    <span class="title">X86</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../../../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../../../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Ronin::ASM::Archs::X86
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="AMD64.html" title="Ronin::ASM::Archs::AMD64 (module)">AMD64</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/ronin/asm/archs/x86.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Contains X86 Archtecture information.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="WORD_SIZE-constant" class="">WORD_SIZE =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Default word size</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='int'>4</span></pre></dd>
+      
+        <dt id="REGISTERS-constant" class="">REGISTERS =
+          <div class="docstring">
+  <div class="discussion">
+    <p>X86 registers</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='symbol'>:al</span>  <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:al</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:ah</span>  <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:ah</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:ax</span>  <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:ax</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:eax</span> <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:eax</span><span class='comma'>,</span> <span class='int'>4</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span><span class='comma'>,</span>
+
+  <span class='symbol'>:bl</span>  <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:bl</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:bh</span>  <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:bh</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:bx</span>  <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:bx</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:ebx</span> <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:ebx</span><span class='comma'>,</span> <span class='int'>4</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span><span class='comma'>,</span>
+
+  <span class='symbol'>:cl</span>  <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:cl</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:ch</span>  <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:ch</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:cx</span>  <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:cx</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:ecx</span> <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:ecx</span><span class='comma'>,</span> <span class='int'>4</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span><span class='comma'>,</span>
+
+  <span class='symbol'>:dl</span>  <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:dl</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:dh</span>  <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:dh</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:dx</span>  <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:dx</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:edx</span> <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:edx</span><span class='comma'>,</span> <span class='int'>4</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span><span class='comma'>,</span>
+
+  <span class='symbol'>:bp</span>  <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:bp</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:ebp</span> <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:ebp</span><span class='comma'>,</span> <span class='int'>4</span><span class='rparen'>)</span><span class='comma'>,</span>
+
+  <span class='symbol'>:sp</span>  <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:sp</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:esp</span> <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:esp</span><span class='comma'>,</span> <span class='int'>4</span><span class='rparen'>)</span><span class='comma'>,</span>
+
+  <span class='symbol'>:ip</span>  <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:ip</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:eip</span> <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:eip</span><span class='comma'>,</span> <span class='int'>4</span><span class='rparen'>)</span><span class='comma'>,</span>
+
+  <span class='symbol'>:sil</span> <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:sil</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:si</span>  <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:si</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:esi</span> <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:esi</span><span class='comma'>,</span> <span class='int'>4</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span><span class='comma'>,</span>
+
+  <span class='symbol'>:dil</span> <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:dil</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:di</span>  <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:di</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:edi</span> <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:edi</span><span class='comma'>,</span> <span class='int'>4</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span><span class='comma'>,</span>
+
+  <span class='symbol'>:cs</span> <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:cs</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:ds</span> <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:ds</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:es</span> <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:es</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:fs</span> <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:fs</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:gs</span> <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:gs</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='symbol'>:ss</span> <span class='op'>=&gt;</span> <span class='const'>Register</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:ss</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span>
+<span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#interrupt-instance_method" title="#interrupt (instance method)">- (Object) <strong>interrupt</strong>(number) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Generates the instruction to trigger an interrupt.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#register_clear-instance_method" title="#register_clear (instance method)">- (Object) <strong>register_clear</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Generates the instruction to clear a register.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#register_load-instance_method" title="#register_load (instance method)">- (Object) <strong>register_load</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Generates the instruction to restore a register.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#register_save-instance_method" title="#register_save (instance method)">- (Object) <strong>register_save</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Generates the instruction to save a register.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#register_set-instance_method" title="#register_set (instance method)">- (Object) <strong>register_set</strong>(value, name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Generates the instruction to set a register.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stack_base-instance_method" title="#stack_base (instance method)">- (Object) <strong>stack_base</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The Stack Base Pointer register.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stack_pointer-instance_method" title="#stack_pointer (instance method)">- (Object) <strong>stack_pointer</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The Stack Pointer register.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stack_pop-instance_method" title="#stack_pop (instance method)">- (Object) <strong>stack_pop</strong>(op) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Generates the instruction to pop a value off of the Stack.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#stack_push-instance_method" title="#stack_push (instance method)">- (Object) <strong>stack_push</strong>(op) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Generates the instruction to push a value onto the Stack.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#syscall-instance_method" title="#syscall (instance method)">- (Object) <strong>syscall</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Generates the instruction to invoke a syscall.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="interrupt-instance_method">
+  
+    - (<tt>Object</tt>) <strong>interrupt</strong>(number) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Generates the instruction to trigger an interrupt.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/archs/x86.rb', line 84</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_interrupt'>interrupt</span><span class='lparen'>(</span><span class='id identifier rubyid_number'>number</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='id identifier rubyid_instruction'>instruction</span><span class='lparen'>(</span><span class='symbol'>:int</span><span class='comma'>,</span><span class='id identifier rubyid_number'>number</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="register_clear-instance_method">
+  
+    - (<tt>Object</tt>) <strong>register_clear</strong>(name) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Generates the instruction to clear a register.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the register.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+127
+128
+129</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/archs/x86.rb', line 127</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_register_clear'>register_clear</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_instruction'>instruction</span><span class='lparen'>(</span><span class='symbol'>:xor</span><span class='comma'>,</span><span class='id identifier rubyid_register'>register</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='comma'>,</span><span class='id identifier rubyid_register'>register</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="register_load-instance_method">
+  
+    - (<tt>Object</tt>) <strong>register_load</strong>(name) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Generates the instruction to restore a register.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the register.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+160
+161
+162</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/archs/x86.rb', line 160</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_register_load'>register_load</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_stack_pop'>stack_pop</span><span class='lparen'>(</span><span class='id identifier rubyid_register'>register</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="register_save-instance_method">
+  
+    - (<tt>Object</tt>) <strong>register_save</strong>(name) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Generates the instruction to save a register.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the register.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+150
+151
+152</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/archs/x86.rb', line 150</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_register_save'>register_save</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_stack_push'>stack_push</span><span class='lparen'>(</span><span class='id identifier rubyid_register'>register</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="register_set-instance_method">
+  
+    - (<tt>Object</tt>) <strong>register_set</strong>(value, name) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Generates the instruction to set a register.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../ImmediateOperand.html" title="Ronin::ASM::ImmediateOperand (class)">ImmediateOperand</a></span></tt>, <tt>MemoryOperate</tt>, <tt><span class='object_link'><a href="../Register.html" title="Ronin::ASM::Register (class)">Register</a></span></tt>, <tt>Integer</tt>, <tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The value to set.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the register.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+140
+141
+142</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/archs/x86.rb', line 140</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_register_set'>register_set</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_instruction'>instruction</span><span class='lparen'>(</span><span class='symbol'>:mov</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='id identifier rubyid_register'>register</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="stack_base-instance_method">
+  
+    - (<tt>Object</tt>) <strong>stack_base</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The Stack Base Pointer register.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li>ebp</li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+96</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/archs/x86.rb', line 96</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stack_base'>stack_base</span><span class='semicolon'>;</span> <span class='id identifier rubyid_ebp'>ebp</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="stack_pointer-instance_method">
+  
+    - (<tt>Object</tt>) <strong>stack_pointer</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The Stack Pointer register.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li>esp</li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+103</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/archs/x86.rb', line 103</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stack_pointer'>stack_pointer</span><span class='semicolon'>;</span> <span class='id identifier rubyid_esp'>esp</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="stack_pop-instance_method">
+  
+    - (<tt>Object</tt>) <strong>stack_pop</strong>(op) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Generates the instruction to pop a value off of the Stack.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>op</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Register.html" title="Ronin::ASM::Register (class)">Register</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The register operand to store the value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+119</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/archs/x86.rb', line 119</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stack_pop'>stack_pop</span><span class='lparen'>(</span><span class='id identifier rubyid_op'>op</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='id identifier rubyid_instruction'>instruction</span><span class='lparen'>(</span><span class='symbol'>:pop</span><span class='comma'>,</span><span class='id identifier rubyid_op'>op</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="stack_push-instance_method">
+  
+    - (<tt>Object</tt>) <strong>stack_push</strong>(op) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Generates the instruction to push a value onto the Stack.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>op</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../ImmediateOperand.html" title="Ronin::ASM::ImmediateOperand (class)">ImmediateOperand</a></span></tt>, <tt>MemoryOperate</tt>, <tt><span class='object_link'><a href="../Register.html" title="Ronin::ASM::Register (class)">Register</a></span></tt>, <tt>Integer</tt>, <tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+111</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/archs/x86.rb', line 111</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_stack_push'>stack_push</span><span class='lparen'>(</span><span class='id identifier rubyid_op'>op</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='id identifier rubyid_instruction'>instruction</span><span class='lparen'>(</span><span class='symbol'>:push</span><span class='comma'>,</span><span class='id identifier rubyid_op'>op</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="syscall-instance_method">
+  
+    - (<tt>Object</tt>) <strong>syscall</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Generates the instruction to invoke a syscall.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/archs/x86.rb', line 89</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_syscall'>syscall</span><span class='semicolon'>;</span> <span class='id identifier rubyid_interrupt'>interrupt</span><span class='lparen'>(</span><span class='int'>0x80</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Sun Aug 26 21:49:51 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.2.1 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

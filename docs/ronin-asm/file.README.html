@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Ronin ASM Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><h1 id="ronin-asm">Ronin Asm</h1>
+
+<ul>
+  <li><a href="https://github.com/ronin-ruby/ronin-asm">Source</a></li>
+  <li><a href="https://github.com/ronin-ruby/ronin-asm/issues">Issues</a></li>
+  <li><a href="http://rubydoc.info/github/ronin-ruby/ronin-asm/frames">Documentation</a></li>
+  <li><a href="https://groups.google.com/group/ronin-ruby">Mailing List</a></li>
+  <li><a href="http://ronin-ruby.github.com/irc/">irc.freenode.net #ronin</a></li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<p><span class='object_link'><a href="Ronin/ASM.html" title="Ronin::ASM (module)">Ronin::ASM</a></span> is a Ruby DSL for crafting Assmebly programs and Shellcode.</p>
+
+<h2 id="features">Features</h2>
+
+<ul>
+  <li>Provides a Ruby DSL for writing Assembly programs.
+    <ul>
+      <li>Supports X86 and AMD64 instruction sets.</li>
+      <li>Supports ATT and Intel syntax.</li>
+    </ul>
+  </li>
+  <li>Uses <a href="http://yasm.tortall.net/">yasm</a> to assemble the programs.</li>
+  <li>Supports assembling Shellcode.</li>
+</ul>
+
+<h2 id="examples">Examples</h2>
+
+<p>Create a program:</p>
+
+<pre class="code ruby"><code><span class='id identifier rubyid_asm'>asm</span> <span class='op'>=</span> <span class='const'>ASM</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_push'>push</span> <span class='id identifier rubyid_ebx'>ebx</span>
+  <span class='id identifier rubyid_mov'>mov</span>  <span class='id identifier rubyid_ebx'>ebx</span><span class='comma'>,</span> <span class='id identifier rubyid_eax'>eax</span>
+  <span class='id identifier rubyid_pop'>pop</span>  <span class='id identifier rubyid_ebx'>ebx</span>
+  <span class='id identifier rubyid_hlt'>hlt</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_asm'>asm</span><span class='period'>.</span><span class='id identifier rubyid_to_asm'>to_asm</span>
+<span class='comment'># _start:
+</span><span class='comment'>#	pushl	%ebx
+</span><span class='comment'>#	movl	%ebx,	%eax
+</span><span class='comment'>#	popl	%ebx
+</span><span class='comment'>#	hlt
+</span>
+<span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_asm'>asm</span><span class='period'>.</span><span class='id identifier rubyid_to_asm'>to_asm</span><span class='lparen'>(</span><span class='symbol'>:intel</span><span class='rparen'>)</span>
+<span class='comment'># _start:
+</span><span class='comment'>#	push	ebx
+</span><span class='comment'>#	mov	eax,	ebx
+</span><span class='comment'>#	pop	ebx
+</span><span class='comment'>#	hlt
+</span></code></pre>
+
+<p>Create shellcode:</p>
+
+<pre class="code ruby"><code><span class='id identifier rubyid_shellcode'>shellcode</span> <span class='op'>=</span> <span class='const'>ASM</span><span class='op'>::</span><span class='const'>Shellcode</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:arch</span> <span class='op'>=&gt;</span> <span class='symbol'>:x86</span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_xor'>xor</span>   <span class='id identifier rubyid_eax'>eax</span><span class='comma'>,</span>  <span class='id identifier rubyid_eax'>eax</span>
+  <span class='id identifier rubyid_push'>push</span>  <span class='id identifier rubyid_eax'>eax</span>
+  <span class='id identifier rubyid_push'>push</span>  <span class='int'>0x68732f2f</span>
+  <span class='id identifier rubyid_push'>push</span>  <span class='int'>0x6e69622f</span>
+  <span class='id identifier rubyid_mov'>mov</span>   <span class='id identifier rubyid_esp'>esp</span><span class='comma'>,</span>  <span class='id identifier rubyid_ebx'>ebx</span>
+  <span class='id identifier rubyid_push'>push</span>  <span class='id identifier rubyid_eax'>eax</span>
+  <span class='id identifier rubyid_push'>push</span>  <span class='id identifier rubyid_ebx'>ebx</span>
+  <span class='id identifier rubyid_mov'>mov</span>   <span class='id identifier rubyid_esp'>esp</span><span class='comma'>,</span>  <span class='id identifier rubyid_ecx'>ecx</span>
+  <span class='id identifier rubyid_xor'>xor</span>   <span class='id identifier rubyid_edx'>edx</span><span class='comma'>,</span>  <span class='id identifier rubyid_edx'>edx</span>
+  <span class='id identifier rubyid_mov'>mov</span>   <span class='int'>0xb</span><span class='comma'>,</span>  <span class='id identifier rubyid_al'>al</span>
+  <span class='id identifier rubyid_int'>int</span>   <span class='int'>0x80</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_shellcode'>shellcode</span><span class='period'>.</span><span class='id identifier rubyid_assemble'>assemble</span>
+<span class='comment'># =&gt; &quot;f1\xC0fPfh//shfh/binf\x89\xE3fPfSf\x89\xE1f1\xD2\xB0\v\xCD\x80&quot;
+</span></code></pre>
+
+<h3 id="immediate-operands">Immediate Operands</h3>
+
+<p>Immediate operands can be Integers or <code>nil</code>:</p>
+
+<pre class="code ruby"><code><span class='id identifier rubyid_mov'>mov</span> <span class='int'>0xff</span><span class='comma'>,</span> <span class='id identifier rubyid_eax'>eax</span>
+<span class='id identifier rubyid_mov'>mov</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_ebx'>ebx</span>
+</code></pre>
+
+<p>The size of the operand can also be specified explicitly:</p>
+
+<pre class="code ruby"><code><span class='id identifier rubyid_push'>push</span> <span class='id identifier rubyid_byte'>byte</span><span class='lparen'>(</span><span class='int'>0xff</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_push'>push</span> <span class='id identifier rubyid_word'>word</span><span class='lparen'>(</span><span class='int'>0xffff</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_push'>push</span> <span class='id identifier rubyid_dword'>dword</span><span class='lparen'>(</span><span class='int'>0xffffffff</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_push'>push</span> <span class='id identifier rubyid_qword'>qword</span><span class='lparen'>(</span><span class='int'>0xffffffffffffffff</span><span class='rparen'>)</span>
+</code></pre>
+
+<h3 id="memory-operands">Memory Operands</h3>
+
+<p>Memory operands can be expressed as arithmatic on registers:</p>
+
+<pre class="code ruby"><code><span class='id identifier rubyid_mov'>mov</span> <span class='id identifier rubyid_eax'>eax</span><span class='op'>+</span><span class='int'>8</span><span class='comma'>,</span> <span class='id identifier rubyid_ebx'>ebx</span>
+<span class='id identifier rubyid_mov'>mov</span> <span class='id identifier rubyid_eax'>eax</span><span class='op'>-</span><span class='int'>8</span><span class='comma'>,</span> <span class='id identifier rubyid_ebx'>ebx</span>
+<span class='id identifier rubyid_mov'>mov</span> <span class='id identifier rubyid_eax'>eax</span><span class='op'>+</span><span class='id identifier rubyid_esi'>esi</span><span class='comma'>,</span> <span class='id identifier rubyid_ebx'>ebx</span>
+<span class='id identifier rubyid_mov'>mov</span> <span class='id identifier rubyid_eax'>eax</span><span class='op'>+</span><span class='lparen'>(</span><span class='id identifier rubyid_esi'>esi</span><span class='op'>*</span><span class='int'>4</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_ebx'>ebx</span>
+</code></pre>
+
+<h3 id="labels">Labels</h3>
+
+<p>Labels can be expressed with blocks:</p>
+
+<pre class="code ruby"><code><span class='id identifier rubyid__loop'>_loop</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_inc'>inc</span> <span class='id identifier rubyid_eax'>eax</span>
+  <span class='id identifier rubyid_cmp'>cmp</span> <span class='id identifier rubyid_eax'>eax</span><span class='comma'>,</span> <span class='int'>10</span>
+  <span class='id identifier rubyid_jl'>jl</span> <span class='symbol'>:_loop</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h3 id="syscalls">Syscalls</h3>
+
+<p>If the <code>:os</code> option is specified, then syscall numbers can be looked up via the 
+<code>syscalls</code> Hash:</p>
+
+<pre class="code ruby"><code><span class='const'>ASM</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:os</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Linux</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='comment'># ...
+</span>  <span class='id identifier rubyid_mov'>mov</span> <span class='id identifier rubyid_syscalls'>syscalls</span><span class='lbracket'>[</span><span class='symbol'>:execve</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_al'>al</span>
+  <span class='id identifier rubyid_int'>int</span> <span class='int'>0x80</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+  <li><a href="https://github.com/postmodern/data_paths#readme">data_paths</a> ~&gt; 0.3</li>
+  <li><a href="http://yasm.tortall.net/">yasm</a> &gt;= 0.6.0</li>
+  <li><a href="https://github.com/sophsec/ruby-yasm#readme">ruby-yasm</a> ~&gt; 0.2</li>
+</ul>
+
+<h2 id="install">Install</h2>
+
+<pre class="code ruby"><code>$ gem install ronin-asm
+</code></pre>
+
+<h2 id="license">License</h2>
+
+<p>Ronin::ASM - A Ruby DSL for crafting Assmebly programs and Shellcode.</p>
+
+<p>Copyright (c) 2007-2012 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
+
+<p>This file is part of Ronin ASM.</p>
+
+<p>Ronin Asm is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+
+<p>Ronin Asm is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+
+<p>You should have received a copy of the GNU General Public License
+along with Ronin Asm.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+
+</div></div>
+
+    <div id="footer">
+  Generated on Sun Aug 26 21:49:51 2012 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.2.1 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>
