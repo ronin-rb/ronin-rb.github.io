@@ -1,0 +1,378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../../style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../../custom.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="../../syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <script src="../../jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../app.js" type="text/javascript" charset="utf-8"></script>
+    <title>Class: Ronin::Scanners::NmapTask</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section class Ronin_Scanners_NmapTask">
+  <h1 class="title">Class: Ronin::Scanners::NmapTask</h1>
+  <div class="section inheritance">
+  <ul>
+  <li>RProgram::Task</li><ul><li>Ronin::Scanners::NmapTask</li>
+  </ul></ul>
+</div><div class="section docstring">
+  <h2>Nmap options:</h2>
+<h3>Target Specifications:</h3>
+<table>
+<tr><td valign="top"><tt>-iL</tt>:</td><td><tt>nmap.target_file</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-iR</tt>:</td><td><tt>nmap.random_targets</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--exclude</tt>:</td><td><tt>nmap.exclude</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--excludefile</tt>:</td><td><tt>nmap.exclude_file</tt>
+
+</td></tr>
+</table>
+<h3>Host Discovery:</h3>
+<table>
+<tr><td valign="top"><tt>-sL</tt>:</td><td><tt>nmap.list</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-sP</tt>:</td><td><tt>nmap.ping</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-PN</tt>:</td><td><tt>nmap.skip_discovery</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-PS</tt>:</td><td><tt>nmap.syn_discovery</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-PA</tt>:</td><td><tt>nmap.ack_discovery</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-PU</tt>:</td><td><tt>nmap.udp_discovery</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-PE</tt>:</td><td><tt>nmap.icmp_echo_discovery</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-PP</tt>:</td><td><tt>nmap.icmp_timestamp_discovery</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-PM</tt>:</td><td><tt>nmap.icmp_netmask_discovery</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-PO</tt>:</td><td><tt>nmap.ip_ping</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-n</tt>:</td><td><tt>nmap.disable_dns</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-R</tt>:</td><td><tt>nmap.enable_dns</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--dns-servers</tt>:</td><td><tt>nmap.dns_servers</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--systems-dns</tt>:</td><td><tt>nmap.systems_dns</tt>
+
+</td></tr>
+</table>
+<h3>Scan Techniques:</h3>
+<table>
+<tr><td valign="top"><tt>-sS</tt>:</td><td><tt>nmap.syn_scan</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-sT</tt>:</td><td><tt>nmap.connect_scan</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-sA</tt>:</td><td><tt>nmap.ack_scan</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-sW</tt>:</td><td><tt>nmap.window_scan</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-sM</tt>:</td><td><tt>nmap.maimon_scan</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-sU</tt>:</td><td><tt>nmap.udp_scan</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-sN</tt>:</td><td><tt>nmap.null_scan</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-sF</tt>:</td><td><tt>nmap.fin_scan</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-sX</tt>:</td><td><tt>nmap.xmas_scan</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--scanflags</tt>:</td><td><tt>nmap.tcp_scan_flags</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-sI</tt>:</td><td><tt>nmap.idle_scan</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-s0</tt>:</td><td><tt>nmap.ip_scan</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-b</tt>:</td><td><tt>nmap.ftp_bounce_scan</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--traceroute</tt>:</td><td><tt>nmap.traceroute</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--reason</tt>:</td><td><tt>nmap.show_reason</tt>
+
+</td></tr>
+</table>
+<h3>Port Specification and Scan Order:</h3>
+<table>
+<tr><td valign="top"><tt>-p</tt>:</td><td><tt>nmap.ports</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-F</tt>:</td><td><tt>nmap.fast</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-r</tt>:</td><td><tt>nmap.consecutively</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--top-ports</tt>:</td><td><tt>nmap.top_ports</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--port-ratio</tt>:</td><td><tt>nmap.port_ratio</tt>
+
+</td></tr>
+</table>
+<h3>Service/Version Detection:</h3>
+<table>
+<tr><td valign="top"><tt>-sV</tt>:</td><td><tt>nmap.service_scan</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--version-intensity</tt>:</td><td><tt>nmap.version_intensity</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--version-light</tt>:</td><td><tt>nmap.version_light</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--version-all</tt>:</td><td><tt>nmap.version_all</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--version-trace</tt>:</td><td><tt>nmap.version_trace</tt>
+
+</td></tr>
+</table>
+<h3>Script Scan:</h3>
+<table>
+<tr><td valign="top"><tt>-sC</tt>:</td><td><tt>nmap.default_script</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--script</tt>:</td><td><tt>nmap.script</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--script-args</tt>:</td><td><tt>nmap.script_params</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--script-trace</tt>:</td><td><tt>nmap.script_trace</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--script-updatedb</tt>:</td><td><tt>nmap.update_scriptdb</tt>
+
+</td></tr>
+</table>
+<h3>OS Detection:</h3>
+<table>
+<tr><td valign="top"><tt>-O</tt>:</td><td><tt>nmap.os_fingerprint</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--osscan_limit</tt>:</td><td><tt>nmap.limit_os_scan</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--osscan_guess</tt>:</td><td><tt>nmap.max_os_scan</tt>
+
+</td></tr>
+</table>
+<h3>Timing and Performance:</h3>
+<table>
+<tr><td valign="top"><tt>--min-hostgroup</tt>:</td><td><tt>nmap.min_host_group</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--max-hostgroup</tt>:</td><td><tt>nmap.max_host_group</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--min-parallelism</tt>:</td><td><tt>nmap.min_parallelism</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--max-parallelism</tt>:</td><td><tt>nmap.max_parallelism</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--min-rtt-timeout</tt>:</td><td><tt>nmap.min_rtt_timeout</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--max-rtt-timeout</tt>:</td><td><tt>nmap.max_rtt_timeout</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--max-retries</tt>:</td><td><tt>nmap.max_retries</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--host-timeout</tt>:</td><td><tt>nmap.host_timeout</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--scan-delay</tt>:</td><td><tt>nmap.scan_delay</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--max-scan-delay</tt>:</td><td><tt>nmap.max_scan_delay</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--min-rate</tt>:</td><td><tt>nmap.min_rate</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--max-rate</tt>:</td><td><tt>nmap.max_rate</tt>
+
+</td></tr>
+</table>
+<h3>Firewall/IDS Evasion and Spoofing:</h3>
+<table>
+<tr><td valign="top"><tt>-f</tt>:</td><td><tt>nmap.packet_fragments</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--mtu</tt>:</td><td><tt>nmap.mtu</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-D</tt>:</td><td><tt>nmap.decoys</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-S</tt>:</td><td><tt>nmap.spoof</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-e</tt>:</td><td><tt>nmap.interface</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-g</tt>:</td><td><tt>nmap.source_port</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--data-length</tt>:</td><td><tt>nmap.data_length</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--ip-options</tt>:</td><td><tt>nmap.ip_options</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--ttl</tt>:</td><td><tt>nmap.ttl</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--spoof-mac</tt>:</td><td><tt>nmap.spoof_mac</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--badsum</tt>:</td><td><tt>nmap.bad_checksum</tt>
+
+</td></tr>
+</table>
+<h3>Output:</h3>
+<table>
+<tr><td valign="top"><tt>-oN</tt>:</td><td><tt>nmap.save</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-oX</tt>:</td><td><tt>nmap.xml</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-oS</tt>:</td><td><tt>nmap.skiddie</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-oG</tt>:</td><td><tt>nmap.grepable</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-v</tt>:</td><td><tt>nmap.verbose</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--open</tt>:</td><td><tt>nmap.show_open_ports</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--packet-trace</tt>:</td><td><tt>nmap.show_packets</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--iflist</tt>:</td><td><tt>nmap.show_interfaces</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--log-errors</tt>:</td><td><tt>nmap.show_log_errors</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--append-output</tt>:</td><td><tt>nmap.append</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--resume</tt>:</td><td><tt>nmap.resume</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--stylesheet</tt>:</td><td><tt>nmap.stylesheet</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--webxml</tt>:</td><td><tt>nmap.nmap_stylesheet</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--no-stylesheet</tt>:</td><td><tt>nmap.disable_stylesheet</tt>
+
+</td></tr>
+</table>
+<h3>Misc:</h3>
+<table>
+<tr><td valign="top"><tt>-6</tt>:</td><td><tt>nmap.ipv6</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-A</tt>:</td><td><tt>nmap.all</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--datadir</tt>:</td><td><tt>nmap.nmap_datadir</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--send-eth</tt>:</td><td><tt>nmap.raw_ethernet</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--send-ip</tt>:</td><td><tt>nmap.raw_ip</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--privledged</tt>:</td><td><tt>nmap.privledged</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>--unprivledged</tt>:</td><td><tt>nmap.unprivledged</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-V</tt>:</td><td><tt>nmap.version</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>-h</tt>:</td><td><tt>nmap.help</tt>
+
+</td></tr>
+<tr><td valign="top"><tt>target specification</tt>:</td><td><tt>nmap.targets</tt>
+
+</td></tr>
+</table>
+
+</div><div class="section tags">
+  <h2>Meta Tags</h2>
+  <div class="see">
+  <h3>See Also:</h3>
+  <dl>
+    <dt></dt>
+    <dd>
+      <span class='desc'>
+        <tt><a href="http://nmap.org/book/man.html" title="http://nmap.org/book/man.html">http://nmap.org/book/man.html</a></tt>
+      </span>
+    </dd>
+  </dl>
+</div>
+
+</div><div class="section constants">
+  
+</div>
+</div>
+    </div>
+    <div id="yard_info">
+  Generated on Saturday, September 26 2009 at 07:04:05 PM by 
+  <abbr class="yard" title="Yay! A Ruby Documentation Tool"><a href="http://yard.soen.ca">YARD</a></abbr> 
+  0.2.3.5 (ruby-1.8.6).
+</div>
+
+  </body>
+</html>

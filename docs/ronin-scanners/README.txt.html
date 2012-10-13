@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="custom.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <title>README.txt</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section docstring readme">
+        <h1>Ronin Scanners</h1>
+<ul>
+<li><a
+href="http://ronin.rubyforge.org/scanners">ronin.rubyforge.org/scanners</a>/
+
+</li>
+<li><a
+href="http://github.com/postmodern/ronin-scanners">github.com/postmodern/ronin-scanners</a>
+
+</li>
+<li>irc.freenode.net #ronin
+
+</li>
+<li>Postmodern (postmodern.mod3 at gmail.com)
+
+</li>
+</ul>
+<h2>DESCRIPTION:</h2>
+<p>
+Ronin Scanners is a Ruby library for Ronin that provides Ruby interfaces to
+various third-party security scanners.
+</p>
+<p>
+Ronin is a Ruby platform for exploit development and security research.
+Ronin allows for the rapid development and distribution of code, exploits
+or payloads over many common Source-Code-Management (SCM) systems.
+</p>
+<h3>Ruby</h3>
+<p>
+Ronin&#8217;s Ruby environment allows security researchers to leverage Ruby
+with ease. The Ruby environment contains a multitude of convenience methods
+for working with data in Ruby, a Ruby Object Database, a customized Ruby
+Console and an extendable command-line interface.
+</p>
+<h3>Extend</h3>
+<p>
+Ronin&#8217;s more specialized features are provided by additional Ronin
+libraries, which users can choose to install. These libraries can allow one
+to write and run Exploits and Payloads, scan for PHP vulnerabilities,
+perform Google Dorks or run 3rd party scanners.
+</p>
+<h3>Publish</h3>
+<p>
+Ronin allows users to publish and share code, exploits, payloads or other
+data via Overlays. Overlays are directories of code and data that can be
+hosted on any SVN, Hg, Git or Rsync server. Ronin makes it easy to create,
+install or update Overlays.
+</p>
+<h2>FEATURES/PROBLEMS:</h2>
+<ul>
+<li>Provides a Rubyful interface to Nmap.
+
+</li>
+<li>Allows for recording of Nmap scan results using ScanDB.
+
+</li>
+<li>Provides a Rubyful interface to Nikto.
+
+</li>
+</ul>
+<h2>SYNOPSIS:</h2>
+<ul>
+<li>Start the Ronin console with Ronin Scanners preloaded:
+
+<pre class="code">
+  $ <span class='ronin identifier id'>ronin</span><span class='minus op'>-</span><span class='scanners identifier id'>scanners</span>
+</pre>
+</li>
+</ul>
+<h2>EXAMPLES:</h2>
+<ul>
+<li>Calling Nmap from Ruby:
+
+<pre class="code">
+  <span class='require identifier id'>require</span> <span class='string val'>'ronin/scanners/nmap'</span>
+
+  <span class='Scanners constant id'>Scanners</span><span class='colon2 op'>::</span><span class='Nmap constant id'>Nmap</span><span class='dot token'>.</span><span class='scan identifier id'>scan</span><span class='lparen token'>(</span><span class='symbol val'>:targets</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'www.google.com'</span><span class='comma token'>,</span> <span class='symbol val'>:ports</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='lbrack token'>[</span><span class='integer val'>80</span><span class='comma token'>,</span><span class='integer val'>21</span><span class='comma token'>,</span><span class='integer val'>25</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='symbol val'>:service_scan</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='true true kw'>true</span><span class='rparen token'>)</span>
+  <span class='comment val'># Starting Nmap 4.68 ( http://nmap.org ) at 2009-01-09 16:51 PST</span>
+  <span class='comment val'># Interesting ports on mh-in-f99.google.com (209.85.173.99):</span>
+  <span class='comment val'># PORT   STATE    SERVICE VERSION</span>
+  <span class='comment val'># 21/tcp filtered ftp</span>
+  <span class='comment val'># 25/tcp filtered smtp</span>
+  <span class='comment val'># 80/tcp open     http    Google httpd 1.3 (GFE)</span>
+  <span class='comment val'># Service Info: OS: Linux</span>
+  <span class='comment val'>#</span>
+  <span class='comment val'># Service detection performed. Please report any incorrect results at http://nmap.org/submit/ .</span>
+  <span class='comment val'># Nmap done: 1 IP address (1 host up) scanned in 11.627 seconds</span>
+  <span class='comment val'># =&gt; nil</span>
+</pre>
+</li>
+<li>Calling Nikto from Ruby:
+
+<pre class="code">
+  <span class='require identifier id'>require</span> <span class='string val'>'ronin/scanners/nikto'</span>
+
+  <span class='Scanners constant id'>Scanners</span><span class='colon2 op'>::</span><span class='Nikto constant id'>Nikto</span><span class='dot token'>.</span><span class='scan identifier id'>scan</span><span class='lparen token'>(</span><span class='symbol val'>:host</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'www.example.com'</span><span class='rparen token'>)</span>
+</pre>
+</li>
+</ul>
+<h2>REQUIREMENTS:</h2>
+<ul>
+<li><a href="http://scandb.rubyforge.org/">scandb</a> >= 0.1.3
+
+</li>
+<li><a href="http://rprogram.rubyforge.org/">rprogram</a> >= 0.1.7
+
+</li>
+<li><a href="http://ronin.rubyforge.org/">ronin</a> >= 0.3.0
+
+</li>
+</ul>
+<h2>INSTALL:</h2>
+<pre class="code">
+  $ <span class='sudo identifier id'>sudo</span> <span class='gem identifier id'>gem</span> <span class='install identifier id'>install</span> <span class='ronin identifier id'>ronin</span><span class='minus op'>-</span><span class='scanners identifier id'>scanners</span>
+</pre>
+<h2>LICENSE:</h2>
+<p>
+Ronin Scanners - A Ruby library for Ronin that provides Ruby interfaces to
+various third-party security scanners.
+</p>
+<p>
+Copyright &#169; 2008-2009 Hal Brodigan (postmodern.mod3 at gmail.com)
+</p>
+<p>
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 2 of the License, or (at your option)
+any later version.
+</p>
+<p>
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+more details.
+</p>
+<p>
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc., 51
+Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+</p>
+
+      </div>
+    </div>
+    <div id="yard_info">
+  Generated on Saturday, September 26 2009 at 07:04:05 PM by 
+  <abbr class="yard" title="Yay! A Ruby Documentation Tool"><a href="http://yard.soen.ca">YARD</a></abbr> 
+  0.2.3.5 (ruby-1.8.6).
+</div>
+
+  </body>
+</html>
