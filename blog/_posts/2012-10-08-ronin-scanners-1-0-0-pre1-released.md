@@ -107,13 +107,13 @@ end
 
 [ronin-scanners] provides several commands for the built-in Scanners:
 
-* `ronin scanners` - Starts the Ronin Console with ronin-scanners loaded.
-* `ronin scanner` - Loads a Scanner from a file or from the Database
+* `$ ronin scanners` - Starts the Ronin Console with ronin-scanners loaded.
+* `$ ronin scanner` - Loads a Scanner from a file or from the Database
   and runs it.
-* `ronin scan:dork` - Performs Google Dorks.
-* `ronin scan:nmap` - Automates nmap scans and imports them into the Database.
-* `ronin scan:proxies` - Scans for proxies and imports them into the Database.
-* `ronin scan:spider` - Spiders a website and saves URLs into the Database.
+* `$ ronin scan:dork` - Performs Google Dorks.
+* `$ ronin scan:nmap` - Automates nmap scans and imports them into the Database.
+* `$ ronin scan:proxies` - Scans for proxies and imports them into the Database.
+* `$ ronin scan:spider` - Spiders a website and saves URLs into the Database.
 
 ## How to Help
 
@@ -121,11 +121,11 @@ Since this is a pre-release _and_ a complete rewrite of [ronin-scanners],
 your help is needed! Here's how you can help out:
 
 1. Install it (`$ gem install ronin-scanners --pre`)
-2. Test the commands.
-3. Proof-read the [documentation]
+2. Test the commands
+3. Review the [documentation]
 4. Attempt to write a [script](https://gist.github.com/3803087)
-   which uses one of the Scanners.
-5. Submit bugs or suggestions on [GitHub][issues].
+   which uses one of the Scanners
+5. Submit bugs or suggestions on [GitHub][issues]
 
 Let's make [ronin-scanners] 1.0.0 a solid release!
 
