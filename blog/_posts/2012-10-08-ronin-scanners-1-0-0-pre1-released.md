@@ -13,6 +13,9 @@ opens the door for quickly pulling data off the internet and into Ronin.
 
 ## Install
 
+[ronin-scanners] 1.0.0.pre1 can be installed from [rubygems.org][1.0.0.pre1]
+like so:
+
     $ gem install ronin-scanners --pre
 
 ## API
@@ -126,7 +129,7 @@ end
 ## How to Help
 
 Since this is a pre-release _and_ a complete rewrite of [ronin-scanners],
-your help is needed! Here's how you can help out:
+your help is greatly needed! Here's how you can help out:
 
 1. Install it (`$ gem install ronin-scanners --pre`)
 2. Test the commands
