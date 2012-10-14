@@ -114,6 +114,26 @@ Ronin::Scanners::Spider.import(:hosts => ['www.example.com']) do |url|
 end
 {% endhighlight %}
 
+## Classes
+
+[ronin-scanners] provides various Scanner base-classes:
+
+* [Ronin::Scanners::IPScanner]
+* [Ronin::Scanners::HostNameScanner]
+* [Ronin::Scanners::TCPPortScanner]
+* [Ronin::Scanners::UDPPortScanner]
+* [Ronin::Scanners::URLScanner]
+
+[ronin-scanners] also provides several built-in scanners:
+
+* [Ronin::Scanners::Dork]
+* [Ronin::Scanners::ResolvScanner]
+* [Ronin::Scanners::ReverseLookupScanner]
+* [Ronin::Scanners::SiteMap]
+* [Ronin::Scanners::Spider]
+* [Ronin::Scanners::Nmap]
+* [Ronin::Scanners::Proxies]
+
 ## Commands
 
 [ronin-scanners] provides several commands for the built-in Scanners:
@@ -146,11 +166,24 @@ Let's make [ronin-scanners] 1.0.0 a solid release!
 [documentation]: /docs/ronin-scanners/frames
 [issues]: https://github.com/ronin-ruby/ronin-scanners/issues?direction=desc&sort=created&state=open
 
-[Ronin::Scanners::Scanner]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html
-[Ronin::Scanners::URLScanner]: /docs/ronin-scanners/Ronin/Scanners/URLScanner.html
 [each]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html#each-instance_method
 [each_resource]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html#each_resource-instance_method
 [import]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html#import-instance_method
 [Ronin::Scanners::Scanner.each]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html#each-class_method
 [Ronin::Scanners::Scanner.scan]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html#scan-class_method
 [Ronin::Scanners::Scanner.import]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html#import-class_method
+
+[Ronin::Scanners::Scanner]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html
+[Ronin::Scanners::IPScanner]: /docs/ronin-scanners/Ronin/Scanners/IPScanner.html
+[Ronin::Scanners::HostNameScanner]: /docs/ronin-scanners/Ronin/Scanners/HostNameScanner.html
+[Ronin::Scanners::TCPPortScanner]: /docs/ronin-scanners/Ronin/Scanners/TCPPortScanner.html
+[Ronin::Scanners::UDPPortScanner]: /docs/ronin-scanners/Ronin/Scanners/UDPPortScanner.html
+[Ronin::Scanners::URLScanner]: /docs/ronin-scanners/Ronin/Scanners/URLScanner.html
+
+[Ronin::Scanners::Dork]: /docs/ronin-scanners/Ronin/Scanners/Dork.html
+[Ronin::Scanners::ResolvScanner]: /docs/ronin-scanners/Ronin/Scanners/ResolvScanner.html
+[Ronin::Scanners::ReverseLookupScanner]: /docs/ronin-scanners/Ronin/Scanners/ReverseLookupScanner.html
+[Ronin::Scanners::SiteMap]: /docs/ronin-scanners/Ronin/Scanners/SiteMap.html
+[Ronin::Scanners::Spider]: /docs/ronin-scanners/Ronin/Scanners/Spider.html
+[Ronin::Scanners::Nmap]: /docs/ronin-scanners/Ronin/Scanners/Nmap.html
+[Ronin::Scanners::Proxies]: /docs/ronin-scanners/Ronin/Scanners/Proxies.html
