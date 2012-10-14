@@ -4,12 +4,12 @@ title: ronin-scanners 1.0.0.pre1 released!
 author: postmodern
 ---
 
-After much stressing over API design and refactoring [ronin-support] 1.0.0.pre1
-has been pre-released. 1.0.0.pre1 is a complete rewrite of ronin-scanners
-compared to [0.1.4]; released back in 2009. The new API of ronin-scanners now
-allows for developers to write Scanners in Ruby and have their results
-automatically imported into the Ronin Database! This new API opens the door
-for quickly getting data from the internet into Ronin.
+After much stressing over API design and refactoring [ronin-scanners] 1.0.0.pre1
+has been released. [1.0.0.pre1] is a complete rewrite of ronin-scanners
+when compared to [0.1.4]; released back in 2009. The new API for
+[ronin-scanners] now allows for developers to write Scanners in Ruby and have
+their results automatically imported into the Ronin Database! This new API
+opens the door for quickly pulling data off the internet and into Ronin.
 
 ## Install
 
@@ -17,12 +17,12 @@ for quickly getting data from the internet into Ronin.
 
 ## API
 
-All Ronin Scanners now inherit from the [Ronin::Scanners::Scanner] base class.
+All Ronin Scanners inherit from the [Ronin::Scanners::Scanner] base class.
 
-For a Scanner class (or Object) to be a functioning scanner, it must define
-a `scan` method. The `scan` method does the actual "scanning" and yields
-each scan result. A result from a Ronin Scanner can be anything; whatever
-makes the most sense for the particular Scanner.
+For a Scanner to be a functioning scanner, it must define a `scan` method.
+The `scan` method performs the actual "scanning" and yields each result.
+A result from a Scanner can be any kind of Object;
+whatever makes the most sense for a particular Scanner.
 
 {% highlight ruby %}
 def scan
@@ -46,9 +46,10 @@ parameter :hosts, :default => Set[],
                   :description => 'The hosts to scan'
 {% endhighlight %}
 
-The other important method which a Ronin Scanner must define, is `new_resource`.
-The `new_resource` method takes a Scanner result and converts it into a
-Ronin Database Resource, which can later be saved into the Database.
+In order for a Scanner to import results into the Database, it must define
+a `new_resource` method. The `new_resource` method takes a Scanner result and
+converts it into a Database Resource, which can later be saved into
+the Database.
 
 {% highlight ruby %}
 def new_resource(result)
@@ -61,18 +62,20 @@ Depending on which Scanner base-class one inherits from
 may already be defined.
 
 The [Scanner][Ronin::Scanners::Scanner] base class defines three methods
-for enumerating over Scanner results.
+for enumerating over Scanner results:
 
 1. [each] - The primary enumerator method, which simply calls `scan` and yields
    the Scanner results.
-2. [each_resource] - Simply calls [each], except converts each Scanner result
-   into a Ronin Database Resource object via the `new_resource` method.
-3. [import] - Simply calls [each_resource] and saves every new Ronin Database
-   Resource returned by `new_resource`, yielding the successfully saved
+2. [each_resource] - Simply calls [each] and converts each Scanner result
+   into a Database Resource object via the `new_resource` method.
+3. [import] - Simply calls [each_resource], saves each new Database
+   Resource returned by `new_resource` and yields the successfully saved
    Resources.
 
-For convenience sake, all Scanner classes also define class-methods for
-[each][Scanner.each], [scan][Scanner.scan] and [import][Scanner.import].
+For convenience sake, [Scanner][Ronin::Scanners::URLScanner] also define
+class-methods for [each][Ronin::Scanners::Scanner.each],
+[scan][Ronin::Scanners::Scanner.scan] and
+[import][Ronin::Scanners::Scanner.import].
 
 {% highlight ruby %}
 Ronin::Scanners::Spider.import(:hosts => ['www.example.com']) do |url|
@@ -81,6 +84,8 @@ end
 {% endhighlight %}
 
 ## Commands
+
+[ronin-scanners] provides several commands for the built-in Scanners:
 
 * `ronin scanners` - Starts the Ronin Console with ronin-scanners loaded.
 * `ronin scanner` - Loads a Scanner from a file or from the Database
@@ -92,19 +97,19 @@ end
 
 ## How to Help
 
-Since this is the first pre-release _and_ a complete rewrite of
-[ronin-scanners], your help is needed! Here's how you can help out:
+Since this is a pre-release _and_ a complete rewrite of [ronin-scanners],
+your help is needed! Here's how you can help out:
 
-1. Install it (`gem install ronin-scanners --pre`)
-2. Run the commands.
+1. Install it (`$ gem install ronin-scanners --pre`)
+2. Test the commands.
 3. Proof-read the [documentation]
 4. Attempt to write a [script](https://gist.github.com/3803087)
-   using one of the Scanners.
-
-Finally, you can submit any bugs or suggestions on [GitHub][issues].
+   which uses one of the Scanners.
+5. Submit bugs or suggestions on [GitHub][issues].
 
 [ronin-scanners]: https://github.com/ronin-ruby/ronin-scanners#readme
-[0.1.4]: http://rubygems.org/gems/ronin-scanners/versions/0.1.4
+[0.1.4]: https://rubygems.org/gems/ronin-scanners/versions/0.1.4
+[1.0.0.pre1]: https://rubygems.org/gems/ronin-scanners/versions/1.0.0.pre1
 [documentation]: /docs/ronin-scanners/frames
 [issues]: https://github.com/ronin-ruby/ronin-scanners/issues?direction=desc&sort=created&state=open
 
@@ -113,6 +118,6 @@ Finally, you can submit any bugs or suggestions on [GitHub][issues].
 [each]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html#each-instance_method
 [each_resource]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html#each_resource-instance_method
 [import]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html#import-instance_method
-[Scanner.each]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html#each-class_method
-[Scanner.scan]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html#scan-class_method
-[Scanner.import]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html#import-class_method
+[Ronin::Scanners::Scanner.each]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html#each-class_method
+[Ronin::Scanners::Scanner.scan]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html#scan-class_method
+[Ronin::Scanners::Scanner.import]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html#import-class_method
