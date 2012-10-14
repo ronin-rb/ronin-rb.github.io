@@ -127,6 +127,8 @@ your help is needed! Here's how you can help out:
    which uses one of the Scanners.
 5. Submit bugs or suggestions on [GitHub][issues].
 
+Let's make [ronin-scanners] 1.0.0 a solid release!
+
 [ronin-scanners]: https://github.com/ronin-ruby/ronin-scanners#readme
 [0.1.4]: https://rubygems.org/gems/ronin-scanners/versions/0.1.4
 [1.0.0.pre1]: https://rubygems.org/gems/ronin-scanners/versions/1.0.0.pre1
