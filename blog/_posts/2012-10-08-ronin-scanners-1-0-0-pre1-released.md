@@ -34,6 +34,8 @@ def scan
 end
 {% endhighlight %}
 
+### Parameters
+
 Since the `scan` method takes no arguments, Scanners are configured by the
 parameters they define.
 
@@ -45,6 +47,8 @@ parameter :start_at, :description => 'The URI to start scanning at'
 parameter :hosts, :default => Set[],
                   :description => 'The hosts to scan'
 {% endhighlight %}
+
+### Results
 
 Many Scanners will likely invoke third-party scanners, and the returned
 results may not always be so consistent. For this, one can define a
@@ -66,6 +70,8 @@ end
 If `normalize_result` returns `nil`, the result is considered invalid and
 ignored.
 
+### Resources
+
 In order for a Scanner to import results into the Database, it must define
 a `new_resource` method. The `new_resource` method takes a Scanner result and
 converts it into a Database Resource, which can later be saved into
@@ -80,6 +86,8 @@ end
 Depending on which Scanner base-class one inherits from
 (ex: [URLScanner][Ronin::Scanners::URLScanner]), a `new_resource` method
 may already be defined.
+
+### Methods
 
 The [Scanner][Ronin::Scanners::Scanner] base class defines three methods
 for enumerating over Scanner results:
