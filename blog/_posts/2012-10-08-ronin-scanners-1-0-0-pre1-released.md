@@ -46,6 +46,26 @@ parameter :hosts, :default => Set[],
                   :description => 'The hosts to scan'
 {% endhighlight %}
 
+Many Scanners will likely invoke third-party scanners, and the returned
+results may not always be so consistent. For this, one can define a
+`normalize_result` method:
+
+{% highlight ruby %}
+def normalize_result(result)
+  unless result.kind_of?(::URI::Generic)
+    begin
+      URI.parse(result.to_s)
+    rescue URI::InvalidURIError, URI::InvalidComponentError
+    end
+  else
+    result
+  end
+end
+{% endhighlight %}
+
+If `normalize_result` returns `nil`, the result is considered invalid and
+ignored.
+
 In order for a Scanner to import results into the Database, it must define
 a `new_resource` method. The `new_resource` method takes a Scanner result and
 converts it into a Database Resource, which can later be saved into
