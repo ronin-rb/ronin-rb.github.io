@@ -124,7 +124,7 @@ end
 * [Ronin::Scanners::UDPPortScanner]
 * [Ronin::Scanners::URLScanner]
 
-[ronin-scanners] also provides several built-in scanners:
+[ronin-scanners] also provides several built-in Scanners:
 
 * [Ronin::Scanners::Dork]
 * [Ronin::Scanners::ResolvScanner]
