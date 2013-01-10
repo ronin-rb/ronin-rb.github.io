@@ -9,6 +9,13 @@ tags:
  - exploit
 ---
 
+**TL;DR:** Exploits are out, update Rails!
+
+* [rails_dos.rb]
+* [rails_jsonq.rb]
+* [rails_sqli.rb]
+* [rails_rce.rb]
+
 On January 8th, Aaron Patterson announced [CVE-2013-0156],
 multiple vulnerabilities in parameter parsing in Action Pack allowing attackers
 to:
