@@ -166,7 +166,7 @@ a friend pointed me to the class.
 **Update:** After publishing the PoCs, [lian] contacted me and
 identified himself as the anonymous contributor who told HD Moore about the
 class. I then convinced him to take credit for his work on this vulnerability.
-Without [lian]'s insight, I could not have achieved Remote Code Execution.
+Thanks to [lian]'s solution, I was able to finish writing the exploit.
 In my opinion, if you give a famous Security Research your own research,
 you should publish it yourself to receive proper recognition and inform
 us not-so-famous Security researchers. ;)
