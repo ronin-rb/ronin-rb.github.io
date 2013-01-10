@@ -141,10 +141,14 @@ desired SQL:
 
 As discussed in this [Insinuator] blog post, it may be possible to override an
 instance variable that is later passed to `instance_eval`, `class_eval`,
-`module_eval` or `send`. However, this relies on Rails calling a specific
-method on the malicious unserialized object. This turns out to be rather
-difficult since ActiveRecord/Arel will only allow certain types of objects
-be passed to `find_by_*` methods.
+`module_eval` or `send`. One such example is using [ERB]:
+
+    --- !ruby/object:ERB
+    src: _erbout = puts 'lol'
+
+However, this relies on Rails calling `#run` or `#result`. This turns out to be 
+rather difficult, since ActiveRecord/Arel will only allow certain types of
+objects be passed to `find_by_*` methods.
 
 Since, we know [Psych] will call `#initialize` when parsing `!ruby/hash:MyClass`
 we just need to find a Hash like class. Luckily an anonymous contributor
@@ -207,6 +211,8 @@ url helper that is defined (four times):
 [Arel::Nodes::SqlLiteral]: https://github.com/rails/arel/blob/master/lib/arel/nodes/sql_literal.rb
 [NamedRouteCollection]: https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/routing/route_set.rb#L96
 [define_url_helper]: https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/routing/route_set.rb#L187-L203
+
+[ERB]: http://rubydoc.info/stdlib/erb/ERB
 [OpenStruct]: http://rubydoc.info/stdlib/ostruct/OpenStruct
 
 [7502]: http://web.archive.org/web/20071218105822/http://dev.rubyonrails.org/ticket/7502
