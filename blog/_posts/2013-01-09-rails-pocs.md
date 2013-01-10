@@ -20,7 +20,7 @@ to:
 
 However, rumors of this vulnerability had been circulating on twitter as far
 back as [CVE-2012-5664]. Others also claimed to have [working PoC exploits],
-but refused releasing them for fear of people using them maliciously.
+but would not release them for fear of the PoCs being used maliciously.
 Naturally, I was interested in investigating the vulnerability.
 
 It all started when [Phenoelit] discovered a vulnerability
