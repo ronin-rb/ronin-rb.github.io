@@ -26,7 +26,7 @@ Naturally, I was interested in investigating the vulnerability.
 It all started when [Phenoelit] discovered a vulnerability
 in how authentication plugins (such as AuthLogic) pass parameters to
 `find_by_*` methods. [CVE-2012-5664] was then posted, stirring Twitter into
-a frenzy. However, the vulnerability was not that exploitable, as detailed
+a frenzy. However, the possibility of exploitation was limited, as detailed
 on the [Phusion Corporate Blog]. Thus the hunt began.
 
 ## Intro to params in Rails
@@ -37,7 +37,7 @@ requests. After the request body is parsed, the resulting data is coerced
 into a [HashWithIndifferentAccess], ensuring all Hash keys are Strings.
 
 Next, [ActionDispatch::Http::Parameters] takes the parsed request parameters
-and merges them with the path parameters. Not that the path parameters are
+and merges them with the path parameters. Note that the path parameters are
 first merged into the request parameters, to ensure that the request parameters
 cannot override the path parameters. Also note that when a Hash is merged
 into a [HashWithIndifferentAccess], all keys are converted to Strings
@@ -156,7 +156,7 @@ a friend pointed me to the class.
 identified himself as the anonymous contributor who told HD Moore about the
 class. I then convinced him to take credit for his work on this vulnerability.
 Without [lian]'s insight, I could not have achieved Remote Code Execution.
-In my opinion, if you give an famous Security Research your own research,
+In my opinion, if you give a famous Security Research your own research,
 you should publish it yourself to receive proper recognition and inform
 us not-so-famous Security researchers. ;)
 
