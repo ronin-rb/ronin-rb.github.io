@@ -176,7 +176,7 @@ the method, our `route` must respond to `defaults`, `requirements`,
 `required_parts`, `segment_keys`. Luckily, all of these methods appear
 to be reader methods, so we can mock up a `route` using an [OpenStruct].
 
-After some massaging the YAML formatting, victory. In fact, our method worked
+After some massaging of the YAML, victory! In fact, our method worked
 so well that no exceptions were raised and our code is evaluated for each
 url helper that is defined (four times):
 
