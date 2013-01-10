@@ -149,7 +149,8 @@ be passed to `find_by_*` methods.
 Since, we know [Psych] will call `#initialize` when parsing `!ruby/hash:MyClass`
 we just need to find a Hash like class. Luckily an anonymous contributor
 discovered such a class and told the Metasploit developers, which got published
-on the [Rapid7 Community] blog.
+on the [Rapid7 Community] blog. The blog post then circulated Twitter and
+a friend pointed me to the class.
 
 **Update:** After publishing the PoCs the anonymous contributor contacted me
 and explained how they found the vulnerability and told HD Moore, since he
