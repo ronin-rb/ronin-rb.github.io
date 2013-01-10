@@ -152,12 +152,13 @@ discovered such a class and told the Metasploit developers, which got published
 on the [Rapid7 Community] blog. The blog post then circulated Twitter and
 a friend pointed me to the class.
 
-**Update:** After publishing the PoCs the anonymous contributor contacted me
-and explained how they found the vulnerability and told HD Moore, since he
-was working on a [weaponized exploit] for Metasploit. In my opinion, if you
-give a famous Security Research your own research, you should publish it
-yourself so you can receive proper credit and us non-famous researchers can
-benefit from it.
+**Update:** After publishing the PoCs, [lian] contacted me and
+identified himself as the anonymous contributor who told HD Moore about the
+class. I then convinced him to take credit for his work on this vulnerability.
+Without [lian]'s insight, I could not have achieved Remote Code Execution.
+In my opinion, if you give an famous Security Research your own research,
+you should publish it yourself to receive proper recognition and inform
+us not-so-famous Security researchers. ;)
 
 The class in question is [ActionDispatch::Routing::RouteSet::NamedRouteCollection][NamedRouteCollection].
 The class initializes variables in `#initialize` and aliases `#[]=` to the
@@ -211,6 +212,7 @@ url helper that is defined (four times):
 [7502]: http://web.archive.org/web/20071218105822/http://dev.rubyonrails.org/ticket/7502
 [Insinuator]: http://www.insinuator.net/2013/01/rails-yaml/
 [Rapid7 Community]: https://community.rapid7.com/community/metasploit/blog/2013/01/09/serialization-mischief-in-ruby-land-cve-2013-0156
+[lian]: https://github.com/lian
 
 [GPLv3]: http://gplv3.fsf.org/
 
