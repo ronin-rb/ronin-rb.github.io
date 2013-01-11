@@ -206,6 +206,7 @@ url helper that is defined (four times):
 
 [CVE-2013-0155]: https://groups.google.com/forum/?fromgroups=#!topic/rubyonrails-security/t1WFuuQyavI
 [CVE-2013-0156]: https://groups.google.com/forum/?fromgroups=#!topic/rubyonrails-security/61bkgvnSGTQ
+[CVE-2012-5664]: https://groups.google.com/forum/#!topic/rubyonrails-security/DCNTNp_qjFM
 
 [Phenoelit]: http://phenoelit.org/blog/archives/2012/12/21/let_me_github_that_for_you/index.html
 [Phusion Corporate Blog]: http://blog.phusion.nl/2013/01/03/rails-sql-injection-vulnerability-hold-your-horses-here-are-the-facts/
