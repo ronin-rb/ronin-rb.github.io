@@ -148,8 +148,8 @@ desired SQL:
 
 **Update:** The RCE PoC has been updated to support Rails 3.x and 2.x.
 Also, [@eric1234](https://gist.github.com/4499206/#comment-718470) discovered
-that RCE PoC will not work against Ruby 1.9.2 below, due to Psych 1.0.0 and
-below not allowing arbitrary classes with `!ruby/hash`. However, there
+that RCE PoC will not work against Ruby 1.9.2 below, due to Psych <= 1.0.0
+not allowing arbitrary classes with `!ruby/hash`. However, there
 may be other YAML encoding tricks that could trigger the vulnerability.
 
 As discussed in this [Insinuator] blog post, it may be possible to override an
