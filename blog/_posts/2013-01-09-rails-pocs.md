@@ -77,7 +77,9 @@ Interestingly, [Psych] allows for arbitrary classes to be specified with
     key2: value2
 
 When [Psych] parses `!ruby/hash:Class`, it will actually call `#initialize`
-and then call `#[]=` to populate the objects fields.
+and then call `#[]=` to populate the objects fields. This feature was
+[added](https://github.com/ruby/ruby/commit/8cd2bf072180a9f733ac06dbaa96f071ca8e8303)
+sometime after Ruby 1.9.2.
 
 ## PoCs
 
