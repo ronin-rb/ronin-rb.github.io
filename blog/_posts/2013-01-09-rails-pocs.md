@@ -72,9 +72,11 @@ Next, Psych will call `instance_variable_set` to set various instance variables.
 Interestingly, [Psych] allows for arbitrary classes to be specified with
 `!ruby/string` and `!ruby/hash` declarations:
 
-    !ruby/hash:MyHashLikeClass
-    key1: value1
-    key2: value2
+{% highlight yaml %}
+!ruby/hash:MyHashLikeClass
+key1: value1
+key2: value2
+{% endhighlight %}
 
 When [Psych] parses `!ruby/hash:Class`, it will actually call `#initialize`
 and then call `#[]=` to populate the objects fields. This feature was
@@ -112,10 +114,12 @@ Values such as `[nil]` or `[""]` are not normalized to `nil` and `""`.
 This allows us to bypass `#nil?` or `#empty?` checks, such as described
 in [CVE-2013-0155]:
 
-    unless params[:token].nil?
-      user = User.find_by_token(params[:token])
-      user.reset_password!
-    end
+{% highlight ruby %}
+unless params[:token].nil?
+  user = User.find_by_token(params[:token])
+  user.reset_password!
+end
+{% endhighlight %}
 
 ### SQL Injection
 
@@ -129,7 +133,9 @@ accept `Arel::Node` objects! Potentially, we can inject any of the
 Unfortunately, calling `Arel::Nodes::SqlLiteral#to_yaml` does not work,
 so we must hand craft specific YAML:
 
-    --- !ruby/string:Arel::Nodes::SqlLiteral "SQL here"
+{% highlight yaml %}
+--- !ruby/string:Arel::Nodes::SqlLiteral "SQL here"
+{% endhighlight %}
 
 Note that since [Arel::Nodes::SqlLiteral] inherits from String,
 `!ruby/object:Arel::Nodes::SqlLiteral` actually deserializes to a plain String;
@@ -138,11 +144,13 @@ thus `!ruby/string` is necessary.
 We could get creative and inject in an Abstract Syntax Tree (AST) of our
 desired SQL:
 
-    --- !ruby/object:Arel::Nodes::Or
-    left: 0
-    right: !ruby/object:Arel::Nodes::Equality
-      left: 1
-      right: 1
+{% highlight yaml %}
+--- !ruby/object:Arel::Nodes::Or
+left: 0
+right: !ruby/object:Arel::Nodes::Equality
+  left: 1
+  right: 1
+{% endhighlight %}
 
 ### Remote Code Execution
 
@@ -158,8 +166,10 @@ As discussed in this [Insinuator] blog post, it may be possible to override an
 instance variable that is later passed to `instance_eval`, `class_eval`,
 `module_eval` or `send`. One such example is using [ERB]:
 
-    --- !ruby/object:ERB
-    src: _erbout = puts 'lol'
+{% highlight yaml %}
+--- !ruby/object:ERB
+src: _erbout = puts 'lol'
+{% endhighlight %}
 
 However, this relies on Rails calling `#run` or `#result`. This turns out to be 
 rather difficult, since ActiveRecord/Arel will only allow certain types of
@@ -189,8 +199,10 @@ Now to figure out how to escape our Ruby code, such that `def #{name}` is
 ignored. Luckily, Ruby provides a special keyword (`__END__`) which causes the
 remainder of Ruby code to be treated as inline data.
 
-    code = "puts 'lol'"
-    escaped_code = "foo; #{code}\n__END__\n"
+{% highlight ruby %}
+code = "puts 'lol'"
+escaped_code = "foo; #{code}\n__END__\n"
+{% endhighlight %}
 
 Now we need a convincing `route` Object for [define_url_helper]. Inspecting
 the method, our `route` must respond to `defaults`, `requirements`,
