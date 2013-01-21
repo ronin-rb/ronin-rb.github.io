@@ -1,0 +1,2007 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Ronin::Code::SQL::Encoder</title>
+<link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (E)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Code.html" title="Ronin::Code (module)">Code</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../SQL.html" title="Ronin::Code::SQL (module)">SQL</a></span></span>
+     &raquo; 
+    <span class="title">Encoder</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Ronin::Code::SQL::Encoder
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+      <dt class="r1">Includes:</dt>
+      <dd class="r1"><span class='object_link'><a href="Style.html" title="Ronin::Code::SQL::Style (module)">Style</a></span></dd>
+      
+    
+  
+  
+    <dt class="r2">Included in:</dt>
+    <dd class="r2"><span class='object_link'><a href="Fragment.html" title="Ronin::Code::SQL::Fragment (class)">Fragment</a></span>, <span class='object_link'><a href="Function.html" title="Ronin::Code::SQL::Function (class)">Function</a></span></dd>
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/ronin/code/sql/encoder.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="ALIASES-constant" class="">ALIASES =
+          <div class="docstring">
+  <div class="discussion">
+    <p>aliased keywords</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='symbol'>:all</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>*</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:eq</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>=</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:neq</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>!=</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:lt</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>&lt;</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:le</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>&lt;=</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:gt</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+  <span class='symbol'>:ge</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>&gt;=</span><span class='tstring_end'>'</span></span>
+<span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
+
+  
+  
+  
+  
+  <h3 class="inherited">Constants included from <span class='object_link'><a href="Style.html" title="Ronin::Code::SQL::Style (module)">Style</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Style.html#DEFAULT_CASE-constant" title="Ronin::Code::SQL::Style::DEFAULT_CASE (constant)">DEFAULT_CASE</a></span>, <span class='object_link'><a href="Style.html#DEFAULT_PARENS-constant" title="Ronin::Code::SQL::Style::DEFAULT_PARENS (constant)">DEFAULT_PARENS</a></span>, <span class='object_link'><a href="Style.html#DEFAULT_QUOTES-constant" title="Ronin::Code::SQL::Style::DEFAULT_QUOTES (constant)">DEFAULT_QUOTES</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#encode-instance_method" title="#encode (instance method)">- (Array&lt;String&gt;) <strong>encode</strong>(*elements) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Converts an Array of Ruby primatives into an Array of SQL tokens.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#encode_boolean-instance_method" title="#encode_boolean (instance method)">- (String) <strong>encode_boolean</strong>(bool) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Encodes a Boolean value.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#encode_elements-instance_method" title="#encode_elements (instance method)">- (String) <strong>encode_elements</strong>(*elements) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Encodes and joins the given elements.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#encode_float-instance_method" title="#encode_float (instance method)">- (String) <strong>encode_float</strong>(float) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Encodes the floating point number.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#encode_function-instance_method" title="#encode_function (instance method)">- (Object) <strong>encode_function</strong>(name, arguments) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Encodes a function call.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#encode_hash-instance_method" title="#encode_hash (instance method)">- (String) <strong>encode_hash</strong>(hash) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Encodes a Hash.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#encode_integer-instance_method" title="#encode_integer (instance method)">- (String) <strong>encode_integer</strong>(integer) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Encodes the integer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#encode_keyword-instance_method" title="#encode_keyword (instance method)">- (String) <strong>encode_keyword</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Encodes the given keyword.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#encode_list-instance_method" title="#encode_list (instance method)">- (Object) <strong>encode_list</strong>(*elements) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Encodes the list of elements.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#encode_null-instance_method" title="#encode_null (instance method)">- (String) <strong>encode_null</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Encodes a NULL keyword.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#encode_string-instance_method" title="#encode_string (instance method)">- (String) <strong>encode_string</strong>(text) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Encodes the string.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#join_elements-instance_method" title="#join_elements (instance method)">- (String) <strong>join_elements</strong>(*elements) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Joins a series of elements with spaces.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_sql-instance_method" title="#to_sql (instance method)">- (String) <strong>to_sql</strong> </a>
+    
+
+    
+      (also: #to_s)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Default encoder method to create SQL code.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#tokens-instance_method" title="#tokens (instance method)">- (Array&lt;String&gt;) <strong>tokens</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Default method to return tokens for encoding.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#wrap_list-instance_method" title="#wrap_list (instance method)">- (String) <strong>wrap_list</strong>(tokens) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Wraps a list of tokens in parenthesis.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#wrap_parens-instance_method" title="#wrap_parens (instance method)">- (String) <strong>wrap_parens</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Wraps a value in parenthesis.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Style.html" title="Ronin::Code::SQL::Style (module)">Style</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Style.html#initialize-instance_method" title="Ronin::Code::SQL::Style#initialize (method)">#initialize</a></span></p>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="encode-instance_method">
+  
+    - (<tt>Array&lt;<span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span>&gt;</tt>) <strong>encode</strong>(*elements)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Converts an Array of Ruby primatives into an Array of SQL tokens.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <span class='name'>expr</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Array of Ruby data to convert into SQL tokens.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span>&gt;</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The SQL tokens.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+        <span class='type'>(<tt>RuntimeError</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>An unknown type of object was passed as an argument to encode.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/encoder.rb', line 84</span>
+
+<span class='kw'>def</span> <span class='id encode'>encode</span><span class='lparen'>(</span><span class='op'>*</span><span class='id elements'>elements</span><span class='rparen'>)</span>
+  <span class='id tokens'>tokens</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='id elements'>elements</span><span class='period'>.</span><span class='id each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id element'>element</span><span class='op'>|</span>
+    <span class='kw'>case</span> <span class='id element'>element</span>
+    <span class='kw'>when</span> <span class='const'>Encoder</span>
+      <span class='id tokens'>tokens</span> <span class='op'>&lt;&lt;</span> <span class='id element'>element</span><span class='period'>.</span><span class='id to_sql'>to_sql</span>
+    <span class='kw'>when</span> <span class='const'>Hash</span>
+      <span class='id tokens'>tokens</span> <span class='op'>&lt;&lt;</span> <span class='id encode_hash'>encode_hash</span><span class='lparen'>(</span><span class='id element'>element</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='const'>Array</span>
+      <span class='id tokens'>tokens</span> <span class='op'>&lt;&lt;</span> <span class='id encode_list'>encode_list</span><span class='lparen'>(</span><span class='op'>*</span><span class='id element'>element</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='const'>Symbol</span>
+      <span class='id name'>name</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='const'>ALIASES</span><span class='lbracket'>[</span><span class='id element'>element</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id element'>element</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='rparen'>)</span>
+
+      <span class='id tokens'>tokens</span> <span class='op'>&lt;&lt;</span> <span class='id encode_keyword'>encode_keyword</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='const'>String</span>
+      <span class='id tokens'>tokens</span> <span class='op'>&lt;&lt;</span> <span class='id encode_string'>encode_string</span><span class='lparen'>(</span><span class='id element'>element</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='const'>Integer</span>
+      <span class='id tokens'>tokens</span> <span class='op'>&lt;&lt;</span> <span class='id encode_integer'>encode_integer</span><span class='lparen'>(</span><span class='id element'>element</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='const'>Float</span>
+      <span class='id tokens'>tokens</span> <span class='op'>&lt;&lt;</span> <span class='id encode_float'>encode_float</span><span class='lparen'>(</span><span class='id element'>element</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='const'>NilClass</span>
+      <span class='id tokens'>tokens</span> <span class='op'>&lt;&lt;</span> <span class='id encode_null'>encode_null</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='const'>TrueClass</span><span class='comma'>,</span> <span class='const'>FalseClass</span>
+      <span class='id tokens'>tokens</span> <span class='op'>&lt;&lt;</span> <span class='id encode_boolean'>encode_boolean</span><span class='lparen'>(</span><span class='id element'>element</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id raise'>raise</span><span class='lparen'>(</span><span class='const'>RuntimeError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>invalid data </span><span class='embexpr_beg'>#{</span><span class='id element'>element</span><span class='period'>.</span><span class='id inspect'>inspect</span><span class='rbrace'>}</span><span class='tstring_content'> passed to </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='rbrace'>}</span><span class='tstring_content'>.encode</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id tokens'>tokens</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="encode_boolean-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>) <strong>encode_boolean</strong>(bool)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Encodes a Boolean value.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <span class='name'>bool</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Boolean value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The encoded SQL Boolean value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+166
+167
+168
+169
+170
+171
+172</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/encoder.rb', line 166</span>
+
+<span class='kw'>def</span> <span class='id encode_boolean'>encode_boolean</span><span class='lparen'>(</span><span class='id bool'>bool</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id bool'>bool</span> <span class='op'>==</span> <span class='kw'>true</span>
+    <span class='id encode_keyword'>encode_keyword</span><span class='lparen'>(</span><span class='symbol'>:true</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id encode_keyword'>encode_keyword</span><span class='lparen'>(</span><span class='symbol'>:false</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="encode_elements-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>) <strong>encode_elements</strong>(*elements)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Encodes and joins the given elements.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <span class='name'>elements</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The elements to encode then join.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The join elements.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li>join_elements</li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+344
+345
+346</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/encoder.rb', line 344</span>
+
+<span class='kw'>def</span> <span class='id encode_elements'>encode_elements</span><span class='lparen'>(</span><span class='op'>*</span><span class='id elements'>elements</span><span class='rparen'>)</span>
+  <span class='id join_elements'>join_elements</span><span class='lparen'>(</span><span class='op'>*</span><span class='id encode'>encode</span><span class='lparen'>(</span><span class='op'>*</span><span class='id elements'>elements</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="encode_float-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>) <strong>encode_float</strong>(float)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Encodes the floating point number.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Float</tt>, <tt>Integer</tt>, <tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+        <span class='name'>float</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The floating point number to encode.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The encoded floating point number.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+200
+201
+202</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/encoder.rb', line 200</span>
+
+<span class='kw'>def</span> <span class='id encode_float'>encode_float</span><span class='lparen'>(</span><span class='id float'>float</span><span class='rparen'>)</span>
+  <span class='id float'>float</span><span class='period'>.</span><span class='id to_f'>to_f</span><span class='period'>.</span><span class='id to_s'>to_s</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="encode_function-instance_method">
+  
+    - (<tt>Object</tt>) <strong>encode_function</strong>(name, arguments)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Encodes a function call.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+        <span class='name'>name</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the function to be called.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <span class='name'>arguments</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The optional arguments to call the function with.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+306
+307
+308</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/encoder.rb', line 306</span>
+
+<span class='kw'>def</span> <span class='id encode_function'>encode_function</span><span class='lparen'>(</span><span class='id name'>name</span><span class='comma'>,</span><span class='id arguments'>arguments</span><span class='rparen'>)</span>
+  <span class='id encode_keyword'>encode_keyword</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id encode_list'>encode_list</span><span class='lparen'>(</span><span class='op'>*</span><span class='id arguments'>arguments</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="encode_hash-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>) <strong>encode_hash</strong>(hash)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Encodes a Hash.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>hash</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The hash to be encoded.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The encoded Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+286
+287
+288
+289
+290
+291
+292
+293</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/encoder.rb', line 286</span>
+
+<span class='kw'>def</span> <span class='id encode_hash'>encode_hash</span><span class='lparen'>(</span><span class='id hash'>hash</span><span class='rparen'>)</span>
+  <span class='id wrap_list'>wrap_list</span><span class='lparen'>(</span><span class='id hash'>hash</span><span class='period'>.</span><span class='id to_a'>to_a</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id name'>name</span><span class='comma'>,</span><span class='id value'>value</span><span class='op'>|</span>
+    <span class='id name'>name</span> <span class='op'>=</span> <span class='id encode_keyword'>encode_keyword</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+    <span class='id value'>value</span> <span class='op'>=</span> <span class='id encode'>encode</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span><span class='period'>.</span><span class='id first'>first</span>
+
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id name'>name</span><span class='rbrace'>}</span><span class='tstring_content'>=</span><span class='embexpr_beg'>#{</span><span class='id value'>value</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="encode_integer-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>) <strong>encode_integer</strong>(integer)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Encodes the integer.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Integer</tt>, <tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+        <span class='name'>integer</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The integer to encode.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The encoded integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+185
+186
+187</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/encoder.rb', line 185</span>
+
+<span class='kw'>def</span> <span class='id encode_integer'>encode_integer</span><span class='lparen'>(</span><span class='id integer'>integer</span><span class='rparen'>)</span>
+  <span class='id integer'>integer</span><span class='period'>.</span><span class='id to_i'>to_i</span><span class='period'>.</span><span class='id to_s'>to_s</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="encode_keyword-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>) <strong>encode_keyword</strong>(name)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Encodes the given keyword.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+        <span class='name'>name</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the keyword.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The encoded keyword.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/encoder.rb', line 128</span>
+
+<span class='kw'>def</span> <span class='id encode_keyword'>encode_keyword</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+  <span class='id name'>name</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_s'>to_s</span>
+
+  <span class='kw'>case</span> <span class='ivar'>@case</span>
+  <span class='kw'>when</span> <span class='symbol'>:lower</span>
+    <span class='id name'>name</span><span class='period'>.</span><span class='id downcase'>downcase</span>
+  <span class='kw'>when</span> <span class='symbol'>:upper</span>
+    <span class='id name'>name</span><span class='period'>.</span><span class='id upcase'>upcase</span>
+  <span class='kw'>when</span> <span class='symbol'>:random</span>
+    <span class='id name'>name</span><span class='period'>.</span><span class='id random_case'>random_case</span>
+  <span class='kw'>else</span>
+    <span class='id name'>name</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="encode_list-instance_method">
+  
+    - (<tt>Object</tt>) <strong>encode_list</strong>(*elements)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Encodes the list of elements.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+        <span class='name'>elements</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The list of elements to encode.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li>wrap_list</li>
+    
+  </ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+271
+272
+273</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/encoder.rb', line 271</span>
+
+<span class='kw'>def</span> <span class='id encode_list'>encode_list</span><span class='lparen'>(</span><span class='op'>*</span><span class='id elements'>elements</span><span class='rparen'>)</span>
+  <span class='id wrap_list'>wrap_list</span><span class='lparen'>(</span><span class='id encode'>encode</span><span class='lparen'>(</span><span class='op'>*</span><span class='id elements'>elements</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="encode_null-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>) <strong>encode_null</strong>  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Encodes a NULL keyword.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The encoded SQL NULL value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+151
+152
+153</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/encoder.rb', line 151</span>
+
+<span class='kw'>def</span> <span class='id encode_null'>encode_null</span>
+  <span class='id encode_keyword'>encode_keyword</span><span class='lparen'>(</span><span class='symbol'>:null</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="encode_string-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>) <strong>encode_string</strong>(text)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Encodes the string.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>, <tt>Integer</tt>)</span>
+      
+      
+        <span class='name'>text</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The string to encode.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The encoded string.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+215
+216
+217
+218
+219
+220
+221
+222
+223</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/encoder.rb', line 215</span>
+
+<span class='kw'>def</span> <span class='id encode_string'>encode_string</span><span class='lparen'>(</span><span class='id text'>text</span><span class='rparen'>)</span>
+  <span class='id text'>text</span> <span class='op'>=</span> <span class='id text'>text</span><span class='period'>.</span><span class='id to_s'>to_s</span>
+
+  <span class='kw'>if</span> <span class='ivar'>@hex_escape</span>
+    <span class='id encode_keyword'>encode_keyword</span><span class='lparen'>(</span><span class='symbol'>:hex</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='id text'>text</span><span class='period'>.</span><span class='id sql_encode'>sql_encode</span><span class='rbrace'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>else</span>
+    <span class='id text'>text</span><span class='period'>.</span><span class='id sql_escape'>sql_escape</span><span class='lparen'>(</span><span class='ivar'>@quotes</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="join_elements-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>) <strong>join_elements</strong>(*elements)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Joins a series of elements with spaces.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span>&gt;</tt>)</span>
+      
+      
+        <span class='name'>elements</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The elements to join.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The joined elements.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+321
+322
+323
+324
+325
+326
+327
+328
+329</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/encoder.rb', line 321</span>
+
+<span class='kw'>def</span> <span class='id join_elements'>join_elements</span><span class='lparen'>(</span><span class='op'>*</span><span class='id elements'>elements</span><span class='rparen'>)</span>
+  <span class='id separator'>separator</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='ivar'>@spaces</span> <span class='op'>==</span> <span class='kw'>false</span>
+                <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>/**/</span><span class='tstring_end'>'</span></span>
+              <span class='kw'>else</span>
+                <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'> </span><span class='tstring_end'>'</span></span>
+              <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id elements'>elements</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='id separator'>separator</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="to_sql-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>) <strong>to_sql</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='to_s-instance_method'>to_s</span></span>
+    </span>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Default encoder method to create SQL code.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The encoded SQL.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/encoder.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id to_sql'>to_sql</span>
+  <span class='id join_elements'>join_elements</span><span class='lparen'>(</span><span class='op'>*</span><span class='id tokens'>tokens</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="tokens-instance_method">
+  
+    - (<tt>Array&lt;<span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span>&gt;</tt>) <strong>tokens</strong>  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Default method to return tokens for encoding.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span>&gt;</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The tokens to be encoded.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+66
+67
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/encoder.rb', line 66</span>
+
+<span class='kw'>def</span> <span class='id tokens'>tokens</span>
+  <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="wrap_list-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>) <strong>wrap_list</strong>(tokens)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Wraps a list of tokens in parenthesis.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span>&gt;</tt>)</span>
+      
+      
+        <span class='name'>tokens</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The tokens to wrap.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The wrapped comma-separated list.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+251
+252
+253
+254
+255
+256
+257
+258
+259</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/encoder.rb', line 251</span>
+
+<span class='kw'>def</span> <span class='id wrap_list'>wrap_list</span><span class='lparen'>(</span><span class='id tokens'>tokens</span><span class='rparen'>)</span>
+  <span class='id value'>value</span> <span class='op'>=</span> <span class='id tokens'>tokens</span><span class='period'>.</span><span class='id join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>,</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='ivar'>@parens</span> <span class='op'>==</span> <span class='symbol'>:more</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='ivar'>@parens</span> <span class='op'>==</span> <span class='symbol'>:less</span> <span class='op'>&amp;&amp;</span> <span class='id tokens'>tokens</span><span class='period'>.</span><span class='id length'>length</span> <span class='op'>==</span> <span class='int'>0</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id value'>value</span> <span class='op'>=</span> <span class='id wrap_parens'>wrap_parens</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id value'>value</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="wrap_parens-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>) <strong>wrap_parens</strong>(value)  <span class="extras">(protected)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Wraps a value in parenthesis.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+        <span class='name'>value</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The value to wrap.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The wrapped value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+236
+237
+238</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/encoder.rb', line 236</span>
+
+<span class='kw'>def</span> <span class='id wrap_parens'>wrap_parens</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='id value'>value</span><span class='rbrace'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Nov 26 21:35:26 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="style.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="custom.css" type="text/css" charset="utf-8" />
+<link rel="stylesheet" href="syntax_highlight.css" type="text/css" charset="utf-8" />
+
+    <title>History.txt</title>
+  </head>
+  <body>
+    <div id="content">
+      <div class="section docstring readme">
+        <h3>0.2.4 / 2009-09-24</h3>
+<ul>
+<li>Require ronin >= 0.3.0.
+
+</li>
+<li>Require ronin-web >= 0.2.0.
+
+</li>
+<li>Require rspec >= 1.1.12.
+
+</li>
+<li>Require yard >= 0.2.3.5.
+
+</li>
+<li>Updated the project summary and 3-point description for Ronin SQL.
+
+</li>
+<li>Moved to YARD based documentation.
+
+</li>
+<li>Fixed a formatting issue in the README.txt file, which was causing RDoc to
+crash.
+
+</li>
+</ul>
+<h3>0.2.3 / 2009-07-02</h3>
+<ul>
+<li>Use Hoe >= 2.0.0.
+
+</li>
+<li>Require ronin >= 0.2.4.
+
+</li>
+<li>Require ronin-web >= 0.1.3.
+
+</li>
+<li>Use Ronin::Scanners::Scanner to define the scanner for finding
+Ronin::SQL::Injection objects for URI::HTTP urls.
+
+</li>
+<li>Added more specs.
+
+</li>
+</ul>
+<h3>0.2.2 / 2009-01-22</h3>
+<ul>
+<li>Depend on the new ronin-web library.
+
+</li>
+<li>Replace Hpricot with Nokogiri.
+
+</li>
+<li>Use the new Ronin::Web::Spider, instead of directly using Spidr.
+
+</li>
+<li>Use the new Nokogiri extensions from ronin-web.
+
+</li>
+</ul>
+<h3>0.2.1 / 2009-01-09</h3>
+<ul>
+<li>Added missing files to the Manifest.
+
+</li>
+</ul>
+<h3>0.2.0 / 2009-01-08</h3>
+<ul>
+<li>Require Ronin >= 0.1.3.
+
+</li>
+<li>Refactored Ronin::Code::SQL.
+
+<ul>
+<li>Implemented a token emitter system.
+
+</li>
+<li>Support common SQL expression modifiers.
+
+</li>
+<li>Support common SQL clauses.
+
+</li>
+<li>Allow for injecting arbitrary SQL clauses.
+
+</li>
+<li>Added more SQL Injection test generators.
+
+<ul>
+<li>all_rows:
+
+<pre class="code">
+   <span class='OR constant id'>OR</span> <span class='integer val'>1</span> <span class='assign token'>=</span> <span class='integer val'>1</span>
+</pre>
+</li>
+<li>exact_rows:
+
+<pre class="code">
+   <span class='AND constant id'>AND</span> <span class='integer val'>1</span> <span class='assign token'>=</span> <span class='integer val'>1</span>
+</pre>
+</li>
+<li>no_rows:
+
+<pre class="code">
+   <span class='AND constant id'>AND</span> <span class='integer val'>1</span> <span class='assign token'>=</span> <span class='integer val'>0</span>
+</pre>
+</li>
+<li>has_column?(column):
+
+<pre class="code">
+   <span class='OR constant id'>OR</span> <span class='column identifier id'>column</span> <span class='IS constant id'>IS</span> <span class='NOT constant id'>NOT</span> <span class='NULL constant id'>NULL</span>
+</pre>
+</li>
+<li>has_table?(table):
+
+<pre class="code">
+   <span class='AND constant id'>AND</span> <span class='lparen token'>(</span><span class='SELECT constant id'>SELECT</span> <span class='FROM constant id'>FROM</span> <span class='table identifier id'>table</span> <span class='count identifier id'>count</span><span class='lparen token'>(</span><span class='mult op'>*</span><span class='rparen token'>)</span> <span class='eq op'>==</span> <span class='integer val'>1</span><span class='rparen token'>)</span>
+</pre>
+</li>
+<li>uses_column?(column):
+
+<pre class="code">
+   <span class='GROUP constant id'>GROUP</span> <span class='BY constant id'>BY</span> <span class='column identifier id'>column</span> <span class='HAVING constant id'>HAVING</span> <span class='integer val'>1</span> <span class='assign token'>=</span> <span class='integer val'>1</span>
+</pre>
+</li>
+<li>uses_table?(table):
+
+<pre class="code">
+   <span class='OR constant id'>OR</span> <span class='table identifier id'>table</span> <span class='IS constant id'>IS</span> <span class='NOT constant id'>NOT</span> <span class='NULL constant id'>NULL</span>
+</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Removed references to Ronin::Vulnerable.
+
+</li>
+<li>Added more specs:
+
+<ul>
+<li>Specs for most of Ronin::Code::SQL.
+
+</li>
+<li>Specs on Ronin::SQL::Error and the SQL encoding/decoding extensions for the
+String class.
+
+</li>
+</ul>
+</li>
+</ul>
+<h3>0.1.1 / 2008-09-28</h3>
+<ul>
+<li>Trivial bug fix to URI::HTTP#sql_errors.
+
+</li>
+</ul>
+<h3>0.1.0 / 2007-12-23</h3>
+<ul>
+<li>Initial release.
+
+</li>
+<li>Supports SQL code generation.
+
+</li>
+<li>Supports obfustication of SQL code.
+
+</li>
+<li>Supports SQL Injection code generation.
+
+</li>
+</ul>
+
+      </div>
+    </div>
+    <div id="yard_info">
+  Generated on Friday, September 25 2009 at 04:10:41 AM by 
+  <abbr class="yard" title="Yay! A Ruby Documentation Tool"><a href="http://yard.soen.ca">YARD</a></abbr> 
+  0.2.3.5 (ruby-1.8.6).
+</div>
+
+  </body>
+</html>

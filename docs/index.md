@@ -37,6 +37,7 @@ title: Documentation
 * [ronin-gen](ronin-gen/frames) - {{ site.libraries.ronin-gen.version }}
 * [ronin-web](ronin-web/frames) - {{ site.libraries.ronin-web.version }}
 * [ronin-asm](ronin-asm/frames) - {{ site.libraries.ronin-asm.version }}
+* [ronin-sql](ronin-sql/frames) - {{ site.libraries.ronin-sql.version }}
 * [ronin-exploits](ronin-exploits/frames) -
   {{ site.libraries.ronin-exploits.version }}
 

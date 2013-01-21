@@ -1,0 +1,675 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Module: Ronin::Code::SQL::Style</title>
+<link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (S)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Code.html" title="Ronin::Code (module)">Code</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../SQL.html" title="Ronin::Code::SQL (module)">SQL</a></span></span>
+     &raquo; 
+    <span class="title">Style</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: Ronin::Code::SQL::Style
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r1">Included in:</dt>
+    <dd class="r1"><span class='object_link'><a href="Encoder.html" title="Ronin::Code::SQL::Encoder (module)">Encoder</a></span>, <span class='object_link'><a href="Factory.html" title="Ronin::Code::SQL::Factory (class)">Factory</a></span></dd>
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/ronin/code/sql/style.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="DEFAULT_CASE-constant" class="">DEFAULT_CASE =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Default case preference</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='symbol'>:none</span></pre></dd>
+      
+        <dt id="DEFAULT_QUOTES-constant" class="">DEFAULT_QUOTES =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Default quoting preference</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='symbol'>:single</span></pre></dd>
+      
+        <dt id="DEFAULT_PARENS-constant" class="">DEFAULT_PARENS =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Default parenthesis preference</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='symbol'>:more</span></pre></dd>
+      
+    </dl>
+  
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#case-instance_method" title="#case (instance method)">- (Object) <strong>case</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Controls the casing of keywords.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#hex_escape-instance_method" title="#hex_escape (instance method)">- (Object) <strong>hex_escape</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Controls whether all strings will be hex-escaped.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parens-instance_method" title="#parens (instance method)">- (Object) <strong>parens</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Controls the amount of parenthesis surrounding lists.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#quotes-instance_method" title="#quotes (instance method)">- (Object) <strong>quotes</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Controls the quoting of strings.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#spaces-instance_method" title="#spaces (instance method)">- (Object) <strong>spaces</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Controls whether spaces are used to separate keywords.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Style) <strong>initialize</strong>(options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets the style options.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="case=-instance_method"></span>
+      <span id="case-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="case-instance_method">
+  
+    - (<tt>Object</tt>) <strong>case</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Controls the casing of keywords</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/style.rb', line 36</span>
+
+<span class='kw'>def</span> <span class='kw'>case</span>
+  <span class='ivar'>@case</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="hex_escape=-instance_method"></span>
+      <span id="hex_escape-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="hex_escape-instance_method">
+  
+    - (<tt>Object</tt>) <strong>hex_escape</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Controls whether all strings will be hex-escaped</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/style.rb', line 42</span>
+
+<span class='kw'>def</span> <span class='id hex_escape'>hex_escape</span>
+  <span class='ivar'>@hex_escape</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="parens=-instance_method"></span>
+      <span id="parens-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="parens-instance_method">
+  
+    - (<tt>Object</tt>) <strong>parens</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Controls the amount of parenthesis surrounding lists</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/style.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id parens'>parens</span>
+  <span class='ivar'>@parens</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="quotes=-instance_method"></span>
+      <span id="quotes-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="quotes-instance_method">
+  
+    - (<tt>Object</tt>) <strong>quotes</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Controls the quoting of strings</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/style.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id quotes'>quotes</span>
+  <span class='ivar'>@quotes</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="spaces=-instance_method"></span>
+      <span id="spaces-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="spaces-instance_method">
+  
+    - (<tt>Object</tt>) <strong>spaces</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Controls whether spaces are used to separate keywords</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/style.rb', line 48</span>
+
+<span class='kw'>def</span> <span class='id spaces'>spaces</span>
+  <span class='ivar'>@spaces</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Ronin::Code::SQL::Style (module)">Style</a></span></tt>) <strong>initialize</strong>(options = {}) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>Sets the style options.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Style options.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="type">(<tt>Symbol</tt>)</span>
+          <span class="name">:case</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>DEFAULT_CASE</tt>
+            
+          </span>
+          &mdash;<div class='inline'><p>Controls the case of keywords. May be either <code>:none</code>, <code>:lower</code>,
+<code>:upper</code> or <code>:random</code></p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="type">(<tt>Symbol</tt>)</span>
+          <span class="name">:quotes</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>DEFAULT_QUOTES</tt>
+            
+          </span>
+          &mdash;<div class='inline'><p>Controls the quoting style of strings. May be either <code>:single</code>
+or <code>:double</code>.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="name">:hex_escape</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>false</tt>
+            
+          </span>
+          &mdash;<div class='inline'><p>Forces all Strings to be hex-escaped.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="type">(<tt>Symbol</tt>)</span>
+          <span class="name">:parens</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>DEFAULT_PARENS</tt>
+            
+          </span>
+          &mdash;<div class='inline'><p>Reduces the amount of parenthesis when tokenizing lists.
+May be either <code>:less</code>, <code>:more</code>.</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="name">:spaces</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>true</tt>
+            
+          </span>
+          &mdash;<div class='inline'><p>Controls whether spaces are used to separate keywords,
+or other kinds of white-space.</p>
+</div>
+        </tr>
+      
+    </ul>
+  
+<h3>Since:</h3>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/style.rb', line 77</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='ivar'>@case</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:case</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'>DEFAULT_CASE</span><span class='rparen'>)</span>
+  <span class='ivar'>@quotes</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:quotes</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'>DEFAULT_QUOTES</span><span class='rparen'>)</span>
+  <span class='ivar'>@hex_escape</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:hex_escape</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='ivar'>@parens</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:parens</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'>DEFAULT_PARENS</span><span class='rparen'>)</span>
+  <span class='ivar'>@spaces</span> <span class='op'>=</span> <span class='kw'>true</span>
+
+  <span class='kw'>if</span> <span class='id options'>options</span><span class='period'>.</span><span class='id has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:spaces</span><span class='rparen'>)</span>
+    <span class='ivar'>@spaces</span> <span class='op'>=</span> <span class='id options'>options</span><span class='lbracket'>[</span><span class='symbol'>:spaces</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Nov 26 21:35:25 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.1 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>
