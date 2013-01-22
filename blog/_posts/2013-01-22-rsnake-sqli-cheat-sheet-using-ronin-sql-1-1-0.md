@@ -51,7 +51,7 @@ puts sqli
 # 1 AND 1=1
 {% endhighlight %}
 
-Blind SQL Injection to attempt to locate `table_name` by brute-force
+Blind SQL Injection to attempt to locate `tablename` by brute-force
 iteration through table name permutations:
 
 {% highlight sql %}
@@ -60,9 +60,9 @@ iteration through table name permutations:
 
 {% highlight ruby %}
 sqli = Ronin::SQL::Injection.new(escape: :string)
-sqli.and { select(count).from(:users) == 1 }
+sqli.and { select(count).from(:tablenames) == 1 }
 puts sqli
-# 1 AND (SELECT COUNT(*) FROM users)=1
+# 1 AND (SELECT COUNT(*) FROM tablenames)=1
 {% endhighlight %}
 
 Creating errors by calling fake tables:
