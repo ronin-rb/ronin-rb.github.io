@@ -65,7 +65,7 @@ puts sqli
 # 1 AND (SELECT COUNT(*) FROM tablenames)=1
 {% endhighlight %}
 
-Creating errors by calling fake tables:
+Creating errors by calling non-existent tables:
 
 {% highlight sql %}
 1' AND non_existant_table = '1
@@ -127,7 +127,7 @@ puts sqli.to_sql(:terminate => true)
 # 1 UNION ALL (SELECT (1,2,3,4,5,6,name) FROM sysObjects WHERE xtype='U');--
 {% endhighlight %}
 
-Bypass filters using `/**/` instead of spaces:
+Bypass filters by using `/**/` instead of spaces:
 
 {% highlight sql %}
 1/**/UNION/**/SELECT/**/(1,2,3,4,id)/**/FROM/**/users
