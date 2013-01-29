@@ -144,3 +144,5 @@ change default settings, they can and do make mistakes.
 [4]: https://github.com/rails/rails/commit/a87683fb38d6cf66f39a7bd3faa6c969c63b1f46
 [5]: https://github.com/tenderlove/psych/issues/119
 [6]: https://gist.github.com/4659489
+
+[@nelhage]: https://twitter.com/nelhage
