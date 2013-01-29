@@ -88,9 +88,15 @@ underlying root cause, that the [Psych][psych] YAML parser
 user-input near `YAML.load`, and there is no safe-mode to prevent YAML from
 deserializing arbitrary Classes, YAML deserialization vulnerabilities will
 continue to pop up. In the meantime, there is a [safe_yaml] library, which
-provides a safe-mode.
+provides a safe-mode and does prevent [rails_omakase.rb] from working:
 
-**Update:** [@nelhage] has written a [monkey-patch][6] for YAML,
+    Started POST "/secrets" for 127.0.0.1 at 2013-01-28 21:34:37 -0800
+      Processing by SecretsController#show as 
+      Parameters: {"foo\nend\n(puts 'lol'; @executed = true) unless @executed\n__END__\n"=>{"defaults"=>{":action"=>"create", ":controller"=>"foos"}, "required_parts"=>nil, "requirements"=>{":action"=>"create", ":controller"=>"foos"}, "segment_keys"=>[":format"]}}
+    Rendered text template (0.0ms)
+    Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+
+**Update:** [@nelhage] has also written a [monkey-patch][6] for YAML,
 that prevents any non-primitive objects from being deserialized. I have tested
 this workaround against [rails_omakase.rb] on Ruby 1.9.3-p362 and Rails 3.0.19,
 and can confirm it prevents the exploit from working. However, once loaded
