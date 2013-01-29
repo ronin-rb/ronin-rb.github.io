@@ -87,7 +87,8 @@ underlying root cause, that the [Psych][psych] YAML parser
 [does not have a safe-mode][5]. As long as developers continue allowing
 user-input near `YAML.load`, and there is no safe-mode to prevent YAML from
 deserializing arbitrary Classes, YAML deserialization vulnerabilities will
-continue to pop up.
+continue to pop up. In the meantime, there is a [safe_yaml] library, which
+provides a safe-mode.
 
 **Update:** [@nelhage] has written a [monkey-patch][6] for YAML,
 that prevents any non-primitive objects from being deserialized. I have tested
@@ -122,6 +123,7 @@ change default settings, they can and do make mistakes.
 [json]: http://flori.github.com/json/
 [yajl]: http://lloyd.github.com/yajl/
 [psych]: https://github.com/tenderlove/psych
+[safe_yaml]: https://github.com/dtao/safe_yaml#readme
 
 [StringScanner]: http://rubydoc.info/stdlib/strscan/StringScanner
 [ActiveSupport::JSON]: https://github.com/rails/rails/blob/v3.0.19/activesupport/lib/active_support/json/decoding.rb
