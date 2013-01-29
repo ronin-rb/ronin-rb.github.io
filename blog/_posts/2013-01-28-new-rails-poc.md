@@ -89,6 +89,12 @@ user-input near `YAML.load`, and there is no safe-mode to prevent YAML from
 deserializing arbitrary Classes, YAML deserialization vulnerabilities will
 continue to pop up.
 
+**Update:** [@nelhage] has written a [monkey-patch][6] for YAML,
+that prevents any non-primitive objects from being deserialized. I have tested
+this workaround against [rails_omakase.rb] on Ruby 1.9.3-p362 and Rails 3.0.19,
+and can confirm it prevents the exploit from working. However, once loaded
+it effects all `YAML.load` calls and cannot be disabled.
+
 ## Omakase?
 
 I named this exploit [rails_omakase.rb], as an ode to [Rails Is Omakase][2];
@@ -115,6 +121,7 @@ change default settings, they can and do make mistakes.
 
 [json]: http://flori.github.com/json/
 [yajl]: http://lloyd.github.com/yajl/
+[psych]: https://github.com/tenderlove/psych
 
 [StringScanner]: http://rubydoc.info/stdlib/strscan/StringScanner
 [ActiveSupport::JSON]: https://github.com/rails/rails/blob/v3.0.19/activesupport/lib/active_support/json/decoding.rb
@@ -129,4 +136,5 @@ change default settings, they can and do make mistakes.
 [2]: http://david.heinemeierhansson.com/2012/rails-is-omakase.html
 [3]: http://gilesbowkett.blogspot.com/2013/01/a-dramatic-reading-of-rails-is-omakase.html
 [4]: https://github.com/rails/rails/commit/a87683fb38d6cf66f39a7bd3faa6c969c63b1f46
-[5]: 
+[5]: https://github.com/tenderlove/psych/issues/119
+[6]: https://gist.github.com/4659489
