@@ -80,6 +80,15 @@ $ rails_omakase http://localhost:3000/secrets "puts 'lol'"
     Rendered text template (0.0ms)
     Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
 
+## Again?
+
+When Rails was updated for [CVE-2013-0156], it did not actually fix the
+underlying root cause, that the [Psych][psych] YAML parser
+[does not have a safe-mode][5]. As long as developers continue allowing
+user-input near `YAML.load`, and there is no safe-mode to prevent YAML from
+deserializing arbitrary Classes, YAML deserialization vulnerabilities will
+continue to pop up.
+
 ## Omakase?
 
 I named this exploit [rails_omakase.rb], as an ode to [Rails Is Omakase][2];
@@ -120,3 +129,4 @@ change default settings, they can and do make mistakes.
 [2]: http://david.heinemeierhansson.com/2012/rails-is-omakase.html
 [3]: http://gilesbowkett.blogspot.com/2013/01/a-dramatic-reading-of-rails-is-omakase.html
 [4]: https://github.com/rails/rails/commit/a87683fb38d6cf66f39a7bd3faa6c969c63b1f46
+[5]: 
