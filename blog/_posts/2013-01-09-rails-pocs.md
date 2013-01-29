@@ -43,12 +43,12 @@ appropriately. By default [ParamsParser] only supports parsing XML and JSON
 requests. After the request body is parsed, the resulting data is coerced
 into a [HashWithIndifferentAccess], ensuring all Hash keys are Strings.
 
-Next, [ActionDispatch::Http::Parameters] takes the parsed request parameters
-and merges them with the path parameters. Note that the path parameters are
-first merged into the request parameters, to ensure that the request parameters
-cannot override the path parameters. Also note that when a Hash is merged
-into a [HashWithIndifferentAccess], all keys are converted to Strings
-and all sub-Hashes converted to Indifferent ones. This ensures that
+Next, [ActionDispatch::Http::Parameters][Parameters] takes the parsed request
+parameters and merges them with the path parameters. Note that the path
+parameters are first merged into the request parameters, to ensure that the
+request parameters cannot override the path parameters. Also note that when a
+Hash is merged into a [HashWithIndifferentAccess], all keys are converted to
+Strings and all sub-Hashes converted to Indifferent ones. This ensures that
 `params` contains no Symbol keys and cannot be passed to `find_by_*` methods;
 despite what [CVE-2012-5664] claims.
 
@@ -233,6 +233,7 @@ url helper that is defined (four times):
 
 [HashWithIndifferentAccess]: https://github.com/rails/rails/blob/master/activesupport/lib/active_support/hash_with_indifferent_access.rb
 [ParamsParser]: https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/middleware/params_parser.rb
+[Parameters]: https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/http/parameters.rb
 [XmlMini]: https://github.com/rails/rails/blob/master/activesupport/lib/active_support/xml_mini.rb#L67
 [Psych]: https://github.com/tenderlove/psych/blob/master/lib/psych/visitors/to_ruby.rb
 [Arel::Nodes]: https://github.com/rails/arel/tree/master/lib/arel/nodes
