@@ -34,7 +34,7 @@ is the default JSON backend in Rails 3.0.x:
 
 {% highlight ruby %}
 ActiveSupport::JSON.backend
-=> ActiveSupport::JSON::Backends::Yaml
+# => ActiveSupport::JSON::Backends::Yaml
 {% endhighlight %}
 
 The problem with the [Yaml] backend is that it's [convert_json_to_yaml] method
@@ -68,9 +68,7 @@ Due to this difference, we simply reused the Rails 2.x payload from the
 
 After some minor modifications to [rails_rce.rb] we had a working exploit:
 
-{% highlight shell %}
-$ rails_omakase http://localhost:3000/secrets "puts 'lol'"
-{% endhighlight %}
+    $ rails_omakase http://localhost:3000/secrets "puts 'lol'"
 
     lol
     
