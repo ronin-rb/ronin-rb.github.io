@@ -231,15 +231,15 @@ url helper that is defined (four times):
 [Phenoelit]: http://phenoelit.org/blog/archives/2012/12/21/let_me_github_that_for_you/index.html
 [Phusion Corporate Blog]: http://blog.phusion.nl/2013/01/03/rails-sql-injection-vulnerability-hold-your-horses-here-are-the-facts/
 
-[HashWithIndifferentAccess]: https://github.com/rails/rails/blob/master/activesupport/lib/active_support/hash_with_indifferent_access.rb
-[ParamsParser]: https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/middleware/params_parser.rb
-[Parameters]: https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/http/parameters.rb
-[XmlMini]: https://github.com/rails/rails/blob/master/activesupport/lib/active_support/xml_mini.rb#L67
-[Psych]: https://github.com/tenderlove/psych/blob/master/lib/psych/visitors/to_ruby.rb
-[Arel::Nodes]: https://github.com/rails/arel/tree/master/lib/arel/nodes
-[Arel::Nodes::SqlLiteral]: https://github.com/rails/arel/blob/master/lib/arel/nodes/sql_literal.rb
-[NamedRouteCollection]: https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/routing/route_set.rb#L96
-[define_url_helper]: https://github.com/rails/rails/blob/master/actionpack/lib/action_dispatch/routing/route_set.rb#L187-L203
+[HashWithIndifferentAccess]: https://github.com/rails/rails/blob/v3.2.10/activesupport/lib/active_support/hash_with_indifferent_access.rb
+[ParamsParser]: https://github.com/rails/rails/blob/v3.2.10/actionpack/lib/action_dispatch/middleware/params_parser.rb
+[Parameters]: https://github.com/rails/rails/blob/v3.2.10/actionpack/lib/action_dispatch/http/parameters.rb
+[XmlMini]: https://github.com/rails/rails/blob/v3.2.10/activesupport/lib/active_support/xml_mini.rb#L67
+[Psych]: https://github.com/tenderlove/psych/blob/v3.2.10/lib/psych/visitors/to_ruby.rb
+[Arel::Nodes]: https://github.com/rails/arel/tree/v3.2.10/lib/arel/nodes
+[Arel::Nodes::SqlLiteral]: https://github.com/rails/arel/blob/v3.2.10/lib/arel/nodes/sql_literal.rb
+[NamedRouteCollection]: https://github.com/rails/rails/blob/v3.2.10/actionpack/lib/action_dispatch/routing/route_set.rb#L96
+[define_url_helper]: https://github.com/rails/rails/blob/v3.2.10/actionpack/lib/action_dispatch/routing/route_set.rb#L187-L203
 
 [ERB]: http://rubydoc.info/stdlib/erb/ERB
 [OpenStruct]: http://rubydoc.info/stdlib/ostruct/OpenStruct
