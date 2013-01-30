@@ -10,7 +10,7 @@ Ronin on a vanilla Mac OS X system.
 
 ### Quick Install
 
-    sudo ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)" && \
+    sudo ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)" && \
     sudo brew install libxml2 libxslt sqlite && \
     sudo gem install ronin
 
@@ -25,7 +25,7 @@ In order to install these Gems, you will need to download
 In order to install the additional libraries, we must first install
 [HomeBrew](http://mxcl.github.com/homebrew/):
 
-    sudo ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
+    sudo ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 
 ## Installing required Libraries
 
