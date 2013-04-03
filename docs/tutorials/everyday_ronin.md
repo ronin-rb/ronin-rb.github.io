@@ -150,28 +150,28 @@ Path.up(7) / 'etc' / 'passwd'
 Creating a TCP Socket for a specified host and port:
 
 {% highlight ruby %}
-sock = Net.tcp_connect('www.example.com', 25)
+sock = tcp_connect('www.example.com', 25)
 # => #<TCPSocket:0xb7bbde6c>
 {% endhighlight %}
 
 Creating a TCP Socket with local host and port information:
 
 {% highlight ruby %}
-Net.tcp_connect('www.example.com', 25, 'some.interface.net', 1212)
+tcp_connect('www.example.com', 25, 'some.interface.net', 1212)
 # => #<TCPSocket:0xb7ba0dd0>
 {% endhighlight %}
 
 Create a TCP Socket, then send some data:
 
 {% highlight ruby %}
-Net.tcp_connect_and_send("helo lol.train.com\n", 'www.example.com', 25)
+tcp_connect_and_send("helo lol.train.com\n", 'www.example.com', 25)
 # => #<TCPSocket:0xb7b8fa6c>
 {% endhighlight %}
 
 Creating a TCP session which will be automatically closed:
 
 {% highlight ruby %}
-Net.tcp_session('www.example.com', 1212) do |sock|
+tcp_session('www.example.com', 1212) do |sock|
   sock.write("this is just a test\n")
   puts sock.readline
 end
@@ -180,35 +180,35 @@ end
 Grabbing the banner from a TCP service:
 
 {% highlight ruby %}
-Net.tcp_banner('www.example.com', 22)
+tcp_banner('www.example.com', 22)
 # => "SSH-2.0-OpenSSH_4.3p2 Debian-8ubuntu1.4\n"
 {% endhighlight %}
 
 Creating a UDP Socket for a specified host and port:
 
 {% highlight ruby %}
-sock = Net.udp_connect('www.example.com', 135)
+sock = udp_connect('www.example.com', 135)
 # => #<UDPSocket:0xb7bbde6c>
 {% endhighlight %}
 
 Creating a UDP Socket with local host and port information:
 
 {% highlight ruby %}
-Net.udp_connect('www.example.com', 135, 'some.interface.net', 3030)
+udp_connect('www.example.com', 135, 'some.interface.net', 3030)
 # => #<UDPSocket:0xb7ba0dd0>
 {% endhighlight %}
 
 Create a UDP Socket, then send some data:
 
 {% highlight ruby %}
-Net.udp_connect_and_send("mic check\n", 'www.example.com', 1212)
+udp_connect_and_send("mic check\n", 'www.example.com', 1212)
 # => #<UDPSocket:0xb7b8fa6c>
 {% endhighlight %}
 
 Creating a UDP session which will be automatically closed:
 
 {% highlight ruby %}
-Net.udp_session('www.example.com', 3030) do |sock|
+udp_session('www.example.com', 3030) do |sock|
   sock.write("I want to devise a virus.\n")
   puts sock.readline
 end
@@ -271,28 +271,28 @@ Network::HTTP.disable_proxy
 Requesting a web-page:
 
 {% highlight ruby %}
-Net.http_get(:url => 'http://www.wired.com/')
+http_get(:url => 'http://www.wired.com/')
 # => #<Net::HTTPOK 200 OK readbody=true>
 {% endhighlight %}
 
 Requesting only the body of a web-page:
 
 {% highlight ruby %}
-Net.http_get_body(:url => 'http://www.wired.com/')
+http_get_body(:url => 'http://www.wired.com/')
 # => "..."
 {% endhighlight %}
 
 Posting to a web-page:
 
 {% highlight ruby %}
-Net.http_post(:url => some_url, :post_data => {:q => 1, :id => 255})
+http_post(:url => some_url, :post_data => {:q => 1, :id => 255})
 # => #<Net::HTTPOK 200 OK readbody=true>
 {% endhighlight %}
 
 Posting to a web-page and only returning the body of the response:
 
 {% highlight ruby %}
-Net.http_post_body(:url => some_url)
+http_post_body(:url => some_url)
 # => "..."
 {% endhighlight %}
 
