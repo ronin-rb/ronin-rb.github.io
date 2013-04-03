@@ -49,8 +49,9 @@ title: Documentation
   Intrusion Labs.
 * [Intrusion via web application flaws](http://www.vimeo.com/14983596) -
   A demo illustrating the Exploitation Life Cycle by
-  [Dan Guido](http://cryptocity.net/) for the [NYU: Poly Penetration Testing and Vulnerab
-  class. Features the Ronin AJAX PHP-RPC Server being injected via a
+  [Dan Guido](http://cryptocity.net/) for the [NYU: Poly Penetration Testing and
+  Vulnerability Analysis](http://pentest.cryptocity.net/) class.
+  Features the Ronin AJAX PHP-RPC Server being injected via a
   [Remote File Inclusion (RFI)](http://en.wikipedia.org/wiki/Remote_File_Inclusion).
 * [Hack This Zine #10 article - Delivering Weaponized Exploits with Ronin, 
   RVM, and Bundler](articles/hack_this_zine_10.html) -
