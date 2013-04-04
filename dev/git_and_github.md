@@ -35,8 +35,8 @@ system (apt-get, yum, etc on Linux,
 The github.com account can be created
 [here](https://github.com/signup/free),
 associating your git installation with github.com is documented
-[here](https://help.github.com/articles/tell-git-your-user-name-and-email-address),
-and getting your ssh public-key onto github.com is documented
+[here](https://help.github.com/articles/set-up-git), and getting your ssh
+public-key onto github.com is documented
 [here](https://help.github.com/articles/providing-your-ssh-key)
 
 The authoritive source of documentation for using git with github.com is
