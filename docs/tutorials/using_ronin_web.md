@@ -5,7 +5,7 @@ title: Using Ronin Web
 
 # Using Ronin Web
 
-The [Ronin Web](http://ronin-ruby.github.com/docs/ronin-web/) library provides
+The [Ronin Web](/docs/ronin-web/) library provides
 support for Web Scraping and Spidering functionality in Ronin.
 
 Before we can use this library in the Ronin Ruby Console, we must first
@@ -22,7 +22,7 @@ To start the Ronin Ruby Console, with ronin-web pre-loaded, simply run the
 ## Proxy Settings
 
 Accessing the Ronin Web Proxy settings, just like in
-[Network::HTTP](http://ronin-ruby.github.com/docs/ronin/Ronin/Network/HTTP.html):
+[Network::HTTP](/docs/ronin/Ronin/Network/HTTP.html):
 
 {% highlight ruby %}
 Web.proxy

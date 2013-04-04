@@ -47,7 +47,7 @@ URI::QueryParams.dump(:q => 1, :x => 2)
 <div class="note">
 <p>
 The <kbd>URI::QueryParams.dump</kbd> method is also used by
-<a href="http://ronin-ruby.github.com/docs/ronin-support/Ronin/Network/HTTP.html">HTTP</a>
+<a href="/docs/ronin-support/Ronin/Network/HTTP.html">HTTP</a>
 helper methods for the <kbd>:query_params</kbd> option:
 </p>
 

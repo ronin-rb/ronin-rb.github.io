@@ -252,7 +252,7 @@ url helper that is defined (four times):
 [GPLv3]: http://gplv3.fsf.org/
 
 [ronin-support]: https://rubygems.org/gems/ronin-support
-[String.generate]: http://ronin-ruby.github.com/docs/ronin-support/String.html#generate-class_method
+[String.generate]: /docs/ronin-support/String.html#generate-class_method
 
 [rails_dos.rb]: https://gist.github.com/4499017
 [rails_jsonq.rb]: https://gist.github.com/4499030

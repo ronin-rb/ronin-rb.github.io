@@ -138,7 +138,7 @@ change default settings, they can and do make mistakes.
 [define_hash_access 3.0.x]: https://github.com/rails/rails/blob/v3.0.19/actionpack/lib/action_dispatch/routing/route_set.rb#L166-L171
 [define_hash_access 3.1.x]: https://github.com/rails/rails/blob/v3.1.0/actionpack/lib/action_dispatch/routing/route_set.rb#L166-L171
 
-[1]: http://ronin-ruby.github.com/blog/2013/01/09/rails-pocs.html
+[1]: /blog/2013/01/09/rails-pocs.html
 [2]: http://david.heinemeierhansson.com/2012/rails-is-omakase.html
 [3]: http://gilesbowkett.blogspot.com/2013/01/a-dramatic-reading-of-rails-is-omakase.html
 [4]: https://github.com/rails/rails/commit/a87683fb38d6cf66f39a7bd3faa6c969c63b1f46

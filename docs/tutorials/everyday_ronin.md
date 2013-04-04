@@ -36,7 +36,7 @@ To start the Ronin Ruby Console, simply run the `ronin` command:
 
   <p>
   If you have questions regarding the methods or Classes defined within
-  Ronin, you can consult the <a href="http://ronin-ruby.github.com/docs/ronin/">API Documentation</a>
+  Ronin, you can consult the <a href="/docs/ronin/">API Documentation</a>
   for Ronin. If on the other hand, you have questions about methods or
   Classes provided by Ruby itself, I recommend using
   <a href="http://www.ruby-doc.org/">www.ruby-doc.org</a>.
@@ -57,7 +57,7 @@ even [Integers](http://www.ruby-doc.org/core/classes/Integer.html) and
 [Strings](http://www.ruby-doc.org/core/classes/String.html)
 are represented as Objects. These Objects have methods and are defined by
 Classes, much like any other Object in Ruby. In the example above Ronin has
-added the [pack](http://ronin-ruby.github.com/docs/ronin/Integer.html#pack-instance_method)
+added the [pack](/docs/ronin/Integer.html#pack-instance_method)
 method to the `Integer` class.
 
 Packing an `Integer` with a custom address length:
@@ -215,7 +215,7 @@ end
 {% endhighlight %}
 
 **Note:** For more Networking convenience methods, consult the documentation
-for the [Net](http://ronin-ruby.github.com/docs/ronin/Net.html) namespace.
+for the [Net](/docs/ronin/Net.html) namespace.
 
 ## URLs
 

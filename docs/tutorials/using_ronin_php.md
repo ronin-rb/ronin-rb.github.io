@@ -5,7 +5,7 @@ title: Using Ronin PHP
 
 # Using Ronin PHP
 
-The [Ronin PHP](http://ronin-ruby.github.com/docs/ronin-php/) library provides
+The [Ronin PHP](/docs/ronin-php/) library provides
 support for PHP related security tasks, such as Local File Inclusion (LFI)
 or Remote File Inclusion (RFI).
 
@@ -30,7 +30,7 @@ url.has_lfi?
 # => true
 {% endhighlight %}
 
-Obtain a [Ronin::PHP::LFI](http://ronin-ruby.github.com/docs/ronin-php/Ronin/PHP/LFI.html)
+Obtain a [Ronin::PHP::LFI](/docs/ronin-php/Ronin/PHP/LFI.html)
 object which can be used to access files or finger-print the web server:
 
 {% highlight ruby %}
@@ -43,7 +43,7 @@ Request a local file as a `String`:
 lfi.get('/etc/passwd')
 {% endhighlight %}
 
-Request a local file as a [Ronin::PHP::LFI::File](http://ronin-ruby.github.com/docs/ronin-php/Ronin/PHP/LFI/File.html)
+Request a local file as a [Ronin::PHP::LFI::File](/docs/ronin-php/Ronin/PHP/LFI/File.html)
 object:
 
 {% highlight ruby %}
@@ -61,7 +61,7 @@ url.has_rfi?
 # => true
 {% endhighlight %}
 
-Obtain a [Ronin::PHP::RFI](http://ronin-ruby.github.com/docs/ronin-php/Ronin/PHP/RFI.html)
+Obtain a [Ronin::PHP::RFI](/docs/ronin-php/Ronin/PHP/RFI.html)
 object which can be used to include other PHP files:
 
 {% highlight ruby %}
