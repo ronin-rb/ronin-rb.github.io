@@ -585,8 +585,8 @@ http://ronin-ruby.github.com/howtos/ronin_on_debian.html
 
 [4] [RubyGems](http://rubygems.org) - "The premier Ruby packaging system".
 
-[5] [Ronin and Git[hub]](http://ronin-ruby.github.com/dev/) - Detailed documentation for using git to hack on 
-Ronin is available here.
+[5] [Fork a Repo](https://help.github.com/articles/fork-a-repo) -
+Detailed tutorial for using git to hack on Ronin is available here.
 
 [6] IRB - The Interactive Ruby Interpreter.  This is the "Ruby command Line", 
 extended by Ronin to create the ECD (Electronic Civil Disobedience) command 

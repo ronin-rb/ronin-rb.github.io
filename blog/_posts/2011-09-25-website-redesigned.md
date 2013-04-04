@@ -39,7 +39,7 @@ Finally, the content was regrouped into four main sections:
 * [blog](/blog/) - Project Blog.
 * [faq](/faq/) - Frequently Asked Questions.
 * [docs](/docs/) - Information for Users.
-* [dev](/dev/) - Information for Developers.
+* [code](https://github.com/ronin-ruby/) - Ronin repositories on GitHub.
 
 Not to worry, the [sitemap](/sitemap.xml) was updated and JavaScript redirects
 were added to the old pages.
