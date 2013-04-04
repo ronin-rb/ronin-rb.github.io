@@ -25,15 +25,13 @@ Ronin project.
 ## A Word about Markdown
 
 For ease of editing and proof-reading many of the files in this repository
-are written as [Markdown](http://en.wikipedia.org/wiki/Markdown) documents.
-Files containing
-[Markdown syntax](http://daringfireball.net/projects/markdown/basics)
-are denoted by the `.md` file extension.
+are written as [Markdown] documents. Files containing Markdown [syntax] are
+denoted by the `.md` file extension.
 
 ## Requirements
 
-* [jekyll](https://github.com/mojombo/jekyll) >= 0.5.7
-* [rdiscount](https://github.com/rtomayko/rdiscount) (for Markdown)
+* [jekyll] >= 0.5.7
+* [rdiscount] (for Markdown)
 
 ## Setup
 
@@ -59,3 +57,9 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with ronin-ruby.github.com.  If not, see
 <http://www.gnu.org/licenses/>.
+
+[Markdown]: http://en.wikipedia.org/wiki/Markdown
+[syntax]: http://daringfireball.net/projects/markdown/basics
+
+[jekyll]: https://github.com/mojombo/jekyll
+[rdiscount]: https://github.com/rtomayko/rdiscount
