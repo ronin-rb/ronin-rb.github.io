@@ -7,24 +7,21 @@ title: Development
 
 ## Git and GitHub
 
-Since Ronin makes extensive use of [Git](http://git-scm.com/) and
-[GitHub](http://github.com/), having a [github.com](https://github.com/login)
+Since Ronin makes extensive use of [Git] and [GitHub], having a [github.com]
 account and understanding Git workflow is crucial to contributors.
 
-Not to worry, we have a good overview of
-[Git and GitHub](git_and_github.html).
+Not to worry, we have a good overview of [Git and GitHub][1].
 
 ## Style
 
 Inorder to keep the source-code of Ronin clean and readable,
 those who wish to contribute code to Ronin should review the project
-[coding style guide-lines](style.html).
+[coding style guide-lines][2].
 
 
 ## Repositories
 
-Once your familiar with Ronins coding style, and setup with
-[Git](http://git-scm.com/) and [GitHub](http://www.github.com/),
+Once your familiar with Ronins coding style, and setup with [Git] and [GitHub],
 you can dive right into Ronin.
 
 ### Libraries
@@ -43,3 +40,10 @@ you can dive right into Ronin.
 * [ronin-ruby.github.com](http://github.com/ronin-ruby/ronin-ruby.github.com) -
   This website.
 * [art](http://github.com/ronin-ruby/art) - Original Ronin artwork.
+
+[Git]: http://git-scm.com/
+[GitHub]: http://github.com/
+[github.com]: https://github.com/login
+
+[1]: git_and_github.html
+[2]: style.html
