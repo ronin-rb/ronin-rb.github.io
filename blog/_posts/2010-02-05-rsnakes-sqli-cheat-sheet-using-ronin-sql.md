@@ -4,16 +4,13 @@ title: RSnakes SQLi Cheat Sheet using Ronin SQL
 author: postmodern
 ---
 
-One of the planned features listed in the
-[Spring Cleaning Campaign (2010)](/blog/2010/01/12/spring-cleaning.html)
-was a simple Ruby->SQL encoder for the
-[Ronin SQL](https://github.com/ronin-ruby/ronin-sql/) library, to replace the
-overly complex Ronin SQL DSL. This encoder would format Ruby Integers,
-Strings, Arrays and Hashes into fragments of proper SQL.
+One of the planned features listed in the [Spring Cleaning Campaign (2010)][1]
+was a simple Ruby->SQL encoder for the [Ronin SQL][ronin-sql] library,
+to replace the overly complex Ronin SQL DSL. This encoder would format
+Ruby Integers, Strings, Arrays and Hashes into fragments of proper SQL.
 
-The Ruby->SQL encoder has gotten to the point
-of being able to recreate most of the examples from
-[RSnake's SQL Injection Cheat Sheet](http://ha.ckers.org/sqlinjection/):
+The Ruby->SQL encoder has gotten to the point of being able to recreate most of
+the examples from [RSnake's SQL Injection Cheat Sheet][2]:
 
 Load `ronin/code/sql`:
 
@@ -123,3 +120,8 @@ stmt.to_sql(:spaces => false)
 New SQL fragments are created using the `sql[...]` syntax, and new SQL
 function calls are created with `sql.func_name`. Note, that you can nest
 SQL fragments by using the `[sql[...]]` or `[sql.func_name(....)]` syntax.
+
+[1]: /blog/2010/01/12/spring-cleaning.html
+[2]: http://ha.ckers.org/sqlinjection/
+
+[ronin-sql]: https://github.com/ronin-ruby/ronin-sql#readme

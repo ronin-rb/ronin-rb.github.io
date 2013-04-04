@@ -61,5 +61,5 @@ along with ronin-ruby.github.com.  If not, see
 [Markdown]: http://en.wikipedia.org/wiki/Markdown
 [syntax]: http://daringfireball.net/projects/markdown/basics
 
-[jekyll]: https://github.com/mojombo/jekyll
-[rdiscount]: https://github.com/rtomayko/rdiscount
+[jekyll]: https://github.com/mojombo/jekyll#readme
+[rdiscount]: https://github.com/rtomayko/rdiscount#readme
