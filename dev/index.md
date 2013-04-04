@@ -42,7 +42,7 @@ you can dive right into Ronin.
 * [art](http://github.com/ronin-ruby/art) - Original Ronin artwork.
 
 [Git]: http://git-scm.com/
-[GitHub]: http://github.com/
+[GitHub]: https://github.com/
 [github.com]: https://github.com/login
 
 [1]: git_and_github.html
