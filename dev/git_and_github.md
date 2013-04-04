@@ -29,18 +29,18 @@ to github.com.
 Each of these steps are pretty straight forward.  Install git
 in same fashion as you would for other applications on your
 system (apt-get, yum, etc on Linux,
-[OS X docs](https://github.com/guides/get-git-on-mac),
-[Windows docs](https://github.com/guides/using-git-and-github-for-the-windows-for-newbies)).
+[OS X docs](https://help.github.com/articles/get-git-on-mac),
+[Windows docs](https://help.github.com/articles/using-git-and-github-for-the-windows-for-newbies)).
 
 The github.com account can be created
 [here](https://github.com/signup/free),
 associating your git installation with github.com is documented
-[here](https://github.com/guides/tell-git-your-user-name-and-email-address),
+[here](https://help.github.com/articles/tell-git-your-user-name-and-email-address),
 and getting your ssh public-key onto github.com is documented
-[here](https://github.com/guides/providing-your-ssh-key)
+[here](https://help.github.com/articles/providing-your-ssh-key)
 
 The authoritive source of documentation for using git with github.com is
-available [here](https://github.com/guides/home).
+available [here](https://help.github.com/articles/home).
 
 ## Forking Ronin
 
@@ -51,7 +51,7 @@ made.  If you want to keep your fork in sync with commits from
 the origionally forked project you will have to do some 
 additional configuration of your local client.  Forking and 
 staying in sync with the origional project is well documented
-[here](https://github.com/guides/keeping-a-git-fork-in-sync-with-the-forked-repo).
+[here](https://help.github.com/articles/keeping-a-git-fork-in-sync-with-the-forked-repo).
 
 In this example the github.com user is evoltech.
 checkout your fork of ronin:
@@ -131,7 +131,7 @@ your awesome branch back into the master branch.
     $ git checkout master
     $ git merge awesome
 
-Then follow the [pull request documentation](https://github.com/guides/pull-requests),
+Then follow the [pull request documentation](https://help.github.com/articles/pull-requests),
 providing a summary of your bug fixes and any new features. Once notified,
 the other developers of Ronin can then pull in your changes into the
 main Ronin repository, preserving your author information and commit
