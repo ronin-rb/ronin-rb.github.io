@@ -14,6 +14,7 @@ Ronin project.
 * `_config.yml`: Configuration file used by the Rakefile and `jekyll`.
 * `_layouts`: Top-level HTML/XML layout templates.
 * `_includes`: Commonly included HTML content.
+* `_includes/images/`: SVG images that are inlined into the HTML.
 * `images`: Contains the static images to be published.
 * `css`: Contains the CSS files to be published.
 * `js`: Contains the static JavaScript files to be published.
