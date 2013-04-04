@@ -37,8 +37,8 @@ To make achieve this level of ease all the team had to do is specify the specifi
         source :gemcutter
         gem 'open_namespace', '~> 0.3.0'
         gem 'dm-core', '~> 0.10.0'
-        gem 'ronin', '~> 0.4.0', :git =>'http://github.com/ronin-ruby/ronin.git'
-        gem 'ronin-support', '~> 0.1.0', :git =>'http://github.com/ronin-ruby/ronin-support.git'
+        gem 'ronin', '~> 0.4.0', :git =>'https://github.com/ronin-ruby/ronin.git'
+        gem 'ronin-support', '~> 0.1.0', :git =>'https://github.com/ronin-ruby/ronin-support.git'
 
 Then roll it up for deployment with (saving all dependencies in your app's main directory under vendor/cache):
         $ bundle package
@@ -97,7 +97,7 @@ Gemfile.lock, and all of the files installed in vendor/cache after running `bund
 [1] RVM - Ruby Version Manager http://rvm.beginrescueend.com/
 
 [2] Bundler is a tool that manages gem dependencies for your ruby application. It takes a gem manifest file and is able to fetch, download, and install the gems and all child dependencies specified in this manifest. It can manage any update to the gem manifest file and update the bundle's gems accordingly. It also lets you run any ruby code in context of the bundle's gem environment.
-http://github.com/carlhuda/bundler/blob/master/README.md
+https://github.com/carlhuda/bundler/blob/master/README.md
 
 [3] OSVDB-57799 'Microsoft Windows srv2.sys Kernel Driver SMB2 Malformed 
 NEGOTIATE PROTOCOL REQUEST Remote DoS' : http://osvdb.org/57799

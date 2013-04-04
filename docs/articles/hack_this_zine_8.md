@@ -10,7 +10,7 @@ title: "Hack This Zine #8 article - Ronin"
 **Dave Bowman**: What's the problem?<br />
 **HAL**: I think you know what the problem is just as well as I do.<br />
 
-    ronin add --git http://github.com/postmodern/postmodern-overlay.git
+    ronin add --git https://github.com/postmodern/postmodern-overlay.git
     ronin
     ronin>> pod_bay_door.open
 
@@ -116,7 +116,7 @@ documentation management with patches pending to dm-core. To install this
 repo you will have to:
 
     sudo gem source --add http://gems.datamapper.org/
-    git clone http://github.com/postmodern/dm-core.git
+    git clone https://github.com/postmodern/dm-core.git
     cd dm-core
     git checkout -b next --track origin/next
     git pull
@@ -142,7 +142,7 @@ well.
 Rolling the new gem from the git source you just checked out can be done as 
 for dm-core above:
 
-    git clone http://github.com/ronin-ruby/ronin.git
+    git clone https://github.com/ronin-ruby/ronin.git
     cd ronin
     rake gem
     sudo gem install pkg/ronin-0.2.5.gem
@@ -179,7 +179,7 @@ local cache (~/.ronin) of your installed overlays.  An overlay is managed in
 the following way:
 
     ronin list
-    ronin add http://github.com/postmodern/postmodern-overlay.git
+    ronin add https://github.com/postmodern/postmodern-overlay.git
     ronin update postmodern-overlay
 
     # Remove the local entry and delete the associated files.
@@ -193,13 +193,13 @@ the following way:
 Overlays are managed by Ronin::Platform.  This section of code describes the
 Overlay API; file structure, recognized format of ronin.xml.  In the 
 following example we will be using an overlay called postmodern-overlay
-hosted at http://github.com/postmodern/postmodern-overlay.git.  This overlay
+hosted at https://github.com/postmodern/postmodern-overlay.git.  This overlay
 version will change as Ronin::Platform gets updated and may not always be 
 compatible with the gem version of Ronin.  As of Ronin 0.3.0 if you want to
 use a compatible version of postmodern-overlay you will have to check it out
 with the ronin-0.3.0 tag:
 
-    git clone http://github.com/postmodern/postmodern-overlay.git
+    git clone https://github.com/postmodern/postmodern-overlay.git
     cd postmodern-overlay
     git checkout -b ronin-0.3.0 --track origin/ronin-0.3.0  
 
@@ -361,7 +361,7 @@ be a bummer).
 require 'ronin/web'
 require 'optparse'
 require 'ostruct'
-require 'wordlist/builders/website' # http://github.com/sophsec/wordlist
+require 'wordlist/builders/website' # https://github.com/sophsec/wordlist
 require 'wordlist'
 require 'logger'
 
@@ -572,10 +572,10 @@ http://www.rubycentral.com/book/.
 [2] Ronin - The main site for the Ronin project: http://ronin-ruby.github.com/.
 
 [2.a] ronin-ruby.github.com on GitHub - The code base for the main Ronin site
-powered by [Jekyll](http://github.com/mojombo/jekyll/), a static
+powered by [Jekyll](https://github.com/mojombo/jekyll/), a static
 website/blog generator written in Ruby. The site source can be cloned
 through GitHub here:
-http://github.com/ronin-ruby/ronin-ruby.github.com/
+https://github.com/ronin-ruby/ronin-ruby.github.com/
 
 [3] Installing Ronin on Debian - Detailed instructions for getting the Ronin
 (and Ruby) code base on a Debian computer.  If your installation steps are 
@@ -599,7 +599,7 @@ http://groups.google.com/group/ronin-ruby/browse_frm/month/2009-10
 
 [8] wordlist - A ruby library for generating and working with word-lists.
 Project homepage - http://wordlist.rubyforge.org/
-Github homepage - http://github.com/sophsec/wordlist
+Github homepage - https://github.com/sophsec/wordlist
 Postmoderns discussion of the project - http://houseofpostmodern.wordpress.com/2009/10/21/introducing-wordlist-0-1-0/
 Since this will be read on paper by a good number of people I will include
 a bit of the source for this library here, because it is nothing short of code

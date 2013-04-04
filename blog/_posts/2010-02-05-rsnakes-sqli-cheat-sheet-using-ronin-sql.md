@@ -7,7 +7,7 @@ author: postmodern
 One of the planned features listed in the
 [Spring Cleaning Campaign (2010)](/blog/2010/01/12/spring-cleaning.html)
 was a simple Ruby->SQL encoder for the
-[Ronin SQL](http://github.com/ronin-ruby/ronin-sql/) library, to replace the
+[Ronin SQL](https://github.com/ronin-ruby/ronin-sql/) library, to replace the
 overly complex Ronin SQL DSL. This encoder would format Ruby Integers,
 Strings, Arrays and Hashes into fragments of proper SQL.
 

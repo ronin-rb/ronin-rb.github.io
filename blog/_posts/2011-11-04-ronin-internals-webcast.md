@@ -28,8 +28,8 @@ worry if you missed the first one. ;)
 **Update:** The last 3rd of the webcast was [recorded][5], although the audio
 quality is not the best.
 
-[1]: http://github.com/ronin-ruby/ronin-support
-[2]: http://github.com/ronin-ruby/ronin
-[3]: http://github.com/ronin-ruby/ronin-exploits
-[4]: http://github.com/ronin-ruby/ronin-scanners
+[1]: https://github.com/ronin-ruby/ronin-support
+[2]: https://github.com/ronin-ruby/ronin
+[3]: https://github.com/ronin-ruby/ronin-exploits
+[4]: https://github.com/ronin-ruby/ronin-scanners
 [5]: http://vimeo.com/31666052

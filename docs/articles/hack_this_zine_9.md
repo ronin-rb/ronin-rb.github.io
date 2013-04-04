@@ -119,7 +119,7 @@ http://microjet.ath.cx/webrickguide/html/html_webrick.html
 
 [8] Nikto is a web server vulnerability scanner - http://cirt.net/nikto2
 
-[9] ronin-int - http://github.com/postmodern/ronin-int
+[9] ronin-int - https://github.com/postmodern/ronin-int
 
 [10] AMQP is an open Internet Protocol for Business Messaging
 http://www.amqp.org

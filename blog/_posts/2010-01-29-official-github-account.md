@@ -9,4 +9,4 @@ such a large and established project, I realized it was high time to create
 an official GitHub account to host the Ronin repositories.
 
 From now on, the source for all Ronin repositories is
-[github.com/ronin-ruby](http://github.com/ronin-ruby/).
+[github.com/ronin-ruby](https://github.com/ronin-ruby/).

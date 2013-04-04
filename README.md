@@ -1,8 +1,8 @@
 # ronin-ruby.github.com
 
 * [Website](http://ronin-ruby.github.com)
-* [Source](http://github.com/ronin-ruby/ronin-ruby.github.com)
-* [Issues](http://github.com/ronin-ruby/ronin-ruby.github.com/issues)
+* [Source](https://github.com/ronin-ruby/ronin-ruby.github.com)
+* [Issues](https://github.com/ronin-ruby/ronin-ruby.github.com/issues)
 * [Mailing List](http://groups.google.com/group/ronin-ruby)
 * [irc.freenode.net #ronin](http://webchat.freenode.net/?channels=ronin&uio=Mj10cnVldd)
 
@@ -32,13 +32,13 @@ are denoted by the `.md` file extension.
 
 ## Requirements
 
-* [jekyll](http://github.com/mojombo/jekyll) >= 0.5.7
-* [rdiscount](http://github.com/rtomayko/rdiscount) (for Markdown)
+* [jekyll](https://github.com/mojombo/jekyll) >= 0.5.7
+* [rdiscount](https://github.com/rtomayko/rdiscount) (for Markdown)
 
 ## Setup
 
     $ gem install jekyll rdiscount
-    $ git clone http://github.com/ronin-ruby/ronin-ruby.github.com.git
+    $ git clone https://github.com/ronin-ruby/ronin-ruby.github.com.git
     $ cd ronin-ruby.github.com/
     $ jekyll
 

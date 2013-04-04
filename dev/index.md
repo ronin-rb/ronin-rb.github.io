@@ -29,7 +29,7 @@ you can dive right into Ronin.
 <ul>
 {% for library in site.libraries %}
   <li>
-    <a href="http://github.com/ronin-ruby/{{ library[0] }}/">{{ library[1].name }}</a> -
+    <a href="https://github.com/ronin-ruby/{{ library[0] }}/">{{ library[1].name }}</a> -
     {{ library[1].description }}
   </li>
 {% endfor %}
@@ -37,9 +37,9 @@ you can dive right into Ronin.
 
 ### Misc
 
-* [ronin-ruby.github.com](http://github.com/ronin-ruby/ronin-ruby.github.com) -
+* [ronin-ruby.github.com](https://github.com/ronin-ruby/ronin-ruby.github.com) -
   This website.
-* [art](http://github.com/ronin-ruby/art) - Original Ronin artwork.
+* [art](https://github.com/ronin-ruby/art) - Original Ronin artwork.
 
 [Git]: http://git-scm.com/
 [GitHub]: https://github.com/
