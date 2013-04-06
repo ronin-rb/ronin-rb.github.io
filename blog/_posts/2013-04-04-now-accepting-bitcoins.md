@@ -18,9 +18,9 @@ from [NameCheap].
 
 Bitcoin is a virtual p2p crypto-currency, that is not regulated or taxed.
 This makes transferring Bitcoins far easier and safer than transferring funds
-via PayPal. An increasing amount of online and offline merchants now accept
-Bitcoins as a form of payment. Bitcoins can be bought and sold on many of the
-online [exchanges].
+via PayPal. An increasing amount of online and offline merchants are starting
+to accept Bitcoins. Bitcoins can be bought and sold on many of the online
+[exchanges] with native currency.
 
 [Bitcoin]: http://bitcoin.org/
 [NameCheap]: https://www.namecheap.com/support/payment-options/bitcoin.aspx
