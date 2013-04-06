@@ -57,6 +57,12 @@ Install Ronin on [Debian](/docs/install/debian.html),
 [Fedora](/docs/install/fedora.html) or
 [Mac OS X](/docs/install/osx.html).
 
+## Donate
+
+Help support the development of Ronin by donating [Bitcoins]:
+
+[12tWhiWQaNxc5q37BVt6HZv5iihbRUHayC](bitcoin:12tWhiWQaNxc5q37BVt6HZv5iihbRUHayC?label=ronin)
+
 ## Examples
 
 A couple of [examples](/examples/) of things Ronin simplifies.
@@ -71,6 +77,7 @@ A couple of [examples](/examples/) of things Ronin simplifies.
 [example-payload]: https://gist.github.com/1403961
 [example-scanner]: https://github.com/postmodern/postmodern/blob/master/scripts/scanners/oracle_dad_scanner.rb
 [Repositories]: https://github.com/postmodern/postmodern
+[Bitcoins]: http://bitcoin.org/
 
 [ronin-support]: https://github.com/ronin-ruby/ronin-support#readme
 [ronin-exploits]: https://github.com/ronin-ruby/ronin-exploits#readme
