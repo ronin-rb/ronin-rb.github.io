@@ -569,19 +569,19 @@ debian installation, and `AWESOME.times! 300`
 hosting the book with a nice browseable TOC and Index all in frames is here:
 http://www.rubycentral.com/book/.
 
-[2] Ronin - The main site for the Ronin project: http://ronin-ruby.github.com/.
+[2] Ronin - The main site for the Ronin project: http://ronin-ruby.gihtub.io/.
 
-[2.a] ronin-ruby.github.com on GitHub - The code base for the main Ronin site
+[2.a] ronin-ruby.gihtub.io on GitHub - The code base for the main Ronin site
 powered by [Jekyll](https://github.com/mojombo/jekyll/), a static
 website/blog generator written in Ruby. The site source can be cloned
 through GitHub here:
-https://github.com/ronin-ruby/ronin-ruby.github.com/
+https://github.com/ronin-ruby/ronin-ruby.gihtub.io/
 
 [3] Installing Ronin on Debian - Detailed instructions for getting the Ronin
 (and Ruby) code base on a Debian computer.  If your installation steps are 
 significantly different than what is here, please write them up and submit
 them to the documentation project [2.a]. 
-http://ronin-ruby.github.com/howtos/ronin_on_debian.html
+http://ronin-ruby.gihtub.io/howtos/ronin_on_debian.html
 
 [4] [RubyGems](http://rubygems.org) - "The premier Ruby packaging system".
 
