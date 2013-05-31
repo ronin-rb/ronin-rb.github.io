@@ -10,7 +10,7 @@ Ronin on a vanilla Fedora Linux system.
 
 ### Quick Install
 
-    sudo yum install libxml2 libxml2-devel libxslt libxslt-devel sqlite sqlite-devel && \
+    sudo yum install readline-devel libxml2 libxml2-devel libxslt libxslt-devel sqlite sqlite-devel && \
     sudo yum install ruby ruby-devel irb rubygems && \
     sudo gem install ronin
 
