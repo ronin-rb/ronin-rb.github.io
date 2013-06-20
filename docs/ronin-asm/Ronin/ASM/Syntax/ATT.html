@@ -10,9 +10,9 @@
   
 </title>
 
-  <link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
@@ -142,6 +142,12 @@
 
 
 
+  
+  
+  <h3 class="inherited">Constants inherited
+     from <span class='object_link'><a href="Common.html" title="Ronin::ASM::Syntax::Common (class)">Common</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Common.html#BITS-constant" title="Ronin::ASM::Syntax::Common::BITS (constant)">Common::BITS</a></span></p>
+
 
 
 
@@ -226,7 +232,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#emit_program-class_method" title="emit_program (class method)">+ (String) <strong>emit_program</strong>(program) </a>
+      <a href="#emit_operands-class_method" title="emit_operands (class method)">+ (String) <strong>emit_operands</strong>(ops) </a>
     
 
     
@@ -240,7 +246,30 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Emits a program.</p>
+    <span class="summary_desc"><div class='inline'><p>Emits multiple operands.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#emit_prologue-class_method" title="emit_prologue (class method)">+ (String) <strong>emit_prologue</strong>(program) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Emits the program&#8217;s prologue.</p>
 </div></span>
   
 </li>
@@ -269,6 +298,29 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#emit_section-class_method" title="emit_section (class method)">+ (String) <strong>emit_section</strong>(name) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Emits a section name.</p>
+</div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -282,7 +334,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Common.html" title="Ronin::ASM::Syntax::Common (class)">Common</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Common.html#emit_float-class_method" title="Ronin::ASM::Syntax::Common.emit_float (method)">emit_float</a></span>, <span class='object_link'><a href="Common.html#emit_integer-class_method" title="Ronin::ASM::Syntax::Common.emit_integer (method)">emit_integer</a></span>, <span class='object_link'><a href="Common.html#emit_keyword-class_method" title="Ronin::ASM::Syntax::Common.emit_keyword (method)">emit_keyword</a></span>, <span class='object_link'><a href="Common.html#emit_label-class_method" title="Ronin::ASM::Syntax::Common.emit_label (method)">emit_label</a></span>, <span class='object_link'><a href="Common.html#emit_operand-class_method" title="Ronin::ASM::Syntax::Common.emit_operand (method)">emit_operand</a></span>, <span class='object_link'><a href="Common.html#emit_operands-class_method" title="Ronin::ASM::Syntax::Common.emit_operands (method)">emit_operands</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Common.html#emit_float-class_method" title="Ronin::ASM::Syntax::Common.emit_float (method)">emit_float</a></span>, <span class='object_link'><a href="Common.html#emit_integer-class_method" title="Ronin::ASM::Syntax::Common.emit_integer (method)">emit_integer</a></span>, <span class='object_link'><a href="Common.html#emit_keyword-class_method" title="Ronin::ASM::Syntax::Common.emit_keyword (method)">emit_keyword</a></span>, <span class='object_link'><a href="Common.html#emit_label-class_method" title="Ronin::ASM::Syntax::Common.emit_label (method)">emit_label</a></span>, <span class='object_link'><a href="Common.html#emit_operand-class_method" title="Ronin::ASM::Syntax::Common.emit_operand (method)">emit_operand</a></span>, <span class='object_link'><a href="Common.html#emit_program-class_method" title="Ronin::ASM::Syntax::Common.emit_program (method)">emit_program</a></span></p>
 
 
   <div id="class_method_details" class="method_details_list">
@@ -426,22 +478,22 @@
       <pre class="lines">
 
 
-99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111</pre>
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/syntax/att.rb', line 99</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/syntax/att.rb', line 116</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_emit_instruction'>emit_instruction</span><span class='lparen'>(</span><span class='id identifier rubyid_ins'>ins</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_line'>line</span> <span class='op'>=</span> <span class='id identifier rubyid_emit_keyword'>emit_keyword</span><span class='lparen'>(</span><span class='id identifier rubyid_ins'>ins</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -558,9 +610,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="emit_program-class_method">
+  <h3 class="signature " id="emit_operands-class_method">
   
-    + (<tt>String</tt>) <strong>emit_program</strong>(program) 
+    + (<tt>String</tt>) <strong>emit_operands</strong>(ops) 
   
 
   
@@ -568,7 +620,91 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Emits a program.</p>
+    <p>Emits multiple operands.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>ops</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="../ImmediateOperand.html" title="Ronin::ASM::ImmediateOperand (class)">ImmediateOperand</a></span>, <span class='object_link'><a href="../MemoryOperand.html" title="Ronin::ASM::MemoryOperand (class)">MemoryOperand</a></span>, <span class='object_link'><a href="../Register.html" title="Ronin::ASM::Register (class)">Register</a></span>, Symbol&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Array of operands.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The formatted operands.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+99
+100
+101
+102
+103
+104
+105</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/syntax/att.rb', line 99</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_emit_operands'>emit_operands</span><span class='lparen'>(</span><span class='id identifier rubyid_ops'>ops</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_ops'>ops</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;</span> <span class='int'>1</span>
+    <span class='lbracket'>[</span><span class='op'>*</span><span class='id identifier rubyid_ops'>ops</span><span class='lbracket'>[</span><span class='int'>1</span><span class='op'>..</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_ops'>ops</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_op'>op</span><span class='op'>|</span> <span class='id identifier rubyid_emit_operand'>emit_operand</span><span class='lparen'>(</span><span class='id identifier rubyid_op'>op</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>,\t</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_ops'>ops</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="emit_prologue-class_method">
+  
+    + (<tt>String</tt>) <strong>emit_prologue</strong>(program) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Emits the program&#8217;s prologue.</p>
 
 
   </div>
@@ -605,7 +741,22 @@
       
       
         &mdash;
-        <div class='inline'><p>The formatted program.</p>
+        <div class='inline'><p>The formatted prologue.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
 </div>
       
     </li>
@@ -618,29 +769,15 @@
       <pre class="lines">
 
 
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131</pre>
+156
+157
+158</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/syntax/att.rb', line 122</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/syntax/att.rb', line 156</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_emit_program'>emit_program</span><span class='lparen'>(</span><span class='id identifier rubyid_program'>program</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_asm'>asm</span> <span class='op'>=</span> <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_program'>program</span><span class='rparen'>)</span>
-
-  <span class='comment'># prepend the `.code64` directive for YASM
-</span>  <span class='kw'>if</span> <span class='id identifier rubyid_program'>program</span><span class='period'>.</span><span class='id identifier rubyid_arch'>arch</span> <span class='op'>==</span> <span class='symbol'>:amd64</span>
-    <span class='id identifier rubyid_asm'>asm</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.code64</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id identifier rubyid_asm'>asm</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='gvar'>$/</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-
-  <span class='kw'>return</span> <span class='id identifier rubyid_asm'>asm</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_emit_prologue'>emit_prologue</span><span class='lparen'>(</span><span class='id identifier rubyid_program'>program</span><span class='rparen'>)</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.code</span><span class='embexpr_beg'>#{</span><span class='const'>BITS</span><span class='lbracket'>[</span><span class='id identifier rubyid_program'>program</span><span class='period'>.</span><span class='id identifier rubyid_arch'>arch</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -723,14 +860,105 @@
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="emit_section-class_method">
+  
+    + (<tt>String</tt>) <strong>emit_section</strong>(name) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Emits a section name.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The section name.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The formatted section name.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+141
+142
+143</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/syntax/att.rb', line 141</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_emit_section'>emit_section</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
     <div id="footer">
-  Generated on Sun Aug 26 21:49:53 2012 by
+  Generated on Wed Jun 19 17:39:10 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.2.1 (ruby-1.9.3).
+  0.8.6.1 (ruby-1.9.3).
 </div>
 
   </body>

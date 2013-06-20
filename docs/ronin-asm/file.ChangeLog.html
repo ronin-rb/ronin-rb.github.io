@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII" />
 <title>
   File: ChangeLog
   
@@ -10,9 +10,9 @@
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
@@ -61,7 +61,38 @@
 
     <iframe id="search_frame"></iframe>
 
-    <div id="content"><div id='filecontents'><h3 id="section">0.1.0 / 2012-08-26</h3>
+    <div id="content"><div id='filecontents'><h3 id="section">0.2.0 / 2013-06-17</h3>
+
+<ul>
+  <li>Require <a href="http://www.ruby-lang.org">Ruby</a> &gt;= 1.9.1.</li>
+  <li>Added <span class='object_link'><a href="Ronin/ASM/Syntax/ATT.html#emit_section-class_method" title="Ronin::ASM::Syntax::ATT.emit_section (method)">Ronin::ASM::Syntax::ATT.emit_section</a></span> and
+<span class='object_link'><a href="Ronin/ASM/Syntax/Intel.html#emit_section-class_method" title="Ronin::ASM::Syntax::Intel.emit_section (method)">Ronin::ASM::Syntax::Intel.emit_section</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/ASM/Syntax/ATT.html#emit_prologue-class_method" title="Ronin::ASM::Syntax::ATT.emit_prologue (method)">Ronin::ASM::Syntax::ATT.emit_prologue</a></span> and
+<span class='object_link'><a href="Ronin/ASM/Syntax/Intel.html#emit_prologue-class_method" title="Ronin::ASM::Syntax::Intel.emit_prologue (method)">Ronin::ASM::Syntax::Intel.emit_prologue</a></span>.</li>
+  <li>
+    <p><span class='object_link'><a href="Ronin/ASM/Instruction.html" title="Ronin::ASM::Instruction (class)">Ronin::ASM::Instruction</a></span> now assumes Intel operand order:</p>
+
+    <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_mov'>mov</span> <span class='id identifier rubyid_eax'>eax</span><span class='comma'>,</span> <span class='int'>0x41</span>
+</code></pre>
+  </li>
+  <li>
+    <p><span class='object_link'><a href="Ronin/ASM/Program.html#byte-instance_method" title="Ronin::ASM::Program#byte (method)">Ronin::ASM::Program#byte</a></span>, <span class='object_link'><a href="Ronin/ASM/Program.html#word-instance_method" title="Ronin::ASM::Program#word (method)">Ronin::ASM::Program#word</a></span>, 
+<span class='object_link'><a href="Ronin/ASM/Program.html#dword-instance_method" title="Ronin::ASM::Program#dword (method)">Ronin::ASM::Program#dword</a></span> and <span class='object_link'><a href="Ronin/ASM/Program.html#qword-instance_method" title="Ronin::ASM::Program#qword (method)">Ronin::ASM::Program#qword</a></span> methods can now
+accept <span class='object_link'><a href="Ronin/ASM/MemoryOperand.html" title="Ronin::ASM::MemoryOperand (class)">Ronin::ASM::MemoryOperand</a></span>s.</p>
+
+    <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_mov'>mov</span> <span class='id identifier rubyid_bx'>bx</span><span class='comma'>,</span> <span class='id identifier rubyid_word'>word</span><span class='lparen'>(</span><span class='id identifier rubyid_ebp'>ebp</span><span class='op'>+</span><span class='int'>8</span><span class='rparen'>)</span>
+</code></pre>
+  </li>
+  <li><span class='object_link'><a href="Ronin/ASM/Program.html#to_asm-instance_method" title="Ronin::ASM::Program#to_asm (method)">Ronin::ASM::Program#to_asm</a></span> now emits Intel syntax by default.</li>
+  <li><span class='object_link'><a href="Ronin/ASM/Program.html#assemble-instance_method" title="Ronin::ASM::Program#assemble (method)">Ronin::ASM::Program#assemble</a></span> now uses Intel syntax by default.</li>
+  <li><span class='object_link'><a href="Ronin/ASM/Syntax/ATT.html" title="Ronin::ASM::Syntax::ATT (class)">Ronin::ASM::Syntax::ATT</a></span> emit <code>.code32</code> directive to forcibly enable 32-bit
+mode for the x86 architecture. <a href="http://yasm.tortall.net/">YASM</a> apparently defaults to 16-bit
+mode.</li>
+  <li><span class='object_link'><a href="Ronin/ASM/Syntax/Intel.html" title="Ronin::ASM::Syntax::Intel (class)">Ronin::ASM::Syntax::Intel</a></span> emit <code>BITS 32</code> directive to forcibly enable
+32-bit mode for the x86 architecture.</li>
+</ul>
+
+<h3 id="section-1">0.1.0 / 2012-08-26</h3>
 
 <ul>
   <li>Initial release:
@@ -81,9 +112,9 @@
 </div></div>
 
     <div id="footer">
-  Generated on Sun Aug 26 21:49:51 2012 by
+  Generated on Wed Jun 19 17:39:10 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.2.1 (ruby-1.9.3).
+  0.8.6.1 (ruby-1.9.3).
 </div>
 
   </body>

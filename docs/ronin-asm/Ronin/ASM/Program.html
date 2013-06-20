@@ -10,9 +10,9 @@
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
   hasFrames = window.top.frames.main ? true : false;
@@ -132,8 +132,8 @@
 </div>
         </dt>
         <dd><pre class="code"><span class='lbrace'>{</span>
-  <span class='symbol'>:att</span>   <span class='op'>=&gt;</span> <span class='const'>Syntax</span><span class='op'>::</span><span class='const'>ATT</span><span class='comma'>,</span>
-  <span class='symbol'>:intel</span> <span class='op'>=&gt;</span> <span class='const'>Syntax</span><span class='op'>::</span><span class='const'>Intel</span>
+  <span class='label'>att:</span>   <span class='const'>Syntax</span><span class='op'>::</span><span class='const'>ATT</span><span class='comma'>,</span>
+  <span class='label'>intel:</span> <span class='const'>Syntax</span><span class='op'>::</span><span class='const'>Intel</span>
 <span class='rbrace'>}</span></pre></dd>
       
         <dt id="PARSERS-constant" class="">PARSERS =
@@ -150,8 +150,8 @@
 </div>
         </dt>
         <dd><pre class="code"><span class='lbrace'>{</span>
-  <span class='symbol'>:att</span>   <span class='op'>=&gt;</span> <span class='symbol'>:gas</span><span class='comma'>,</span>
-  <span class='symbol'>:intel</span> <span class='op'>=&gt;</span> <span class='symbol'>:nasm</span>
+  <span class='label'>att:</span>   <span class='symbol'>:gas</span><span class='comma'>,</span>
+  <span class='label'>intel:</span> <span class='symbol'>:nasm</span>
 <span class='rbrace'>}</span></pre></dd>
       
     </dl>
@@ -398,7 +398,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#byte-instance_method" title="#byte (instance method)">- (ImmediateOperand) <strong>byte</strong>(number) </a>
+      <a href="#byte-instance_method" title="#byte (instance method)">- (MemoryOperand, ImmediateOperand) <strong>byte</strong>(op) </a>
     
 
     
@@ -445,7 +445,7 @@ should be saved and then reloaded.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#dword-instance_method" title="#dword (instance method)">- (ImmediateOperand) <strong>dword</strong>(number) </a>
+      <a href="#dword-instance_method" title="#dword (instance method)">- (ImmediateOperand) <strong>dword</strong>(op) </a>
     
 
     
@@ -608,7 +608,7 @@ should be saved and then reloaded.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#qword-instance_method" title="#qword (instance method)">- (ImmediateOperand) <strong>qword</strong>(number) </a>
+      <a href="#qword-instance_method" title="#qword (instance method)">- (MemoryOperand, ImmediateOperand) <strong>qword</strong>(op) </a>
     
 
     
@@ -746,7 +746,7 @@ should be saved and then reloaded.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#register_set-instance_method" title="#register_set (instance method)">- (Object) <strong>register_set</strong>(value, name) </a>
+      <a href="#register_set-instance_method" title="#register_set (instance method)">- (Object) <strong>register_set</strong>(name, value) </a>
     
 
     
@@ -838,7 +838,7 @@ should be saved and then reloaded.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#to_asm-instance_method" title="#to_asm (instance method)">- (Object) <strong>to_asm</strong>(syntax = :att) </a>
+      <a href="#to_asm-instance_method" title="#to_asm (instance method)">- (Object) <strong>to_asm</strong>(syntax = :intel) </a>
     
 
     
@@ -861,7 +861,30 @@ should be saved and then reloaded.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#word-instance_method" title="#word (instance method)">- (ImmediateOperand) <strong>word</strong>(number) </a>
+      <a href="#to_s-instance_method" title="#to_s (instance method)">- (Object) <strong>to_s</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#word-instance_method" title="#word (instance method)">- (MemoryOperand, ImmediateOperand) <strong>word</strong>(op) </a>
     
 
     
@@ -909,13 +932,13 @@ should be saved and then reloaded.</p>
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code"><span class='const'>Program</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='symbol'>:arch</span> <span class='op'>=&gt;</span> <span class='symbol'>:amd64</span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <pre class="example code"><code><span class='const'>Program</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>arch:</span> <span class='symbol'>:amd64</span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_push'>push</span>  <span class='id identifier rubyid_rax'>rax</span>
   <span class='id identifier rubyid_push'>push</span>  <span class='id identifier rubyid_rbx'>rbx</span>
 
   <span class='id identifier rubyid_mov'>mov</span>   <span class='id identifier rubyid_rsp'>rsp</span><span class='comma'>,</span>     <span class='id identifier rubyid_rax'>rax</span>
   <span class='id identifier rubyid_mov'>mov</span>   <span class='id identifier rubyid_rax'>rax</span><span class='lbracket'>[</span><span class='int'>8</span><span class='rbracket'>]</span><span class='comma'>,</span>  <span class='id identifier rubyid_rbx'>rbx</span>
-<span class='kw'>end</span></pre>
+<span class='kw'>end</span></code></pre>
     
   </div>
 <p class="tag_title">Parameters:</p>
@@ -1149,22 +1172,22 @@ The given block will be evaluated within the program.</p>
       <pre class="lines">
 
 
-460
-461
-462
-463
-464
-465
-466
-467
-468
-469
-470
-471
-472</pre>
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 460</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 487</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_block'>block</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span><span class='rparen'>)</span>
@@ -1592,7 +1615,7 @@ The given block will be evaluated within the program.</p>
           <span class="default">
             
               &mdash; default:
-              <tt>:att</tt>
+              <tt>:intel</tt>
             
           </span>
           
@@ -1660,31 +1683,31 @@ The given block will be evaluated within the program.</p>
       <pre class="lines">
 
 
-426
-427
-428
-429
-430
-431
-432
-433
-434
-435
-436
-437
-438
-439
-440
-441
-442
-443
-444</pre>
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 426</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 453</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_assemble'>assemble</span><span class='lparen'>(</span><span class='id identifier rubyid_output'>output</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_syntax'>syntax</span>  <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbol'>:syntax</span><span class='comma'>,</span><span class='symbol'>:att</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_syntax'>syntax</span>  <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbol'>:syntax</span><span class='comma'>,</span><span class='symbol'>:intel</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_format'>format</span>  <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbol'>:format</span><span class='comma'>,</span><span class='symbol'>:bin</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_parser'>parser</span>  <span class='op'>=</span> <span class='const'>PARSERS</span><span class='lbracket'>[</span><span class='id identifier rubyid_syntax'>syntax</span><span class='rbracket'>]</span>
 
@@ -1693,11 +1716,11 @@ The given block will be evaluated within the program.</p>
   <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
 
   <span class='const'>YASM</span><span class='op'>::</span><span class='const'>Program</span><span class='period'>.</span><span class='id identifier rubyid_assemble'>assemble</span><span class='lparen'>(</span>
-    <span class='symbol'>:file</span>          <span class='op'>=&gt;</span> <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span>
-    <span class='symbol'>:parser</span>        <span class='op'>=&gt;</span> <span class='const'>PARSERS</span><span class='lbracket'>[</span><span class='id identifier rubyid_syntax'>syntax</span><span class='rbracket'>]</span><span class='comma'>,</span>
-    <span class='symbol'>:target</span>        <span class='op'>=&gt;</span> <span class='ivar'>@arch</span><span class='comma'>,</span>
-    <span class='symbol'>:output_format</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_format'>format</span><span class='comma'>,</span>
-    <span class='symbol'>:output</span>        <span class='op'>=&gt;</span> <span class='id identifier rubyid_output'>output</span>
+    <span class='label'>file:</span>          <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span>
+    <span class='label'>parser:</span>        <span class='const'>PARSERS</span><span class='lbracket'>[</span><span class='id identifier rubyid_syntax'>syntax</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='label'>target:</span>        <span class='ivar'>@arch</span><span class='comma'>,</span>
+    <span class='label'>output_format:</span> <span class='id identifier rubyid_format'>format</span><span class='comma'>,</span>
+    <span class='label'>output:</span>        <span class='id identifier rubyid_output'>output</span>
   <span class='rparen'>)</span>
 
   <span class='kw'>return</span> <span class='id identifier rubyid_output'>output</span>
@@ -1710,7 +1733,7 @@ The given block will be evaluated within the program.</p>
       <div class="method_details ">
   <h3 class="signature " id="byte-instance_method">
   
-    - (<tt><span class='object_link'><a href="ImmediateOperand.html" title="Ronin::ASM::ImmediateOperand (class)">ImmediateOperand</a></span></tt>) <strong>byte</strong>(number) 
+    - (<tt><span class='object_link'><a href="MemoryOperand.html" title="Ronin::ASM::MemoryOperand (class)">MemoryOperand</a></span></tt>, <tt><span class='object_link'><a href="ImmediateOperand.html" title="Ronin::ASM::ImmediateOperand (class)">ImmediateOperand</a></span></tt>) <strong>byte</strong>(op) 
   
 
   
@@ -1729,10 +1752,10 @@ The given block will be evaluated within the program.</p>
   
     <li>
       
-        <span class='name'>number</span>
+        <span class='name'>op</span>
       
       
-        <span class='type'>(<tt>Integer</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="MemoryOperand.html" title="Ronin::ASM::MemoryOperand (class)">MemoryOperand</a></span></tt>, <tt>Integer</tt>)</span>
       
       
       
@@ -1750,7 +1773,7 @@ The given block will be evaluated within the program.</p>
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="ImmediateOperand.html" title="Ronin::ASM::ImmediateOperand (class)">ImmediateOperand</a></span></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="MemoryOperand.html" title="Ronin::ASM::MemoryOperand (class)">MemoryOperand</a></span></tt>, <tt><span class='object_link'><a href="ImmediateOperand.html" title="Ronin::ASM::ImmediateOperand (class)">ImmediateOperand</a></span></tt>)</span>
       
       
       
@@ -1770,13 +1793,23 @@ The given block will be evaluated within the program.</p>
 
 202
 203
-204</pre>
+204
+205
+206
+207
+208
+209</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 202</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_byte'>byte</span><span class='lparen'>(</span><span class='id identifier rubyid_number'>number</span><span class='rparen'>)</span>
-  <span class='const'>ImmediateOperand</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_number'>number</span><span class='comma'>,</span><span class='int'>1</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_byte'>byte</span><span class='lparen'>(</span><span class='id identifier rubyid_op'>op</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_op'>op</span>
+  <span class='kw'>when</span> <span class='const'>MemoryOperand</span>
+    <span class='const'>MemoryOperand</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_base'>base</span><span class='comma'>,</span><span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_offset'>offset</span><span class='comma'>,</span><span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_index'>index</span><span class='comma'>,</span><span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_scale'>scale</span><span class='comma'>,</span><span class='int'>1</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='const'>ImmediateOperand</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_op'>op</span><span class='comma'>,</span><span class='int'>1</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1847,16 +1880,16 @@ have been saved.</p>
       <pre class="lines">
 
 
-365
-366
-367
-368
-369
-370
-371</pre>
+385
+386
+387
+388
+389
+390
+391</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 365</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 385</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_critical'>critical</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_regs'>regs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_regs'>regs</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span> <span class='id identifier rubyid_register_save'>register_save</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -1873,7 +1906,7 @@ have been saved.</p>
       <div class="method_details ">
   <h3 class="signature " id="dword-instance_method">
   
-    - (<tt><span class='object_link'><a href="ImmediateOperand.html" title="Ronin::ASM::ImmediateOperand (class)">ImmediateOperand</a></span></tt>) <strong>dword</strong>(number) 
+    - (<tt><span class='object_link'><a href="ImmediateOperand.html" title="Ronin::ASM::ImmediateOperand (class)">ImmediateOperand</a></span></tt>) <strong>dword</strong>(op) 
   
 
   
@@ -1892,10 +1925,10 @@ have been saved.</p>
   
     <li>
       
-        <span class='name'>number</span>
+        <span class='name'>op</span>
       
       
-        <span class='type'>(<tt>Integer</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="MemoryOperand.html" title="Ronin::ASM::MemoryOperand (class)">MemoryOperand</a></span></tt>, <tt>Integer</tt>)</span>
       
       
       
@@ -1931,15 +1964,25 @@ have been saved.</p>
       <pre class="lines">
 
 
-228
-229
-230</pre>
+238
+239
+240
+241
+242
+243
+244
+245</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 228</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 238</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_dword'>dword</span><span class='lparen'>(</span><span class='id identifier rubyid_number'>number</span><span class='rparen'>)</span>
-  <span class='const'>ImmediateOperand</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_number'>number</span><span class='comma'>,</span><span class='int'>4</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_dword'>dword</span><span class='lparen'>(</span><span class='id identifier rubyid_op'>op</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_op'>op</span>
+  <span class='kw'>when</span> <span class='const'>MemoryOperand</span>
+    <span class='const'>MemoryOperand</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_base'>base</span><span class='comma'>,</span><span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_offset'>offset</span><span class='comma'>,</span><span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_index'>index</span><span class='comma'>,</span><span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_scale'>scale</span><span class='comma'>,</span><span class='int'>4</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='const'>ImmediateOperand</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_op'>op</span><span class='comma'>,</span><span class='int'>4</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1989,12 +2032,12 @@ The code to evaluate.</p>
       <pre class="lines">
 
 
-379
-380
-381</pre>
+399
+400
+401</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 379</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 399</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_eval'>eval</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_instance_eval'>instance_eval</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -2142,11 +2185,11 @@ The code to evaluate.</p>
       <pre class="lines">
 
 
-274
-275</pre>
+294
+295</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 274</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 294</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_interrupt'>interrupt</span><span class='lparen'>(</span><span class='id identifier rubyid_number'>number</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -2235,16 +2278,16 @@ added.</p>
       <pre class="lines">
 
 
-258
-259
-260
-261
-262
-263
-264</pre>
+278
+279
+280
+281
+282
+283
+284</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 258</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 278</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_label'>label</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
@@ -2261,7 +2304,7 @@ added.</p>
       <div class="method_details ">
   <h3 class="signature " id="qword-instance_method">
   
-    - (<tt><span class='object_link'><a href="ImmediateOperand.html" title="Ronin::ASM::ImmediateOperand (class)">ImmediateOperand</a></span></tt>) <strong>qword</strong>(number) 
+    - (<tt><span class='object_link'><a href="MemoryOperand.html" title="Ronin::ASM::MemoryOperand (class)">MemoryOperand</a></span></tt>, <tt><span class='object_link'><a href="ImmediateOperand.html" title="Ronin::ASM::ImmediateOperand (class)">ImmediateOperand</a></span></tt>) <strong>qword</strong>(op) 
   
 
   
@@ -2280,10 +2323,10 @@ added.</p>
   
     <li>
       
-        <span class='name'>number</span>
+        <span class='name'>op</span>
       
       
-        <span class='type'>(<tt>Integer</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="MemoryOperand.html" title="Ronin::ASM::MemoryOperand (class)">MemoryOperand</a></span></tt>, <tt>Integer</tt>)</span>
       
       
       
@@ -2301,7 +2344,7 @@ added.</p>
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="ImmediateOperand.html" title="Ronin::ASM::ImmediateOperand (class)">ImmediateOperand</a></span></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="MemoryOperand.html" title="Ronin::ASM::MemoryOperand (class)">MemoryOperand</a></span></tt>, <tt><span class='object_link'><a href="ImmediateOperand.html" title="Ronin::ASM::ImmediateOperand (class)">ImmediateOperand</a></span></tt>)</span>
       
       
       
@@ -2319,15 +2362,25 @@ added.</p>
       <pre class="lines">
 
 
-241
-242
-243</pre>
+256
+257
+258
+259
+260
+261
+262
+263</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 241</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 256</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_qword'>qword</span><span class='lparen'>(</span><span class='id identifier rubyid_number'>number</span><span class='rparen'>)</span>
-  <span class='const'>ImmediateOperand</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_number'>number</span><span class='comma'>,</span><span class='int'>8</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_qword'>qword</span><span class='lparen'>(</span><span class='id identifier rubyid_op'>op</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_op'>op</span>
+  <span class='kw'>when</span> <span class='const'>MemoryOperand</span>
+    <span class='const'>MemoryOperand</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_base'>base</span><span class='comma'>,</span><span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_offset'>offset</span><span class='comma'>,</span><span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_index'>index</span><span class='comma'>,</span><span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_scale'>scale</span><span class='comma'>,</span><span class='int'>8</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='const'>ImmediateOperand</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_op'>op</span><span class='comma'>,</span><span class='int'>8</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2574,11 +2627,11 @@ added.</p>
       <pre class="lines">
 
 
-315
-316</pre>
+335
+336</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 315</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 335</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_register_clear'>register_clear</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -2636,11 +2689,11 @@ added.</p>
       <pre class="lines">
 
 
-351
-352</pre>
+371
+372</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 351</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 371</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_register_load'>register_load</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -2698,11 +2751,11 @@ added.</p>
       <pre class="lines">
 
 
-340
-341</pre>
+360
+361</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 340</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 360</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_register_save'>register_save</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -2714,7 +2767,7 @@ added.</p>
       <div class="method_details ">
   <h3 class="signature " id="register_set-instance_method">
   
-    - (<tt>Object</tt>) <strong>register_set</strong>(value, name) 
+    - (<tt>Object</tt>) <strong>register_set</strong>(name, value) 
   
 
   
@@ -2738,21 +2791,6 @@ added.</p>
   
     <li>
       
-        <span class='name'>value</span>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Register.html" title="Ronin::ASM::Register (class)">Register</a></span></tt>, <tt>Immediate</tt>, <tt>Integer</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The new value for the register.</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
         <span class='name'>name</span>
       
       
@@ -2766,6 +2804,21 @@ added.</p>
       
     </li>
   
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Register.html" title="Ronin::ASM::Register (class)">Register</a></span></tt>, <tt>Immediate</tt>, <tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new value for the register.</p>
+</div>
+      
+    </li>
+  
 </ul>
 
 
@@ -2775,13 +2828,13 @@ added.</p>
       <pre class="lines">
 
 
-329
-330</pre>
+349
+350</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 329</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 349</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_register_set'>register_set</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_register_set'>register_set</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2837,11 +2890,11 @@ added.</p>
       <pre class="lines">
 
 
-304
-305</pre>
+324
+325</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 304</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 324</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stack_pop'>stack_pop</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -2899,11 +2952,11 @@ added.</p>
       <pre class="lines">
 
 
-293
-294</pre>
+313
+314</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 293</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 313</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_stack_push'>stack_push</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -2942,11 +2995,11 @@ added.</p>
       <pre class="lines">
 
 
-282
-283</pre>
+302
+303</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 282</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 302</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_syscall'>syscall</span>
 <span class='kw'>end</span></pre>
@@ -2958,7 +3011,7 @@ added.</p>
       <div class="method_details ">
   <h3 class="signature " id="to_asm-instance_method">
   
-    - (<tt>Object</tt>) <strong>to_asm</strong>(syntax = :att) 
+    - (<tt>Object</tt>) <strong>to_asm</strong>(syntax = :intel) 
   
 
   
@@ -2983,7 +3036,7 @@ added.</p>
         <span class='type'>(<tt>Symbol</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>:att</tt>)</em>
+        <em class="default">(defaults to: <tt>:intel</tt>)</em>
       
       
         &mdash;
@@ -3001,15 +3054,62 @@ added.</p>
       <pre class="lines">
 
 
-389
-390
-391</pre>
+409
+410
+411</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 389</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 409</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_to_asm'>to_asm</span><span class='lparen'>(</span><span class='id identifier rubyid_syntax'>syntax</span><span class='op'>=</span><span class='symbol'>:att</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_to_asm'>to_asm</span><span class='lparen'>(</span><span class='id identifier rubyid_syntax'>syntax</span><span class='op'>=</span><span class='symbol'>:intel</span><span class='rparen'>)</span>
   <span class='const'>SYNTAX</span><span class='lbracket'>[</span><span class='id identifier rubyid_syntax'>syntax</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_emit_program'>emit_program</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_s-instance_method">
+  
+    - (<tt>Object</tt>) <strong>to_s</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#to_s-instance_method" title="Ronin::ASM::Program#to_s (method)">#to_s</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+416
+417
+418</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 416</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='id identifier rubyid_to_asm'>to_asm</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3019,7 +3119,7 @@ added.</p>
       <div class="method_details ">
   <h3 class="signature " id="word-instance_method">
   
-    - (<tt><span class='object_link'><a href="ImmediateOperand.html" title="Ronin::ASM::ImmediateOperand (class)">ImmediateOperand</a></span></tt>) <strong>word</strong>(number) 
+    - (<tt><span class='object_link'><a href="MemoryOperand.html" title="Ronin::ASM::MemoryOperand (class)">MemoryOperand</a></span></tt>, <tt><span class='object_link'><a href="ImmediateOperand.html" title="Ronin::ASM::ImmediateOperand (class)">ImmediateOperand</a></span></tt>) <strong>word</strong>(op) 
   
 
   
@@ -3038,10 +3138,10 @@ added.</p>
   
     <li>
       
-        <span class='name'>number</span>
+        <span class='name'>op</span>
       
       
-        <span class='type'>(<tt>Integer</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="MemoryOperand.html" title="Ronin::ASM::MemoryOperand (class)">MemoryOperand</a></span></tt>, <tt>Integer</tt>)</span>
       
       
       
@@ -3059,7 +3159,7 @@ added.</p>
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="ImmediateOperand.html" title="Ronin::ASM::ImmediateOperand (class)">ImmediateOperand</a></span></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="MemoryOperand.html" title="Ronin::ASM::MemoryOperand (class)">MemoryOperand</a></span></tt>, <tt><span class='object_link'><a href="ImmediateOperand.html" title="Ronin::ASM::ImmediateOperand (class)">ImmediateOperand</a></span></tt>)</span>
       
       
       
@@ -3077,15 +3177,25 @@ added.</p>
       <pre class="lines">
 
 
-215
-216
-217</pre>
+220
+221
+222
+223
+224
+225
+226
+227</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 215</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/asm/program.rb', line 220</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_word'>word</span><span class='lparen'>(</span><span class='id identifier rubyid_number'>number</span><span class='rparen'>)</span>
-  <span class='const'>ImmediateOperand</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_number'>number</span><span class='comma'>,</span><span class='int'>2</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_word'>word</span><span class='lparen'>(</span><span class='id identifier rubyid_op'>op</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_op'>op</span>
+  <span class='kw'>when</span> <span class='const'>MemoryOperand</span>
+    <span class='const'>MemoryOperand</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_base'>base</span><span class='comma'>,</span><span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_offset'>offset</span><span class='comma'>,</span><span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_index'>index</span><span class='comma'>,</span><span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_scale'>scale</span><span class='comma'>,</span><span class='int'>2</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='const'>ImmediateOperand</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_op'>op</span><span class='comma'>,</span><span class='int'>2</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3097,9 +3207,9 @@ added.</p>
 </div>
 
     <div id="footer">
-  Generated on Sun Aug 26 21:49:52 2012 by
+  Generated on Wed Jun 19 17:39:10 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.2.1 (ruby-1.9.3).
+  0.8.6.1 (ruby-1.9.3).
 </div>
 
   </body>
