@@ -1,12 +1,12 @@
-# ronin-ruby.gihtub.io
+# ronin-ruby.github.io
 
-* [Website](http://ronin-ruby.gihtub.io)
-* [Source](https://github.com/ronin-ruby/ronin-ruby.gihtub.io)
-* [Issues](https://github.com/ronin-ruby/ronin-ruby.gihtub.io/issues)
+* [Website](http://ronin-ruby.github.io)
+* [Source](https://github.com/ronin-ruby/ronin-ruby.github.io)
+* [Issues](https://github.com/ronin-ruby/ronin-ruby.github.io/issues)
 * [Mailing List](http://groups.google.com/group/ronin-ruby)
 * [irc.freenode.net #ronin](http://webchat.freenode.net/?channels=ronin&uio=Mj10cnVldd)
 
-ronin-ruby.gihtub.io is the Jekyll powered static website and blog for the
+ronin-ruby.github.io is the Jekyll powered static website and blog for the
 Ronin project.
 
 ## Directory Structure
@@ -37,26 +37,26 @@ denoted by the `.md` file extension.
 ## Setup
 
     $ gem install jekyll rdiscount
-    $ git clone https://github.com/ronin-ruby/ronin-ruby.gihtub.io.git
-    $ cd ronin-ruby.gihtub.io/
+    $ git clone https://github.com/ronin-ruby/ronin-ruby.github.io.git
+    $ cd ronin-ruby.github.io/
     $ jekyll
 
 ## License
 
 Copyright (c) 2006-2013 Hal Brodigan (postmodern.mod3 at gmail.com)
 
-ronin-ruby.gihtub.io is free software: you can redistribute it and/or
+ronin-ruby.github.io is free software: you can redistribute it and/or
 modify it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-ronin-ruby.gihtub.io is distributed in the hope that it will be useful,
+ronin-ruby.github.io is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with ronin-ruby.gihtub.io.  If not, see
+along with ronin-ruby.github.io.  If not, see
 <http://www.gnu.org/licenses/>.
 
 [Markdown]: http://en.wikipedia.org/wiki/Markdown

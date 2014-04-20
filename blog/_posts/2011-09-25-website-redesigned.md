@@ -57,6 +57,6 @@ you can [submit a bug][9] or [fork/edit the site][10] on [GitHub][11].
 [6]: http://www.google.com/chrome
 [7]: http://windows.microsoft.com/en-US/internet-explorer/products/ie/home
 [8]: http://www.blueprintcss.org/
-[9]: https://github.com/ronin-ruby/ronin-ruby.gihtub.io/issues
-[10]: https://github.com/ronin-ruby/ronin-ruby.gihtub.io
+[9]: https://github.com/ronin-ruby/ronin-ruby.github.io/issues
+[10]: https://github.com/ronin-ruby/ronin-ruby.github.io
 [11]: https://github.com/signup/free
