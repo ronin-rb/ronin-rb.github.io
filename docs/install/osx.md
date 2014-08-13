@@ -21,8 +21,7 @@ In order to install these Gems, you will need to install [Command Line Tools].
 
 ## Install HomeBrew
 
-In order to install the additional libraries, we must first install
-[Homebrew](http://mxcl.github.com/homebrew/):
+In order to install the additional libraries, we must first install [Homebrew]:
 
     ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 
