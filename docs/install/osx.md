@@ -11,7 +11,7 @@ Ronin on a vanilla Mac OS X system.
 ### Quick Install
 
     ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)" && \
-    brew install libxml2 libxslt sqlite ruby && \
+    brew install libxml2 libxslt sqlite && \
     gem install ronin
 
 ## Install Command Line Tools
@@ -31,7 +31,7 @@ In order to install the additional libraries, we must first install
 Dependencies of Ronin (such as [do_sqlite3] and [nokogiri]) require certain
 libraries and their header files to be installed:
 
-    brew install libxml2 libxslt sqlite ruby
+    brew install libxml2 libxslt sqlite
 
 ## Installing Ronin
 
