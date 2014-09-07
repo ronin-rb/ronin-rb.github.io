@@ -57,12 +57,6 @@ Install Ronin on [Debian](/docs/install/debian.html),
 [Fedora](/docs/install/fedora.html) or
 [Mac OS X](/docs/install/osx.html).
 
-## Donate
-
-Help support the development of Ronin by donating [Bitcoins]:
-
-[12tWhiWQaNxc5q37BVt6HZv5iihbRUHayC](bitcoin:12tWhiWQaNxc5q37BVt6HZv5iihbRUHayC?label=ronin)
-
 ## Examples
 
 A couple of [examples](/examples/) of things Ronin simplifies.
