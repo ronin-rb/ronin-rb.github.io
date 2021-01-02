@@ -1,5 +1,5 @@
 ---
-layout: nil
+layout: null
 title: Load Ronin in Ruby
 ---
 

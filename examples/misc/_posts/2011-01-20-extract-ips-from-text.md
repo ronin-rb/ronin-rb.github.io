@@ -1,5 +1,5 @@
 ---
-layout: nil
+layout: null
 title: Extract IP addresses from Text
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: nil
+layout: null
 title: Lookup an address of a Domain name
 ---
 
