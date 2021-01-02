@@ -35,5 +35,12 @@ brew install readline sqlite libxml2 libxslt
 sudo gem install ronin
 {% endhighlight %}
 
+## Docker
+
+{% highlight %}
+docker pull roninrb/ronin
+docker run --mount type=bind,source="$$HOME",target=/home/ronin -it ronin
+{% endhighlight %}
+
 [ronin]: https://rubygems.org/gems/ronin
 [ronin-up.sh]: https://github.com/ronin-rb/scripts/blob/main/ronin-up.sh
