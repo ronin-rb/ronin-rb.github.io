@@ -31,15 +31,15 @@ denoted by the `.md` file extension.
 
 ## Requirements
 
-* [jekyll] >= 0.5.7
-* [kramdown] (for Markdown)
+* [bundler] 2.x
 
 ## Setup
 
     $ gem install jekyll kramdown
     $ git clone https://github.com/ronin-rb/ronin-rb.github.io.git
     $ cd ronin-rb.github.io/
-    $ jekyll serve
+    $ bundle install
+    $ bundle exec jekyll serve
 
 ## License
 
@@ -62,5 +62,6 @@ along with ronin-rb.github.io.  If not, see
 [Markdown]: http://en.wikipedia.org/wiki/Markdown
 [syntax]: http://daringfireball.net/projects/markdown/basics
 
+[bundler]: https://bundler.io/
 [jekyll]: https://github.com/mojombo/jekyll#readme
 [kramdown]: https://kramdown.gettalong.org/
