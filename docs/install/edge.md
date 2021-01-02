@@ -6,7 +6,7 @@ title: Installing Ronin (Edge)
 # Installing Ronin (Edge)
 
 This guide covers how to install the development version of Ronin from
-[GitHub](https://github.com/ronin-ruby/ronin/) and run it out of your
+[GitHub](https://github.com/ronin-rb/ronin/) and run it out of your
 home directory.
 
 ### Quick Install
@@ -16,7 +16,7 @@ home directory.
     source ~/.bash_profile && \
     rvm install 1.9.2 && \
     rvm use 1.9.2 --default && \
-    git clone https://github.com/ronin-ruby/ronin.git ~/ronin && \
+    git clone https://github.com/ronin-rb/ronin.git ~/ronin && \
     gem install bundler && \
     cd ~/ronin && \
     bundle install && \
@@ -48,7 +48,7 @@ Then install Ruby:
 First, you will need to checkout the source-code from the main Ronin
 repository using git:
 
-    git clone https://github.com/ronin-ruby/ronin.git ~/ronin
+    git clone https://github.com/ronin-rb/ronin.git ~/ronin
 
 This will pull down every commit made to Ronin, giving you a complete copy of
 the repository. After the repository has been cloned, you can update the Git

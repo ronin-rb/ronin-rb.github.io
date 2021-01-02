@@ -16,12 +16,12 @@ ideas for projects that Students could work on.
 In order to prepare for Google Summer of Code 2014, we created Ideas pages on
 the Wikis:
 
-* [ronin](https://github.com/ronin-ruby/ronin/wiki/Ideas)
-* [ronin-asm](https://github.com/ronin-ruby/ronin-asm/wiki/Ideas)
-* [ronin-bruteforcers](https://github.com/ronin-ruby/ronin-bruteforcers/wiki/Ideas)
-* [ronin-exploits](https://github.com/ronin-ruby/ronin-exploits/wiki/Ideas)
-* [ronin-scanners](https://github.com/ronin-ruby/ronin-scanners/wiki/Ideas)
-* [ronin-sql](https://github.com/ronin-ruby/ronin-sql/wiki/Ideas)
+* [ronin](https://github.com/ronin-rb/ronin/wiki/Ideas)
+* [ronin-asm](https://github.com/ronin-rb/ronin-asm/wiki/Ideas)
+* [ronin-bruteforcers](https://github.com/ronin-rb/ronin-bruteforcers/wiki/Ideas)
+* [ronin-exploits](https://github.com/ronin-rb/ronin-exploits/wiki/Ideas)
+* [ronin-scanners](https://github.com/ronin-rb/ronin-scanners/wiki/Ideas)
+* [ronin-sql](https://github.com/ronin-rb/ronin-sql/wiki/Ideas)
 
 If you have an idea for a cool feature that Ronin is currently missing,
 add it to one of the Ideas pages. Who knows, someone might implement one of

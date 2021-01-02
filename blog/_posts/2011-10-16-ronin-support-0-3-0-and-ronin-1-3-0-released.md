@@ -235,7 +235,7 @@ in the Database and more:
 [2]: http://rubygems.org/gems/ronin
 [3]: http://rubydoc.info/gems/ronin-support/0.3.0/File#each_line-class_method
 [4]: http://rubydoc.info/gems/ronin-support/0.3.0/File#each_row-class_method
-[5]: https://github.com/ronin-ruby/ronin-support/blob/v0.3.0/lib/ronin/extensions/regexp.rb#L22-45
+[5]: https://github.com/ronin-rb/ronin-support/blob/v0.3.0/lib/ronin/extensions/regexp.rb#L22-45
 [6]: http://rubydoc.info/gems/ronin-support/0.3.0/String#generate-class_method
 [7]: http://rubydoc.info/gems/ronin-support/0.3.0/String#fuzz-instance_method
 [8]: http://rubydoc.info/gems/ronin-support/0.3.0/URI/HTTP

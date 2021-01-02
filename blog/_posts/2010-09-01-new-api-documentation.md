@@ -17,7 +17,7 @@ released to [rubygems.org](http://rubygems.org/) or
 We immediately leveraged `rubydoc.info` by making sure all Ronin
 repositories had post-receive hooks to update their YARD documentation. Now
 users can browse API documentation for both
-[Ronin (Edge)](http://rubydoc.info/github/ronin-ruby/ronin/master/frames)
+[Ronin (Edge)](http://rubydoc.info/github/ronin-rb/ronin/master/frames)
 and previous releases of [Ronin](http://rubydoc.info/gems/ronin/frames).
 
 Checkout the new API documentation links in the [docs](/docs/) section.

@@ -142,7 +142,7 @@ well.
 Rolling the new gem from the git source you just checked out can be done as 
 for dm-core above:
 
-    git clone https://github.com/ronin-ruby/ronin.git
+    git clone https://github.com/ronin-rb/ronin.git
     cd ronin
     rake gem
     sudo gem install pkg/ronin-0.2.5.gem
@@ -160,7 +160,7 @@ your local repos with:
 
 If you plan on working with a development branch of ronin you should check in
 at #ronin on irc.freenode.net and possibly join the google group at 
-http://groups.google.com/group/ronin-ruby.
+http://groups.google.com/group/ronin-rb.
 
 ## Overlays
 
@@ -569,19 +569,19 @@ debian installation, and `AWESOME.times! 300`
 hosting the book with a nice browseable TOC and Index all in frames is here:
 http://www.rubycentral.com/book/.
 
-[2] Ronin - The main site for the Ronin project: http://ronin-ruby.github.io/.
+[2] Ronin - The main site for the Ronin project: http://ronin-rb.github.io/.
 
-[2.a] ronin-ruby.github.io on GitHub - The code base for the main Ronin site
+[2.a] ronin-rb.github.io on GitHub - The code base for the main Ronin site
 powered by [Jekyll](https://github.com/mojombo/jekyll/), a static
 website/blog generator written in Ruby. The site source can be cloned
 through GitHub here:
-https://github.com/ronin-ruby/ronin-ruby.github.io/
+https://github.com/ronin-rb/ronin-rb.github.io/
 
 [3] Installing Ronin on Debian - Detailed instructions for getting the Ronin
 (and Ruby) code base on a Debian computer.  If your installation steps are 
 significantly different than what is here, please write them up and submit
 them to the documentation project [2.a]. 
-http://ronin-ruby.github.io/howtos/ronin_on_debian.html
+http://ronin-rb.github.io/howtos/ronin_on_debian.html
 
 [4] [RubyGems](http://rubygems.org) - "The premier Ruby packaging system".
 
@@ -595,7 +595,7 @@ http://whytheluckystiff.net/ruby/pickaxe/html/irb.html
 
 [7] Ronin Overlays - An email from postmodern on 2009-10-25 discussing 
 upcoming changes in Ronin::Platform.
-http://groups.google.com/group/ronin-ruby/browse_frm/month/2009-10
+http://groups.google.com/group/ronin-rb/browse_frm/month/2009-10
 
 [8] wordlist - A ruby library for generating and working with word-lists.
 Project homepage - http://wordlist.rubyforge.org/

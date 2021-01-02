@@ -1,5 +1,5 @@
 ---
 layout: redirect
 title: Development
-redirect: https://github.com/ronin-ruby/
+redirect: https://github.com/ronin-rb/
 ---

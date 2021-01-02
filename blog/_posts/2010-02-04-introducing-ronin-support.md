@@ -17,5 +17,5 @@ convenience methods, without needing the other dependencies of Ronin.
 
 [1]: /blog/2010/01/12/spring-cleaning.html
 
-[ronin]: https://github.com/ronin-ruby/ronin#readme
-[ronin-support]: https://github.com/ronin-ruby/ronin-support#readme
+[ronin]: https://github.com/ronin-rb/ronin#readme
+[ronin-support]: https://github.com/ronin-rb/ronin-support#readme

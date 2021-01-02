@@ -37,8 +37,8 @@ To make achieve this level of ease all the team had to do is specify the specifi
         source :gemcutter
         gem 'open_namespace', '~> 0.3.0'
         gem 'dm-core', '~> 0.10.0'
-        gem 'ronin', '~> 0.4.0', :git =>'https://github.com/ronin-ruby/ronin.git'
-        gem 'ronin-support', '~> 0.1.0', :git =>'https://github.com/ronin-ruby/ronin-support.git'
+        gem 'ronin', '~> 0.4.0', :git =>'https://github.com/ronin-rb/ronin.git'
+        gem 'ronin-support', '~> 0.1.0', :git =>'https://github.com/ronin-rb/ronin-support.git'
 
 Then roll it up for deployment with (saving all dependencies in your app's main directory under vendor/cache):
         $ bundle package

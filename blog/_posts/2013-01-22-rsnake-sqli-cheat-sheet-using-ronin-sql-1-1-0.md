@@ -144,5 +144,5 @@ Not too shabby!
 
 [1]: http://ha.ckers.org/sqlinjection/
 
-[ronin-sql]: https://github.com/ronin-ruby/ronin-sql#readme
+[ronin-sql]: https://github.com/ronin-rb/ronin-sql#readme
 [Ronin::SQL]: /docs/ronin-sql/Ronin/SQL.html

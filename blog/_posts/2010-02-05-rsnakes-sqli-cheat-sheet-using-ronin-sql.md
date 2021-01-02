@@ -124,4 +124,4 @@ SQL fragments by using the `[sql[...]]` or `[sql.func_name(....)]` syntax.
 [1]: /blog/2010/01/12/spring-cleaning.html
 [2]: http://ha.ckers.org/sqlinjection/
 
-[ronin-sql]: https://github.com/ronin-ruby/ronin-sql#readme
+[ronin-sql]: https://github.com/ronin-rb/ronin-sql#readme

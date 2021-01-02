@@ -72,6 +72,6 @@ A couple of [examples](/examples/) of things Ronin simplifies.
 [example-scanner]: https://github.com/postmodern/postmodern/blob/master/scripts/scanners/oracle_dad_scanner.rb
 [Repositories]: https://github.com/postmodern/postmodern
 
-[ronin-support]: https://github.com/ronin-ruby/ronin-support#readme
-[ronin-exploits]: https://github.com/ronin-ruby/ronin-exploits#readme
-[ronin-scanners]: https://github.com/ronin-ruby/ronin-scanners#readme
+[ronin-support]: https://github.com/ronin-rb/ronin-support#readme
+[ronin-exploits]: https://github.com/ronin-rb/ronin-exploits#readme
+[ronin-scanners]: https://github.com/ronin-rb/ronin-scanners#readme

@@ -9,7 +9,7 @@ Ronin had grown to 12 repositories. Being such a large and established project,
 I realized it was high time to create an official GitHub account to host the
 Ronin repositories.
 
-From now on, the source for all Ronin repositories is [github.com/ronin-ruby].
+From now on, the source for all Ronin repositories is [github.com/ronin-rb].
 
 [1]: /blog/2010/01/12/spring-cleaning.html
-[github.com/ronin-ruby]: https://github.com/ronin-ruby/
+[github.com/ronin-rb]: https://github.com/ronin-rb/

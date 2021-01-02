@@ -160,11 +160,11 @@ your help is greatly needed! Here's how you can help out:
 
 Let's make [ronin-scanners] 1.0.0 a solid release!
 
-[ronin-scanners]: https://github.com/ronin-ruby/ronin-scanners#readme
+[ronin-scanners]: https://github.com/ronin-rb/ronin-scanners#readme
 [0.1.4]: https://rubygems.org/gems/ronin-scanners/versions/0.1.4
 [1.0.0.pre1]: https://rubygems.org/gems/ronin-scanners/versions/1.0.0.pre1
 [documentation]: /docs/ronin-scanners/frames
-[issues]: https://github.com/ronin-ruby/ronin-scanners/issues?direction=desc&sort=created&state=open
+[issues]: https://github.com/ronin-rb/ronin-scanners/issues?direction=desc&sort=created&state=open
 
 [each]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html#each-instance_method
 [each_resource]: /docs/ronin-scanners/Ronin/Scanners/Scanner.html#each_resource-instance_method

@@ -141,7 +141,7 @@ puts sqli.to_sql(:space => '/**/')
 [Ubuntu]: http://www.ubuntu.com/
 [Fedora]: http://fedoraproject.org/
 
-[ronin-sql]: https://github.com/ronin-ruby/ronin-sql#readme
+[ronin-sql]: https://github.com/ronin-rb/ronin-sql#readme
 [RubyGem]: https://rubygems.org/gems/ronin-sql
 
 [Ruby]: http://www.ruby-lang.org/
