@@ -11,7 +11,7 @@ Ronin project.
 
 ## Directory Structure
 
-* `_config.yml`: Configuration file used by the Rakefile and `jekyll`.
+* `_config.yml`: Configuration file used by [jekyll].
 * `_layouts`: Top-level HTML/XML layout templates.
 * `_includes`: Commonly included HTML content.
 * `_includes/images/`: SVG images that are inlined into the HTML.
@@ -32,14 +32,14 @@ denoted by the `.md` file extension.
 ## Requirements
 
 * [jekyll] >= 0.5.7
-* [rdiscount] (for Markdown)
+* [kramdown] (for Markdown)
 
 ## Setup
 
-    $ gem install jekyll rdiscount
+    $ gem install jekyll kramdown
     $ git clone https://github.com/ronin-rb/ronin-rb.github.io.git
     $ cd ronin-rb.github.io/
-    $ jekyll
+    $ jekyll serve
 
 ## License
 
@@ -63,4 +63,4 @@ along with ronin-rb.github.io.  If not, see
 [syntax]: http://daringfireball.net/projects/markdown/basics
 
 [jekyll]: https://github.com/mojombo/jekyll#readme
-[rdiscount]: https://github.com/rtomayko/rdiscount#readme
+[kramdown]: https://kramdown.gettalong.org/
