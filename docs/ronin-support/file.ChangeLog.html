@@ -1,23 +1,22 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
   File: ChangeLog
   
-    &mdash; Ronin Support Documentation
+    &mdash; ronin-support Documentation
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
-  hasFrames = window.top.frames.main ? true : false;
+<script type="text/javascript">
+  pathId = "ChangeLog";
   relpath = '';
-  framesUrl = "frames.html#!" + escape(window.location.href);
 </script>
 
 
@@ -28,40 +27,68 @@
 
   </head>
   <body>
-    <div id="header">
-      <div id="menu">
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
   
     <a href="_index.html">Index</a> &raquo; 
     <span class="title">File: ChangeLog</span>
   
-
-  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
-      <div id="search">
+        <div id="search">
   
     <a class="full_list_link" id="class_list_link"
         href="class_list.html">
-      Class List
-    </a>
-  
-    <a class="full_list_link" id="method_list_link"
-        href="method_list.html">
-      Method List
-    </a>
-  
-    <a class="full_list_link" id="file_list_link"
-        href="file_list.html">
-      File List
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
     </a>
   
 </div>
-      <div class="clear"></div>
-    </div>
+        <div class="clear"></div>
+      </div>
 
-    <iframe id="search_frame"></iframe>
+      <div id="content"><div id='filecontents'><h3 id="section">0.5.2 / 2021-02-28</h3>
 
-    <div id="content"><div id='filecontents'><h3 id="section">0.5.1 / 2012-06-29</h3>
+<ul>
+  <li>Support Ruby 3.0:
+    <ul>
+      <li>Temporarily added the <a href="https://github.com/ruby/net-telnet">net-telnet</a> gem as a dependency, since Ruby 3.0 moved
+<code>net/telnet</code> out of the stdlib.</li>
+      <li><span class='object_link'><a href="Ronin/Fuzzing.html#SHORT_LENGTHS-constant" title="Ronin::Fuzzing::SHORT_LENGTHS (constant)">Ronin::Fuzzing::SHORT_LENGTHS</a></span> and <span class='object_link'><a href="Ronin/Fuzzing.html#LONG_LENGTHS-constant" title="Ronin::Fuzzing::LONG_LENGTHS (constant)">Ronin::Fuzzing::LONG_LENGTHS</a></span> are now
+<code>Set</code> objects, instead of <code>SortedSet</code>, which Ruby 3.0 moved out of stdlib.</li>
+      <li>Use <code>URI::DEFAULT_PARSER.escape</code> / <code>.unescape</code> in <span class='object_link'><a href="String.html#uri_encode-instance_method" title="String#uri_encode (method)">String#uri_encode</a></span>,
+<span class='object_link'><a href="String.html#uri_decode-instance_method" title="String#uri_decode (method)">String#uri_decode</a></span>, and <span class='object_link'><a href="Integer.html#uri_encode-instance_method" title="Integer#uri_encode (method)">Integer#uri_encode</a></span> now that <code>URI.encode</code>,
+<code>URI.decode</code>, <code>URI.escape</code>, <code>URI.unescape</code> have all been removed in
+Ruby 3.0.</li>
+    </ul>
+  </li>
+  <li>Deprecated <span class='object_link'><a href="Ronin/Network/Telnet.html" title="Ronin::Network::Telnet (module)">Ronin::Network::Telnet</a></span>.</li>
+  <li>Allow <span class='object_link'><a href="Ronin/Path.html#initialize-instance_method" title="Ronin::Path#initialize (method)">Ronin::Path#initialize</a></span> to accept a separator argument.</li>
+  <li>No longer bind new sockets to <code>0.0.0.0</code> by default in <span class='object_link'><a href="Ronin/Network/TCP.html" title="Ronin::Network::TCP (module)">Ronin::Network::TCP</a></span>
+and <span class='object_link'><a href="Ronin/Network/UDP.html" title="Ronin::Network::UDP (module)">Ronin::Network::UDP</a></span>. <code>0.0.0.0</code> is the IPv4 Any address, which makes the
+socket IPv4 and thus incompatible with IPv6 hosts.</li>
+  <li>Fixed a bug in <span class='object_link'><a href="Ronin/Network/UDP.html#udp_open%3F-instance_method" title="Ronin::Network::UDP#udp_open? (method)">Ronin::Network::UDP#udp_open?</a></span> where it would always timeout
+and return <code>nil</code>, even when the UDP port was open.</li>
+  <li>Filter out <code>nil</code> or empty <code>:query</code> options passed to
+<span class='object_link'><a href="Ronin/Network/HTTP.html#request-class_method" title="Ronin::Network::HTTP.request (method)">Ronin::Network::HTTP.request</a></span>.</li>
+  <li>No longer append the query String to the path in
+<span class='object_link'><a href="Ronin/Network/HTTP.html#expand_url-class_method" title="Ronin::Network::HTTP.expand_url (method)">Ronin::Network::HTTP.expand_url</a></span>.</li>
+  <li>Support escaping <code>"\</code>”` tick-marks in <span class='object_link'><a href="String.html#sql_escape-instance_method" title="String#sql_escape (method)">String#sql_escape</a></span>.</li>
+  <li>Allow setting the request body or form-data in <span class='object_link'><a href="Ronin/Network/HTTP.html#request-class_method" title="Ronin::Network::HTTP.request (method)">Ronin::Network::HTTP.request</a></span>,
+even for request types that typically do not use a body or form-data.</li>
+</ul>
+
+<h3 id="section-1">0.5.1 / 2012-06-29</h3>
 
 <ul>
   <li>Added <span class='object_link'><a href="Ronin/Binary/Template.html#inspect-instance_method" title="Ronin::Binary::Template#inspect (method)">Ronin::Binary::Template#inspect</a></span>.</li>
@@ -75,7 +102,7 @@ converted to <code>'"'</code>.</li>
   <li>Enable passive-mode by default in <span class='object_link'><a href="Ronin/Network/FTP.html#ftp_connect-instance_method" title="Ronin::Network::FTP#ftp_connect (method)">Ronin::Network::FTP#ftp_connect</a></span>.</li>
 </ul>
 
-<h3 id="section-1">0.5.0 / 2012-06-16</h3>
+<h3 id="section-2">0.5.0 / 2012-06-16</h3>
 
 <ul>
   <li>Require uri-query_params ~&gt; 0.6.</li>
@@ -133,7 +160,7 @@ converted to <code>'"'</code>.</li>
   </li>
   <li>Allow <span class='object_link'><a href="String.html#mutate-instance_method" title="String#mutate (method)">String#mutate</a></span> to accept Symbols that map to <span class='object_link'><a href="Ronin/Fuzzing.html" title="Ronin::Fuzzing (module)">Ronin::Fuzzing</a></span>
 generator methods.</li>
-  <li><span class='object_link'><a href="Ronin/Fuzzing.html#%5B%5D-class_method" title="Ronin::Fuzzing.[] (method)">Ronin::Fuzzing.[]</a></span> now raises a <code>NoMethodError</code> for unknown fuzzing methods.</li>
+  <li><span class='object_link'><a href="Ronin/Fuzzing.html#[]-class_method" title="Ronin::Fuzzing.[] (method)">Ronin::Fuzzing.[]</a></span> now raises a <code>NoMethodError</code> for unknown fuzzing methods.</li>
   <li>Use <code>module_function</code> in <span class='object_link'><a href="Ronin/Fuzzing.html" title="Ronin::Fuzzing (module)">Ronin::Fuzzing</a></span>, so the generator methods can be
 included into other Classes/Modules.</li>
   <li>Use <code>$stdout</code> instead of calling <code>Kernel.puts</code> or <code>STDOUT</code>.
@@ -148,7 +175,7 @@ in <span class='object_link'><a href="Ronin/UI/Output.html" title="Ronin::UI::Ou
   <li>No longer support loading <code>extlib</code> in <code>ronin/support/inflector</code>.</li>
 </ul>
 
-<h3 id="section-2">0.4.0 / 2012-02-12</h3>
+<h3 id="section-3">0.4.0 / 2012-02-12</h3>
 
 <ul>
   <li>Require uri-query_params ~&gt; 0.6.</li>
@@ -174,7 +201,7 @@ in <span class='object_link'><a href="Ronin/UI/Output.html" title="Ronin::UI::Ou
   <li>Added <span class='object_link'><a href="String.html#mutate-instance_method" title="String#mutate (method)">String#mutate</a></span>.</li>
   <li>Added <span class='object_link'><a href="Ronin/Fuzzing.html" title="Ronin::Fuzzing (module)">Ronin::Fuzzing</a></span>.
     <ul>
-      <li>Added <span class='object_link'><a href="Ronin/Fuzzing.html#%5B%5D-class_method" title="Ronin::Fuzzing.[] (method)">Ronin::Fuzzing.[]</a></span>.</li>
+      <li>Added <span class='object_link'><a href="Ronin/Fuzzing.html#[]-class_method" title="Ronin::Fuzzing.[] (method)">Ronin::Fuzzing.[]</a></span>.</li>
       <li>Added <code>Ronin::Fuzzing.bad_strings</code>.</li>
       <li>Added <code>Ronin::Fuzzing.format_strings</code>.</li>
       <li>Added <code>Ronin::Fuzzing.bad_paths</code>.</li>
@@ -238,7 +265,7 @@ is silenced.</li>
 <span class='object_link'><a href="Ronin/Support.html" title="Ronin::Support (module)">Ronin::Support</a></span>.</li>
 </ul>
 
-<h3 id="section-3">0.3.0 / 2011-10-16</h3>
+<h3 id="section-4">0.3.0 / 2011-10-16</h3>
 
 <ul>
   <li>Require combinatorics ~&gt; 0.4.</li>
@@ -281,7 +308,7 @@ from ronin into ronin-support.</li>
 protected methods.</li>
 </ul>
 
-<h3 id="section-4">0.2.0 / 2011-07-04</h3>
+<h3 id="section-5">0.2.0 / 2011-07-04</h3>
 
 <ul>
   <li>Require data_paths ~&gt; 0.3.</li>
@@ -318,12 +345,12 @@ for unicode characters.</li>
   <li><code>Net.http_post_body</code> no longer accepts a block.</li>
 </ul>
 
-<h3 id="section-5">0.1.0 / 2011-03-20</h3>
+<h3 id="section-6">0.1.0 / 2011-03-20</h3>
 
 <ul>
   <li>Initial release:
     <ul>
-      <li>Split out of <a href="https://github.com/ronin-rb/ronin">ronin</a> 0.3.0.</li>
+      <li>Split out of <a href="http://github.com/ronin-ruby/ronin">ronin</a> 0.3.0.</li>
       <li>Upgraded to the LGPL-3 license.</li>
       <li>Require Ruby &gt;= 1.8.7.</li>
       <li>Require chars ~&gt; 0.2.</li>
@@ -335,11 +362,12 @@ for unicode characters.</li>
 </ul>
 </div></div>
 
-    <div id="footer">
-  Generated on Fri Jun 29 19:42:27 2012 by
+      <div id="footer">
+  Generated on Sun Feb 28 17:05:04 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.2 (ruby-1.9.3).
+  0.9.26 (ruby-2.7.2).
 </div>
 
+    </div>
   </body>
 </html>
