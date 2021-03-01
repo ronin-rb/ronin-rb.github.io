@@ -22,14 +22,18 @@ Ronin provides users with a powerful Ruby Console, pre-loaded with powerful
 convenience methods. In the Console one can work with data and automate
 complex tasks, with greater ease than the command-line.
 
-    >> File.read('data').base64_decode
+{% highlight ruby %}
+>> File.read('data').base64_decode
+{% endhighlight %}
 
 ### Database
 
 Ronin ships with a preconfigured Database, that one can interact with from Ruby,
 without having to write any SQL.
 
-    >> HostName.tld('eu').urls.with_query_param('id')
+{% highlight ruby %}
+>> HostName.tld('eu').urls.with_query_param('id')
+{% endhighlight %}
 
 ### Repositories
 
