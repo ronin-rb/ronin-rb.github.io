@@ -1,8 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
   File: ChangeLog
   
@@ -10,14 +10,13 @@
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
-  hasFrames = window.top.frames.main ? true : false;
+<script type="text/javascript">
+  pathId = "ChangeLog";
   relpath = '';
-  framesUrl = "frames.html#!" + escape(window.location.href);
 </script>
 
 
@@ -28,922 +27,963 @@
 
   </head>
   <body>
-    <div id="header">
-      <div id="menu">
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
   
     <a href="_index.html">Index</a> &raquo; 
     <span class="title">File: ChangeLog</span>
   
-
-  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
-      <div id="search">
+        <div id="search">
   
     <a class="full_list_link" id="class_list_link"
         href="class_list.html">
-      Class List
-    </a>
-  
-    <a class="full_list_link" id="method_list_link"
-        href="method_list.html">
-      Method List
-    </a>
-  
-    <a class="full_list_link" id="file_list_link"
-        href="file_list.html">
-      File List
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
     </a>
   
 </div>
-      <div class="clear"></div>
-    </div>
+        <div class="clear"></div>
+      </div>
 
-    <iframe id="search_frame"></iframe>
-
-    <div id="content"><div id='filecontents'><h3>1.5.0 / 2012-06-16</h3>
+      <div id="content"><div id='filecontents'><h3 id="section">1.5.1 / 2021-02-28</h3>
 
 <ul>
-<li>Require ronin-support ~&gt; 0.5.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#setup-instance_method" title="Ronin::UI::CLI::Command#setup (method)">Ronin::UI::CLI::Command#setup</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#cleanup-instance_method" title="Ronin::UI::CLI::Command#cleanup (method)">Ronin::UI::CLI::Command#cleanup</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#examples-class_method" title="Ronin::UI::CLI::Command.examples (method)">Ronin::UI::CLI::Command.examples</a></span>.</li>
-<li>Added the <span class='object_link'><a href="Ronin/UI/CLI/Commands/Net/Proxy.html" title="Ronin::UI::CLI::Commands::Net::Proxy (class)">net:proxy</a></span> ronin command.</li>
-<li>Added man-pages for each <code>ronin</code> command.</li>
-<li>Added more specs for the <span class='object_link'><a href="Ronin/UI/CLI/Command.html" title="Ronin::UI::CLI::Command (class)">Ronin::UI::CLI::Command</a></span> DSL methods.</li>
-<li>Added <span class='object_link'><a href="Ronin/AutoLoad/ClassMethods.html#require_const-instance_method" title="Ronin::AutoLoad::ClassMethods#require_const (method)">Ronin::AutoLoad::ClassMethods#require_const</a></span>, to also
+  <li>Require <a href="https://github.com/ronin-rb/ronin-support">ronin-support</a> ~&gt; 0.5, &gt;= 0.5.2.</li>
+  <li>Support Ruby 3.0:
+    <ul>
+      <li><span class='object_link'><a href="Ronin/UI/CLI.html#commands-class_method" title="Ronin::UI::CLI.commands (method)">Ronin::UI::CLI.commands</a></span> now uses <code>Set</code>, since Ruby 3.0 moved <code>SortedSet</code>
+out of the stdlib.</li>
+    </ul>
+  </li>
+  <li>Activate bundler in <code>bin/ronin</code> and <code>bin/ronin-*</code> commands, if a
+<code>Gemfile.lock</code> file is found.</li>
+  <li>Re-finalize all DataMapper models in
+<span class='object_link'><a href="Ronin/AutoLoad/ClassMethods.html#require_const-instance_method" title="Ronin::AutoLoad::ClassMethods#require_const (method)">Ronin::AutoLoad::ClassMethods#require_const</a></span>.</li>
+  <li>Avoid calling <code>Ronin::Network::TCP::Proxy</code> specific methods in the
+<code>ronin net:proxy</code> command, if working with a UDP proxy.</li>
+</ul>
+
+<h3 id="section-1">1.5.0 / 2012-06-16</h3>
+
+<ul>
+  <li>Require <a href="https://github.com/ronin-rb/ronin-support">ronin-support</a> ~&gt; 0.5.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#setup-instance_method" title="Ronin::UI::CLI::Command#setup (method)">Ronin::UI::CLI::Command#setup</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#cleanup-instance_method" title="Ronin::UI::CLI::Command#cleanup (method)">Ronin::UI::CLI::Command#cleanup</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#examples-class_method" title="Ronin::UI::CLI::Command.examples (method)">Ronin::UI::CLI::Command.examples</a></span>.</li>
+  <li>Added the <span class='object_link'><a href="Ronin/UI/CLI/Commands/Net/Proxy.html" title="Ronin::UI::CLI::Commands::Net::Proxy (class)">net:proxy</a></span> ronin command.</li>
+  <li>Added man-pages for each <code>ronin</code> command.</li>
+  <li>Added more specs for the <span class='object_link'><a href="Ronin/UI/CLI/Command.html" title="Ronin::UI::CLI::Command (class)">Ronin::UI::CLI::Command</a></span> DSL methods.</li>
+  <li>Added <span class='object_link'><a href="Ronin/AutoLoad/ClassMethods.html#require_const-instance_method" title="Ronin::AutoLoad::ClassMethods#require_const (method)">Ronin::AutoLoad::ClassMethods#require_const</a></span>, to also
 finalize auto-loaded DataMapper models.</li>
-<li>Renamed <code>Ronin::Database.setup_log</code> to <span class='object_link'><a href="Ronin/Database.html#log-class_method" title="Ronin::Database.log (method)">Ronin::Database.log</a></span>.</li>
-<li>Allow <span class='object_link'><a href="Ronin/Database.html#setup-class_method" title="Ronin::Database.setup (method)">Ronin::Database.setup</a></span> to accept a URI for the <code>default</code> repository.</li>
-<li>Allow <code>ronin/spec/database</code> to test against other Databases,
+  <li>Renamed <code>Ronin::Database.setup_log</code> to <span class='object_link'><a href="Ronin/Database.html#log-class_method" title="Ronin::Database.log (method)">Ronin::Database.log</a></span>.</li>
+  <li>Allow <span class='object_link'><a href="Ronin/Database.html#setup-class_method" title="Ronin::Database.setup (method)">Ronin::Database.setup</a></span> to accept a URI for the <code>default</code> repository.</li>
+  <li>Allow <code>ronin/spec/database</code> to test against other Databases,
 specified by the <code>ADAPTER</code> environment variable.
-
-<ul>
-<li>If <code>ADAPTER</code> is set to <code>mysql</code> or <code>postgres</code>, then <code>ronin/spec/database</code>
+    <ul>
+      <li>If <code>ADAPTER</code> is set to <code>mysql</code> or <code>postgres</code>, then <code>ronin/spec/database</code>
 will connect to the <code>ronin_test</code> database with username/password
 <code>ronin_test</code>.</li>
-<li>By default <code>ronin/spec/database</code> will test against a temporary sqlite3
+      <li>By default <code>ronin/spec/database</code> will test against a temporary sqlite3
 database.</li>
-</ul></li>
-<li><p>Allow console <code>!command</code>s to embed Ruby expressions:</p>
+    </ul>
+  </li>
+  <li>
+    <p>Allow console <code>!command</code>s to embed Ruby expressions:</p>
 
-<pre class="code ruby"><code>&gt;&gt; !ncat #{ip} #{port}
-</code></pre></li>
-<li><p>Moved console <code>!command</code> logic into <span class='object_link'><a href="Ronin/UI/Console/Shell.html" title="Ronin::UI::Console::Shell (module)">Ronin::UI::Console::Shell</a></span>.</p>
-
-<ul>
-<li><code>!command</code>s now only execute shell commands.</li>
-</ul></li>
-<li><p>Moved console <code>.command</code> logic into <span class='object_link'><a href="Ronin/UI/Console/Commands.html" title="Ronin::UI::Console::Commands (module)">Ronin::UI::Console::Commands</a></span>.</p>
-
-<ul>
-<li><code>.command</code>s are now reserved only for special console commands
+    <pre class="code ruby"><code class="ruby">  &gt;&gt; !ncat #{ip} #{port}
+</code></pre>
+  </li>
+  <li>Moved console <code>!command</code> logic into <span class='object_link'><a href="Ronin/UI/Console/Shell.html" title="Ronin::UI::Console::Shell (module)">Ronin::UI::Console::Shell</a></span>.
+    <ul>
+      <li><code>!command</code>s now only execute shell commands.</li>
+    </ul>
+  </li>
+  <li>Moved console <code>.command</code> logic into <span class='object_link'><a href="Ronin/UI/Console/Commands.html" title="Ronin::UI::Console::Commands (module)">Ronin::UI::Console::Commands</a></span>.
+    <ul>
+      <li><code>.command</code>s are now reserved only for special console commands
 (ex: <code>.edit</code>).</li>
-</ul></li>
-<li><p>Improved recognition of console <code>!command</code>s and <code>.command</code>s.</p></li>
-<li><p>Do not allow executing console commands while in multi-line mode!</p></li>
-<li><p>Fixed bug in <span class='object_link'><a href="Ronin/UI/CLI/Command.html" title="Ronin::UI::CLI::Command (class)">Ronin::UI::CLI::Command</a></span> that was disabling colour output.</p></li>
-<li><p>When <span class='object_link'><a href="Ronin/UI/CLI/Command.html#start-instance_method" title="Ronin::UI::CLI::Command#start (method)">Ronin::UI::CLI::Command#start</a></span> catches an Interrupt, it will exit
-with status 130.</p></li>
-<li><p>Rescue <code>Errno::EPIPE</code> in <span class='object_link'><a href="Ronin/UI/CLI/Command.html#start-instance_method" title="Ronin::UI::CLI::Command#start (method)">Ronin::UI::CLI::Command#start</a></span>.</p></li>
-<li><p>Improved <code>--help</code> output of <code>ronin</code> commands by adding <code>examples</code> and more
-<code>:description</code>s to options.</p></li>
-<li><p>Changed <code>ronin-help COMMAND</code> to display the man-page for the given command.</p></li>
-<li><p>No longer honor the <code>DEBUG</code> environment variable. Use <code>ruby -w</code> or <code>ruby -d</code>
-instead.</p></li>
-<li><p>Removed dm-constraints from the dependencies.</p></li>
+    </ul>
+  </li>
+  <li>Improved recognition of console <code>!command</code>s and <code>.command</code>s.</li>
+  <li>Do not allow execution of console commands while in multi-line mode!</li>
+  <li>Fixed a bug in <span class='object_link'><a href="Ronin/UI/CLI/Command.html" title="Ronin::UI::CLI::Command (class)">Ronin::UI::CLI::Command</a></span> which disabled colour output.</li>
+  <li>When <span class='object_link'><a href="Ronin/UI/CLI/Command.html#start-instance_method" title="Ronin::UI::CLI::Command#start (method)">Ronin::UI::CLI::Command#start</a></span> catches an Interrupt, it should exit
+with status 130.</li>
+  <li>Rescue <code>Errno::EPIPE</code> in <span class='object_link'><a href="Ronin/UI/CLI/Command.html#start-instance_method" title="Ronin::UI::CLI::Command#start (method)">Ronin::UI::CLI::Command#start</a></span>.</li>
+  <li>Improved <code>--help</code> output of <code>ronin</code> commands by adding <code>examples</code> and more
+<code>:description</code>s to their options.</li>
+  <li>Changed the <code>ronin-help COMMAND</code> to display the man-page for the given
+command.</li>
+  <li>No longer honor the <code>DEBUG</code> environment variable. Use <code>ruby -w</code> or <code>ruby -d</code>
+instead.</li>
+  <li>Removed dm-constraints from the dependencies.</li>
 </ul>
 
-<h3>1.4.1 / 2012-04-01</h3>
+<h3 id="section-2">1.4.1 / 2012-04-01</h3>
 
 <ul>
-<li>Removed dependencey on env.</li>
-<li>Removed <code>#to_ary</code> methods from Ronin Models that were causing
+  <li>Removed dependencey on env.</li>
+  <li>Removed <code>#to_ary</code> methods from Ronin Models that were causing
 <code>SystemStackError: stack level too deep</code> exceptions. Fixes issue #4.</li>
-<li><span class='object_link'><a href="Ronin/UI/CLI/Command.html#start-instance_method" title="Ronin::UI::CLI::Command#start (method)">Ronin::UI::CLI::Command#start</a></span> now rescues Interupts.</li>
+  <li><span class='object_link'><a href="Ronin/UI/CLI/Command.html#start-instance_method" title="Ronin::UI::CLI::Command#start (method)">Ronin::UI::CLI::Command#start</a></span> now rescues Interupts.</li>
 </ul>
 
-<h3>1.4.0 / 2012-02-12</h3>
+<h3 id="section-3">1.4.0 / 2012-02-12</h3>
 
 <ul>
-<li>Require open_namespace ~&gt; 0.4.</li>
-<li>Require parameters ~&gt; 0.4.</li>
-<li>Require uri-query_params ~&gt; 0.6.</li>
-<li>Require ronin-support ~&gt; 0.4.</li>
-<li>Added <span class='object_link'><a href="Ronin/Port.html#parse-class_method" title="Ronin::Port.parse (method)">Ronin::Port.parse</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Port.html#from-class_method" title="Ronin::Port.from (method)">Ronin::Port.from</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/EmailAddress.html#from-class_method" title="Ronin::EmailAddress.from (method)">Ronin::EmailAddress.from</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Password.html#parse-class_method" title="Ronin::Password.parse (method)">Ronin::Password.parse</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/URL.html#inspect-instance_method" title="Ronin::URL#inspect (method)">Ronin::URL#inspect</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Model/HasUniqueName/ClassMethods.html#parse-instance_method" title="Ronin::Model::HasUniqueName::ClassMethods#parse (method)">Ronin::Model::HasUniqueName::ClassMethods#parse</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Script/ClassMethods.html#short_name-instance_method" title="Ronin::Script::ClassMethods#short_name (method)">Ronin::Script::ClassMethods#short_name</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Script/Buildable.html#build_failed%21-instance_method" title="Ronin::Script::Buildable#build_failed! (method)">Ronin::Script::Buildable#build_failed!</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Script/Path.html#clean-instance_method" title="Ronin::Script::Path#clean (method)">Ronin::Script::Path#clean</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Script/Path.html#destroy%21-instance_method" title="Ronin::Script::Path#destroy! (method)">Ronin::Script::Path#destroy!</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#usage-class_method" title="Ronin::UI::CLI::Command.usage (method)">Ronin::UI::CLI::Command.usage</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#summary-class_method" title="Ronin::UI::CLI::Command.summary (method)">Ronin::UI::CLI::Command.summary</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#option-class_method" title="Ronin::UI::CLI::Command.option (method)">Ronin::UI::CLI::Command.option</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#options-class_method" title="Ronin::UI::CLI::Command.options (method)">Ronin::UI::CLI::Command.options</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#options%3F-class_method" title="Ronin::UI::CLI::Command.options? (method)">Ronin::UI::CLI::Command.options?</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#each_option-class_method" title="Ronin::UI::CLI::Command.each_option (method)">Ronin::UI::CLI::Command.each_option</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#argument-class_method" title="Ronin::UI::CLI::Command.argument (method)">Ronin::UI::CLI::Command.argument</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#arguments-class_method" title="Ronin::UI::CLI::Command.arguments (method)">Ronin::UI::CLI::Command.arguments</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#arguments%3F-class_method" title="Ronin::UI::CLI::Command.arguments? (method)">Ronin::UI::CLI::Command.arguments?</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#each_argument-class_method" title="Ronin::UI::CLI::Command.each_argument (method)">Ronin::UI::CLI::Command.each_argument</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#start-instance_method" title="Ronin::UI::CLI::Command#start (method)">Ronin::UI::CLI::Command#start</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#run-instance_method" title="Ronin::UI::CLI::Command#run (method)">Ronin::UI::CLI::Command#run</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#option_parser-instance_method" title="Ronin::UI::CLI::Command#option_parser (method)">Ronin::UI::CLI::Command#option_parser</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Printing.html" title="Ronin::UI::CLI::Printing (module)">Ronin::UI::CLI::Printing</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/ClassCommand.html" title="Ronin::UI::CLI::ClassCommand (class)">Ronin::UI::CLI::ClassCommand</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/ScriptCommand.html#setup-instance_method" title="Ronin::UI::CLI::ScriptCommand#setup (method)">Ronin::UI::CLI::ScriptCommand#setup</a></span>.</li>
-<li>Re-added the <code>ronin install</code> command.</li>
-<li>Re-added the <code>ronin uninstall</code> command.</li>
-<li>Re-added the <code>ronin update</code> command.</li>
-<li>Renamed <code>Ronin::URL.query_param</code> to Ronin::URL.with&lt;em&gt;query&lt;/em&gt;param.</li>
-<li>Renamed <code>Ronin::URL.query_value</code> to Ronin::URL.with&lt;em&gt;query&lt;/em&gt;value.</li>
-<li>Renamed <code>Ronin::Repository.add!</code> to <span class='object_link'><a href="Ronin/Repository.html#add-class_method" title="Ronin::Repository.add (method)">Ronin::Repository.add</a></span>.</li>
-<li>Renamed <code>Ronin::Repository.install!</code> to <span class='object_link'><a href="Ronin/Repository.html#install-class_method" title="Ronin::Repository.install (method)">Ronin::Repository.install</a></span>.</li>
-<li>Renamed <code>Ronin::Repository.uninstall!</code> to <span class='object_link'><a href="Ronin/Repository.html#uninstall-class_method" title="Ronin::Repository.uninstall (method)">Ronin::Repository.uninstall</a></span>.</li>
-<li>Renamed <code>Ronin::UI::CLI::ScriptCommand#load_script</code> to
-<span class='object_link'><a href="Ronin/UI/CLI/ScriptCommand.html#load%21-instance_method" title="Ronin::UI::CLI::ScriptCommand#load! (method)">Ronin::UI::CLI::ScriptCommand#load!</a></span>.</li>
-<li>Renamed <code>Ronin::UI::CLI::Commands::IPs</code> to
+  <li>Require open_namespace ~&gt; 0.4.</li>
+  <li>Require parameters ~&gt; 0.4.</li>
+  <li>Require uri-query_params ~&gt; 0.6.</li>
+  <li>Require <a href="https://github.com/ronin-rb/ronin-support">ronin-support</a> ~&gt; 0.4.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Port.html#parse-class_method" title="Ronin::Port.parse (method)">Ronin::Port.parse</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Port.html#from-class_method" title="Ronin::Port.from (method)">Ronin::Port.from</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/EmailAddress.html#from-class_method" title="Ronin::EmailAddress.from (method)">Ronin::EmailAddress.from</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Password.html#parse-class_method" title="Ronin::Password.parse (method)">Ronin::Password.parse</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/URL.html#inspect-instance_method" title="Ronin::URL#inspect (method)">Ronin::URL#inspect</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Model/HasUniqueName/ClassMethods.html#parse-instance_method" title="Ronin::Model::HasUniqueName::ClassMethods#parse (method)">Ronin::Model::HasUniqueName::ClassMethods#parse</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Script/ClassMethods.html#short_name-instance_method" title="Ronin::Script::ClassMethods#short_name (method)">Ronin::Script::ClassMethods#short_name</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Script/Buildable.html#build_failed!-instance_method" title="Ronin::Script::Buildable#build_failed! (method)">Ronin::Script::Buildable#build_failed!</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Script/Path.html#clean-instance_method" title="Ronin::Script::Path#clean (method)">Ronin::Script::Path#clean</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Script/Path.html#destroy!-instance_method" title="Ronin::Script::Path#destroy! (method)">Ronin::Script::Path#destroy!</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#usage-class_method" title="Ronin::UI::CLI::Command.usage (method)">Ronin::UI::CLI::Command.usage</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#summary-class_method" title="Ronin::UI::CLI::Command.summary (method)">Ronin::UI::CLI::Command.summary</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#option-class_method" title="Ronin::UI::CLI::Command.option (method)">Ronin::UI::CLI::Command.option</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#options-class_method" title="Ronin::UI::CLI::Command.options (method)">Ronin::UI::CLI::Command.options</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#options%3F-class_method" title="Ronin::UI::CLI::Command.options? (method)">Ronin::UI::CLI::Command.options?</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#each_option-class_method" title="Ronin::UI::CLI::Command.each_option (method)">Ronin::UI::CLI::Command.each_option</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#argument-class_method" title="Ronin::UI::CLI::Command.argument (method)">Ronin::UI::CLI::Command.argument</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#arguments-class_method" title="Ronin::UI::CLI::Command.arguments (method)">Ronin::UI::CLI::Command.arguments</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#arguments%3F-class_method" title="Ronin::UI::CLI::Command.arguments? (method)">Ronin::UI::CLI::Command.arguments?</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#each_argument-class_method" title="Ronin::UI::CLI::Command.each_argument (method)">Ronin::UI::CLI::Command.each_argument</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#start-instance_method" title="Ronin::UI::CLI::Command#start (method)">Ronin::UI::CLI::Command#start</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#run-instance_method" title="Ronin::UI::CLI::Command#run (method)">Ronin::UI::CLI::Command#run</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#option_parser-instance_method" title="Ronin::UI::CLI::Command#option_parser (method)">Ronin::UI::CLI::Command#option_parser</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Printing.html" title="Ronin::UI::CLI::Printing (module)">Ronin::UI::CLI::Printing</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/ClassCommand.html" title="Ronin::UI::CLI::ClassCommand (class)">Ronin::UI::CLI::ClassCommand</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/ScriptCommand.html#setup-instance_method" title="Ronin::UI::CLI::ScriptCommand#setup (method)">Ronin::UI::CLI::ScriptCommand#setup</a></span>.</li>
+  <li>Re-added the <code>ronin install</code> command.</li>
+  <li>Re-added the <code>ronin uninstall</code> command.</li>
+  <li>Re-added the <code>ronin update</code> command.</li>
+  <li>Renamed <code>Ronin::URL.query_param</code> to <span class='object_link'><a href="Ronin/URL.html#with_query_param-class_method" title="Ronin::URL.with_query_param (method)">Ronin::URL.with_query_param</a></span>.</li>
+  <li>Renamed <code>Ronin::URL.query_value</code> to <span class='object_link'><a href="Ronin/URL.html#with_query_value-class_method" title="Ronin::URL.with_query_value (method)">Ronin::URL.with_query_value</a></span>.</li>
+  <li>Renamed <code>Ronin::Repository.add!</code> to <span class='object_link'><a href="Ronin/Repository.html#add-class_method" title="Ronin::Repository.add (method)">Ronin::Repository.add</a></span>.</li>
+  <li>Renamed <code>Ronin::Repository.install!</code> to <span class='object_link'><a href="Ronin/Repository.html#install-class_method" title="Ronin::Repository.install (method)">Ronin::Repository.install</a></span>.</li>
+  <li>Renamed <code>Ronin::Repository.uninstall!</code> to <span class='object_link'><a href="Ronin/Repository.html#uninstall-class_method" title="Ronin::Repository.uninstall (method)">Ronin::Repository.uninstall</a></span>.</li>
+  <li>Renamed <code>Ronin::UI::CLI::ScriptCommand#load_script</code> to
+<span class='object_link'><a href="Ronin/UI/CLI/ScriptCommand.html#load!-instance_method" title="Ronin::UI::CLI::ScriptCommand#load! (method)">Ronin::UI::CLI::ScriptCommand#load!</a></span>.</li>
+  <li>Renamed <code>Ronin::UI::CLI::Commands::IPs</code> to
 <span class='object_link'><a href="Ronin/UI/CLI/Commands/Ips.html" title="Ronin::UI::CLI::Commands::Ips (class)">Ronin::UI::CLI::Commands::Ips</a></span>.</li>
-<li>Renamed <code>Ronin::UI::CLI::Commands::URLs</code> to
+  <li>Renamed <code>Ronin::UI::CLI::Commands::URLs</code> to
 <span class='object_link'><a href="Ronin/UI/CLI/Commands/Urls.html" title="Ronin::UI::CLI::Commands::Urls (class)">Ronin::UI::CLI::Commands::Urls</a></span>.</li>
-<li>Removed thor from the dependencies.</li>
-<li>Removed <code>Ronin::Script::InstanceMethods#script_type</code> in favor of
+  <li>Removed thor from the dependencies.</li>
+  <li>Removed <code>Ronin::Script::InstanceMethods#script_type</code> in favor of
 <span class='object_link'><a href="Ronin/Script/ClassMethods.html#short_name-instance_method" title="Ronin::Script::ClassMethods#short_name (method)">Ronin::Script::ClassMethods#short_name</a></span>.</li>
-<li>Have <span class='object_link'><a href="Ronin/AutoLoad.html" title="Ronin::AutoLoad (module)">Ronin::AutoLoad</a></span> call <code>finalize</code> directly on the newly auto-loaded
+  <li>Have <span class='object_link'><a href="Ronin/AutoLoad.html" title="Ronin::AutoLoad (module)">Ronin::AutoLoad</a></span> call <code>finalize</code> directly on the newly auto-loaded
 model.</li>
-<li>Associate <span class='object_link'><a href="Ronin/EmailAddress.html" title="Ronin::EmailAddress (class)">Ronin::EmailAddress</a></span> with <span class='object_link'><a href="Ronin/Credential.html" title="Ronin::Credential (class)">Ronin::Credential</a></span>.</li>
-<li>Ensure that all <span class='object_link'><a href="Ronin/Script.html" title="Ronin::Script (module)">Ronin::Script</a></span>s have unique name/version properties.</li>
-<li>Include <span class='object_link'><a href="Ronin/Model/HasName.html" title="Ronin::Model::HasName (module)">Ronin::Model::HasName</a></span>, <span class='object_link'><a href="Ronin/Model/HasTitle.html" title="Ronin::Model::HasTitle (module)">Ronin::Model::HasTitle</a></span>,
+  <li>Associate <span class='object_link'><a href="Ronin/EmailAddress.html" title="Ronin::EmailAddress (class)">Ronin::EmailAddress</a></span> with <span class='object_link'><a href="Ronin/Credential.html" title="Ronin::Credential (class)">Ronin::Credential</a></span>.</li>
+  <li>Ensure that all <span class='object_link'><a href="Ronin/Script.html" title="Ronin::Script (module)">Ronin::Script</a></span>s have unique name/version properties.</li>
+  <li>Include <span class='object_link'><a href="Ronin/Model/HasName.html" title="Ronin::Model::HasName (module)">Ronin::Model::HasName</a></span>, <span class='object_link'><a href="Ronin/Model/HasTitle.html" title="Ronin::Model::HasTitle (module)">Ronin::Model::HasTitle</a></span>,
 <span class='object_link'><a href="Ronin/Model/HasDescription.html" title="Ronin::Model::HasDescription (module)">Ronin::Model::HasDescription</a></span> into <span class='object_link'><a href="Ronin/Repository.html" title="Ronin::Repository (class)">Ronin::Repository</a></span>.</li>
-<li>Refactored <span class='object_link'><a href="Ronin/UI/CLI/Command.html" title="Ronin::UI::CLI::Command (class)">Ronin::UI::CLI::Command</a></span> to use
+  <li>Refactored <span class='object_link'><a href="Ronin/UI/CLI/Command.html" title="Ronin::UI::CLI::Command (class)">Ronin::UI::CLI::Command</a></span> to use
 <a href="http://rubydoc.info/gems/parameters/0.4.0/Parameters/Options">Parameters::Options</a>
 from parameters 0.4.0.</li>
-<li><span class='object_link'><a href="Ronin/UI/CLI/Command.html#start-instance_method" title="Ronin::UI::CLI::Command#start (method)">Ronin::UI::CLI::Command#start</a></span> now rescues and prints exceptions, then
+  <li><span class='object_link'><a href="Ronin/UI/CLI/Command.html#start-instance_method" title="Ronin::UI::CLI::Command#start (method)">Ronin::UI::CLI::Command#start</a></span> now rescues and prints exceptions, then
 exits with status <code>-1</code>.</li>
-<li><p><span class='object_link'><a href="Ronin/UI/CLI/ScriptCommand.html" title="Ronin::UI::CLI::ScriptCommand (class)">Ronin::UI::CLI::ScriptCommand</a></span> may now accept additional options for the
+  <li>
+    <p><span class='object_link'><a href="Ronin/UI/CLI/ScriptCommand.html" title="Ronin::UI::CLI::ScriptCommand (class)">Ronin::UI::CLI::ScriptCommand</a></span> may now accept additional options for the
 loaded script after <code>--</code>:</p>
 
-<p>ronin exploit -f myexploit.rb -- --host victim.com --port 1337</p></li>
-<li><p>Fixed a typo in the <code>ronin repos</code> command.</p></li>
-<li><p>The <code>ronin repos</code> command now only lists installed Repositories.</p></li>
-<li><p><code>Ronin::Support</code> is now included into <span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span>, making all support methods
-accessible in the <code>ronin</code> console.</p></li>
-<li><p>Allow <code>ronin</code> console commands to be prefixed with a <code>.</code>.</p></li>
+    <pre class="code ruby"><code class="ruby">ronin exploit -f myexploit.rb -- --host victim.com --port 1337
+</code></pre>
+  </li>
+  <li>Fixed a typo in the <code>ronin repos</code> command.</li>
+  <li>The <code>ronin repos</code> command now only lists installed Repositories.</li>
+  <li><code>Ronin::Support</code> is now included into <span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span>, making all support methods
+accessible in the <code>ronin</code> console.</li>
+  <li>Allow <code>ronin</code> console commands to be prefixed with a <code>.</code>.</li>
 </ul>
 
-<h3>1.3.0 / 2011-10-16</h3>
+<h3 id="section-4">1.3.0 / 2011-10-16</h3>
 
 <ul>
-<li>Require DataMapper ~&gt; 1.2.</li>
-<li>Require ronin-support ~&gt; 0.3.</li>
-<li>Added <span class='object_link'><a href="Ronin/Model/Importable.html" title="Ronin::Model::Importable (module)">Ronin::Model::Importable</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/MACAddress.html#extract-class_method" title="Ronin::MACAddress.extract (method)">Ronin::MACAddress.extract</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/IPAddress.html#extract-class_method" title="Ronin::IPAddress.extract (method)">Ronin::IPAddress.extract</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/HostName.html#extract-class_method" title="Ronin::HostName.extract (method)">Ronin::HostName.extract</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/URL.html#extract-class_method" title="Ronin::URL.extract (method)">Ronin::URL.extract</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/EmailAddress.html#extract-class_method" title="Ronin::EmailAddress.extract (method)">Ronin::EmailAddress.extract</a></span>.</li>
-<li>Renamed <code>license!</code> to <code>licensed_under</code> in
+  <li>Require DataMapper ~&gt; 1.2.</li>
+  <li>Require <a href="https://github.com/ronin-rb/ronin-support">ronin-support</a> ~&gt; 0.3.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Model/Importable.html" title="Ronin::Model::Importable (module)">Ronin::Model::Importable</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/MACAddress.html#extract-class_method" title="Ronin::MACAddress.extract (method)">Ronin::MACAddress.extract</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/IPAddress.html#extract-class_method" title="Ronin::IPAddress.extract (method)">Ronin::IPAddress.extract</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/HostName.html#extract-class_method" title="Ronin::HostName.extract (method)">Ronin::HostName.extract</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/URL.html#extract-class_method" title="Ronin::URL.extract (method)">Ronin::URL.extract</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/EmailAddress.html#extract-class_method" title="Ronin::EmailAddress.extract (method)">Ronin::EmailAddress.extract</a></span>.</li>
+  <li>Renamed <code>license!</code> to <code>licensed_under</code> in
 <span class='object_link'><a href="Ronin/Model/HasLicense/InstanceMethods.html" title="Ronin::Model::HasLicense::InstanceMethods (module)">Ronin::Model::HasLicense::InstanceMethods</a></span>.</li>
-<li>Moved <code>Ronin::UI::Output</code>, <code>Ronin::UI::Shell</code> and <code>Ronin::Network::Mixins</code>
-into ronin-support.</li>
-<li><span class='object_link'><a href="Ronin/Author.html#site-class_method" title="Ronin::Author.site (method)">Ronin::Author.site</a></span> and <span class='object_link'><a href="Ronin/License.html#url-class_method" title="Ronin::License.url (method)">Ronin::License.url</a></span> now use the URI property.</li>
-<li>Merged <code>Ronin::UI::CLI::ModelCommand.query_model</code> into
+  <li>Moved <code>Ronin::UI::Output</code>, <code>Ronin::UI::Shell</code> and <code>Ronin::Network::Mixins</code>
+into <a href="https://github.com/ronin-rb/ronin-support">ronin-support</a>.</li>
+  <li><span class='object_link'><a href="Ronin/Author.html#site-class_method" title="Ronin::Author.site (method)">Ronin::Author.site</a></span> and <span class='object_link'><a href="Ronin/License.html#url-class_method" title="Ronin::License.url (method)">Ronin::License.url</a></span> now use the URI property.</li>
+  <li>Merged <code>Ronin::UI::CLI::ModelCommand.query_model</code> into
 <span class='object_link'><a href="Ronin/UI/CLI/ModelCommand.html#model-class_method" title="Ronin::UI::CLI::ModelCommand.model (method)">Ronin::UI::CLI::ModelCommand.model</a></span>.</li>
 </ul>
 
-<h3>1.2.0 / 2011-08-15</h3>
+<h3 id="section-5">1.2.0 / 2011-08-15</h3>
 
 <ul>
-<li>Require dm-is-predefined ~&gt; 0.4.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/Console/Context.html" title="Ronin::UI::Console::Context (class)">Ronin::UI::Console::Context</a></span>.</li>
-<li>Added custom tab-completion to <span class='object_link'><a href="Ronin/UI/Console.html" title="Ronin::UI::Console (module)">Ronin::UI::Console</a></span> for:
-
-<ul>
-<li><span class='object_link'><a href="Ronin/IPAddress.html" title="Ronin::IPAddress (class)">Ronin::IPAddress</a></span></li>
-<li><span class='object_link'><a href="Ronin/HostName.html" title="Ronin::HostName (class)">Ronin::HostName</a></span></li>
-<li><span class='object_link'><a href="Ronin/EmailAddress.html" title="Ronin::EmailAddress (class)">Ronin::EmailAddress</a></span></li>
-<li><span class='object_link'><a href="Ronin/URL.html" title="Ronin::URL (class)">Ronin::URL</a></span></li>
-<li>Paths</li>
-<li>Commands</li>
-</ul></li>
-<li>Added the ability to run commands in Ronin Console, via the
+  <li>Require dm-is-predefined ~&gt; 0.4.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/Console/Context.html" title="Ronin::UI::Console::Context (class)">Ronin::UI::Console::Context</a></span>.</li>
+  <li>Added custom tab-completion to <span class='object_link'><a href="Ronin/UI/Console.html" title="Ronin::UI::Console (module)">Ronin::UI::Console</a></span> for:
+    <ul>
+      <li><span class='object_link'><a href="Ronin/IPAddress.html" title="Ronin::IPAddress (class)">Ronin::IPAddress</a></span></li>
+      <li><span class='object_link'><a href="Ronin/HostName.html" title="Ronin::HostName (class)">Ronin::HostName</a></span></li>
+      <li><span class='object_link'><a href="Ronin/EmailAddress.html" title="Ronin::EmailAddress (class)">Ronin::EmailAddress</a></span></li>
+      <li><span class='object_link'><a href="Ronin/URL.html" title="Ronin::URL (class)">Ronin::URL</a></span></li>
+      <li>Paths</li>
+      <li>Commands</li>
+    </ul>
+  </li>
+  <li>Added the ability to run commands in Ronin Console, via the
 <code>!command --args</code> syntax.</li>
-<li>Added custom <code>!command</code>s to the Ronin Console:
-
-<ul>
-<li><code>!edit</code> - Edits a Ruby tempfile and loads the contents afterwards.</li>
-<li><code>!cd</code> - Changes the current working directory and updates
-<code>ENV[&#39;OLDPWD&#39;]</code>.</li>
-<li><code>!export</code> - Sets <code>ENV</code> variables.</li>
-</ul></li>
-<li>Added an index to <span class='object_link'><a href="Ronin/OS.html#version-class_method" title="Ronin::OS.version (method)">Ronin::OS.version</a></span>.</li>
-<li>Refactored <span class='object_link'><a href="Ronin/OS.html#predefine-class_method" title="Ronin::OS.predefine (method)">Ronin::OS.predefine</a></span> using dm-is-predefined.</li>
-<li>Fixed a bug in <span class='object_link'><a href="Ronin/UI/Console.html#setup-class_method" title="Ronin::UI::Console.setup (method)">Ronin::UI::Console.setup</a></span> where the wrong binding was
+  <li>Added custom <code>!command</code>s to the Ronin Console:
+    <ul>
+      <li><code>!edit</code> - Edits a Ruby tempfile and loads the contents afterwards.</li>
+      <li><code>!cd</code> - Changes the current working directory and updates
+<code>ENV['OLDPWD']</code>.</li>
+      <li><code>!export</code> - Sets <code>ENV</code> variables.</li>
+    </ul>
+  </li>
+  <li>Added an index to <span class='object_link'><a href="Ronin/OS.html#version-class_method" title="Ronin::OS.version (method)">Ronin::OS.version</a></span>.</li>
+  <li>Refactored <span class='object_link'><a href="Ronin/OS.html#predefine-class_method" title="Ronin::OS.predefine (method)">Ronin::OS.predefine</a></span> using dm-is-predefined.</li>
+  <li>Fixed a bug in <span class='object_link'><a href="Ronin/UI/Console.html#setup-class_method" title="Ronin::UI::Console.setup (method)">Ronin::UI::Console.setup</a></span> where the wrong binding was
 being passed to Ripl.</li>
 </ul>
 
-<h3>1.1.0 / 2011-07-04</h3>
+<h3 id="section-6">1.1.0 / 2011-07-04</h3>
 
 <ul>
-<li>Require env ~&gt; 0.2.</li>
-<li>Require data_paths ~&gt; 0.3.</li>
-<li>Require ronin-support ~&gt; 0.2.</li>
-<li>Added <code>ronin/repositories</code>, for quickly loading all repositories.</li>
-<li>Added <span class='object_link'><a href="Ronin.html#script-instance_method" title="Ronin#script (method)">Ronin#script</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/AutoLoad.html" title="Ronin::AutoLoad (module)">Ronin::AutoLoad</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Arch.html#arm-class_method" title="Ronin::Arch.arm (method)">Ronin::Arch.arm</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Arch.html#mips-class_method" title="Ronin::Arch.mips (method)">Ronin::Arch.mips</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Arch.html#x86-class_method" title="Ronin::Arch.x86 (method)">Ronin::Arch.x86</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/URLQueryParamName.html" title="Ronin::URLQueryParamName (class)">Ronin::URLQueryParamName</a></span>.</li>
-<li>Added timestamps to <span class='object_link'><a href="Ronin/Campaign.html" title="Ronin::Campaign (class)">Ronin::Campaign</a></span>.</li>
-<li>Added the <code>created_at</code> timestamp to <span class='object_link'><a href="Ronin/Target.html" title="Ronin::Target (class)">Ronin::Target</a></span>.</li>
-<li>Added <code>Ronin::Network::Mixins::HTTP#http_status</code>.</li>
-<li>Added <code>Ronin::Network::Mixins::HTTP#http_ok?</code>.</li>
-<li>Added <code>Ronin::Network::Mixins::HTTP#http_server</code>.</li>
-<li>Added <code>Ronin::Network::Mixins::HTTP#http_powered_by</code>.</li>
-<li>Added <code>print_info</code> method calls to <code>Ronin::Network::Mixins::HTTP</code>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Script/InstanceMethods.html#run-instance_method" title="Ronin::Script::InstanceMethods#run (method)">Ronin::Script::InstanceMethods#run</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Script/Exception.html" title="Ronin::Script::Exception (class)">Ronin::Script::Exception</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Script/Path.html#to_s-instance_method" title="Ronin::Script::Path#to_s (method)">Ronin::Script::Path#to_s</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Script/ClassMethods.html#load_from-instance_method" title="Ronin::Script::ClassMethods#load_from (method)">Ronin::Script::ClassMethods#load_from</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Repository.html#find_script-instance_method" title="Ronin::Repository#find_script (method)">Ronin::Repository#find_script</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#setup-instance_method" title="Ronin::UI::CLI::Command#setup (method)">Ronin::UI::CLI::Command#setup</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/ResourcesCommand.html" title="Ronin::UI::CLI::ResourcesCommand (class)">Ronin::UI::CLI::ResourcesCommand</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UI/CLI/ScriptCommand.html" title="Ronin::UI::CLI::ScriptCommand (class)">Ronin::UI::CLI::ScriptCommand</a></span>.</li>
-<li>Added the <code>--database</code> option to <span class='object_link'><a href="Ronin/UI/CLI/ModelCommand.html" title="Ronin::UI::CLI::ModelCommand (class)">Ronin::UI::CLI::ModelCommand</a></span>.</li>
-<li>Renamed <code>Ronin::Engine</code> to <span class='object_link'><a href="Ronin/Script.html" title="Ronin::Script (module)">Ronin::Script</a></span>.</li>
-<li>Renamed <code>Ronin::Engine::Verifiable</code> to <span class='object_link'><a href="Ronin/Script/Testable.html" title="Ronin::Script::Testable (module)">Ronin::Script::Testable</a></span>.</li>
-<li>Renamed <code>Ronin::Engine#engine_name</code> to
+  <li>Require env ~&gt; 0.2.</li>
+  <li>Require data_paths ~&gt; 0.3.</li>
+  <li>Require <a href="https://github.com/ronin-rb/ronin-support">ronin-support</a> ~&gt; 0.2.</li>
+  <li>Added <code>ronin/repositories</code>, for quickly loading all repositories.</li>
+  <li>Added <span class='object_link'><a href="Ronin.html#script-instance_method" title="Ronin#script (method)">Ronin#script</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/AutoLoad.html" title="Ronin::AutoLoad (module)">Ronin::AutoLoad</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Arch.html#arm-class_method" title="Ronin::Arch.arm (method)">Ronin::Arch.arm</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Arch.html#mips-class_method" title="Ronin::Arch.mips (method)">Ronin::Arch.mips</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Arch.html#x86-class_method" title="Ronin::Arch.x86 (method)">Ronin::Arch.x86</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/URLQueryParamName.html" title="Ronin::URLQueryParamName (class)">Ronin::URLQueryParamName</a></span>.</li>
+  <li>Added timestamps to <span class='object_link'><a href="Ronin/Campaign.html" title="Ronin::Campaign (class)">Ronin::Campaign</a></span>.</li>
+  <li>Added the <code>created_at</code> timestamp to <span class='object_link'><a href="Ronin/Target.html" title="Ronin::Target (class)">Ronin::Target</a></span>.</li>
+  <li>Added <code>Ronin::Network::Mixins::HTTP#http_status</code>.</li>
+  <li>Added <code>Ronin::Network::Mixins::HTTP#http_ok?</code>.</li>
+  <li>Added <code>Ronin::Network::Mixins::HTTP#http_server</code>.</li>
+  <li>Added <code>Ronin::Network::Mixins::HTTP#http_powered_by</code>.</li>
+  <li>Added <code>print_info</code> method calls to <code>Ronin::Network::Mixins::HTTP</code>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Script/InstanceMethods.html#run-instance_method" title="Ronin::Script::InstanceMethods#run (method)">Ronin::Script::InstanceMethods#run</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Script/Exception.html" title="Ronin::Script::Exception (class)">Ronin::Script::Exception</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Script/Path.html#to_s-instance_method" title="Ronin::Script::Path#to_s (method)">Ronin::Script::Path#to_s</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Script/ClassMethods.html#load_from-instance_method" title="Ronin::Script::ClassMethods#load_from (method)">Ronin::Script::ClassMethods#load_from</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Repository.html#find_script-instance_method" title="Ronin::Repository#find_script (method)">Ronin::Repository#find_script</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/Command.html#setup-instance_method" title="Ronin::UI::CLI::Command#setup (method)">Ronin::UI::CLI::Command#setup</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/ResourcesCommand.html" title="Ronin::UI::CLI::ResourcesCommand (class)">Ronin::UI::CLI::ResourcesCommand</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UI/CLI/ScriptCommand.html" title="Ronin::UI::CLI::ScriptCommand (class)">Ronin::UI::CLI::ScriptCommand</a></span>.</li>
+  <li>Added the <code>--database</code> option to <span class='object_link'><a href="Ronin/UI/CLI/ModelCommand.html" title="Ronin::UI::CLI::ModelCommand (class)">Ronin::UI::CLI::ModelCommand</a></span>.</li>
+  <li>Renamed <code>Ronin::Engine</code> to <span class='object_link'><a href="Ronin/Script.html" title="Ronin::Script (module)">Ronin::Script</a></span>.</li>
+  <li>Renamed <code>Ronin::Engine::Verifiable</code> to <span class='object_link'><a href="Ronin/Script/Testable.html" title="Ronin::Script::Testable (module)">Ronin::Script::Testable</a></span>.</li>
+  <li>Renamed <code>Ronin::Engine#engine_name</code> to
 <code>Ronin::Script::InstanceMethods#script_type</code>.</li>
-<li>Renamed <code>Ronin::Engine::InstanceMethods#load_original!</code> to
-<span class='object_link'><a href="Ronin/Script/InstanceMethods.html#load_script%21-instance_method" title="Ronin::Script::InstanceMethods#load_script! (method)">Ronin::Script::InstanceMethods#load_script!</a></span>.</li>
-<li>Renamed <code>Ronin::CachedFile</code> to <span class='object_link'><a href="Ronin/Script/Path.html" title="Ronin::Script::Path (class)">Ronin::Script::Path</a></span>.</li>
-<li>Renamed <code>Ronin::UI::CLI::ModelCommand.model=</code> to
+  <li>Renamed <code>Ronin::Engine::InstanceMethods#load_original!</code> to
+<span class='object_link'><a href="Ronin/Script/InstanceMethods.html#load_script!-instance_method" title="Ronin::Script::InstanceMethods#load_script! (method)">Ronin::Script::InstanceMethods#load_script!</a></span>.</li>
+  <li>Renamed <code>Ronin::CachedFile</code> to <span class='object_link'><a href="Ronin/Script/Path.html" title="Ronin::Script::Path (class)">Ronin::Script::Path</a></span>.</li>
+  <li>Renamed <code>Ronin::UI::CLI::ModelCommand.model=</code> to
 <span class='object_link'><a href="Ronin/UI/CLI/ModelCommand.html#model-class_method" title="Ronin::UI::CLI::ModelCommand.model (method)">Ronin::UI::CLI::ModelCommand.model</a></span>.</li>
-<li>Renamed <code>Ronin::UI::CLI::ModelCommand#model</code> to
+  <li>Renamed <code>Ronin::UI::CLI::ModelCommand#model</code> to
 <code>Ronin::UI::CLI::ModelCommand.query_model</code>.</li>
-<li>Renamed <code>Ronin::UI::CLI::ModelCommand#new_query</code> to
+  <li>Renamed <code>Ronin::UI::CLI::ModelCommand#new_query</code> to
 <span class='object_link'><a href="Ronin/UI/CLI/ModelCommand.html#query-instance_method" title="Ronin::UI::CLI::ModelCommand#query (method)">Ronin::UI::CLI::ModelCommand#query</a></span>.</li>
-<li>Renamed <code>Ronin::UI::CLI::ModelCommand#print_resource</code> to
+  <li>Renamed <code>Ronin::UI::CLI::ModelCommand#print_resource</code> to
 <span class='object_link'><a href="Ronin/UI/CLI/ResourcesCommand.html#print_resource-instance_method" title="Ronin::UI::CLI::ResourcesCommand#print_resource (method)">Ronin::UI::CLI::ResourcesCommand#print_resource</a></span>.</li>
-<li>Renamed <code>Ronin::UI::CLI::ModelCommand#print_resources</code> to
+  <li>Renamed <code>Ronin::UI::CLI::ModelCommand#print_resources</code> to
 <span class='object_link'><a href="Ronin/UI/CLI/ResourcesCommand.html#print_resources-instance_method" title="Ronin::UI::CLI::ResourcesCommand#print_resources (method)">Ronin::UI::CLI::ResourcesCommand#print_resources</a></span>.</li>
-<li>Removed <code>Ronin::Engine#method_missing</code>.</li>
-<li>Extend <code>DataPaths::Finders</code> into <span class='object_link'><a href="Ronin/Config.html" title="Ronin::Config (module)">Ronin::Config</a></span>.</li>
-<li>Fixed a RubyGems deprecation in <span class='object_link'><a href="Ronin/Installation.html" title="Ronin::Installation (module)">Ronin::Installation</a></span>.</li>
-<li>Enabled verbose DataMapper logging if <code>$DEBUG</code> or the <code>DEBUG</code>
+  <li>Removed <code>Ronin::Engine#method_missing</code>.</li>
+  <li>Extend <code>DataPaths::Finders</code> into <span class='object_link'><a href="Ronin/Config.html" title="Ronin::Config (module)">Ronin::Config</a></span>.</li>
+  <li>Fixed a RubyGems deprecation in <span class='object_link'><a href="Ronin/Installation.html" title="Ronin::Installation (module)">Ronin::Installation</a></span>.</li>
+  <li>Enabled verbose DataMapper logging if <code>$DEBUG</code> or the <code>DEBUG</code>
 environment variable are set.</li>
-<li>Switched from DataMapper URIs to Hashes.</li>
-<li>Fixed a bug in <span class='object_link'><a href="Ronin/Database/Migrations/Migration.html#initialize-instance_method" title="Ronin::Database::Migrations::Migration#initialize (method)">Ronin::Database::Migrations::Migration#initialize</a></span>, where
+  <li>Switched from DataMapper URIs to Hashes.</li>
+  <li>Fixed a bug in <span class='object_link'><a href="Ronin/Database/Migrations/Migration.html#initialize-instance_method" title="Ronin::Database::Migrations::Migration#initialize (method)">Ronin::Database::Migrations::Migration#initialize</a></span>, where
 <code>:needs</code> was being overridden.</li>
-<li>Group Database migration files by <span class='object_link'><a href="Ronin.html#VERSION-constant" title="Ronin::VERSION (constant)">Ronin::VERSION</a></span>.</li>
-<li>Ensure that <span class='object_link'><a href="Ronin/Database/Migrations.html" title="Ronin::Database::Migrations (module)">Ronin::Database::Migrations</a></span> preserves the order of loaded
+  <li>Group Database migration files by <span class='object_link'><a href="Ronin.html#VERSION-constant" title="Ronin::VERSION (constant)">Ronin::VERSION</a></span>.</li>
+  <li>Ensure that <span class='object_link'><a href="Ronin/Database/Migrations.html" title="Ronin::Database::Migrations (module)">Ronin::Database::Migrations</a></span> preserves the order of loaded
 migrations.</li>
-<li>Set the length of <span class='object_link'><a href="Ronin/Password.html#clear_text-class_method" title="Ronin::Password.clear_text (method)">Ronin::Password.clear_text</a></span> to 256.</li>
-<li>Set the length of <span class='object_link'><a href="Ronin/License.html#url-class_method" title="Ronin::License.url (method)">Ronin::License.url</a></span> to 256.</li>
-<li>Merged <code>Ronin::Model::Cacheable</code> into <span class='object_link'><a href="Ronin/Script.html" title="Ronin::Script (module)">Ronin::Script</a></span>.</li>
-<li>Repositories can now cache/load scripts from the <code>scripts/</code> directory.</li>
-<li>Disable <span class='object_link'><a href="Ronin/UI/Console.html#short_errors%3F-class_method" title="Ronin::UI::Console.short_errors? (method)">Ronin::UI::Console.short_errors?</a></span> if the <code>VERBOSE</code> environment
+  <li>Set the length of <span class='object_link'><a href="Ronin/Password.html#clear_text-class_method" title="Ronin::Password.clear_text (method)">Ronin::Password.clear_text</a></span> to 256.</li>
+  <li>Set the length of <span class='object_link'><a href="Ronin/License.html#url-class_method" title="Ronin::License.url (method)">Ronin::License.url</a></span> to 256.</li>
+  <li>Merged <code>Ronin::Model::Cacheable</code> into <span class='object_link'><a href="Ronin/Script.html" title="Ronin::Script (module)">Ronin::Script</a></span>.</li>
+  <li>Repositories can now cache/load scripts from the <code>scripts/</code> directory.</li>
+  <li>Disable <span class='object_link'><a href="Ronin/UI/Console.html#short_errors%3F-class_method" title="Ronin::UI::Console.short_errors? (method)">Ronin::UI::Console.short_errors?</a></span> if the <code>VERBOSE</code> environment
 variable is set.</li>
-<li>Disable <span class='object_link'><a href="Ronin/UI/Console.html#color%3F-class_method" title="Ronin::UI::Console.color? (method)">Ronin::UI::Console.color?</a></span> if the <code>STDOUT</code> is a tty.</li>
-<li>Set <code>Ronin::UI::Output.handler</code> to <code>Ronin::UI::Output::Terminal::Raw</code>,
+  <li>Disable <span class='object_link'><a href="Ronin/UI/Console.html#color%3F-class_method" title="Ronin::UI::Console.color? (method)">Ronin::UI::Console.color?</a></span> if the <code>STDOUT</code> is a tty.</li>
+  <li>Set <code>Ronin::UI::Output.handler</code> to <code>Ronin::UI::Output::Terminal::Raw</code>,
 when <code>STDOUT</code> is not a tty.</li>
-<li>Enable <code>Ronin::UI::Output.verbose?</code> if <code>$VERBOSE</code> or <code>$DEBUG</code> are set.</li>
-<li><span class='object_link'><a href="Ronin/UI/CLI/ModelCommand.html#setup-instance_method" title="Ronin::UI::CLI::ModelCommand#setup (method)">Ronin::UI::CLI::ModelCommand#setup</a></span> now automatically calls
+  <li>Enable <code>Ronin::UI::Output.verbose?</code> if <code>$VERBOSE</code> or <code>$DEBUG</code> are set.</li>
+  <li><span class='object_link'><a href="Ronin/UI/CLI/ModelCommand.html#setup-instance_method" title="Ronin::UI::CLI::ModelCommand#setup (method)">Ronin::UI::CLI::ModelCommand#setup</a></span> now automatically calls
 <span class='object_link'><a href="Ronin/Database.html#setup-class_method" title="Ronin::Database.setup (method)">Ronin::Database.setup</a></span>, before executing the command.</li>
-<li>Merged <code>query_method</code> into <span class='object_link'><a href="Ronin/UI/CLI/ModelCommand.html#query-instance_method" title="Ronin::UI::CLI::ModelCommand#query (method)">Ronin::UI::CLI::ModelCommand#query</a></span>.</li>
-<li>Allow <span class='object_link'><a href="Ronin/UI/CLI/ModelCommand.html#query_option-class_method" title="Ronin::UI::CLI::ModelCommand.query_option (method)">Ronin::UI::CLI::ModelCommand.query_option</a></span> to map to Model
+  <li>Merged <code>query_method</code> into <span class='object_link'><a href="Ronin/UI/CLI/ModelCommand.html#query-instance_method" title="Ronin::UI::CLI::ModelCommand#query (method)">Ronin::UI::CLI::ModelCommand#query</a></span>.</li>
+  <li>Allow <span class='object_link'><a href="Ronin/UI/CLI/ModelCommand.html#query_option-class_method" title="Ronin::UI::CLI::ModelCommand.query_option (method)">Ronin::UI::CLI::ModelCommand.query_option</a></span> to map to Model
 properties.</li>
-<li>Use DataMapper query-paths to improve performance of query-helper methods.</li>
-<li>Removed <code>Ronin::Target#directory</code>.</li>
+  <li>Use DataMapper query-paths to improve performance of query-helper methods.</li>
+  <li>Removed <code>Ronin::Target#directory</code>.</li>
 </ul>
 
-<h3>1.0.0 / 2011-03-25</h3>
+<h3 id="section-7">1.0.0 / 2011-03-25</h3>
 
 <ul>
-<li>Upgraded to the GPL-3 license.</li>
-<li>Require Ruby &gt;= 1.8.7.</li>
-<li>Require dm-do-adapter ~&gt; 1.1.0.</li>
-<li>Require dm-sqlite-adapter ~&gt; 1.1.0.</li>
-<li>Require dm-core ~&gt; 1.1.0.</li>
-<li>Require dm-types ~&gt; 1.1.0.</li>
-<li>Require dm-constraints ~&gt; 1.1.0.</li>
-<li>Require dm-migrations ~&gt; 1.1.0.</li>
-<li>Require dm-validations ~&gt; 1.1.0.</li>
-<li>Require dm-serializer ~&gt; 1.1.0.</li>
-<li>Require dm-aggregates ~&gt; 1.1.0.</li>
-<li>Require dm-timestamps ~&gt; 1.1.0.</li>
-<li>Require dm-is-predefined ~&gt; 0.3, &gt;= 0.3.1.</li>
-<li>Require uri-query_params ~&gt; 0.5, &gt;= 0.5.2.</li>
-<li>Require open_namespace ~&gt; 0.3.</li>
-<li>Require parameters ~&gt; 0.2, &gt;= 0.2.3.</li>
-<li>Require data_paths ~&gt; 0.2, &gt;= 0.2.1.</li>
-<li>Require object_loader ~&gt; 1.0.</li>
-<li>Require env ~&gt; 0.1, &gt;= 0.1.2.</li>
-<li>Require pullr ~&gt; 0.1, &gt;= 0.1.2.</li>
-<li>Require hexdump ~&gt; 0.1.</li>
-<li>Require ripl ~&gt; 0.3.</li>
-<li>Require ripl-multi_line ~&gt; 0.2.</li>
-<li>Require ripl-auto_indent ~&gt; 0.1.</li>
-<li>Require ripl-short_errors ~&gt; 0.1.</li>
-<li>Require ripl-color_result ~&gt; 0.2.</li>
-<li>Require thor ~&gt; 0.14.3.</li>
-<li>Require ronin-support ~&gt; 0.1.</li>
-<li>Added <code>ronin/bootstrap</code> which only loads configuration and the Database.</li>
-<li>Added <span class='object_link'><a href="Ronin/Database/Migrations.html" title="Ronin::Database::Migrations (module)">Ronin::Database::Migrations</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Model/HasUniqueName.html" title="Ronin::Model::HasUniqueName (module)">Ronin::Model::HasUniqueName</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Address.html" title="Ronin::Address (class)">Ronin::Address</a></span>:
-
-<ul>
-<li>Added <span class='object_link'><a href="Ronin/MACAddress.html" title="Ronin::MACAddress (class)">Ronin::MACAddress</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/IPAddress.html" title="Ronin::IPAddress (class)">Ronin::IPAddress</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/HostName.html" title="Ronin::HostName (class)">Ronin::HostName</a></span>.</li>
-</ul></li>
-<li>Added <span class='object_link'><a href="Ronin/Port.html" title="Ronin::Port (class)">Ronin::Port</a></span>:
-
-<ul>
-<li>Added <span class='object_link'><a href="Ronin/TCPPort.html" title="Ronin::TCPPort (class)">Ronin::TCPPort</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UDPPort.html" title="Ronin::UDPPort (class)">Ronin::UDPPort</a></span>.</li>
-</ul></li>
-<li>Added <span class='object_link'><a href="Ronin/Service.html" title="Ronin::Service (class)">Ronin::Service</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/OpenPort.html" title="Ronin::OpenPort (class)">Ronin::OpenPort</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/OSGuess.html" title="Ronin::OSGuess (class)">Ronin::OSGuess</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/UserName.html" title="Ronin::UserName (class)">Ronin::UserName</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/URL.html" title="Ronin::URL (class)">Ronin::URL</a></span>:
-
-<ul>
-<li>Added <span class='object_link'><a href="Ronin/URLScheme.html" title="Ronin::URLScheme (class)">Ronin::URLScheme</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/URLQueryParam.html" title="Ronin::URLQueryParam (class)">Ronin::URLQueryParam</a></span>.</li>
-</ul></li>
-<li>Added <span class='object_link'><a href="Ronin/EmailAddress.html" title="Ronin::EmailAddress (class)">Ronin::EmailAddress</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Credential.html" title="Ronin::Credential (class)">Ronin::Credential</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/ServiceCredential.html" title="Ronin::ServiceCredential (class)">Ronin::ServiceCredential</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/WebCredential.html" title="Ronin::WebCredential (class)">Ronin::WebCredential</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Organization.html" title="Ronin::Organization (class)">Ronin::Organization</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Campaign.html" title="Ronin::Campaign (class)">Ronin::Campaign</a></span>.</li>
-<li>Added <span class='object_link'><a href="Ronin/Target.html" title="Ronin::Target (class)">Ronin::Target</a></span>.</li>
-<li>Added <code>Ronin::Engine</code>.</li>
-<li>Added <code>Ronin::UI::Output::Terminal::Raw</code>.</li>
-<li>Added <code>Ronin::UI::Output::Terminal::Color</code>.</li>
-<li>Added the <code>ronin-repos</code> command for listing, adding, installing and
+  <li>Upgraded to the GPL-3 license.</li>
+  <li>Require Ruby &gt;= 1.8.7.</li>
+  <li>Require dm-do-adapter ~&gt; 1.1.0.</li>
+  <li>Require dm-sqlite-adapter ~&gt; 1.1.0.</li>
+  <li>Require dm-core ~&gt; 1.1.0.</li>
+  <li>Require dm-types ~&gt; 1.1.0.</li>
+  <li>Require dm-constraints ~&gt; 1.1.0.</li>
+  <li>Require dm-migrations ~&gt; 1.1.0.</li>
+  <li>Require dm-validations ~&gt; 1.1.0.</li>
+  <li>Require dm-serializer ~&gt; 1.1.0.</li>
+  <li>Require dm-aggregates ~&gt; 1.1.0.</li>
+  <li>Require dm-timestamps ~&gt; 1.1.0.</li>
+  <li>Require dm-is-predefined ~&gt; 0.3, &gt;= 0.3.1.</li>
+  <li>Require uri-query_params ~&gt; 0.5, &gt;= 0.5.2.</li>
+  <li>Require open_namespace ~&gt; 0.3.</li>
+  <li>Require parameters ~&gt; 0.2, &gt;= 0.2.3.</li>
+  <li>Require data_paths ~&gt; 0.2, &gt;= 0.2.1.</li>
+  <li>Require object_loader ~&gt; 1.0.</li>
+  <li>Require env ~&gt; 0.1, &gt;= 0.1.2.</li>
+  <li>Require pullr ~&gt; 0.1, &gt;= 0.1.2.</li>
+  <li>Require hexdump ~&gt; 0.1.</li>
+  <li>Require ripl ~&gt; 0.3.</li>
+  <li>Require ripl-multi_line ~&gt; 0.2.</li>
+  <li>Require ripl-auto_indent ~&gt; 0.1.</li>
+  <li>Require ripl-short_errors ~&gt; 0.1.</li>
+  <li>Require ripl-color_result ~&gt; 0.2.</li>
+  <li>Require thor ~&gt; 0.14.3.</li>
+  <li>Require <a href="https://github.com/ronin-rb/ronin-support">ronin-support</a> ~&gt; 0.1.</li>
+  <li>Added <code>ronin/bootstrap</code> which only loads configuration and the Database.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Database/Migrations.html" title="Ronin::Database::Migrations (module)">Ronin::Database::Migrations</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Model/HasUniqueName.html" title="Ronin::Model::HasUniqueName (module)">Ronin::Model::HasUniqueName</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Address.html" title="Ronin::Address (class)">Ronin::Address</a></span>:
+    <ul>
+      <li>Added <span class='object_link'><a href="Ronin/MACAddress.html" title="Ronin::MACAddress (class)">Ronin::MACAddress</a></span>.</li>
+      <li>Added <span class='object_link'><a href="Ronin/IPAddress.html" title="Ronin::IPAddress (class)">Ronin::IPAddress</a></span>.</li>
+      <li>Added <span class='object_link'><a href="Ronin/HostName.html" title="Ronin::HostName (class)">Ronin::HostName</a></span>.</li>
+    </ul>
+  </li>
+  <li>Added <span class='object_link'><a href="Ronin/Port.html" title="Ronin::Port (class)">Ronin::Port</a></span>:
+    <ul>
+      <li>Added <span class='object_link'><a href="Ronin/TCPPort.html" title="Ronin::TCPPort (class)">Ronin::TCPPort</a></span>.</li>
+      <li>Added <span class='object_link'><a href="Ronin/UDPPort.html" title="Ronin::UDPPort (class)">Ronin::UDPPort</a></span>.</li>
+    </ul>
+  </li>
+  <li>Added <span class='object_link'><a href="Ronin/Service.html" title="Ronin::Service (class)">Ronin::Service</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/OpenPort.html" title="Ronin::OpenPort (class)">Ronin::OpenPort</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/OSGuess.html" title="Ronin::OSGuess (class)">Ronin::OSGuess</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/UserName.html" title="Ronin::UserName (class)">Ronin::UserName</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/URL.html" title="Ronin::URL (class)">Ronin::URL</a></span>:
+    <ul>
+      <li>Added <span class='object_link'><a href="Ronin/URLScheme.html" title="Ronin::URLScheme (class)">Ronin::URLScheme</a></span>.</li>
+      <li>Added <span class='object_link'><a href="Ronin/URLQueryParam.html" title="Ronin::URLQueryParam (class)">Ronin::URLQueryParam</a></span>.</li>
+    </ul>
+  </li>
+  <li>Added <span class='object_link'><a href="Ronin/EmailAddress.html" title="Ronin::EmailAddress (class)">Ronin::EmailAddress</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Credential.html" title="Ronin::Credential (class)">Ronin::Credential</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/ServiceCredential.html" title="Ronin::ServiceCredential (class)">Ronin::ServiceCredential</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/WebCredential.html" title="Ronin::WebCredential (class)">Ronin::WebCredential</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Organization.html" title="Ronin::Organization (class)">Ronin::Organization</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Campaign.html" title="Ronin::Campaign (class)">Ronin::Campaign</a></span>.</li>
+  <li>Added <span class='object_link'><a href="Ronin/Target.html" title="Ronin::Target (class)">Ronin::Target</a></span>.</li>
+  <li>Added <code>Ronin::Engine</code>.</li>
+  <li>Added <code>Ronin::UI::Output::Terminal::Raw</code>.</li>
+  <li>Added <code>Ronin::UI::Output::Terminal::Color</code>.</li>
+  <li>Added the <code>ronin-repos</code> command for listing, adding, installing and
 uninstalling Repositories.</li>
-<li>Added the <code>ronin-exec</code> command for running Ruby scripts (local files
+  <li>Added the <code>ronin-exec</code> command for running Ruby scripts (local files
 or <code>bin/</code> scripts in Repositories) within the Ronin environment.</li>
-<li>Added the <code>ronin-ips</code> command for listing, importing and exporting
+  <li>Added the <code>ronin-ips</code> command for listing, importing and exporting
 IP addresses from the Database.</li>
-<li>Added the <code>ronin-hosts</code> command for listing, importing and exporting
+  <li>Added the <code>ronin-hosts</code> command for listing, importing and exporting
 host names from the Database.</li>
-<li>Added the <code>ronin-urls</code> command for listing, importing and exporting
+  <li>Added the <code>ronin-urls</code> command for listing, importing and exporting
 URLs from the Database.</li>
-<li>Added the <code>ronin-emails</code> command for listing, importing and exporting
+  <li>Added the <code>ronin-emails</code> command for listing, importing and exporting
 Email addresses from the Database.</li>
-<li>Added the <code>ronin-creds</code> command for listing, importing and exporting
+  <li>Added the <code>ronin-creds</code> command for listing, importing and exporting
 credentials from the Database.</li>
-<li>Added the <code>ronin-campaigns</code> command for listing, importing and exporting
+  <li>Added the <code>ronin-campaigns</code> command for listing, importing and exporting
 Campaigns from the Database.</li>
-<li>Renamed <code>Ronin::Product</code> to <span class='object_link'><a href="Ronin/Software.html" title="Ronin::Software (class)">Ronin::Software</a></span>.</li>
-<li>Renamed <code>Ronin::UI::CommandLine</code> to <span class='object_link'><a href="Ronin/UI/CLI.html" title="Ronin::UI::CLI (module)">Ronin::UI::CLI</a></span>.</li>
-<li>Renamed <code>Ronin::Platform::Overlay</code> to <span class='object_link'><a href="Ronin/Repository.html" title="Ronin::Repository (class)">Ronin::Repository</a></span>.</li>
-<li>Renamed <code>Ronin::Platform::CachedFile</code> to <code>Ronin::CachedFile</code>.</li>
-<li>Renamed <code>Ronin::Platform::Cacheable</code> to <code>Ronin::Model::Cacheable</code>.</li>
-<li>Removed <code>Ronin::Platform::Extension</code>.</li>
-<li>Removed <code>Ronin::Platform</code>.</li>
-<li>Moved the <code>ronin-add</code>, <code>ronin-install</code>, <code>ronin-list</code> and <code>ronin-uninstall</code>
+  <li>Renamed <code>Ronin::Product</code> to <span class='object_link'><a href="Ronin/Software.html" title="Ronin::Software (class)">Ronin::Software</a></span>.</li>
+  <li>Renamed <code>Ronin::UI::CommandLine</code> to <span class='object_link'><a href="Ronin/UI/CLI.html" title="Ronin::UI::CLI (module)">Ronin::UI::CLI</a></span>.</li>
+  <li>Renamed <code>Ronin::Platform::Overlay</code> to <span class='object_link'><a href="Ronin/Repository.html" title="Ronin::Repository (class)">Ronin::Repository</a></span>.</li>
+  <li>Renamed <code>Ronin::Platform::CachedFile</code> to <code>Ronin::CachedFile</code>.</li>
+  <li>Renamed <code>Ronin::Platform::Cacheable</code> to <code>Ronin::Model::Cacheable</code>.</li>
+  <li>Removed <code>Ronin::Platform::Extension</code>.</li>
+  <li>Removed <code>Ronin::Platform</code>.</li>
+  <li>Moved the <code>ronin-add</code>, <code>ronin-install</code>, <code>ronin-list</code> and <code>ronin-uninstall</code>
 commands into the <code>ronin-repos</code> command.</li>
-<li>Switched from <a href="https://github.com/technicalpickles/jeweler">Jeweler</a>
-to <a href="https://github.com/ruby-ore/ore">Ore</a> and <a href="http://gembundler.com">Bundler</a>.</li>
-<li>Use <a href="https://github.com/postmodern/open_namespace">OpenNamespace</a> to auto-load
+  <li>Switched from <a href="https://github.com/technicalpickles/jeweler">Jeweler</a>
+to <a href="http://github.com/ruby-ore/ore">Ore</a> and <a href="http://gembundler.com">Bundler</a>.</li>
+  <li>Use <a href="http://github.com/postmodern/open_namespace">OpenNamespace</a> to auto-load
 everything in the <span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span> namespace.</li>
-<li>Switched from DataMapper auto-migrations to explicit-migrations.</li>
-<li>Switched <span class='object_link'><a href="Ronin/UI/Console.html" title="Ronin::UI::Console (module)">Ronin::UI::Console</a></span> from IRB to
+  <li>Switched from DataMapper auto-migrations to explicit-migrations.</li>
+  <li>Switched <span class='object_link'><a href="Ronin/UI/Console.html" title="Ronin::UI::Console (module)">Ronin::UI::Console</a></span> from IRB to
 <a href="https://github.com/cldwalker/ripl">Ripl</a>:
-
-<ul>
-<li>Enabled result coloring with
+    <ul>
+      <li>Enabled result coloring with
 <a href="https://github.com/janlelis/ripl-color_result">ripl-color_result</a>.</li>
-<li>Enabled short errors with
+      <li>Enabled short errors with
 <a href="https://github.com/janlelis/ripl-misc/blob/master/lib/ripl/short_errors.rb">ripl-short_error</a>.</li>
-</ul></li>
+    </ul>
+  </li>
 </ul>
 
-<h3>0.3.0 / 2009-09-24</h3>
+<h3 id="section-8">0.3.0 / 2009-09-24</h3>
 
 <ul>
-<li>Require yard &gt;= 0.2.3.5.</li>
-<li>Require nokogiri &gt;= 1.3.3.</li>
-<li>Require extlib &gt;= 0.9.13.</li>
-<li>Require data_objects &gt;= 0.10.0.</li>
-<li>Require do_sqlite3 &gt;= 0.10.0.</li>
-<li>Require dm-core &gt;= 0.10.0.</li>
-<li>Require dm-types &gt;= 0.10.0.</li>
-<li>Require dm-validations &gt;= 0.10.0.</li>
-<li>Require dm-predefined &gt;= 0.2.0.</li>
-<li>Require chars &gt;= 0.1.2.</li>
-<li>Require parameters &gt;= 0.1.8.</li>
-<li>Require contextify &gt;= 0.1.3.</li>
-<li>Require repertoire &gt;= 0.2.3.</li>
-<li>Require thor &gt;= 0.11.5.</li>
-<li>Require rspec &gt;= 1.1.12.</li>
-<li>Moved to YARD based documentation.</li>
-<li>Added YARD handlers for detecting DataMapper property, has and belongs_to
+  <li>Require yard &gt;= 0.2.3.5.</li>
+  <li>Require nokogiri &gt;= 1.3.3.</li>
+  <li>Require extlib &gt;= 0.9.13.</li>
+  <li>Require data_objects &gt;= 0.10.0.</li>
+  <li>Require do_sqlite3 &gt;= 0.10.0.</li>
+  <li>Require dm-core &gt;= 0.10.0.</li>
+  <li>Require dm-types &gt;= 0.10.0.</li>
+  <li>Require dm-validations &gt;= 0.10.0.</li>
+  <li>Require dm-predefined &gt;= 0.2.0.</li>
+  <li>Require chars &gt;= 0.1.2.</li>
+  <li>Require parameters &gt;= 0.1.8.</li>
+  <li>Require contextify &gt;= 0.1.3.</li>
+  <li>Require repertoire &gt;= 0.2.3.</li>
+  <li>Require thor &gt;= 0.11.5.</li>
+  <li>Require rspec &gt;= 1.1.12.</li>
+  <li>Moved to YARD based documentation.</li>
+  <li>Added YARD handlers for detecting DataMapper property, has and belongs_to
 method-calles.</li>
-<li>Added YARD handlers for detecting Ronin::Scanners::Scanner.scanner
+  <li>Added YARD handlers for detecting Ronin::Scanners::Scanner.scanner
 method-calles.</li>
-<li>Added Ronin::Config.tmp_dir.</li>
-<li>Added Kernel.require_within.</li>
-<li>Added Net.tcp_server.</li>
-<li>Added Net.tcp<em>server</em>session.</li>
-<li>Added Net.tcp<em>single</em>server.</li>
-<li>Added Net.udp_server.</li>
-<li>Added Net.udp<em>server</em>session.</li>
-<li>Added Ronin::Network::HTTP::Proxy.</li>
-<li>Added Ronin::Model#humanize_attributes.</li>
-<li>Added Ronin::Model::HasVersion.revision.</li>
-<li>Added Ronin::Templates::Template.</li>
-<li>Added Ronin::Platform::Overlay#gems.</li>
-<li>Added attr<em>reader, attr</em>writer and attr_accessor instance methods to
+  <li>Added Ronin::Config.tmp_dir.</li>
+  <li>Added Kernel.require_within.</li>
+  <li>Added Net.tcp_server.</li>
+  <li>Added Net.tcp_server_session.</li>
+  <li>Added Net.tcp_single_server.</li>
+  <li>Added Net.udp_server.</li>
+  <li>Added Net.udp_server_session.</li>
+  <li>Added Ronin::Network::HTTP::Proxy.</li>
+  <li>Added Ronin::Model#humanize_attributes.</li>
+  <li>Added Ronin::Model::HasVersion.revision.</li>
+  <li>Added Ronin::Templates::Template.</li>
+  <li>Added Ronin::Platform::Overlay#gems.</li>
+  <li>Added attr_reader, attr_writer and attr_accessor instance methods to
 Ronin::Platform::Extension.</li>
-<li>Added Ronin::Platform::Overlay#load!.</li>
-<li>Added Ronin::Platform::Overlay#reload!.</li>
-<li>Added Ronin::Platform::Extension#tmp_dir.</li>
-<li>Added Ronin::Platform::ExtensionCache#reload!.</li>
-<li>Added Ronin::Platform.reload!.</li>
-<li>Added Ronin::UI::Output.verbose=.</li>
-<li>Added Ronin::UI::Output.verbose?.</li>
-<li>Added Ronin::UI::Output.quiet=.</li>
-<li>Added Ronin::UI::Output.quiet?.</li>
-<li>Added Ronin::UI::Output.silent=.</li>
-<li>Added Ronin::UI::Output.silent?.</li>
-<li>Added Ronin::UI::Output::Helpers.</li>
-<li>Added Ronin::UI::CommandLine::Command#indent.</li>
-<li>Added Ronin::UI::CommandLine::Command#print_title.</li>
-<li>Added Ronin::UI::CommandLine::Command#print_array.</li>
-<li>Added Ronin::UI::CommandLine::Command#print_hash.</li>
-<li>Renamed Ronin::License.gpl_2 to Ronin::License.gpl2.</li>
-<li>Renamed Ronin::License.gpl_3 to Ronin::License.gpl3.</li>
-<li>Renamed Ronin::License.lgpl_3 to Ronin::License.lgpl3.</li>
-<li>Renamed the :post<em>data option to :postdata for the Net.http</em>post and
-Net.http<em>post</em>body methods.</li>
-<li>Renamed Ronin::Sessions to Ronin::Network::Helpers.</li>
-<li>Renamed Ronin::Platform::ExtensionCache#has_extension? to
+  <li>Added Ronin::Platform::Overlay#load!.</li>
+  <li>Added Ronin::Platform::Overlay#reload!.</li>
+  <li>Added Ronin::Platform::Extension#tmp_dir.</li>
+  <li>Added Ronin::Platform::ExtensionCache#reload!.</li>
+  <li>Added Ronin::Platform.reload!.</li>
+  <li>Added Ronin::UI::Output.verbose=.</li>
+  <li>Added Ronin::UI::Output.verbose?.</li>
+  <li>Added Ronin::UI::Output.quiet=.</li>
+  <li>Added Ronin::UI::Output.quiet?.</li>
+  <li>Added Ronin::UI::Output.silent=.</li>
+  <li>Added Ronin::UI::Output.silent?.</li>
+  <li>Added Ronin::UI::Output::Helpers.</li>
+  <li>Added Ronin::UI::CommandLine::Command#indent.</li>
+  <li>Added Ronin::UI::CommandLine::Command#print_title.</li>
+  <li>Added Ronin::UI::CommandLine::Command#print_array.</li>
+  <li>Added Ronin::UI::CommandLine::Command#print_hash.</li>
+  <li>Renamed Ronin::License.gpl_2 to Ronin::License.gpl2.</li>
+  <li>Renamed Ronin::License.gpl_3 to Ronin::License.gpl3.</li>
+  <li>Renamed Ronin::License.lgpl_3 to Ronin::License.lgpl3.</li>
+  <li>Renamed the :post_data option to :postdata for the Net.http_post and
+Net.http_post_body methods.</li>
+  <li>Renamed Ronin::Sessions to Ronin::Network::Helpers.</li>
+  <li>Renamed Ronin::Platform::ExtensionCache#has_extension? to
 Ronin::Platform::ExtensionCache#has?.</li>
-<li>Renamed Ronin::Platform::ExtensionCache#extension_with to
+  <li>Renamed Ronin::Platform::ExtensionCache#extension_with to
 Ronin::Platform::ExtensionCache#with.</li>
-<li>Renamed Ronin::UI::Diagnostics to Ronin::UI::Output.</li>
-<li>Removed Hash#explode.</li>
-<li>Removed URI::HTTP#explode<em>query</em>params and URI::HTTP#test<em>query</em>params.</li>
-<li>Removed Ronin::Model.first<em>or</em>new, since it is provided by
+  <li>Renamed Ronin::UI::Diagnostics to Ronin::UI::Output.</li>
+  <li>Removed Hash#explode.</li>
+  <li>Removed URI::HTTP#explode_query_params and URI::HTTP#test_query_params.</li>
+  <li>Removed Ronin::Model.first_or_new, since it is provided by
 dm-core 0.10.0.</li>
-<li>Removed Ronin.console.</li>
-<li>Removed Ronin::License.predefine.</li>
-<li>Updated the summary and 3-point description of Ronin.</li>
-<li>Aliased Integer#char to Integer#chr.</li>
-<li>Changed Ronin::Database::DEFAULT_CONFIG to be a String, for printability.</li>
-<li>Overrode Ronin::Model.allocate so that the initialize method of models
+  <li>Removed Ronin.console.</li>
+  <li>Removed Ronin::License.predefine.</li>
+  <li>Updated the summary and 3-point description of Ronin.</li>
+  <li>Aliased Integer#char to Integer#chr.</li>
+  <li>Changed Ronin::Database::DEFAULT_CONFIG to be a String, for printability.</li>
+  <li>Overrode Ronin::Model.allocate so that the initialize method of models
 is always called when resources are allocated.</li>
-<li>Improved the white-space removal in Ronin::Model::HasDescription.</li>
-<li>Have Ronin::Model::HasLicense auto-define a relationship with
+  <li>Improved the white-space removal in Ronin::Model::HasDescription.</li>
+  <li>Have Ronin::Model::HasLicense auto-define a relationship with
 Ronin::License.</li>
-<li>Fixed formatting issue in Ronin::Product#to_s.</li>
-<li>Allow Ronin::Cacheable.load_first to accept a block.</li>
-<li>Make sure Ronin::Static.directory raises a RuntimeError if the given
+  <li>Fixed formatting issue in Ronin::Product#to_s.</li>
+  <li>Allow Ronin::Cacheable.load_first to accept a block.</li>
+  <li>Make sure Ronin::Static.directory raises a RuntimeError if the given
 directory is missing or not a directory.</li>
-<li>Allow the :proxy option passed to Net.http_* methods to be a String,
+  <li>Allow the :proxy option passed to Net.http_* methods to be a String,
 Hash or Ronin::Network::HTTP::Proxy.</li>
-<li>Make sure Ronin::Network::Helpers::Helper.require_variable raises
+  <li>Make sure Ronin::Network::Helpers::Helper.require_variable raises
 a RuntimeError if the required instance variable is not set.</li>
-<li>Merged Ronin::Platform::Extension.load into
+  <li>Merged Ronin::Platform::Extension.load into
 Ronin::Platform::ExtensionCache#load_extension.</li>
-<li>Updated the overlay.xsl used to render the ronin.xml files within
+  <li>Updated the overlay.xsl used to render the ronin.xml files within
 Overlays.</li>
-<li>Merged Ronin::UI::Verbose into Ronin::UI::Output.</li>
-<li>Rewrote Ronin::UI::CommandLine::Command to inherit from Thor.</li>
-<li>Rewrote the Ronin::UI::CommandLine commands to use Thor options.</li>
-<li>Include Ronin::UI::Output::Helpers into Ronin::Sessions::Session.</li>
-<li>Include Ronin::UI::Output::Helpers into Ronin::Console sessions.</li>
+  <li>Merged Ronin::UI::Verbose into Ronin::UI::Output.</li>
+  <li>Rewrote Ronin::UI::CommandLine::Command to inherit from Thor.</li>
+  <li>Rewrote the Ronin::UI::CommandLine commands to use Thor options.</li>
+  <li>Include Ronin::UI::Output::Helpers into Ronin::Sessions::Session.</li>
+  <li>Include Ronin::UI::Output::Helpers into Ronin::Console sessions.</li>
 </ul>
 
-<h3>0.2.4 / 2009-07-02</h3>
+<h3 id="section-9">0.2.4 / 2009-07-02</h3>
 
 <ul>
-<li>Require Hoe &gt;= 2.0.0</li>
-<li>Require Parameters &gt;= 0.1.6.</li>
-<li>Dropped dependency for dm-serializer.</li>
-<li>Added Kernel#catch_all.</li>
-<li>Added Array#bytes.</li>
-<li>Added Array#chars.</li>
-<li>Added Array#char_string.</li>
-<li>Added File.unhexdump.</li>
-<li>Added Ronin::Templates::Erb.</li>
-<li>Added Ronin::Model::HasName.</li>
-<li>Added Ronin::Model::HasDescription.</li>
-<li>Added Ronin::Model::HasVersion.</li>
-<li>Added Cacheable#prepared<em>for</em>cache?.</li>
-<li>Added Cacheable#original_loaded?.</li>
-<li>Added Network::HTTP.expand_options.</li>
-<li>Added Net.http_request.</li>
-<li>Added Sessions::HTTP#http_request.</li>
-<li>Added Ronin::Scanners::Scanner.</li>
-<li>Added Ronin::UI::Console.backtrace_depth.</li>
-<li>Added Ronin::UI::Console.backtrace_depth=.</li>
-<li>Moved Ronin::HasLicense into Ronin::Model.</li>
-<li>Renamed Kernel#try to Kernel#attempt.</li>
-<li>Renamed Ronin.method<em>missing to Ronin#method</em>missing.</li>
-<li>Renamed Ronin::UI::CommandLine::Commands::Ls to
+  <li>Require Hoe &gt;= 2.0.0</li>
+  <li>Require Parameters &gt;= 0.1.6.</li>
+  <li>Dropped dependency for dm-serializer.</li>
+  <li>Added Kernel#catch_all.</li>
+  <li>Added Array#bytes.</li>
+  <li>Added Array#chars.</li>
+  <li>Added Array#char_string.</li>
+  <li>Added File.unhexdump.</li>
+  <li>Added Ronin::Templates::Erb.</li>
+  <li>Added Ronin::Model::HasName.</li>
+  <li>Added Ronin::Model::HasDescription.</li>
+  <li>Added Ronin::Model::HasVersion.</li>
+  <li>Added Cacheable#prepared_for_cache?.</li>
+  <li>Added Cacheable#original_loaded?.</li>
+  <li>Added Network::HTTP.expand_options.</li>
+  <li>Added Net.http_request.</li>
+  <li>Added Sessions::HTTP#http_request.</li>
+  <li>Added Ronin::Scanners::Scanner.</li>
+  <li>Added Ronin::UI::Console.backtrace_depth.</li>
+  <li>Added Ronin::UI::Console.backtrace_depth=.</li>
+  <li>Moved Ronin::HasLicense into Ronin::Model.</li>
+  <li>Renamed Kernel#try to Kernel#attempt.</li>
+  <li>Renamed Ronin.method_missing to Ronin#method_missing.</li>
+  <li>Renamed Ronin::UI::CommandLine::Commands::Ls to
 Ronin::UI::CommandLine::Commands::List.</li>
-<li>Renamed Ronin::UI::CommandLine::Commands::Rm to
+  <li>Renamed Ronin::UI::CommandLine::Commands::Rm to
 Ronin::UI::CommandLine::Commands::Remove.</li>
-<li>Refactored OS.define.</li>
-<li>Refactored Ronin::Shell as a module.</li>
-<li>Removed Ronin::Translators.</li>
-<li>Fixed a bug where if an object failed to be cached,
+  <li>Refactored OS.define.</li>
+  <li>Refactored Ronin::Shell as a module.</li>
+  <li>Removed Ronin::Translators.</li>
+  <li>Fixed a bug where if an object failed to be cached,
 it would prevent an Overlay from being added to the
 OverlayCache.</li>
-<li>Fixed a bug where Gem::LoadError was being rescued,
+  <li>Fixed a bug where Gem::LoadError was being rescued,
 when only ::LoadError should be rescued.</li>
-<li>Fixed a typo in Maintainer#inspect.</li>
-<li>Updated the Overlay XSL file.
-
-<ul>
-<li>Cleaned up CSS.</li>
-<li>Removed the jQuery expander plugin.</li>
-</ul></li>
+  <li>Fixed a typo in Maintainer#inspect.</li>
+  <li>Updated the Overlay XSL file.
+    <ul>
+      <li>Cleaned up CSS.</li>
+      <li>Removed the jQuery expander plugin.</li>
+    </ul>
+  </li>
 </ul>
 
-<h3>0.2.3 / 2009-05-06</h3>
+<h3 id="section-10">0.2.3 / 2009-05-06</h3>
 
 <ul>
-<li>Require extlib &gt;= 0.9.12.</li>
-<li>Require dm-core &gt;= 0.9.11.</li>
-<li>Require data_objects &gt;= 0.9.11.</li>
-<li>Require do_sqlite3 &gt;= 0.9.11.</li>
-<li>Require dm-types &gt;= 0.9.11.</li>
-<li>Require dm-serializer &gt;= 0.9.11.</li>
-<li>Require dm-validations &gt;= 0.9.11.</li>
-<li>Require chars &gt;= 0.1.1.</li>
-<li>Require parameters &gt;= 0.1.5.</li>
-<li>No longer require dm-aggregates.</li>
-<li>Added Kernel#try.</li>
-<li>Added String#pad.</li>
-<li>Added Array#power_set.</li>
-<li>Added IPAddr#each for iterating over CIDR address ranges.</li>
-<li>Added IPAddr.each for iterating over CIDR and globbed address ranges.</li>
-<li>Added Net.http<em>powered</em>by that returns the HTTP X-Powered-By header.</li>
-<li>Added Net.http_server that returns the HTTP Server header.</li>
-<li>Added Database.setup?.</li>
-<li>Added Database.update!.</li>
-<li>Added Extension#exposed_methods.</li>
-<li>Added ExtensionCache#names.</li>
-<li>Added OverlayCache#names.</li>
-<li>Added Diagnostics#print_debug.</li>
-<li>Added more specs.</li>
-<li>Properly escape URI::HTTP#query_params.</li>
-<li>Fixed a bug in File.hexdump where the file was not being closed.</li>
-<li>Fixed a bug in HasLicense#licensed_under.</li>
-<li>Fixed a bug in Product#to_s.</li>
-<li>Moved Ronin::Target to the ronin-exploits library.</li>
-<li>Renamed Net.http<em>prop</em>path to Net.http<em>prop</em>patch.</li>
-<li>Removed the Parameters code from Ronin::Sessions.</li>
-<li>Replaced Ronin::Objectify with Ronin::Cacheable.</li>
-<li>Removed &#39;ronin/models&#39;.</li>
-<li>Catch exceptions when loading Extensions and carry on.</li>
-<li>Renamed Overlay#deactive! to Overlay#deactivate!.</li>
-<li>Allow Overlays to automatically load the &#39;lib/init.rb&#39; file when
+  <li>Require extlib &gt;= 0.9.12.</li>
+  <li>Require dm-core &gt;= 0.9.11.</li>
+  <li>Require data_objects &gt;= 0.9.11.</li>
+  <li>Require do_sqlite3 &gt;= 0.9.11.</li>
+  <li>Require dm-types &gt;= 0.9.11.</li>
+  <li>Require dm-serializer &gt;= 0.9.11.</li>
+  <li>Require dm-validations &gt;= 0.9.11.</li>
+  <li>Require chars &gt;= 0.1.1.</li>
+  <li>Require parameters &gt;= 0.1.5.</li>
+  <li>No longer require dm-aggregates.</li>
+  <li>Added Kernel#try.</li>
+  <li>Added String#pad.</li>
+  <li>Added Array#power_set.</li>
+  <li>Added IPAddr#each for iterating over CIDR address ranges.</li>
+  <li>Added IPAddr.each for iterating over CIDR and globbed address ranges.</li>
+  <li>Added Net.http_powered_by that returns the HTTP X-Powered-By header.</li>
+  <li>Added Net.http_server that returns the HTTP Server header.</li>
+  <li>Added Database.setup?.</li>
+  <li>Added Database.update!.</li>
+  <li>Added Extension#exposed_methods.</li>
+  <li>Added ExtensionCache#names.</li>
+  <li>Added OverlayCache#names.</li>
+  <li>Added Diagnostics#print_debug.</li>
+  <li>Added more specs.</li>
+  <li>Properly escape URI::HTTP#query_params.</li>
+  <li>Fixed a bug in File.hexdump where the file was not being closed.</li>
+  <li>Fixed a bug in HasLicense#licensed_under.</li>
+  <li>Fixed a bug in Product#to_s.</li>
+  <li>Moved Ronin::Target to the ronin-exploits library.</li>
+  <li>Renamed Net.http_prop_path to Net.http_prop_patch.</li>
+  <li>Removed the Parameters code from Ronin::Sessions.</li>
+  <li>Replaced Ronin::Objectify with Ronin::Cacheable.</li>
+  <li>Removed ‘ronin/models’.</li>
+  <li>Catch exceptions when loading Extensions and carry on.</li>
+  <li>Renamed Overlay#deactive! to Overlay#deactivate!.</li>
+  <li>Allow Overlays to automatically load the ‘lib/init.rb’ file when
 activated.</li>
-<li>Rewrote Ronin::Platform::ObjectCache to use the new Ronin::Cacheable
+  <li>Rewrote Ronin::Platform::ObjectCache to use the new Ronin::Cacheable
 module.</li>
-<li>Enable Diagnostic#print<em>info and Diagnostic#print</em>error by default.</li>
-<li>Refactored Ronin::UI::CommandLine:
-
-<ul>
-<li>Added CommandLine.get_command which loads command classes on-demand.</li>
-<li>CommandLine.commands now stores all the available command names.</li>
-<li>Renamed Ronin::UI::CommandLine::Commands::LS to
+  <li>Enable Diagnostic#print_info and Diagnostic#print_error by default.</li>
+  <li>Refactored Ronin::UI::CommandLine:
+    <ul>
+      <li>Added CommandLine.get_command which loads command classes on-demand.</li>
+      <li>CommandLine.commands now stores all the available command names.</li>
+      <li>Renamed Ronin::UI::CommandLine::Commands::LS to
 Ronin::UI::CommandLine::Commands::Ls.</li>
-<li>Renamed Ronin::UI::CommandLine::Commands::RM to
+      <li>Renamed Ronin::UI::CommandLine::Commands::RM to
 Ronin::UI::CommandLine::Commands::Rm.</li>
-<li>Moved Ronin::UI::CommandLine::ParamParser into the Parameters library.</li>
-</ul></li>
-<li>Refactored specs to run on Ruby 1.9.1-p0.</li>
-<li>Added more specs.</li>
-<li>All specs now pass on Ruby 1.9.1-p0.</li>
+      <li>Moved Ronin::UI::CommandLine::ParamParser into the Parameters library.</li>
+    </ul>
+  </li>
+  <li>Refactored specs to run on Ruby 1.9.1-p0.</li>
+  <li>Added more specs.</li>
+  <li>All specs now pass on Ruby 1.9.1-p0.</li>
 </ul>
 
-<h3>0.2.2 / 2009-03-26</h3>
+<h3 id="section-11">0.2.2 / 2009-03-26</h3>
 
 <ul>
-<li>Split out Ronin::Chars into the Chars library.</li>
-<li>Split out ronin-overlay and ronin-ext sub-commands into the Ronin Gen
+  <li>Split out Ronin::Chars into the Chars library.</li>
+  <li>Split out ronin-overlay and ronin-ext sub-commands into the Ronin Gen
 library.</li>
-<li>Require chars &gt;= 0.1.0.</li>
-<li>Require repertoire &gt;= 0.2.1.</li>
-<li>Removed String#to<em>method</em>name, use Extlib instead.</li>
-<li>Refactored Ronin::Platform::Overlay.
-
-<ul>
-<li>Renamed Overlay#media_type to Overlay#media.</li>
-<li>Fixed parsing bugs in Overlay#initialize_metadata.</li>
-</ul></li>
-<li>Allow Extensions to be accessed via constants.</li>
-<li>Added the Creative Commons Zero license to Ronin::License.</li>
-<li>Added the Integer#bytes method.</li>
-<li>Added the String#hex_unescape method.</li>
-<li>Added the String#unhexdump method.</li>
-<li>Added Ronin::Static for managing static resources.</li>
-<li>Added Ronin::Static::Finders for searching for static files.</li>
-<li>Added static directories to Overlays and Extensions.</li>
-<li>Added ronin/platform/tasks:
-
-<ul>
-<li>Added ronin/platform/tasks/spec task for running RSpec tests in an
+  <li>Require chars &gt;= 0.1.0.</li>
+  <li>Require repertoire &gt;= 0.2.1.</li>
+  <li>Removed String#to_method_name, use Extlib instead.</li>
+  <li>Refactored Ronin::Platform::Overlay.
+    <ul>
+      <li>Renamed Overlay#media_type to Overlay#media.</li>
+      <li>Fixed parsing bugs in Overlay#initialize_metadata.</li>
+    </ul>
+  </li>
+  <li>Allow Extensions to be accessed via constants.</li>
+  <li>Added the Creative Commons Zero license to Ronin::License.</li>
+  <li>Added the Integer#bytes method.</li>
+  <li>Added the String#hex_unescape method.</li>
+  <li>Added the String#unhexdump method.</li>
+  <li>Added Ronin::Static for managing static resources.</li>
+  <li>Added Ronin::Static::Finders for searching for static files.</li>
+  <li>Added static directories to Overlays and Extensions.</li>
+  <li>Added ronin/platform/tasks:
+    <ul>
+      <li>Added ronin/platform/tasks/spec task for running RSpec tests in an
 Overlay.</li>
-</ul></li>
-<li>Added the ExtensionCache#reload! method.</li>
-<li>Added more specs.</li>
+    </ul>
+  </li>
+  <li>Added the ExtensionCache#reload! method.</li>
+  <li>Added more specs.</li>
 </ul>
 
-<h3>0.2.1 / 2009-02-23</h3>
+<h3 id="section-12">0.2.1 / 2009-02-23</h3>
 
 <ul>
-<li>Added Ronin::UI::Verbose.</li>
-<li>Require Nokogiri &gt;= 1.2.0:
-
-<ul>
-<li>Use Nokogiri::XML, instead of REXML, for XML parsing and building.</li>
-</ul></li>
-<li>Renamed String#inspect to String#dump.
-
-<ul>
-<li>Aliased String#inspect to String#dump.</li>
-</ul></li>
-<li>Rewrote Ronin::UI::CommandLine.
-
-<ul>
-<li>Removed Ronin::UI::CommandLine::Options.command.</li>
-<li>Refactored Ronin::UI::CommandLine::Command.</li>
-<li>Added Command#defaults method to give the command&#39;s variables
+  <li>Added Ronin::UI::Verbose.</li>
+  <li>Require Nokogiri &gt;= 1.2.0:
+    <ul>
+      <li>Use Nokogiri::XML, instead of REXML, for XML parsing and building.</li>
+    </ul>
+  </li>
+  <li>Renamed String#inspect to String#dump.
+    <ul>
+      <li>Aliased String#inspect to String#dump.</li>
+    </ul>
+  </li>
+  <li>Rewrote Ronin::UI::CommandLine.
+    <ul>
+      <li>Removed Ronin::UI::CommandLine::Options.command.</li>
+      <li>Refactored Ronin::UI::CommandLine::Command.
+        <ul>
+          <li>Added Command#defaults method to give the command’s variables
 default values.</li>
-<li>Fixed a bug in Command.run.</li>
-<li>Renamed DefaultCommand to ConsoleCommand.</li>
-<li>Implement git style sub-commands.</li>
-<li>Use reverse-require to find sub-commands.</li>
-</ul></li>
-<li>Refactored Ronin::UI::ParamParser.
-
-<ul>
-<li>Control parameter formats and their parsers with ParamParser.recognize.</li>
-</ul></li>
-<li>Rewrote the Ronin::Chars spec.</li>
-<li>Updated the Ronin::UI::ParamParser spec.</li>
+          <li>Fixed a bug in Command.run.</li>
+        </ul>
+      </li>
+      <li>Renamed DefaultCommand to ConsoleCommand.</li>
+      <li>Implement git style sub-commands.</li>
+      <li>Use reverse-require to find sub-commands.</li>
+    </ul>
+  </li>
+  <li>Refactored Ronin::UI::ParamParser.
+    <ul>
+      <li>Control parameter formats and their parsers with ParamParser.recognize.</li>
+    </ul>
+  </li>
+  <li>Rewrote the Ronin::Chars spec.</li>
+  <li>Updated the Ronin::UI::ParamParser spec.</li>
 </ul>
 
 <p>=== 0.2.0 / 2009-02-06</p>
 
 <ul>
-<li>Moved the HTML formatting methods into the
+  <li>Moved the HTML formatting methods into the
 <a href="http://ronin.rubyforge.org/html/">ronin-html</a> library.</li>
-<li>Added &#39;ronin/environment&#39; which loads the Ronin Environment.</li>
-<li>Added the --database option to the DefaultCommand.</li>
-<li>Added the -C option to the add, install, list, update, remove and
+  <li>Added ‘ronin/environment’ which loads the Ronin Environment.</li>
+  <li>Added the –database option to the DefaultCommand.</li>
+  <li>Added the -C option to the add, install, list, update, remove and
 uninstall commands.</li>
-<li>Added String#hex_escape.</li>
-<li>Added Net.http_ok?.</li>
-<li>Added UI::Diagnostics.</li>
-<li>Require Contextify &gt;= 0.1.2 for the self.load<em>context</em>block method.</li>
-<li>Renamed Platform to Ronin::OS.</li>
-<li>Renamed Cache to Ronin::Platform.</li>
-<li>Refactored Ronin::Platform:
-
-<ul>
-<li>Added Overlay#activate!.</li>
-<li>Added Overlay#deactivate!.</li>
-<li>Added a title attribute to Ronin::Platform::Overlay.</li>
-<li>Added a dirty flag to Ronin::Platform::OverlayCache to reduce
+  <li>Added String#hex_escape.</li>
+  <li>Added Net.http_ok?.</li>
+  <li>Added UI::Diagnostics.</li>
+  <li>Require Contextify &gt;= 0.1.2 for the self.load_context_block method.</li>
+  <li>Renamed Platform to Ronin::OS.</li>
+  <li>Renamed Cache to Ronin::Platform.</li>
+  <li>Refactored Ronin::Platform:
+    <ul>
+      <li>Added Overlay#activate!.</li>
+      <li>Added Overlay#deactivate!.</li>
+      <li>Added a title attribute to Ronin::Platform::Overlay.</li>
+      <li>Added a dirty flag to Ronin::Platform::OverlayCache to reduce
 unnecessary writes.</li>
-<li>Added OverlayCache#has_extension?.</li>
-<li>Added Ronin::Platform::ObjectCache to handle the mass caching/mirroring
+      <li>Added OverlayCache#has_extension?.</li>
+      <li>Added Ronin::Platform::ObjectCache to handle the mass caching/mirroring
 of object contexts.</li>
-<li>Added Platform.add.</li>
-<li>Added Platform.install.</li>
-<li>Added Platform.update.</li>
-<li>Added Platform.remove.</li>
-<li>Added Platform.uninstall.</li>
-<li>Added Platform::Extension#find_paths.</li>
-<li>Added specs for:</li>
-<li>Ronin::Platform.</li>
-<li>Ronin::Platform::Overlay.</li>
-<li>Ronin::Platform::OverlayCache.</li>
-<li>Ronin::Platform::Extension.</li>
-<li>Ronin::Platform::ExtensionCache.</li>
-<li>Shortened method names.</li>
-<li>Renamed OverlayCache#has_overlay? to OverlayCache#has?.</li>
-<li>Renamed OverlayCache#get_overlay to OverlayCache#get.</li>
-<li>Renamed OverlayCache#overlay_with to OverlayCache#with.</li>
-<li>Renamed Extension#was_setup? to Extension#setup?.</li>
-<li>Renamed Extension#was_toredown? to Extension#toredown?.</li>
-<li>Renamed Extension#perform_setup to Extension#setup!.</li>
-<li>Renamed Extension#perform_teardown to Extension#teardown!.</li>
-<li>Removed un-used or surpurfulous methods.</li>
-<li>Removed &#39;lib/ronin/platform/config.rb&#39;.</li>
-<li>Allow Overlays to have their own <code>lib/</code> directories.</li>
-<li>Many bug fixes.</li>
-</ul></li>
-<li>Updated the README.txt.</li>
-<li>Fixed bug in UI::Console.auto_load and UI::Console.start.</li>
+      <li>Added Platform.add.</li>
+      <li>Added Platform.install.</li>
+      <li>Added Platform.update.</li>
+      <li>Added Platform.remove.</li>
+      <li>Added Platform.uninstall.</li>
+      <li>Added Platform::Extension#find_paths.</li>
+      <li>Added specs for:
+        <ul>
+          <li>Ronin::Platform.</li>
+          <li>Ronin::Platform::Overlay.</li>
+          <li>Ronin::Platform::OverlayCache.</li>
+          <li>Ronin::Platform::Extension.</li>
+          <li>Ronin::Platform::ExtensionCache.</li>
+        </ul>
+      </li>
+      <li>Shortened method names.
+        <ul>
+          <li>Renamed OverlayCache#has_overlay? to OverlayCache#has?.</li>
+          <li>Renamed OverlayCache#get_overlay to OverlayCache#get.</li>
+          <li>Renamed OverlayCache#overlay_with to OverlayCache#with.</li>
+          <li>Renamed Extension#was_setup? to Extension#setup?.</li>
+          <li>Renamed Extension#was_toredown? to Extension#toredown?.</li>
+          <li>Renamed Extension#perform_setup to Extension#setup!.</li>
+          <li>Renamed Extension#perform_teardown to Extension#teardown!.</li>
+        </ul>
+      </li>
+      <li>Removed un-used or surpurfulous methods.</li>
+      <li>Removed ‘lib/ronin/platform/config.rb’.</li>
+      <li>Allow Overlays to have their own <code>lib/</code> directories.</li>
+      <li>Many bug fixes.</li>
+    </ul>
+  </li>
+  <li>Updated the README.txt.</li>
+  <li>Fixed bug in UI::Console.auto_load and UI::Console.start.</li>
 </ul>
 
-<h3>0.1.4 / 2009-01-22</h3>
+<h3 id="section-13">0.1.4 / 2009-01-22</h3>
 
 <ul>
-<li>Moved Ronin::Web and Ronin::Sessions::Web into the ronin-web library.</li>
-<li>Removed dependencies to hpricot, mechanize, spidr and rack.</li>
-<li>Moved Hexdump into the Ronin::UI namespace.</li>
-<li>Require parameters &gt;= 0.1.3:
-
-<ul>
-<li>Parameters 0.1.3 adds support for using lambdas as the default values
+  <li>Moved Ronin::Web and Ronin::Sessions::Web into the ronin-web library.</li>
+  <li>Removed dependencies to hpricot, mechanize, spidr and rack.</li>
+  <li>Moved Hexdump into the Ronin::UI namespace.</li>
+  <li>Require parameters &gt;= 0.1.3:
+    <ul>
+      <li>Parameters 0.1.3 adds support for using lambdas as the default values
 of parameters.</li>
-</ul></li>
-<li>Temporarily added Ronin::Model.first<em>or</em>new:
-
-<ul>
-<li>Will be removed once dkubb&#39;s version of first<em>or</em>new is merged into
+    </ul>
+  </li>
+  <li>Temporarily added Ronin::Model.first_or_new:
+    <ul>
+      <li>Will be removed once dkubb’s version of first_or_new is merged into
 dm-core.</li>
-</ul></li>
-<li>Added the File.write method.</li>
-<li>Added specs for String#format<em>http and String#format</em>html.</li>
-<li>Fixed a formatting bug in String#format<em>chars and String#format</em>bytes.</li>
-<li>Fixed typos.</li>
-<li>Automatically load &#39;ronin/ui/hexdump&#39; when starting the
+    </ul>
+  </li>
+  <li>Added the File.write method.</li>
+  <li>Added specs for String#format_http and String#format_html.</li>
+  <li>Fixed a formatting bug in String#format_chars and String#format_bytes.</li>
+  <li>Fixed typos.</li>
+  <li>Automatically load ‘ronin/ui/hexdump’ when starting the
 Ronin::UI::Console.</li>
 </ul>
 
-<h3>0.1.3 / 2009-01-08</h3>
+<h3 id="section-14">0.1.3 / 2009-01-08</h3>
 
 <ul>
-<li>Moved Context into the Contextify library.</li>
-<li>Require dm-core &gt;= 0.9.9.</li>
-<li>Require dm-predefined &gt;= 0.1.0.</li>
-<li>Require parameters &gt;= 0.1.2.</li>
-<li>Require contextify &gt;= 0.1.0.</li>
-<li>Require reverse-require &gt;= 0.3.1.</li>
-<li>Renamed Ronin::ObjectContext to Ronin::Objectify.</li>
-<li>Added the MIT license to the Ronin::License model, using dm-predefined.</li>
-<li>Added Ronin::HasLicense mixin for adding licenses to a model.</li>
-<li>Added Net.tcp<em>send and Ronin::Sessions::TCP#tcp</em>send for quickly sending
+  <li>Moved Context into the Contextify library.</li>
+  <li>Require dm-core &gt;= 0.9.9.</li>
+  <li>Require dm-predefined &gt;= 0.1.0.</li>
+  <li>Require parameters &gt;= 0.1.2.</li>
+  <li>Require contextify &gt;= 0.1.0.</li>
+  <li>Require reverse-require &gt;= 0.3.1.</li>
+  <li>Renamed Ronin::ObjectContext to Ronin::Objectify.</li>
+  <li>Added the MIT license to the Ronin::License model, using dm-predefined.</li>
+  <li>Added Ronin::HasLicense mixin for adding licenses to a model.</li>
+  <li>Added Net.tcp_send and Ronin::Sessions::TCP#tcp_send for quickly sending
 data through a TCP connection then closing it.</li>
-<li>Added Ronin::UI::CommandLine::ParamParser for parsing command-line
+  <li>Added Ronin::UI::CommandLine::ParamParser for parsing command-line
 options into a Hash of parameters.</li>
-<li>Automatically create the <code>~/.ronin/config/</code> directory.</li>
-<li>Refactored Ronin::Objectify and how it uses primary keys.</li>
-<li>All Ronin::Session mixins use standard naming conventions for defining
-the &#39;host&#39; and &#39;port&#39; parameters.</li>
-<li>Removed Ronin::Cache::Extension dependencies.</li>
-<li>Filter out the &#39;objects&#39; directory from Ronin::Cache::Overlay#extensions.</li>
-<li>Improved tearing down of Extensions at exit.</li>
-<li>Improved output formatting of the +list+ sub-command.</li>
-<li>Ronin::UI::CommandLine.run now prints any exceptions and exits.</li>
-<li>Cleaned up the specs.</li>
-<li>Added more specs.</li>
-<li>Added more documentation.</li>
+  <li>Automatically create the <code>~/.ronin/config/</code> directory.</li>
+  <li>Refactored Ronin::Objectify and how it uses primary keys.</li>
+  <li>All Ronin::Session mixins use standard naming conventions for defining
+the ‘host’ and ‘port’ parameters.</li>
+  <li>Removed Ronin::Cache::Extension dependencies.</li>
+  <li>Filter out the ‘objects’ directory from Ronin::Cache::Overlay#extensions.</li>
+  <li>Improved tearing down of Extensions at exit.</li>
+  <li>Improved output formatting of the +list+ sub-command.</li>
+  <li>Ronin::UI::CommandLine.run now prints any exceptions and exits.</li>
+  <li>Cleaned up the specs.</li>
+  <li>Added more specs.</li>
+  <li>Added more documentation.</li>
 </ul>
 
-<h3>0.1.2 / 2008-12-10</h3>
+<h3 id="section-15">0.1.2 / 2008-12-10</h3>
 
 <ul>
-<li>Require do_sqlite3 &gt;= 0.9.9, since version 0.9.8 was totally broken.</li>
-<li>Require reverse-require &gt;= 0.2.0, for improved performance.</li>
-<li>Require Spidr &gt;= 0.1.3.</li>
-<li>Moved Ronin::Parameters into the parameters 0.1.0 RubyGem.</li>
-<li>Added a Ronin::Hexdump module:
-
-<ul>
-<li>Provides Ronin::Hexdump.dump and Kernel#hexdump, which can hexdump any 
+  <li>Require do_sqlite3 &gt;= 0.9.9, since version 0.9.8 was totally broken.</li>
+  <li>Require reverse-require &gt;= 0.2.0, for improved performance.</li>
+  <li>Require Spidr &gt;= 0.1.3.</li>
+  <li>Moved Ronin::Parameters into the parameters 0.1.0 RubyGem.</li>
+  <li>Added a Ronin::Hexdump module:
+    <ul>
+      <li>Provides Ronin::Hexdump.dump and Kernel#hexdump, which can hexdump any 
 object that supports the #each_byte method.</li>
-</ul></li>
-<li>Refactored Ronin::Chars::CharSet:
-
-<ul>
-<li>Now inherites the SortedSet class.</li>
-<li>Stores chars as bytes.</li>
-<li>Added a Ronin::Chars::CharSet#=~ operator, for determining if a String
+    </ul>
+  </li>
+  <li>Refactored Ronin::Chars::CharSet:
+    <ul>
+      <li>Now inherites the SortedSet class.</li>
+      <li>Stores chars as bytes.</li>
+      <li>Added a Ronin::Chars::CharSet#=~ operator, for determining if a String
 exists in the language over the alphabet represented by the character
 set.</li>
-<li>Added a Ronin::Chars::CharSet#inspect method which prints C-like
+      <li>Added a Ronin::Chars::CharSet#inspect method which prints C-like
 characters.</li>
-</ul></li>
-<li>Added a String#inspect method which prints C-like strings.</li>
-<li>Added a String#xor method (it might come in handy).</li>
-<li>Renamed Ronin::Encoders::Encoder to Ronin::Translators::Translator.</li>
-<li>Added URI::QueryParams#each<em>query</em>param.</li>
-<li>Added extensions to Hpricot, for comparing two Hpricot Element trees.</li>
-<li>Added the Ronin::Web.spider<em>agent, Ronin::Web.spider</em>host and
+    </ul>
+  </li>
+  <li>Added a String#inspect method which prints C-like strings.</li>
+  <li>Added a String#xor method (it might come in handy).</li>
+  <li>Renamed Ronin::Encoders::Encoder to Ronin::Translators::Translator.</li>
+  <li>Added URI::QueryParams#each_query_param.</li>
+  <li>Added extensions to Hpricot, for comparing two Hpricot Element trees.</li>
+  <li>Added the Ronin::Web.spider_agent, Ronin::Web.spider_host and
 Ronin::Web.spider_site methods.</li>
-<li>Added Ronin::Code::SymbolTable#symbols.</li>
-<li>Added a basic Ronin::Code::Emittable module and a Ronin::Code::Token
+  <li>Added Ronin::Code::SymbolTable#symbols.</li>
+  <li>Added a basic Ronin::Code::Emittable module and a Ronin::Code::Token
 class.</li>
-<li>Renamed Ronin::ObjectContext.object_contextify to
+  <li>Renamed Ronin::ObjectContext.object_contextify to
 Ronin::ObjectContext.objectify.</li>
-<li>Merged the Ronin::Environment module into the Ronin::Config module.</li>
-<li>Refactored the Ronin::Shell class.</li>
-<li>Refactored the Ronin::Runner::Program module.</li>
-<li>Created the Ronin::UI namespace, to contain all things User Interfacing:
-
-<ul>
-<li>Moved Ronin::Console and Ronin::Shell into the UI namespace.</li>
-<li>Renamed Ronin::Runner::Program to Ronin::UI::CommandLine.</li>
-</ul></li>
-<li>Added a Ronin::Cache::Overlay::Maintainer class to define maintainers of
+  <li>Merged the Ronin::Environment module into the Ronin::Config module.</li>
+  <li>Refactored the Ronin::Shell class.</li>
+  <li>Refactored the Ronin::Runner::Program module.</li>
+  <li>Created the Ronin::UI namespace, to contain all things User Interfacing:
+    <ul>
+      <li>Moved Ronin::Console and Ronin::Shell into the UI namespace.</li>
+      <li>Renamed Ronin::Runner::Program to Ronin::UI::CommandLine.</li>
+    </ul>
+  </li>
+  <li>Added a Ronin::Cache::Overlay::Maintainer class to define maintainers of
 an Ronin::Cache::Overlay and their contact information.</li>
-<li>Refactored the parsing of Overlay XML files.</li>
-<li>Added the sub-commands +overlay+ and +extension+ for generating skeleton
+  <li>Refactored the parsing of Overlay XML files.</li>
+  <li>Added the sub-commands +overlay+ and +extension+ for generating skeleton
 Overlays and Extensions.</li>
-<li>Added a XSL file for generating pretty HTML from Overlay XML files.</li>
-<li>Added even more specs.</li>
-<li>More typo and documentation fixes.</li>
+  <li>Added a XSL file for generating pretty HTML from Overlay XML files.</li>
+  <li>Added even more specs.</li>
+  <li>More typo and documentation fixes.</li>
 </ul>
 
-<h3>0.1.1 / 2008-10-26</h3>
+<h3 id="section-16">0.1.1 / 2008-10-26</h3>
 
 <ul>
-<li>Depend on the newly renamed reverse-require (&gt;= 0.1.2) gem.</li>
-<li>Added Ronin::Code::SymbolTable for DSLs to make use of.</li>
-<li>Added String#common<em>prefix, String#common</em>postfix and
+  <li>Depend on the newly renamed reverse-require (&gt;= 0.1.2) gem.</li>
+  <li>Added Ronin::Code::SymbolTable for DSLs to make use of.</li>
+  <li>Added String#common_prefix, String#common_postfix and
 String#uncommon_substring, which will be useful when testing for
 successful injections.</li>
-<li>Added DataMapper column indexes to Author.name, Product.name, Platform.os
+  <li>Added DataMapper column indexes to Author.name, Product.name, Platform.os
 and Platform.version.</li>
-<li>Renamed String#rand<em>case to String#random</em>case.</li>
-<li>Removed the Ronin::Runner namespace, renaming the Ronin::Runner::Program
+  <li>Renamed String#rand_case to String#random_case.</li>
+  <li>Removed the Ronin::Runner namespace, renaming the Ronin::Runner::Program
 namespace to Ronin::Program.</li>
 </ul>
 
-<h3>0.1.0 / 2008-09-28</h3>
+<h3 id="section-17">0.1.0 / 2008-09-28</h3>
 
 <ul>
-<li>Changed how Sessions are setup.</li>
-<li>Have Ronin use it&#39;s own DataMapper Repository name-space to avoid
+  <li>Changed how Sessions are setup.</li>
+  <li>Have Ronin use it’s own DataMapper Repository name-space to avoid
 conflicts with other DataMapper libraries.</li>
-<li>Added the Ronin::Parameters#set_params methods.</li>
-<li>Added specs.</li>
-<li>Fixed various trivial bugs.</li>
+  <li>Added the Ronin::Parameters#set_params methods.</li>
+  <li>Added specs.</li>
+  <li>Fixed various trivial bugs.</li>
 </ul>
 
-<h3>0.0.9 / 2008-08-20</h3>
+<h3 id="section-18">0.0.9 / 2008-08-20</h3>
 
 <ul>
-<li>Initial release.</li>
-<li>Supports installing/updating/uninstalling of Overlays.
-
-<ul>
-<li>Supports accessing Overlays from various media types:</li>
-<li>CVS</li>
-<li>Darcs</li>
-<li>Subversion (SVN)</li>
-<li>Git</li>
-<li>Rsync</li>
-</ul></li>
-<li>Allows for the loading of Extensions from one or more Overlays.</li>
-<li>Provides a persistant Database using DataMapper.</li>
-<li>Caches and mirrors objects stored in Overlays using DataMapper.</li>
-<li>Provides convievance methods for:
-
-<ul>
-<li>Formating data:</li>
-<li>Binary</li>
-<li>HTTP</li>
-<li>URIs</li>
-<li>HTML</li>
-<li>Generating random text.</li>
-<li>Networking:</li>
-<li>TCP</li>
-<li>UDP</li>
-<li>SMTP</li>
-<li>POP</li>
-<li>Imap</li>
-<li>Telnet</li>
-<li>HTTP</li>
-<li>Web access (utilizing Mechanize and Hpricot).</li>
-</ul></li>
-<li>Provides an IRB styled console with:
-
-<ul>
-<li>Tab-completion enabled.</li>
-<li>Auto-indentation enabled.</li>
-<li>Pretty-Print loaded.</li>
-</ul></li>
+  <li>Initial release.</li>
+  <li>Supports installing/updating/uninstalling of Overlays.
+    <ul>
+      <li>Supports accessing Overlays from various media types:
+        <ul>
+          <li>CVS</li>
+          <li>Darcs</li>
+          <li>Subversion (SVN)</li>
+          <li>Git</li>
+          <li>Rsync</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Allows for the loading of Extensions from one or more Overlays.</li>
+  <li>Provides a persistant Database using DataMapper.</li>
+  <li>Caches and mirrors objects stored in Overlays using DataMapper.</li>
+  <li>Provides convievance methods for:
+    <ul>
+      <li>Formating data:
+        <ul>
+          <li>Binary</li>
+          <li>HTTP</li>
+          <li>URIs</li>
+          <li>HTML</li>
+        </ul>
+      </li>
+      <li>Generating random text.</li>
+      <li>Networking:
+        <ul>
+          <li>TCP</li>
+          <li>UDP</li>
+          <li>SMTP</li>
+          <li>POP</li>
+          <li>Imap</li>
+          <li>Telnet</li>
+          <li>HTTP</li>
+        </ul>
+      </li>
+      <li>Web access (utilizing Mechanize and Hpricot).</li>
+    </ul>
+  </li>
+  <li>Provides an IRB styled console with:
+    <ul>
+      <li>Tab-completion enabled.</li>
+      <li>Auto-indentation enabled.</li>
+      <li>Pretty-Print loaded.</li>
+    </ul>
+  </li>
 </ul>
+
 </div></div>
 
-    <div id="footer">
-  Generated on Sat Jun 16 20:51:22 2012 by
+      <div id="footer">
+  Generated on Sun Feb 28 17:07:13 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.2.1 (ruby-1.9.3).
+  0.9.26 (ruby-2.7.2).
 </div>
 
+    </div>
   </body>
 </html>
