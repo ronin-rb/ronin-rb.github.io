@@ -2,6 +2,16 @@
 layout: post
 title: ronin-support 0.3.0 and ronin 1.3.0 released
 author: postmodern
+tags:
+  - release
+  - ronin-support
+  - ronin
+  - regex
+  - fuzzing
+  - release
+  - dns
+  - http
+  - console
 ---
 
 After roughly three months, new versions of [ronin-support][1] and [ronin][2]

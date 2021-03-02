@@ -2,6 +2,9 @@
 layout: post
 title: Ronin 1.0.0 prerelease
 author: postmodern
+tags:
+  - prerelease
+  - ronin
 ---
 
 After more than a year of development, refactoring and new

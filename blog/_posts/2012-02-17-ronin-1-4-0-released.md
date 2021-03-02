@@ -2,6 +2,16 @@
 layout: post
 title: Ronin 1.4.0 released
 author: postmodern
+tags:
+  - release
+  - ronin-support
+  - ronin
+  - regex
+  - base64
+  - fuzzing
+  - wordlist
+  - dns
+  - cli
 ---
 
 After many months of development and release candidates I am pleased to announce
