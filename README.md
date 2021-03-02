@@ -38,8 +38,8 @@ denoted by the `.md` file extension.
 
 ## Setup
 
-    $ gem install jekyll kramdown
     $ git clone https://github.com/ronin-rb/ronin-rb.github.io.git
+    $ gem install bundler
     $ cd ronin-rb.github.io/
     $ bundle install
     $ bundle exec jekyll serve
