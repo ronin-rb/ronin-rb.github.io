@@ -13,7 +13,8 @@ namespace :docs do
         library_doc_dir = "docs/#{library}"
 
         sh 'rsync', '-rv', '--delete-after', "../#{library}/doc/", "#{library_doc_dir}/"
-        sh 'git', 'add', library_doc_dir
+        sh 'git', 'add',    library_doc_dir
+        sh 'git', 'commit', library_doc_dir
       end
     end
   end
