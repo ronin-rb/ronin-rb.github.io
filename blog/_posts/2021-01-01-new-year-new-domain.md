@@ -14,4 +14,4 @@ Twitter handle, IRC channel, etc.
 * IRC: [#ronin-rb irc.freenode.net](/irc/)
 
 Not only is this easier to type than "ronin_ruby", it helps differentiate the
-project from other projects that use the Ronin name.
+project from other projects that also use the Ronin name.
