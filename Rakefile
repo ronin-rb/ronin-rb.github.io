@@ -1,7 +1,7 @@
 require 'yaml'
 require 'date'
 
-root      = File.expand_path('../',__FILE__)
+root      = File.dirname(__FILE__)
 config    = YAML.load_file(File.join(root,'_config.yml'))
 libraries = config['libraries']
 
