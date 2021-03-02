@@ -10,7 +10,7 @@ tags:
  - 1.9
 ---
 
-After six years of development and neglect, [ronin-sql] has been refactored
+After six years of development, and neglect, [ronin-sql] has been refactored
 and version 1.0.0 has finally been released! [ronin-sql] is a library for
 encoding/decoding SQL data. It also includes a Ruby Domain Specific Language
 (DSL) for crafting complex [SQL Injections (SQLi)][SQLi].
