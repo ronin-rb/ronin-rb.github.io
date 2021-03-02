@@ -41,7 +41,7 @@ denoted by the `.md` file extension.
     $ git clone https://github.com/ronin-rb/ronin-rb.github.io.git
     $ gem install bundler
     $ cd ronin-rb.github.io/
-    $ bundle install
+    $ bundle install # this may take a while
     $ bundle exec jekyll serve
 
 ## License
