@@ -6,8 +6,7 @@
 * [Mailing List](http://groups.google.com/group/ronin-rb)
 * [Slack](https://ronin-rb.slack.com) |
   [Discord](https://discord.gg/6WAb3PsVX9) |
-  [Twitter](https://twitter.com/ronin_rb) |
-  [IRC](https://ronin-rb.dev/irc/)
+  [Twitter](https://twitter.com/ronin_rb)
 
 ronin-rb.github.io is the Jekyll powered static website and blog for the
 Ronin project.
