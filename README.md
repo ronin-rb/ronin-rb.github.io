@@ -1,6 +1,6 @@
 # ronin-rb.github.io
 
-* [Website](http://ronin-rb.github.io)
+* [Website](https://ronin-rb.dev/)
 * [Source](https://github.com/ronin-rb/ronin-rb.github.io)
 * [Issues](https://github.com/ronin-rb/ronin-rb.github.io/issues)
 * [Slack](https://ronin-rb.slack.com) |
