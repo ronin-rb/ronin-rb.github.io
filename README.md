@@ -7,8 +7,8 @@
   [Discord](https://discord.gg/6WAb3PsVX9) |
   [Twitter](https://twitter.com/ronin_rb)
 
-ronin-rb.github.io is the Jekyll powered static website and blog for the
-Ronin project.
+ronin-rb.github.io is the [Jekyll][jekyll] powered static website and blog for
+the Ronin project.
 
 ## Directory Structure
 
