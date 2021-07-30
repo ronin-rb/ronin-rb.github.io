@@ -64,5 +64,5 @@ along with ronin-rb.github.io.  If not, see
 [syntax]: http://daringfireball.net/projects/markdown/basics
 
 [bundler]: https://bundler.io/
-[jekyll]: https://github.com/mojombo/jekyll#readme
+[jekyll]: https://jekyllrb.com/
 [kramdown]: https://kramdown.gettalong.org/
