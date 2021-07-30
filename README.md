@@ -1,14 +1,14 @@
 # ronin-rb.github.io
 
-* [Website](https://ronin-rb.dev/)
+* [Website][website]
 * [Source](https://github.com/ronin-rb/ronin-rb.github.io)
 * [Issues](https://github.com/ronin-rb/ronin-rb.github.io/issues)
 * [Slack](https://ronin-rb.slack.com) |
   [Discord](https://discord.gg/6WAb3PsVX9) |
   [Twitter](https://twitter.com/ronin_rb)
 
-ronin-rb.github.io is the [Jekyll][jekyll] powered static website and blog for
-the Ronin project.
+[ronin-rb.github.io][website] is the [Jekyll][jekyll] powered static website
+and blog for the Ronin project.
 
 ## Directory Structure
 
@@ -59,6 +59,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with ronin-rb.github.io.  If not, see
 <http://www.gnu.org/licenses/>.
+
+[website]: https://ronin-rb.dev/
 
 [Markdown]: http://en.wikipedia.org/wiki/Markdown
 [syntax]: http://daringfireball.net/projects/markdown/basics
