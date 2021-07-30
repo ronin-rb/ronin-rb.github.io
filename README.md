@@ -3,7 +3,6 @@
 * [Website](http://ronin-rb.github.io)
 * [Source](https://github.com/ronin-rb/ronin-rb.github.io)
 * [Issues](https://github.com/ronin-rb/ronin-rb.github.io/issues)
-* [Mailing List](http://groups.google.com/group/ronin-rb)
 * [Slack](https://ronin-rb.slack.com) |
   [Discord](https://discord.gg/6WAb3PsVX9) |
   [Twitter](https://twitter.com/ronin_rb)
