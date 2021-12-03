@@ -11,7 +11,7 @@ js:
 
 # Ronin
 
-Ronin is a [Ruby] platform for vulnerability research and [exploit development].
+Ronin is a [Ruby] toolkit for security research and development.
 Ronin allows for the rapid development and distribution of code,
 [Exploits][example-exploit], [Payloads][example-payload],
 [Scanners][example-scanner], etc, via [Repositories].
@@ -70,7 +70,6 @@ A couple of [examples](/examples/) of things Ronin simplifies.
 </ul>
 
 [Ruby]: http://www.ruby-lang.org
-[exploit development]: http://www.exploit-db.com
 [example-exploit]: https://github.com/postmodern/postmodern/blob/master/scripts/exploits/http/oracle/dav_bypass.rb
 [example-payload]: https://gist.github.com/1403961
 [example-scanner]: https://github.com/postmodern/postmodern/blob/master/scripts/scanners/oracle_dad_scanner.rb
