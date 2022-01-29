@@ -1035,6 +1035,8 @@ Here are some ideas:
 
 * `ronin-vuln-sqli` - a small library similar to [ronin-vuln-lfi] and
   [ronin-vuln-rfi], but for testing URIs for SQL injection using [ronin-sql].
+* `ronin-vuln-xss` - a small library similar to [ronin-vuln-lfi] and
+  [ronin-vuln-rfi], but for testing URIs for reflected XSS.
 * `ronin-nmap` - allow automating [nmap] and importing scan files into
  [ronin-db].
 * `ronin-masscan` - allow automating [masscan] and importing scan files into
