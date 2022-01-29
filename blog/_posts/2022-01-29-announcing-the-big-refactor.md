@@ -35,7 +35,7 @@ will also allow for the rapid development of newer ronin libraries and tools.
 
 ## High-Level Plan
 
-* Bring repositories up to date with current Ruby best practices.
+* [ ] Bring repositories up to date with current Ruby best practices.
   * [x] Require ruby >= 2.7.0.
   * [ ] Set `.ruby-version` to `ruby-3.0` (WIP).
   * [ ] Use keyword arguments (WIP).
