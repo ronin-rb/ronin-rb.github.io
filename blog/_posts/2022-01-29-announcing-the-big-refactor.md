@@ -117,7 +117,7 @@ or join our [Discord] server.
 
 ### [ronin-support](https://github.com/ronin-rb/ronin-support/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-ronin-support is a support library for ronin-rb. ronin-support provides
+[ronin-support] is a support library for ronin-rb. ronin-support provides
 many Core Extensions to Ruby's built-in classes as well as it's own
 Classes/Modules. ronin-support can be used by other Ruby libraries, tools, or
 scripts.
@@ -269,7 +269,7 @@ scripts.
 
 ### [ronin-core](https://github.com/ronin-rb/ronin-core/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-ronin-core is a core library providing common functionality for all ronin
+[ronin-core] is a core library providing common functionality for all ronin
 libraries.
 
 **Note:** Development work is currently taking place on the
@@ -315,8 +315,8 @@ libraries.
 
 ### [ronin-repos](https://github.com/ronin-rb/ronin-repos/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-ronin-repos provides a repository system for installing, managing, and accessing
-third-party git repositories, which can contain code or other data.
+[ronin-repos] provides a repository system for installing, managing, and
+accessing third-party git repositories, which can contain code or other data.
 
 **Note:** Development work is currently taking place on the
 [main](https://github.com/ronin-rb/ronin-repos/tree/main) branch.
@@ -337,7 +337,7 @@ third-party git repositories, which can contain code or other data.
 
 ### [ronin-db](https://github.com/ronin-rb/ronin-db/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-ronin-db is a database library for managing and querying security data.
+[ronin-db] is a database library for managing and querying security data.
 ronin-db provides common ORM models for interacting with the database's SQL
 tables and querying/storing security data, such as URLs, email addresses,
 host names, IPs, ports, etc. ronin-db also provides CLI commands for managing
@@ -390,7 +390,7 @@ the database(s).
 
 ### [ronin-asm](https://github.com/ronin-rb/ronin-asm/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-ronin-asm is a Ruby DSL for crafting Assmebly programs and Shellcode.
+[ronin-asm] is a Ruby DSL for crafting Assmebly programs and Shellcode.
 
 **Note:** Development work is currently taking place on the
 [1.2.0](https://github.com/ronin-rb/ronin-vuln-lfi/tree/0.3.0) branch.
@@ -407,7 +407,7 @@ ronin-asm is a Ruby DSL for crafting Assmebly programs and Shellcode.
 
 ### [ronin-sql](https://github.com/ronin-rb/ronin-sql/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-ronin-sql is a Ruby DSL for crafting SQL Injections.
+[ronin-sql] is a Ruby DSL for crafting SQL Injections.
 
 **Note:** Development work is currently taking place on the
 [1.2.0](https://github.com/ronin-rb/ronin-vuln-lfi/tree/1.2.0) branch.
@@ -428,7 +428,7 @@ ronin-sql is a Ruby DSL for crafting SQL Injections.
 
 ### [ronin-web-server](https://github.com/ronin-rb/ronin-web-server/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-ronin-web-server is a custom Ruby web server based on Sinatra tailored for
+[ronin-web-server] is a custom Ruby web server based on Sinatra tailored for
 security research and development.
 
 **Note:** Development work is currently taking place on the
@@ -464,7 +464,7 @@ security research and development.
 
 ### [ronin-web-spider](https://github.com/ronin-rb/ronin-web-spider/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-ronin-web-spider is a collection of common web spidering routines using the
+[ronin-web-spider] is a collection of common web spidering routines using the
 spidr gem.
 
 **Note:** Development work is currently taking place on the
@@ -484,7 +484,7 @@ spidr gem.
 
 ### [ronin-web-user_agents](https://github.com/ronin-rb/ronin-web-user_agents/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-Yet another User-Agent randomiser library.
+[ronin-web-user_agents] is yet another User-Agent randomiser library.
 
 **Note:** Development work is currently taking place on the
 [main](https://github.com/ronin-rb/ronin-web-user_agents/tree/main) branch.
@@ -509,7 +509,7 @@ Yet another User-Agent randomiser library.
 
 ### [ronin-web](https://github.com/ronin-rb/ronin-web/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-ronin-web is a Ruby library that provides support for web scraping and
+[ronin-web] is a Ruby library that provides support for web scraping and
 spidering functionality.
 
 **Note:** Development work is currently taking place on the
@@ -587,7 +587,7 @@ spidering functionality.
 
 ### [ronin-vuln-lfi](https://github.com/ronin-rb/ronin-vuln-lfi/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-ronin-vuln-lfi is a small Ruby library to test for Local File Inclusion (LFI)
+[ronin-vuln-lfi] is a small Ruby library to test for Local File Inclusion (LFI)
 vulnerabilities.
 
 **Note:** Development work is currently taking place on the
@@ -613,8 +613,8 @@ vulnerabilities.
 
 ### [ronin-vuln-rfi](https://github.com/ronin-rb/ronin-vuln-rfi/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-ronin-vuln-rfi is a small Ruby library for testing Remote File Inclusion (RFI)
-vulnerabilities.
+[ronin-vuln-rfi] is a small Ruby library for testing Remote File Inclusion
+(RFI) vulnerabilities.
 
 **Note:** Development work is currently taking place on the
 [main](https://github.com/ronin-rb/ronin-vuln-rfi/tree/main) branch.
@@ -647,7 +647,7 @@ vulnerabilities.
 
 ### [ronin-post_ex](https://github.com/ronin-rb/ronin-post_ex/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-ronin-post_ex is a Ruby API for Post-Exploitation.
+[ronin-post_ex] is a Ruby API for Post-Exploitation.
 
 **Note:** Development work is currently taking place on the
 [main](https://github.com/ronin-rb/ronin-post_ex/tree/main) branch.
@@ -690,7 +690,7 @@ ronin-post_ex is a Ruby API for Post-Exploitation.
 
 ### [ronin-c2](https://github.com/ronin-rb/ronin-c2/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-ronin-c2 is a C2 library for ronin that can communicate with various payloads
+[ronin-c2] is a C2 library for ronin that can communicate with various payloads
 and agents.
 
 **Note:** Development work is currently taking place on the
@@ -746,7 +746,7 @@ and agents.
 
 ### [ronin-payloads](https://github.com/ronin-rb/ronin-payloads/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-ronin-payloads is a Ruby micro-framework for writing and running exploit
+[ronin-payloads] is a Ruby micro-framework for writing and running exploit
 payloads.
 
 **Note:** Development work is currently taking place on the
@@ -790,7 +790,8 @@ payloads.
 
 ### [ronin-exploits](https://github.com/ronin-rb/ronin-exploits/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-ronin-exploits is a Ruby library for writing and running exploits and payloads.
+[ronin-exploits] is a Ruby library for writing and running exploits and
+payloads.
 
 **Note:** Development work is currently taking place on the
 [1.0.0](https://github.com/ronin-rb/ronin-exploits/tree/1.0.0) branch.
@@ -881,7 +882,7 @@ ronin-exploits is a Ruby library for writing and running exploits and payloads.
 
 ### [ronin](https://github.com/ronin-rb/ronin/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-The main ronin gem.
+The main [ronin] gem.
 
 **Note:** Development work is currently taking place on the
 [2.0.0](https://github.com/ronin-rb/ronin/tree/2.0.0) branch.
