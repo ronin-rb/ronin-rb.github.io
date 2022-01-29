@@ -403,7 +403,7 @@ the database(s).
 [ronin-asm] is a Ruby DSL for crafting Assmebly programs and Shellcode.
 
 **Note:** Development work is currently taking place on the
-[1.2.0](https://github.com/ronin-rb/ronin-vuln-lfi/tree/0.3.0) branch.
+[0.3.0](https://github.com/ronin-rb/ronin-asm/tree/0.3.0) branch.
 
 * [ ] [Replace options={} with keyword arguments][ronin-asm#20]
 * [ ] [Add truffleruby to the CI][ronin-asm#17]
@@ -420,7 +420,7 @@ the database(s).
 [ronin-sql] is a Ruby DSL for crafting SQL Injections.
 
 **Note:** Development work is currently taking place on the
-[1.2.0](https://github.com/ronin-rb/ronin-vuln-lfi/tree/1.2.0) branch.
+[1.2.0](https://github.com/ronin-rb/ronin-sql/tree/1.2.0) branch.
 
 * [ ] [Rename extensions directory to core_ext][ronin-sql#8]
 * [ ] [Replace options={} with keyword arguments][ronin-sql#7]
