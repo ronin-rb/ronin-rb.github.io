@@ -15,6 +15,7 @@ tags:
  - ronin-web-spider
  - ronin-web-user_agents
  - ronin-web
+ - ronin-fuzzer
  - ronin-vuln-lfi
  - ronin-vuln-rfi
  - ronin-post_ex
@@ -65,6 +66,7 @@ will also allow for the rapid development of newer ronin libraries and tools.
      additional code and data.
 * [x] Extract database models from [ronin] into [ronin-db]. Refactor to use
       [ActiveRecord].
+* [x] Extract and refactor the [ronin-fuzzer] library from [ronin-support].
 * [x] Extract and refactor [ronin-web-server], [ronin-web-spider], and
       [ronin-web-user_agents] libraries from [ronin-web].
 * [x] Extract and refactor [ronin-vuln-lfi] and [ronin-vuln-rfi] from the old
@@ -98,6 +100,7 @@ will also allow for the rapid development of newer ronin libraries and tools.
 * [ronin-web-spider]({{ page.url }}#ronin-web-spider)
 * [ronin-web-user_agents]({{ page.url }}#ronin-web-user_agents)
 * [ronin-web]({{ page.url }}#ronin-web)
+* [ronin-fuzzer]({{ page.url }}#ronin-fuzzer)
 * [ronin-vuln-lfi]({{ page.url }}#ronin-vuln-lfi)
 * [ronin-vuln-rfi]({{ page.url }}#ronin-vuln-rfi)
 * [ronin-post_ex]({{ page.url }}#ronin-post_ex)
@@ -592,6 +595,27 @@ spidering functionality.
 [ronin-web#21]: https://github.com/ronin-rb/ronin-web/issues/21
 [ronin-web#20]: https://github.com/ronin-rb/ronin-web/issues/20
 
+### [ronin-fuzzer](https://github.com/ronin-rb/ronin-fuzzer/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
+
+[ronin-fuzzer] is a Ruby library for generating, mutating, and fuzzing data.
+
+**Note:** Development work is currently taking place on the
+[main](https://github.com/ronin-rb/ronin-fuzzer/tree/main) branch.
+
+* [x] [Move in the ronin-fuzzer command from the ronin repo chore command][ronin-fuzzer#6]
+* [x] [Add Ronin::Fuzzing::CLI CLI][ronin-fuzzer#5]
+* [x] [Add ronin-support as a dependency chore dependency][ronin-fuzzer#4]
+* [x] [Re-add project files chore][ronin-fuzzer#3]
+* [x] [Add combinatorics as a dependency chore dependency][ronin-fuzzer#2]
+* [x] [Update project name/description in license headers chore][ronin-fuzzer#1]
+
+[ronin-fuzzer#6]: https://github.com/ronin-rb/ronin-fuzzer/issues/6
+[ronin-fuzzer#5]: https://github.com/ronin-rb/ronin-fuzzer/issues/5
+[ronin-fuzzer#4]: https://github.com/ronin-rb/ronin-fuzzer/issues/4
+[ronin-fuzzer#3]: https://github.com/ronin-rb/ronin-fuzzer/issues/3
+[ronin-fuzzer#2]: https://github.com/ronin-rb/ronin-fuzzer/issues/2
+[ronin-fuzzer#1]: https://github.com/ronin-rb/ronin-fuzzer/issues/1
+
 ### [ronin-vuln-lfi](https://github.com/ronin-rb/ronin-vuln-lfi/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
 [ronin-vuln-lfi] is a small Ruby library to test for Local File Inclusion (LFI)
@@ -1074,6 +1098,7 @@ join our [Discord] server and get in touch!
 [ronin-db]: https://github.com/ronin-rb/ronin-db#readme
 [ronin-asm]: https://github.com/ronin-rb/ronin-sql#readme
 [ronin-sql]: https://github.com/ronin-rb/ronin-sql#readme
+[ronin-fuzzer]: https://github.com/ronin-rb/ronin-fuzzer#readme
 [ronin-web-server]: https://github.com/ronin-rb/ronin-web-server#readme
 [ronin-web-spider]: https://github.com/ronin-rb/ronin-web-spider#readme
 [ronin-web-user_agents]: https://github.com/ronin-rb/ronin-web-user_agents#readme
