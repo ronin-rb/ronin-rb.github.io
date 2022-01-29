@@ -881,6 +881,8 @@ ronin-exploits is a Ruby library for writing and running exploits and payloads.
 
 ### [ronin](https://github.com/ronin-rb/ronin/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
+The main ronin gem.
+
 **Note:** Development work is currently taking place on the
 [2.0.0](https://github.com/ronin-rb/ronin/tree/2.0.0) branch.
 
