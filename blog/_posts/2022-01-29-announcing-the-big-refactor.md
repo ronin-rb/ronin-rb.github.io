@@ -968,8 +968,8 @@ The main ronin gem.
 ## The Future
 
 After The Big Refactor is completed, I have plans to create additional new
-ronin libraries and tools for various tasks. This refactoring and re-organizing
-of the dependencies should make the creation of new ronin libraries and tools
+Ronin libraries and tools for various tasks. This refactoring and re-organizing
+of the dependencies should make the creation of new Ronin libraries and tools
 much easier.
 
 Here are some ideas:
