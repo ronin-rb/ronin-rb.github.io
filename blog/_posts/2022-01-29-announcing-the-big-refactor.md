@@ -19,6 +19,9 @@ tags:
  - ronin-vuln-rfi
  - ronin-post_ex
  - ronin-c2
+ - ronin-agent-node
+ - ronin-agent-php
+ - ronin-agent-ruby
  - ronin-payloads
  - ronin-exploits
  - ronin
@@ -66,8 +69,9 @@ will also allow for the rapid development of newer ronin libraries and tools.
       [ronin-web-user_agents] libraries from [ronin-web].
 * [x] Extract and refactor [ronin-vuln-lfi] and [ronin-vuln-rfi] from the old
       [ronin-php] library.
-* [x] Extract and refactor [ronin-payloads], and [ronin-post_ex] libraries from
-      [ronin-exploits].
+* [x] Extract and refactor [ronin-payloads], [ronin-post_ex],
+      [ronin-agent-node], [ronin-agent-php], and [ronin-agent-ruby], libraries
+      from [ronin-exploits].
 * [ ] Create a [ronin-c2] library for communicating with various agents and
       payloads.
 * [x] Deprecate the `ronin-gen` gem and command, in favor of adding a `gen` or
@@ -98,11 +102,14 @@ will also allow for the rapid development of newer ronin libraries and tools.
 * [ronin-vuln-rfi]({{ page.url }}#ronin-vuln-rfi)
 * [ronin-post_ex]({{ page.url }}#ronin-post_ex)
 * [ronin-c2]({{ page.url }}#ronin-c2)
+* [ronin-agent-node]({{ page.url }}#ronin-agent-node)
+* [ronin-agent-php]({{ page.url }}#ronin-agent-php)
+* [ronin-agent-ruby]({{ page.url }}#ronin-agent-ruby)
 * [ronin-payloads]({{ page.url }}#ronin-payloads)
 * [ronin-exploits]({{ page.url }}#ronin-exploits)
 * [ronin]({{ page.url }}#ronin)
 
-Below are the links to the individual issues for each library. You will
+Below are the links to the individual GitHub issues for each library. You will
 notice that nearly half of the issues are already checked. That is because they
 have already been completed prior to publishing this blog post. We are already
 past the half-way mark!
@@ -744,6 +751,57 @@ and agents.
 [ronin-c2#2]: https://github.com/ronin-rb/ronin-c2/issues/2
 [ronin-c2#4]: https://github.com/ronin-rb/ronin-c2/issues/4
 
+### [ronin-agent-node](https://github.com/ronin-rb/ronin-agent-node/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
+
+[ronin-agent-node] is a ronin agent written in node.js.
+
+**Note:** Development work is currently taking place on the
+[main](https://github.com/ronin-rb/ronin-agent-node/tree/main) branch.
+
+* [ ] [Support JSON RPC 2.0][ronin-agent-node#8]
+* [ ] [Add a build script][ronin-agent-node#5]
+* [ ] [Update code to use let and const][ronin-agent-node#4]
+
+[ronin-agent-node#8]: https://github.com/ronin-rb/ronin-agent-node/issues/8
+[ronin-agent-node#5]: https://github.com/ronin-rb/ronin-agent-node/issues/5
+[ronin-agent-node#4]: https://github.com/ronin-rb/ronin-agent-node/issues/4
+
+### [ronin-agent-php](https://github.com/ronin-rb/ronin-agent-php/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
+
+[ronin-agent-php] is a ronin agent written in PHP.
+
+**Note:** Development work is currently taking place on the
+[main](https://github.com/ronin-rb/ronin-agent-php/tree/main) branch.
+
+* [ ] [Support JSON RPC 2.0][ronin-agent-php#8]
+* [ ] [Add a build script][ronin-agent-php#5]
+* [ ] [Upgrade the code to PHP5][ronin-agent-php#4]
+
+[ronin-agent-php#8]: https://github.com/ronin-rb/ronin-agent-php/issues/8
+[ronin-agent-php#5]: https://github.com/ronin-rb/ronin-agent-php/issues/5
+[ronin-agent-php#4]: https://github.com/ronin-rb/ronin-agent-php/issues/4
+
+### [ronin-agent-ruby](https://github.com/ronin-rb/ronin-agent-ruby/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
+
+[ronin-agent-ruby] is a ronin agent written in PHP.
+
+**Note:** Development work is currently taking place on the
+[main](https://github.com/ronin-rb/ronin-agent-ruby/tree/main) branch.
+
+* [ ] [Move Agent::TCP, Agent::UDP, and Agent::HTTP into Agent::Transports][ronin-agent-ruby#6]
+* [ ] [Rename Transport to Message][ronin-agent-ruby#5]
+* [ ] [Support JSON RPC 2.0][ronin-agent-ruby#4]
+* [ ] [Rewrite TCP::Server to use TCPServer][ronin-agent-ruby#2]
+
+[ronin-agent-ruby#6]: https://github.com/ronin-rb/ronin-agent-ruby/issues/6
+[ronin-agent-ruby#5]: https://github.com/ronin-rb/ronin-agent-ruby/issues/5
+[ronin-agent-ruby#4]: https://github.com/ronin-rb/ronin-agent-ruby/issues/4
+[ronin-agent-ruby#2]: https://github.com/ronin-rb/ronin-agent-ruby/issues/2
+
+* [x] [Move all RPC methods into an RPC module][ronin-agent-ruby#8]
+
+[ronin-agent-ruby#8]: https://github.com/ronin-rb/ronin-agent-ruby/issues/8
+
 ### [ronin-payloads](https://github.com/ronin-rb/ronin-payloads/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
 [ronin-payloads] is a Ruby micro-framework for writing and running exploit
@@ -1022,6 +1080,9 @@ join our [Discord] server and get in touch!
 [ronin-vuln-rfi]: https://github.com/ronin-rb/ronin-vuln-rfi#readme
 [ronin-post_ex]: https://github.com/ronin-rb/ronin-payloads#readme
 [ronin-c2]: https://github.com/ronin-rb/ronin-c2#readme
+[ronin-agent-node]: https://github.com/ronin-rb/ronin-agent-node#readme
+[ronin-agent-php]: https://github.com/ronin-rb/ronin-agent-php#readme
+[ronin-agent-ruby]: https://github.com/ronin-rb/ronin-agent-ruby#readme
 [ronin-payloads]: https://github.com/ronin-rb/ronin-payloads#readme
 [ronin-exploits]: https://github.com/ronin-rb/ronin-exploits#readme
 [ronin]: https://github.com/ronin-rb/ronin#readme
