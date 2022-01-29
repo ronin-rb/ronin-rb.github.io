@@ -783,7 +783,7 @@ and agents.
 
 ### [ronin-agent-ruby](https://github.com/ronin-rb/ronin-agent-ruby/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-[ronin-agent-ruby] is a ronin agent written in PHP.
+[ronin-agent-ruby] is a ronin agent written in Ruby.
 
 **Note:** Development work is currently taking place on the
 [main](https://github.com/ronin-rb/ronin-agent-ruby/tree/main) branch.
