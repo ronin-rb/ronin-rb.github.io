@@ -9,15 +9,14 @@ tags:
  - ronin-repos
  - ronin-db
  - ronin-gen
- - ronin-asm
- - ronin-sql
+ - ronin-code-asm
+ - ronin-code-sql
  - ronin-web-server
  - ronin-web-spider
  - ronin-web-user_agents
  - ronin-web
  - ronin-fuzzer
- - ronin-vuln-lfi
- - ronin-vuln-rfi
+ - ronin-vuln
  - ronin-post_ex
  - ronin-c2
  - ronin-agent-node
@@ -69,8 +68,7 @@ will also allow for the rapid development of newer ronin libraries and tools.
 * [x] Extract and refactor the [ronin-fuzzer] library from [ronin-support].
 * [x] Extract and refactor [ronin-web-server], [ronin-web-spider], and
       [ronin-web-user_agents] libraries from [ronin-web].
-* [x] Extract and refactor [ronin-vuln-lfi] and [ronin-vuln-rfi] from the old
-      [ronin-php] library.
+* [ ] Replace [ronin-php] with a new [ronin-vuln] library.
 * [x] Extract and refactor [ronin-payloads], [ronin-post_ex],
       [ronin-agent-node], [ronin-agent-php], and [ronin-agent-ruby], libraries
       from [ronin-exploits].
@@ -94,15 +92,13 @@ will also allow for the rapid development of newer ronin libraries and tools.
 * [ronin-core]({{ page.url }}#ronin-core)
 * [ronin-repos]({{ page.url }}#ronin-repos)
 * [ronin-db]({{ page.url }}#ronin-db)
-* [ronin-asm]({{ page.url }}#ronin-asm)
-* [ronin-sql]({{ page.url }}#ronin-sql)
+* [ronin-code-asm]({{ page.url }}#ronin-code-asm)
+* [ronin-code-sql]({{ page.url }}#ronin-code-sql)
 * [ronin-web-server]({{ page.url }}#ronin-web-server)
 * [ronin-web-spider]({{ page.url }}#ronin-web-spider)
 * [ronin-web-user_agents]({{ page.url }}#ronin-web-user_agents)
 * [ronin-web]({{ page.url }}#ronin-web)
 * [ronin-fuzzer]({{ page.url }}#ronin-fuzzer)
-* [ronin-vuln-lfi]({{ page.url }}#ronin-vuln-lfi)
-* [ronin-vuln-rfi]({{ page.url }}#ronin-vuln-rfi)
 * [ronin-post_ex]({{ page.url }}#ronin-post_ex)
 * [ronin-c2]({{ page.url }}#ronin-c2)
 * [ronin-agent-node]({{ page.url }}#ronin-agent-node)
@@ -398,43 +394,43 @@ the database(s).
 [ronin-db#7]: https://github.com/ronin-rb/ronin-db/issues/7
 [ronin-db#5]: https://github.com/ronin-rb/ronin-db/issues/5
 
-### [ronin-asm](https://github.com/ronin-rb/ronin-asm/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
+### [ronin-code-asm](https://github.com/ronin-rb/ronin-code-asm/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
-[ronin-asm] is a Ruby DSL for crafting Assmebly programs and Shellcode.
-
-**Note:** Development work is currently taking place on the
-[0.3.0](https://github.com/ronin-rb/ronin-asm/tree/0.3.0) branch.
-
-* [ ] [Replace options={} with keyword arguments][ronin-asm#20]
-* [ ] [Add truffleruby to the CI][ronin-asm#17]
-
-[ronin-asm#20]: https://github.com/ronin-rb/ronin-asm/issues/20
-[ronin-asm#17]: https://github.com/ronin-rb/ronin-asm/issues/17
-
-* [x] [Remove data_paths dependency][ronin-asm#19]
-
-[ronin-asm#19]: https://github.com/ronin-rb/ronin-asm/issues/19
-
-### [ronin-sql](https://github.com/ronin-rb/ronin-sql/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
-
-[ronin-sql] is a Ruby DSL for crafting SQL Injections.
+[ronin-code-asm] is a Ruby DSL for crafting Assmebly programs and Shellcode.
 
 **Note:** Development work is currently taking place on the
-[1.2.0](https://github.com/ronin-rb/ronin-sql/tree/1.2.0) branch.
+[1.0.0](https://github.com/ronin-rb/ronin-asm/tree/1.0.0) branch.
 
-* [ ] [Rename extensions directory to core_ext][ronin-sql#8]
-* [ ] [Replace options={} with keyword arguments][ronin-sql#7]
-* [ ] [Add a sql: keyword argument for selecting the SQL dialect][ronin-sql#9]
+* [ ] [Replace options={} with keyword arguments][ronin-code-asm#20]
+* [ ] [Add truffleruby to the CI][ronin-code-asm#17]
 
-[ronin-sql#8]: https://github.com/ronin-rb/ronin-sql/issues/8
-[ronin-sql#7]: https://github.com/ronin-rb/ronin-sql/issues/7
-[ronin-sql#9]: https://github.com/ronin-rb/ronin-sql/issues/9
+[ronin-code-asm#20]: https://github.com/ronin-rb/ronin-code-asm/issues/20
+[ronin-code-asm#17]: https://github.com/ronin-rb/ronin-code-asm/issues/17
 
-* [x] [Switch rake console back to irb][ronin-sql#6]
-* [x] [Move yard dependency into the Gemfile][ronin-sql#5]
+* [x] [Remove data_paths dependency][ronin-code-asm#19]
 
-[ronin-sql#6]: https://github.com/ronin-rb/ronin-sql/issues/6
-[ronin-sql#5]: https://github.com/ronin-rb/ronin-sql/issues/5
+[ronin-code-asm#19]: https://github.com/ronin-rb/ronin-code-asm/issues/19
+
+### [ronin-code-sql](https://github.com/ronin-rb/ronin-code-sql/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
+
+[ronin-code-sql] is a Ruby DSL for crafting SQL Injections.
+
+**Note:** Development work is currently taking place on the
+[2.0.0](https://github.com/ronin-rb/ronin-code-sql/tree/2.0.0) branch.
+
+* [ ] [Rename extensions directory to core_ext][ronin-code-sql#8]
+* [ ] [Replace options={} with keyword arguments][ronin-code-sql#7]
+* [ ] [Add a sql: keyword argument for selecting the SQL dialect][ronin-code-sql#9]
+
+[ronin-code-sql#8]: https://github.com/ronin-rb/ronin-code-sql/issues/8
+[ronin-code-sql#7]: https://github.com/ronin-rb/ronin-code-sql/issues/7
+[ronin-code-sql#9]: https://github.com/ronin-rb/ronin-code-sql/issues/9
+
+* [x] [Switch rake console back to irb][ronin-code-sql#6]
+* [x] [Move yard dependency into the Gemfile][ronin-code-sql#5]
+
+[ronin-code-sql#6]: https://github.com/ronin-rb/ronin-code-sql/issues/6
+[ronin-code-sql#5]: https://github.com/ronin-rb/ronin-code-sql/issues/5
 
 ### [ronin-web-server](https://github.com/ronin-rb/ronin-web-server/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
@@ -615,66 +611,6 @@ spidering functionality.
 [ronin-fuzzer#3]: https://github.com/ronin-rb/ronin-fuzzer/issues/3
 [ronin-fuzzer#2]: https://github.com/ronin-rb/ronin-fuzzer/issues/2
 [ronin-fuzzer#1]: https://github.com/ronin-rb/ronin-fuzzer/issues/1
-
-### [ronin-vuln-lfi](https://github.com/ronin-rb/ronin-vuln-lfi/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
-
-[ronin-vuln-lfi] is a small Ruby library to test for Local File Inclusion (LFI)
-vulnerabilities.
-
-**Note:** Development work is currently taking place on the
-[main](https://github.com/ronin-rb/ronin-vuln-lfi/tree/main) branch.
-
-* [ ] [Add a Dockerfile for a vulnerable PHP app][ronin-vuln-lfi#7]
-* [ ] [Add tests chore tests][ronin-vuln-lfi#6]
-* [ ] [Add WebMock tests for Ronin::Vuln::LFI.test][ronin-vuln-lfi#4]
-
-[ronin-vuln-lfi#7]: https://github.com/ronin-rb/ronin-vuln-lfi/issues/7
-[ronin-vuln-lfi#6]: https://github.com/ronin-rb/ronin-vuln-lfi/issues/6
-[ronin-vuln-lfi#4]: https://github.com/ronin-rb/ronin-vuln-lfi/issues/4
-
-* [x] [Replace options={} with keyword arguments chore ruby-2.x][ronin-vuln-lfi#5]
-* [x] [Re-add project files][ronin-vuln-lfi#3]
-* [x] [Change license to LGPL-3.0][ronin-vuln-lfi#2]
-* [x] [Rename project to ronin-vuln-lfi][ronin-vuln-lfi#1]
-
-[ronin-vuln-lfi#5]: https://github.com/ronin-rb/ronin-vuln-lfi/issues/5
-[ronin-vuln-lfi#3]: https://github.com/ronin-rb/ronin-vuln-lfi/issues/3
-[ronin-vuln-lfi#2]: https://github.com/ronin-rb/ronin-vuln-lfi/issues/2
-[ronin-vuln-lfi#1]: https://github.com/ronin-rb/ronin-vuln-lfi/issues/1
-
-### [ronin-vuln-rfi](https://github.com/ronin-rb/ronin-vuln-rfi/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
-
-[ronin-vuln-rfi] is a small Ruby library for testing Remote File Inclusion
-(RFI) vulnerabilities.
-
-**Note:** Development work is currently taking place on the
-[main](https://github.com/ronin-rb/ronin-vuln-rfi/tree/main) branch.
-
-* [ ] [Add RFI.test_server and RFI.test_server= methods][ronin-vuln-rfi#12]
-* [ ] [Add an example vulnerable JSP app][ronin-vuln-rfi#11]
-* [ ] [Add an example vulnerable PHP app][ronin-vuln-rfi#10]
-* [ ] [Add a Dockerfile for serving the test scripts][ronin-vuln-rfi#9]
-* [ ] [Add support for testing RFI against JSP][ronin-vuln-rfi#8]
-* [ ] [Add WebMock tests for Ronin::Vuln::RFI.test][ronin-vuln-rfi#4]
-
-[ronin-vuln-rfi#12]: https://github.com/ronin-rb/ronin-vuln-rfi/issues/12
-[ronin-vuln-rfi#11]: https://github.com/ronin-rb/ronin-vuln-rfi/issues/11
-[ronin-vuln-rfi#10]: https://github.com/ronin-rb/ronin-vuln-rfi/issues/10
-[ronin-vuln-rfi#9]: https://github.com/ronin-rb/ronin-vuln-rfi/issues/9
-[ronin-vuln-rfi#8]: https://github.com/ronin-rb/ronin-vuln-rfi/issues/8
-[ronin-vuln-rfi#4]: https://github.com/ronin-rb/ronin-vuln-rfi/issues/4
-
-* [x] [Rename ronin/vuln/rfi/extensions to ronin/vuln/rfi/core_ext][ronin-vuln-rfi#6]
-* [x] [Replace options={} with keyword arguments][ronin-vuln-rfi#5]
-* [x] [Re-add project files][ronin-vuln-rfi#3]
-* [x] [Change the license to LGPL-3.0][ronin-vuln-rfi#2]
-* [x] [Rename project to ronin-vuln-rfi][ronin-vuln-rfi#1]
-
-[ronin-vuln-rfi#6]: https://github.com/ronin-rb/ronin-vuln-rfi/issues/6
-[ronin-vuln-rfi#5]: https://github.com/ronin-rb/ronin-vuln-rfi/issues/5
-[ronin-vuln-rfi#3]: https://github.com/ronin-rb/ronin-vuln-rfi/issues/3
-[ronin-vuln-rfi#2]: https://github.com/ronin-rb/ronin-vuln-rfi/issues/2
-[ronin-vuln-rfi#1]: https://github.com/ronin-rb/ronin-vuln-rfi/issues/1
 
 ### [ronin-post_ex](https://github.com/ronin-rb/ronin-post_ex/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
@@ -1057,10 +993,6 @@ much easier.
 
 Here are some ideas:
 
-* `ronin-vuln-sqli` - a small library similar to [ronin-vuln-lfi] and
-  [ronin-vuln-rfi], but for testing URIs for SQL injection using [ronin-sql].
-* `ronin-vuln-xss` - a small library similar to [ronin-vuln-lfi] and
-  [ronin-vuln-rfi], but for testing URIs for reflected XSS.
 * `ronin-nmap` - allow automating [nmap] and importing scan files into
  [ronin-db].
 * `ronin-masscan` - allow automating [masscan] and importing scan files into
@@ -1096,15 +1028,14 @@ join our [Discord] server and get in touch!
 [ronin-core]: https://github.com/ronin-rb/ronin-core#readme
 [ronin-repos]: https://github.com/ronin-rb/ronin-repos#readme
 [ronin-db]: https://github.com/ronin-rb/ronin-db#readme
-[ronin-asm]: https://github.com/ronin-rb/ronin-sql#readme
-[ronin-sql]: https://github.com/ronin-rb/ronin-sql#readme
+[ronin-code-asm]: https://github.com/ronin-rb/ronin-code-asm#readme
+[ronin-code-sql]: https://github.com/ronin-rb/ronin-code-sql#readme
 [ronin-fuzzer]: https://github.com/ronin-rb/ronin-fuzzer#readme
 [ronin-web-server]: https://github.com/ronin-rb/ronin-web-server#readme
 [ronin-web-spider]: https://github.com/ronin-rb/ronin-web-spider#readme
 [ronin-web-user_agents]: https://github.com/ronin-rb/ronin-web-user_agents#readme
 [ronin-web]: https://github.com/ronin-rb/ronin-web#readme
-[ronin-vuln-lfi]: https://github.com/ronin-rb/ronin-vuln-lfi#readme
-[ronin-vuln-rfi]: https://github.com/ronin-rb/ronin-vuln-rfi#readme
+[ronin-vuln]: https://github.com/ronin-rb/ronin-vuln#readme
 [ronin-post_ex]: https://github.com/ronin-rb/ronin-payloads#readme
 [ronin-c2]: https://github.com/ronin-rb/ronin-c2#readme
 [ronin-agent-node]: https://github.com/ronin-rb/ronin-agent-node#readme
