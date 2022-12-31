@@ -8,6 +8,7 @@ tags:
  - ronin-core
  - ronin-repos
  - ronin-db
+ - ronin-db-activerecord
  - ronin-code-asm
  - ronin-code-sql
  - ronin-web-server
