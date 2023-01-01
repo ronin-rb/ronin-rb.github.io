@@ -24,8 +24,8 @@ tags:
 ---
 
 After nearly a full year of non-stop development since the initial
-[announcement of The Big Refactor], 4153 commits and [700 closed issues] later,
-The Big Refactor is *finally* DONE!
+[announcement of The Big Refactor][1], 4153 commits and
+[700 closed issues][2] later, The Big Refactor is *finally* DONE!
 
 Here is what happens next:
 
@@ -42,3 +42,6 @@ Here is what happens next:
 Note that during beta testing, a feature freeze will be in effect.
 Any new feature ideas or suggestions will be postponed/queued until the next
 minor version release for that Ronin gem.
+
+[1]: /blog/2022/01/29/announcing-the-big-refactor.html
+[2]: https://github.com/orgs/ronin-rb/projects/2
