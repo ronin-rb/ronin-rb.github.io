@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Ronin::Support::Network::TLS::Proxy
+  
+    &mdash; ronin-support Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::Support::Network::TLS::Proxy";
+  relpath = '../../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../../Support.html" title="Ronin::Support (module)">Support</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../TLS.html" title="Ronin::Support::Network::TLS (module)">TLS</a></span></span>
+     &raquo; 
+    <span class="title">Proxy</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Ronin::Support::Network::TLS::Proxy
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="../SSL/Proxy.html" title="Ronin::Support::Network::SSL::Proxy (class)">SSL::Proxy</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="../Proxy.html" title="Ronin::Support::Network::Proxy (class)">Proxy</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="../TCP/Proxy.html" title="Ronin::Support::Network::TCP::Proxy (class)">Ronin::Support::Network::TCP::Proxy</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="../SSL/Proxy.html" title="Ronin::Support::Network::SSL::Proxy (class)">SSL::Proxy</a></span></li>
+          
+            <li class="next">Ronin::Support::Network::TLS::Proxy</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/support/network/tls/proxy.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>The TLS Proxy allows for inspecting and manipulating TLS wrapped
+protocols.</p>
+
+<h2 id="example">Example</h2>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ronin/support/network/tls/proxy</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hexdump</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='const'><span class='object_link'><a href="../../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../TLS.html" title="Ronin::Support::Network::TLS (module)">TLS</a></span></span><span class='op'>::</span><span class='const'>Proxy</span><span class='period'>.</span><span class='id identifier rubyid_start'><span class='object_link'><a href="../Proxy.html#start-class_method" title="Ronin::Support::Network::Proxy.start (method)">start</a></span></span><span class='lparen'>(</span><span class='label'>port:</span> <span class='int'>1337</span><span class='comma'>,</span> <span class='label'>server:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>www.wired.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>443</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_proxy'>proxy</span><span class='op'>|</span>
+  <span class='id identifier rubyid_address'>address</span> <span class='op'>=</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_socket'>socket</span><span class='op'>|</span>
+    <span class='id identifier rubyid_addrinfo'>addrinfo</span> <span class='op'>=</span> <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_peeraddr'>peeraddr</span>
+
+   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_addrinfo'>addrinfo</span><span class='lbracket'>[</span><span class='int'>3</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_addrinfo'>addrinfo</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_hex'>hex</span> <span class='op'>=</span> <span class='const'>Hexdump</span><span class='op'>::</span><span class='const'>Hexdump</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+
+  <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_on_client_data'>on_client_data</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span><span class='id identifier rubyid_data'>data</span><span class='op'>|</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='lbracket'>[</span><span class='id identifier rubyid_client'>client</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> -&gt; </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_hex'>hex</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_on_client_connect'>on_client_connect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='op'>|</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='lbracket'>[</span><span class='id identifier rubyid_client'>client</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> -&gt; </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_content'> [connected]</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_on_client_disconnect'>on_client_disconnect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='lbracket'>[</span><span class='id identifier rubyid_client'>client</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> &lt;- </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_content'> [disconnected]</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_on_server_data'>on_server_data</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span><span class='id identifier rubyid_data'>data</span><span class='op'>|</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='lbracket'>[</span><span class='id identifier rubyid_client'>client</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> &lt;- </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_hex'>hex</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_on_server_connect'>on_server_connect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='lbracket'>[</span><span class='id identifier rubyid_client'>client</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> &lt;- </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_content'> [connected]</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_on_server_disconnect'>on_server_disconnect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='lbracket'>[</span><span class='id identifier rubyid_client'>client</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> &lt;- </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_content'> [disconnected]</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h2 id="callbacks">Callbacks</h2>
+
+<p>In addition to the events supported by the <span class='object_link'><a href="../Proxy.html" title="Ronin::Support::Network::Proxy (class)">Proxy</a></span>
+base class, the TLS Proxy also supports the following callbacks.</p>
+
+<h3 id="client_connect">client_connect</h3>
+
+<p>When a client connects to the proxy:</p>
+
+<pre class="code ruby"><code class="ruby">on_client_connect do |client|
+  puts &quot;[connected] #{client.remote_address.ip_address}:#{client.remote_addre
+end
+</code></pre>
+
+<h3 id="client_disconnect">client_disconnect</h3>
+
+<p>When a client disconnects from the proxy:</p>
+
+<pre class="code ruby"><code class="ruby">on_client_disconnect do |client,server|
+  puts &quot;[disconnected] #{client.remote_address.ip_address}:#{client.remote_ad
+end
+</code></pre>
+
+<h3 id="server_connect">server_connect</h3>
+
+<p>When the server accepts a connection from the proxy:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_on_server_connect'>on_server_connect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[connected] </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h3 id="server_disconnect">server_disconnect</h3>
+
+<p>When the server closes a connection from the proxy.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_on_server_disconnect'>on_server_disconnect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[disconnected] </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h3 id="connect">connect</h3>
+
+<p>Alias for <span class='object_link'><a href="../TCP/Proxy.html#on_server_connect-instance_method" title="Ronin::Support::Network::TCP::Proxy#on_server_connect (method)">Ronin::Support::Network::TCP::Proxy#on_server_connect</a></span>.</p>
+
+<h3 id="disconnect">disconnect</h3>
+
+<p>Alias for <span class='object_link'><a href="../TCP/Proxy.html#on_client_disconnect-instance_method" title="Ronin::Support::Network::TCP::Proxy#on_client_disconnect (method)">Ronin::Support::Network::TCP::Proxy#on_client_disconnect</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+  <h2>Constant Summary</h2>
+  
+  <h3 class="inherited">Constants inherited
+     from <span class='object_link'><a href="../Proxy.html" title="Ronin::Support::Network::Proxy (class)">Proxy</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Proxy.html#DEFAULT_BUFFER_SIZE-constant" title="Ronin::Support::Network::Proxy::DEFAULT_BUFFER_SIZE (constant)">Proxy::DEFAULT_BUFFER_SIZE</a></span>, <span class='object_link'><a href="../Proxy.html#DEFAULT_HOST-constant" title="Ronin::Support::Network::Proxy::DEFAULT_HOST (constant)">Proxy::DEFAULT_HOST</a></span></p>
+
+
+
+
+  <h2>Instance Attribute Summary</h2>
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="../SSL/Proxy.html" title="Ronin::Support::Network::SSL::Proxy (class)">SSL::Proxy</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../SSL/Proxy.html#ca_bundle-instance_method" title="Ronin::Support::Network::SSL::Proxy#ca_bundle (method)">#ca_bundle</a></span>, <span class='object_link'><a href="../SSL/Proxy.html#cert-instance_method" title="Ronin::Support::Network::SSL::Proxy#cert (method)">#cert</a></span>, <span class='object_link'><a href="../SSL/Proxy.html#cert_file-instance_method" title="Ronin::Support::Network::SSL::Proxy#cert_file (method)">#cert_file</a></span>, <span class='object_link'><a href="../SSL/Proxy.html#key-instance_method" title="Ronin::Support::Network::SSL::Proxy#key (method)">#key</a></span>, <span class='object_link'><a href="../SSL/Proxy.html#key_file-instance_method" title="Ronin::Support::Network::SSL::Proxy#key_file (method)">#key_file</a></span>, <span class='object_link'><a href="../SSL/Proxy.html#verify-instance_method" title="Ronin::Support::Network::SSL::Proxy#verify (method)">#verify</a></span>, <span class='object_link'><a href="../SSL/Proxy.html#version-instance_method" title="Ronin::Support::Network::SSL::Proxy#version (method)">#version</a></span></p>
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="../Proxy.html" title="Ronin::Support::Network::Proxy (class)">Proxy</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Proxy.html#buffer_size-instance_method" title="Ronin::Support::Network::Proxy#buffer_size (method)">#buffer_size</a></span>, <span class='object_link'><a href="../Proxy.html#connections-instance_method" title="Ronin::Support::Network::Proxy#connections (method)">#connections</a></span>, <span class='object_link'><a href="../Proxy.html#host-instance_method" title="Ronin::Support::Network::Proxy#host (method)">#host</a></span>, <span class='object_link'><a href="../Proxy.html#port-instance_method" title="Ronin::Support::Network::Proxy#port (method)">#port</a></span>, <span class='object_link'><a href="../Proxy.html#server_host-instance_method" title="Ronin::Support::Network::Proxy#server_host (method)">#server_host</a></span>, <span class='object_link'><a href="../Proxy.html#server_port-instance_method" title="Ronin::Support::Network::Proxy#server_port (method)">#server_port</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(version: 1.2, **kwargs)  &#x21d2; Proxy </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new TLS Proxy.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../SSL/Proxy.html" title="Ronin::Support::Network::SSL::Proxy (class)">SSL::Proxy</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../SSL/Proxy.html#accept_client_connection-instance_method" title="Ronin::Support::Network::SSL::Proxy#accept_client_connection (method)">#accept_client_connection</a></span>, <span class='object_link'><a href="../SSL/Proxy.html#open_server_connection-instance_method" title="Ronin::Support::Network::SSL::Proxy#open_server_connection (method)">#open_server_connection</a></span>, <span class='object_link'><a href="../SSL/Proxy.html#recv-instance_method" title="Ronin::Support::Network::SSL::Proxy#recv (method)">#recv</a></span>, <span class='object_link'><a href="../SSL/Proxy.html#send-instance_method" title="Ronin::Support::Network::SSL::Proxy#send (method)">#send</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../TCP/Proxy.html" title="Ronin::Support::Network::TCP::Proxy (class)">Ronin::Support::Network::TCP::Proxy</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../TCP/Proxy.html#accept_client_connection-instance_method" title="Ronin::Support::Network::TCP::Proxy#accept_client_connection (method)">#accept_client_connection</a></span>, <span class='object_link'><a href="../TCP/Proxy.html#client_connect-instance_method" title="Ronin::Support::Network::TCP::Proxy#client_connect (method)">#client_connect</a></span>, <span class='object_link'><a href="../TCP/Proxy.html#client_disconnect-instance_method" title="Ronin::Support::Network::TCP::Proxy#client_disconnect (method)">#client_disconnect</a></span>, <span class='object_link'><a href="../TCP/Proxy.html#close_client_connection-instance_method" title="Ronin::Support::Network::TCP::Proxy#close_client_connection (method)">#close_client_connection</a></span>, <span class='object_link'><a href="../TCP/Proxy.html#close_proxy-instance_method" title="Ronin::Support::Network::TCP::Proxy#close_proxy (method)">#close_proxy</a></span>, <span class='object_link'><a href="../TCP/Proxy.html#close_server_connection-instance_method" title="Ronin::Support::Network::TCP::Proxy#close_server_connection (method)">#close_server_connection</a></span>, <span class='object_link'><a href="../TCP/Proxy.html#on_client_connect-instance_method" title="Ronin::Support::Network::TCP::Proxy#on_client_connect (method)">#on_client_connect</a></span>, <span class='object_link'><a href="../TCP/Proxy.html#on_client_disconnect-instance_method" title="Ronin::Support::Network::TCP::Proxy#on_client_disconnect (method)">#on_client_disconnect</a></span>, <span class='object_link'><a href="../TCP/Proxy.html#on_server_connect-instance_method" title="Ronin::Support::Network::TCP::Proxy#on_server_connect (method)">#on_server_connect</a></span>, <span class='object_link'><a href="../TCP/Proxy.html#on_server_disconnect-instance_method" title="Ronin::Support::Network::TCP::Proxy#on_server_disconnect (method)">#on_server_disconnect</a></span>, <span class='object_link'><a href="../TCP/Proxy.html#open-instance_method" title="Ronin::Support::Network::TCP::Proxy#open (method)">#open</a></span>, <span class='object_link'><a href="../TCP/Proxy.html#open_server_connection-instance_method" title="Ronin::Support::Network::TCP::Proxy#open_server_connection (method)">#open_server_connection</a></span>, <span class='object_link'><a href="../TCP/Proxy.html#poll-instance_method" title="Ronin::Support::Network::TCP::Proxy#poll (method)">#poll</a></span>, <span class='object_link'><a href="../TCP/Proxy.html#recv-instance_method" title="Ronin::Support::Network::TCP::Proxy#recv (method)">#recv</a></span>, <span class='object_link'><a href="../TCP/Proxy.html#send-instance_method" title="Ronin::Support::Network::TCP::Proxy#send (method)">#send</a></span>, <span class='object_link'><a href="../TCP/Proxy.html#server_connect-instance_method" title="Ronin::Support::Network::TCP::Proxy#server_connect (method)">#server_connect</a></span>, <span class='object_link'><a href="../TCP/Proxy.html#server_disconnect-instance_method" title="Ronin::Support::Network::TCP::Proxy#server_disconnect (method)">#server_disconnect</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Proxy.html" title="Ronin::Support::Network::Proxy (class)">Proxy</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Proxy.html#callback-instance_method" title="Ronin::Support::Network::Proxy#callback (method)">#callback</a></span>, <span class='object_link'><a href="../Proxy.html#client_connection_for-instance_method" title="Ronin::Support::Network::Proxy#client_connection_for (method)">#client_connection_for</a></span>, <span class='object_link'><a href="../Proxy.html#client_connections-instance_method" title="Ronin::Support::Network::Proxy#client_connections (method)">#client_connections</a></span>, <span class='object_link'><a href="../Proxy.html#client_data-instance_method" title="Ronin::Support::Network::Proxy#client_data (method)">#client_data</a></span>, <span class='object_link'><a href="../Proxy.html#close-instance_method" title="Ronin::Support::Network::Proxy#close (method)">#close</a></span>, <span class='object_link'><a href="../Proxy.html#close!-instance_method" title="Ronin::Support::Network::Proxy#close! (method)">#close!</a></span>, <span class='object_link'><a href="../Proxy.html#close_client_connection-instance_method" title="Ronin::Support::Network::Proxy#close_client_connection (method)">#close_client_connection</a></span>, <span class='object_link'><a href="../Proxy.html#close_connection-instance_method" title="Ronin::Support::Network::Proxy#close_connection (method)">#close_connection</a></span>, <span class='object_link'><a href="../Proxy.html#close_connections-instance_method" title="Ronin::Support::Network::Proxy#close_connections (method)">#close_connections</a></span>, <span class='object_link'><a href="../Proxy.html#close_proxy-instance_method" title="Ronin::Support::Network::Proxy#close_proxy (method)">#close_proxy</a></span>, <span class='object_link'><a href="../Proxy.html#close_server_connection-instance_method" title="Ronin::Support::Network::Proxy#close_server_connection (method)">#close_server_connection</a></span>, <span class='object_link'><a href="../Proxy.html#ignore!-instance_method" title="Ronin::Support::Network::Proxy#ignore! (method)">#ignore!</a></span>, <span class='object_link'><a href="../Proxy.html#inspect-instance_method" title="Ronin::Support::Network::Proxy#inspect (method)">#inspect</a></span>, <span class='object_link'><a href="../Proxy.html#listen-instance_method" title="Ronin::Support::Network::Proxy#listen (method)">#listen</a></span>, <span class='object_link'><a href="../Proxy.html#on_client_data-instance_method" title="Ronin::Support::Network::Proxy#on_client_data (method)">#on_client_data</a></span>, <span class='object_link'><a href="../Proxy.html#on_data-instance_method" title="Ronin::Support::Network::Proxy#on_data (method)">#on_data</a></span>, <span class='object_link'><a href="../Proxy.html#on_server_data-instance_method" title="Ronin::Support::Network::Proxy#on_server_data (method)">#on_server_data</a></span>, <span class='object_link'><a href="../Proxy.html#open-instance_method" title="Ronin::Support::Network::Proxy#open (method)">#open</a></span>, <span class='object_link'><a href="../Proxy.html#open_server_connection-instance_method" title="Ronin::Support::Network::Proxy#open_server_connection (method)">#open_server_connection</a></span>, <span class='object_link'><a href="../Proxy.html#poll-instance_method" title="Ronin::Support::Network::Proxy#poll (method)">#poll</a></span>, <span class='object_link'><a href="../Proxy.html#recv-instance_method" title="Ronin::Support::Network::Proxy#recv (method)">#recv</a></span>, <span class='object_link'><a href="../Proxy.html#reset!-instance_method" title="Ronin::Support::Network::Proxy#reset! (method)">#reset!</a></span>, <span class='object_link'><a href="../Proxy.html#reset_connection-instance_method" title="Ronin::Support::Network::Proxy#reset_connection (method)">#reset_connection</a></span>, <span class='object_link'><a href="../Proxy.html#send-instance_method" title="Ronin::Support::Network::Proxy#send (method)">#send</a></span>, <span class='object_link'><a href="../Proxy.html#server_connection_for-instance_method" title="Ronin::Support::Network::Proxy#server_connection_for (method)">#server_connection_for</a></span>, <span class='object_link'><a href="../Proxy.html#server_connections-instance_method" title="Ronin::Support::Network::Proxy#server_connections (method)">#server_connections</a></span>, <span class='object_link'><a href="../Proxy.html#server_data-instance_method" title="Ronin::Support::Network::Proxy#server_data (method)">#server_data</a></span>, <span class='object_link'><a href="../Proxy.html#start-class_method" title="Ronin::Support::Network::Proxy.start (method)">start</a></span>, <span class='object_link'><a href="../Proxy.html#start-instance_method" title="Ronin::Support::Network::Proxy#start (method)">#start</a></span>, <span class='object_link'><a href="../Proxy.html#stop-instance_method" title="Ronin::Support::Network::Proxy#stop (method)">#stop</a></span>, <span class='object_link'><a href="../Proxy.html#stop!-instance_method" title="Ronin::Support::Network::Proxy#stop! (method)">#stop!</a></span>, <span class='object_link'><a href="../Proxy.html#to_s-instance_method" title="Ronin::Support::Network::Proxy#to_s (method)">#to_s</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(version: 1.2, **kwargs)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Support::Network::TLS::Proxy (class)">Proxy</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new TLS Proxy.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>version</span>
+      
+      
+        <span class='type'>(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>1.2</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The TLS version to use.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <span class='object_link'><a href="../SSL/Proxy.html#initialize-instance_method" title="Ronin::Support::Network::SSL::Proxy#initialize (method)">SSL::Proxy#initialize</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+127
+128
+129</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tls/proxy.rb', line 127</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>version:</span> <span class='float'>1.2</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='label'>version:</span> <span class='id identifier rubyid_version'>version</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+</div>
+
+      <div id="footer">
+  Generated on Sun Jan  1 18:31:25 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.28 (ruby-3.1.3).
+</div>
+
+    </div>
+  </body>
+</html>

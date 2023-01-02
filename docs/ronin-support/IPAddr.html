@@ -69,10 +69,10 @@
   <dl>
     <dt>Inherits:</dt>
     <dd>
-      <span class="inheritName"><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></span>
+      <span class="inheritName">Object</span>
       
         <ul class="fullTree">
-          <li><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></li>
+          <li>Object</li>
           
             <li class="next">IPAddr</li>
           
@@ -99,11 +99,15 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/ronin/extensions/ip_addr.rb</dd>
+    <dd>lib/ronin/support/core_ext/ipaddr.rb</dd>
   </dl>
   
 </div>
 
+<div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="Ronin/Support/Network/IP.html" title="Ronin::Support::Network::IP (class)">Ronin::Support::Network::IP</a></span>, <span class='object_link'><a href="Ronin/Support/Network/IPRange/CIDR.html" title="Ronin::Support::Network::IPRange::CIDR (class)">Ronin::Support::Network::IPRange::CIDR</a></span></p>
+</div>
 
   
     <h2>
@@ -116,7 +120,11 @@
         <dt id="MASKS-constant" class="">MASKS =
           <div class="docstring">
   <div class="discussion">
-    <p>Socket families and IP address masks</p>
+    <p class="note private">
+  <strong>This constant is part of a private API.</strong>
+  You should avoid using this constant if possible, as it may be removed or be changed in the future.
+</p>
+<p>Socket families and IP address masks</p>
 
 
   </div>
@@ -140,61 +148,6 @@
 
 
 
-  
-    <h2>
-      Class Method Summary
-      <small><a href="#" class="summary_toggle">collapse</a></small>
-    </h2>
-
-    <ul class="summary">
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#each-class_method" title="each (class method)">.<strong>each</strong>(cidr_or_glob) {|ip| ... } &#x21d2; nil </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Iterates over each IP address within the IP Address range.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#extract-class_method" title="extract (class method)">.<strong>extract</strong>(text, version = nil) {|ip| ... } &#x21d2; Array&lt;String&gt; </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Extracts IP Addresses from text.</p>
-</div></span>
-  
-</li>
-
-      
-    </ul>
   
     <h2>
       Instance Method Summary
@@ -226,29 +179,6 @@
 </li>
 
       
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#lookup-instance_method" title="#lookup (instance method)">#<strong>lookup</strong>(nameserver = nil)  &#x21d2; Array&lt;String&gt; </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>Resolves the host-names for the IP address.</p>
-</div></span>
-  
-</li>
-
-      
     </ul>
   
 
@@ -265,422 +195,6 @@
   <p class="inherited"><span class='object_link'><a href="Enumerable.html#map_hash-instance_method" title="Enumerable#map_hash (method)">#map_hash</a></span></p>
 
 
-  <div id="class_method_details" class="method_details_list">
-    <h2>Class Method Details</h2>
-
-    
-      <div class="method_details first">
-  <h3 class="signature first" id="each-class_method">
-  
-    .<strong>each</strong>(cidr_or_glob) {|ip| ... } &#x21d2; <tt>nil</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>Iterates over each IP address within the IP Address range. Supports
-both IPv4 and IPv6 address ranges.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-  <div class="examples">
-    <p class="tag_title">Examples:</p>
-    
-      
-        <p class="example_title"><div class='inline'><p>Enumerate through a CIDR range</p>
-</div></p>
-      
-      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="IPAddr (class)">IPAddr</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>10.1.1.1/24</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ip'>ip</span><span class='op'>|</span>
-  <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_ip'>ip</span>
-<span class='kw'>end</span></code></pre>
-    
-      
-        <p class="example_title"><div class='inline'><p>Enumerate through a globbed IP range</p>
-</div></p>
-      
-      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="IPAddr (class)">IPAddr</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>10.1.1-5,10-20.*</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ip'>ip</span><span class='op'>|</span>
-  <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_ip'>ip</span>
-<span class='kw'>end</span></code></pre>
-    
-      
-        <p class="example_title"><div class='inline'><p>Enumerate through a globbed IPv6 range</p>
-</div></p>
-      
-      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="IPAddr (class)">IPAddr</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>::ff::02-0a::c3</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ip'>ip</span><span class='op'>|</span>
-  <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_ip'>ip</span>
-<span class='kw'>end</span></code></pre>
-    
-  </div>
-<p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>cidr_or_glob</span>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The IP address range to iterate over.
-May be in standard CIDR notation or globbed format.</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Yields:</p>
-<ul class="yield">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>ip</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The block which will be passed each IP address contained within the
-IP address range.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Yield Parameters:</p>
-<ul class="yieldparam">
-  
-    <li>
-      
-        <span class='name'>ip</span>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>An IP address within the IP address range.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>nil</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/extensions/ip_addr.rb', line 115</span>
-
-<span class='kw'>def</span> <span class='const'><span class='object_link'><a href="" title="IPAddr (class)">IPAddr</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='id identifier rubyid_cidr_or_glob'>cidr_or_glob</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id identifier rubyid_cidr_or_glob'>cidr_or_glob</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>*</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='op'>||</span>
-          <span class='id identifier rubyid_cidr_or_glob'>cidr_or_glob</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>,</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='op'>||</span>
-          <span class='id identifier rubyid_cidr_or_glob'>cidr_or_glob</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="" title="IPAddr (class)">IPAddr</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_cidr_or_glob'>cidr_or_glob</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-
-  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='comma'>,</span><span class='id identifier rubyid_cidr_or_glob'>cidr_or_glob</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block'>block</span>
-
-  <span class='kw'>if</span> <span class='id identifier rubyid_cidr_or_glob'>cidr_or_glob</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>::</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_separator'>separator</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>::</span><span class='tstring_end'>&#39;</span></span>
-    <span class='id identifier rubyid_base'>base</span>      <span class='op'>=</span> <span class='int'>16</span>
-
-    <span class='id identifier rubyid_prefix'>prefix</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_cidr_or_glob'>cidr_or_glob</span><span class='period'>.</span><span class='id identifier rubyid_start_with?'>start_with?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>::</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>::</span><span class='tstring_end'>&#39;</span></span>
-             <span class='kw'>else</span>                                   <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
-             <span class='kw'>end</span>
-
-    <span class='id identifier rubyid_format'>format</span> <span class='op'>=</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_address'>address</span><span class='op'>|</span>
-      <span class='id identifier rubyid_prefix'>prefix</span> <span class='op'>+</span> <span class='id identifier rubyid_address'>address</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%.2x</span><span class='tstring_end'>&#39;</span></span> <span class='op'>%</span> <span class='id identifier rubyid_i'>i</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>::</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-    <span class='rbrace'>}</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_separator'>separator</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span>
-    <span class='id identifier rubyid_base'>base</span>      <span class='op'>=</span> <span class='int'>10</span>
-    <span class='id identifier rubyid_format'>format</span>    <span class='op'>=</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_address'>address</span><span class='op'>|</span> <span class='id identifier rubyid_address'>address</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='rbrace'>}</span>
-  <span class='kw'>end</span>
-
-  <span class='comment'># split the address
-</span>  <span class='id identifier rubyid_segments'>segments</span> <span class='op'>=</span> <span class='id identifier rubyid_cidr_or_glob'>cidr_or_glob</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='id identifier rubyid_separator'>separator</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_ranges'>ranges</span>   <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  
-  <span class='comment'># map the components of the address to numeric ranges
-</span>  <span class='id identifier rubyid_segments'>segments</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_segment'>segment</span><span class='op'>|</span>
-    <span class='kw'>next</span> <span class='kw'>if</span> <span class='id identifier rubyid_segment'>segment</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-
-    <span class='id identifier rubyid_ranges'>ranges</span> <span class='op'>&lt;&lt;</span> <span class='kw'>if</span> <span class='id identifier rubyid_segment'>segment</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>*</span><span class='tstring_end'>&#39;</span></span>
-                <span class='lparen'>(</span><span class='int'>1</span><span class='op'>..</span><span class='int'>254</span><span class='rparen'>)</span>
-              <span class='kw'>else</span>
-                <span class='id identifier rubyid_segment'>segment</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>,</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_octet'>octet</span><span class='op'>|</span>
-                  <span class='kw'>if</span> <span class='id identifier rubyid_octet'>octet</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-                    <span class='id identifier rubyid_start'>start</span><span class='comma'>,</span> <span class='id identifier rubyid_stop'>stop</span> <span class='op'>=</span> <span class='id identifier rubyid_octet'>octet</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='int'>2</span><span class='rparen'>)</span>
-
-                    <span class='lparen'>(</span><span class='id identifier rubyid_start'>start</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='rparen'>)</span><span class='op'>..</span><span class='id identifier rubyid_stop'>stop</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span>
-                  <span class='kw'>else</span>
-                    <span class='id identifier rubyid_octet'>octet</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='rparen'>)</span>
-                  <span class='kw'>end</span>
-                <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span>
-              <span class='kw'>end</span>
-  <span class='kw'>end</span>
-
-  <span class='comment'># cycle through the address ranges
-</span>  <span class='id identifier rubyid_ranges'>ranges</span><span class='period'>.</span><span class='id identifier rubyid_comprehension'>comprehension</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_address'>address</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_format'>format</span><span class='lbracket'>[</span><span class='id identifier rubyid_address'>address</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
-  <span class='kw'>return</span> <span class='kw'>nil</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="extract-class_method">
-  
-    .<strong>extract</strong>(text, version = nil) {|ip| ... } &#x21d2; <tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="String.html" title="String (class)">String</a></span>&gt;</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>Extracts IP Addresses from text.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-  <div class="examples">
-    <p class="tag_title">Examples:</p>
-    
-      
-      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="IPAddr (class)">IPAddr</a></span></span><span class='period'>.</span><span class='id identifier rubyid_extract'>extract</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Host: 127.0.0.1\n\rHost: 10.1.1.1\n\r</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-<span class='comment'># =&gt; [&quot;127.0.0.1&quot;, &quot;10.1.1.1&quot;]</span></code></pre>
-    
-      
-        <p class="example_title"><div class='inline'><p>Extract only IPv4 addresses from a large amount of text:</p>
-</div></p>
-      
-      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="IPAddr (class)">IPAddr</a></span></span><span class='period'>.</span><span class='id identifier rubyid_extract'>extract</span><span class='lparen'>(</span><span class='id identifier rubyid_text'>text</span><span class='comma'>,</span><span class='symbol'>:v4</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ip'>ip</span><span class='op'>|</span>
-  <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_ip'>ip</span>
-<span class='kw'>end</span></code></pre>
-    
-  </div>
-<p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>text</span>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The text to scan for IP Addresses.</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>version</span>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></tt>, <tt>Symbol</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>The version of IP Address to scan for (<code>4</code>, <code>6</code>, <code>:v4</code> or <code>:v6</code>).</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Yields:</p>
-<ul class="yield">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>ip</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The given block will be passed each extracted IP Address.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Yield Parameters:</p>
-<ul class="yieldparam">
-  
-    <li>
-      
-        <span class='name'>ip</span>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>An IP Address from the text.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="String.html" title="String (class)">String</a></span>&gt;</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The IP Addresses found in the text.</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/extensions/ip_addr.rb', line 65</span>
-
-<span class='kw'>def</span> <span class='const'><span class='object_link'><a href="" title="IPAddr (class)">IPAddr</a></span></span><span class='period'>.</span><span class='id identifier rubyid_extract'>extract</span><span class='lparen'>(</span><span class='id identifier rubyid_text'>text</span><span class='comma'>,</span><span class='id identifier rubyid_version'>version</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='comma'>,</span><span class='id identifier rubyid_text'>text</span><span class='comma'>,</span><span class='id identifier rubyid_version'>version</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
-
-  <span class='id identifier rubyid_regexp'>regexp</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_version'>version</span>
-           <span class='kw'>when</span> <span class='symbol'>:ipv4</span><span class='comma'>,</span> <span class='symbol'>:v4</span><span class='comma'>,</span> <span class='int'>4</span> <span class='kw'>then</span> <span class='const'><span class='object_link'><a href="Regexp.html" title="Regexp (class)">Regexp</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Regexp.html#IPv4-constant" title="Regexp::IPv4 (constant)">IPv4</a></span></span>
-           <span class='kw'>when</span> <span class='symbol'>:ipv6</span><span class='comma'>,</span> <span class='symbol'>:v6</span><span class='comma'>,</span> <span class='int'>6</span> <span class='kw'>then</span> <span class='const'><span class='object_link'><a href="Regexp.html" title="Regexp (class)">Regexp</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Regexp.html#IPv6-constant" title="Regexp::IPv6 (constant)">IPv6</a></span></span>
-           <span class='kw'>else</span>                    <span class='const'><span class='object_link'><a href="Regexp.html" title="Regexp (class)">Regexp</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Regexp.html#IP-constant" title="Regexp::IP (constant)">IP</a></span></span>
-           <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_text'>text</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='id identifier rubyid_regexp'>regexp</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_match'>match</span><span class='op'>|</span>
-    <span class='kw'>yield</span> <span class='id identifier rubyid_match'>match</span>
-  <span class='kw'>end</span>
-
-  <span class='kw'>return</span> <span class='kw'>nil</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
-
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
 
@@ -688,7 +202,7 @@ IP address range.</p>
       <div class="method_details first">
   <h3 class="signature first" id="each-instance_method">
   
-    #<strong>each</strong> {|ip| ... } &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+    #<strong>each</strong> {|ip| ... } &#x21d2; <tt>Object</tt> 
   
 
   
@@ -760,20 +274,20 @@ netmask of the IPAddr object.</p>
       <pre class="lines">
 
 
-204
-205
-206
-207
-208
-209
-210
-211
-212
-213
-214</pre>
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/extensions/ip_addr.rb', line 204</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/core_ext/ipaddr.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -791,92 +305,14 @@ netmask of the IPAddr object.</p>
 </table>
 </div>
     
-      <div class="method_details ">
-  <h3 class="signature " id="lookup-instance_method">
-  
-    #<strong>lookup</strong>(nameserver = nil)  &#x21d2; <tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="String.html" title="String (class)">String</a></span>&gt;</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p>Resolves the host-names for the IP address.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>nameserver</span>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
-      
-      
-        &mdash;
-        <div class='inline'><p>The optional nameserver to query.</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="String.html" title="String (class)">String</a></span>&gt;</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The host-names for the IP address.</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-180
-181
-182</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/extensions/ip_addr.rb', line 180</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_lookup'>lookup</span><span class='lparen'>(</span><span class='id identifier rubyid_nameserver'>nameserver</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='const'><span class='object_link'><a href="Resolv.html" title="Resolv (class)">Resolv</a></span></span><span class='period'>.</span><span class='id identifier rubyid_resolver'><span class='object_link'><a href="Resolv.html#resolver-class_method" title="Resolv.resolver (method)">resolver</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_nameserver'>nameserver</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_getnames'>getnames</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
   </div>
 
 </div>
 
       <div id="footer">
-  Generated on Sun Feb 28 17:05:08 2021 by
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.26 (ruby-2.7.2).
+  Generated on Sun Jan  1 18:31:22 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.28 (ruby-3.1.3).
 </div>
 
     </div>

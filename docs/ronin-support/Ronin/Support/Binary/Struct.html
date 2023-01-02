@@ -1,0 +1,2949 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Ronin::Support::Binary::Struct
+  
+    &mdash; ronin-support Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::Support::Binary::Struct";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span>
+     &raquo; 
+    <span class="title">Struct</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Ronin::Support::Binary::Struct
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="Memory.html" title="Ronin::Support::Binary::Memory (class)">Memory</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Memory.html" title="Ronin::Support::Binary::Memory (class)">Memory</a></span></li>
+          
+            <li class="next">Ronin::Support::Binary::Struct</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  <dl>
+      <dt>Extended by:</dt>
+      <dd><span class='object_link'><a href="CTypes/Mixin.html" title="Ronin::Support::Binary::CTypes::Mixin (module)">CTypes::Mixin</a></span></dd>
+  </dl>
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/support/binary/struct.rb<span class="defines">,<br />
+  lib/ronin/support/binary/struct/member.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>This class provides lazy memory mapped access to an underlying</p>
+</div>
+  </div>
+
+<p>Generic Binary Struct class.</p>
+
+<p>buffer. This means values are decoded/encoded each time they are read
+or written to.</p>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="defining-members">Defining Members</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Point</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'>Struct</span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:x</span><span class='comma'>,</span> <span class='symbol'>:int32</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:y</span><span class='comma'>,</span> <span class='symbol'>:int32</span>
+
+<span class='kw'>end</span>
+</code></pre>
+
+<h3 id="initializing-structs">Initializing Structs</h3>
+
+<p>From a Hash:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_point'>point</span> <span class='op'>=</span> <span class='const'>Point</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>x:</span> <span class='int'>1</span><span class='comma'>,</span> <span class='label'>y:</span> <span class='int'>2</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>From a buffer:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_point'>point</span> <span class='op'>=</span> <span class='const'>Point</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\x01\x00\x00\x00\xFF\xFF\xFF\xFF</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+</code></pre>
+
+<h3 id="reading-fields">Reading Fields</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_point'>point</span> <span class='op'>=</span> <span class='const'>Point</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\x01\x00\x00\x00\xFF\xFF\xFF\xFF</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_point'>point</span><span class='lbracket'>[</span><span class='symbol'>:x</span><span class='rbracket'>]</span>
+<span class='comment'># =&gt; 1
+</span><span class='id identifier rubyid_point'>point</span><span class='lbracket'>[</span><span class='symbol'>:y</span><span class='rbracket'>]</span>
+<span class='comment'># =&gt; -1
+</span>
+<span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span>
+<span class='comment'># =&gt; 1
+</span><span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span>
+<span class='comment'># =&gt; -1
+</span></code></pre>
+
+<h3 id="packing-structs">Packing Structs</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Point</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'>Struct</span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:x</span><span class='comma'>,</span> <span class='symbol'>:int32</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:y</span><span class='comma'>,</span> <span class='symbol'>:int32</span>
+
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_point'>point</span> <span class='op'>=</span> <span class='const'>Point</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>x:</span> <span class='int'>10</span><span class='comma'>,</span> <span class='label'>y:</span> <span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span>
+<span class='comment'># =&gt; &quot;\n\x00\x00\x00\xFF\xFF\xFF\xFF&quot;
+</span></code></pre>
+
+<h3 id="unpacking-structs">Unpacking Structs</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Point</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'>Struct</span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:x</span><span class='comma'>,</span> <span class='symbol'>:int32</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:y</span><span class='comma'>,</span> <span class='symbol'>:int32</span>
+
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_point'>point</span> <span class='op'>=</span> <span class='const'>Point</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\x00\x00\x00\x01\xFF\xFF\xFF\xFF</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span>
+<span class='comment'># =&gt; 1
+</span><span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span>
+<span class='comment'># =&gt; -1
+</span></code></pre>
+
+<h3 id="inheriting-structs">Inheriting Structs</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Point</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'>Struct</span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:x</span><span class='comma'>,</span> <span class='symbol'>:int32</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:y</span><span class='comma'>,</span> <span class='symbol'>:int32</span>
+
+<span class='kw'>end</span>
+
+<span class='kw'>class</span> <span class='const'>Point3D</span> <span class='op'>&lt;</span> <span class='const'>Point</span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:z</span><span class='comma'>,</span> <span class='symbol'>:int32</span>
+
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_point'>point</span>   <span class='op'>=</span> <span class='const'>Point</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>x:</span> <span class='int'>100</span><span class='comma'>,</span> <span class='label'>y:</span> <span class='int'>42</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_point3d'>point3d</span> <span class='op'>=</span> <span class='const'>Point3D</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>x:</span> <span class='int'>100</span><span class='comma'>,</span> <span class='label'>y:</span> <span class='int'>42</span><span class='comma'>,</span> <span class='label'>z:</span> <span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span>
+</code></pre>
+
+<h3 id="array-fields">Array Fields</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>MyStruct</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'>Struct</span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:x</span><span class='comma'>,</span>    <span class='symbol'>:uint32</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:nums</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:uint8</span><span class='comma'>,</span> <span class='int'>10</span><span class='rbracket'>]</span>
+
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_struct'>struct</span> <span class='op'>=</span> <span class='const'>MyStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_nums'>nums</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='int'>0x01</span><span class='comma'>,</span> <span class='int'>0x02</span><span class='comma'>,</span> <span class='int'>0x03</span><span class='comma'>,</span> <span class='int'>0x04</span><span class='rbracket'>]</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span>
+<span class='comment'># =&gt; &quot;\x00\x00\x00\x00\x01\x02\x03\x04\x00\x00\x00\x00\x00\x00&quot;
+</span></code></pre>
+
+<h3 id="unbounded-array-fields">Unbounded Array Fields</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>MyStruct</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'>Struct</span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:length</span><span class='comma'>,</span>  <span class='symbol'>:uint32</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:payload</span><span class='comma'>,</span> <span class='lparen'>(</span><span class='symbol'>:uint8</span><span class='op'>..</span><span class='rparen'>)</span>
+
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_struct'>struct</span> <span class='op'>=</span> <span class='const'>MyStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='int'>0x01</span><span class='comma'>,</span> <span class='int'>0x02</span><span class='comma'>,</span> <span class='int'>0x03</span><span class='comma'>,</span> <span class='int'>0x04</span><span class='comma'>,</span> <span class='int'>0x05</span><span class='comma'>,</span> <span class='int'>0x06</span><span class='comma'>,</span> <span class='int'>0x07</span><span class='comma'>,</span> <span class='int'>0x08</span><span class='rbracket'>]</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span>
+<span class='comment'># =&gt; &quot;\x00\x00\x00\x00\x01\x02\x03\x04\x05\x06\a\b&quot;
+</span></code></pre>
+
+<h3 id="struct-endianness">Struct Endianness</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>MyStruct</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'>Struct</span>
+
+  <span class='id identifier rubyid_platform'>platform</span> <span class='label'>endian:</span> <span class='symbol'>:big</span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:x</span><span class='comma'>,</span> <span class='symbol'>:uint32</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:y</span><span class='comma'>,</span> <span class='symbol'>:uint32</span>
+
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_struct'>struct</span> <span class='op'>=</span> <span class='const'>MyStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span> <span class='op'>=</span> <span class='int'>0xAABB</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span> <span class='op'>=</span> <span class='int'>0xCCDD</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span>
+<span class='comment'># =&gt; &quot;\x00\x00\xAA\xBB\x00\x00\xCC\xDD&quot;
+</span></code></pre>
+
+<h3 id="struct-architecture">Struct Architecture</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>MyStruct</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'>Struct</span>
+
+  <span class='id identifier rubyid_platform'>platform</span> <span class='label'>arch:</span> <span class='symbol'>:arm64_be</span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:x</span><span class='comma'>,</span> <span class='symbol'>:int</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:y</span><span class='comma'>,</span> <span class='symbol'>:int</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:f</span><span class='comma'>,</span> <span class='symbol'>:double</span>
+
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_struct'>struct</span> <span class='op'>=</span> <span class='const'>MyStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span> <span class='op'>=</span> <span class='int'>100</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span> <span class='op'>=</span> <span class='op'>-</span><span class='int'>100</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_f'>f</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='int'>90</span> <span class='op'>/</span> <span class='const'>Math</span><span class='op'>::</span><span class='const'>PI</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span>
+<span class='comment'># =&gt; &quot;\x00\x00\x00d\xFF\xFF\xFF\x9C@&lt;\xA5\xDC\x1Ac\xC1\xF8&quot;
+</span></code></pre>
+
+<h3 id="struct-operating-system-os">Struct Operating System (OS)</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>MyStruct</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'>Struct</span>
+
+  <span class='id identifier rubyid_platform'>platform</span> <span class='label'>arch:</span> <span class='symbol'>:x86_64</span><span class='comma'>,</span> <span class='label'>os:</span> <span class='symbol'>:windows</span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:x</span><span class='comma'>,</span> <span class='symbol'>:long</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:y</span><span class='comma'>,</span> <span class='symbol'>:long</span>
+
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_struct'>struct</span> <span class='op'>=</span> <span class='const'>MyStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span> <span class='op'>=</span> <span class='int'>255</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span> <span class='op'>=</span> <span class='op'>-</span><span class='int'>1</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span>
+<span class='comment'># =&gt; &quot;\xFF\x00\x00\x00\xFF\xFF\xFF\xFF&quot;
+</span></code></pre>
+
+<h3 id="struct-alignment">Struct Alignment</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>Pixel</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'>Struct</span>
+
+  <span class='id identifier rubyid_align'>align</span> <span class='int'>4</span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:r</span><span class='comma'>,</span> <span class='symbol'>:uint8</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:g</span><span class='comma'>,</span> <span class='symbol'>:uint8</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:b</span><span class='comma'>,</span> <span class='symbol'>:uint8</span>
+
+<span class='kw'>end</span>
+
+<span class='kw'>class</span> <span class='const'>PixelBuf</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'>Struct</span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:count</span><span class='comma'>,</span> <span class='symbol'>:uint8</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:pixels</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='const'>Pixel</span><span class='comma'>,</span> <span class='int'>255</span><span class='rbracket'>]</span>
+
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_pixelbuf'>pixelbuf</span> <span class='op'>=</span> <span class='const'>PixelBuf</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_pixelbuf'>pixelbuf</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='op'>=</span> <span class='int'>2</span>
+<span class='id identifier rubyid_pixelbuf'>pixelbuf</span><span class='period'>.</span><span class='id identifier rubyid_pixels'>pixels</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_r'>r</span> <span class='op'>=</span> <span class='int'>0xAA</span>
+<span class='id identifier rubyid_pixelbuf'>pixelbuf</span><span class='period'>.</span><span class='id identifier rubyid_pixels'>pixels</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_g'>g</span> <span class='op'>=</span> <span class='int'>0xBB</span>
+<span class='id identifier rubyid_pixelbuf'>pixelbuf</span><span class='period'>.</span><span class='id identifier rubyid_pixels'>pixels</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_b'>b</span> <span class='op'>=</span> <span class='int'>0xCC</span>
+<span class='id identifier rubyid_pixelbuf'>pixelbuf</span><span class='period'>.</span><span class='id identifier rubyid_pixels'>pixels</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_r'>r</span> <span class='op'>=</span> <span class='int'>0xAA</span>
+<span class='id identifier rubyid_pixelbuf'>pixelbuf</span><span class='period'>.</span><span class='id identifier rubyid_pixels'>pixels</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_g'>g</span> <span class='op'>=</span> <span class='int'>0xBB</span>
+<span class='id identifier rubyid_pixelbuf'>pixelbuf</span><span class='period'>.</span><span class='id identifier rubyid_pixels'>pixels</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_b'>b</span> <span class='op'>=</span> <span class='int'>0xCC</span>
+<span class='id identifier rubyid_pixelbuf'>pixelbuf</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span>
+<span class='comment'># =&gt; &quot;\x02\x00\x00\x00\xAA\xBB\xCC\xAA\xBB\xCC...&quot;
+</span></code></pre>
+
+<h3 id="disable-struct-padding">Disable Struct Padding</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>class</span> <span class='const'>MyStruct</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'>Struct</span>
+
+  <span class='id identifier rubyid_padding'>padding</span> <span class='kw'>false</span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:c</span><span class='comma'>,</span> <span class='symbol'>:char</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:i</span><span class='comma'>,</span> <span class='symbol'>:int32</span>
+
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_struct'>struct</span> <span class='op'>=</span> <span class='const'>MyStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_c'>c</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='op'>-</span><span class='int'>1</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span>
+<span class='comment'># =&gt; &quot;A\xFF\xFF\xFF\xFF&quot;
+</span></code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="Packet.html" title="Ronin::Support::Binary::Packet (class)">Packet</a></span>, <span class='object_link'><a href="Union.html" title="Ronin::Support::Binary::Union (class)">Union</a></span></p>
+</div>
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Struct/Member.html" title="Ronin::Support::Binary::Struct::Member (class)">Member</a></span>
+    
+  
+</p>
+
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#type-instance_method" title="#type (instance method)">#<strong>type</strong>  &#x21d2; CTypes::StructType </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>The type system used by the struct.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="CTypes/Mixin.html" title="Ronin::Support::Binary::CTypes::Mixin (module)">CTypes::Mixin</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="CTypes/Mixin.html#arch-instance_method" title="Ronin::Support::Binary::CTypes::Mixin#arch (method)">#arch</a></span>, <span class='object_link'><a href="CTypes/Mixin.html#endian-instance_method" title="Ronin::Support::Binary::CTypes::Mixin#endian (method)">#endian</a></span>, <span class='object_link'><a href="CTypes/Mixin.html#os-instance_method" title="Ronin::Support::Binary::CTypes::Mixin#os (method)">#os</a></span>, <span class='object_link'><a href="CTypes/Mixin.html#type_resolver-instance_method" title="Ronin::Support::Binary::CTypes::Mixin#type_resolver (method)">#type_resolver</a></span>, <span class='object_link'><a href="CTypes/Mixin.html#type_system-instance_method" title="Ronin::Support::Binary::CTypes::Mixin#type_system (method)">#type_system</a></span></p>
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Memory.html" title="Ronin::Support::Binary::Memory (class)">Memory</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Memory.html#string-instance_method" title="Ronin::Support::Binary::Memory#string (method)">#string</a></span></p>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#align-class_method" title="align (class method)">.<strong>align</strong>(new_alignment)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets the alignment of the struct.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#alignment-class_method" title="alignment (class method)">.<strong>alignment</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The alignment of the struct.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_member%3F-class_method" title="has_member? (class method)">.<strong>has_member?</strong>(name)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Determines if the struct has the given member.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#member-class_method" title="member (class method)">.<strong>member</strong>(name, type_signature, **kwargs)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Defines a member in the struct.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#members-class_method" title="members (class method)">.<strong>members</strong>  &#x21d2; Hash{Symbol =&gt; Member} </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The members in the struct.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#pack-class_method" title="pack (class method)">.<strong>pack</strong>(values)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Initializes the struct and then packs it.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#padding-class_method" title="padding (class method)">.<strong>padding</strong>(new_padding = nil)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets or sets whether the struct&#39;s members will have padding.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#platform-class_method" title="platform (class method)">.<strong>platform</strong>(endian: nil, arch: nil, os: nil)  &#x21d2; Hash{Symbol =&gt; Object} </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets or sets the struct&#39;s target platform.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read_from-class_method" title="read_from (class method)">.<strong>read_from</strong>(io)  &#x21d2; Struct </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads the struct from the IO stream.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#size-class_method" title="size (class method)">.<strong>size</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The size of the struct.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#translate-class_method" title="translate (class method)">.<strong>translate</strong>(endian: nil, arch: nil)  &#x21d2; Class&lt;Struct&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Translates the struct class using the given type system into a new struct class.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#type-class_method" title="type (class method)">.<strong>type</strong>  &#x21d2; CTypes::StructObjectType </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The type for the struct class.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#type_resolver-class_method" title="type_resolver (class method)">.<strong>type_resolver</strong>  &#x21d2; CTypes::TypeResolver </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The type resolver using <span class='object_link'><a href="#type_system-class_method" title="Ronin::Support::Binary::Struct.type_system (method)">Struct.type_system</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#type_system-class_method" title="type_system (class method)">.<strong>type_system</strong>  &#x21d2; Types, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets or sets the struct&#39;s type system.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unpack-class_method" title="unpack (class method)">.<strong>unpack</strong>(data)  &#x21d2; Struct </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Unpacks data into the struct.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#[]-instance_method" title="#[] (instance method)">#<strong>[]</strong>(name)  &#x21d2; Integer, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads a value from the struct.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#[]=-instance_method" title="#[]= (instance method)">#<strong>[]=</strong>(name, value)  &#x21d2; Integer, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Writes a value to the struct.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#each-instance_method" title="#each (instance method)">#<strong>each</strong> {|name, value| ... } &#x21d2; Enumerator </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Enumerates over the members within the struct.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(buffer_or_values = {})  &#x21d2; Struct </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Initializes the struct.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_a-instance_method" title="#to_a (instance method)">#<strong>to_a</strong>  &#x21d2; ::Array&lt;Object&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Converts the struct to an Array of values.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_h-instance_method" title="#to_h (instance method)">#<strong>to_h</strong>  &#x21d2; Hash{Symbol =&gt; Object} </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Converts the struct to a Hash.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="CTypes/Mixin.html" title="Ronin::Support::Binary::CTypes::Mixin (module)">CTypes::Mixin</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="CTypes/Mixin.html#initialize_type_system-instance_method" title="Ronin::Support::Binary::CTypes::Mixin#initialize_type_system (method)">initialize_type_system</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Memory.html" title="Ronin::Support::Binary::Memory (class)">Memory</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Memory.html#%2B-instance_method" title="Ronin::Support::Binary::Memory#+ (method)">#+</a></span>, <span class='object_link'><a href="Memory.html#byteslice-instance_method" title="Ronin::Support::Binary::Memory#byteslice (method)">#byteslice</a></span>, <span class='object_link'><a href="Memory.html#clear-instance_method" title="Ronin::Support::Binary::Memory#clear (method)">#clear</a></span>, <span class='object_link'><a href="Memory.html#copy_from-instance_method" title="Ronin::Support::Binary::Memory#copy_from (method)">#copy_from</a></span>, <span class='object_link'><a href="Memory.html#copy_to-instance_method" title="Ronin::Support::Binary::Memory#copy_to (method)">#copy_to</a></span>, <span class='object_link'><a href="Memory.html#pack-instance_method" title="Ronin::Support::Binary::Memory#pack (method)">#pack</a></span>, <span class='object_link'><a href="Memory.html#read_from-instance_method" title="Ronin::Support::Binary::Memory#read_from (method)">#read_from</a></span>, <span class='object_link'><a href="Memory.html#size-instance_method" title="Ronin::Support::Binary::Memory#size (method)">#size</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(buffer_or_values = {})  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Initializes the struct.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>Initiializing a new struct from a buffer:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='kw'>class</span> <span class='const'>MyStruct</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:x</span><span class='comma'>,</span>    <span class='symbol'>:uint32</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:f</span><span class='comma'>,</span>    <span class='symbol'>:double</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:nums</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:uint8</span><span class='comma'>,</span> <span class='int'>10</span><span class='rbracket'>]</span>
+
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_struct'>struct</span> <span class='op'>=</span> <span class='const'>MyStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\x01\x00\x00\x00\x00\x00\x00\x00333333\xD3?\x01\x02\x03\x00\x00\x00\x00\x00\x00\x00</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span>
+<span class='comment'># =&gt; 1
+</span><span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_f'>f</span>
+<span class='comment'># =&gt; 0.3
+</span><span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_nums'>nums</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span>
+<span class='comment'># =&gt; [1, 2, 3, 0, 0, 0, 0, 0, 0, 0]</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Initializing a new struct with values:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_struct'>struct</span> <span class='op'>=</span> <span class='const'>MyStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>x:</span> <span class='int'>1</span><span class='comma'>,</span> <span class='label'>f:</span> <span class='float'>0.3</span><span class='comma'>,</span> <span class='label'>nums:</span> <span class='lbracket'>[</span><span class='int'>1</span><span class='comma'>,</span><span class='int'>2</span><span class='comma'>,</span><span class='int'>3</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span>
+<span class='comment'># =&gt; 1
+</span><span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_f'>f</span>
+<span class='comment'># =&gt; 0.3
+</span><span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_nums'>nums</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span>
+<span class='comment'># =&gt; [1, 2, 3, 0, 0, 0, 0, 0, 0, 0]</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>buffer_or_values</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>, <tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>, <tt><span class='object_link'><a href="ByteSlice.html" title="Ronin::Support::Binary::ByteSlice (class)">ByteSlice</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Optional values to initialize the members of the struct.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 288</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer_or_values'>buffer_or_values</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='ivar'>@type_system</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_type_system'>type_system</span>
+  <span class='ivar'>@type</span>        <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span>
+
+  <span class='ivar'>@cache</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='kw'>case</span> <span class='id identifier rubyid_buffer_or_values'>buffer_or_values</span>
+  <span class='kw'>when</span> <span class='const'>Hash</span>
+    <span class='kw'>super</span><span class='lparen'>(</span><span class='ivar'>@type</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_values'>values</span> <span class='op'>=</span> <span class='id identifier rubyid_buffer_or_values'>buffer_or_values</span>
+    <span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+      <span class='kw'>self</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
+    <span class='kw'>end</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="ByteSlice.html" title="Ronin::Support::Binary::ByteSlice (class)">ByteSlice</a></span></span>
+    <span class='id identifier rubyid_buffer'>buffer</span> <span class='op'>=</span> <span class='id identifier rubyid_buffer_or_values'>buffer_or_values</span>
+
+    <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>first argument of </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='embexpr_end'>}</span><span class='tstring_content'>.new must be either a Hash of values or a String or </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="ByteSlice.html" title="Ronin::Support::Binary::ByteSlice (class)">ByteSlice</a></span></span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="type-instance_method">
+  
+    #<strong>type</strong>  &#x21d2; <tt><span class='object_link'><a href="CTypes/StructType.html" title="Ronin::Support::Binary::CTypes::StructType (class)">CTypes::StructType</a></span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>The type system used by the struct.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="CTypes/StructType.html" title="Ronin::Support::Binary::CTypes::StructType (class)">CTypes::StructType</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+252
+253
+254</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 252</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_type'>type</span>
+  <span class='ivar'>@type</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="align-class_method">
+  
+    .<strong>align</strong>(new_alignment)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sets the alignment of the struct.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>new_alignment</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new alignment for the struct.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+702
+703
+704</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 702</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_align'>align</span><span class='lparen'>(</span><span class='id identifier rubyid_new_alignment'>new_alignment</span><span class='rparen'>)</span>
+  <span class='ivar'>@alignment</span> <span class='op'>=</span> <span class='id identifier rubyid_new_alignment'>new_alignment</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="alignment-class_method">
+  
+    .<strong>alignment</strong>  &#x21d2; <tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The alignment of the struct.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The alignment, in bytes, for the struct.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+688
+689
+690
+691
+692</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 688</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_alignment'>alignment</span>
+  <span class='ivar'>@alignment</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='id identifier rubyid_superclass'>superclass</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></span>
+                   <span class='id identifier rubyid_superclass'>superclass</span><span class='period'>.</span><span class='id identifier rubyid_alignment'>alignment</span>
+                 <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="has_member?-class_method">
+  
+    .<strong>has_member?</strong>(name)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Determines if the struct has the given member.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The member name.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies that the member exists in the struct.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+400
+401
+402</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 400</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_has_member?'>has_member?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_members'>members</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="member-class_method">
+  
+    .<strong>member</strong>(name, type_signature, **kwargs)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Defines a member in the struct.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>Defining a member:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='kw'>class</span> <span class='const'>MyStruct</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:x</span><span class='comma'>,</span> <span class='symbol'>:uint32</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_struct'>struct</span> <span class='op'>=</span> <span class='const'>MyStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span> <span class='op'>=</span> <span class='int'>0x11223344</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Defining an Array member:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='kw'>class</span> <span class='const'>MyStruct</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:nums</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:uint32</span><span class='comma'>,</span> <span class='int'>10</span><span class='rbracket'>]</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_struct'>struct</span> <span class='op'>=</span> <span class='const'>MyStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='int'>0x11111111</span><span class='comma'>,</span> <span class='int'>0x22222222</span><span class='comma'>,</span> <span class='int'>0x33333333</span><span class='comma'>,</span> <span class='int'>0x44444444</span><span class='rbracket'>]</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Defining an unbounded Array member:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='kw'>class</span> <span class='const'>MyStruct</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:payload</span><span class='comma'>,</span> <span class='symbol'>:uint8</span><span class='op'>..</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_struct'>struct</span> <span class='op'>=</span> <span class='const'>MyStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='period'>.</span><span class='id identifier rubyid_payloads'>payloads</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='int'>0x1</span><span class='comma'>,</span> <span class='int'>0x2</span><span class='comma'>,</span> <span class='int'>0x3</span><span class='comma'>,</span> <span class='int'>0x4</span><span class='rbracket'>]</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the member.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>type_signature</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>, <tt>(Symbol, <span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span>)</tt>, <tt>Range(Symbol)</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The type of the member.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+796
+797
+798
+799
+800
+801</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 796</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_member'>member</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_type_signature'>type_signature</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_members'>members</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Struct/Member.html" title="Ronin::Support::Binary::Struct::Member (class)">Member</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Struct/Member.html#initialize-instance_method" title="Ronin::Support::Binary::Struct::Member#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_type_signature'>type_signature</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>       <span class='lbrace'>{</span> <span class='kw'>self</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>=</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span> <span class='kw'>self</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="members-class_method">
+  
+    .<strong>members</strong>  &#x21d2; <tt>Hash{Symbol =&gt; <span class='object_link'><a href="Struct/Member.html" title="Ronin::Support::Binary::Struct::Member (class)">Member</a></span>}</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The members in the struct.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; <span class='object_link'><a href="Struct/Member.html" title="Ronin::Support::Binary::Struct::Member (class)">Member</a></span>}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The member names and type information.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+381
+382
+383
+384
+385
+386
+387</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 381</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_members'>members</span>
+  <span class='ivar'>@members</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='id identifier rubyid_superclass'>superclass</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></span>
+                 <span class='id identifier rubyid_superclass'>superclass</span><span class='period'>.</span><span class='id identifier rubyid_members'>members</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+               <span class='kw'>else</span>
+                 <span class='lbrace'>{</span><span class='rbrace'>}</span>
+               <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="pack-class_method">
+  
+    .<strong>pack</strong>(values)  &#x21d2; <tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Initializes the struct and then packs it.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='kw'>class</span> <span class='const'>MyStruct</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:x</span><span class='comma'>,</span>    <span class='symbol'>:uint32</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:f</span><span class='comma'>,</span>    <span class='symbol'>:double</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:nums</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:uint8</span><span class='comma'>,</span> <span class='int'>10</span><span class='rbracket'>]</span>
+
+<span class='kw'>end</span>
+
+<span class='const'>MyStruct</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='label'>x:</span> <span class='int'>1</span><span class='comma'>,</span> <span class='label'>f:</span> <span class='float'>0.3</span><span class='comma'>,</span> <span class='label'>nums:</span> <span class='lbracket'>[</span><span class='int'>1</span><span class='comma'>,</span><span class='int'>2</span><span class='comma'>,</span><span class='int'>3</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='comment'># =&gt; &quot;\x01\x00\x00\x00\x00\x00\x00\x00333333\xD3?\x01\x02\x03\x00\x00\x00\x00\x00\x00\x00&quot;</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>values</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The values to initialize the struct with.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The packed struct.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+427
+428
+429</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 427</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="padding-class_method">
+  
+    .<strong>padding</strong>(new_padding = nil)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Gets or sets whether the struct&#39;s members will have padding.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>new_padding</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The optional new value for <span class='object_link'><a href="#padding-class_method" title="Ronin::Support::Binary::Struct.padding (method)">padding</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether the struct&#39;s members will be padded.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 717</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_padding'>padding</span><span class='lparen'>(</span><span class='id identifier rubyid_new_padding'>new_padding</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_new_padding'>new_padding</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='ivar'>@padding</span> <span class='op'>=</span> <span class='id identifier rubyid_new_padding'>new_padding</span>
+  <span class='kw'>else</span>
+    <span class='kw'>if</span> <span class='ivar'>@padding</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+      <span class='ivar'>@padding</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_superclass'>superclass</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></span>
+                   <span class='id identifier rubyid_superclass'>superclass</span><span class='period'>.</span><span class='id identifier rubyid_padding'>padding</span>
+                 <span class='kw'>else</span>
+                   <span class='kw'>true</span>
+                 <span class='kw'>end</span>
+    <span class='kw'>else</span>
+      <span class='ivar'>@padding</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="platform-class_method">
+  
+    .<strong>platform</strong>(endian: nil, arch: nil, os: nil)  &#x21d2; <tt>Hash{Symbol =&gt; Object}</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Gets or sets the struct&#39;s target platform.</p>
+
+<p>The desired architecture for the struct.</p>
+
+<p>The Operating System (OS) for the struct.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>endian</span>
+      
+      
+        <span class='type'>(<tt>:little</tt>, <tt>:big</tt>, <tt>:net</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The desired endianness for the struct.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>arch</span>
+      
+      
+        <span class='type'>(<tt>:x86</tt>, <tt>:x86_64</tt>, <tt>:ppc</tt>, <tt>:ppc64</tt>, <tt>:mips</tt>, <tt>:mips_le</tt>, <tt>:mips_be</tt>, <tt>:mips64</tt>, <tt>:mips64_le</tt>, <tt>:mips64_be</tt>, <tt>:arm</tt>, <tt>:arm_le</tt>, <tt>:arm_be</tt>, <tt>:arm64</tt>, <tt>:arm64_le</tt>, <tt>:arm64_be</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>os</span>
+      
+      
+        <span class='type'>(<tt>:linux</tt>, <tt>:macos</tt>, <tt>:windows</tt>, <tt>:bsd</tt>, <tt>:freebsd</tt>, <tt>:openbsd</tt>, <tt>:netbsd</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The platform configuration Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 667</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_platform'>platform</span><span class='lparen'>(</span><span class='label'>endian:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>arch:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>os:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_endian'>endian</span> <span class='op'>||</span> <span class='id identifier rubyid_arch'>arch</span> <span class='op'>||</span> <span class='id identifier rubyid_os'>os</span>
+    <span class='ivar'>@type_system</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="CTypes.html" title="Ronin::Support::Binary::CTypes (module)">CTypes</a></span></span><span class='period'>.</span><span class='id identifier rubyid_platform'><span class='object_link'><a href="CTypes.html#platform-class_method" title="Ronin::Support::Binary::CTypes.platform (method)">platform</a></span></span><span class='lparen'>(</span><span class='label'>endian:</span> <span class='id identifier rubyid_endian'>endian</span><span class='comma'>,</span> <span class='label'>arch:</span> <span class='id identifier rubyid_arch'>arch</span><span class='comma'>,</span> <span class='label'>os:</span> <span class='id identifier rubyid_os'>os</span><span class='rparen'>)</span>
+    <span class='ivar'>@platform</span>    <span class='op'>=</span> <span class='lbrace'>{</span><span class='label'>endian:</span> <span class='id identifier rubyid_endian'>endian</span><span class='comma'>,</span> <span class='label'>arch:</span> <span class='id identifier rubyid_arch'>arch</span><span class='comma'>,</span> <span class='label'>os:</span> <span class='id identifier rubyid_os'>os</span><span class='rbrace'>}</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@platform</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='id identifier rubyid_superclass'>superclass</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></span>
+                    <span class='id identifier rubyid_superclass'>superclass</span><span class='period'>.</span><span class='id identifier rubyid_platform'>platform</span>
+                  <span class='kw'>else</span>
+                    <span class='lbrace'>{</span><span class='rbrace'>}</span>
+                  <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read_from-class_method">
+  
+    .<strong>read_from</strong>(io)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads the struct from the IO stream.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='kw'>class</span> <span class='const'>MyStruct</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:x</span><span class='comma'>,</span>    <span class='symbol'>:uint32</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:f</span><span class='comma'>,</span>    <span class='symbol'>:double</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:nums</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:uint8</span><span class='comma'>,</span> <span class='int'>10</span><span class='rbracket'>]</span>
+
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_file'>file</span>   <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../File.html" title="File (class)">File</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>binary.dat</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>b</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_struct'>struct</span> <span class='op'>=</span> <span class='const'>MyStruct</span><span class='period'>.</span><span class='id identifier rubyid_read_from'>read_from</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>io</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../IO.html" title="IO (class)">IO</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The IO object to read from.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The read struct.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Memory.html#read_from-instance_method" title="Ronin::Support::Binary::Memory#read_from (method)">Memory#read_from</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+482
+483
+484</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 482</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_read_from'>read_from</span><span class='lparen'>(</span><span class='id identifier rubyid_io'>io</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_read_from'>read_from</span><span class='lparen'>(</span><span class='id identifier rubyid_io'>io</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="size-class_method">
+  
+    .<strong>size</strong>  &#x21d2; <tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The size of the struct.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='kw'>class</span> <span class='const'>MyStruct</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:x</span><span class='comma'>,</span> <span class='symbol'>:uint32</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:y</span><span class='comma'>,</span> <span class='symbol'>:uint32</span>
+
+<span class='kw'>end</span>
+
+<span class='const'>MyStruct</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
+<span class='comment'># =&gt; 8</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The size of the struct in bytes.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+342
+343
+344</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 342</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
+  <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="translate-class_method">
+  
+    .<strong>translate</strong>(endian: nil, arch: nil)  &#x21d2; <tt>Class&lt;<span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span>&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Translates the struct class using the given type system into a new
+struct class.</p>
+
+<p>The new architecture for the struct.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>endian</span>
+      
+      
+        <span class='type'>(<tt>:little</tt>, <tt>:big</tt>, <tt>:net</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The desired endian-ness.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>arch</span>
+      
+      
+        <span class='type'>(<tt>:x86</tt>, <tt>:x86_64</tt>, <tt>:ppc</tt>, <tt>:ppc64</tt>, <tt>:mips</tt>, <tt>:mips_le</tt>, <tt>:mips_be</tt>, <tt>:mips64</tt>, <tt>:mips64_le</tt>, <tt>:mips64_be</tt>, <tt>:arm</tt>, <tt>:arm_le</tt>, <tt>:arm_be</tt>, <tt>:arm64</tt>, <tt>:arm64_le</tt>, <tt>:arm64_be</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Class&lt;<span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+363
+364
+365
+366
+367
+368
+369
+370
+371</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 363</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_translate'>translate</span><span class='lparen'>(</span><span class='label'>endian:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>arch:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_struct_class'>struct_class</span> <span class='op'>=</span> <span class='const'>Class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span>    <span class='id identifier rubyid_arch'>arch</span>   <span class='kw'>then</span> <span class='id identifier rubyid_struct_class'>struct_class</span><span class='period'>.</span><span class='id identifier rubyid_arch'>arch</span><span class='lparen'>(</span><span class='id identifier rubyid_arch'>arch</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_endian'>endian</span> <span class='kw'>then</span> <span class='id identifier rubyid_struct_class'>struct_class</span><span class='period'>.</span><span class='id identifier rubyid_endian'>endian</span><span class='lparen'>(</span><span class='id identifier rubyid_endian'>endian</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_struct_class'>struct_class</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="type-class_method">
+  
+    .<strong>type</strong>  &#x21d2; <tt><span class='object_link'><a href="CTypes/StructObjectType.html" title="Ronin::Support::Binary::CTypes::StructObjectType (class)">CTypes::StructObjectType</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The type for the struct class.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="CTypes/StructObjectType.html" title="Ronin::Support::Binary::CTypes::StructObjectType (class)">CTypes::StructObjectType</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The underlying type.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+319
+320
+321</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 319</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span>
+  <span class='ivar'>@type</span> <span class='op'>||=</span> <span class='id identifier rubyid_type_resolver'>type_resolver</span><span class='period'>.</span><span class='id identifier rubyid_resolve'>resolve</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="type_resolver-class_method">
+  
+    .<strong>type_resolver</strong>  &#x21d2; <tt><span class='object_link'><a href="CTypes/TypeResolver.html" title="Ronin::Support::Binary::CTypes::TypeResolver (class)">CTypes::TypeResolver</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The type resolver using <span class='object_link'><a href="#type_system-class_method" title="Ronin::Support::Binary::Struct.type_system (method)">type_system</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="CTypes/TypeResolver.html" title="Ronin::Support::Binary::CTypes::TypeResolver (class)">CTypes::TypeResolver</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+757
+758
+759</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 757</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_type_resolver'>type_resolver</span>
+  <span class='ivar'>@resolver</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="CTypes.html" title="Ronin::Support::Binary::CTypes (module)">CTypes</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="CTypes/TypeResolver.html" title="Ronin::Support::Binary::CTypes::TypeResolver (class)">TypeResolver</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="CTypes/TypeResolver.html#initialize-instance_method" title="Ronin::Support::Binary::CTypes::TypeResolver#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_type_system'>type_system</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="type_system-class_method">
+  
+    .<strong>type_system</strong>  &#x21d2; <tt>Types</tt>, ... 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Gets or sets the struct&#39;s type system.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Types</tt>, <tt><span class='object_link'><a href="CTypes/LittleEndian.html" title="Ronin::Support::Binary::CTypes::LittleEndian (module)">CTypes::LittleEndian</a></span></tt>, <tt><span class='object_link'><a href="CTypes/BigEndian.html" title="Ronin::Support::Binary::CTypes::BigEndian (module)">CTypes::BigEndian</a></span></tt>, <tt><span class='object_link'><a href="CTypes.html#Network-constant" title="Ronin::Support::Binary::CTypes::Network (constant)">CTypes::Network</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+742
+743
+744
+745
+746
+747
+748</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 742</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_type_system'>type_system</span>
+  <span class='ivar'>@type_system</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='id identifier rubyid_superclass'>superclass</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></span>
+                     <span class='id identifier rubyid_superclass'>superclass</span><span class='period'>.</span><span class='id identifier rubyid_type_system'>type_system</span>
+                   <span class='kw'>else</span>
+                     <span class='const'><span class='object_link'><a href="CTypes.html" title="Ronin::Support::Binary::CTypes (module)">CTypes</a></span></span>
+                   <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="unpack-class_method">
+  
+    .<strong>unpack</strong>(data)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Unpacks data into the struct.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='kw'>class</span> <span class='const'>MyStruct</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:x</span><span class='comma'>,</span>    <span class='symbol'>:uint32</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:f</span><span class='comma'>,</span>    <span class='symbol'>:double</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:nums</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:uint8</span><span class='comma'>,</span> <span class='int'>10</span><span class='rbracket'>]</span>
+
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_struct'>struct</span> <span class='op'>=</span> <span class='const'>MyStruct</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\x01\x00\x00\x00\x00\x00\x00\x00333333\xD3?\x01\x02\x03\x00\x00\x00\x00\x00\x00\x00</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The data to unpack.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The newly unpacked struct.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+453
+454
+455</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 453</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="[]-instance_method">
+  
+    #<strong>[]</strong>(name)  &#x21d2; <tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>, ... 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads a value from the struct.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='kw'>class</span> <span class='const'>MyStruct</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:x</span><span class='comma'>,</span>    <span class='symbol'>:uint32</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:f</span><span class='comma'>,</span>    <span class='symbol'>:double</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:nums</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:uint8</span><span class='comma'>,</span> <span class='int'>10</span><span class='rbracket'>]</span>
+
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_struct'>struct</span> <span class='op'>=</span> <span class='const'>MyStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\x01\x00\x00\x00\x00\x00\x00\x00333333\xD3?\x01\x02\x03\x00\x00\x00\x00\x00\x00\x00</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='lbracket'>[</span><span class='symbol'>:x</span><span class='rbracket'>]</span>
+<span class='comment'># =&gt; 1
+</span><span class='id identifier rubyid_struct'>struct</span><span class='lbracket'>[</span><span class='symbol'>:f</span><span class='rbracket'>]</span>
+<span class='comment'># =&gt; 0.3
+</span><span class='id identifier rubyid_struct'>struct</span><span class='lbracket'>[</span><span class='symbol'>:nums</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span>
+<span class='comment'># =&gt; [1, 2, 3, 0, 0, 0, 0, 0, 0, 0]</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The member name.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>, <tt><span class='object_link'><a href="../../../Float.html" title="Float (class)">Float</a></span></tt>, <tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>, <tt><span class='object_link'><a href="Array.html" title="Ronin::Support::Binary::Array (class)">Binary::Array</a></span></tt>, <tt><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Binary::Struct</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The value of the member.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The struct does not contain the member.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 517</span>
+
+<span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_member'>member</span> <span class='op'>=</span> <span class='ivar'>@type</span><span class='period'>.</span><span class='id identifier rubyid_members'>members</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>case</span> <span class='id identifier rubyid_member'>member</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span>
+    <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="CTypes.html" title="Ronin::Support::Binary::CTypes (module)">CTypes</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="CTypes/UnboundedArrayType.html" title="Ronin::Support::Binary::CTypes::UnboundedArrayType (class)">UnboundedArrayType</a></span></span>
+      <span class='comment'># XXX: but how do we handle an unbounded array of structs?
+</span>      <span class='ivar'>@cache</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lparen'>(</span>
+        <span class='id identifier rubyid_slice'>slice</span> <span class='op'>=</span> <span class='id identifier rubyid_byteslice'>byteslice</span><span class='lparen'>(</span><span class='id identifier rubyid_member'>member</span><span class='period'>.</span><span class='id identifier rubyid_offset'>offset</span><span class='comma'>,</span><span class='id identifier rubyid_size'>size</span> <span class='op'>-</span> <span class='id identifier rubyid_member'>member</span><span class='period'>.</span><span class='id identifier rubyid_offset'>offset</span><span class='rparen'>)</span>
+        <span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Array.html" title="Ronin::Support::Binary::Array (class)">Array</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Array.html#initialize-instance_method" title="Ronin::Support::Binary::Array#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_member'>member</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span><span class='id identifier rubyid_slice'>slice</span><span class='rparen'>)</span>
+      <span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="CTypes.html" title="Ronin::Support::Binary::CTypes (module)">CTypes</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="CTypes/ObjectType.html" title="Ronin::Support::Binary::CTypes::ObjectType (class)">ObjectType</a></span></span>
+      <span class='ivar'>@cache</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lparen'>(</span>
+        <span class='id identifier rubyid_slice'>slice</span> <span class='op'>=</span> <span class='id identifier rubyid_byteslice'>byteslice</span><span class='lparen'>(</span><span class='id identifier rubyid_member'>member</span><span class='period'>.</span><span class='id identifier rubyid_offset'>offset</span><span class='comma'>,</span><span class='id identifier rubyid_member'>member</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_member'>member</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='id identifier rubyid_slice'>slice</span><span class='rparen'>)</span>
+      <span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_member'>member</span><span class='period'>.</span><span class='id identifier rubyid_offset'>offset</span><span class='comma'>,</span><span class='id identifier rubyid_member'>member</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_member'>member</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>no such member: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="[]=-instance_method">
+  
+    #<strong>[]=</strong>(name, value)  &#x21d2; <tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>, ... 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Writes a value to the struct.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='kw'>class</span> <span class='const'>MyStruct</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></span>
+
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:x</span><span class='comma'>,</span>    <span class='symbol'>:uint32</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:f</span><span class='comma'>,</span>    <span class='symbol'>:double</span>
+  <span class='id identifier rubyid_member'>member</span> <span class='symbol'>:nums</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:uint8</span><span class='comma'>,</span> <span class='int'>10</span><span class='rbracket'>]</span>
+
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_struct'>struct</span> <span class='op'>=</span> <span class='const'>MyStruct</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='lbracket'>[</span><span class='symbol'>:x</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>1</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='lbracket'>[</span><span class='symbol'>:x</span><span class='rbracket'>]</span>
+<span class='comment'># =&gt; 1
+</span><span class='id identifier rubyid_struct'>struct</span><span class='lbracket'>[</span><span class='symbol'>:f</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='float'>0.3</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='lbracket'>[</span><span class='symbol'>:f</span><span class='rbracket'>]</span>
+<span class='comment'># =&gt; 0.3
+</span><span class='id identifier rubyid_struct'>struct</span><span class='lbracket'>[</span><span class='symbol'>:nums</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='int'>1</span><span class='comma'>,</span><span class='int'>2</span><span class='comma'>,</span><span class='int'>3</span><span class='rbracket'>]</span>
+<span class='id identifier rubyid_struct'>struct</span><span class='lbracket'>[</span><span class='symbol'>:nums</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span>
+<span class='comment'># =&gt; [1, 2, 3, 0, 0, 0, 0, 0, 0, 0]</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The member name.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>, <tt><span class='object_link'><a href="../../../Float.html" title="Float (class)">Float</a></span></tt>, <tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>, <tt><span class='object_link'><a href="Array.html" title="Ronin::Support::Binary::Array (class)">Array</a></span></tt>, <tt><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The value to write.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>, <tt><span class='object_link'><a href="../../../Float.html" title="Float (class)">Float</a></span></tt>, <tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>, <tt><span class='object_link'><a href="Array.html" title="Ronin::Support::Binary::Array (class)">Array</a></span></tt>, <tt><span class='object_link'><a href="" title="Ronin::Support::Binary::Struct (class)">Struct</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The value of the member.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The struct does not contain the member.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 577</span>
+
+<span class='kw'>def</span> <span class='op'>[]=</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_member'>member</span> <span class='op'>=</span> <span class='ivar'>@type</span><span class='period'>.</span><span class='id identifier rubyid_members'>members</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_member'>member</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+
+    <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_member'>member</span><span class='period'>.</span><span class='id identifier rubyid_offset'>offset</span><span class='comma'>,</span><span class='id identifier rubyid_member'>member</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='comma'>,</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_value'>value</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>no such member: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="each-instance_method">
+  
+    #<strong>each</strong> {|name, value| ... } &#x21d2; <tt>Enumerator</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Enumerates over the members within the struct.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>name</tt>, <tt>value</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed each member name and value
+from within the struct.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the struct memeber.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The decoded value of the struct member.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Enumerator</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If no block is given, an Enumerator object will be returned.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+606
+607
+608
+609
+610
+611
+612</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 606</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+
+  <span class='ivar'>@type</span><span class='period'>.</span><span class='id identifier rubyid_members'>members</span><span class='period'>.</span><span class='id identifier rubyid_each_key'>each_key</span>  <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='kw'>self</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_a-instance_method">
+  
+    #<strong>to_a</strong>  &#x21d2; <tt><span class='object_link'><a href="../../../Array.html" title="Array (class)">::Array</a></span>&lt;Object&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Converts the struct to an Array of values.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Array.html" title="Array (class)">::Array</a></span>&lt;Object&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The array of values within the struct.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+636
+637
+638
+639
+640</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 636</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_a'>to_a</span>
+  <span class='ivar'>@type</span><span class='period'>.</span><span class='id identifier rubyid_members'>members</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
+    <span class='kw'>self</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_h-instance_method">
+  
+    #<strong>to_h</strong>  &#x21d2; <tt>Hash{Symbol =&gt; Object}</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Converts the struct to a Hash.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The hash of member names and values.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+622
+623
+624
+625
+626</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/struct.rb', line 622</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_h'>to_h</span>
+  <span class='const'>Hash</span><span class='lbracket'>[</span><span class='ivar'>@type</span><span class='period'>.</span><span class='id identifier rubyid_members'>members</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
+    <span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='kw'>self</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+  <span class='rbrace'>}</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sun Jan  1 18:31:21 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.28 (ruby-3.1.3).
+</div>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Ronin::Support::Crypto::Key::RSA
+  
+    &mdash; ronin-support Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::Support::Crypto::Key::RSA";
+  relpath = '../../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../../_index.html">Index (R)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../../Support.html" title="Ronin::Support (module)">Support</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Crypto.html" title="Ronin::Support::Crypto (module)">Crypto</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Key.html" title="Ronin::Support::Crypto::Key (module)">Key</a></span></span>
+     &raquo; 
+    <span class="title">RSA</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Ronin::Support::Crypto::Key::RSA
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">OpenSSL::PKey::RSA</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">OpenSSL::PKey::RSA</li>
+          
+            <li class="next">Ronin::Support::Crypto::Key::RSA</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd><span class='object_link'><a href="Methods.html" title="Ronin::Support::Crypto::Key::Methods (module)">Methods</a></span></dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/support/crypto/key/rsa.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Represents an RSA key.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://rubydoc.info/stdlib/openssl/OpenSSL/PKey/RSA.html" target="_parent" title="https://rubydoc.info/stdlib/openssl/OpenSSL/PKey/RSA.html">https://rubydoc.info/stdlib/openssl/OpenSSL/PKey/RSA.html</a></li>
+    
+  </ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="PADDINGS-constant" class="">PADDINGS =
+          <div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This constant is part of a private API.</strong>
+  You should avoid using this constant if possible, as it may be removed or be changed in the future.
+</p>
+<p>Mapping of padding names to pdding constants.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='label'>pkcs1_oaep:</span> <span class='const'>PKCS1_OAEP_PADDING</span><span class='comma'>,</span>
+  <span class='label'>pkcs1:</span>      <span class='const'>PKCS1_PADDING</span><span class='comma'>,</span>
+  <span class='label'>sslv23:</span>     <span class='const'>SSLV23_PADDING</span><span class='comma'>,</span>
+
+  <span class='kw'>nil</span>      <span class='op'>=&gt;</span> <span class='const'>NO_PADDING</span><span class='comma'>,</span>
+  <span class='kw'>false</span>    <span class='op'>=&gt;</span> <span class='const'>NO_PADDING</span>
+<span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#generate-class_method" title="generate (class method)">.<strong>generate</strong>(key_size = 4096, *arguments, &amp;block)  &#x21d2; RSA </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Generates a new random RSA key.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#d-instance_method" title="#d (instance method)">#<strong>d</strong>  &#x21d2; OpenSSL::BN </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The <code>d</code> variable for the RSA key.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#e-instance_method" title="#e (instance method)">#<strong>e</strong>  &#x21d2; OpenSSL::BN </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The <code>e</code> variable for the RSA key.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#n-instance_method" title="#n (instance method)">#<strong>n</strong>  &#x21d2; OpenSSL::BN </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The <code>n</code> variable for the RSA key.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#private_decrypt-instance_method" title="#private_decrypt (instance method)">#<strong>private_decrypt</strong>(data, padding: :pkcs1)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Decrypts data using the private key.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#public_encrypt-instance_method" title="#public_encrypt (instance method)">#<strong>public_encrypt</strong>(data, padding: :pkcs1)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Encrypts data using the public key.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#size-instance_method" title="#size (instance method)">#<strong>size</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The size of the RSA key in bits.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Methods.html" title="Ronin::Support::Crypto::Key::Methods (module)">Methods</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Methods.html#included-class_method" title="Ronin::Support::Crypto::Key::Methods.included (method)">included</a></span>, <span class='object_link'><a href="Methods.html#save-instance_method" title="Ronin::Support::Crypto::Key::Methods#save (method)">#save</a></span></p>
+
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="generate-class_method">
+  
+    .<strong>generate</strong>(key_size = 4096, *arguments, &amp;block)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Support::Crypto::Key::RSA (class)">RSA</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Generates a new random RSA key.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key_size</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>4096</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The size of the key in bits.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>arguments</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../Array.html" title="Array (class)">Array</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional arguments for <a href="https://rubydoc.info/gems/openssl/OpenSSL/PKey/RSA#generate-class_method">OpenSSL::PKey::RSA.generate</a>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Support::Crypto::Key::RSA (class)">RSA</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The newly generated key.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53
+54
+55
+56
+57</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/key/rsa.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span><span class='lparen'>(</span><span class='id identifier rubyid_key_size'>key_size</span><span class='op'>=</span><span class='int'>4096</span><span class='comma'>,</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='comment'># HACK: openssl-3.0.0 will return an OpenSSL::PKey::RSA instance,
+</span>  <span class='comment'># even though we subclassed OpenSSL::PKey::RSA.
+</span>  <span class='id identifier rubyid_new_key'>new_key</span> <span class='op'>=</span> <span class='id identifier rubyid_allocate'>allocate</span>
+  <span class='id identifier rubyid_new_key'>new_key</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:initialize_copy</span><span class='comma'>,</span><span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_key_size'>key_size</span><span class='comma'>,</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_new_key'>new_key</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="d-instance_method">
+  
+    #<strong>d</strong>  &#x21d2; <tt>OpenSSL::BN</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The <code>d</code> variable for the RSA key.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>OpenSSL::BN</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://rubydoc.info/stdlib/openssl/OpenSSL/BN" target="_parent" title="https://rubydoc.info/stdlib/openssl/OpenSSL/BN">https://rubydoc.info/stdlib/openssl/OpenSSL/BN</a></li>
+    
+  </ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+88
+89
+90</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/key/rsa.rb', line 88</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_d'>d</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="e-instance_method">
+  
+    #<strong>e</strong>  &#x21d2; <tt>OpenSSL::BN</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The <code>e</code> variable for the RSA key.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>OpenSSL::BN</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://rubydoc.info/stdlib/openssl/OpenSSL/BN" target="_parent" title="https://rubydoc.info/stdlib/openssl/OpenSSL/BN">https://rubydoc.info/stdlib/openssl/OpenSSL/BN</a></li>
+    
+  </ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+77
+78
+79</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/key/rsa.rb', line 77</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_e'>e</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="n-instance_method">
+  
+    #<strong>n</strong>  &#x21d2; <tt>OpenSSL::BN</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The <code>n</code> variable for the RSA key.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>OpenSSL::BN</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://rubydoc.info/stdlib/openssl/OpenSSL/BN" target="_parent" title="https://rubydoc.info/stdlib/openssl/OpenSSL/BN">https://rubydoc.info/stdlib/openssl/OpenSSL/BN</a></li>
+    
+  </ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+66
+67
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/key/rsa.rb', line 66</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_n'>n</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="private_decrypt-instance_method">
+  
+    #<strong>private_decrypt</strong>(data, padding: :pkcs1)  &#x21d2; <tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Decrypts data using the private key.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_encrypted'>encrypted</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>i;k\x89\xE9\x92\xA5\xAB\xBAc\xC6;\r\xB7\x18W\x11\x02\xCBf.\xC2\x87\xDF\xDD[|\xF0\x97\x15\xC6\xCF\xCD\x93\x1C\x11S&amp;L\x89\xE6\xCA\xC9\xAD\xAD\x1F\xE6\x8D\x86\xF3$\x8BfS(3\x9F\x7F\xEFZ \xB7\xDC{f\xF1\xB7-\x18\x94\xB8}\x93%,{X\x85\xBD(\xBD\xAD\x00,O\xAC\xECJ}\x99\xC7\xE2\xB6\x11\x9D\xDF\x12\xA5\x8F|\xF8\xC3Q\xDA\x95\x12\xEFH\xFFt\xCD\x854jJ\xE9\xE7\xC4\xDD|\xD4}w\xDAJ8\xAE\x17</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_rsa'>rsa</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Crypto.html" title="Ronin::Support::Crypto (module)">Crypto</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Key.html" title="Ronin::Support::Crypto::Key (module)">Key</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Crypto::Key::RSA (class)">RSA</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load_file'><span class='object_link'><a href="../Key.html#load_file-class_method" title="Ronin::Support::Crypto::Key.load_file (method)">load_file</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>key.pem</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_rsa'>rsa</span><span class='period'>.</span><span class='id identifier rubyid_private_decrypt'>private_decrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_encrypted'>encrypted</span><span class='comma'>,</span> <span class='label'>padding:</span> <span class='id identifier rubyid_pkcs1_oaep'>pkcs1_oaep</span><span class='rparen'>)</span>
+<span class='comment'># =&gt; &quot;top secret&quot;</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The data to decrypt.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>padding</span>
+      
+      
+        <span class='type'>(<tt>:pkcs1_oaep</tt>, <tt>:pkcs1</tt>, <tt>:sslv23</tt>, <tt>nil</tt>, <tt>false</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>:pkcs1</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Optional padding mode. <code>nil</code> and <code>false</code> will disable padding.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The decrypted data.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+157
+158
+159
+160
+161
+162
+163</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/key/rsa.rb', line 157</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_private_decrypt'>private_decrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span> <span class='label'>padding:</span> <span class='symbol'>:pkcs1</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_padding_const'>padding_const</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#PADDINGS-constant" title="Ronin::Support::Crypto::Key::RSA::PADDINGS (constant)">PADDINGS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_padding'>padding</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>padding must be </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#PADDINGS-constant" title="Ronin::Support::Crypto::Key::RSA::PADDINGS (constant)">PADDINGS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:inspect</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>, </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_padding'>padding</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span><span class='id identifier rubyid_padding_const'>padding_const</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="public_encrypt-instance_method">
+  
+    #<strong>public_encrypt</strong>(data, padding: :pkcs1)  &#x21d2; <tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Encrypts data using the public key.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_rsa'>rsa</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Crypto.html" title="Ronin::Support::Crypto (module)">Crypto</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Key.html" title="Ronin::Support::Crypto::Key (module)">Key</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Crypto::Key::RSA (class)">RSA</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load_file'><span class='object_link'><a href="../Key.html#load_file-class_method" title="Ronin::Support::Crypto::Key.load_file (method)">load_file</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>key.pem</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_rsa'>rsa</span><span class='period'>.</span><span class='id identifier rubyid_public_encrypt'>public_encrypt</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>top secret</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>padding:</span> <span class='symbol'>:pkcs1_oaep</span><span class='rparen'>)</span>
+<span class='comment'># =&gt; &quot;i;k\x89\xE9\x92\xA5\xAB\xBAc\xC6;\r\xB7\x18W\x11\x02\xCBf.\xC2\x87\xDF\xDD[|\xF0\x97\x15\xC6\xCF\xCD\x93\x1C\x11S&amp;L\x89\xE6\xCA\xC9\xAD\xAD\x1F\xE6\x8D\x86\xF3$\x8BfS(3\x9F\x7F\xEFZ \xB7\xDC{f\xF1\xB7-\x18\x94\xB8}\x93%,{X\x85\xBD(\xBD\xAD\x00,O\xAC\xECJ}\x99\xC7\xE2\xB6\x11\x9D\xDF\x12\xA5\x8F|\xF8\xC3Q\xDA\x95\x12\xEFH\xFFt\xCD\x854jJ\xE9\xE7\xC4\xDD|\xD4}w\xDAJ8\xAE\x17&quot;</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The data to encrypt.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>padding</span>
+      
+      
+        <span class='type'>(<tt>:pkcs1_oaep</tt>, <tt>:pkcs1</tt>, <tt>:sslv23</tt>, <tt>nil</tt>, <tt>false</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>:pkcs1</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Optional padding mode. <code>nil</code> and <code>false</code> will disable padding.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The encrypted data.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+131
+132
+133
+134
+135
+136
+137</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/key/rsa.rb', line 131</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_public_encrypt'>public_encrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span> <span class='label'>padding:</span> <span class='symbol'>:pkcs1</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_padding_const'>padding_const</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#PADDINGS-constant" title="Ronin::Support::Crypto::Key::RSA::PADDINGS (constant)">PADDINGS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_padding'>padding</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>padding must be </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#PADDINGS-constant" title="Ronin::Support::Crypto::Key::RSA::PADDINGS (constant)">PADDINGS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:inspect</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>, </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_padding'>padding</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span><span class='id identifier rubyid_padding_const'>padding_const</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="size-instance_method">
+  
+    #<strong>size</strong>  &#x21d2; <tt><span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The size of the RSA key in bits.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The key size in bits.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/key/rsa.rb', line 98</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_size'>size</span>
+  <span class='id identifier rubyid_n'>n</span><span class='period'>.</span><span class='id identifier rubyid_num_bits'>num_bits</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sun Jan  1 18:31:22 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.28 (ruby-3.1.3).
+</div>
+
+    </div>
+  </body>
+</html>

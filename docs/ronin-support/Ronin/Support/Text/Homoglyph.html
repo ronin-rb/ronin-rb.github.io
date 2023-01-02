@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Ronin::Support::Text::Homoglyph
+  
+    &mdash; ronin-support Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::Support::Text::Homoglyph";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../_index.html">Index (H)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Support.html" title="Ronin::Support (module)">Support</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Text.html" title="Ronin::Support::Text (module)">Text</a></span></span>
+     &raquo; 
+    <span class="title">Homoglyph</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: Ronin::Support::Text::Homoglyph
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/support/text/homoglyph.rb<span class="defines">,<br />
+  lib/ronin/support/text/homoglyph/table.rb,<br /> lib/ronin/support/text/homoglyph/exceptions.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Generates <a href="http://homoglyphs.net/">homoglyph</a> typos.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Homoglyph/NotViable.html" title="Ronin::Support::Text::Homoglyph::NotViable (class)">NotViable</a></span>, <span class='object_link'><a href="Homoglyph/Table.html" title="Ronin::Support::Text::Homoglyph::Table (class)">Table</a></span>
+    
+  
+</p>
+
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="DATA_DIR-constant" class="">DATA_DIR =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Path to the <code>data/text/homoglyphs/</code> directory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="../../../File.html" title="File (class)">File</a></span></span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../../File.html" title="File (class)">File</a></span></span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid___dir__'>__dir__</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>..</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>..</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>..</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>..</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>data</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>text</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>homoglyphs</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="ASCII-constant" class="">ASCII =
+          <div class="docstring">
+  <div class="discussion">
+    <p>ASCII only homoglyph rules.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="Homoglyph/Table.html" title="Ronin::Support::Text::Homoglyph::Table (class)">Table</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load_file'><span class='object_link'><a href="Homoglyph/Table.html#load_file-class_method" title="Ronin::Support::Text::Homoglyph::Table.load_file (method)">load_file</a></span></span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../../File.html" title="File (class)">File</a></span></span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#DATA_DIR-constant" title="Ronin::Support::Text::Homoglyph::DATA_DIR (constant)">DATA_DIR</a></span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ascii.txt</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="GREEK-constant" class="">GREEK =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Greek homoglyph rules.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="Homoglyph/Table.html" title="Ronin::Support::Text::Homoglyph::Table (class)">Table</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load_file'><span class='object_link'><a href="Homoglyph/Table.html#load_file-class_method" title="Ronin::Support::Text::Homoglyph::Table.load_file (method)">load_file</a></span></span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../../File.html" title="File (class)">File</a></span></span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#DATA_DIR-constant" title="Ronin::Support::Text::Homoglyph::DATA_DIR (constant)">DATA_DIR</a></span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>greek.txt</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="CYRILLIC-constant" class="">CYRILLIC =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Cyrillic homoglyph rules.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="Homoglyph/Table.html" title="Ronin::Support::Text::Homoglyph::Table (class)">Table</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load_file'><span class='object_link'><a href="Homoglyph/Table.html#load_file-class_method" title="Ronin::Support::Text::Homoglyph::Table.load_file (method)">load_file</a></span></span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../../File.html" title="File (class)">File</a></span></span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#DATA_DIR-constant" title="Ronin::Support::Text::Homoglyph::DATA_DIR (constant)">DATA_DIR</a></span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cyrillic.txt</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="PUNCTUATION-constant" class="">PUNCTUATION =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Punctuation/symbol homoglyph rules.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="Homoglyph/Table.html" title="Ronin::Support::Text::Homoglyph::Table (class)">Table</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load_file'><span class='object_link'><a href="Homoglyph/Table.html#load_file-class_method" title="Ronin::Support::Text::Homoglyph::Table.load_file (method)">load_file</a></span></span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../../File.html" title="File (class)">File</a></span></span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#DATA_DIR-constant" title="Ronin::Support::Text::Homoglyph::DATA_DIR (constant)">DATA_DIR</a></span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>punctuation.txt</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="LATIN_NUMBERS-constant" class="">LATIN_NUMBERS =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Latin numeral homoglyph rules.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="Homoglyph/Table.html" title="Ronin::Support::Text::Homoglyph::Table (class)">Table</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load_file'><span class='object_link'><a href="Homoglyph/Table.html#load_file-class_method" title="Ronin::Support::Text::Homoglyph::Table.load_file (method)">load_file</a></span></span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../../File.html" title="File (class)">File</a></span></span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#DATA_DIR-constant" title="Ronin::Support::Text::Homoglyph::DATA_DIR (constant)">DATA_DIR</a></span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>latin_numbers.txt</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="FULL_WIDTH-constant" class="">FULL_WIDTH =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Full-width homoglyph rules.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="Homoglyph/Table.html" title="Ronin::Support::Text::Homoglyph::Table (class)">Table</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load_file'><span class='object_link'><a href="Homoglyph/Table.html#load_file-class_method" title="Ronin::Support::Text::Homoglyph::Table.load_file (method)">load_file</a></span></span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../../File.html" title="File (class)">File</a></span></span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#DATA_DIR-constant" title="Ronin::Support::Text::Homoglyph::DATA_DIR (constant)">DATA_DIR</a></span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>full_width.txt</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="DEFAULT-constant" class="">DEFAULT =
+          <div class="docstring">
+  <div class="discussion">
+    <p>All homoglyph rules combined.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="#GREEK-constant" title="Ronin::Support::Text::Homoglyph::GREEK (constant)">GREEK</a></span></span> <span class='op'>+</span> <span class='const'><span class='object_link'><a href="#CYRILLIC-constant" title="Ronin::Support::Text::Homoglyph::CYRILLIC (constant)">CYRILLIC</a></span></span> <span class='op'>+</span> <span class='const'><span class='object_link'><a href="#PUNCTUATION-constant" title="Ronin::Support::Text::Homoglyph::PUNCTUATION (constant)">PUNCTUATION</a></span></span> <span class='op'>+</span> <span class='const'><span class='object_link'><a href="#LATIN_NUMBERS-constant" title="Ronin::Support::Text::Homoglyph::LATIN_NUMBERS (constant)">LATIN_NUMBERS</a></span></span> <span class='op'>+</span> <span class='const'><span class='object_link'><a href="#FULL_WIDTH-constant" title="Ronin::Support::Text::Homoglyph::FULL_WIDTH (constant)">FULL_WIDTH</a></span></span></pre></dd>
+      
+        <dt id="CHAR_SETS-constant" class="">CHAR_SETS =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Homoglyph rules grouped by character set.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='label'>ascii:</span>         <span class='const'><span class='object_link'><a href="#ASCII-constant" title="Ronin::Support::Text::Homoglyph::ASCII (constant)">ASCII</a></span></span><span class='comma'>,</span>
+  <span class='label'>greek:</span>         <span class='const'><span class='object_link'><a href="#GREEK-constant" title="Ronin::Support::Text::Homoglyph::GREEK (constant)">GREEK</a></span></span><span class='comma'>,</span>
+  <span class='label'>cyrillic:</span>      <span class='const'><span class='object_link'><a href="#CYRILLIC-constant" title="Ronin::Support::Text::Homoglyph::CYRILLIC (constant)">CYRILLIC</a></span></span><span class='comma'>,</span>
+  <span class='label'>punctuation:</span>   <span class='const'><span class='object_link'><a href="#PUNCTUATION-constant" title="Ronin::Support::Text::Homoglyph::PUNCTUATION (constant)">PUNCTUATION</a></span></span><span class='comma'>,</span>
+  <span class='label'>latin_numbers:</span> <span class='const'><span class='object_link'><a href="#LATIN_NUMBERS-constant" title="Ronin::Support::Text::Homoglyph::LATIN_NUMBERS (constant)">LATIN_NUMBERS</a></span></span><span class='comma'>,</span>
+  <span class='label'>full_width:</span>    <span class='const'><span class='object_link'><a href="#FULL_WIDTH-constant" title="Ronin::Support::Text::Homoglyph::FULL_WIDTH (constant)">FULL_WIDTH</a></span></span>
+<span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#each_substitution-class_method" title="each_substitution (class method)">.<strong>each_substitution</strong>(word, char_set: nil) {|homoglyph| ... } &#x21d2; Enumerator </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Enumerates over every homoglyph variation of the given word.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#substitute-class_method" title="substitute (class method)">.<strong>substitute</strong>(word, char_set: nil)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns a random homoglyph substitution of the given word.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#table-class_method" title="table (class method)">.<strong>table</strong>(char_set = nil)  &#x21d2; Table </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Looks up a homoglyph character set.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="each_substitution-class_method">
+  
+    .<strong>each_substitution</strong>(word, char_set: nil) {|homoglyph| ... } &#x21d2; <tt>Enumerator</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Enumerates over every homoglyph variation of the given word.</p>
+
+<p>The character set to use.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>word</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given word to mutate.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>char_set</span>
+      
+      
+        <span class='type'>(<tt>:ascii</tt>, <tt>:greek</tt>, <tt>:cyrillic</tt>, <tt>:punctuation</tt>, <tt>:latin_numbers</tt>, <tt>:full_width</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>homoglyph</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each homoglyph variation of the given
+word.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>homoglyph</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A variation of the given word.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Enumerator</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If no block is given, an Enumerator object will be returned.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Homoglyph/Table.html#each_substitution-instance_method" title="Ronin::Support::Text::Homoglyph::Table#each_substitution (method)">Ronin::Support::Text::Homoglyph::Table#each_substitution</a></span></li>
+    
+  </ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+134
+135
+136</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/text/homoglyph.rb', line 134</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_each_substitution'>each_substitution</span><span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span><span class='comma'>,</span> <span class='label'>char_set:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_table'>table</span><span class='lparen'>(</span><span class='id identifier rubyid_char_set'>char_set</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each_substitution'>each_substitution</span><span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="substitute-class_method">
+  
+    .<strong>substitute</strong>(word, char_set: nil)  &#x21d2; <tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns a random homoglyph substitution of the given word.</p>
+
+<p>The character set to use.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>word</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given word to mutate.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>char_set</span>
+      
+      
+        <span class='type'>(<tt>:ascii</tt>, <tt>:greek</tt>, <tt>:cyrillic</tt>, <tt>:punctuation</tt>, <tt>:latin_numbers</tt>, <tt>:full_width</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A random homoglyphic variation of the given word.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Could not find any matching characters to replace in the given text.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Homoglyph/NotViable.html" title="Ronin::Support::Text::Homoglyph::NotViable (class)">NotViable</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>No homoglyph replaceable characters were found in the String.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Homoglyph/Table.html#substitute-instance_method" title="Ronin::Support::Text::Homoglyph::Table#substitute (method)">Ronin::Support::Text::Homoglyph::Table#substitute</a></span></li>
+    
+  </ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+108
+109
+110</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/text/homoglyph.rb', line 108</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_substitute'>substitute</span><span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span><span class='comma'>,</span> <span class='label'>char_set:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_table'>table</span><span class='lparen'>(</span><span class='id identifier rubyid_char_set'>char_set</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_substitute'>substitute</span><span class='lparen'>(</span><span class='id identifier rubyid_word'>word</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="table-class_method">
+  
+    .<strong>table</strong>(char_set = nil)  &#x21d2; <tt><span class='object_link'><a href="Homoglyph/Table.html" title="Ronin::Support::Text::Homoglyph::Table (class)">Table</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Looks up a homoglyph character set.</p>
+
+<p>The character set name.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>char_set</span>
+      
+      
+        <span class='type'>(<tt>:ascii</tt>, <tt>:greek</tt>, <tt>:cyrillic</tt>, <tt>:punctuation</tt>, <tt>:latin_numbers</tt>, <tt>:full_width</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Homoglyph/Table.html" title="Ronin::Support::Text::Homoglyph::Table (class)">Table</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The specific homoglyph character set or <span class='object_link'><a href="#DEFAULT-constant" title="Ronin::Support::Text::Homoglyph::DEFAULT (constant)">DEFAULT</a></span> if no name was
+given.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+77
+78
+79
+80
+81
+82
+83
+84
+85</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/text/homoglyph.rb', line 77</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_table'>table</span><span class='lparen'>(</span><span class='id identifier rubyid_char_set'>char_set</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_char_set'>char_set</span>
+    <span class='const'><span class='object_link'><a href="#CHAR_SETS-constant" title="Ronin::Support::Text::Homoglyph::CHAR_SETS (constant)">CHAR_SETS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_char_set'>char_set</span><span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown homoglyph character set (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_char_set'>char_set</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'>), must be </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#CHAR_SETS-constant" title="Ronin::Support::Text::Homoglyph::CHAR_SETS (constant)">CHAR_SETS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:inspect</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>, </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+    <span class='const'><span class='object_link'><a href="#DEFAULT-constant" title="Ronin::Support::Text::Homoglyph::DEFAULT (constant)">DEFAULT</a></span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sun Jan  1 18:31:02 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.28 (ruby-3.1.3).
+</div>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,2327 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Ronin::Support::Network::TCP::Proxy
+  
+    &mdash; ronin-support Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::Support::Network::TCP::Proxy";
+  relpath = '../../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../../Support.html" title="Ronin::Support (module)">Support</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../TCP.html" title="Ronin::Support::Network::TCP (module)">TCP</a></span></span>
+     &raquo; 
+    <span class="title">Proxy</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Ronin::Support::Network::TCP::Proxy
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="../Proxy.html" title="Ronin::Support::Network::Proxy (class)">Proxy</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="../Proxy.html" title="Ronin::Support::Network::Proxy (class)">Proxy</a></span></li>
+          
+            <li class="next">Ronin::Support::Network::TCP::Proxy</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/support/network/tcp/proxy.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>The TCP Proxy allows for inspecting and manipulating TCP protocols.</p>
+
+<h2 id="example">Example</h2>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ronin/support/network/tcp/proxy</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hexdump</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='const'><span class='object_link'><a href="../../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../TCP.html" title="Ronin::Support::Network::TCP (module)">TCP</a></span></span><span class='op'>::</span><span class='const'>Proxy</span><span class='period'>.</span><span class='id identifier rubyid_start'><span class='object_link'><a href="../Proxy.html#start-class_method" title="Ronin::Support::Network::Proxy.start (method)">start</a></span></span><span class='lparen'>(</span><span class='label'>port:</span> <span class='int'>1337</span><span class='comma'>,</span> <span class='label'>server:</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>www.wired.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>80</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_proxy'>proxy</span><span class='op'>|</span>
+  <span class='id identifier rubyid_address'>address</span> <span class='op'>=</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_socket'>socket</span><span class='op'>|</span>
+    <span class='id identifier rubyid_addrinfo'>addrinfo</span> <span class='op'>=</span> <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_peeraddr'>peeraddr</span>
+
+   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_addrinfo'>addrinfo</span><span class='lbracket'>[</span><span class='int'>3</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_addrinfo'>addrinfo</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_hex'>hex</span> <span class='op'>=</span> <span class='const'>Hexdump</span><span class='op'>::</span><span class='const'>Hexdump</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+
+  <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_on_client_data'>on_client_data</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span><span class='id identifier rubyid_data'>data</span><span class='op'>|</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='lbracket'>[</span><span class='id identifier rubyid_client'>client</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> -&gt; </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_hex'>hex</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_on_client_connect'>on_client_connect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='op'>|</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='lbracket'>[</span><span class='id identifier rubyid_client'>client</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> -&gt; </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_content'> [connected]</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_on_client_disconnect'>on_client_disconnect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='lbracket'>[</span><span class='id identifier rubyid_client'>client</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> &lt;- </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_content'> [disconnected]</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_on_server_data'>on_server_data</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span><span class='id identifier rubyid_data'>data</span><span class='op'>|</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='lbracket'>[</span><span class='id identifier rubyid_client'>client</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> &lt;- </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_hex'>hex</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_on_server_connect'>on_server_connect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='lbracket'>[</span><span class='id identifier rubyid_client'>client</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> &lt;- </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_content'> [connected]</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_on_server_disconnect'>on_server_disconnect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='lbracket'>[</span><span class='id identifier rubyid_client'>client</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> &lt;- </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_content'> [disconnected]</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h2 id="callbacks">Callbacks</h2>
+
+<p>In addition to the events supported by the <span class='object_link'><a href="../Proxy.html" title="Ronin::Support::Network::Proxy (class)">Proxy</a></span>
+base class, the TCP Proxy also supports the following callbacks.</p>
+
+<h3 id="client_connect">client_connect</h3>
+
+<p>When a client connects to the proxy:</p>
+
+<pre class="code ruby"><code class="ruby">on_client_connect do |client|
+  puts &quot;[connected] #{client.remote_address.ip_address}:#{client.remote_addre
+end
+</code></pre>
+
+<h3 id="client_disconnect">client_disconnect</h3>
+
+<p>When a client disconnects from the proxy:</p>
+
+<pre class="code ruby"><code class="ruby">on_client_disconnect do |client,server|
+  puts &quot;[disconnected] #{client.remote_address.ip_address}:#{client.remote_ad
+end
+</code></pre>
+
+<h3 id="server_connect">server_connect</h3>
+
+<p>When the server accepts a connection from the proxy:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_on_server_connect'>on_server_connect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[connected] </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h3 id="server_disconnect">server_disconnect</h3>
+
+<p>When the server closes a connection from the proxy.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_on_server_disconnect'>on_server_disconnect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[disconnected] </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h3 id="connect">connect</h3>
+
+<p>Alias for <span class='object_link'><a href="#on_server_connect-instance_method" title="Ronin::Support::Network::TCP::Proxy#on_server_connect (method)">#on_server_connect</a></span>.</p>
+
+<h3 id="disconnect">disconnect</h3>
+
+<p>Alias for <span class='object_link'><a href="#on_client_disconnect-instance_method" title="Ronin::Support::Network::TCP::Proxy#on_client_disconnect (method)">#on_client_disconnect</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="../SSL/Proxy.html" title="Ronin::Support::Network::SSL::Proxy (class)">SSL::Proxy</a></span></p>
+</div>
+
+
+
+  <h2>Constant Summary</h2>
+  
+  <h3 class="inherited">Constants inherited
+     from <span class='object_link'><a href="../Proxy.html" title="Ronin::Support::Network::Proxy (class)">Proxy</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Proxy.html#DEFAULT_BUFFER_SIZE-constant" title="Ronin::Support::Network::Proxy::DEFAULT_BUFFER_SIZE (constant)">Proxy::DEFAULT_BUFFER_SIZE</a></span>, <span class='object_link'><a href="../Proxy.html#DEFAULT_HOST-constant" title="Ronin::Support::Network::Proxy::DEFAULT_HOST (constant)">Proxy::DEFAULT_HOST</a></span></p>
+
+
+
+
+  <h2>Instance Attribute Summary</h2>
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="../Proxy.html" title="Ronin::Support::Network::Proxy (class)">Proxy</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Proxy.html#buffer_size-instance_method" title="Ronin::Support::Network::Proxy#buffer_size (method)">#buffer_size</a></span>, <span class='object_link'><a href="../Proxy.html#connections-instance_method" title="Ronin::Support::Network::Proxy#connections (method)">#connections</a></span>, <span class='object_link'><a href="../Proxy.html#host-instance_method" title="Ronin::Support::Network::Proxy#host (method)">#host</a></span>, <span class='object_link'><a href="../Proxy.html#port-instance_method" title="Ronin::Support::Network::Proxy#port (method)">#port</a></span>, <span class='object_link'><a href="../Proxy.html#server_host-instance_method" title="Ronin::Support::Network::Proxy#server_host (method)">#server_host</a></span>, <span class='object_link'><a href="../Proxy.html#server_port-instance_method" title="Ronin::Support::Network::Proxy#server_port (method)">#server_port</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#accept_client_connection-instance_method" title="#accept_client_connection (instance method)">#<strong>accept_client_connection</strong>  &#x21d2; TCPSocket </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Accepts a new client connection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#client_connect-instance_method" title="#client_connect (instance method)">#<strong>client_connect</strong>(client_connection)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Triggers the <code>client_connect</code> event.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#client_disconnect-instance_method" title="#client_disconnect (instance method)">#<strong>client_disconnect</strong>(client_connection, server_connection)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Triggers the <code>client_disconnect</code> event.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#close_client_connection-instance_method" title="#close_client_connection (instance method)">#<strong>close_client_connection</strong>(socket)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Closes a connection from the client.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#close_proxy-instance_method" title="#close_proxy (instance method)">#<strong>close_proxy</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Closes the TCP proxy.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#close_server_connection-instance_method" title="#close_server_connection (instance method)">#<strong>close_server_connection</strong>(socket)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Closes a connection to the server.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(**kwargs)  &#x21d2; Proxy </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new TCP Proxy.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#on_client_connect-instance_method" title="#on_client_connect (instance method)">#<strong>on_client_connect</strong> {|client| ... } &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Registers a callback for when a client connects.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#on_client_disconnect-instance_method" title="#on_client_disconnect (instance method)">#<strong>on_client_disconnect</strong> {|client, server| ... } &#x21d2; Object </a>
+    
+
+    
+      (also: #on_disconnect)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Registers a callback for when a client disconnects.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#on_server_connect-instance_method" title="#on_server_connect (instance method)">#<strong>on_server_connect</strong> {|client, server| ... } &#x21d2; Object </a>
+    
+
+    
+      (also: #on_connect)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Registers a callback for when the server accepts a connection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#on_server_disconnect-instance_method" title="#on_server_disconnect (instance method)">#<strong>on_server_disconnect</strong> {|client, server| ... } &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Registers a callback for when the server closes a connection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#open-instance_method" title="#open (instance method)">#<strong>open</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Opens the proxy.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#open_server_connection-instance_method" title="#open_server_connection (instance method)">#<strong>open_server_connection</strong>  &#x21d2; TCPSocket </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new connection to the server.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#poll-instance_method" title="#poll (instance method)">#<strong>poll</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Polls the connections for data.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#recv-instance_method" title="#recv (instance method)">#<strong>recv</strong>(connection)  &#x21d2; String<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Receives data from a connection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#send-instance_method" title="#send (instance method)">#<strong>send</strong>(connection, data)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sends data to a connection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#server_connect-instance_method" title="#server_connect (instance method)">#<strong>server_connect</strong>(client_connection)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Triggers the <code>server_connect</code> event.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#server_disconnect-instance_method" title="#server_disconnect (instance method)">#<strong>server_disconnect</strong>(client_connection, server_connection)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Triggers the <code>server_disconnect</code> event.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Proxy.html" title="Ronin::Support::Network::Proxy (class)">Proxy</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Proxy.html#callback-instance_method" title="Ronin::Support::Network::Proxy#callback (method)">#callback</a></span>, <span class='object_link'><a href="../Proxy.html#client_connection_for-instance_method" title="Ronin::Support::Network::Proxy#client_connection_for (method)">#client_connection_for</a></span>, <span class='object_link'><a href="../Proxy.html#client_connections-instance_method" title="Ronin::Support::Network::Proxy#client_connections (method)">#client_connections</a></span>, <span class='object_link'><a href="../Proxy.html#client_data-instance_method" title="Ronin::Support::Network::Proxy#client_data (method)">#client_data</a></span>, <span class='object_link'><a href="../Proxy.html#close-instance_method" title="Ronin::Support::Network::Proxy#close (method)">#close</a></span>, <span class='object_link'><a href="../Proxy.html#close!-instance_method" title="Ronin::Support::Network::Proxy#close! (method)">#close!</a></span>, <span class='object_link'><a href="../Proxy.html#close_connection-instance_method" title="Ronin::Support::Network::Proxy#close_connection (method)">#close_connection</a></span>, <span class='object_link'><a href="../Proxy.html#close_connections-instance_method" title="Ronin::Support::Network::Proxy#close_connections (method)">#close_connections</a></span>, <span class='object_link'><a href="../Proxy.html#ignore!-instance_method" title="Ronin::Support::Network::Proxy#ignore! (method)">#ignore!</a></span>, <span class='object_link'><a href="../Proxy.html#inspect-instance_method" title="Ronin::Support::Network::Proxy#inspect (method)">#inspect</a></span>, <span class='object_link'><a href="../Proxy.html#listen-instance_method" title="Ronin::Support::Network::Proxy#listen (method)">#listen</a></span>, <span class='object_link'><a href="../Proxy.html#on_client_data-instance_method" title="Ronin::Support::Network::Proxy#on_client_data (method)">#on_client_data</a></span>, <span class='object_link'><a href="../Proxy.html#on_data-instance_method" title="Ronin::Support::Network::Proxy#on_data (method)">#on_data</a></span>, <span class='object_link'><a href="../Proxy.html#on_server_data-instance_method" title="Ronin::Support::Network::Proxy#on_server_data (method)">#on_server_data</a></span>, <span class='object_link'><a href="../Proxy.html#reset!-instance_method" title="Ronin::Support::Network::Proxy#reset! (method)">#reset!</a></span>, <span class='object_link'><a href="../Proxy.html#reset_connection-instance_method" title="Ronin::Support::Network::Proxy#reset_connection (method)">#reset_connection</a></span>, <span class='object_link'><a href="../Proxy.html#server_connection_for-instance_method" title="Ronin::Support::Network::Proxy#server_connection_for (method)">#server_connection_for</a></span>, <span class='object_link'><a href="../Proxy.html#server_connections-instance_method" title="Ronin::Support::Network::Proxy#server_connections (method)">#server_connections</a></span>, <span class='object_link'><a href="../Proxy.html#server_data-instance_method" title="Ronin::Support::Network::Proxy#server_data (method)">#server_data</a></span>, <span class='object_link'><a href="../Proxy.html#start-class_method" title="Ronin::Support::Network::Proxy.start (method)">start</a></span>, <span class='object_link'><a href="../Proxy.html#start-instance_method" title="Ronin::Support::Network::Proxy#start (method)">#start</a></span>, <span class='object_link'><a href="../Proxy.html#stop-instance_method" title="Ronin::Support::Network::Proxy#stop (method)">#stop</a></span>, <span class='object_link'><a href="../Proxy.html#stop!-instance_method" title="Ronin::Support::Network::Proxy#stop! (method)">#stop!</a></span>, <span class='object_link'><a href="../Proxy.html#to_s-instance_method" title="Ronin::Support::Network::Proxy#to_s (method)">#to_s</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(**kwargs)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Support::Network::TCP::Proxy (class)">Proxy</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new TCP Proxy.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <span class='object_link'><a href="../Proxy.html#initialize-instance_method" title="Ronin::Support::Network::Proxy#initialize (method)">Proxy#initialize</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="../Proxy.html#initialize-instance_method" title="Ronin::Support::Network::Proxy#initialize (method)">Proxy#initialize</a></span></li>
+    
+  </ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 127</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_proxy'>proxy</span><span class='op'>|</span>
+    <span class='ivar'>@callbacks</span><span class='lbracket'>[</span><span class='symbol'>:client_connect</span><span class='rbracket'>]</span>    <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+    <span class='ivar'>@callbacks</span><span class='lbracket'>[</span><span class='symbol'>:client_disconnect</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+    <span class='ivar'>@callbacks</span><span class='lbracket'>[</span><span class='symbol'>:server_connect</span><span class='rbracket'>]</span>    <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+    <span class='ivar'>@callbacks</span><span class='lbracket'>[</span><span class='symbol'>:server_disconnect</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+    <span class='kw'>yield</span> <span class='id identifier rubyid_proxy'>proxy</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="accept_client_connection-instance_method">
+  
+    #<strong>accept_client_connection</strong>  &#x21d2; <tt>TCPSocket</tt>  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Accepts a new client connection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A new connection.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.6.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+334
+335
+336</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 334</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_accept_client_connection'>accept_client_connection</span>
+  <span class='ivar'>@socket</span><span class='period'>.</span><span class='id identifier rubyid_accept'>accept</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="client_connect-instance_method">
+  
+    #<strong>client_connect</strong>(client_connection)  &#x21d2; <tt>Object</tt>  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Triggers the <code>client_connect</code> event.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>client_connection</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new connection from a client to the proxy.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+381
+382
+383
+384
+385</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 381</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_client_connect'>client_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_client_connection'>client_connection</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_callback'>callback</span><span class='lparen'>(</span><span class='symbol'>:client_connect</span><span class='comma'>,</span><span class='id identifier rubyid_client_connection'>client_connection</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_server_connect'>server_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_client_connection'>client_connection</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="client_disconnect-instance_method">
+  
+    #<strong>client_disconnect</strong>(client_connection, server_connection)  &#x21d2; <tt>Object</tt>  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Triggers the <code>client_disconnect</code> event.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>client_connection</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The connection from a client to the proxy.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>server_connection</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The connection from the proxy to the server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+396
+397
+398
+399
+400</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 396</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_client_disconnect'>client_disconnect</span><span class='lparen'>(</span><span class='id identifier rubyid_client_connection'>client_connection</span><span class='comma'>,</span><span class='id identifier rubyid_server_connection'>server_connection</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_callback'>callback</span><span class='lparen'>(</span><span class='symbol'>:client_disconnect</span><span class='comma'>,</span><span class='id identifier rubyid_client_connection'>client_connection</span><span class='comma'>,</span><span class='id identifier rubyid_server_connection'>server_connection</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_close_connection'>close_connection</span><span class='lparen'>(</span><span class='id identifier rubyid_client_connection'>client_connection</span><span class='comma'>,</span><span class='id identifier rubyid_server_connection'>server_connection</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="close_client_connection-instance_method">
+  
+    #<strong>close_client_connection</strong>(socket)  &#x21d2; <tt>Object</tt>  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Closes a connection from the client.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>socket</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The connection from the client.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+354
+355
+356</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 354</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_close_client_connection'>close_client_connection</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="close_proxy-instance_method">
+  
+    #<strong>close_proxy</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Closes the TCP proxy.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+371
+372
+373</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 371</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_close_proxy'>close_proxy</span>
+  <span class='ivar'>@socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="close_server_connection-instance_method">
+  
+    #<strong>close_server_connection</strong>(socket)  &#x21d2; <tt>Object</tt>  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Closes a connection to the server.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>socket</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The connection to the server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+364
+365
+366</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 364</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_close_server_connection'>close_server_connection</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="on_client_connect-instance_method">
+  
+    #<strong>on_client_connect</strong> {|client| ... } &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Registers a callback for when a client connects.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_on_client_connect'>on_client_connect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[connected] </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_remote_address'>remote_address</span><span class='period'>.</span><span class='id identifier rubyid_ip_address'>ip_address</span><span class='embexpr_end'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_remote_address'>remote_address</span><span class='period'>.</span><span class='id identifier rubyid_ip_port'>ip_port</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>client</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The block will be passed each newly connected client.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>client</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The connection from the client to the proxy.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+244
+245
+246</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 244</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_on_client_connect'>on_client_connect</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@callbacks</span><span class='lbracket'>[</span><span class='symbol'>:client_connect</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_block'>block</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="on_client_disconnect-instance_method">
+  
+    #<strong>on_client_disconnect</strong> {|client, server| ... } &#x21d2; <tt>Object</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='on_disconnect-instance_method'>on_disconnect</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Registers a callback for when a client disconnects.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_on_client_disconnect'>on_client_disconnect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[disconnected] </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_remote_address'>remote_address</span><span class='period'>.</span><span class='id identifier rubyid_ip_address'>ip_address</span><span class='embexpr_end'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_remote_address'>remote_address</span><span class='period'>.</span><span class='id identifier rubyid_ip_port'>ip_port</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>client</tt>, <tt><span class='object_link'><a href="../TCP.html#server-class_method" title="Ronin::Support::Network::TCP.server (method)">server</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The block will be passed each disconnected client and their
+connection to the server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>client</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The connection from the client to the proxy.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>server</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The connection from the proxy to the server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+268
+269
+270</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 268</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_on_client_disconnect'>on_client_disconnect</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@callbacks</span><span class='lbracket'>[</span><span class='symbol'>:client_disconnect</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_block'>block</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="on_server_connect-instance_method">
+  
+    #<strong>on_server_connect</strong> {|client, server| ... } &#x21d2; <tt>Object</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='on_connect-instance_method'>on_connect</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Registers a callback for when the server accepts a connection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_on_server_connect'>on_server_connect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[connected] </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>client</tt>, <tt><span class='object_link'><a href="../TCP.html#server-class_method" title="Ronin::Support::Network::TCP.server (method)">server</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The block will be passed each connected client and their newly
+formed connection to the server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>client</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The connection from the client to the proxy.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>server</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The connection from the proxy to the server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+294
+295
+296</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 294</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_on_server_connect'>on_server_connect</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@callbacks</span><span class='lbracket'>[</span><span class='symbol'>:server_connect</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_block'>block</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="on_server_disconnect-instance_method">
+  
+    #<strong>on_server_disconnect</strong> {|client, server| ... } &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Registers a callback for when the server closes a connection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_on_server_disconnect'>on_server_disconnect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[disconnected] </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_proxy'>proxy</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>client</tt>, <tt><span class='object_link'><a href="../TCP.html#server-class_method" title="Ronin::Support::Network::TCP.server (method)">server</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The block will be passed the each client connection and the
+recently disconnected server connection.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>client</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The connection from the client to the proxy.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>server</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The connection from the proxy to the server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+320
+321
+322</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 320</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_on_server_disconnect'>on_server_disconnect</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@callbacks</span><span class='lbracket'>[</span><span class='symbol'>:server_disconnect</span><span class='rbracket'>]</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_block'>block</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="open-instance_method">
+  
+    #<strong>open</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Opens the proxy.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+143
+144
+145</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 143</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_open'>open</span>
+  <span class='ivar'>@socket</span> <span class='op'>=</span> <span class='const'>TCPServer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@host</span><span class='comma'>,</span><span class='ivar'>@port</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="open_server_connection-instance_method">
+  
+    #<strong>open_server_connection</strong>  &#x21d2; <tt>TCPSocket</tt>  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new connection to the server.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A new connection.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+344
+345
+346</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 344</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_open_server_connection'>open_server_connection</span>
+  <span class='const'>TCPSocket</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='ivar'>@server_host</span><span class='comma'>,</span><span class='ivar'>@server_port</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="poll-instance_method">
+  
+    #<strong>poll</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Polls the connections for data.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 152</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_poll'>poll</span>
+  <span class='id identifier rubyid_sockets'>sockets</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='ivar'>@socket</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='id identifier rubyid_client_connections'>client_connections</span> <span class='op'>+</span> <span class='id identifier rubyid_server_connections'>server_connections</span>
+
+  <span class='id identifier rubyid_readable'>readable</span><span class='comma'>,</span> <span class='id identifier rubyid_writtable'>writtable</span><span class='comma'>,</span> <span class='id identifier rubyid_errors'>errors</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../../IO.html" title="IO (class)">IO</a></span></span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='id identifier rubyid_sockets'>sockets</span><span class='comma'>,</span><span class='kw'>nil</span><span class='comma'>,</span><span class='id identifier rubyid_sockets'>sockets</span><span class='rparen'>)</span>
+
+  <span class='lparen'>(</span><span class='id identifier rubyid_errors'>errors</span> <span class='op'>&amp;</span> <span class='id identifier rubyid_client_connections'>client_connections</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client_socket'>client_socket</span><span class='op'>|</span>
+    <span class='id identifier rubyid_server_socket'>server_socket</span> <span class='op'>=</span> <span class='id identifier rubyid_server_connection_for'>server_connection_for</span><span class='lparen'>(</span><span class='id identifier rubyid_client_socket'>client_socket</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_client_disconnect'>client_disconnect</span><span class='lparen'>(</span><span class='id identifier rubyid_client_socket'>client_socket</span><span class='comma'>,</span><span class='id identifier rubyid_server_socket'>server_socket</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='lparen'>(</span><span class='id identifier rubyid_errors'>errors</span> <span class='op'>&amp;</span> <span class='id identifier rubyid_server_connections'>server_connections</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server_socket'>server_socket</span><span class='op'>|</span>
+    <span class='id identifier rubyid_client_socket'>client_socket</span> <span class='op'>=</span> <span class='id identifier rubyid_client_connection_for'>client_connection_for</span><span class='lparen'>(</span><span class='id identifier rubyid_server_socket'>server_socket</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_server_disconnect'>server_disconnect</span><span class='lparen'>(</span><span class='id identifier rubyid_client_socket'>client_socket</span><span class='comma'>,</span><span class='id identifier rubyid_server_socket'>server_socket</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='lparen'>(</span><span class='id identifier rubyid_readable'>readable</span> <span class='op'>&amp;</span> <span class='id identifier rubyid_client_connections'>client_connections</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client_socket'>client_socket</span><span class='op'>|</span>
+    <span class='id identifier rubyid_server_socket'>server_socket</span> <span class='op'>=</span> <span class='id identifier rubyid_server_connection_for'>server_connection_for</span><span class='lparen'>(</span><span class='id identifier rubyid_client_socket'>client_socket</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_data'>data</span>          <span class='op'>=</span> <span class='id identifier rubyid_recv'>recv</span><span class='lparen'>(</span><span class='id identifier rubyid_client_socket'>client_socket</span><span class='rparen'>)</span>
+
+    <span class='kw'>unless</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+      <span class='id identifier rubyid_client_data'>client_data</span><span class='lparen'>(</span><span class='id identifier rubyid_client_socket'>client_socket</span><span class='comma'>,</span><span class='id identifier rubyid_server_socket'>server_socket</span><span class='comma'>,</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_client_disconnect'>client_disconnect</span><span class='lparen'>(</span><span class='id identifier rubyid_client_socket'>client_socket</span><span class='comma'>,</span><span class='id identifier rubyid_server_socket'>server_socket</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='lparen'>(</span><span class='id identifier rubyid_readable'>readable</span> <span class='op'>&amp;</span> <span class='id identifier rubyid_server_connections'>server_connections</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server_socket'>server_socket</span><span class='op'>|</span>
+    <span class='id identifier rubyid_client_socket'>client_socket</span> <span class='op'>=</span> <span class='id identifier rubyid_client_connection_for'>client_connection_for</span><span class='lparen'>(</span><span class='id identifier rubyid_server_socket'>server_socket</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_data'>data</span>          <span class='op'>=</span> <span class='id identifier rubyid_recv'>recv</span><span class='lparen'>(</span><span class='id identifier rubyid_server_socket'>server_socket</span><span class='rparen'>)</span>
+
+    <span class='kw'>unless</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+      <span class='id identifier rubyid_server_data'>server_data</span><span class='lparen'>(</span><span class='id identifier rubyid_client_socket'>client_socket</span><span class='comma'>,</span><span class='id identifier rubyid_server_socket'>server_socket</span><span class='comma'>,</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_server_disconnect'>server_disconnect</span><span class='lparen'>(</span><span class='id identifier rubyid_client_socket'>client_socket</span><span class='comma'>,</span><span class='id identifier rubyid_server_socket'>server_socket</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_readable'>readable</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='ivar'>@socket</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_client_socket'>client_socket</span> <span class='op'>=</span> <span class='id identifier rubyid_accept_client_connection'>accept_client_connection</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_client_connect'>client_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_client_socket'>client_socket</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="recv-instance_method">
+  
+    #<strong>recv</strong>(connection)  &#x21d2; <tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Receives data from a connection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>connection</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The TCP connection to receive data from.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The received data.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+224
+225
+226</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 224</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_recv'>recv</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_recv'>recv</span><span class='lparen'>(</span><span class='ivar'>@buffer_size</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="send-instance_method">
+  
+    #<strong>send</strong>(connection, data)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sends data to a connection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>connection</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A TCP connection to write data to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The data to write.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+209
+210
+211</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 209</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='comma'>,</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span><span class='int'>0</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="server_connect-instance_method">
+  
+    #<strong>server_connect</strong>(client_connection)  &#x21d2; <tt>Object</tt>  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Triggers the <code>server_connect</code> event.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>client_connection</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The connection from a client to the proxy.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+408
+409
+410
+411
+412
+413
+414</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 408</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_server_connect'>server_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_client_connection'>client_connection</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_server_connection'>server_connection</span> <span class='op'>=</span> <span class='id identifier rubyid_open_server_connection'>open_server_connection</span>
+
+  <span class='id identifier rubyid_callback'>callback</span><span class='lparen'>(</span><span class='symbol'>:server_connect</span><span class='comma'>,</span><span class='id identifier rubyid_client_connection'>client_connection</span><span class='comma'>,</span><span class='id identifier rubyid_server_connection'>server_connection</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='ivar'>@connections</span><span class='lbracket'>[</span><span class='id identifier rubyid_client_connection'>client_connection</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_server_connection'>server_connection</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="server_disconnect-instance_method">
+  
+    #<strong>server_disconnect</strong>(client_connection, server_connection)  &#x21d2; <tt>Object</tt>  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Triggers the <code>server_disconnect</code> event.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>client_connection</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The connection from a client to the proxy.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>server_connection</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The connection from the proxy to the server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+425
+426
+427
+428
+429</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp/proxy.rb', line 425</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_server_disconnect'>server_disconnect</span><span class='lparen'>(</span><span class='id identifier rubyid_client_connection'>client_connection</span><span class='comma'>,</span><span class='id identifier rubyid_server_connection'>server_connection</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_callback'>callback</span><span class='lparen'>(</span><span class='symbol'>:server_disconnect</span><span class='comma'>,</span><span class='id identifier rubyid_client_connection'>client_connection</span><span class='comma'>,</span><span class='id identifier rubyid_server_connection'>server_connection</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_close_connection'>close_connection</span><span class='lparen'>(</span><span class='id identifier rubyid_client_connection'>client_connection</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sun Jan  1 18:31:25 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.28 (ruby-3.1.3).
+</div>
+
+    </div>
+  </body>
+</html>
