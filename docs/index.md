@@ -25,21 +25,10 @@ title: Documentation
 
 ## API
 
-* [ronin-support](ronin-support/frames) -
-  {{ site.libraries.ronin-support.version }}
-* [ronin](ronin/frames) - {{ site.libraries.ronin.version }}
-  * Database Relational Diagram
-    [[png]](ronin/relational_diagram.png)
-    [[svg]](ronin/relational_diagram.svg)
-  * Database Schema Diagram
-    [[png]](ronin/schema_diagram.png)
-    [[svg]](ronin/schema_diagram.svg)
-* [ronin-gen](ronin-gen/frames) - {{ site.libraries.ronin-gen.version }}
-* [ronin-web](ronin-web/frames) - {{ site.libraries.ronin-web.version }}
-* [ronin-asm](ronin-asm/frames) - {{ site.libraries.ronin-asm.version }}
-* [ronin-sql](ronin-sql/frames) - {{ site.libraries.ronin-sql.version }}
-* [ronin-exploits](ronin-exploits/frames) -
-  {{ site.libraries.ronin-exploits.version }}
+{% for library in site.libraries %}
+* [{{ library[0] }}](/docs/{{ library[0] }}/) - 
+  {{ library[1].version }}
+{% endfor %}
 
 ## Media
 
