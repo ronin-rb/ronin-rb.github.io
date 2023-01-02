@@ -30,7 +30,7 @@ title: Documentation
   {{ library[1].description }}
 {% endfor %}
 
-## Media
+## Archive
 
 * [Ronin: A Platform for Publishing and Mayhem][1] - 
   A talk at ToorCamp 2009 discussing Ronin, how it can be used as a
