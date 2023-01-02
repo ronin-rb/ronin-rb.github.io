@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Ronin::CLI::Commands::Grep
+  
+    &mdash; Ronin Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::CLI::Commands::Grep";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../_index.html">Index (G)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../CLI.html" title="Ronin::CLI (class)">CLI</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Commands.html" title="Ronin::CLI::Commands (module)">Commands</a></span></span>
+     &raquo; 
+    <span class="title">Grep</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Ronin::CLI::Commands::Grep
+  
+  
+  <span class="private note title">Private</span>
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="../FileProcessorCommand.html" title="Ronin::CLI::FileProcessorCommand (class)">FileProcessorCommand</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Core::CLI::Command</li>
+          
+            <li class="next"><span class='object_link'><a href="../Command.html" title="Ronin::CLI::Command (class)">Ronin::CLI::Command</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="../FileProcessorCommand.html" title="Ronin::CLI::FileProcessorCommand (class)">FileProcessorCommand</a></span></li>
+          
+            <li class="next">Ronin::CLI::Commands::Grep</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd>CommandKit::Colors, <span class='object_link'><a href="../PatternOptions.html" title="Ronin::CLI::PatternOptions (module)">PatternOptions</a></span></dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/cli/commands/grep.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This class is part of a private API.</strong>
+  You should avoid using this class if possible, as it may be removed or be changed in the future.
+</p>
+<p>Greps for common patterns in a file/stream.</p>
+
+<h2 id="usage">Usage</h2>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_ronin'>ronin</span> <span class='id identifier rubyid_grep'>grep</span> <span class='lbracket'>[</span><span class='id identifier rubyid_options'>options</span><span class='rbracket'>]</span> <span class='lbracket'>[</span><span class='const'>FILE</span> <span class='op'>...</span><span class='rbracket'>]</span>
+</code></pre>
+
+<h2 id="options">Options</h2>
+
+<pre class="code ruby"><code class="ruby">-N, --number                     Searches for all numbers
+-X, --hex-number                 Searches for all hexadecimal numbers
+-V, --version-number             Searches for all version numbers
+-w, --word                       Searches for all words
+    --mac-addr                   Searches for all MAC addresses
+-4, --ipv4-addr                  Searches for all IPv4 addresses
+-6, --ipv6-addr                  Searches for all IPv6 addresses
+-I, --ip                         Searches for all IP addresses
+-H, --host                       Searches for all host names
+-D, --domain                     Searches for all domain names
+    --uri                        Searches for all URIs
+-U, --url                        Searches for all URLs
+    --user-name                  Searches for all user names
+-E, --email-addr                 Searches for all email addresses
+    --obfuscated-email-addr      Searches for all obfuscated email addresses
+    --phone-number               Searches for all phone numbers
+    --ssn                        Searches for all Social Security Numbers (SSNs)
+    --amex-cc                    Searches for all AMEX Credit Card numbers
+    --discover-cc                Searches for all Discord Card numbers
+    --mastercard-cc              Searches for all MasterCard numbers
+    --visa-cc                    Searches for all VISA Credit Card numbers
+    --visa-mastercard-cc         Searches for all VISA MasterCard numbers
+    --cc                         Searches for all Credit Card numbers
+    --file-name                  Searches for all file names
+    --dir-name                   Searches for all directory names
+    --relative-unix-path         Searches for all relative UNIX paths
+    --absolute-unix-path         Searches for all absolute UNIX paths
+    --unix-path                  Searches for all UNIX paths
+    --relative-windows-path      Searches for all relative Windows paths
+    --absolute-windows-path      Searches for all absolute Windows paths
+    --windows-path               Searches for all Windows paths
+    --relative-path              Searches for all relative paths
+    --absolute-path              Searches for all absolute paths
+-P, --path                       Searches for all paths
+    --variable-name              Searches for all variable names
+    --function-name              Searches for all function names
+    --md5                        Searches for all MD5 hashes
+    --sha1                       Searches for all SHA1 hashes
+    --sha256                     Searches for all SHA256 hashes
+    --sha512                     Searches for all SHA512 hashes
+    --hash                       Searches for all hashes
+    --ssh-private-key            Searches for all SSH private key data
+    --ssh-public-key             Searches for all SSH public key data
+-K, --private-key                Searches for all private key data
+    --rsa-public-key             Searches for all RSA public key data
+    --dsa-public-key             Searches for all DSA public key data
+    --ec-public-key              Searches for all EC public key data
+    --public-key                 Searches for all public key data
+    --aws-access-key-id          Searches for all AWS access key IDs
+    --aws-secret-access-key      Searches for all AWS secret access key
+-A, --api-key                    Secretes for all API keys
+    --single-quoted-string       Searches for all single-quoted strings
+    --double-quoted-string       Searches for all double-quoted strings
+-S, --string                     Searches for all quoted strings
+-B, --base64                     Searches for all Base64 strings
+-e, --regexp /REGEXP/            Custom regular expression to search for
+-o, --only-matching              Only print the matching data
+-n, --line-number                Print the line number for each line
+    --with-filename              Print the file name for each match
+-h, --help                       Print help information
+</code></pre>
+
+<h2 id="arguments">Arguments</h2>
+
+<pre class="code ruby"><code class="ruby">[FILE ...]                       Optional input file(s)
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#filename_of-instance_method" title="#filename_of (instance method)">#<strong>filename_of</strong>(io)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the file name for the IO stream.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#match_line-instance_method" title="#match_line (instance method)">#<strong>match_line</strong>(line, **kwargs)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Attempts to match a line of text.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#print_line_prefix-instance_method" title="#print_line_prefix (instance method)">#<strong>print_line_prefix</strong>(filename:, line_number:)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Optionally prints the filename or linenumber prefix for a line.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#print_match-instance_method" title="#print_match (instance method)">#<strong>print_match</strong>(match)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Prints the matched string w/o ANSI highlighting.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#process_input-instance_method" title="#process_input (instance method)">#<strong>process_input</strong>(input)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Greps the input stream.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#run-instance_method" title="#run (instance method)">#<strong>run</strong>(*files)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Runs the <code>ronin grep</code> command.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../PatternOptions.html" title="Ronin::CLI::PatternOptions (module)">PatternOptions</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../PatternOptions.html#included-class_method" title="Ronin::CLI::PatternOptions.included (method)">included</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../FileProcessorCommand.html" title="Ronin::CLI::FileProcessorCommand (class)">FileProcessorCommand</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../FileProcessorCommand.html#open_file-instance_method" title="Ronin::CLI::FileProcessorCommand#open_file (method)">#open_file</a></span>, <span class='object_link'><a href="../FileProcessorCommand.html#process_file-instance_method" title="Ronin::CLI::FileProcessorCommand#process_file (method)">#process_file</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="filename_of-instance_method">
+  
+    #<strong>filename_of</strong>(io)  &#x21d2; <tt><span class='object_link'><a href="String.html" title="Ronin::CLI::Commands::String (class)">String</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Returns the file name for the IO stream.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>io</span>
+      
+      
+        <span class='type'>(<tt>File</tt>, <tt>IO</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="Ronin::CLI::Commands::String (class)">String</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+156
+157
+158
+159
+160
+161</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/grep.rb', line 156</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_filename_of'>filename_of</span><span class='lparen'>(</span><span class='id identifier rubyid_io'>io</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_io'>io</span>
+  <span class='kw'>when</span> <span class='const'>File</span> <span class='kw'>then</span> <span class='id identifier rubyid_io'>io</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span>
+  <span class='kw'>else</span>           <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>[stdin]</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="match_line-instance_method">
+  
+    #<strong>match_line</strong>(line, **kwargs)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Attempts to match a line of text.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>line</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="Ronin::CLI::Commands::String (class)">String</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:filename</span>
+          <span class="type">(<tt><span class='object_link'><a href="String.html" title="Ronin::CLI::Commands::String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">:line_number</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/grep.rb', line 175</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_match_line'>match_line</span><span class='lparen'>(</span><span class='id identifier rubyid_line'>line</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='id identifier rubyid_printed_prefix'>printed_prefix</span> <span class='op'>=</span> <span class='kw'>false</span>
+
+  <span class='kw'>while</span> <span class='lparen'>(</span><span class='id identifier rubyid_match'>match</span> <span class='op'>=</span> <span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='ivar'>@pattern</span><span class='comma'>,</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>unless</span> <span class='id identifier rubyid_printed_prefix'>printed_prefix</span>
+      <span class='id identifier rubyid_print_line_prefix'>print_line_prefix</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_printed_prefix'>printed_prefix</span> <span class='op'>=</span> <span class='kw'>true</span>
+    <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_match_start'>match_start</span><span class='comma'>,</span> <span class='id identifier rubyid_match_stop'>match_stop</span> <span class='op'>=</span> <span class='id identifier rubyid_match'>match</span><span class='period'>.</span><span class='id identifier rubyid_offset'>offset</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span>
+
+    <span class='comment'># print the text before the match, unless --only-matching is enabled
+</span>    <span class='id identifier rubyid_print'>print</span><span class='lparen'>(</span><span class='id identifier rubyid_line'>line</span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='op'>...</span><span class='id identifier rubyid_match_start'>match_start</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:only_matching</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_print_match'>print_match</span><span class='lparen'>(</span><span class='id identifier rubyid_match'>match</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='id identifier rubyid_match_stop'>match_stop</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>unless</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:only_matching</span><span class='rbracket'>]</span>
+    <span class='comment'># print the rest of the line, if we&#39;ve had at least one match
+</span>    <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='id identifier rubyid_line'>line</span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='op'>..</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_index'>index</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="print_line_prefix-instance_method">
+  
+    #<strong>print_line_prefix</strong>(filename:, line_number:)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Optionally prints the filename or linenumber prefix for a line.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>filename</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="Ronin::CLI::Commands::String (class)">String</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>line_number</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/grep.rb', line 207</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_print_line_prefix'>print_line_prefix</span><span class='lparen'>(</span><span class='label'>filename:</span> <span class='comma'>,</span> <span class='label'>line_number:</span> <span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:with_filename</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_magenta'>magenta</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_cyan'>cyan</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>:</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:line_numbers</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_green'>green</span><span class='lparen'>(</span><span class='id identifier rubyid_line_number'>line_number</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_cyan'>cyan</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>:</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="print_match-instance_method">
+  
+    #<strong>print_match</strong>(match)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Prints the matched string w/o ANSI highlighting.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>match</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="Ronin::CLI::Commands::String (class)">String</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/grep.rb', line 224</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_print_match'>print_match</span><span class='lparen'>(</span><span class='id identifier rubyid_match'>match</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_match_string'>match_string</span> <span class='op'>=</span> <span class='id identifier rubyid_match'>match</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_highlighted'>highlighted</span>  <span class='op'>=</span> <span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_bold'>bold</span><span class='lparen'>(</span><span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_red'>red</span><span class='lparen'>(</span><span class='id identifier rubyid_match_string'>match_string</span><span class='rparen'>)</span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:only_matching</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_highlighted'>highlighted</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='id identifier rubyid_highlighted'>highlighted</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="process_input-instance_method">
+  
+    #<strong>process_input</strong>(input)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Greps the input stream.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>input</span>
+      
+      
+        <span class='type'>(<tt>IO</tt>, <tt>StringIO</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The input stream to grep.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+141
+142
+143
+144
+145
+146
+147</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/grep.rb', line 141</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_process_input'>process_input</span><span class='lparen'>(</span><span class='id identifier rubyid_input'>input</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_filename'>filename</span> <span class='op'>=</span> <span class='id identifier rubyid_filename_of'>filename_of</span><span class='lparen'>(</span><span class='id identifier rubyid_input'>input</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_input'>input</span><span class='period'>.</span><span class='id identifier rubyid_each_line'>each_line</span><span class='lparen'>(</span><span class='label'>chomp:</span> <span class='kw'>true</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each_with_index'>each_with_index</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='comma'>,</span><span class='id identifier rubyid_index'>index</span><span class='op'>|</span>
+    <span class='id identifier rubyid_match_line'>match_line</span><span class='lparen'>(</span><span class='id identifier rubyid_line'>line</span><span class='comma'>,</span> <span class='label'>filename:</span> <span class='id identifier rubyid_filename'>filename</span><span class='comma'>,</span> <span class='label'>line_number:</span> <span class='id identifier rubyid_index'>index</span><span class='op'>+</span><span class='int'>1</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="run-instance_method">
+  
+    #<strong>run</strong>(*files)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Runs the <code>ronin grep</code> command.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>files</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="String.html" title="Ronin::CLI::Commands::String (class)">String</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional file arguments to grep.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+126
+127
+128
+129
+130
+131
+132
+133</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/grep.rb', line 126</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_files'>files</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='ivar'>@pattern</span>
+    <span class='id identifier rubyid_print_error'>print_error</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>must specify a pattern to search for</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_exit'>exit</span> <span class='op'>-</span><span class='int'>1</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_files'>files</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sun Jan  1 18:17:54 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.28 (ruby-3.1.3).
+</div>
+
+    </div>
+  </body>
+</html>

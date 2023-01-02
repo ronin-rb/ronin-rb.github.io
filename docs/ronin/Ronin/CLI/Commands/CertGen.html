@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Ronin::CLI::Commands::CertGen
+  
+    &mdash; Ronin Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::CLI::Commands::CertGen";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../_index.html">Index (C)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../CLI.html" title="Ronin::CLI (class)">CLI</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Commands.html" title="Ronin::CLI::Commands (module)">Commands</a></span></span>
+     &raquo; 
+    <span class="title">CertGen</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Ronin::CLI::Commands::CertGen
+  
+  
+  <span class="private note title">Private</span>
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="../Command.html" title="Ronin::CLI::Command (class)">Ronin::CLI::Command</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Core::CLI::Command</li>
+          
+            <li class="next"><span class='object_link'><a href="../Command.html" title="Ronin::CLI::Command (class)">Ronin::CLI::Command</a></span></li>
+          
+            <li class="next">Ronin::CLI::Commands::CertGen</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd>Core::CLI::Logging</dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/cli/commands/cert_gen.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This class is part of a private API.</strong>
+  You should avoid using this class if possible, as it may be removed or be changed in the future.
+</p>
+<p>Generates a new X509 certificate.</p>
+
+<h2 id="usage">Usage</h2>
+
+<pre class="code ruby"><code class="ruby">ronin cert-gen [options]
+</code></pre>
+
+<h2 id="options">Options</h2>
+
+<pre class="code ruby"><code class="ruby">    --version NUM                The certificate version number (Default: 2)
+    --serial NUM                 The certificate serial number (Default: 0)
+    --not-before TIME            When the certificate becomes valid. Defaults to the current time.
+    --not-after TIME             When the certificate becomes no longer valid. Defaults to one year from now.
+-c, --common-name DOMAIN         The Common Name (CN) for the certificate
+-A, --subject-alt-name HOST|IP   Adds HOST or IP to subjectAltName
+-O, --organization NAME          The Organization (O) for the certificate
+-U, --organizational-unit NAME   The Organizational Unit (OU)
+-L, --locality NAME              The locality for the certificate
+-S, --state XX                   The two-letter State (ST) code for the certificate
+-C, --country XX                 The two-letter Country (C) code for the certificate
+-t, --key-type rsa|ec            The signing key type
+    --generate-key PATH          Generates and saves a random key (Default: key.pem)
+-k, --key-file FILE              Loads the signing key from the FILE
+-H sha256|sha1|md5,              The hash algorithm to use for signing (Default: sha256)
+    --signing-hash
+    --ca-key FILE                The Certificate Authority (CA) key
+    --ca-cert FILE               The Certificate Authority (CA) certificate
+    --ca                         Generates a CA certificate
+-o, --output FILE                The output file (Default: cert.crt)
+-h, --help                       Print help information
+</code></pre>
+
+<h3 id="examples">Examples</h3>
+
+<pre class="code ruby"><code class="ruby">ronin cert_gen -c test.com -O &quot;Test Co&quot; -U &quot;Test Dept&quot; -L &quot;Test City&quot; -S NY -C US
+ronin cert_gen -c test.com -O &quot;Test Co&quot; -U &quot;Test Dept&quot; -L &quot;Test City&quot; -S NY -C US --key-file private.key
+ronin cert_gen -c test.com -A www.test.com -O &quot;Test Co&quot; -U &quot;Test Dept&quot; -L &quot;Test City&quot; -S NY -C US
+ronin cert_gen --ca -c &quot;Test CA&quot; -O &quot;Test Co&quot; -U &quot;Test Dept&quot; -L &quot;Test City&quot; -S NY -C US
+ronin cert_gen -c test.com -O &quot;Test Co&quot; -U &quot;Test Dept&quot; -L &quot;Test City&quot; -S NY -C US --ca-key ca.key --ca-cert ca.crt
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="IP_REGEXP-constant" class="">IP_REGEXP =
+          <div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This constant is part of a private API.</strong>
+  You should avoid using this constant if possible, as it may be removed or be changed in the future.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'>Support</span><span class='op'>::</span><span class='const'>Text</span><span class='op'>::</span><span class='const'>Patterns</span><span class='op'>::</span><span class='const'>IP</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#basic_constraints_ext-instance_method" title="#basic_constraints_ext (instance method)">#<strong>basic_constraints_ext</strong>  &#x21d2; (String, Boolean)<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Builds the <code>basicConstraints</code> extension.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ca_cert-instance_method" title="#ca_cert (instance method)">#<strong>ca_cert</strong>  &#x21d2; Ronin::Support::Crypto::Cert<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Loads the <code>--ca-cert</code> certificate file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ca_key-instance_method" title="#ca_key (instance method)">#<strong>ca_key</strong>  &#x21d2; Ronin::Support::Key::RSA<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Loads the <code>--ca-key</code> key file.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#extensions-instance_method" title="#extensions (instance method)">#<strong>extensions</strong>  &#x21d2; Hash{String =&gt; Object}<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Builds the extensions.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(**kwargs)  &#x21d2; CertGen </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Initializes the <code>ronin cert-gen</code> command.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#key_class-instance_method" title="#key_class (instance method)">#<strong>key_class</strong>  &#x21d2; Class&lt;Ronin::Support::Key::RSA&gt;, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>The <code>--key-type</code> key class.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#not_after-instance_method" title="#not_after (instance method)">#<strong>not_after</strong>  &#x21d2; Time </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>The parsed <code>--not-after</code> time or one year from now.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#not_before-instance_method" title="#not_before (instance method)">#<strong>not_before</strong>  &#x21d2; Time </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>The parsed <code>--not-before</code> time or now.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#run-instance_method" title="#run (instance method)">#<strong>run</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Runs the <code>ronin cert-gen</code> command.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#signing_key-instance_method" title="#signing_key (instance method)">#<strong>signing_key</strong>  &#x21d2; Ronin::Support::Key::RSA, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Loads the <code>--key-file</code> key file or generates a new signing key.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#subject_alt_name_ext-instance_method" title="#subject_alt_name_ext (instance method)">#<strong>subject_alt_name_ext</strong>  &#x21d2; String<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Builds the <code>subjectAltName</code> extension.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(**kwargs)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::CLI::Commands::CertGen (class)">CertGen</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Initializes the <code>ronin cert-gen</code> command.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+215
+216
+217
+218
+219</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/cert_gen.rb', line 215</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@subject_alt_names</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="basic_constraints_ext-instance_method">
+  
+    #<strong>basic_constraints_ext</strong>  &#x21d2; <tt>(<span class='object_link'><a href="String.html" title="Ronin::CLI::Commands::String (class)">String</a></span>, Boolean)</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Builds the <code>basicConstraints</code> extension.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>(<span class='object_link'><a href="String.html" title="Ronin::CLI::Commands::String (class)">String</a></span>, Boolean)</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+365
+366
+367
+368
+369
+370
+371</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/cert_gen.rb', line 365</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_basic_constraints_ext'>basic_constraints_ext</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ca</span><span class='rbracket'>]</span>
+    <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CA:TRUE</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rbracket'>]</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ca_key</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ca_cert</span><span class='rbracket'>]</span>
+    <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CA:FALSE</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="ca_cert-instance_method">
+  
+    #<strong>ca_cert</strong>  &#x21d2; <tt>Ronin::Support::Crypto::Cert</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Loads the <code>--ca-cert</code> certificate file.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Ronin::Support::Crypto::Cert</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+335
+336
+337
+338
+339</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/cert_gen.rb', line 335</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ca_cert'>ca_cert</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ca_cert</span><span class='rbracket'>]</span>
+    <span class='const'>Support</span><span class='op'>::</span><span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Cert</span><span class='period'>.</span><span class='id identifier rubyid_load_file'>load_file</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ca_cert</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="ca_key-instance_method">
+  
+    #<strong>ca_key</strong>  &#x21d2; <tt>Ronin::Support::Key::RSA</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Loads the <code>--ca-key</code> key file.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Ronin::Support::Key::RSA</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+324
+325
+326
+327
+328</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/cert_gen.rb', line 324</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ca_key'>ca_key</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ca_key</span><span class='rbracket'>]</span>
+    <span class='const'>Support</span><span class='op'>::</span><span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Key</span><span class='op'>::</span><span class='const'>RSA</span><span class='period'>.</span><span class='id identifier rubyid_load_file'>load_file</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:ca_key</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="extensions-instance_method">
+  
+    #<strong>extensions</strong>  &#x21d2; <tt>Hash{<span class='object_link'><a href="String.html" title="Ronin::CLI::Commands::String (class)">String</a></span> =&gt; Object}</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Builds the extensions.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash{<span class='object_link'><a href="String.html" title="Ronin::CLI::Commands::String (class)">String</a></span> =&gt; Object}</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/cert_gen.rb', line 346</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_extensions'>extensions</span>
+  <span class='id identifier rubyid_exts'>exts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_ext'>ext</span> <span class='op'>=</span> <span class='id identifier rubyid_basic_constraints_ext'>basic_constraints_ext</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_exts'>exts</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>basicConstraints</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_ext'>ext</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_ext'>ext</span> <span class='op'>=</span> <span class='id identifier rubyid_subject_alt_name_ext'>subject_alt_name_ext</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_exts'>exts</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>subjectAltName</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_ext'>ext</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_exts'>exts</span> <span class='kw'>unless</span> <span class='id identifier rubyid_exts'>exts</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="key_class-instance_method">
+  
+    #<strong>key_class</strong>  &#x21d2; <tt>Class&lt;Ronin::Support::Key::RSA&gt;</tt>, ... 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>The <code>--key-type</code> key class.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Class&lt;Ronin::Support::Key::RSA&gt;</tt>, <tt>Class&lt;Ronin::Support::Key::EC&gt;</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+290
+291
+292
+293
+294
+295</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/cert_gen.rb', line 290</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_key_class'>key_class</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:key_type</span><span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='symbol'>:rsa</span> <span class='kw'>then</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Key</span><span class='op'>::</span><span class='const'>RSA</span>
+  <span class='kw'>when</span> <span class='symbol'>:ec</span>  <span class='kw'>then</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Key</span><span class='op'>::</span><span class='const'>EC</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="not_after-instance_method">
+  
+    #<strong>not_after</strong>  &#x21d2; <tt>Time</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>The parsed <code>--not-after</code> time or one year from now.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Time</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+276
+277
+278
+279
+280
+281
+282</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/cert_gen.rb', line 276</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_not_after'>not_after</span>
+  <span class='ivar'>@not_after</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:not_after</span><span class='rbracket'>]</span>
+                   <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:not_after</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+                 <span class='kw'>else</span>
+                   <span class='id identifier rubyid_not_before'>not_before</span><span class='op'>+</span><span class='const'>Support</span><span class='op'>::</span><span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Cert</span><span class='op'>::</span><span class='const'>ONE_YEAR</span>
+                 <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="not_before-instance_method">
+  
+    #<strong>not_before</strong>  &#x21d2; <tt>Time</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>The parsed <code>--not-before</code> time or now.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Time</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+263
+264
+265
+266
+267
+268
+269</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/cert_gen.rb', line 263</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_not_before'>not_before</span>
+  <span class='ivar'>@not_before</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:not_before</span><span class='rbracket'>]</span>
+                    <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:not_before</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+                  <span class='kw'>else</span>
+                    <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+                  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="run-instance_method">
+  
+    #<strong>run</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Runs the <code>ronin cert-gen</code> command.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/cert_gen.rb', line 224</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:generate_key</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_log_info'>log_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Generating new </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbol'>:key_type</span><span class='comma'>,</span><span class='symbol'>:rsa</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_upcase'>upcase</span><span class='embexpr_end'>}</span><span class='tstring_content'> key ...</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_key'>key</span>  <span class='op'>=</span> <span class='id identifier rubyid_signing_key'>signing_key</span>
+  <span class='id identifier rubyid_cert'>cert</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'>Support</span><span class='op'>::</span><span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Cert</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span><span class='lparen'>(</span>
+    <span class='label'>version:</span>    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:version</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='label'>serial:</span>     <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:serial</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='label'>not_before:</span> <span class='id identifier rubyid_not_before'>not_before</span><span class='comma'>,</span>
+    <span class='label'>not_after:</span>  <span class='id identifier rubyid_not_after'>not_after</span><span class='comma'>,</span>
+    <span class='label'>key:</span>        <span class='id identifier rubyid_key'>key</span><span class='comma'>,</span>
+    <span class='label'>ca_key:</span>     <span class='id identifier rubyid_ca_key'>ca_key</span><span class='comma'>,</span>
+    <span class='label'>ca_cert:</span>    <span class='id identifier rubyid_ca_cert'>ca_cert</span><span class='comma'>,</span>
+    <span class='label'>subject:</span> <span class='lbrace'>{</span>
+      <span class='label'>common_name:</span>         <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:common_name</span><span class='rbracket'>]</span><span class='comma'>,</span>
+      <span class='label'>organization:</span>        <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:organization</span><span class='rbracket'>]</span><span class='comma'>,</span>
+      <span class='label'>organizational_unit:</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:organizational_unit</span><span class='rbracket'>]</span><span class='comma'>,</span>
+      <span class='label'>locality:</span>            <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:locality</span><span class='rbracket'>]</span><span class='comma'>,</span>
+      <span class='label'>state:</span>               <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:state</span><span class='rbracket'>]</span><span class='comma'>,</span>
+      <span class='label'>country:</span>             <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:country</span><span class='rbracket'>]</span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>extensions:</span> <span class='id identifier rubyid_extensions'>extensions</span>
+  <span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:generate_key</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_log_info'>log_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Saving key to </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:generate_key</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> ...</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:generate_key</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_log_info'>log_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Saving certificate to </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:output</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> ...</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_cert'>cert</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:output</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="signing_key-instance_method">
+  
+    #<strong>signing_key</strong>  &#x21d2; <tt>Ronin::Support::Key::RSA</tt>, ... 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Loads the <code>--key-file</code> key file or generates a new signing key.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Ronin::Support::Key::RSA</tt>, <tt>Ronin::Support::Key::EC</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/cert_gen.rb', line 302</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_signing_key'>signing_key</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:key_file</span><span class='rbracket'>]</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:key_type</span><span class='rbracket'>]</span>
+      <span class='id identifier rubyid_key_class'>key_class</span><span class='period'>.</span><span class='id identifier rubyid_load_file'>load_file</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:key_file</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='kw'>begin</span>
+        <span class='const'>Support</span><span class='op'>::</span><span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Key</span><span class='period'>.</span><span class='id identifier rubyid_load_file'>load_file</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:key_file</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='kw'>rescue</span> <span class='const'>ArgumentError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_error'>error</span>
+        <span class='id identifier rubyid_print_error'>print_error</span><span class='lparen'>(</span><span class='id identifier rubyid_error'>error</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_exit'>exit</span><span class='lparen'>(</span><span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+    <span class='lparen'>(</span><span class='id identifier rubyid_key_class'>key_class</span> <span class='op'>||</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Key</span><span class='op'>::</span><span class='const'>RSA</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_random'>random</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="subject_alt_name_ext-instance_method">
+  
+    #<strong>subject_alt_name_ext</strong>  &#x21d2; <tt><span class='object_link'><a href="String.html" title="Ronin::CLI::Commands::String (class)">String</a></span></tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Builds the <code>subjectAltName</code> extension.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="Ronin::CLI::Commands::String (class)">String</a></span></tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/cert_gen.rb', line 380</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_subject_alt_name_ext'>subject_alt_name_ext</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='ivar'>@subject_alt_names</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='ivar'>@subject_alt_names</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=~</span> <span class='const'><span class='object_link'><a href="#IP_REGEXP-constant" title="Ronin::CLI::Commands::CertGen::IP_REGEXP (constant)">IP_REGEXP</a></span></span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>IP: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>else</span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>DNS: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span>
+    <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>, </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sun Jan  1 18:17:57 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.28 (ruby-3.1.3).
+</div>
+
+    </div>
+  </body>
+</html>
