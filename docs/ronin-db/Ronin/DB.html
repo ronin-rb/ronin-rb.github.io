@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Ronin::DB
+  
+    &mdash; Ronin DB Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::DB";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (D)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Ronin.html" title="Ronin (module)">Ronin</a></span></span>
+     &raquo; 
+    <span class="title">DB</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: Ronin::DB
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/db.rb<span class="defines">,<br />
+  lib/ronin/db/cli.rb,<br /> lib/ronin/db/home.rb,<br /> lib/ronin/db/root.rb,<br /> lib/ronin/db/version.rb,<br /> lib/ronin/db/exceptions.rb,<br /> lib/ronin/db/cli/command.rb,<br /> lib/ronin/db/config_file.rb,<br /> lib/ronin/db/cli/modifiable.rb,<br /> lib/ronin/db/cli/ruby_shell.rb,<br /> lib/ronin/db/cli/uri_methods.rb,<br /> lib/ronin/db/cli/commands/add.rb,<br /> lib/ronin/db/cli/commands/asn.rb,<br /> lib/ronin/db/cli/commands/ips.rb,<br /> lib/ronin/db/cli/commands/irb.rb,<br /> lib/ronin/db/cli/commands/edit.rb,<br /> lib/ronin/db/cli/commands/list.rb,<br /> lib/ronin/db/cli/commands/urls.rb,<br /> lib/ronin/db/cli/model_command.rb,<br /> lib/ronin/db/cli/commands/creds.rb,<br /> lib/ronin/db/cli/commands/hosts.rb,<br /> lib/ronin/db/cli/commands/emails.rb,<br /> lib/ronin/db/cli/commands/remove.rb,<br /> lib/ronin/db/cli/commands/migrate.rb,<br /> lib/ronin/db/cli/database_command.rb,<br /> lib/ronin/db/cli/resources_command.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="DB/CLI.html" title="Ronin::DB::CLI (module)">CLI</a></span>, <span class='object_link'><a href="DB/ConfigFile.html" title="Ronin::DB::ConfigFile (module)">ConfigFile</a></span>, <span class='object_link'><a href="DB/Home.html" title="Ronin::DB::Home (module)">Home</a></span>
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="DB/UnknownDatabase.html" title="Ronin::DB::UnknownDatabase (class)">UnknownDatabase</a></span>
+    
+  
+</p>
+
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="ROOT-constant" class="">ROOT =
+          <div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This constant is part of a private API.</strong>
+  You should avoid using this constant if possible, as it may be removed or be changed in the future.
+</p>
+<p>Path to <code>ronin-db</code> root directory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid___dir__'>__dir__</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>..</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>..</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>..</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="VERSION-constant" class="">VERSION =
+          <div class="docstring">
+  <div class="discussion">
+    <p>ronin-db version</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0.1.0.beta1</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#config-class_method" title="config (class method)">.<strong>config</strong>  &#x21d2; Hash{Symbol =&gt; Hash} </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p><code>ronin-db</code> database(s) configuration.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#connect-class_method" title="connect (class method)">.<strong>connect</strong>(database = :default, migrate: nil, load_models: true)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Connects to the Database.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#logger=-class_method" title="logger= (class method)">.<strong>logger=</strong>(new_logger)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets up the Database logger.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#migrate-class_method" title="migrate (class method)">.<strong>migrate</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Only migrate the database if the database is empty, otherwise warn the user that there are pending migrations.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#migrate!-class_method" title="migrate! (class method)">.<strong>migrate!</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Migrate the database up and apply any pending migrations.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="config-class_method">
+  
+    .<strong>config</strong>  &#x21d2; <tt>Hash{Symbol =&gt; Hash}</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p><code>ronin-db</code> database(s) configuration.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Hash}</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/db.rb', line 44</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span>
+  <span class='ivar'>@config</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="DB/ConfigFile.html" title="Ronin::DB::ConfigFile (module)">ConfigFile</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load'><span class='object_link'><a href="DB/ConfigFile.html#load-class_method" title="Ronin::DB::ConfigFile.load (method)">load</a></span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="connect-class_method">
+  
+    .<strong>connect</strong>(database = :default, migrate: nil, load_models: true)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Connects to the Database.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>database</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>, <tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>:default</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The optional database name or Hash of database information.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>migrate</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether to hard or lazy migrate the database.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>load_models</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>true</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether to load all models or just connect to the database.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="DB/UnknownDatabase.html" title="Ronin::DB::UnknownDatabase (class)">UnknownDatabase</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/db.rb', line 91</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_database'>database</span><span class='op'>=</span><span class='symbol'>:default</span><span class='comma'>,</span> <span class='label'>migrate:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>load_models:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_config'>config</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_database'>database</span>
+           <span class='kw'>when</span> <span class='const'>Hash</span>
+             <span class='id identifier rubyid_database'>database</span>
+           <span class='kw'>when</span> <span class='const'>Symbol</span>
+             <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_database'>database</span><span class='rparen'>)</span> <span class='kw'>do</span>
+               <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="DB/UnknownDatabase.html" title="Ronin::DB::UnknownDatabase (class)">UnknownDatabase</a></span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown database: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+             <span class='kw'>end</span>
+           <span class='kw'>else</span>
+             <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid___method__'>__method__</span><span class='embexpr_end'>}</span><span class='tstring_content'> only accepts a Symbol or a Hash</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+           <span class='kw'>end</span>
+
+  <span class='comment'># load activerecord
+</span>  <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>active_record</span><span class='tstring_end'>&#39;</span></span>
+
+  <span class='comment'># connect to the database
+</span>  <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_establish_connection'>establish_connection</span><span class='lparen'>(</span><span class='id identifier rubyid_config'>config</span><span class='rparen'>)</span>
+
+  <span class='comment'># migrate the database if necessary
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_migrate'>migrate</span> <span class='op'>==</span> <span class='kw'>true</span> <span class='kw'>then</span> <span class='id identifier rubyid_migrate!'>migrate!</span>
+  <span class='kw'>else</span>                    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_migrate'>migrate</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_load_models'>load_models</span>
+    <span class='comment'># require and connect all models
+</span>    <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ronin/db/models</span><span class='tstring_end'>&#39;</span></span>
+    <span class='const'>Models</span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="logger=-class_method">
+  
+    .<strong>logger=</strong>(new_logger)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sets up the Database logger.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/db.rb', line 32</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_logger='>logger=</span><span class='lparen'>(</span><span class='id identifier rubyid_new_logger'>new_logger</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>active_record</span><span class='tstring_end'>&#39;</span></span>
+  <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Base</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span> <span class='op'>=</span> <span class='id identifier rubyid_new_logger'>new_logger</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="migrate-class_method">
+  
+    .<strong>migrate</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Only migrate the database if the database is empty, otherwise warn the
+user that there are pending migrations.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/db.rb', line 60</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_migrate'>migrate</span>
+  <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ronin/db/migrations</span><span class='tstring_end'>&#39;</span></span>
+
+  <span class='kw'>if</span> <span class='const'>Migrations</span><span class='period'>.</span><span class='id identifier rubyid_current_version'>current_version</span> <span class='op'>==</span> <span class='int'>0</span>
+    <span class='comment'># auto-run the migrations when the database is empty
+</span>    <span class='const'>Migrations</span><span class='period'>.</span><span class='id identifier rubyid_migrate'>migrate</span>
+  <span class='kw'>elsif</span> <span class='const'>Migrations</span><span class='period'>.</span><span class='id identifier rubyid_needs_migration?'>needs_migration?</span>
+    <span class='comment'># warn the user that there are pending migrations, instead of
+</span>    <span class='comment'># auto-running migrations each time
+</span>    <span class='id identifier rubyid_warn'>warn</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>WARNING: Database requires migrating!</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="migrate!-class_method">
+  
+    .<strong>migrate!</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Migrate the database up and apply any pending migrations.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/db.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_migrate!'>migrate!</span>
+  <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ronin/db/migrations</span><span class='tstring_end'>&#39;</span></span>
+  <span class='const'>Migrations</span><span class='period'>.</span><span class='id identifier rubyid_migrate'>migrate</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sun Jan  1 18:23:22 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.28 (ruby-3.1.3).
+</div>
+
+    </div>
+  </body>
+</html>
