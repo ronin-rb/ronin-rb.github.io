@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Ronin::Vulns::RFI
+  
+    &mdash; ronin-vulns Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::Vulns::RFI";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../_index.html">Index (R)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Vulns.html" title="Ronin::Vulns (module)">Vulns</a></span></span>
+     &raquo; 
+    <span class="title">RFI</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Ronin::Vulns::RFI
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="WebVuln.html" title="Ronin::Vulns::WebVuln (class)">WebVuln</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Vuln.html" title="Ronin::Vulns::Vuln (class)">Vuln</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="WebVuln.html" title="Ronin::Vulns::WebVuln (class)">WebVuln</a></span></li>
+          
+            <li class="next">Ronin::Vulns::RFI</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/vulns/rfi.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Represents a Remote File Inclusion (RFI) vulnerability.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="URL_EXTS-constant" class="">URL_EXTS =
+          <div class="docstring">
+  <div class="discussion">
+    <p>The script extensions and their languages</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.asp</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='symbol'>:asp</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.aspx</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='symbol'>:asp_net</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.cfm</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='symbol'>:cold_fusion</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.cfml</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='symbol'>:cold_fusion</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.jsp</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='symbol'>:jsp</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.php</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='symbol'>:php</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.pl</span><span class='tstring_end'>&#39;</span></span>   <span class='op'>=&gt;</span> <span class='symbol'>:perl</span>
+<span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="GITHUB_BASE_URL-constant" class="">GITHUB_BASE_URL =
+          <div class="docstring">
+  <div class="discussion">
+    <p>The github.com base URL for all RFI test scripts.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>https://raw.githubusercontent.com/ronin-rb/ronin-vulns/</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="../Vulns.html#VERSION-constant" title="Ronin::Vulns::VERSION (constant)">VERSION</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>/data</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+        <dt id="TEST_SCRIPT_URLS-constant" class="">TEST_SCRIPT_URLS =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Mapping of scripting languages to RFI test scripts.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='label'>asp:</span>         <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#GITHUB_BASE_URL-constant" title="Ronin::Vulns::RFI::GITHUB_BASE_URL (constant)">GITHUB_BASE_URL</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>/rfi_test.asp</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>asp_net:</span>     <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#GITHUB_BASE_URL-constant" title="Ronin::Vulns::RFI::GITHUB_BASE_URL (constant)">GITHUB_BASE_URL</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>/rfi_test.aspx</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>cold_fusion:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#GITHUB_BASE_URL-constant" title="Ronin::Vulns::RFI::GITHUB_BASE_URL (constant)">GITHUB_BASE_URL</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>/rfi_test.cfm</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>jsp:</span>         <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#GITHUB_BASE_URL-constant" title="Ronin::Vulns::RFI::GITHUB_BASE_URL (constant)">GITHUB_BASE_URL</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>/rfi_test.jsp</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>php:</span>         <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#GITHUB_BASE_URL-constant" title="Ronin::Vulns::RFI::GITHUB_BASE_URL (constant)">GITHUB_BASE_URL</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>/rfi_test.php</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='label'>perl:</span>        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#GITHUB_BASE_URL-constant" title="Ronin::Vulns::RFI::GITHUB_BASE_URL (constant)">GITHUB_BASE_URL</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>/rfi_test.pl</span><span class='tstring_end'>&quot;</span></span>
+<span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="VULN_RESPONSE_STRING-constant" class="">VULN_RESPONSE_STRING =
+          <div class="docstring">
+  <div class="discussion">
+    <p>The string that will be returned if the Remote File Inclusion (RFI)
+script is executed.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Security Alert: Remote File Inclusion Detected!</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#filter_bypass-instance_method" title="#filter_bypass (instance method)">#<strong>filter_bypass</strong>  &#x21d2; nil, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The filter bypass technique to use.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_script_url-instance_method" title="#test_script_url (instance method)">#<strong>test_script_url</strong>  &#x21d2; URI::HTTP, String </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>URL of the Remote File Inclusion (RFI) Test script.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="WebVuln.html" title="Ronin::Vulns::WebVuln (class)">WebVuln</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="WebVuln.html#cookie-instance_method" title="Ronin::Vulns::WebVuln#cookie (method)">#cookie</a></span>, <span class='object_link'><a href="WebVuln.html#cookie_param-instance_method" title="Ronin::Vulns::WebVuln#cookie_param (method)">#cookie_param</a></span>, <span class='object_link'><a href="WebVuln.html#form_data-instance_method" title="Ronin::Vulns::WebVuln#form_data (method)">#form_data</a></span>, <span class='object_link'><a href="WebVuln.html#form_param-instance_method" title="Ronin::Vulns::WebVuln#form_param (method)">#form_param</a></span>, <span class='object_link'><a href="WebVuln.html#header_name-instance_method" title="Ronin::Vulns::WebVuln#header_name (method)">#header_name</a></span>, <span class='object_link'><a href="WebVuln.html#headers-instance_method" title="Ronin::Vulns::WebVuln#headers (method)">#headers</a></span>, <span class='object_link'><a href="WebVuln.html#http-instance_method" title="Ronin::Vulns::WebVuln#http (method)">#http</a></span>, <span class='object_link'><a href="WebVuln.html#password-instance_method" title="Ronin::Vulns::WebVuln#password (method)">#password</a></span>, <span class='object_link'><a href="WebVuln.html#query_param-instance_method" title="Ronin::Vulns::WebVuln#query_param (method)">#query_param</a></span>, <span class='object_link'><a href="WebVuln.html#query_params-instance_method" title="Ronin::Vulns::WebVuln#query_params (method)">#query_params</a></span>, <span class='object_link'><a href="WebVuln.html#referer-instance_method" title="Ronin::Vulns::WebVuln#referer (method)">#referer</a></span>, <span class='object_link'><a href="WebVuln.html#request_method-instance_method" title="Ronin::Vulns::WebVuln#request_method (method)">#request_method</a></span>, <span class='object_link'><a href="WebVuln.html#url-instance_method" title="Ronin::Vulns::WebVuln#url (method)">#url</a></span>, <span class='object_link'><a href="WebVuln.html#user-instance_method" title="Ronin::Vulns::WebVuln#user (method)">#user</a></span></p>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#infer_script_lang-class_method" title="infer_script_lang (class method)">.<strong>infer_script_lang</strong>(url)  &#x21d2; :asp, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Attempts to infer the programming language used for the web page at the given URL.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_script_for-class_method" title="test_script_for (class method)">.<strong>test_script_for</strong>(url)  &#x21d2; String<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Selects the RFI test script for the scripting language used by the given URL.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_script_url_for-class_method" title="test_script_url_for (class method)">.<strong>test_script_url_for</strong>(script_lang)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the test script URL for the given scripting language.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#vuln_type-class_method" title="vuln_type (class method)">.<strong>vuln_type</strong>  &#x21d2; Symbol </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  <span class="abstract note title">abstract</span>
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the type or kind of vulnerability.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#encode_payload-instance_method" title="#encode_payload (instance method)">#<strong>encode_payload</strong>(url)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Optionally applies a filter bypass technique to the RFI URL.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(url, script_lang: nil, test_script_url: nil, filter_bypass: nil, **kwargs)  &#x21d2; RFI </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new Remote File Inclusion (RFI) object.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#vulnerable%3F-instance_method" title="#vulnerable? (instance method)">#<strong>vulnerable?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Tests whether the URL and query parameter are vulnerable to Remote File Inclusion (RFI).</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="WebVuln.html" title="Ronin::Vulns::WebVuln (class)">WebVuln</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="WebVuln.html#exploit-instance_method" title="Ronin::Vulns::WebVuln#exploit (method)">#exploit</a></span>, <span class='object_link'><a href="WebVuln.html#exploit_cookie-instance_method" title="Ronin::Vulns::WebVuln#exploit_cookie (method)">#exploit_cookie</a></span>, <span class='object_link'><a href="WebVuln.html#exploit_form_data-instance_method" title="Ronin::Vulns::WebVuln#exploit_form_data (method)">#exploit_form_data</a></span>, <span class='object_link'><a href="WebVuln.html#exploit_headers-instance_method" title="Ronin::Vulns::WebVuln#exploit_headers (method)">#exploit_headers</a></span>, <span class='object_link'><a href="WebVuln.html#exploit_query_params-instance_method" title="Ronin::Vulns::WebVuln#exploit_query_params (method)">#exploit_query_params</a></span>, <span class='object_link'><a href="WebVuln.html#original_value-instance_method" title="Ronin::Vulns::WebVuln#original_value (method)">#original_value</a></span>, <span class='object_link'><a href="WebVuln.html#random_value-instance_method" title="Ronin::Vulns::WebVuln#random_value (method)">#random_value</a></span>, <span class='object_link'><a href="WebVuln.html#request-instance_method" title="Ronin::Vulns::WebVuln#request (method)">#request</a></span>, <span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">scan</a></span>, <span class='object_link'><a href="WebVuln.html#scan_cookie_params-class_method" title="Ronin::Vulns::WebVuln.scan_cookie_params (method)">scan_cookie_params</a></span>, <span class='object_link'><a href="WebVuln.html#scan_form_params-class_method" title="Ronin::Vulns::WebVuln.scan_form_params (method)">scan_form_params</a></span>, <span class='object_link'><a href="WebVuln.html#scan_headers-class_method" title="Ronin::Vulns::WebVuln.scan_headers (method)">scan_headers</a></span>, <span class='object_link'><a href="WebVuln.html#scan_query_params-class_method" title="Ronin::Vulns::WebVuln.scan_query_params (method)">scan_query_params</a></span>, <span class='object_link'><a href="WebVuln.html#test-class_method" title="Ronin::Vulns::WebVuln.test (method)">test</a></span>, <span class='object_link'><a href="WebVuln.html#to_curl-instance_method" title="Ronin::Vulns::WebVuln#to_curl (method)">#to_curl</a></span>, <span class='object_link'><a href="WebVuln.html#to_http-instance_method" title="Ronin::Vulns::WebVuln#to_http (method)">#to_http</a></span>, <span class='object_link'><a href="WebVuln.html#to_s-instance_method" title="Ronin::Vulns::WebVuln#to_s (method)">#to_s</a></span></p>
+
+  
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(url, script_lang: nil, test_script_url: nil, filter_bypass: nil, **kwargs)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Vulns::RFI (class)">RFI</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new Remote File Inclusion (RFI) object.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>url</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>URI::HTTP</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The URL to attempt to exploit.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>filter_bypass</span>
+      
+      
+        <span class='type'>(<tt>:null_byte</tt>, <tt>:double_encode</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies which filter bypass technique to use.</p>
+
+<ul>
+<li><code>:double_encode</code> - will cause the inclusion URL to be URI escaped
+twice.</li>
+<li><code>:suffix_escape</code> - escape any appended suffix (ex: <code>param + &quot;.php&quot;</code>)
+by adding a URI fragment character (<code>#</code>) to the end of the RFI
+script URL. The fragment component of the URI is not sent to the
+web server.</li>
+<li><code>:null_byte</code> - will cause the inclusion URL to be appended with a
+<code>%00</code> character. *<em>Note:</em> this technique only works on PHP &lt; 5.3.</li>
+</ul>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>script_lang</span>
+      
+      
+        <span class='type'>(<tt>:asp</tt>, <tt>:asp_net</tt>, <tt>:cold_fusion</tt>, <tt>:jsp</tt>, <tt>:php</tt>, <tt>:perl</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Explicitly specifies the scripting language that the URL uses.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>test_script_url</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>URI::HTTP</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The URL of the RFI test script. If not specified, it will default to
+<span class='object_link'><a href="#test_script_for-class_method" title="Ronin::Vulns::RFI.test_script_for (method)">test_script_for</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/rfi.rb', line 96</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>script_lang:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>test_script_url:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>filter_bypass:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@test_script_url</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_test_script_url'>test_script_url</span>
+                       <span class='id identifier rubyid_test_script_url'>test_script_url</span>
+                     <span class='kw'>elsif</span> <span class='id identifier rubyid_script_lang'>script_lang</span>
+                       <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_test_script_url_for'>test_script_url_for</span><span class='lparen'>(</span><span class='id identifier rubyid_script_lang'>script_lang</span><span class='rparen'>)</span>
+                     <span class='kw'>else</span>
+                       <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_test_script_for'>test_script_for</span><span class='lparen'>(</span><span class='ivar'>@url</span><span class='rparen'>)</span>
+                     <span class='kw'>end</span>
+
+  <span class='ivar'>@filter_bypass</span> <span class='op'>=</span> <span class='id identifier rubyid_filter_bypass'>filter_bypass</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="filter_bypass-instance_method">
+  
+    #<strong>filter_bypass</strong>  &#x21d2; <tt>nil</tt>, ...  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The filter bypass technique to use.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>, <tt>:double_encode</tt>, <tt>:suffix_escape</tt>, <tt>:null_byte</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+65
+66
+67</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/rfi.rb', line 65</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_filter_bypass'>filter_bypass</span>
+  <span class='ivar'>@filter_bypass</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="test_script_url-instance_method">
+  
+    #<strong>test_script_url</strong>  &#x21d2; <tt>URI::HTTP</tt>, <tt>String</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>URL of the Remote File Inclusion (RFI) Test script</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>URI::HTTP</tt>, <tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+70
+71
+72</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/rfi.rb', line 70</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_test_script_url'>test_script_url</span>
+  <span class='ivar'>@test_script_url</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="infer_script_lang-class_method">
+  
+    .<strong>infer_script_lang</strong>(url)  &#x21d2; <tt>:asp</tt>, ... 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Attempts to infer the programming language used for the web page at the
+given URL.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>url</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>URI::HTTP</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The URL to infer from.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>:asp</tt>, <tt>:cold_fusion</tt>, <tt>:jsp</tt>, <tt>:php</tt>, <tt>:perl</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The programming language inferred from the URL.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+138
+139
+140
+141
+142</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/rfi.rb', line 138</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_infer_script_lang'>infer_script_lang</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>URI</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+
+  <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="#URL_EXTS-constant" title="Ronin::Vulns::RFI::URL_EXTS (constant)">URL_EXTS</a></span></span><span class='lbracket'>[</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_extname'>extname</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="test_script_for-class_method">
+  
+    .<strong>test_script_for</strong>(url)  &#x21d2; <tt>String</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Selects the RFI test script for the scripting language used by the given
+URL.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>url</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>URI::HTTP</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The URL to test.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The RFI test script URL or <code>nil</code> if the scripting language could not
+be inferred from the URL.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+155
+156
+157
+158
+159</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/rfi.rb', line 155</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_test_script_for'>test_script_for</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_lang'>lang</span> <span class='op'>=</span> <span class='id identifier rubyid_infer_script_lang'>infer_script_lang</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='const'><span class='object_link'><a href="#TEST_SCRIPT_URLS-constant" title="Ronin::Vulns::RFI::TEST_SCRIPT_URLS (constant)">TEST_SCRIPT_URLS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_lang'>lang</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="test_script_url_for-class_method">
+  
+    .<strong>test_script_url_for</strong>(script_lang)  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the test script URL for the given scripting language.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>script_lang</span>
+      
+      
+        <span class='type'>(<tt>:asp</tt>, <tt>:asp_net</tt>, <tt>:cold_fusion</tt>, <tt>:jsp</tt>, <tt>:php</tt>, <tt>:perl</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The scripting language.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The test script URL for the given scripting language.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>An unknown scripting language value was given.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+122
+123
+124
+125
+126</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/rfi.rb', line 122</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_test_script_url_for'>test_script_url_for</span><span class='lparen'>(</span><span class='id identifier rubyid_script_lang'>script_lang</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="#TEST_SCRIPT_URLS-constant" title="Ronin::Vulns::RFI::TEST_SCRIPT_URLS (constant)">TEST_SCRIPT_URLS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_script_lang'>script_lang</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown scripting language: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_script_lang'>script_lang</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="vuln_type-class_method">
+  
+    .<strong>vuln_type</strong>  &#x21d2; <tt>Symbol</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<div class="note abstract">
+  <strong>This method is abstract.</strong>
+  <div class='inline'></div>
+</div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>This is used internally to map an vulnerability class to a printable
+type.</p>
+</div>
+  </div>
+
+<p>Returns the type or kind of vulnerability.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+218
+219
+220</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/rfi.rb', line 218</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_vuln_type'>vuln_type</span>
+  <span class='symbol'>:rfi</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="encode_payload-instance_method">
+  
+    #<strong>encode_payload</strong>(url)  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Optionally applies a filter bypass technique to the RFI URL.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>url</span>
+      
+      
+        <span class='type'>(<tt>URI::HTTP</tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The RFI URL to optionall encode before it will be injected into a
+HTTP request.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The optionally encoded RFI URL.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/rfi.rb', line 171</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_encode_payload'>encode_payload</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+
+  <span class='kw'>case</span> <span class='ivar'>@filter_bypass</span>
+  <span class='kw'>when</span> <span class='symbol'>:double_encode</span>
+    <span class='comment'># Optionally double URI encodes the script URL
+</span>    <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='const'>URI</span><span class='op'>::</span><span class='const'>QueryParams</span><span class='period'>.</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:suffix_escape</span>
+    <span class='comment'># Optionally append a &#39;#&#39; character to escape any appended suffixes
+</span>    <span class='comment'># (ex: `param + &quot;.php&quot;`).
+</span>    <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='embexpr_end'>}</span><span class='tstring_content'>#</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>when</span> <span class='symbol'>:null_byte</span>
+    <span class='comment'># Optionally append a null-byte
+</span>    <span class='comment'># NOTE: uri-query_params will automatically URI encode the null byte
+</span>    <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='embexpr_end'>}</span><span class='tstring_content'>\0</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_url'>url</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="vulnerable?-instance_method">
+  
+    #<strong>vulnerable?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Tests whether the URL and query parameter are vulnerable to Remote File
+Inclusion (RFI).</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether the URL and query parameter are vulnerable to RFI.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+198
+199
+200
+201
+202
+203</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/rfi.rb', line 198</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_vulnerable?'>vulnerable?</span>
+  <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_exploit'>exploit</span><span class='lparen'>(</span><span class='ivar'>@test_script_url</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_body'>body</span>     <span class='op'>=</span> <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_body'>body</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#VULN_RESPONSE_STRING-constant" title="Ronin::Vulns::RFI::VULN_RESPONSE_STRING (constant)">VULN_RESPONSE_STRING</a></span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sun Jan  1 18:24:43 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.28 (ruby-3.1.3).
+</div>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Ronin::Vulns::LFI
+  
+    &mdash; ronin-vulns Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::Vulns::LFI";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../_index.html">Index (L)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Vulns.html" title="Ronin::Vulns (module)">Vulns</a></span></span>
+     &raquo; 
+    <span class="title">LFI</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Ronin::Vulns::LFI
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="WebVuln.html" title="Ronin::Vulns::WebVuln (class)">WebVuln</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Vuln.html" title="Ronin::Vulns::Vuln (class)">Vuln</a></span></li>
+          
+            <li class="next"><span class='object_link'><a href="WebVuln.html" title="Ronin::Vulns::WebVuln (class)">WebVuln</a></span></li>
+          
+            <li class="next">Ronin::Vulns::LFI</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd>Support</dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/vulns/lfi.rb<span class="defines">,<br />
+  lib/ronin/vulns/lfi/test_file.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Represents a Local File Inclusion (LFI) vulnerability.</p>
+
+<h2 id="features">Features</h2>
+
+<ul>
+<li>Supports UNIX and Windows paths.</li>
+<li>Supports <code>%00</code> null terminator trick (fixed in PHP 5.3).</li>
+<li>Supports Base64, ROT13, and Zlib <code>php://filter/</code>s.</li>
+</ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="LFI/TestFile.html" title="Ronin::Vulns::LFI::TestFile (class)">TestFile</a></span>
+    
+  
+</p>
+
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="UNIX_TEST_FILE-constant" class="">UNIX_TEST_FILE =
+          <div class="docstring">
+  <div class="discussion">
+    <p>The test file for UNIX systems.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="LFI/TestFile.html" title="Ronin::Vulns::LFI::TestFile (class)">TestFile</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="LFI/TestFile.html#initialize-instance_method" title="Ronin::Vulns::LFI::TestFile#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/etc/passwd</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='regexp_beg'>%r{</span><span class='tstring_content'>(?:[a-z][a-z0-9_-]*:x:\d+:\d+:[^:]*:(?:/[A-Za-z0-9_-]*)+:(?:/[A-Za-z0-9_-]*)+\n)+</span><span class='regexp_end'>}</span></span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="WINDOWS_TEST_FILE-constant" class="">WINDOWS_TEST_FILE =
+          <div class="docstring">
+  <div class="discussion">
+    <p>The test file for Windows systems.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="LFI/TestFile.html" title="Ronin::Vulns::LFI::TestFile (class)">TestFile</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="LFI/TestFile.html#initialize-instance_method" title="Ronin::Vulns::LFI::TestFile#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\\boot.ini</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\[boot loader\](?:\r?\n(?:[^\[\r\n].*)?)*\r?\n(?:\[operating system\](?:\r?\n(?:[^\[\r\n].*)?)*\r?\n)?</span><span class='regexp_end'>/m</span></span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="DEFAULT_DEPTH-constant" class="">DEFAULT_DEPTH =
+          <div class="docstring">
+  <div class="discussion">
+    <p>The default directory traversal depth.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='int'>6</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#depth-instance_method" title="#depth (instance method)">#<strong>depth</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The number of directories to traverse up.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#escape_path-instance_method" title="#escape_path (instance method)">#<strong>escape_path</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The escape path to add to every LFI path.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#filter_bypass-instance_method" title="#filter_bypass (instance method)">#<strong>filter_bypass</strong>  &#x21d2; :null_byte, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Optional filter bypass technique to use.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#os-instance_method" title="#os (instance method)">#<strong>os</strong>  &#x21d2; :unix, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Targeted Operating System (OS).</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#separator-instance_method" title="#separator (instance method)">#<strong>separator</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The directory separator character.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_file-instance_method" title="#test_file (instance method)">#<strong>test_file</strong>  &#x21d2; TestFile </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The common file to test with.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="WebVuln.html" title="Ronin::Vulns::WebVuln (class)">WebVuln</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="WebVuln.html#cookie-instance_method" title="Ronin::Vulns::WebVuln#cookie (method)">#cookie</a></span>, <span class='object_link'><a href="WebVuln.html#cookie_param-instance_method" title="Ronin::Vulns::WebVuln#cookie_param (method)">#cookie_param</a></span>, <span class='object_link'><a href="WebVuln.html#form_data-instance_method" title="Ronin::Vulns::WebVuln#form_data (method)">#form_data</a></span>, <span class='object_link'><a href="WebVuln.html#form_param-instance_method" title="Ronin::Vulns::WebVuln#form_param (method)">#form_param</a></span>, <span class='object_link'><a href="WebVuln.html#header_name-instance_method" title="Ronin::Vulns::WebVuln#header_name (method)">#header_name</a></span>, <span class='object_link'><a href="WebVuln.html#headers-instance_method" title="Ronin::Vulns::WebVuln#headers (method)">#headers</a></span>, <span class='object_link'><a href="WebVuln.html#http-instance_method" title="Ronin::Vulns::WebVuln#http (method)">#http</a></span>, <span class='object_link'><a href="WebVuln.html#password-instance_method" title="Ronin::Vulns::WebVuln#password (method)">#password</a></span>, <span class='object_link'><a href="WebVuln.html#query_param-instance_method" title="Ronin::Vulns::WebVuln#query_param (method)">#query_param</a></span>, <span class='object_link'><a href="WebVuln.html#query_params-instance_method" title="Ronin::Vulns::WebVuln#query_params (method)">#query_params</a></span>, <span class='object_link'><a href="WebVuln.html#referer-instance_method" title="Ronin::Vulns::WebVuln#referer (method)">#referer</a></span>, <span class='object_link'><a href="WebVuln.html#request_method-instance_method" title="Ronin::Vulns::WebVuln#request_method (method)">#request_method</a></span>, <span class='object_link'><a href="WebVuln.html#url-instance_method" title="Ronin::Vulns::WebVuln#url (method)">#url</a></span>, <span class='object_link'><a href="WebVuln.html#user-instance_method" title="Ronin::Vulns::WebVuln#user (method)">#user</a></span></p>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#vuln_type-class_method" title="vuln_type (class method)">.<strong>vuln_type</strong>  &#x21d2; Symbol </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  <span class="abstract note title">abstract</span>
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the type or kind of vulnerability.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#encode_payload-instance_method" title="#encode_payload (instance method)">#<strong>encode_payload</strong>(path)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Builds a <code>../../..</code> escaped path for the given file path.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#escape-instance_method" title="#escape (instance method)">#<strong>escape</strong>(path)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Escapes the given path.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(url, os: :unix, depth: DEFAULT_DEPTH, filter_bypass: nil, **kwargs)  &#x21d2; LFI </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new LFI object.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#vulnerable%3F-instance_method" title="#vulnerable? (instance method)">#<strong>vulnerable?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Determines whether the URL is vulnerable to Local File Inclusion (LFI).</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="WebVuln.html" title="Ronin::Vulns::WebVuln (class)">WebVuln</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="WebVuln.html#exploit-instance_method" title="Ronin::Vulns::WebVuln#exploit (method)">#exploit</a></span>, <span class='object_link'><a href="WebVuln.html#exploit_cookie-instance_method" title="Ronin::Vulns::WebVuln#exploit_cookie (method)">#exploit_cookie</a></span>, <span class='object_link'><a href="WebVuln.html#exploit_form_data-instance_method" title="Ronin::Vulns::WebVuln#exploit_form_data (method)">#exploit_form_data</a></span>, <span class='object_link'><a href="WebVuln.html#exploit_headers-instance_method" title="Ronin::Vulns::WebVuln#exploit_headers (method)">#exploit_headers</a></span>, <span class='object_link'><a href="WebVuln.html#exploit_query_params-instance_method" title="Ronin::Vulns::WebVuln#exploit_query_params (method)">#exploit_query_params</a></span>, <span class='object_link'><a href="WebVuln.html#original_value-instance_method" title="Ronin::Vulns::WebVuln#original_value (method)">#original_value</a></span>, <span class='object_link'><a href="WebVuln.html#random_value-instance_method" title="Ronin::Vulns::WebVuln#random_value (method)">#random_value</a></span>, <span class='object_link'><a href="WebVuln.html#request-instance_method" title="Ronin::Vulns::WebVuln#request (method)">#request</a></span>, <span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">scan</a></span>, <span class='object_link'><a href="WebVuln.html#scan_cookie_params-class_method" title="Ronin::Vulns::WebVuln.scan_cookie_params (method)">scan_cookie_params</a></span>, <span class='object_link'><a href="WebVuln.html#scan_form_params-class_method" title="Ronin::Vulns::WebVuln.scan_form_params (method)">scan_form_params</a></span>, <span class='object_link'><a href="WebVuln.html#scan_headers-class_method" title="Ronin::Vulns::WebVuln.scan_headers (method)">scan_headers</a></span>, <span class='object_link'><a href="WebVuln.html#scan_query_params-class_method" title="Ronin::Vulns::WebVuln.scan_query_params (method)">scan_query_params</a></span>, <span class='object_link'><a href="WebVuln.html#test-class_method" title="Ronin::Vulns::WebVuln.test (method)">test</a></span>, <span class='object_link'><a href="WebVuln.html#to_curl-instance_method" title="Ronin::Vulns::WebVuln#to_curl (method)">#to_curl</a></span>, <span class='object_link'><a href="WebVuln.html#to_http-instance_method" title="Ronin::Vulns::WebVuln#to_http (method)">#to_http</a></span>, <span class='object_link'><a href="WebVuln.html#to_s-instance_method" title="Ronin::Vulns::WebVuln#to_s (method)">#to_s</a></span></p>
+
+  
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(url, os: :unix, depth: DEFAULT_DEPTH, filter_bypass: nil, **kwargs)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Vulns::LFI (class)">LFI</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new LFI object.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>url</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>URI::HTTP</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The URL to exploit.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>os</span>
+      
+      
+        <span class='type'>(<tt>:unix</tt>, <tt>:windows</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>:unix</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Operating System to specifically target.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>depth</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>DEFAULT_DEPTH</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Number of directories to escape up.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>filter_bypass</span>
+      
+      
+        <span class='type'>(<tt>:null_byte</tt>, <tt>:double_escape</tt>, <tt>:base64</tt>, <tt>:rot13</tt>, <tt>:zlib</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies which filter bypass technique to use.</p>
+
+<ul>
+<li><code>:null_byte - appends a</code>%00` null byte to the escaped path.
+*<em>Note:</em> this technique only works on PHP &lt; 5.3.</li>
+<li><code>:double_escape</code> - Double escapes the <span class='object_link'><a href="#escape_path-instance_method" title="Ronin::Vulns::LFI#escape_path (method)">#escape_path</a></span>
+(ex: <code>....//....//</code>).</li>
+<li><code>:base64</code> - Base64 encodes the included local file.</li>
+<li><code>:rot13</code> - ROT13 encodes the included local file.</li>
+<li><code>:zlib</code> - Zlib compresses and Base64 encodes the included local
+file.</li>
+</ul>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <span class='object_link'><a href="WebVuln.html#initialize-instance_method" title="Ronin::Vulns::WebVuln#initialize (method)">WebVuln#initialize</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/lfi.rb', line 111</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>os:</span>            <span class='symbol'>:unix</span><span class='comma'>,</span>
+                    <span class='label'>depth:</span>         <span class='const'><span class='object_link'><a href="#DEFAULT_DEPTH-constant" title="Ronin::Vulns::LFI::DEFAULT_DEPTH (constant)">DEFAULT_DEPTH</a></span></span><span class='comma'>,</span>
+                    <span class='label'>filter_bypass:</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                    <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@os</span> <span class='op'>=</span> <span class='id identifier rubyid_os'>os</span>
+
+  <span class='kw'>case</span> <span class='ivar'>@os</span>
+  <span class='kw'>when</span> <span class='symbol'>:unix</span>
+    <span class='ivar'>@separator</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span>
+    <span class='ivar'>@test_file</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#UNIX_TEST_FILE-constant" title="Ronin::Vulns::LFI::UNIX_TEST_FILE (constant)">UNIX_TEST_FILE</a></span></span>
+  <span class='kw'>when</span> <span class='symbol'>:windows</span>
+    <span class='ivar'>@separator</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\\</span><span class='tstring_end'>&#39;</span></span>
+    <span class='ivar'>@test_file</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#WINDOWS_TEST_FILE-constant" title="Ronin::Vulns::LFI::WINDOWS_TEST_FILE (constant)">WINDOWS_TEST_FILE</a></span></span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown os keyword value (</span><span class='embexpr_beg'>#{</span><span class='ivar'>@os</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'>) must be either :unix or :windows</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>case</span> <span class='id identifier rubyid_filter_bypass'>filter_bypass</span>
+  <span class='kw'>when</span> <span class='symbol'>:null_byte</span><span class='comma'>,</span> <span class='symbol'>:double_escape</span><span class='comma'>,</span> <span class='symbol'>:base64</span><span class='comma'>,</span> <span class='symbol'>:rot13</span><span class='comma'>,</span> <span class='symbol'>:zlib</span><span class='comma'>,</span> <span class='kw'>nil</span>
+    <span class='ivar'>@filter_bypass</span> <span class='op'>=</span> <span class='id identifier rubyid_filter_bypass'>filter_bypass</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown filter_bypass keyword value (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_filter_bypass'>filter_bypass</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'>) must be :null_byte, :double_escape, :base64, :rot13, :zlib, or nil</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='ivar'>@depth</span>       <span class='op'>=</span> <span class='id identifier rubyid_depth'>depth</span>
+  <span class='ivar'>@escape_path</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>..</span><span class='embexpr_beg'>#{</span><span class='ivar'>@separator</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='op'>*</span> <span class='ivar'>@depth</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_apply_filter_bypasses'>apply_filter_bypasses</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="depth-instance_method">
+  
+    #<strong>depth</strong>  &#x21d2; <tt>Integer</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The number of directories to traverse up</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+67
+68
+69</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/lfi.rb', line 67</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_depth'>depth</span>
+  <span class='ivar'>@depth</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="escape_path-instance_method">
+  
+    #<strong>escape_path</strong>  &#x21d2; <tt>String</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The escape path to add to every LFI path</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+77
+78
+79</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/lfi.rb', line 77</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_escape_path'>escape_path</span>
+  <span class='ivar'>@escape_path</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="filter_bypass-instance_method">
+  
+    #<strong>filter_bypass</strong>  &#x21d2; <tt>:null_byte</tt>, ...  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Optional filter bypass technique to use.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>:null_byte</tt>, <tt>:base64</tt>, <tt>:rot13</tt>, <tt>:zlib</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62
+63
+64</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/lfi.rb', line 62</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_filter_bypass'>filter_bypass</span>
+  <span class='ivar'>@filter_bypass</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="os-instance_method">
+  
+    #<strong>os</strong>  &#x21d2; <tt>:unix</tt>, ...  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Targeted Operating System (OS)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>:unix</tt>, <tt>:windows</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/lfi.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_os'>os</span>
+  <span class='ivar'>@os</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="separator-instance_method">
+  
+    #<strong>separator</strong>  &#x21d2; <tt>String</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The directory separator character.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+72
+73
+74</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/lfi.rb', line 72</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_separator'>separator</span>
+  <span class='ivar'>@separator</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="test_file-instance_method">
+  
+    #<strong>test_file</strong>  &#x21d2; <tt><span class='object_link'><a href="LFI/TestFile.html" title="Ronin::Vulns::LFI::TestFile (class)">TestFile</a></span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The common file to test with.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="LFI/TestFile.html" title="Ronin::Vulns::LFI::TestFile (class)">TestFile</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+82
+83
+84</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/lfi.rb', line 82</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_test_file'>test_file</span>
+  <span class='ivar'>@test_file</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="vuln_type-class_method">
+  
+    .<strong>vuln_type</strong>  &#x21d2; <tt>Symbol</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<div class="note abstract">
+  <strong>This method is abstract.</strong>
+  <div class='inline'></div>
+</div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>This is used internally to map an vulnerability class to a printable
+type.</p>
+</div>
+  </div>
+
+<p>Returns the type or kind of vulnerability.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+260
+261
+262</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/lfi.rb', line 260</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_vuln_type'>vuln_type</span>
+  <span class='symbol'>:lfi</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="encode_payload-instance_method">
+  
+    #<strong>encode_payload</strong>(path)  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><ul>
+<li>If the given path begins with <code>php:</code>, then no <code>../../../</code> prefix
+will be added.</li>
+<li>If initialized with <code>filter_bypass: :null_byte</code>, then a <code>\0</code>
+character will be appended to the path.</li>
+</ul>
+</div>
+  </div>
+
+<p>Builds a <code>../../..</code> escaped path for the given file path.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path to escape.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The <code>../../../</code> escaped path.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/lfi.rb', line 204</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_encode_payload'>encode_payload</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='ivar'>@filter_bypass</span>
+  <span class='kw'>when</span> <span class='symbol'>:base64</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>php://filter/convert.base64-encode/resource=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>when</span> <span class='symbol'>:rot13</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>php://filter/read=string.rot13/resource=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>when</span> <span class='symbol'>:zlib</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>php://filter/zlib.deflate/convert.base64-encode/resource=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>when</span> <span class='symbol'>:null_byte</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>\0</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="escape-instance_method">
+  
+    #<strong>escape</strong>(path)  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Relative paths and absolute Windows paths to other drives will not
+be escaped.</p>
+</div>
+  </div>
+
+<p>Escapes the given path.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given path to escape.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The escaped path.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/lfi.rb', line 173</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='ivar'>@os</span> <span class='op'>==</span> <span class='symbol'>:windows</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_start_with?'>start_with?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>C:\\</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='comment'># escape absolute Windows paths to the C: drive
+</span>    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@escape_path</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='lbracket'>[</span><span class='int'>3</span><span class='op'>..</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>elsif</span> <span class='ivar'>@os</span> <span class='op'>==</span> <span class='symbol'>:windows</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_path'>path</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\A[A-Z]:</span><span class='regexp_end'>/</span></span>
+    <span class='comment'># pass through absolute Windows paths to other drives
+</span>      <span class='id identifier rubyid_path'>path</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_start_with?'>start_with?</span><span class='lparen'>(</span><span class='ivar'>@separator</span><span class='rparen'>)</span>
+    <span class='comment'># escape absolute paths
+</span>    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@escape_path</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='lbracket'>[</span><span class='int'>1</span><span class='op'>..</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>else</span>
+    <span class='comment'># pass through relative paths
+</span>    <span class='id identifier rubyid_path'>path</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="vulnerable?-instance_method">
+  
+    #<strong>vulnerable?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Determines whether the URL is vulnerable to Local File Inclusion (LFI).</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/lfi.rb', line 224</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_vulnerable?'>vulnerable?</span>
+  <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_exploit'>exploit</span><span class='lparen'>(</span><span class='ivar'>@test_file</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_body'>body</span>     <span class='op'>=</span> <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span>
+
+  <span class='kw'>case</span> <span class='ivar'>@filter_bypass</span>
+  <span class='kw'>when</span> <span class='symbol'>:base64</span>
+    <span class='id identifier rubyid_body'>body</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='const'>Text</span><span class='op'>::</span><span class='const'>Patterns</span><span class='op'>::</span><span class='const'>BASE64</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_string'>string</span><span class='op'>|</span>
+      <span class='const'>Base64</span><span class='period'>.</span><span class='id identifier rubyid_decode64'>decode64</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span> <span class='op'>=~</span> <span class='ivar'>@test_file</span>
+    <span class='kw'>end</span>
+  <span class='kw'>when</span> <span class='symbol'>:rot13</span>
+    <span class='const'>Crypto</span><span class='period'>.</span><span class='id identifier rubyid_rot'>rot</span><span class='lparen'>(</span><span class='id identifier rubyid_body'>body</span><span class='comma'>,</span><span class='op'>-</span><span class='int'>13</span><span class='rparen'>)</span> <span class='op'>=~</span> <span class='ivar'>@test_file</span>
+  <span class='kw'>when</span> <span class='symbol'>:zlib</span>
+    <span class='id identifier rubyid_body'>body</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='const'>Text</span><span class='op'>::</span><span class='const'>Patterns</span><span class='op'>::</span><span class='const'>BASE64</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_string'>string</span><span class='op'>|</span>
+      <span class='kw'>begin</span>
+        <span class='const'>Compression</span><span class='period'>.</span><span class='id identifier rubyid_zlib_inflate'>zlib_inflate</span><span class='lparen'>(</span><span class='const'>Base64</span><span class='period'>.</span><span class='id identifier rubyid_decode64'>decode64</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>=~</span> <span class='ivar'>@test_file</span>
+      <span class='kw'>rescue</span> <span class='const'>Zlib</span><span class='op'>::</span><span class='const'>DataError</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_body'>body</span> <span class='op'>=~</span> <span class='ivar'>@test_file</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sun Jan  1 18:24:43 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.28 (ruby-3.1.3).
+</div>
+
+    </div>
+  </body>
+</html>

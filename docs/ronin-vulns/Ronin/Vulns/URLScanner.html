@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Ronin::Vulns::URLScanner
+  
+    &mdash; ronin-vulns Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::Vulns::URLScanner";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../_index.html">Index (U)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Vulns.html" title="Ronin::Vulns (module)">Vulns</a></span></span>
+     &raquo; 
+    <span class="title">URLScanner</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: Ronin::Vulns::URLScanner
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/vulns/url_scanner.rb</dd>
+  </dl>
+  
+</div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#scan-class_method" title="scan (class method)">.<strong>scan</strong>(url, lfi: {}, rfi: {}, sqli: {}, ssti: {}, reflected_xss: {}, open_redirect: {}, **kwargs) {|vuln| ... } &#x21d2; Array&lt;LFI, RFI, SQLI, SSTI, ReflectedXSS, OpenRedirect&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Scans a URL for web vulnerabilities.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test-class_method" title="test (class method)">.<strong>test</strong>(url, **kwargs)  &#x21d2; LFI, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Tests the URL for a Web vulnerability and returns the first found vulnerability.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="scan-class_method">
+  
+    .<strong>scan</strong>(url, lfi: {}, rfi: {}, sqli: {}, ssti: {}, reflected_xss: {}, open_redirect: {}, **kwargs) {|vuln| ... } &#x21d2; <tt>Array&lt;<span class='object_link'><a href="LFI.html" title="Ronin::Vulns::LFI (class)">LFI</a></span>, <span class='object_link'><a href="RFI.html" title="Ronin::Vulns::RFI (class)">RFI</a></span>, <span class='object_link'><a href="SQLI.html" title="Ronin::Vulns::SQLI (class)">SQLI</a></span>, <span class='object_link'><a href="SSTI.html" title="Ronin::Vulns::SSTI (class)">SSTI</a></span>, <span class='object_link'><a href="ReflectedXSS.html" title="Ronin::Vulns::ReflectedXSS (class)">ReflectedXSS</a></span>, <span class='object_link'><a href="OpenRedirect.html" title="Ronin::Vulns::OpenRedirect (class)">OpenRedirect</a></span>&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Scans a URL for web vulnerabilities.</p>
+
+<p>The HTTP request mehtod for each request.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>url</span>
+      
+      
+        <span class='type'>(<tt>URI::HTTP</tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The URL to test or exploit.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>lfi</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>, <tt>false</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options for <span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">WebVuln.scan</a></span>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rfi</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>, <tt>false</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options for <span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">WebVuln.scan</a></span>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>sqli</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>, <tt>false</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options for <span class='object_link'><a href="SQLI.html#scan-class_method" title="Ronin::Vulns::SQLI.scan (method)">SQLI.scan</a></span>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ssti</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>, <tt>false</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options for <span class='object_link'><a href="SSTI.html#scan-class_method" title="Ronin::Vulns::SSTI.scan (method)">SSTI.scan</a></span>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>reflected_xss</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>, <tt>false</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options for <span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">WebVuln.scan</a></span>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>open_redirect</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>, <tt>false</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options for <span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">WebVuln.scan</a></span>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>a customizable set of options</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>lfi:</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:os</span>
+          <span class="type">(<tt>:unix</tt>, <tt>:windows</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>:unix</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Operating System to specifically target.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:depth</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>6</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Number of directories to escape up.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:filter_bypass</span>
+          <span class="type">(<tt>:null_byte</tt>, <tt>:double_escape</tt>, <tt>:base64</tt>, <tt>:rot13</tt>, <tt>:zlib</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies which filter bypass technique to use.</p>
+
+<ul>
+<li><code>:null_byte - appends a</code>%00` null byte to the escaped path.
+*<em>Note:</em> this technique only works on PHP &lt; 5.3.</li>
+<li><code>:double_escape</code> - Double escapes the <span class='object_link'><a href="LFI.html#escape_path-instance_method" title="Ronin::Vulns::LFI#escape_path (method)">LFI#escape_path</a></span>
+(ex: <code>....//....//</code>).</li>
+<li><code>:base64</code> - Base64 encodes the included local file.</li>
+<li><code>:rot13</code> - ROT13 encodes the included local file.</li>
+<li><code>:zlib</code> - Zlib compresses and Base64 encodes the included local
+file.</li>
+</ul>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>rfi:</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:filter_bypass</span>
+          <span class="type">(<tt>:null_byte</tt>, <tt>:double_encode</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies which filter bypass technique to use.</p>
+
+<ul>
+<li><code>:double_encode</code> - will cause the inclusion URL to be URI escaped
+twice.</li>
+<li><code>:suffix_escape</code> - escape any appended suffix (ex: <code>param + &quot;.php&quot;</code>)
+by adding a URI fragment character (<code>#</code>) to the end of the RFI
+script URL. The fragment component of the URI is not sent to the
+web server.</li>
+<li><code>:null_byte</code> - will cause the inclusion URL to be appended with a
+<code>%00</code> character. *<em>Note:</em> this technique only works on PHP &lt; 5.3.</li>
+</ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:test_script_url</span>
+          <span class="type">(<tt>String</tt>, <tt>URI::HTTP</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The URL of the RFI test script. If not specified, it will default to
+<span class='object_link'><a href="RFI.html#test_script_for-class_method" title="Ronin::Vulns::RFI.test_script_for (method)">RFI.test_script_for</a></span>.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>sqli:</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:escape_quote</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>false</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether to escape a quoted string value.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:escape_parens</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>false</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether to escape parenthesis.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:terminate</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>false</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether to terminate the SQL statement with <code>--</code>.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>ssti:</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:escape</span>
+          <span class="type">(<tt>Proc</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>How to escape a given payload. Either a proc that will accept a String
+and return a String, or <code>nil</code> to indicate that the payload will not
+be escaped.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:test</span>
+          <span class="type">(<tt>(String</tt>, <tt>String)</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The test payload and expected result to check for when testing the URL
+for SSTI.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>open_redirect:</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:test_url</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>OpenRedirect.random_test_url</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The desired redirect URL to test the URL with.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:query_param</span>
+          <span class="type">(<tt>String</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The query param to test or exploit.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:header_name</span>
+          <span class="type">(<tt>String</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The HTTP Header name to test or exploit.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cookie_param</span>
+          <span class="type">(<tt>String</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The <code>Cookie:</code> param name to test or exploit.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:form_param</span>
+          <span class="type">(<tt>String</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The form param name to test or exploit.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:http</span>
+          <span class="type">(<tt>Ronin::Support::Network::HTTP</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>An HTTP session to use for testing the URL.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:request_method</span>
+          <span class="type">(<tt>:copy</tt>, <tt>:delete</tt>, <tt>:get</tt>, <tt>:head</tt>, <tt>:lock</tt>, <tt>:mkcol</tt>, <tt>:move</tt>, <tt>:options</tt>, <tt>:patch</tt>, <tt>:post</tt>, <tt>:propfind</tt>, <tt>:proppatch</tt>, <tt>:put</tt>, <tt>:trace</tt>, <tt>:unlock</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">:user</span>
+          <span class="type">(<tt>String</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The user to authenticate as.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:password</span>
+          <span class="type">(<tt>String</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The password to authenticate with.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:headers</span>
+          <span class="type">(<tt>Hash{Symbol,String =&gt; String}</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Additional HTTP header names and values to add to the request.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cookie</span>
+          <span class="type">(<tt>String</tt>, <tt>Hash{String =&gt; String}</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Additional <code>Cookie</code> header. If a <code>Hash</code> is given, it will be
+converted to a <code>String</code> using <code>Ronin::Support::Network::HTTP::Cookie</code>.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:form_data</span>
+          <span class="type">(<tt>Hash</tt>, <tt>String</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The form data that may be sent in the body of the request.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:referer</span>
+          <span class="type">(<tt>String</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The optional HTTP <code>Referer</code> header to send with each request.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>vuln</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given it will be yielded each discovered web
+vulnerability.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>vuln</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="LFI.html" title="Ronin::Vulns::LFI (class)">LFI</a></span></tt>, <tt><span class='object_link'><a href="RFI.html" title="Ronin::Vulns::RFI (class)">RFI</a></span></tt>, <tt><span class='object_link'><a href="SQLI.html" title="Ronin::Vulns::SQLI (class)">SQLI</a></span></tt>, <tt><span class='object_link'><a href="SSTI.html" title="Ronin::Vulns::SSTI (class)">SSTI</a></span></tt>, <tt><span class='object_link'><a href="ReflectedXSS.html" title="Ronin::Vulns::ReflectedXSS (class)">ReflectedXSS</a></span></tt>, <tt><span class='object_link'><a href="OpenRedirect.html" title="Ronin::Vulns::OpenRedirect (class)">OpenRedirect</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A discovered web vulnerability in the URL.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="LFI.html" title="Ronin::Vulns::LFI (class)">LFI</a></span>, <span class='object_link'><a href="RFI.html" title="Ronin::Vulns::RFI (class)">RFI</a></span>, <span class='object_link'><a href="SQLI.html" title="Ronin::Vulns::SQLI (class)">SQLI</a></span>, <span class='object_link'><a href="SSTI.html" title="Ronin::Vulns::SSTI (class)">SSTI</a></span>, <span class='object_link'><a href="ReflectedXSS.html" title="Ronin::Vulns::ReflectedXSS (class)">ReflectedXSS</a></span>, <span class='object_link'><a href="OpenRedirect.html" title="Ronin::Vulns::OpenRedirect (class)">OpenRedirect</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>All discovered Web vulnerabilities.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/url_scanner.rb', line 158</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>lfi:</span>  <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
+                   <span class='label'>rfi:</span>  <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
+                   <span class='label'>sqli:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
+                   <span class='label'>ssti:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
+                   <span class='label'>reflected_xss:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
+                   <span class='label'>open_redirect:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
+                   <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
+                   <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_vulns'>vulns</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_lfi'>lfi</span>
+    <span class='id identifier rubyid_vulns'>vulns</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="LFI.html" title="Ronin::Vulns::LFI (class)">LFI</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_lfi'>lfi</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_rfi'>rfi</span>
+    <span class='id identifier rubyid_vulns'>vulns</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="RFI.html" title="Ronin::Vulns::RFI (class)">RFI</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_rfi'>rfi</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_sqli'>sqli</span>
+    <span class='id identifier rubyid_vulns'>vulns</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="SQLI.html" title="Ronin::Vulns::SQLI (class)">SQLI</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="SQLI.html#scan-class_method" title="Ronin::Vulns::SQLI.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_sqli'>sqli</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_ssti'>ssti</span>
+    <span class='id identifier rubyid_vulns'>vulns</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="SSTI.html" title="Ronin::Vulns::SSTI (class)">SSTI</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="SSTI.html#scan-class_method" title="Ronin::Vulns::SSTI.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_ssti'>ssti</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_reflected_xss'>reflected_xss</span>
+    <span class='id identifier rubyid_vulns'>vulns</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="ReflectedXSS.html" title="Ronin::Vulns::ReflectedXSS (class)">ReflectedXSS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_reflected_xss'>reflected_xss</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_open_redirect'>open_redirect</span>
+    <span class='id identifier rubyid_vulns'>vulns</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="OpenRedirect.html" title="Ronin::Vulns::OpenRedirect (class)">OpenRedirect</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_open_redirect'>open_redirect</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_vulns'>vulns</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="test-class_method">
+  
+    .<strong>test</strong>(url, **kwargs)  &#x21d2; <tt><span class='object_link'><a href="LFI.html" title="Ronin::Vulns::LFI (class)">LFI</a></span></tt>, ... 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Tests the URL for a Web vulnerability and returns the first found
+vulnerability.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>url</span>
+      
+      
+        <span class='type'>(<tt>URI::HTTP</tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The URL to test.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <span class='object_link'><a href="#scan-class_method" title="Ronin::Vulns::URLScanner.scan (method)">scan</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="LFI.html" title="Ronin::Vulns::LFI (class)">LFI</a></span></tt>, <tt><span class='object_link'><a href="RFI.html" title="Ronin::Vulns::RFI (class)">RFI</a></span></tt>, <tt><span class='object_link'><a href="SQLI.html" title="Ronin::Vulns::SQLI (class)">SQLI</a></span></tt>, <tt><span class='object_link'><a href="SSTI.html" title="Ronin::Vulns::SSTI (class)">SSTI</a></span></tt>, <tt><span class='object_link'><a href="ReflectedXSS.html" title="Ronin::Vulns::ReflectedXSS (class)">ReflectedXSS</a></span></tt>, <tt><span class='object_link'><a href="OpenRedirect.html" title="Ronin::Vulns::OpenRedirect (class)">OpenRedirect</a></span></tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The first discovered web vulnerability or <code>nil</code> if no vulnerabilities
+were discovered.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+209
+210
+211
+212
+213
+214
+215</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/url_scanner.rb', line 209</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_test'>test</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vuln'>vuln</span><span class='op'>|</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_vuln'>vuln</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sun Jan  1 18:24:43 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.28 (ruby-3.1.3).
+</div>
+
+    </div>
+  </body>
+</html>
