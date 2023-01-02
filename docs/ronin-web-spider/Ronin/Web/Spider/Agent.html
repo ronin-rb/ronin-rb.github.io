@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Ronin::Web::Spider::Agent
+  
+    &mdash; Ronin FIXME Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::Web::Spider::Agent";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../_index.html">Index (A)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Web.html" title="Ronin::Web (module)">Web</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Spider.html" title="Ronin::Web::Spider (module)">Spider</a></span></span>
+     &raquo; 
+    <span class="title">Agent</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Ronin::Web::Spider::Agent
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Spidr::Agent</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Spidr::Agent</li>
+          
+            <li class="next">Ronin::Web::Spider::Agent</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/web/spider/agent.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Extends <a href="https://rubydoc.info/gems/spidr/Agent">Spidr::Agent</a>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#collected_certs-instance_method" title="#collected_certs (instance method)">#<strong>collected_certs</strong>  &#x21d2; Array&lt;Ronin::Support::Crypto::Cert&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>All certificates encountered while spidering.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#visited_hosts-instance_method" title="#visited_hosts (instance method)">#<strong>visited_hosts</strong>  &#x21d2; Set&lt;String&gt;<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The visited host names.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#every_cert-instance_method" title="#every_cert (instance method)">#<strong>every_cert</strong> {|cert| ... } &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Passes every unique TLS certificate to the given block and populates <span class='object_link'><a href="#collected_certs-instance_method" title="Ronin::Web::Spider::Agent#collected_certs (method)">#collected_certs</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#every_comment-instance_method" title="#every_comment (instance method)">#<strong>every_comment</strong> {|comment| ... } &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Passes every HTML and JavaScript comment to the given block.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#every_favicon-instance_method" title="#every_favicon (instance method)">#<strong>every_favicon</strong> {|favicon| ... } &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Pass every favicon from every page to the given block.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#every_host-instance_method" title="#every_host (instance method)">#<strong>every_host</strong> {|host| ... } &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Passes every unique host name that the agent visits to the given block and populates <span class='object_link'><a href="#visited_hosts-instance_method" title="Ronin::Web::Spider::Agent#visited_hosts (method)">#visited_hosts</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#every_html_comment-instance_method" title="#every_html_comment (instance method)">#<strong>every_html_comment</strong> {|comment| ... } &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Passes every non-empty HTML comment to the given block.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#every_javascript-instance_method" title="#every_javascript (instance method)">#<strong>every_javascript</strong> {|js| ... } &#x21d2; Object </a>
+    
+
+    
+      (also: #every_js)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Passes every piece of JavaScript to the given block.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#every_javascript_comment-instance_method" title="#every_javascript_comment (instance method)">#<strong>every_javascript_comment</strong> {|comment| ... } &#x21d2; Object </a>
+    
+
+    
+      (also: #every_js_comment)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Passes every JavaScript comment to the given block.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#every_javascript_string-instance_method" title="#every_javascript_string (instance method)">#<strong>every_javascript_string</strong> {|string| ... } &#x21d2; Object </a>
+    
+
+    
+      (also: #every_js_string)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Passes every JavaScript string value to the given block.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(proxy: Support::Network::HTTP.proxy, user_agent: Support::Network::HTTP.user_agent, **kwargs) {|agent| ... } &#x21d2; Agent </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new Spider object.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(proxy: Support::Network::HTTP.proxy, user_agent: Support::Network::HTTP.user_agent, **kwargs) {|agent| ... } &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Web::Spider::Agent (class)">Agent</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new Spider object.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>proxy</span>
+      
+      
+        <span class='type'>(<tt>Spidr::Proxy</tt>, <tt>Addressable::URI</tt>, <tt>URI::HTTP</tt>, <tt>Hash</tt>, <tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>Support::Network::HTTP.proxy</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The proxy to use while spidering.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>user_agent</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>Support::Network::HTTP.user_agent</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The User-Agent string to send.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <code>Spidr::Agent#initialize</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:referer</span>
+          <span class="type">(<tt>String</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The referer URL to send.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:delay</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>0</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Duration in seconds to pause between spidering each link.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:schemes</span>
+          <span class="type">(<tt>Array</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>[&#39;http&#39;</tt>, <tt>&#39;https&#39;]</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The list of acceptable URI schemes to visit.
+The <code>https</code> scheme will be ignored if <code>net/https</code> cannot be
+loaded.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:host</span>
+          <span class="type">(<tt>String</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The host-name to visit.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:hosts</span>
+          <span class="type">(<tt>Array&lt;String, Regexp, Proc&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The patterns which match the host-names to visit.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ignore_hosts</span>
+          <span class="type">(<tt>Array&lt;String, Regexp, Proc&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The patterns which match the host-names to not visit.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ports</span>
+          <span class="type">(<tt>Array&lt;Integer, Regexp, Proc&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The patterns which match the ports to visit.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ignore_ports</span>
+          <span class="type">(<tt>Array&lt;Integer, Regexp, Proc&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The patterns which match the ports to not visit.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:links</span>
+          <span class="type">(<tt>Array&lt;String, Regexp, Proc&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The patterns which match the links to visit.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ignore_links</span>
+          <span class="type">(<tt>Array&lt;String, Regexp, Proc&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The patterns which match the links to not visit.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:exts</span>
+          <span class="type">(<tt>Array&lt;String, Regexp, Proc&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The patterns which match the URI path extensions to visit.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ignore_exts</span>
+          <span class="type">(<tt>Array&lt;String, Regexp, Proc&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The patterns which match the URI path extensions to not visit.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>agent</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed the newly created web spider
+agent.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>agent</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Web::Spider::Agent (class)">Agent</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The newly created web spider agent.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://rubydoc.info/gems/spidr/Spidr/Agent#initialize-instance_method" target="_parent" title="https://rubydoc.info/gems/spidr/Spidr/Agent#initialize-instance_method">https://rubydoc.info/gems/spidr/Spidr/Agent#initialize-instance_method</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 96</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>proxy:</span>      <span class='const'>Support</span><span class='op'>::</span><span class='const'>Network</span><span class='op'>::</span><span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
+               <span class='label'>user_agent:</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Network</span><span class='op'>::</span><span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_user_agent'>user_agent</span><span class='comma'>,</span>
+               <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
+               <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_proxy'>proxy</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_proxy'>proxy</span>
+          <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span>
+            <span class='const'>Spidr</span><span class='op'>::</span><span class='const'>Proxy</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+              <span class='label'>host:</span>     <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span>
+              <span class='label'>port:</span>     <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span>
+              <span class='label'>user:</span>     <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span>
+              <span class='label'>password:</span> <span class='id identifier rubyid_proxy'>proxy</span><span class='period'>.</span><span class='id identifier rubyid_password'>password</span>
+            <span class='rparen'>)</span>
+          <span class='kw'>else</span>
+            <span class='id identifier rubyid_proxy'>proxy</span>
+          <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_user_agent'>user_agent</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_user_agent'>user_agent</span>
+               <span class='kw'>when</span> <span class='const'>Symbol</span>
+                 <span class='const'>Support</span><span class='op'>::</span><span class='const'>Network</span><span class='op'>::</span><span class='const'>HTTP</span><span class='op'>::</span><span class='const'>UserAgents</span><span class='lbracket'>[</span><span class='id identifier rubyid_user_agent'>user_agent</span><span class='rbracket'>]</span>
+               <span class='kw'>else</span>
+                 <span class='id identifier rubyid_user_agent'>user_agent</span>
+               <span class='kw'>end</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='label'>proxy:</span> <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span> <span class='label'>user_agent:</span> <span class='id identifier rubyid_user_agent'>user_agent</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="collected_certs-instance_method">
+  
+    #<strong>collected_certs</strong>  &#x21d2; <tt>Array&lt;Ronin::Support::Crypto::Cert&gt;</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>All certificates encountered while spidering.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Ronin::Support::Crypto::Cert&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+150
+151
+152</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 150</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_collected_certs'>collected_certs</span>
+  <span class='ivar'>@collected_certs</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="visited_hosts-instance_method">
+  
+    #<strong>visited_hosts</strong>  &#x21d2; <tt>Set&lt;String&gt;</tt><sup>?</sup>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The visited host names.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Set&lt;String&gt;</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+125
+126
+127</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 125</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_visited_hosts'>visited_hosts</span>
+  <span class='ivar'>@visited_hosts</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="every_cert-instance_method">
+  
+    #<strong>every_cert</strong> {|cert| ... } &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Passes every unique TLS certificate to the given block and populates
+<span class='object_link'><a href="#collected_certs-instance_method" title="Ronin::Web::Spider::Agent#collected_certs (method)">#collected_certs</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>cert</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'></span>
+      
+      
+        <span class='type'>(<tt>Ronin::Support::Crypto::Cert</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 160</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_every_cert'>every_cert</span>
+  <span class='ivar'>@collected_certs</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_serials'>serials</span> <span class='op'>=</span> <span class='const'>Set</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+
+  <span class='id identifier rubyid_every_page'>every_page</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_page'>page</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_scheme'>scheme</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https</span><span class='tstring_end'>&#39;</span></span>
+      <span class='id identifier rubyid_cert'>cert</span> <span class='op'>=</span> <span class='id identifier rubyid_sessions'>sessions</span><span class='lbracket'>[</span><span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_url'>url</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_peer_cert'>peer_cert</span>
+
+      <span class='kw'>if</span> <span class='id identifier rubyid_serials'>serials</span><span class='period'>.</span><span class='id identifier rubyid_add?'>add?</span><span class='lparen'>(</span><span class='id identifier rubyid_cert'>cert</span><span class='period'>.</span><span class='id identifier rubyid_serial'>serial</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_cert'>cert</span> <span class='op'>=</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Cert</span><span class='lparen'>(</span><span class='id identifier rubyid_cert'>cert</span><span class='rparen'>)</span>
+
+        <span class='ivar'>@collected_certs</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_cert'>cert</span>
+        <span class='kw'>yield</span> <span class='id identifier rubyid_cert'>cert</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="every_comment-instance_method">
+  
+    #<strong>every_comment</strong> {|comment| ... } &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Passes every HTML and JavaScript comment to the given block.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>comment</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each HTML or JavaScript comment.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>comment</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The contents of a HTML or JavaScript comment.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#every_html_comment-instance_method" title="Ronin::Web::Spider::Agent#every_html_comment (method)">#every_html_comment</a></span></li>
+    
+      <li><span class='object_link'><a href="#every_javascript_comment-instance_method" title="Ronin::Web::Spider::Agent#every_javascript_comment (method)">#every_javascript_comment</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+294
+295
+296
+297</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 294</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_every_comment'>every_comment</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_every_html_comment'>every_html_comment</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_every_javascript_comment'>every_javascript_comment</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="every_favicon-instance_method">
+  
+    #<strong>every_favicon</strong> {|favicon| ... } &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Pass every favicon from every page to the given block.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>favicon</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed every encountered <code>.ico</code> file.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>favicon</span>
+      
+      
+        <span class='type'>(<tt>Spidr::Page</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>An encountered <code>.ico</code> file.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="https://rubydoc.info/gems/spidr/Spidr/Page" target="_parent" title="https://rubydoc.info/gems/spidr/Spidr/Page">https://rubydoc.info/gems/spidr/Spidr/Page</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+190
+191
+192
+193
+194</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 190</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_every_favicon'>every_favicon</span>
+  <span class='id identifier rubyid_every_page'>every_page</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_page'>page</span><span class='op'>|</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid_page'>page</span> <span class='kw'>if</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_icon?'>icon?</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="every_host-instance_method">
+  
+    #<strong>every_host</strong> {|host| ... } &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Passes every unique host name that the agent visits to the given
+block and populates <span class='object_link'><a href="#visited_hosts-instance_method" title="Ronin::Web::Spider::Agent#visited_hosts (method)">#visited_hosts</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Spider.html#host-class_method" title="Ronin::Web::Spider.host (method)">host</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 135</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_every_host'>every_host</span>
+  <span class='ivar'>@visited_hosts</span> <span class='op'>||=</span> <span class='const'>Set</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+
+  <span class='id identifier rubyid_every_page'>every_page</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_page'>page</span><span class='op'>|</span>
+    <span class='id identifier rubyid_host'>host</span> <span class='op'>=</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span>
+
+    <span class='kw'>if</span> <span class='ivar'>@visited_hosts</span><span class='period'>.</span><span class='id identifier rubyid_add?'>add?</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span>
+      <span class='kw'>yield</span> <span class='id identifier rubyid_host'>host</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="every_html_comment-instance_method">
+  
+    #<strong>every_html_comment</strong> {|comment| ... } &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Passes every non-empty HTML comment to the given block.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>comment</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passevery HTML comment.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>comment</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The HTML comment inner text, with leading and trailing whitespace
+stripped.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 206</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_every_html_comment'>every_html_comment</span>
+  <span class='id identifier rubyid_every_html_page'>every_html_page</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_page'>page</span><span class='op'>|</span>
+    <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_xpath'>xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>//comment()</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_comment'>comment</span><span class='op'>|</span>
+      <span class='id identifier rubyid_comment_text'>comment_text</span> <span class='op'>=</span> <span class='id identifier rubyid_comment'>comment</span><span class='period'>.</span><span class='id identifier rubyid_inner_text'>inner_text</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span>
+
+      <span class='kw'>unless</span> <span class='id identifier rubyid_comment_text'>comment_text</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+        <span class='kw'>yield</span> <span class='id identifier rubyid_comment_text'>comment_text</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="every_javascript-instance_method">
+  
+    #<strong>every_javascript</strong> {|js| ... } &#x21d2; <tt>Object</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='every_js-instance_method'>every_js</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Passes every piece of JavaScript to the given block.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>js</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed every piece of JavaScript source.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>js</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The JavaScript source code.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 227</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_every_javascript'>every_javascript</span>
+  <span class='comment'># yield inner text of every `&lt;script type=&quot;text/javascript&quot;&gt;` tag
+</span>  <span class='comment'># and every `.js` URL.
+</span>  <span class='id identifier rubyid_every_html_page'>every_html_page</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_page'>page</span><span class='op'>|</span>
+    <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_xpath'>xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>//script[@type=&quot;text/javascript&quot;]</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_script'>script</span><span class='op'>|</span>
+      <span class='kw'>unless</span> <span class='id identifier rubyid_script'>script</span><span class='period'>.</span><span class='id identifier rubyid_inner_text'>inner_text</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+        <span class='kw'>yield</span> <span class='id identifier rubyid_script'>script</span><span class='period'>.</span><span class='id identifier rubyid_inner_text'>inner_text</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_every_javascript_page'>every_javascript_page</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_page'>page</span><span class='op'>|</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="every_javascript_comment-instance_method">
+  
+    #<strong>every_javascript_comment</strong> {|comment| ... } &#x21d2; <tt>Object</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='every_js_comment-instance_method'>every_js_comment</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Passes every JavaScript comment to the given block.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>comment</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each JavaScript comment.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>comment</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The contents of a JavaScript comment.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+274
+275
+276
+277
+278</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 274</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_every_javascript_comment'>every_javascript_comment</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_every_javascript'>every_javascript</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_js'>js</span><span class='op'>|</span>
+    <span class='id identifier rubyid_js'>js</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='const'>Support</span><span class='op'>::</span><span class='const'>Text</span><span class='op'>::</span><span class='const'>Patterns</span><span class='op'>::</span><span class='const'>JAVASCRIPT_COMMENT</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="every_javascript_string-instance_method">
+  
+    #<strong>every_javascript_string</strong> {|string| ... } &#x21d2; <tt>Object</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='every_js_string-instance_method'>every_js_string</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Passes every JavaScript string value to the given block.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>string</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed each JavaScript string with the quote
+marks removed.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The parsed contents of a JavaScript string.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+255
+256
+257
+258
+259
+260
+261</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 255</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_every_javascript_string'>every_javascript_string</span>
+  <span class='id identifier rubyid_every_javascript'>every_javascript</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_js'>js</span><span class='op'>|</span>
+    <span class='id identifier rubyid_js'>js</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='const'>Support</span><span class='op'>::</span><span class='const'>Text</span><span class='op'>::</span><span class='const'>Patterns</span><span class='op'>::</span><span class='const'>STRING</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_js_string'>js_string</span><span class='op'>|</span>
+      <span class='kw'>yield</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Encoding</span><span class='op'>::</span><span class='const'>JS</span><span class='period'>.</span><span class='id identifier rubyid_unquote'>unquote</span><span class='lparen'>(</span><span class='id identifier rubyid_js_string'>js_string</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sun Jan  1 18:28:14 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.28 (ruby-3.1.3).
+</div>
+
+    </div>
+  </body>
+</html>
