@@ -26,8 +26,8 @@ title: Documentation
 ## API
 
 {% for library in site.libraries %}
-* [{{ library[0] }}](/docs/{{ library[0] }}/) - 
-  {{ library[1].version }}
+* [{{ library[0] }}](/docs/{{ library[0] }}/) ({{ library[1].version }}) - 
+  {{ library[1].description }}
 {% endfor %}
 
 ## Media
