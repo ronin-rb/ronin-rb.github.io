@@ -1,0 +1,2351 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Ronin::Payloads::Payload
+  
+    &mdash; ronin-payloads Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::Payloads::Payload";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Payloads.html" title="Ronin::Payloads (module)">Payloads</a></span></span>
+     &raquo; 
+    <span class="title">Payload</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Ronin::Payloads::Payload
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Ronin::Payloads::Payload</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd>Core::Metadata::Authors, Core::Metadata::Description, Core::Metadata::ID, Core::Metadata::References, Core::Metadata::Summary, Core::Params::Mixin, Support::CLI::Printing</dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/payloads/payload.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>The <span class='object_link'><a href="" title="Ronin::Payloads::Payload (class)">Payload</a></span> class allows for describing payloads, which are
+delivered via exploits, purely in Ruby. Payloads contain metadata
+about the payload and methods which define the functionality of the
+payload. Payloads may also be coupled with exploits, or chained
+together with other payloads.</p>
+
+<h2 id="payload-api-methods">Payload API Methods</h2>
+
+<ul>
+<li><span class='object_link'><a href="#initialize-instance_method" title="Ronin::Payloads::Payload#initialize (method)">initialize</a></span> - Initializes a new instance of the
+payload.</li>
+<li><span class='object_link'><a href="#build-instance_method" title="Ronin::Payloads::Payload#build (method)">build</a></span> - contains the logic to build the payload. The
+built payload must be stored in the <code>@payload</code> instance variable.</li>
+<li><span class='object_link'><a href="#prelaunch-instance_method" title="Ronin::Payloads::Payload#prelaunch (method)">prelaunch</a></span> - contains additional logic that runs
+before the payload has been launched by the exploit.</li>
+<li><span class='object_link'><a href="#postlaunch-instance_method" title="Ronin::Payloads::Payload#postlaunch (method)">postlaunch</a></span> - contains additional logic that runs
+after the payload has been launched by the exploit.</li>
+<li><span class='object_link'><a href="#cleanup-instance_method" title="Ronin::Payloads::Payload#cleanup (method)">cleanup</a></span> - contains additional logic to cleanup or
+shutdown the payload.</li>
+</ul>
+
+<h2 id="example">Example</h2>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>module</span> <span class='const'><span class='object_link'><a href="../../Ronin.html" title="Ronin (module)">Ronin</a></span></span>
+  <span class='kw'>module</span> <span class='const'><span class='object_link'><a href="../Payloads.html" title="Ronin::Payloads (module)">Payloads</a></span></span>
+    <span class='kw'>class</span> <span class='const'>MyPayload</span> <span class='op'>&lt;</span> <span class='const'>Payload</span>
+
+      <span class='id identifier rubyid_register'>register</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>my_payload</span><span class='tstring_end'>&#39;</span></span>
+
+      <span class='id identifier rubyid_summary'>summary</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>My first payload</span><span class='tstring_end'>&#39;</span></span>
+      <span class='id identifier rubyid_description'>description</span> <span class='heredoc_beg'>&lt;&lt;~EOS</span>
+<span class='tstring_content'>        This is my first payload.
+</span><span class='tstring_content'>        Bla bla bla bla.
+</span><span class='heredoc_end'>      EOS
+</span>
+      <span class='id identifier rubyid_author'>author</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>John Smith</span><span class='tstring_end'>&#39;</span></span>
+      <span class='id identifier rubyid_author'>author</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>John Smith</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>email:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>...</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>twitter:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>...</span><span class='tstring_end'>&#39;</span></span>
+
+      <span class='id identifier rubyid_param'>param</span> <span class='symbol'>:foo</span><span class='comma'>,</span> <span class='label'>desc:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Simple param</span><span class='tstring_end'>&#39;</span></span>
+      <span class='id identifier rubyid_param'>param</span> <span class='symbol'>:bar</span><span class='comma'>,</span> <span class='const'>Integer</span><span class='comma'>,</span> <span class='label'>desc:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A param iwth a typo</span><span class='tstring_end'>&#39;</span></span>
+
+      <span class='kw'>def</span> <span class='id identifier rubyid_build'>build</span>
+        <span class='ivar'>@payload</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>...</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span>
+
+      <span class='kw'>def</span> <span class='id identifier rubyid_prelaunch'>prelaunch</span>
+        <span class='comment'># ...
+</span>      <span class='kw'>end</span>
+
+      <span class='kw'>def</span> <span class='id identifier rubyid_postlaunch'>postlaunch</span>
+        <span class='comment'># ...
+</span>      <span class='kw'>end</span>
+
+      <span class='kw'>def</span> <span class='id identifier rubyid_cleanup'>cleanup</span>
+        <span class='comment'># ...
+</span>      <span class='kw'>end</span>
+
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="BinaryPayload.html" title="Ronin::Payloads::BinaryPayload (class)">BinaryPayload</a></span>, <span class='object_link'><a href="ColdFusionPayload.html" title="Ronin::Payloads::ColdFusionPayload (class)">ColdFusionPayload</a></span>, <span class='object_link'><a href="CommandPayload.html" title="Ronin::Payloads::CommandPayload (class)">CommandPayload</a></span>, <span class='object_link'><a href="HTMLPayload.html" title="Ronin::Payloads::HTMLPayload (class)">HTMLPayload</a></span>, <span class='object_link'><a href="JSPPayload.html" title="Ronin::Payloads::JSPPayload (class)">JSPPayload</a></span>, <span class='object_link'><a href="JavaPayload.html" title="Ronin::Payloads::JavaPayload (class)">JavaPayload</a></span>, <span class='object_link'><a href="JavaScriptPayload.html" title="Ronin::Payloads::JavaScriptPayload (class)">JavaScriptPayload</a></span>, <span class='object_link'><a href="NodeJSPayload.html" title="Ronin::Payloads::NodeJSPayload (class)">NodeJSPayload</a></span>, <span class='object_link'><a href="PHPPayload.html" title="Ronin::Payloads::PHPPayload (class)">PHPPayload</a></span>, <span class='object_link'><a href="PowerShellPayload.html" title="Ronin::Payloads::PowerShellPayload (class)">PowerShellPayload</a></span>, <span class='object_link'><a href="PythonPayload.html" title="Ronin::Payloads::PythonPayload (class)">PythonPayload</a></span>, <span class='object_link'><a href="RubyPayload.html" title="Ronin::Payloads::RubyPayload (class)">RubyPayload</a></span>, <span class='object_link'><a href="SQLPayload.html" title="Ronin::Payloads::SQLPayload (class)">SQLPayload</a></span>, <span class='object_link'><a href="URLPayload.html" title="Ronin::Payloads::URLPayload (class)">URLPayload</a></span>, <span class='object_link'><a href="XMLPayload.html" title="Ronin::Payloads::XMLPayload (class)">XMLPayload</a></span></p>
+</div>
+
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#encoders-instance_method" title="#encoders (instance method)">#<strong>encoders</strong>  &#x21d2; Encoders::Pipeline </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The payload&#39;s encoder pipeline.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#payload-instance_method" title="#payload (instance method)">#<strong>payload</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The built payload.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      String Methods
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bytesize-instance_method" title="#bytesize (instance method)">#<strong>bytesize</strong>  &#x21d2; Integer </a>
+    
+
+    
+      (also: #size)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The size of the payload in bytes.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#length-instance_method" title="#length (instance method)">#<strong>length</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The number of characters in the payload.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_s-instance_method" title="#to_s (instance method)">#<strong>to_s</strong>  &#x21d2; String </a>
+    
+
+    
+      (also: #to_str)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Converts the payload into a String.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Payload API Methods
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#build-instance_method" title="#build (instance method)">#<strong>build</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  <span class="abstract note title">abstract</span>
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Builds the payload.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cleanup-instance_method" title="#cleanup (instance method)">#<strong>cleanup</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  <span class="abstract note title">abstract</span>
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Placeholder method to clean up the payload.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#postlaunch-instance_method" title="#postlaunch (instance method)">#<strong>postlaunch</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  <span class="abstract note title">abstract</span>
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Placeholder method that runs after the payload is launched by the exploit.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#prelaunch-instance_method" title="#prelaunch (instance method)">#<strong>prelaunch</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  <span class="abstract note title">abstract</span>
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Placeholder method that runs before the payload is launched by the exploit.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#validate-instance_method" title="#validate (instance method)">#<strong>validate</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  <span class="abstract note title">abstract</span>
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Place holder method for additional validation logic.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#encoder_class-class_method" title="encoder_class (class method)">.<strong>encoder_class</strong>(new_encoder_class = nil)  &#x21d2; Class&lt;Encoders::Encoder&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets or sets the payload encoder base class that is compatible with the payload.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#payload_type-class_method" title="payload_type (class method)">.<strong>payload_type</strong>  &#x21d2; Symbol </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the type or kind of payload.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#register-class_method" title="register (class method)">.<strong>register</strong>(payload_id)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Registers the payload with <span class='object_link'><a href="../Payloads.html" title="Ronin::Payloads (module)">Ronin::Payloads</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#built%3F-instance_method" title="#built? (instance method)">#<strong>built?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Determines whether the payload was built.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#built_payload-instance_method" title="#built_payload (instance method)">#<strong>built_payload</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The built payload String.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#encode_payload-instance_method" title="#encode_payload (instance method)">#<strong>encode_payload</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Encodes the built payload.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#encoded_payload-instance_method" title="#encoded_payload (instance method)">#<strong>encoded_payload</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The encoded payload.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(encoders: nil, **kwargs)  &#x21d2; Payload </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Initializes the payload.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#perform_build-instance_method" title="#perform_build (instance method)">#<strong>perform_build</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Builds the payload.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#perform_cleanup-instance_method" title="#perform_cleanup (instance method)">#<strong>perform_cleanup</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Performs the cleanup step.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#perform_postlaunch-instance_method" title="#perform_postlaunch (instance method)">#<strong>perform_postlaunch</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Performs the post-launch step.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#perform_prelaunch-instance_method" title="#perform_prelaunch (instance method)">#<strong>perform_prelaunch</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Performs the prelaunch step.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#perform_validate-instance_method" title="#perform_validate (instance method)">#<strong>perform_validate</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Validates that the payload is ready to be built.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rebuild_payload-instance_method" title="#rebuild_payload (instance method)">#<strong>rebuild_payload</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Forcibly rebuilds the payload.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reencode_payload-instance_method" title="#reencode_payload (instance method)">#<strong>reencode_payload</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Forcibly re-encodes the payload.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(encoders: nil, **kwargs)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Payloads::Payload (class)">Payload</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Initializes the payload.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>encoders</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Encoders/Encoder.html" title="Ronin::Payloads::Encoders::Encoder (class)">Encoders::Encoder</a></span>&gt;</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The optional list of payload encoders to use.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="IncompatibleEncoder.html" title="Ronin::Payloads::IncompatibleEncoder (class)">IncompatibleEncoder</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>One of the encoders in <code>encoders:</code> was not compatible with the
+payload&#39;s <span class='object_link'><a href="#encoder_class-class_method" title="Ronin::Payloads::Payload.encoder_class (method)">encoder_class</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 178</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>encoders:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@encoders</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Encoders.html" title="Ronin::Payloads::Encoders (module)">Encoders</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Encoders/Pipeline.html" title="Ronin::Payloads::Encoders::Pipeline (class)">Pipeline</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Encoders/Pipeline.html#initialize-instance_method" title="Ronin::Payloads::Encoders::Pipeline#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_encoders'>encoders</span>
+    <span class='id identifier rubyid_encoders'>encoders</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_encoder'>encoder</span><span class='op'>|</span>
+      <span class='kw'>unless</span> <span class='id identifier rubyid_encoder'>encoder</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_encoder_class'>encoder_class</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="IncompatibleEncoder.html" title="Ronin::Payloads::IncompatibleEncoder (class)">IncompatibleEncoder</a></span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>encoder for payload </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='embexpr_end'>}</span><span class='tstring_content'> was not of type </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_encoder_class'>encoder_class</span><span class='embexpr_end'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_encoder'>encoder</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='kw'>end</span>
+
+      <span class='ivar'>@encoders</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_encoder'>encoder</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="encoders-instance_method">
+  
+    #<strong>encoders</strong>  &#x21d2; <tt><span class='object_link'><a href="Encoders/Pipeline.html" title="Ronin::Payloads::Encoders::Pipeline (class)">Encoders::Pipeline</a></span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The payload&#39;s encoder pipeline.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Encoders/Pipeline.html" title="Ronin::Payloads::Encoders::Pipeline (class)">Encoders::Pipeline</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+166
+167
+168</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 166</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_encoders'>encoders</span>
+  <span class='ivar'>@encoders</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="payload-instance_method">
+  
+    #<strong>payload</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The built payload</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+161
+162
+163</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 161</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_payload'>payload</span>
+  <span class='ivar'>@payload</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="encoder_class-class_method">
+  
+    .<strong>encoder_class</strong>(new_encoder_class = nil)  &#x21d2; <tt>Class&lt;<span class='object_link'><a href="Encoders/Encoder.html" title="Ronin::Payloads::Encoders::Encoder (class)">Encoders::Encoder</a></span>&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Gets or sets the payload encoder base class that is compatible with the
+payload.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>new_encoder_class</span>
+      
+      
+        <span class='type'>(<tt>Class&lt;<span class='object_link'><a href="Encoders/Encoder.html" title="Ronin::Payloads::Encoders::Encoder (class)">Encoders::Encoder</a></span>&gt;</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The optional new payload encoder base class to set.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Class&lt;<span class='object_link'><a href="Encoders/Encoder.html" title="Ronin::Payloads::Encoders::Encoder (class)">Encoders::Encoder</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The exploit&#39;s compatible payload encoder base class.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 134</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_encoder_class'>encoder_class</span><span class='lparen'>(</span><span class='id identifier rubyid_new_encoder_class'>new_encoder_class</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_new_encoder_class'>new_encoder_class</span>
+    <span class='ivar'>@encoder_class</span> <span class='op'>=</span> <span class='id identifier rubyid_new_encoder_class'>new_encoder_class</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@encoder_class</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='id identifier rubyid_superclass'>superclass</span> <span class='op'>&lt;</span> <span class='const'>ClassMethods</span>
+                         <span class='id identifier rubyid_superclass'>superclass</span><span class='period'>.</span><span class='id identifier rubyid_encoder_class'>encoder_class</span>
+                       <span class='kw'>else</span>
+                         <span class='const'><span class='object_link'><a href="Encoders.html" title="Ronin::Payloads::Encoders (module)">Encoders</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Encoders/Encoder.html" title="Ronin::Payloads::Encoders::Encoder (class)">Encoder</a></span></span>
+                       <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="payload_type-class_method">
+  
+    .<strong>payload_type</strong>  &#x21d2; <tt>Symbol</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>This is used internally to map an payload class to a printable type.</p>
+</div>
+  </div>
+
+<p>Returns the type or kind of payload.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+156
+157
+158</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 156</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_payload_type'>payload_type</span>
+  <span class='symbol'>:payload</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="register-class_method">
+  
+    .<strong>register</strong>(payload_id)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>The given <code>id</code> <em>must</em> match the file name.</p>
+</div>
+  </div>
+
+<p>Registers the payload with <span class='object_link'><a href="../Payloads.html" title="Ronin::Payloads (module)">Ronin::Payloads</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_register'>register</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>shellcode/x86_64/linux/binsh</span><span class='tstring_end'>&#39;</span></span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>payload_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The payload&#39;s ID.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+119
+120
+121
+122</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 119</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_register'>register</span><span class='lparen'>(</span><span class='id identifier rubyid_payload_id'>payload_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_id'>id</span><span class='lparen'>(</span><span class='id identifier rubyid_payload_id'>payload_id</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../Payloads.html" title="Ronin::Payloads (module)">Payloads</a></span></span><span class='period'>.</span><span class='id identifier rubyid_register'>register</span><span class='lparen'>(</span><span class='id identifier rubyid_payload_id'>payload_id</span><span class='comma'>,</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="build-instance_method">
+  
+    #<strong>build</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note abstract">
+  <strong>This method is abstract.</strong>
+  <div class='inline'></div>
+</div>
+<p>Builds the payload.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+398
+399</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 398</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_build'>build</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="built?-instance_method">
+  
+    #<strong>built?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Determines whether the payload was built.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+216
+217
+218</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 216</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_built?'>built?</span>
+  <span class='op'>!</span><span class='lparen'>(</span><span class='ivar'>@payload</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='ivar'>@payload</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="built_payload-instance_method">
+  
+    #<strong>built_payload</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>This method will lazy-build the payload if unbuilt.</p>
+</div>
+  </div>
+
+<p>The built payload String.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The built payload String.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+245
+246
+247
+248
+249</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 245</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_built_payload'>built_payload</span>
+  <span class='id identifier rubyid_perform_build'>perform_build</span> <span class='kw'>unless</span> <span class='id identifier rubyid_built?'>built?</span>
+
+  <span class='kw'>return</span> <span class='ivar'>@payload</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="bytesize-instance_method">
+  
+    #<strong>bytesize</strong>  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='size-instance_method'>size</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The size of the payload in bytes.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+359
+360
+361</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 359</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_bytesize'>bytesize</span>
+  <span class='id identifier rubyid_encoded_payload'>encoded_payload</span><span class='period'>.</span><span class='id identifier rubyid_bytesize'>bytesize</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="cleanup-instance_method">
+  
+    #<strong>cleanup</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note abstract">
+  <strong>This method is abstract.</strong>
+  <div class='inline'></div>
+</div>
+<p>Placeholder method to clean up the payload.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+424
+425</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 424</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cleanup'>cleanup</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="encode_payload-instance_method">
+  
+    #<strong>encode_payload</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>This method will return a new, potentially different, String each
+time.</p>
+</div>
+  </div>
+
+<p>Encodes the built payload.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The encoded payload String.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+272
+273
+274</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 272</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_encode_payload'>encode_payload</span>
+  <span class='ivar'>@encoders</span><span class='period'>.</span><span class='id identifier rubyid_encode'>encode</span><span class='lparen'>(</span><span class='id identifier rubyid_built_payload'>built_payload</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="encoded_payload-instance_method">
+  
+    #<strong>encoded_payload</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>This method will lazy build then lazy encode the payload and save the
+result.</p>
+</div>
+  </div>
+
+<p>The encoded payload.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The encoded payload String.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#encode_payload-instance_method" title="Ronin::Payloads::Payload#encode_payload (method)">#encode_payload</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+288
+289
+290</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 288</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_encoded_payload'>encoded_payload</span>
+  <span class='ivar'>@encoded_payload</span> <span class='op'>||=</span> <span class='id identifier rubyid_encode_payload'>encode_payload</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="length-instance_method">
+  
+    #<strong>length</strong>  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The number of characters in the payload.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+350
+351
+352</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 350</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_length'>length</span>
+  <span class='id identifier rubyid_encoded_payload'>encoded_payload</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="perform_build-instance_method">
+  
+    #<strong>perform_build</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Builds the payload.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#build-instance_method" title="Ronin::Payloads::Payload#build (method)">#build</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+227
+228
+229
+230
+231
+232
+233
+234
+235</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 227</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_perform_build'>perform_build</span>
+  <span class='ivar'>@payload</span> <span class='op'>=</span> <span class='kw'>nil</span>
+
+  <span class='id identifier rubyid_build'>build</span>
+
+  <span class='kw'>unless</span> <span class='id identifier rubyid_built?'>built?</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="PayloadNotBuilt.html" title="Ronin::Payloads::PayloadNotBuilt (class)">PayloadNotBuilt</a></span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>the payload was not built for some reason: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="perform_cleanup-instance_method">
+  
+    #<strong>perform_cleanup</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Performs the cleanup step.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#cleanup-instance_method" title="Ronin::Payloads::Payload#cleanup (method)">#cleanup</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+336
+337
+338
+339</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 336</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_perform_cleanup'>perform_cleanup</span>
+  <span class='id identifier rubyid_cleanup'>cleanup</span>
+  <span class='ivar'>@payload</span> <span class='op'>=</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="perform_postlaunch-instance_method">
+  
+    #<strong>perform_postlaunch</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Performs the post-launch step.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#postlaunch-instance_method" title="Ronin::Payloads::Payload#postlaunch (method)">#postlaunch</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+325
+326
+327</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 325</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_perform_postlaunch'>perform_postlaunch</span>
+  <span class='id identifier rubyid_postlaunch'>postlaunch</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="perform_prelaunch-instance_method">
+  
+    #<strong>perform_prelaunch</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Performs the prelaunch step.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#prelaunch-instance_method" title="Ronin::Payloads::Payload#prelaunch (method)">#prelaunch</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+314
+315
+316</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 314</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_perform_prelaunch'>perform_prelaunch</span>
+  <span class='id identifier rubyid_prelaunch'>prelaunch</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="perform_validate-instance_method">
+  
+    #<strong>perform_validate</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Validates that the payload is ready to be built.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Ronin::Core::Params::RequiredParam</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>One of the required params was not set.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="ValidationError.html" title="Ronin::Payloads::ValidationError (class)">ValidationError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Another payload validation error occurred.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+205
+206
+207
+208
+209</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 205</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_perform_validate'>perform_validate</span>
+  <span class='id identifier rubyid_validate_params'>validate_params</span>
+  <span class='ivar'>@encoders</span><span class='period'>.</span><span class='id identifier rubyid_validate'>validate</span>
+  <span class='id identifier rubyid_validate'>validate</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="postlaunch-instance_method">
+  
+    #<strong>postlaunch</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note abstract">
+  <strong>This method is abstract.</strong>
+  <div class='inline'></div>
+</div>
+<p>Placeholder method that runs after the payload is launched by the
+exploit.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+416
+417</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 416</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_postlaunch'>postlaunch</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="prelaunch-instance_method">
+  
+    #<strong>prelaunch</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note abstract">
+  <strong>This method is abstract.</strong>
+  <div class='inline'></div>
+</div>
+<p>Placeholder method that runs before the payload is launched by the
+exploit.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+407
+408</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 407</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_prelaunch'>prelaunch</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="rebuild_payload-instance_method">
+  
+    #<strong>rebuild_payload</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Forcibly rebuilds the payload.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The re-built payload String.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+257
+258
+259
+260</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 257</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_rebuild_payload'>rebuild_payload</span>
+  <span class='ivar'>@payload</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='id identifier rubyid_perform_build'>perform_build</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reencode_payload-instance_method">
+  
+    #<strong>reencode_payload</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>This will re-encode the built payload and update <span class='object_link'><a href="#encoded_payload-instance_method" title="Ronin::Payloads::Payload#encoded_payload (method)">#encoded_payload</a></span>.</p>
+</div>
+  </div>
+
+<p>Forcibly re-encodes the payload.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The re-encoded payload String.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#encode_payload-instance_method" title="Ronin::Payloads::Payload#encode_payload (method)">#encode_payload</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+303
+304
+305</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 303</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_reencode_payload'>reencode_payload</span>
+  <span class='ivar'>@encoded_payload</span> <span class='op'>=</span> <span class='id identifier rubyid_encode_payload'>encode_payload</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_s-instance_method">
+  
+    #<strong>to_s</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='to_str-instance_method'>to_str</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Converts the payload into a String.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The built and encoded payload.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#encoded_payload-instance_method" title="Ronin::Payloads::Payload#encoded_payload (method)">#encoded_payload</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+373
+374
+375</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 373</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='id identifier rubyid_encoded_payload'>encoded_payload</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="validate-instance_method">
+  
+    #<strong>validate</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note abstract">
+  <strong>This method is abstract.</strong>
+  <div class='inline'></div>
+</div>
+<p>Place holder method for additional validation logic.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+390
+391</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/payloads/payload.rb', line 390</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_validate'>validate</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sun Jan  1 18:26:09 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.28 (ruby-3.1.3).
+</div>
+
+    </div>
+  </body>
+</html>
