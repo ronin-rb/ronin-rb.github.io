@@ -1,0 +1,2303 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Ronin::PostEx::Resources::Process
+  
+    &mdash; Ronin PostEx Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::PostEx::Resources::Process";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../PostEx.html" title="Ronin::PostEx (module)">PostEx</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Resources.html" title="Ronin::PostEx::Resources (module)">Resources</a></span></span>
+     &raquo; 
+    <span class="title">Process</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Ronin::PostEx::Resources::Process
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="../Resource.html" title="Ronin::PostEx::Resource (class)">Ronin::PostEx::Resource</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="../Resource.html" title="Ronin::PostEx::Resource (class)">Ronin::PostEx::Resource</a></span></li>
+          
+            <li class="next">Ronin::PostEx::Resources::Process</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/post_ex/resources/process.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Controls the Process resource.</p>
+
+<h1 id="supported-control-methods">Supported Control Methods</h1>
+
+<p>The Process resource uses the following API methods, defined by the
+API object.</p>
+
+<ul>
+  <li><code>process_getpid -&gt; Integer</code></li>
+  <li><code>process_getppid -&gt; Integer</code></li>
+  <li><code>process_getuid -&gt; Integer</code></li>
+  <li><code>process_setuid(uid : Integer)</code></li>
+  <li><code>process_geteuid -&gt; Integer</code></li>
+  <li><code>process_seteuid(euid : Integer)</code></li>
+  <li><code>process_getgid -&gt; Integer</code></li>
+  <li><code>process_setgid(gid : Integer)</code></li>
+  <li><code>process_getegid -&gt; Integer</code></li>
+  <li><code>process_setegid(egid : Integer)</code></li>
+  <li><code>process_getsid -&gt; Integer</code></li>
+  <li><code>process_setsid(sid : Integer) -&gt; Integer</code></li>
+  <li><code>process_environ -&gt; Hash[String, String]</code></li>
+  <li><code>process_getenv(name : String) -&gt; String | env</code></li>
+  <li><code>process_setenv(name : String, value : String)</code></li>
+  <li><code>process_unsetenv(name : String)</code></li>
+  <li><code>process_kill(pid : Integer, signal : Integer)</code></li>
+  <li><code>process_getcwd -&gt; String</code></li>
+  <li><code>process_chdir(path : String)</code></li>
+  <li><code>process_time -&gt; Integer</code></li>
+  <li><code>process_spawn(program : String, *arguments : Array[String]) -&gt; Integer</code></li>
+  <li><code>process_exit</code></li>
+</ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+  <h2>Instance Attribute Summary</h2>
+  
+  <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="../Resource.html" title="Ronin::PostEx::Resource (class)">Ronin::PostEx::Resource</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Resource.html#api-instance_method" title="Ronin::PostEx::Resource#api (method)">#api</a></span></p>
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#chdir-instance_method" title="#chdir (instance method)">#<strong>chdir</strong>(path)  &#x21d2; String </a>
+    
+
+    
+      (also: #cwd=)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Changes the working directory of the current process.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#environ-instance_method" title="#environ (instance method)">#<strong>environ</strong>  &#x21d2; Hash{String =&gt; String} </a>
+    
+
+    
+      (also: #env)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Retrieves the whole environment Hash.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#exit-instance_method" title="#exit (instance method)">#<strong>exit</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Exits the current running process.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#getcwd-instance_method" title="#getcwd (instance method)">#<strong>getcwd</strong>  &#x21d2; String </a>
+    
+
+    
+      (also: #cwd)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets the working directory of the current process.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#getegid-instance_method" title="#getegid (instance method)">#<strong>getegid</strong>  &#x21d2; Integer </a>
+    
+
+    
+      (also: #egid)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets the effective GID that the current process is running under.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#getenv-instance_method" title="#getenv (instance method)">#<strong>getenv</strong>(name)  &#x21d2; String<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Retrieves the value of a environment variable.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#geteuid-instance_method" title="#geteuid (instance method)">#<strong>geteuid</strong>  &#x21d2; Integer </a>
+    
+
+    
+      (also: #euid)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets the effective UID that the current process is running under.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#getgid-instance_method" title="#getgid (instance method)">#<strong>getgid</strong>  &#x21d2; Integer </a>
+    
+
+    
+      (also: #gid)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets the GID that the current process is running under.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#getpid-instance_method" title="#getpid (instance method)">#<strong>getpid</strong>  &#x21d2; Integer </a>
+    
+
+    
+      (also: #pid)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets the pid of the current process.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#getppid-instance_method" title="#getppid (instance method)">#<strong>getppid</strong>  &#x21d2; Integer </a>
+    
+
+    
+      (also: #ppid)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets the pid of the parent process.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#getsid-instance_method" title="#getsid (instance method)">#<strong>getsid</strong>  &#x21d2; Integer </a>
+    
+
+    
+      (also: #sid)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets the SID of the current process.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#getuid-instance_method" title="#getuid (instance method)">#<strong>getuid</strong>  &#x21d2; Integer </a>
+    
+
+    
+      (also: #uid)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets the UID that the current process is running under.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#kill-instance_method" title="#kill (instance method)">#<strong>kill</strong>(pid, signal = &#39;KILL&#39;)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Kills a process.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#setegid-instance_method" title="#setegid (instance method)">#<strong>setegid</strong>(new_egid)  &#x21d2; Object </a>
+    
+
+    
+      (also: #egid=)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Attempts to set the effective GID of the current process.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#setenv-instance_method" title="#setenv (instance method)">#<strong>setenv</strong>(name, value)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets the value of a environment variable.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#seteuid-instance_method" title="#seteuid (instance method)">#<strong>seteuid</strong>(new_euid)  &#x21d2; Object </a>
+    
+
+    
+      (also: #euid=)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Attempts to set the effective UID of the current process.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#setgid-instance_method" title="#setgid (instance method)">#<strong>setgid</strong>(new_gid)  &#x21d2; Object </a>
+    
+
+    
+      (also: #gid=)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Attempts to set the GID of the current process.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#setsid-instance_method" title="#setsid (instance method)">#<strong>setsid</strong>  &#x21d2; Object </a>
+    
+
+    
+      (also: #sid!)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets the SID of the current process.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#setuid-instance_method" title="#setuid (instance method)">#<strong>setuid</strong>(new_uid)  &#x21d2; Object </a>
+    
+
+    
+      (also: #uid=)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Attempts to set the UID of the current process.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#spawn-instance_method" title="#spawn (instance method)">#<strong>spawn</strong>(program, *arguments)  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Executes a program as a separate child process.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#time-instance_method" title="#time (instance method)">#<strong>time</strong>  &#x21d2; Time </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets the current time.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unsetenv-instance_method" title="#unsetenv (instance method)">#<strong>unsetenv</strong>(name)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Unsets an environment variable.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Resource.html" title="Ronin::PostEx::Resource (class)">Ronin::PostEx::Resource</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Resource.html#console-instance_method" title="Ronin::PostEx::Resource#console (method)">#console</a></span>, <span class='object_link'><a href="../Resource.html#initialize-instance_method" title="Ronin::PostEx::Resource#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../Resource.html#requires_method!-instance_method" title="Ronin::PostEx::Resource#requires_method! (method)">#requires_method!</a></span>, <span class='object_link'><a href="../Resource.html#resource_method-class_method" title="Ronin::PostEx::Resource.resource_method (method)">resource_method</a></span>, <span class='object_link'><a href="../Resource.html#resource_methods-class_method" title="Ronin::PostEx::Resource.resource_methods (method)">resource_methods</a></span>, <span class='object_link'><a href="../Resource.html#supports-instance_method" title="Ronin::PostEx::Resource#supports (method)">#supports</a></span>, <span class='object_link'><a href="../Resource.html#supports%3F-instance_method" title="Ronin::PostEx::Resource#supports? (method)">#supports?</a></span></p>
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <p class="notice">This class inherits a constructor from <span class='object_link'><a href="../Resource.html#initialize-instance_method" title="Ronin::PostEx::Resource#initialize (method)">Ronin::PostEx::Resource</a></span></p>
+  
+</div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="chdir-instance_method">
+  
+    #<strong>chdir</strong>(path)  &#x21d2; <tt>String</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='cwd=-instance_method'>cwd=</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_chdir</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Changes the working directory of the current process.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new working directory.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new current working directory.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+375
+376
+377</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 375</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_chdir'>chdir</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_chdir'>process_chdir</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="environ-instance_method">
+  
+    #<strong>environ</strong>  &#x21d2; <tt>Hash{String =&gt; String}</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='env-instance_method'>env</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_environ</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Retrieves the whole environment Hash.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash{String =&gt; String}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Hash of environment variables.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+262
+263
+264</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 262</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_environ'>environ</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_environ'>process_environ</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="exit-instance_method">
+  
+    #<strong>exit</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_exit</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Exits the current running process.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+424
+425
+426</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 424</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_exit'>exit</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_exit'>process_exit</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="getcwd-instance_method">
+  
+    #<strong>getcwd</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='cwd-instance_method'>cwd</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_getcwd</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Gets the working directory of the current process.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The current working directory.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+356
+357
+358</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 356</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_getcwd'>getcwd</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_getcwd'>process_getcwd</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="getegid-instance_method">
+  
+    #<strong>getegid</strong>  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='egid-instance_method'>egid</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_getegid</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Gets the effective GID that the current process is running under.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The effective GID.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+199
+200
+201</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 199</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_getegid'>getegid</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_getegid'>process_getegid</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="getenv-instance_method">
+  
+    #<strong>getenv</strong>(name)  &#x21d2; <tt>String</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires <code>process_getenv</code> or <code>process_environ</code> methods be defined by
+the API object.</p>
+</div>
+  </div>
+
+<p>Retrieves the value of a environment variable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the environment variable.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The value of the environment variable.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+284
+285
+286
+287
+288
+289
+290
+291
+292</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 284</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_getenv'>getenv</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:process_getenv</span><span class='rparen'>)</span>
+    <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_getenv'>process_getenv</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:process_environ</span><span class='rparen'>)</span>
+    <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_environ'>process_environ</span><span class='lbracket'>[</span><span class='id identifier rubyid_name'>name</span><span class='rbracket'>]</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>NoMethodError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@api</span><span class='embexpr_end'>}</span><span class='tstring_content'> does not define process_getenv or process_environ</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="geteuid-instance_method">
+  
+    #<strong>geteuid</strong>  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='euid-instance_method'>euid</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_geteuid</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Gets the effective UID that the current process is running under.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The effective UID.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+135
+136
+137</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 135</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_geteuid'>geteuid</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_geteuid'>process_geteuid</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="getgid-instance_method">
+  
+    #<strong>getgid</strong>  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='gid-instance_method'>gid</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_getgid</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Gets the GID that the current process is running under.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The current GID.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+167
+168
+169</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 167</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_getgid'>getgid</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_getgid'>process_getgid</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="getpid-instance_method">
+  
+    #<strong>getpid</strong>  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='pid-instance_method'>pid</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_getpid</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Gets the pid of the current process.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The current PID.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71
+72
+73</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 71</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_getpid'>getpid</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_getpid'>process_getpid</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="getppid-instance_method">
+  
+    #<strong>getppid</strong>  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='ppid-instance_method'>ppid</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_getppid</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Gets the pid of the parent process.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The parent PID.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 87</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_getppid'>getppid</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_getppid'>process_getppid</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="getsid-instance_method">
+  
+    #<strong>getsid</strong>  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='sid-instance_method'>sid</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_getsid</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Gets the SID of the current process.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The current SID.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+231
+232
+233</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 231</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_getsid'>getsid</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_getsid'>process_getsid</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="getuid-instance_method">
+  
+    #<strong>getuid</strong>  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='uid-instance_method'>uid</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_getuid</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Gets the UID that the current process is running under.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The current UID.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+103
+104
+105</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 103</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_getuid'>getuid</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_getuid'>process_getuid</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="kill-instance_method">
+  
+    #<strong>kill</strong>(pid, signal = &#39;KILL&#39;)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_kill</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Kills a process.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>pid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The PID of the process to kill.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>signal</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;KILL&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The POSIX signal name to send to the process.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+342
+343
+344</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 342</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_kill'>kill</span><span class='lparen'>(</span><span class='id identifier rubyid_pid'>pid</span><span class='comma'>,</span><span class='id identifier rubyid_signal'>signal</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>KILL</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_kill'>process_kill</span><span class='lparen'>(</span><span class='id identifier rubyid_pid'>pid</span><span class='comma'>,</span><span class='id identifier rubyid_signal'>signal</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="setegid-instance_method">
+  
+    #<strong>setegid</strong>(new_egid)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='egid=-instance_method'>egid=</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_setegid</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Attempts to set the effective GID of the current process.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>new_egid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new effective GID.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+215
+216
+217</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 215</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_setegid'>setegid</span><span class='lparen'>(</span><span class='id identifier rubyid_new_egid'>new_egid</span><span class='rparen'>)</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_setegid'>process_setegid</span><span class='lparen'>(</span><span class='id identifier rubyid_new_egid'>new_egid</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="setenv-instance_method">
+  
+    #<strong>setenv</strong>(name, value)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_setenv</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Sets the value of a environment variable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the environment variable.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new value for the environment variable.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+309
+310
+311</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 309</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_setenv'>setenv</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_setenv'>process_setenv</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="seteuid-instance_method">
+  
+    #<strong>seteuid</strong>(new_euid)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='euid=-instance_method'>euid=</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_seteuid</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Attempts to set the effective UID of the current process.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>new_euid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new effective UID.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+151
+152
+153</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 151</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_seteuid'>seteuid</span><span class='lparen'>(</span><span class='id identifier rubyid_new_euid'>new_euid</span><span class='rparen'>)</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_seteuid'>process_seteuid</span><span class='lparen'>(</span><span class='id identifier rubyid_new_euid'>new_euid</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="setgid-instance_method">
+  
+    #<strong>setgid</strong>(new_gid)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='gid=-instance_method'>gid=</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_setgid</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Attempts to set the GID of the current process.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>new_gid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new GID.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+183
+184
+185</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 183</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_setgid'>setgid</span><span class='lparen'>(</span><span class='id identifier rubyid_new_gid'>new_gid</span><span class='rparen'>)</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_setgid'>process_setgid</span><span class='lparen'>(</span><span class='id identifier rubyid_new_gid'>new_gid</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="setsid-instance_method">
+  
+    #<strong>setsid</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='sid!-instance_method'>sid!</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_setsid</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Sets the SID of the current process.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+244
+245
+246</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 244</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_setsid'>setsid</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_setsid'>process_setsid</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="setuid-instance_method">
+  
+    #<strong>setuid</strong>(new_uid)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='uid=-instance_method'>uid=</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_setuid</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Attempts to set the UID of the current process.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>new_uid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new UID.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+119
+120
+121</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 119</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_setuid'>setuid</span><span class='lparen'>(</span><span class='id identifier rubyid_new_uid'>new_uid</span><span class='rparen'>)</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_setuid'>process_setuid</span><span class='lparen'>(</span><span class='id identifier rubyid_new_uid'>new_uid</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="spawn-instance_method">
+  
+    #<strong>spawn</strong>(program, *arguments)  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_spawn</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Executes a program as a separate child process.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>program</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name or path of the program.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>arguments</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional arguments to execute the program with.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The pid of the new process.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+413
+414
+415</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 413</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_spawn'>spawn</span><span class='lparen'>(</span><span class='id identifier rubyid_program'>program</span><span class='comma'>,</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_spawn'>process_spawn</span><span class='lparen'>(</span><span class='id identifier rubyid_program'>program</span><span class='comma'>,</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="time-instance_method">
+  
+    #<strong>time</strong>  &#x21d2; <tt>Time</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_time</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Gets the current time.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Time</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The current time.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+391
+392
+393</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 391</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_time'>time</span>
+  <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_at'>at</span><span class='lparen'>(</span><span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_time'>process_time</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="unsetenv-instance_method">
+  
+    #<strong>unsetenv</strong>(name)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Requires the <code>process_unsetenv</code> method be defined by the API object.</p>
+</div>
+  </div>
+
+<p>Unsets an environment variable.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The name of the environment variable.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+325
+326
+327</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/post_ex/resources/process.rb', line 325</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_unsetenv'>unsetenv</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='ivar'>@api</span><span class='period'>.</span><span class='id identifier rubyid_process_unsetenv'>process_unsetenv</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Fri Jan 21 06:15:43 2022 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.27 (ruby-3.1.0).
+</div>
+
+    </div>
+  </body>
+</html>

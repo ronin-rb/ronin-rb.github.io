@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: API_SPEC
+  
+    &mdash; Ronin PostEx Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "API_SPEC";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: API_SPEC</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'><h1 id="post-exploitation-api-specification">Post-Exploitation API Specification</h1>
+
+<h2 id="sys-functions">Sys Functions</h2>
+
+<h3 id="sys_time-integer"><code>sys_time -&gt; Integer</code></h3>
+
+<p>Gets the current time and returns the UNIX timestamp.</p>
+
+<h3 id="sys_hostname-string"><code>sys_hostname -&gt; String</code></h3>
+
+<p>Gets the system&#39;s hostname.</p>
+
+<h2 id="file-functions">File Functions</h2>
+
+<h3 id="file_open-path-string-mode-string-integer"><code>file_open(path : String, mode : String) -&gt; Integer</code></h3>
+
+<p>Opens a file and returns the file-descriptor number.</p>
+
+<h3 id="file_read-fd-integer-length-integer-string-nil"><code>file_read(fd : Integer, length : Integer) -&gt; String | nil</code></h3>
+
+<p>Reads from an opened file-descriptor and returns the read data.
+<code>nil</code> will be returned if there is no more data to be read.</p>
+
+<h3 id="file_write-fd-integer-pos-integer-data-string-integer"><code>file_write(fd : Integer, pos : Integer, data : String) -&gt; Integer</code></h3>
+
+<p>Writes data to the opened file-descriptor.</p>
+
+<h3 id="file_seek-fd-integer-new_pos-integer-whence-string"><code>file_seek(fd : Integer, new_pos : Integer, whence : String)</code></h3>
+
+<p>Seeks to a position within the file. The <code>whence</code> argument must be one of the
+following strings:</p>
+
+<ul>
+<li><code>&quot;SEEK_SET&quot;</code> - seek from beginning of file.</li>
+<li><code>&quot;SEEK_CUR&quot;</code> - seek from current position.</li>
+<li><code>&quot;SEEK_END&quot;</code> - seek from end of file.</li>
+<li><code>&quot;SEEK_DATA&quot;</code> - seek to next data.</li>
+<li><code>&quot;SEEK_HOLE&quot;</code> - seek to next hole.</li>
+</ul>
+
+<h3 id="file_tell-fd-integer-integer"><code>file_tell(fd : Integer) -&gt; Integer</code></h3>
+
+<p>Queries the current position within the file.</p>
+
+<h3 id="file_ioctl-fd-integer-command-string-array-integer-argument-object-integer"><code>file_ioctl(fd : Integer, command : String | Array[Integer], argument : Object) -&gt; Integer</code></h3>
+
+<p>Performs a <code>ioctl()</code> operation on the file-descriptor.</p>
+
+<h3 id="file_fcntl-fd-integer-command-string-array-integer-argument-object-integer"><code>file_fcntl(fd : Integer, command : String | Array[Integer], argument : Object) -&gt; Integer</code></h3>
+
+<p>Performs a <code>fcntl()</code> operation on the file-descriptor.</p>
+
+<h3 id="file_stat-fd-integer-hash-symbol-object-nil"><code>file_stat(fd : Integer) =&gt; Hash[Symbol, Object] | nil</code></h3>
+
+<p>Queries file information from the given file-descriptor and returns a Hash of
+file metadata.</p>
+
+<h3 id="file_close-fd-integer"><code>file_close(fd : Integer)</code></h3>
+
+<p>Closes an opened file-descriptor.</p>
+
+<h2 id="file-system-functions">File-System Functions</h2>
+
+<h3 id="fs_getcwd-string"><code>fs_getcwd() -&gt; String</code></h3>
+
+<p>Gets the current working directory and returns the directory path.</p>
+
+<h3 id="fs_chdir-path-string"><code>fs_chdir(path : String)</code></h3>
+
+<p>Changes the current working directory.</p>
+
+<h3 id="fs_readfile-path-string-string-nil"><code>fs_readfile(path : String) -&gt; String | nil</code></h3>
+
+<p>Reads the entire file at the given path and returns the full file&#39;s contents.</p>
+
+<h3 id="fs_readlink-path-string-string"><code>fs_readlink(path : String) -&gt; String</code></h3>
+
+<p>Reads the destination path of a symbolic link.</p>
+
+<h3 id="fs_readdir-path-string-array-string"><code>fs_readdir(path : String) -&gt; Array[String]</code></h3>
+
+<p>Reads the contents of the directory and returns an Array of directory entry
+names.</p>
+
+<h3 id="fs_glob-pattern-string-array-string"><code>fs_glob(pattern : String) -&gt; Array[String]</code></h3>
+
+<p>Evaluates a directory glob pattern and returns all matching paths.</p>
+
+<h3 id="fs_mktemp-basename-string-string"><code>fs_mktemp(basename : String) -&gt; String</code></h3>
+
+<p>Creates a temporary file with the given file basename.</p>
+
+<h3 id="fs_mkdir-new_path-string"><code>fs_mkdir(new_path : String)</code></h3>
+
+<p>Creates a new directory at the given path.</p>
+
+<h3 id="fs_copy-src-string-dest-string"><code>fs_copy(src : String, dest : String)</code></h3>
+
+<p>Copies a source file to the destination path.</p>
+
+<h3 id="fs_unlink-path-string"><code>fs_unlink(path : String)</code></h3>
+
+<p>Removes a file at the given path.</p>
+
+<h3 id="fs_rmdir-path-string"><code>fs_rmdir(path : String)</code></h3>
+
+<p>Removes an empty directory at the given path.</p>
+
+<h3 id="fs_move-src-string-dest-string"><code>fs_move(src : String, dest : String)</code></h3>
+
+<p>Moves or renames a source file to a destination path.</p>
+
+<h3 id="fs_link-src-string-dest-string"><code>fs_link(src : String, dest : String)</code></h3>
+
+<p>Creates a symbolic link at the destination path pointing to the source path.</p>
+
+<h3 id="fs_chgrp-group-string-path-string"><code>fs_chgrp(group : String, path : String)</code></h3>
+
+<p>Changes the group ownership of a file or directory.</p>
+
+<h3 id="fs_chown-user-string-path-string"><code>fs_chown(user : String, path : String)</code></h3>
+
+<p>Changes the user ownership of a file or directory.</p>
+
+<h3 id="fs_chmod-mode-integer-path-string"><code>fs_chmod(mode : Integer, path : String)</code></h3>
+
+<p>Changes the permissions on a file or directory.</p>
+
+<h3 id="fs_stat-path-string-hash-symbol-object-nil"><code>fs_stat(path : String) =&gt; Hash[Symbol, Object] | nil</code></h3>
+
+<p>Queries file information from the given path and returns a Hash of file
+metadata.</p>
+
+<h2 id="process-functions">Process Functions</h2>
+
+<h3 id="process_getpid-integer"><code>process_getpid -&gt; Integer</code></h3>
+
+<p>Gets the current process&#39;s Process ID (PID).</p>
+
+<h3 id="process_getppid-integer"><code>process_getppid -&gt; Integer</code></h3>
+
+<p>Gets the current process&#39;s parent Process ID (PPID).</p>
+
+<h3 id="process_getuid-integer"><code>process_getuid -&gt; Integer</code></h3>
+
+<p>Gets the current process&#39;s user ID (UID).</p>
+
+<h3 id="process_setuid-uid-integer"><code>process_setuid(uid : Integer)</code></h3>
+
+<p>Sets the current process&#39;s user ID (UID) to the given Integer.</p>
+
+<h3 id="process_geteuid-integer"><code>process_geteuid -&gt; Integer</code></h3>
+
+<p>Gets the current process&#39;s effective UID (EUID).</p>
+
+<h3 id="process_seteuid-euid-integer"><code>process_seteuid(euid : Integer)</code></h3>
+
+<p>Sets the current process&#39;s effective UID (EUID) to the given Integer.</p>
+
+<h3 id="process_getgid-integer"><code>process_getgid -&gt; Integer</code></h3>
+
+<p>Gets the current process&#39;s group ID (GID).</p>
+
+<h3 id="process_setgid-gid-integer"><code>process_setgid(gid : Integer)</code></h3>
+
+<p>Sets the current process&#39;s group ID (GID) to the given Integer.</p>
+
+<h3 id="process_getegid-integer"><code>process_getegid -&gt; Integer</code></h3>
+
+<p>Gets the current process&#39;s effective group ID (EGID).</p>
+
+<h3 id="process_setegid-egid-integer"><code>process_setegid(egid : Integer)</code></h3>
+
+<p>Sets the current process&#39;s effective group ID (EGID) to the given Integer.</p>
+
+<h3 id="process_getsid-integer"><code>process_getsid -&gt; Integer</code></h3>
+
+<p>Gets the current process&#39;s session ID (SID).</p>
+
+<h3 id="process_setsid-sid-integer-integer"><code>process_setsid(sid : Integer) -&gt; Integer</code></h3>
+
+<p>Sets the current process&#39;s session ID (SID).</p>
+
+<h3 id="process_environ-hash-string-string"><code>process_environ -&gt; Hash[String, String]</code></h3>
+
+<p>Queries all environment variables of the current process. Returns a Hash of the
+env variable names and values.</p>
+
+<h3 id="process_getenv-name-string-string-nil"><code>process_getenv(name : String) -&gt; String | nil</code></h3>
+
+<p>Gets an individual environment variable. If the environment variable has not
+been set, <code>nil</code> will be returned.</p>
+
+<h3 id="process_setenv-name-string-value-string"><code>process_setenv(name : String, value : String)</code></h3>
+
+<p>Sets an environment variable to the given value.</p>
+
+<h3 id="process_unsetenv-name-string"><code>process_unsetenv(name : String)</code></h3>
+
+<p>Un-sets an environment variable.</p>
+
+<h3 id="process_kill-pid-integer-signal-integer"><code>process_kill(pid : Integer, signal : Integer)</code></h3>
+
+<p>Kills another process using the given Process ID (POD) and the signal number.</p>
+
+<h3 id="process_popen-command-string-integer"><code>process_popen(command : String) -&gt; Integer</code></h3>
+
+<p>Opens a new process using the given command string.
+The file descriptor of the new process will be returned.</p>
+
+<h3 id="process_read-fd-integer-length-integer-string"><code>process_read(fd : Integer, length : Integer) -&gt; String</code></h3>
+
+<p>Reads data from the file descriptor returned by <code>process_popen</code>.</p>
+
+<h3 id="process_write-fd-integer-data-string"><code>process_write(fd : Integer, data : String)</code></h3>
+
+<p>Writes data to the file descriptor returned by <code>process_popen</code>.</p>
+
+<h3 id="process_close-fd-integer"><code>process_close(fd : Integer)</code></h3>
+
+<p>Closes the file descriptor of a remote process opened via <code>process_popen</code>.</p>
+
+<h3 id="process_spawn-program-string-arguments-array-string-integer"><code>process_spawn(program : String, *arguments : Array[String]) -&gt; Integer</code></h3>
+
+<p>Spawns a new process using the given program and additional arguments.
+The process ID (PID) of the new process will be returned.</p>
+
+<h3 id="process_exit"><code>process_exit</code></h3>
+
+<p>Exits the current process.</p>
+
+<h2 id="shell-functions">Shell Functions</h2>
+
+<h3 id="shell_exec-command-string-string"><code>shell_exec(command : String) -&gt; String</code></h3>
+
+<p>Executes the given shell command and returns it&#39;s output.</p>
+</div></div>
+
+      <div id="footer">
+  Generated on Sun Jan  1 18:23:58 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.28 (ruby-3.1.3).
+</div>
+
+    </div>
+  </body>
+</html>
