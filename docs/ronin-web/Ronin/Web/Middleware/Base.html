@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Class: Ronin::Web::Middleware::Base
   
@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '../../..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../../../_index.html">Index (B)</a> &raquo; 
+    <a href="../../../_index.html">Index (B)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Web.html" title="Ronin::Web (module)">Web</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Middleware.html" title="Ronin::Web::Middleware (module)">Middleware</a></span></span>
      &raquo; 
     <span class="title">Base</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../../../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../../../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: Ronin::Web::Middleware::Base
   
   
@@ -105,6 +112,7 @@
 </div>
 <div class="tags">
   
+
 </div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
   <p class="children"><span class='object_link'><a href="Directories.html" title="Ronin::Web::Middleware::Directories (class)">Directories</a></span>, <span class='object_link'><a href="Files.html" title="Ronin::Web::Middleware::Files (class)">Files</a></span>, <span class='object_link'><a href="Proxy.html" title="Ronin::Web::Middleware::Proxy (class)">Proxy</a></span>, <span class='object_link'><a href="Router.html" title="Ronin::Web::Middleware::Router (class)">Router</a></span></p>
@@ -124,21 +132,17 @@
 </div>
 <div class="tags">
   
+
 </div>
         </dt>
-        <dd><pre class="code"><span class='integer val'>200</span>
-</pre></dd>
+        <dd><pre class="code"><span class='int'>200</span></pre></dd>
       
     </dl>
   
 
 
-  
-  
-  
-  
-  
-  
+
+
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
   <ul class="summary">
     
@@ -152,7 +156,10 @@
   </span>
   
   
-    <span class="note title readonly">readonly</span>
+  
+    
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -177,6 +184,7 @@
   </span>
   
   
+  
     
     
   
@@ -196,11 +204,6 @@
 
 
 
-  
-  
-  
-  
-  
 
   
     <h2>
@@ -224,6 +227,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Passes the request to the application.</p>
@@ -240,6 +244,7 @@
 
     
   </span>
+  
   
     <span class="note title constructor">constructor</span>
   
@@ -266,6 +271,7 @@
   </span>
   
   
+  
   <span class="note title protected">protected</span>
   
   
@@ -290,6 +296,7 @@
   
   
   
+  
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Helpers.html" title="Ronin::Web::Middleware::Helpers (module)">Helpers</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Helpers.html#mime_type_for-instance_method" title="Ronin::Web::Middleware::Helpers#mime_type_for (method)">#mime_type_for</a></span>, <span class='object_link'><a href="Helpers.html#response_for-instance_method" title="Ronin::Web::Middleware::Helpers#response_for (method)">#response_for</a></span>, <span class='object_link'><a href="Helpers.html#sanitize_path-instance_method" title="Ronin::Web::Middleware::Helpers#sanitize_path (method)">#sanitize_path</a></span></p>
 
@@ -297,13 +304,15 @@
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <p class="signature first" id="initialize-instance_method">
+  <h3 class="signature first" id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="Ronin::Web::Middleware::Base (class)">Base</a></span></tt>) <strong>initialize</strong>(app, options = {}) {|middleware| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Creates a new middleware object.</p>
 
@@ -311,7 +320,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -353,7 +362,7 @@
     
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -365,9 +374,11 @@
               <tt>DEFAULT_STATUS</tt>
             
           </span>
-          &mdash; <div class='inline'><p>The status code to return.</p>
+          
+            &mdash; <div class='inline'><p>The status code to return.</p>
 </div>
-        </tr>
+          
+        </li>
       
         <li>
           <span class="name">:default_headers</span>
@@ -375,13 +386,16 @@
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The headers to return.</p>
+          
+            &mdash; <div class='inline'><p>The headers to return.</p>
 </div>
-        </tr>
+          
+        </li>
       
     </ul>
   
-<h3>Yields:</h3>
+
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -398,7 +412,7 @@
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -417,7 +431,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -455,19 +469,18 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/web/middleware/base.rb', line 71</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='app identifier id'>app</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
-  <span class='@app ivar id'>@app</span> <span class='assign token'>=</span> <span class='app identifier id'>app</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_app'>app</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='ivar'>@app</span> <span class='op'>=</span> <span class='id identifier rubyid_app'>app</span>
 
-  <span class='@default_status ivar id'>@default_status</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:default_status</span><span class='rbrack token'>]</span> <span class='orop op'>||</span> <span class='DEFAULT_STATUS constant id'>DEFAULT_STATUS</span><span class='rparen token'>)</span>
-  <span class='@default_headers ivar id'>@default_headers</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+  <span class='ivar'>@default_status</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:default_status</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'>DEFAULT_STATUS</span><span class='rparen'>)</span>
+  <span class='ivar'>@default_headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
 
-  <span class='if if kw'>if</span> <span class='options identifier id'>options</span><span class='dot token'>.</span><span class='has_key? fid id'>has_key?</span><span class='lparen token'>(</span><span class='symbol val'>:default_headers</span><span class='rparen token'>)</span>
-    <span class='@default_headers ivar id'>@default_headers</span><span class='dot token'>.</span><span class='merge! fid id'>merge!</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='lbrack token'>[</span><span class='symbol val'>:default_headers</span><span class='rbrack token'>]</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:default_headers</span><span class='rparen'>)</span>
+    <span class='ivar'>@default_headers</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:default_headers</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
-  <span class='yield yield kw'>yield</span> <span class='self self kw'>self</span> <span class='if if_mod kw'>if</span> <span class='block_given? fid id'>block_given?</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>yield</span> <span class='kw'>self</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -482,13 +495,15 @@
       <span id=""></span>
       <span id="default_headers-instance_method"></span>
       <div class="method_details first">
-  <p class="signature first" id="default_headers-instance_method">
+  <h3 class="signature first" id="default_headers-instance_method">
   
     - (<tt>Object</tt>) <strong>default_headers</strong>  <span class="extras">(readonly)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The default headers to return</p>
 
@@ -497,6 +512,7 @@
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
@@ -510,10 +526,9 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/web/middleware/base.rb', line 44</span>
 
-<span class='def def kw'>def</span> <span class='default_headers identifier id'>default_headers</span>
-  <span class='@default_headers ivar id'>@default_headers</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_default_headers'>default_headers</span>
+  <span class='ivar'>@default_headers</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -523,13 +538,15 @@
       <span id="default_status=-instance_method"></span>
       <span id="default_status-instance_method"></span>
       <div class="method_details ">
-  <p class="signature " id="default_status-instance_method">
+  <h3 class="signature " id="default_status-instance_method">
   
     - (<tt>Object</tt>) <strong>default_status</strong> 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The status code to return</p>
 
@@ -538,6 +555,7 @@
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
@@ -551,10 +569,9 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/web/middleware/base.rb', line 41</span>
 
-<span class='def def kw'>def</span> <span class='default_status identifier id'>default_status</span>
-  <span class='@default_status ivar id'>@default_status</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_default_status'>default_status</span>
+  <span class='ivar'>@default_status</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -565,16 +582,18 @@
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="call-instance_method">
+  <h3 class="signature first" id="call-instance_method">
   
     - (<tt>Rack::Response</tt>) <strong>call</strong>(env) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Passes the request to the application.</p>
 
@@ -582,7 +601,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -601,7 +620,8 @@
     </li>
   
 </ul>
-<h3>Returns:</h3>
+
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -618,7 +638,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -647,23 +667,24 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/web/middleware/base.rb', line 97</span>
 
-<span class='def def kw'>def</span> <span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='env identifier id'>env</span><span class='rparen token'>)</span>
-  <span class='@app ivar id'>@app</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='env identifier id'>env</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
+  <span class='ivar'>@app</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="response-instance_method">
+  <h3 class="signature " id="response-instance_method">
   
     - (<tt>Array</tt>) <strong>response</strong>(body = [], headers = {}, status = nil) {|response| ... } <span class="extras">(protected)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Creates a new response.</p>
 
@@ -673,20 +694,22 @@
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'><p>Create a response.</p>
-</div></h4>
-      <pre class="example code"><span class='response identifier id'>response</span> <span class='lbrack token'>[</span><span class='string val'>'Hello'</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='lbrace token'>{</span><span class='string val'>'Content-Type'</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'text/txt'</span><span class='rbrace token'>}</span><span class='comma token'>,</span> <span class='integer val'>200</span>
-</pre>
+      
+        <p class="example_title"><div class='inline'><p>Create a response.</p>
+</div></p>
+      
+      <pre class="example code"><span class='id identifier rubyid_response'>response</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Hello</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Content-Type</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>text/txt</span><span class='tstring_end'>'</span></span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='int'>200</span></pre>
     
-      <h4><div class='inline'><p>Create a response with just a String.</p>
-</div></h4>
-      <pre class="example code"><span class='response identifier id'>response</span> <span class='string val'>'Hello'</span>
-</pre>
+      
+        <p class="example_title"><div class='inline'><p>Create a response with just a String.</p>
+</div></p>
+      
+      <pre class="example code"><span class='id identifier rubyid_response'>response</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Hello</span><span class='tstring_end'>'</span></span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -741,7 +764,8 @@
     </li>
   
 </ul>
-<h3>Yields:</h3>
+
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -758,7 +782,7 @@
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -777,7 +801,7 @@
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -794,7 +818,7 @@
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -826,13 +850,12 @@
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/web/middleware/base.rb', line 134</span>
 
-<span class='def def kw'>def</span> <span class='response identifier id'>response</span><span class='lparen token'>(</span><span class='body identifier id'>body</span><span class='assign token'>=</span><span class='lbrack token'>[</span><span class='rbrack token'>]</span><span class='comma token'>,</span><span class='headers identifier id'>headers</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span><span class='status identifier id'>status</span><span class='assign token'>=</span><span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
-  <span class='status identifier id'>status</span> <span class='opasgn op'>||=</span> <span class='@default_status ivar id'>@default_status</span>
-  <span class='headers identifier id'>headers</span> <span class='assign token'>=</span> <span class='@default_headers ivar id'>@default_headers</span><span class='dot token'>.</span><span class='merge identifier id'>merge</span><span class='lparen token'>(</span><span class='headers identifier id'>headers</span><span class='rparen token'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_response'>response</span><span class='lparen'>(</span><span class='id identifier rubyid_body'>body</span><span class='op'>=</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_headers'>headers</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='id identifier rubyid_status'>status</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_status'>status</span> <span class='op'>||=</span> <span class='ivar'>@default_status</span>
+  <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='ivar'>@default_headers</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span>
 
-  <span class='return return kw'>return</span> <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='body identifier id'>body</span><span class='comma token'>,</span><span class='headers identifier id'>headers</span><span class='comma token'>,</span><span class='status identifier id'>status</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_body'>body</span><span class='comma'>,</span><span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span><span class='id identifier rubyid_status'>status</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -841,11 +864,11 @@
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Tue Jul 12 15:52:56 2011 by 
+  Generated on Mon May 28 18:38:13 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.0 (ruby-1.8.7).
+  0.8.1 (ruby-1.9.3).
 </div>
 
   </body>

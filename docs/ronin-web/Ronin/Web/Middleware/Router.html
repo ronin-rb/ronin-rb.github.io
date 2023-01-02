@@ -2,7 +2,7 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>
   Class: Ronin::Web::Middleware::Router
   
@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  relpath = '../../..';
-  if (relpath != '') relpath += '/';
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../../../';
+  framesUrl = "../../../frames.html#!" + escape(window.location.href);
 </script>
+
 
   <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
 
@@ -26,36 +28,41 @@
 
   </head>
   <body>
-    <script type="text/javascript" charset="utf-8">
-      if (window.top.frames.main) document.body.className = 'frames';
-    </script>
-    
     <div id="header">
       <div id="menu">
   
-    <a href="../../../_index.html">Index (R)</a> &raquo; 
+    <a href="../../../_index.html">Index (R)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Web.html" title="Ronin::Web (module)">Web</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Middleware.html" title="Ronin::Web::Middleware (module)">Middleware</a></span></span>
      &raquo; 
     <span class="title">Router</span>
   
-  
+
   <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
       <div id="search">
   
-    <a id="class_list_link" href="#">Class List</a>
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+      Class List
+    </a>
   
-    <a id="method_list_link" href="#">Method List</a>
+    <a class="full_list_link" id="method_list_link"
+        href="../../../method_list.html">
+      Method List
+    </a>
   
-    <a id="file_list_link" href="#">File List</a>
+    <a class="full_list_link" id="file_list_link"
+        href="../../../file_list.html">
+      File List
+    </a>
   
 </div>
       <div class="clear"></div>
     </div>
-    
+
     <iframe id="search_frame"></iframe>
-    
+
     <div id="content"><h1>Class: Ronin::Web::Middleware::Router
   
   
@@ -98,51 +105,47 @@
   <div class="discussion">
     <p>A Rack middleware for routing requests based on predefined rules.</p>
 
-<pre class="code"><span class='use identifier id'>use</span> <span class='Ronin constant id'>Ronin</span><span class='colon2 op'>::</span><span class='Web constant id'>Web</span><span class='colon2 op'>::</span><span class='Middleware constant id'>Middleware</span><span class='colon2 op'>::</span><span class='Router constant id'>Router</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='router identifier id'>router</span><span class='bitor op'>|</span>
-  <span class='comment val'># route requests by source IP address</span>
-  <span class='router identifier id'>router</span><span class='dot token'>.</span><span class='draw identifier id'>draw</span> <span class='symbol val'>:ip</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'212.18.45.0/24'</span><span class='comma token'>,</span> <span class='symbol val'>:to</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='BannedApp constant id'>BannedApp</span>
-  <span class='router identifier id'>router</span><span class='dot token'>.</span><span class='draw identifier id'>draw</span> <span class='symbol val'>:ip</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'192.168.0.0/16'</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='request identifier id'>request</span><span class='bitor op'>|</span>
-    <span class='response identifier id'>response</span> <span class='lbrack token'>[</span><span class='string val'>'Nothing here'</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='integer val'>404</span>
-  <span class='end end kw'>end</span>
+<pre class="code ruby"><code><span class='id identifier rubyid_use'>use</span> <span class='const'>Ronin</span><span class='op'>::</span><span class='const'>Web</span><span class='op'>::</span><span class='const'>Middleware</span><span class='op'>::</span><span class='const'>Router</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_router'>router</span><span class='op'>|</span>
+  <span class='comment'># route requests by source IP address
+</span>  <span class='id identifier rubyid_router'>router</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span> <span class='symbol'>:ip</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>212.18.45.0/24</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='const'>BannedApp</span>
+  <span class='id identifier rubyid_router'>router</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span> <span class='symbol'>:ip</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>192.168.0.0/16</span><span class='tstring_end'>'</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='op'>|</span>
+    <span class='id identifier rubyid_response'>response</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Nothing here</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='int'>404</span>
+  <span class='kw'>end</span>
 
-  <span class='comment val'># route requests by Referer URL</span>
-  <span class='router identifier id'>router</span><span class='dot token'>.</span><span class='draw identifier id'>draw</span> <span class='symbol val'>:referer</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'http://www.sexy.com/'</span><span class='comma token'>,</span> <span class='symbol val'>:to</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='TrapApp constant id'>TrapApp</span>
-  <span class='router identifier id'>router</span><span class='dot token'>.</span><span class='draw identifier id'>draw</span> <span class='symbol val'>:referer</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='regexp val'>/\.google\./</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='request identifier id'>request</span><span class='bitor op'>|</span>
-    <span class='response identifier id'>response</span> <span class='lbrack token'>[</span><span class='string val'>'Nothing to see here.'</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='integer val'>404</span>
-  <span class='end end kw'>end</span>
+  <span class='comment'># route requests by Referer URL
+</span>  <span class='id identifier rubyid_router'>router</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span> <span class='symbol'>:referer</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>http://www.sexy.com/</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='const'>TrapApp</span>
+  <span class='id identifier rubyid_router'>router</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span> <span class='symbol'>:referer</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\.google\.</span><span class='regexp_end'>/</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='op'>|</span>
+    <span class='id identifier rubyid_response'>response</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Nothing to see here.</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='int'>404</span>
+  <span class='kw'>end</span>
 
-  <span class='comment val'># route requests by User-Agent</span>
-  <span class='router identifier id'>router</span><span class='dot token'>.</span><span class='draw identifier id'>draw</span> <span class='symbol val'>:user_agent</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='regexp val'>/Microsoft/</span><span class='comma token'>,</span> <span class='symbol val'>:to</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='IEApp constant id'>IEApp</span>
+  <span class='comment'># route requests by User-Agent
+</span>  <span class='id identifier rubyid_router'>router</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span> <span class='symbol'>:user_agent</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>Microsoft</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='const'>IEApp</span>
 
-  <span class='comment val'># mix route options together</span>
-  <span class='router identifier id'>router</span><span class='dot token'>.</span><span class='draw identifier id'>draw</span> <span class='symbol val'>:ip</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'212.18.45.0/24'</span><span class='comma token'>,</span>
-              <span class='symbol val'>:user_agent</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='regexp val'>/Microsoft/</span><span class='comma token'>,</span> <span class='symbol val'>:to</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='PwnApp constant id'>PwnApp</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='comment'># mix route options together
+</span>  <span class='id identifier rubyid_router'>router</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span> <span class='symbol'>:ip</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>212.18.45.0/24</span><span class='tstring_end'>'</span></span><span class='comma'>,</span>
+              <span class='symbol'>:user_agent</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>Microsoft</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='const'>PwnApp</span>
+<span class='kw'>end</span>
+</code></pre>
 
 
   </div>
 </div>
 <div class="tags">
   
+
 </div>
   <h2>Constant Summary</h2>
   
 
 
-  
-  
-  
-  
-  <h3 class="inherited">Constants inherited from <span class='object_link'><a href="Base.html" title="Ronin::Web::Middleware::Base (class)">Base</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Base.html#DEFAULT_STATUS-constant" title="Ronin::Web::Middleware::Base::DEFAULT_STATUS (constant)">DEFAULT_STATUS</a></span></p>
 
+  <h2>Constant Summary</h2>
   
-  
-  
-  
-  
-  
+  <h3 class="inherited">Constants inherited
+     from <span class='object_link'><a href="Base.html" title="Ronin::Web::Middleware::Base (class)">Base</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Base.html#DEFAULT_STATUS-constant" title="Ronin::Web::Middleware::Base::DEFAULT_STATUS (constant)">Base::DEFAULT_STATUS</a></span></p>
+
+
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
   <ul class="summary">
     
@@ -156,7 +159,10 @@
   </span>
   
   
-    <span class="note title readonly">readonly</span>
+  
+    
+      <span class="note title readonly">readonly</span>
+    
     
   
   
@@ -177,17 +183,9 @@
 
   
   
-  
-  
-  
   <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="Base.html" title="Ronin::Web::Middleware::Base (class)">Base</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Base.html#default_headers-instance_method" title="Ronin::Web::Middleware::Base#default_headers (method)">default_headers</a></span>, <span class='object_link'><a href="Base.html#default_status-instance_method" title="Ronin::Web::Middleware::Base#default_status (method)">default_status</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Base.html#default_headers-instance_method" title="Ronin::Web::Middleware::Base#default_headers (method)">#default_headers</a></span>, <span class='object_link'><a href="Base.html#default_status-instance_method" title="Ronin::Web::Middleware::Base#default_status (method)">#default_status</a></span></p>
 
-  
-  
-  
-  
-  
 
   
     <h2>
@@ -205,6 +203,7 @@
 
     
   </span>
+  
   
   
   
@@ -233,6 +232,7 @@
   
   
   
+  
 
   
     <span class="summary_desc"><div class='inline'><p>Defines a rule to route requests by.</p>
@@ -249,6 +249,7 @@
 
     
   </span>
+  
   
     <span class="note title constructor">constructor</span>
   
@@ -276,9 +277,11 @@
   
   
   
+  
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Base.html" title="Ronin::Web::Middleware::Base (class)">Base</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Base.html#response-instance_method" title="Ronin::Web::Middleware::Base#response (method)">#response</a></span></p>
 
+  
   
   
   
@@ -294,13 +297,15 @@
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
-  <p class="signature first" id="initialize-instance_method">
+  <h3 class="signature first" id="initialize-instance_method">
   
     - (<tt><span class='object_link'><a href="" title="Ronin::Web::Middleware::Router (class)">Router</a></span></tt>) <strong>initialize</strong>(app, options = {}) {|router| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Creates a new Router middleware.</p>
 
@@ -308,7 +313,7 @@
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -344,7 +349,8 @@
     </li>
   
 </ul>
-<h3>Yields:</h3>
+
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -362,7 +368,7 @@ router middleware.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -381,7 +387,7 @@ router middleware.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -412,12 +418,11 @@ router middleware.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/web/middleware/router.rb', line 78</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='app identifier id'>app</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='@routes ivar id'>@routes</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_app'>app</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='ivar'>@routes</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
 
-  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='app identifier id'>app</span><span class='comma token'>,</span><span class='options identifier id'>options</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_app'>app</span><span class='comma'>,</span><span class='id identifier rubyid_options'>options</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -432,13 +437,15 @@ router middleware.</p>
       <span id=""></span>
       <span id="routes-instance_method"></span>
       <div class="method_details first">
-  <p class="signature first" id="routes-instance_method">
+  <h3 class="signature first" id="routes-instance_method">
   
     - (<tt>Object</tt>) <strong>routes</strong>  <span class="extras">(readonly)</span>
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>The routes of the router</p>
 
@@ -447,6 +454,7 @@ router middleware.</p>
 </div>
 <div class="tags">
   
+
 </div><table class="source_code">
   <tr>
     <td>
@@ -460,10 +468,9 @@ router middleware.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/web/middleware/router.rb', line 56</span>
 
-<span class='def def kw'>def</span> <span class='routes identifier id'>routes</span>
-  <span class='@routes ivar id'>@routes</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_routes'>routes</span>
+  <span class='ivar'>@routes</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -474,16 +481,18 @@ router middleware.</p>
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
-    
+
     
       <div class="method_details first">
-  <p class="signature first" id="call-instance_method">
+  <h3 class="signature first" id="call-instance_method">
   
     - (<tt>Array</tt>, <tt><span class='object_link'><a href="Response.html" title="Ronin::Web::Middleware::Response (class)">Response</a></span></tt>) <strong>call</strong>(env) 
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Filters requests based on the defined routes.</p>
 
@@ -491,7 +500,7 @@ router middleware.</p>
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
+  <p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -510,7 +519,8 @@ router middleware.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -527,7 +537,7 @@ router middleware.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -565,32 +575,33 @@ router middleware.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/web/middleware/router.rb', line 151</span>
 
-<span class='def def kw'>def</span> <span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='env identifier id'>env</span><span class='rparen token'>)</span>
-  <span class='request identifier id'>request</span> <span class='assign token'>=</span> <span class='Request constant id'>Request</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='env identifier id'>env</span><span class='rparen token'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_request'>request</span> <span class='op'>=</span> <span class='const'>Request</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
 
-  <span class='@routes ivar id'>@routes</span><span class='dot token'>.</span><span class='each identifier id'>each</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='rule identifier id'>rule</span><span class='comma token'>,</span><span class='app identifier id'>app</span><span class='bitor op'>|</span>
-    <span class='if if kw'>if</span> <span class='rule identifier id'>rule</span><span class='dot token'>.</span><span class='match? fid id'>match?</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='rparen token'>)</span>
-      <span class='print_info identifier id'>print_info</span> <span class='dstring node'>&quot;Routing #{request.url} for #{request.address}&quot;</span>
-      <span class='return return kw'>return</span> <span class='app identifier id'>app</span><span class='dot token'>.</span><span class='call identifier id'>call</span><span class='lparen token'>(</span><span class='env identifier id'>env</span><span class='rparen token'>)</span>
-    <span class='end end kw'>end</span>
-  <span class='end end kw'>end</span>
+  <span class='ivar'>@routes</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_rule'>rule</span><span class='comma'>,</span><span class='id identifier rubyid_app'>app</span><span class='op'>|</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_rule'>rule</span><span class='period'>.</span><span class='id identifier rubyid_match?'>match?</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_print_info'>print_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Routing </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_url'>url</span><span class='rbrace'>}</span><span class='tstring_content'> for </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>return</span> <span class='id identifier rubyid_app'>app</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 
-  <span class='super super kw'>super</span><span class='lparen token'>(</span><span class='env identifier id'>env</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="draw-instance_method">
+  <h3 class="signature " id="draw-instance_method">
   
     - (<tt>#call</tt>) <strong>draw</strong>(options = {}) {|request| ... }
   
 
   
-</p><div class="docstring">
+
+  
+</h3><div class="docstring">
   <div class="discussion">
     <p>Defines a rule to route requests by.</p>
 
@@ -600,22 +611,24 @@ router middleware.</p>
 <div class="tags">
   
   <div class="examples">
-    <h3>Examples:</h3>
+    <p class="tag_title">Examples:</p>
     
-      <h4><div class='inline'><p>Route requests going to an application.</p>
-</div></h4>
-      <pre class="example code"><span class='router identifier id'>router</span><span class='dot token'>.</span><span class='draw identifier id'>draw</span> <span class='symbol val'>:ip</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'210.18.0.0/16'</span><span class='comma token'>,</span> <span class='symbol val'>:to</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='BannedApp constant id'>BannedApp</span>
-</pre>
+      
+        <p class="example_title"><div class='inline'><p>Route requests going to an application.</p>
+</div></p>
+      
+      <pre class="example code"><span class='id identifier rubyid_router'>router</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span> <span class='symbol'>:ip</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>210.18.0.0/16</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='symbol'>:to</span> <span class='op'>=&gt;</span> <span class='const'>BannedApp</span></pre>
     
-      <h4><div class='inline'><p>Accept routed requests using a block.</p>
-</div></h4>
-      <pre class="example code"><span class='router identifier id'>router</span><span class='dot token'>.</span><span class='draw identifier id'>draw</span> <span class='symbol val'>:ip</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>'210.18.0.0/16'</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='request identifier id'>request</span><span class='bitor op'>|</span>
-  <span class='response identifier id'>response</span> <span class='lbrack token'>[</span><span class='string val'>'Banned!'</span><span class='rbrack token'>]</span>
-<span class='end end kw'>end</span>
-</pre>
+      
+        <p class="example_title"><div class='inline'><p>Accept routed requests using a block.</p>
+</div></p>
+      
+      <pre class="example code"><span class='id identifier rubyid_router'>router</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span> <span class='symbol'>:ip</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>210.18.0.0/16</span><span class='tstring_end'>'</span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_request'>request</span><span class='op'>|</span>
+  <span class='id identifier rubyid_response'>response</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Banned!</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
     
   </div>
-<h3>Parameters:</h3>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -640,7 +653,7 @@ router middleware.</p>
   
     
     
-    <h3>Options Hash (<tt>options</tt>):</h3>
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
     <ul class="option">
       
         <li>
@@ -649,9 +662,11 @@ router middleware.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The name of the campaign who&rsquo;s targetted hosts will be routed.</p>
+          
+            &mdash; <div class='inline'><p>The name of the campaign who&rsquo;s targetted hosts will be routed.</p>
 </div>
-        </tr>
+          
+        </li>
       
         <li>
           <span class="name">:vhost</span>
@@ -659,9 +674,11 @@ router middleware.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The Virtual-Host to route.</p>
+          
+            &mdash; <div class='inline'><p>The Virtual-Host to route.</p>
 </div>
-        </tr>
+          
+        </li>
       
         <li>
           <span class="name">:ip</span>
@@ -669,9 +686,11 @@ router middleware.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The IP address or IP range to route.</p>
+          
+            &mdash; <div class='inline'><p>The IP address or IP range to route.</p>
 </div>
-        </tr>
+          
+        </li>
       
         <li>
           <span class="name">:referer</span>
@@ -679,9 +698,11 @@ router middleware.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The Referer URL or pattern to route.</p>
+          
+            &mdash; <div class='inline'><p>The Referer URL or pattern to route.</p>
 </div>
-        </tr>
+          
+        </li>
       
         <li>
           <span class="name">:user_agent</span>
@@ -689,9 +710,11 @@ router middleware.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The User-Agent string to route.</p>
+          
+            &mdash; <div class='inline'><p>The User-Agent string to route.</p>
 </div>
-        </tr>
+          
+        </li>
       
         <li>
           <span class="name">:when</span>
@@ -699,9 +722,11 @@ router middleware.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>Custom logic to route requests by.</p>
+          
+            &mdash; <div class='inline'><p>Custom logic to route requests by.</p>
 </div>
-        </tr>
+          
+        </li>
       
         <li>
           <span class="name">:to</span>
@@ -709,13 +734,16 @@ router middleware.</p>
           <span class="default">
             
           </span>
-          &mdash; <div class='inline'><p>The application that will receive routed requests.</p>
+          
+            &mdash; <div class='inline'><p>The application that will receive routed requests.</p>
 </div>
-        </tr>
+          
+        </li>
       
     </ul>
   
-<h3>Yields:</h3>
+
+<p class="tag_title">Yields:</p>
 <ul class="yield">
   
     <li>
@@ -732,7 +760,7 @@ router middleware.</p>
     </li>
   
 </ul>
-<h3>Yield Parameters:</h3>
+<p class="tag_title">Yield Parameters:</p>
 <ul class="yieldparam">
   
     <li>
@@ -751,7 +779,7 @@ router middleware.</p>
     </li>
   
 </ul>
-<h3>Returns:</h3>
+<p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
@@ -768,7 +796,7 @@ router middleware.</p>
     </li>
   
 </ul>
-<h3>Since:</h3>
+<p class="tag_title">Since:</p>
 <ul class="since">
   
     <li>
@@ -799,12 +827,11 @@ router middleware.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/web/middleware/router.rb', line 132</span>
 
-<span class='def def kw'>def</span> <span class='draw identifier id'>draw</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='assign token'>=</span><span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='comma token'>,</span><span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
-  <span class='app identifier id'>app</span> <span class='assign token'>=</span> <span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='dot token'>.</span><span class='delete identifier id'>delete</span><span class='lparen token'>(</span><span class='symbol val'>:to</span><span class='rparen token'>)</span> <span class='orop op'>||</span> <span class='block identifier id'>block</span><span class='rparen token'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_draw'>draw</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_app'>app</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:to</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
 
-  <span class='return return kw'>return</span> <span class='@routes ivar id'>@routes</span><span class='lbrack token'>[</span><span class='Rule constant id'>Rule</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='options identifier id'>options</span><span class='rparen token'>)</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='app identifier id'>app</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='kw'>return</span> <span class='ivar'>@routes</span><span class='lbracket'>[</span><span class='const'>Rule</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_app'>app</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -813,11 +840,11 @@ router middleware.</p>
   </div>
 
 </div>
-    
+
     <div id="footer">
-  Generated on Tue Jul 12 15:53:13 2011 by 
+  Generated on Mon May 28 18:38:18 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.0 (ruby-1.8.7).
+  0.8.1 (ruby-1.9.3).
 </div>
 
   </body>
