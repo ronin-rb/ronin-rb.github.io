@@ -71,7 +71,18 @@ curl -o ronin-install.sh https://raw.githubusercontent.com/ronin-rb/scripts/main
 required external dependencies (ex: `ruby`, `libsqlite3`, etc) if they are not
 already installed.
 
+If you prefer using [Docker][docker], there are also [Docker images][dockerhub] 
+available for Ubuntu, Fedora, and Alpine, that beta testers can also pull down
+and run:
+
+```shell
+docker pull roninrb/ronin
+docker run -it ronin
+```
+
 [ronin-install.sh]: https://github.com/ronin-rb/scripts#readme
+[docker]: https://www.docker.com/
+[dockerhub]: https://hub.docker.com/r/roninrb/ronin
 
 ## What's Installed
 
