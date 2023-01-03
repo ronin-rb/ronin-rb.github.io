@@ -12,9 +12,11 @@ js:
 # Ronin
 
 Ronin is a [Ruby] toolkit for security research and development.
-Ronin allows for the rapid development and distribution of code,
-[Exploits][example-exploit], [Payloads][example-payload],
-[Scanners][example-scanner], etc, via [Repositories].
+Ronin contains many different CLI commands and Ruby libraries for a variety of
+security tasks, such as encoding/decoding data, filter IPs/hosts/URLs,
+querying ASNs, querying DNS, HTTP, scanning for web vulnerabilities,
+spidering websites, running exploits, generating new exploits, managing local 
+databases, fuzzing data, and much more.
 
 ### Console
 
