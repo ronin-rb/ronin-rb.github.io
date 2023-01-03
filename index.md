@@ -15,8 +15,9 @@ js:
 Ronin contains many different [CLI commands][Synopsis] and
 [Ruby libraries][GitHub] for a variety of security tasks, such as
 encoding/decoding data, filter IPs/hosts/URLs, querying ASNs, querying DNS,
-HTTP, scanning for web vulnerabilities, spidering websites, running exploits,
-generating new exploits, managing local databases, fuzzing data, and much more.
+HTTP, scanning for web vulnerabilities, spidering websites, install 3rd party
+repositories of exploits and/or payloads, run exploits, generating new exploits,
+managing local databases, fuzzing data, and much more.
 
 ## Install 
 
