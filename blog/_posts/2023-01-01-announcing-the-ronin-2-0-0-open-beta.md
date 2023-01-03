@@ -63,7 +63,7 @@ forum are linked below.
 Finally, if you'd like to chat, we have a [Discord server] which beta testers
 can join.
 
-[Discord server]: https://discord.gg/6WAb3PsVX9
+[Discord server]: {{ site.discord_link }}
 
 ## How To Install Ronin 2.0.0 (beta)
 

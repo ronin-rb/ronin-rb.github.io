@@ -11,5 +11,5 @@ among other features.
 So I have decided to setup a Discord server for Ronin. Drop by and say
 hi; but please don't spam the emotes.
 
-* [Join Discord](https://discord.gg/6WAb3PsVX9)
+* [Join Discord]({{ site.discord_link }})
 
