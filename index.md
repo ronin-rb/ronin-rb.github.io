@@ -18,50 +18,19 @@ querying ASNs, querying DNS, HTTP, scanning for web vulnerabilities,
 spidering websites, running exploits, generating new exploits, managing local 
 databases, fuzzing data, and much more.
 
-### Console
+## Install 
 
-Ronin provides users with a powerful Ruby Console, pre-loaded with powerful
-convenience methods. In the Console one can work with data and automate
-complex tasks, with greater ease than the command-line.
+```shell
+curl -o ronin-install.sh https://raw.githubusercontent.com/ronin-rb/scripts/main/ronin-install.sh && bash ronin-install.sh --pre
+```
 
-{% highlight ruby %}
->> File.read('data').base64_decode
-{% endhighlight %}
+## Libraries
 
-### Database
-
-Ronin ships with a preconfigured Database, that one can interact with from Ruby,
-without having to write any SQL.
-
-{% highlight ruby %}
->> HostName.tld('eu').urls.with_query_param('id')
-{% endhighlight %}
-
-### Repositories
-
-Ronin provides a Repository system, allowing users to organize and share
-miscallaneous Data, Code, [Exploits][example-exploit],
-[Payloads][example-payload], [Scanners][example-scanner], etc.
-
-    $ ronin install git://github.com/user/myexploits.git
-
-### Libraries
-
-Ronin provides libraries with additional functionality, such as
-[Exploitation][ronin-exploits] and [Scanning][ronin-scanners]:
-
-    $ gem install ronin-exploits
-
-## Install
-
-Install Ronin using [RubyGems](http://rubygems.org/gems/ronin):
-
-    $ gem install ronin
-
-Install Ronin on [Debian](/docs/install/debian.html), 
-[Ubuntu](/docs/install/ubuntu.html),
-[Fedora](/docs/install/fedora.html) or
-[Mac OS X](/docs/install/osx.html).
+{% for library in site.libraries %}
+* [{{ library[0] }}](https://github.com/ronin-rb/{{ library[0] }}#readme)
+  [({{ library[1].version }})](https://rubygems.org/gems/{{ library[0] }}/versions/{{ library[1].version }}) - 
+  {{ library[1].description }}
+{% endfor %}
 
 ## Examples
 
@@ -72,11 +41,3 @@ A couple of [examples](/examples/) of things Ronin simplifies.
 </ul>
 
 [Ruby]: http://www.ruby-lang.org
-[example-exploit]: https://github.com/postmodern/postmodern/blob/master/scripts/exploits/http/oracle/dav_bypass.rb
-[example-payload]: https://gist.github.com/1403961
-[example-scanner]: https://github.com/postmodern/postmodern/blob/master/scripts/scanners/oracle_dad_scanner.rb
-[Repositories]: https://github.com/postmodern/postmodern
-
-[ronin-support]: https://github.com/ronin-rb/ronin-support#readme
-[ronin-exploits]: https://github.com/ronin-rb/ronin-exploits#readme
-[ronin-scanners]: https://github.com/ronin-rb/ronin-scanners#readme
