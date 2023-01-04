@@ -37,10 +37,10 @@ manual installation instructions:
 
 There are also [Docker images] available:
 
-{% highlight shell %}
+```shell
 docker pull roninrb/ronin
 docker run --mount type=bind,source="$$HOME",target=/home/ronin -it ronin
-{% endhighlight %}
+```
 
 ## Windows
 
