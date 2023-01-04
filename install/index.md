@@ -16,6 +16,18 @@ FreeBSD.
 curl -o ronin-install.sh https://raw.githubusercontent.com/ronin-rb/scripts/main/ronin-install.sh && bash ronin-install.sh --pre
 ```
 
+## Manual Instructions
+
+If you do not want to use an automatic installation shell script, there are
+manual installation instructions:
+
+* [Ubuntu](ubuntu/)
+* [Fedora](fedora/)
+* [OpenSUSE](opensuse/)
+* [Arch](arch/)
+* [macOS](macos/)
+* [FreeBSD](freebsd/)
+
 ## Docker
 
 There are also [Docker images] available:
