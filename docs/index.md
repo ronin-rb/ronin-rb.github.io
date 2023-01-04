@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: Documentation
 ---
 
@@ -17,10 +17,19 @@ title: Documentation
 
 ## API
 
-{% for library in site.libraries %}
-* [{{ library[0] }}](/docs/{{ library[0] }}/) ({{ library[1].version }}) - 
-  {{ library[1].description }}
-{% endfor %}
+<table class="table">
+  <tbody>
+  {% for library in site.libraries %}
+    <tr>
+      <td>
+        <a href="/docs/{{ library[0] }}/">{{ library[0] }}</a>
+      </td>
+      <td>{{ library[1].version }}</td>
+      <td>{{ library[1].description }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
 
 ## Archive
 

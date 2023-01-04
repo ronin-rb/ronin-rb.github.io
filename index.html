@@ -1,0 +1,222 @@
+---
+layout: default
+---
+
+<script type="text/javascript">
+const randomRoninCLIExamples = [
+  "ronin_http",
+  "ronin_grep_extract",
+  "ronin_dns_enum"
+];
+
+const ready = (callback) => {
+  if (document.readyState != "loading") callback();
+  else document.addEventListener("DOMContentLoaded", callback);
+}
+
+ready(() => {
+  let newRoninCLIObject     = document.createElement("object");
+  let randomRoninCLIExample = randomRoninCLIExamples[Math.floor(Math.random() * randomRoninCLIExamples.length)];
+
+  newRoninCLIObject.setAttribute("class","demo");
+  newRoninCLIObject.setAttribute("data",`/images/demos/${randomRoninCLIExample}_js.svg`);
+
+  let roninCLIDemo = document.querySelector("#ronin-cli-demo");
+  roninCLIDemo.prepend(newRoninCLIObject);
+});
+</script>
+
+<main id="key-points">
+  <div class="key-point">
+    <section class="container content">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <h1>A Security Toolkit</h1>
+
+          {% capture description %}{% include description.md %}{% endcapture %}
+          {{ description | markdownify }}
+        </div>
+
+        <div class="column">
+          <object class="demo" data="/images/demos/ronin_help.svg" type="image/svg+xml"></object>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="ruby" class="key-point">
+    <section class="container content">
+      <div class="columns is-vcentered">
+        <div class="column is-half has-text-centered">
+          <img src="/images/ruby.svg" height="30%" width="30%" />
+        </div>
+
+        <div class="column is-half">
+          <h1>Ruby Supercharged</h1>
+
+          <p>Ronin builds on top of Ruby and adds even more libraries, classes, and methods to make Ruby even easier to use and more powerful!</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="cli" class="key-point">
+    <section class="container content">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <h1>Powerful CLI</h1>
+
+          <p>Ronin provides many powerful CLI commands.</p>
+        </div>
+
+        <div id="ronin-cli-demo" class="column">
+          <noscript>
+            <object class="demo" data="/images/demos/ronin_http.svg" type="image/svg+xml"></object>
+
+            <div class="notification is-warning">
+              <p>You have JavaScript disabled.</p>
+            </div>
+          </noscript>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="scriptable" class="key-point">
+    <section class="container content">
+      <div class="columns is-vcentered">
+        <div class="column">
+          {% include examples/dns_enum.rb.html %}
+        </div>
+
+        <div class="column">
+          <h1>Fully Scriptable</h1>
+
+          <p>Ronin is made up of different Ruby <a href="https://github.com/ronin-rb">libraries</a> and <a href="/docs/#api">powerful APIs</a> that you can use in Ruby scripts or in the Ruby console.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="install" class="key-point">
+    <section class="container content">
+      <h1>Easy To Install</h1>
+
+      <p>Installing Ronin is as easy as copy/pasting the following command into your terminal:</p>
+
+      {% highlight shell %}curl -o ronin-install.sh https://raw.githubusercontent.com/ronin-rb/scripts/main/ronin-install.sh && bash ronin-install.sh --pre{% endhighlight %}
+    </section>
+  </div>
+
+  <div id="docker" class="key-point">
+    <section class="container content">
+      <div class="columns is-vcentered">
+        <div class="column is-half has-text-centered">
+          {% include images/docker.svg %}
+        </div>
+
+        <div class="column is-half">
+          <h1>Dockerized</h1>
+
+          <p>Ronin also has <a href="https://hub.docker.com/r/roninrb/ronin">Docker images</a>.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="high-quality" class="key-point">
+    <section class="container content">
+      <div class="columns is-vcentered">
+        <div class="column is-on-half">
+          <h1>High Quality</h1>
+          <p>
+          Ronin strives to have at least 90% test coverage and 80% documentation
+          coverage.
+          </p>
+        </div>
+
+        <div class="column is-on-half has-text-centered">
+          {% include images/green_a.svg %}
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="ecosystem" class="key-point">
+    <section class="container content">
+      <h1>Rich Ecosystem</h1>
+
+      <table class="table">
+        <tbody>
+        {% for library in site.libraries %}
+          <tr>
+            <td>
+              <a href="https://github.com/ronin-rb/{{ library[0] }}#readme">{{ library[0] }}</a>
+            </td>
+
+            <td>
+              <a href="https://rubygems.org/gems/{{ library[0] }}/versions/{{ library[1].version }}">{{ library[1].version }}</a>
+            </td>
+
+            <td>{{ library[1].description }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <div class="chevron-down"></div>
+
+  <section id="contact" class="container has-text-centered">
+    <div class="content">
+      <h1 class="hero">Get Involved</h1>
+    </div>
+
+    <div id="social-media-links" class="columns">
+      <div class="column">
+        <div class="social-media-link">
+          <div class="is-vcentered">
+            <a class="button is-multiline is-large has-text-weight-bold" href="https://github.com/ronin-rb" title="GitHub">
+              {% include images/github.svg %}
+              <p>GitHub</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="social-media-link">
+          <div class="is-vcentered">
+            <a class="button is-multiline is-large has-text-weight-bold" href="{{ site.discord_link }}" title="Discord">
+              {% include images/discord.svg %}
+              <p>Discord</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="social-media-link">
+          <div class="is-vcentered">
+            <a class="button is-multiline is-large has-text-weight-bold" href="https://twitter.com/ronin_rb" title="Twitter">
+              {% include images/twitter.svg %}
+              <p>Twitter</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="social-media-link">
+          <div class="is-vcentered">
+            <a class="button is-multiline is-large has-text-weight-bold" href="https://infosec.exchange/@ronin_rb" title="Mastodon">
+              {% include images/mastodon.svg %}
+              <p>Mastodon</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

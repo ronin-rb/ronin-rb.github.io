@@ -1,32 +1,29 @@
 ---
-layout: default
+layout: page
 title: Developer Blog
 feed: /blog/atom.xml
-css:
- - post.css
 ---
 
-{% assign latest_post = site.categories.blog.first %}
+<nav class="page-links">
+  <a class="button" href="{{ page.feed }}" title="Atom feed">
+    {% include images/feed.svg %}
+  </a>
+</nav>
 
-{% if latest_post != null %}
-<div class="post">
-  <a class="feed" href="{{ page.feed }}">{% include images/feed.svg %}</a>
-  <h1><a href="{{ latest_post.url }}">{{ latest_post.title }}</a></h1>
-  <p class="post-info">{{ latest_post.date | date_to_string }} &mdash; {{ latest_post.author }}</p>
+<h1>Recent Posts</h1>
 
-  <div class="post-content">{{ latest_post.content }}</div>
+<hr/>
 
-  <p><a href="{{ latest_post.url }}#comments">Comments</a></p>
-</div>
-
-<hr />
-
+{% for post in site.categories.blog offset:1 limit:5 %}
 <div>
-  <p><a href="archive.html">Archive</a></p>
-  <ul>
-  {% for post in site.categories.blog offset:1 limit:5 %}
-    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
-  </ul>
+  <article class="blog-post">
+    <p>
+      <a href="{{ post.url }}">{{ post.title }}</a><br />
+      <time datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%Y-%m-%d" }} &mdash; {{ post.author }}</time>
+    </p>
+  </article>
+  <hr/>
 </div>
-{% endif %}
+{% endfor %}
+
+<p><a href="archive.html">Older Posts</a></p>
