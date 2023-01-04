@@ -25,6 +25,11 @@ managing local databases, fuzzing data, and much more.
 curl -o ronin-install.sh https://raw.githubusercontent.com/ronin-rb/scripts/main/ronin-install.sh && bash ronin-install.sh --pre
 ```
 
+If you do not want to use the `ronin-install.sh` installation script, there are
+also [manual installation instructions][manual-install] available.
+
+[manual-install]: http://localhost:4000/install/#manual-instructions
+
 ## Libraries
 
 {% for library in site.libraries %}
