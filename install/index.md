@@ -25,5 +25,12 @@ docker pull roninrb/ronin
 docker run --mount type=bind,source="$$HOME",target=/home/ronin -it ronin
 {% endhighlight %}
 
+## Windows
+
+Windows users are recommended to either use [WSL2] or use [Docker][Docker on
+Windows] to run the [Docker images].
+
 [ronin-install.sh]: https://github.com/ronin-rb/scripts/blob/main/ronin-install.sh
 [Docker images]: https://hub.docker.com/r/roninrb/ronin
+[WSL2]: https://learn.microsoft.com/en-us/windows/wsl/install
+[Docker on Windows]: https://docs.docker.com/desktop/install/windows-install/
