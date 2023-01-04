@@ -16,6 +16,11 @@ FreeBSD.
 curl -o ronin-install.sh https://raw.githubusercontent.com/ronin-rb/scripts/main/ronin-install.sh && bash ronin-install.sh --pre
 ```
 
+If you encounter an error when running `ronin-install.sh`, please report it to
+the [scripts repository].
+
+[scripts repository]: https://github.com/ronin-rb/scripts/issues/new
+
 ## Manual Instructions
 
 If you do not want to use an automatic installation shell script, there are
