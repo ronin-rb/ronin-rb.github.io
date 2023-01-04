@@ -5,42 +5,25 @@ title: Install
 
 # Install
 
-The [ronin] gem can be installed via the [ronin-up.sh] script or by copy/pasting
-the following commands.
+## Bash Script
 
-## curl && bash
+The [ronin-install.sh] bash script will auto-detect the OS and package manager,
+install all external dependencies from the system's package manager, and then
+installs Ronin. Supports Debian / Ubuntu, Fedora, OpenSUSE, Arch, macOS, and
+FreeBSD.
 
-{% highlight shell %}
-curl -o ronin-up.sh https://github.com/ronin-rb/scripts/main/ronin-up.sh && bash ronin-up.sh
-{% endhighlight %}
-
-## Debian / Ubuntu
-
-{% highlight shell %}
-sudo apt install -y gcc make ruby-full libreadline-dev libsqlite3-dev libxml2-dev libxslt1-dev
-sudo gem install ronin
-{% endhighlight %}
-
-## RedHat / Fedora
-
-{% highlight shell %}
-sudo dnf install -y gcc make ruby readline-devel sqlite-devel libxml2-devel libxslt-devel
-sudo gem install ronin
-{% endhighlight %}
-
-## macOS + Homebrew
-
-{% highlight shell %}
-brew install readline sqlite libxml2 libxslt
-sudo gem install ronin
-{% endhighlight %}
+```shell
+curl -o ronin-install.sh https://raw.githubusercontent.com/ronin-rb/scripts/main/ronin-install.sh && bash ronin-install.sh --pre
+```
 
 ## Docker
+
+There are also [Docker images] available:
 
 {% highlight shell %}
 docker pull roninrb/ronin
 docker run --mount type=bind,source="$$HOME",target=/home/ronin -it ronin
 {% endhighlight %}
 
-[ronin]: https://rubygems.org/gems/ronin
-[ronin-up.sh]: https://github.com/ronin-rb/scripts/blob/main/ronin-up.sh
+[ronin-install.sh]: https://github.com/ronin-rb/scripts/blob/main/ronin-install.sh
+[Docker images]: https://hub.docker.com/r/roninrb/ronin
