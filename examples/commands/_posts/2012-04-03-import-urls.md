@@ -5,4 +5,6 @@ title: Importing URLs
 
 Import URLs from a file:
 
-    $ ronin urls --import urls.txt
+```shell
+$ ronin-db urls --import urls.txt
+```

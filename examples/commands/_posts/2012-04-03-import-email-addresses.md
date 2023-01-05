@@ -5,4 +5,6 @@ title: Importing email addresses
 
 Import email addresses from a file:
 
-    $ ronin emails --import emails.txt
+```shell
+$ ronin-db emails --import emails.txt
+```
