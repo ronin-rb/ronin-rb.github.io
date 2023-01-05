@@ -1,10 +1,10 @@
 ---
 layout: null
-title: Generate a Ronin Repository 
+title: Generate a 3rd party git Repository 
 ---
 
-Generate a skeleton Ronin Repository:
+Generate a skeleton 3rd party git repository:
 
-    $ ronin-gen repository my-repo --license MIT \
-        --description "Overlay for work stuff."
-
+```shell
+$ ronin-repos new my-repo
+```
