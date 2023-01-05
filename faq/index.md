@@ -22,43 +22,6 @@ Ronin can run on:
 * [TruffleRuby](https://github.com/oracle/truffleruby)
 -->
 
-### What is the easiest way to install Ruby?
-
-#### Option 1: Package Manager
-
-Probably the easiest way to install [ruby] is from your system's package
-manager:
-
-* macOS ([Homebrew](https://brew.sh/)): `sudo brew install ruby`
-* Debian / Ubuntu: `sudo apt install ruby-full`
-* Fedora: `sudo dnf install ruby-devel`
-* OpenSUSE: `sudo zypper -n in -l ruby-devel`
-* Arch: `sudo pacman install community/ruby`
-
-#### Option 2: Ruby version Manager
-
-Another method for installing [ruby] which is preferred by developers is using
-a Ruby Version Manager:
-
-* [rbenv](https://github.com/rbenv/rbenv#readme)
-* [chruby](https://github.com/postmodern/chruby#readme) +
-  [ruby-install](https://github.com/postmodern/ruby-install#readme)
-* [RVM](https://rvm.io/)
-
-### What are some good resources for learning Ruby?
-
-#### Online Resources
-
-* [Try Ruby](https://try.ruby-lang.org/)
-* [Ruby in Twenty Minutes](https://www.ruby-lang.org/en/documentation/quickstart/)
-* [Exercism](https://exercism.org/tracks/ruby)
-
-#### Books
-
-* [Programming Ruby 3.2 (5th Edition)](https://pragprog.com/titles/ruby5/programming-ruby-3-2-5th-edition/)
-* [The Well-Grounded Rubyist, Third Edition](https://www.manning.com/books/the-well-grounded-rubyist-third-edition)
-* [Practical Object-Oriented Design in Ruby: An Agile Primer](https://www.poodr.com/)
-
 ### What is Ronin licensed under?
 
 The main [ronin gem][ronin] and the [ronin-web gem][ronin-web] are licensed
@@ -106,6 +69,45 @@ Why yes, you can follow [@ronin_rb](https://twitter.com/ronin_rb) on Twitter.
 
 Why yes, you can follow
 [@ronin_rb@infosec.exchange](https://infosec.exchange/@ronin_rb).
+
+## Ruby
+
+### What is the easiest way to install Ruby?
+
+#### Option 1: Package Manager
+
+Probably the easiest way to install [ruby] is from your system's package
+manager:
+
+* macOS ([Homebrew](https://brew.sh/)): `sudo brew install ruby`
+* Debian / Ubuntu: `sudo apt install ruby-full`
+* Fedora: `sudo dnf install ruby-devel`
+* OpenSUSE: `sudo zypper -n in -l ruby-devel`
+* Arch: `sudo pacman install community/ruby`
+
+#### Option 2: Ruby version Manager
+
+Another method for installing [ruby] which is preferred by developers is using
+a Ruby Version Manager:
+
+* [rbenv](https://github.com/rbenv/rbenv#readme)
+* [chruby](https://github.com/postmodern/chruby#readme) +
+  [ruby-install](https://github.com/postmodern/ruby-install#readme)
+* [RVM](https://rvm.io/)
+
+### What are some good resources for learning Ruby?
+
+#### Online Resources
+
+* [Try Ruby](https://try.ruby-lang.org/)
+* [Ruby in Twenty Minutes](https://www.ruby-lang.org/en/documentation/quickstart/)
+* [Exercism](https://exercism.org/tracks/ruby)
+
+#### Books
+
+* [Programming Ruby 3.2 (5th Edition)](https://pragprog.com/titles/ruby5/programming-ruby-3-2-5th-edition/)
+* [The Well-Grounded Rubyist, Third Edition](https://www.manning.com/books/the-well-grounded-rubyist-third-edition)
+* [Practical Object-Oriented Design in Ruby: An Agile Primer](https://www.poodr.com/)
 
 ## Exploits
 
