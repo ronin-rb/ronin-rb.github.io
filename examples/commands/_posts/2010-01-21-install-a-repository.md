@@ -5,5 +5,6 @@ title: Installing a Ronin Repository
 
 Install a Ronin Repository:
 
-    $ ronin install https://github.com/someuser/repo.git
-
+```shell
+$ ronin-repos install https://github.com/someuser/repo.git
+```
