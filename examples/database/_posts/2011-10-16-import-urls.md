@@ -5,7 +5,8 @@ title: Import URLs
 
 Import URLs from a text-file into the Database:
 
-{% highlight ruby %}
-URL.import('urls.txt')
-# => [...]
-{% endhighlight %}
+```ruby
+File.each_line('urls.txt') do |url|
+  Ronin::DB::URL.import(url)
+end
+```

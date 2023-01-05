@@ -3,9 +3,11 @@ layout: null
 title: Import HostNames
 ---
 
-Import HostNames from a text-file into the Database:
+Import host name from a text-file into the database:
 
-{% highlight ruby %}
-HostName.import('hosts.txt')
+```ruby
+File.each_line('hosts.txt') do |host|
+  Ronin::DB::HostName.import(host)
+end
 # => [...]
-{% endhighlight %}
+```

@@ -3,9 +3,10 @@ layout: null
 title: Import IPAddresses
 ---
 
-Import IPAddresses from a text-file into the Database:
+Import IP address from a text-file into the database:
 
-{% highlight ruby %}
-IPAddress.import('ips.txt')
-# => [...]
-{% endhighlight %}
+```ruby
+File.each_line('ips.txt') do |ip|
+  Ronin::DB::IPAddress.import(ip)
+end
+```

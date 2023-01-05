@@ -3,9 +3,11 @@ layout: null
 title: Import EmailAddresses
 ---
 
-Import EmailAddresses from a text-file into the Database:
+Import email addresses from a text-file into the database:
 
-{% highlight ruby %}
-EmailAddress.import('emails.txt')
+```ruby
+File.each_line('emails.txt') do |email|
+  Ronin::DB::EmailAddress.import(email)
+end
 # => [...]
-{% endhighlight %}
+```
