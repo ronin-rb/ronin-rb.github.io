@@ -271,28 +271,28 @@ Network::HTTP.disable_proxy
 Requesting a web-page:
 
 {% highlight ruby %}
-http_get(:url => 'http://www.wired.com/')
+http_get('http://www.wired.com/')
 # => #<Net::HTTPOK 200 OK readbody=true>
 {% endhighlight %}
 
 Requesting only the body of a web-page:
 
 {% highlight ruby %}
-http_get_body(:url => 'http://www.wired.com/')
+http_get_body('http://www.wired.com/')
 # => "..."
 {% endhighlight %}
 
 Posting to a web-page:
 
 {% highlight ruby %}
-http_post(:url => some_url, :post_data => {:q => 1, :id => 255})
+http_post(some_url, :post_data => {:q => 1, :id => 255})
 # => #<Net::HTTPOK 200 OK readbody=true>
 {% endhighlight %}
 
 Posting to a web-page and only returning the body of the response:
 
 {% highlight ruby %}
-http_post_body(:url => some_url)
+http_post_body(some_url)
 # => "..."
 {% endhighlight %}
 
