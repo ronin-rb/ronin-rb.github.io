@@ -12,8 +12,6 @@ title: Documentation
   convenience methods within the Ronin Ruby Console.
 * [Using Ronin Web](tutorials/using_ronin_web.html) -
   A brief guide showing basic usage of the Ronin Web library.
-* [Using Ronin PHP](tutorials/using_ronin_php.html) -
-  A brief guide showing basic usage of the Ronin PHP library.
 
 ## API
 
