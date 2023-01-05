@@ -26,6 +26,9 @@ Ronin can run on:
 
 #### Option 1: Package Manager
 
+Probably the easiest way to install [ruby] is from your system's package
+manager:
+
 * macOS ([Homebrew](https://brew.sh/)): `sudo brew install ruby`
 * Debian / Ubuntu: `sudo apt install ruby-full`
 * Fedora: `sudo dnf install ruby-devel`
@@ -33,6 +36,9 @@ Ronin can run on:
 * Arch: `sudo pacman install community/ruby`
 
 #### Option 2: Ruby version Manager
+
+Another method for installing [ruby] which is preferred by developers is using
+a Ruby Version Manager:
 
 * [rbenv](https://github.com/rbenv/rbenv#readme)
 * [chruby](https://github.com/postmodern/chruby#readme) +
