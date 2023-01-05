@@ -5,14 +5,6 @@ title: Documentation
 
 # Documentation
 
-## Install
-
-* [Debian](install/debian.html)
-* [Ubuntu](install/ubuntu.html)
-* [Fedora](install/fedora.html)
-* [Mac OS X](install/osx.html)
-* [Edge](install/edge.html)
-
 ## Tutorials
 
 * [Everyday Ronin](tutorials/everyday_ronin.html) - 
