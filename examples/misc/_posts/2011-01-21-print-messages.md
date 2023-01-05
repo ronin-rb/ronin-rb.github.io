@@ -5,9 +5,13 @@ title: Print Messages
 
 Print diagnostic messages:
 
-    >> print_info "Successfully sent data."
-    [-] Successfully sent data.
+```ruby
+print_info "Senting data ..."
+# [*] Sending data ..."
 
-    >> print_error "Received invalid input: %p", input
-    [!] Received invalid input: "USER \xff\xff\xff\0"
+print_success "Data sent!"
+# [+] Data sent!
 
+print_error "Received invalid input: #{data}"
+# [!] Received invalid input: "USER \xff\xff\xff\0"
+```
