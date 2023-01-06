@@ -5,7 +5,7 @@ title: Using ronin-web
 
 # Using ronin-web
 
-The [Ronin Web](/docs/ronin-web/) library provides
+The [ronin-web] library provides
 support for Web Scraping and Spidering functionality in Ronin.
 
 Before we can use this library in the Ronin Ruby Console, we must first
@@ -16,8 +16,7 @@ simply run the following command:
 $ sudo gem install ronin-web
 ```
 
-To start the Ronin Ruby Console, with ronin-web pre-loaded, simply run the
-`ronin-web` command:
+To start the [ronin-web] Ruby Console, simply run the `ronin-web irb` command:
 
 ```shell
 $ ronin-web irb
@@ -145,5 +144,6 @@ Web.open('http://www.example.com/users.php')
 # => #<StringIO: ...>
 ```
 
+[ronin-web]: https://github.com/ronin-rb/ronin-web#readme
 [Mechanize]: https://www.rubydoc.info/gems/mechanize/ 
 [Mechanize::Page]: https://www.rubydoc.info/gems/mechanize/Mechanize/Page
