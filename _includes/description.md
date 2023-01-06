@@ -12,6 +12,7 @@ HTTP, [scanning for web vulnerabilities][ronin-vulns-synopsis],
 [fuzzing data][ronin-fuzzer], and much more.
 
 [website]: https://ronin-rb.dev/
+[ronin-rb]: https://github.com/ronin-rb/
 [ronin]: https://github.com/ronin-rb/ronin#readme
 [ronin-synopsis]: https://github.com/ronin-rb/ronin#synopsis
 [ronin-support]: https://github.com/ronin-rb/ronin-support#readme
