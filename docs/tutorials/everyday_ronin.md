@@ -24,7 +24,8 @@ run the following command:
 $ sudo gem install ronin
 ```
 
-To start the Ronin Ruby Console, simply run the `ronin` command:
+To start a Ruby Console with [ronin] preloaded, simply run the `ronin irb`
+command:
 
 ```shell
 $ ronin irb
@@ -298,3 +299,5 @@ Posting to a web-page and only returning the body of the response:
 http_post_body(some_url)
 # => "..."
 ```
+
+[ronin]: https://github.com/ronin-rb/ronin#readme

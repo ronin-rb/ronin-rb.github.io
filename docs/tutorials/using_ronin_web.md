@@ -16,7 +16,8 @@ simply run the following command:
 $ sudo gem install ronin-web
 ```
 
-To start the [ronin-web] Ruby Console, simply run the `ronin-web irb` command:
+To start a Ruby Console, with [ronin-web] preloaded, simply run the
+`ronin-web irb` command:
 
 ```shell
 $ ronin-web irb
