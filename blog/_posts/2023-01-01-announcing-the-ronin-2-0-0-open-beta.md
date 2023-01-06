@@ -49,7 +49,7 @@ The Open Beta will start on **January 1st, 2023** and will conclude on
 * Test the commands.
 * Test the Ruby libraries.
 * Review the `README` files.
-* Review the API documentation.
+* Review the [API documentation](/docs/#api).
 * Submit bug reports to the appropriate repositories for anything that does not
   work or does not make sense.
 
