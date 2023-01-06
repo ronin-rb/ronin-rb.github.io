@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Using Ronin Web
+title: Using ronin-web
 ---
 
-# Using Ronin Web
+# Using ronin-web
 
 The [Ronin Web](/docs/ronin-web/) library provides
 support for Web Scraping and Spidering functionality in Ronin.

@@ -10,8 +10,10 @@ title: Documentation
 * [Everyday Ronin](tutorials/everyday_ronin.html) - 
   A somewhat lengthy guide covering the everyday usage of various
   convenience methods within the Ronin Ruby Console.
-* [Using Ronin Web](tutorials/using_ronin_web.html) -
-  A brief guide showing basic usage of the Ronin Web library.
+* [Using ronin-web](tutorials/using_ronin_web.html) -
+  A brief guide showing basic usage of the [ronin-web] library.
+
+[ronin-web]: https://github.com/ronin-rb/ronin-web#readme
 
 ## API
 
