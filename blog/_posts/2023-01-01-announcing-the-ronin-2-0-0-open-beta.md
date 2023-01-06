@@ -48,10 +48,12 @@ The Open Beta will start on **January 1st, 2023** and will conclude on
 * Install Ronin 2.0.0 (beta).
 * Test the commands.
 * Test the Ruby libraries.
-* Review the `README` files.
+* Review the [README files][ronin-rb].
 * Review the [API documentation](/docs/#api).
 * Submit bug reports to the appropriate repositories for anything that does not
   work or does not make sense.
+
+[ronin-rb]: https://github.com/ronin-rb/
 
 ## How To Report Issues
 
