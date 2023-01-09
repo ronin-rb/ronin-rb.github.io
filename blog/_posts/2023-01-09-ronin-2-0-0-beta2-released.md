@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ronin 2.0.0.beta2 released
+title: ronin 2.0.0.beta2, ronin-support 1.0.0.beta2, ronin-exploits 1.0.0.beta2, and ronin-web 1.0.0.beta2 released
 author: postmodern
 tags:
   - beta
