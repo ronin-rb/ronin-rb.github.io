@@ -12,9 +12,7 @@ install all external dependencies from the system's package manager, and then
 installs Ronin. Supports Debian, Ubuntu, Fedora, OpenSUSE, Arch, macOS, and
 FreeBSD.
 
-```shell
-curl -o ronin-install.sh https://raw.githubusercontent.com/ronin-rb/scripts/main/ronin-install.sh && bash ronin-install.sh --pre
-```
+{% include install_script.md %}
 
 If you encounter an error when running `ronin-install.sh`, please report it to
 the [scripts repository].

@@ -69,9 +69,7 @@ new [ronin-install.sh] installation script with the `--pre` option flag.
 Simply copy and paste the follow two commands into your terminal to download
 and execute the installation script:
 
-```shell
-curl -o ronin-install.sh https://raw.githubusercontent.com/ronin-rb/scripts/main/ronin-install.sh && bash ronin-install.sh --pre
-```
+{% include install_script.md %}
 
 **Note:** the [ronin-install.sh] script will automatically install any
 required external dependencies (ex: `ruby`, `libsqlite3`, etc) if they are not
