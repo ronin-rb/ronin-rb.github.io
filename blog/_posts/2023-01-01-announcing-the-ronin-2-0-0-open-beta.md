@@ -4,6 +4,7 @@ title: Announcing the Ronin 2.0.0 Open Beta
 author: postmodern
 tags:
  - refactor
+ - beta
  - ronin-support
  - ronin-core
  - ronin-repos
