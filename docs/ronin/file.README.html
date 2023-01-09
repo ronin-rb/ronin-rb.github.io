@@ -74,7 +74,18 @@
 
 <h2 id="description">Description</h2>
 
-<p><a href="https://ronin-rb.dev/">Ronin</a> is a <a href="https://www.ruby-lang.org">Ruby</a> toolkit for security research and development.</p>
+<p><a href="https://ronin-rb.dev/">Ronin</a> is a free and Open Source <a href="https://www.ruby-lang.org">Ruby</a> toolkit for security research
+and development. Ronin contains many different <a href="#snopsis">CLI commands</a> and
+<a href="https://github.com/ronin-rb/">Ruby libraries</a> for a variety of security tasks, such as
+encoding/decoding data, filter IPs/hosts/URLs, querying ASNs, querying DNS,
+HTTP, <a href="https://github.com/ronin-rb/ronin-vulns#synopsis">scanning for web vulnerabilities</a>,
+<a href="https://github.com/ronin-rb/ronin-web-spider#readme">spidering websites</a>,
+<a href="https://github.com/ronin-rb/ronin-repos#synopsis">install 3rd party repositories</a> of
+<a href="https://github.com/ronin-rb/ronin-exploits#readme">exploits</a> and/or
+<a href="https://github.com/ronin-rb/ronin-payloads#readme">payloads</a>, <a href="https://github.com/ronin-rb/ronin-exploits#synopsis">run exploits</a>,
+<a href="https://github.com/ronin-rb/ronin-exploits#examples">write new exploits</a>,
+<a href="https://github.com/ronin-rb/ronin-db#synopsis">managing local databases</a>,
+<a href="https://github.com/ronin-rb/ronin-fuzzer#readme">fuzzing data</a>, and much more.</p>
 
 <h3 id="who-is-ronin-for">Who is Ronin for?</h3>
 
@@ -201,9 +212,27 @@ Additional Ronin Commands:
 <pre class="code shell"><code class="shell">$ ronin irb
 </code></pre>
 
+<h3 id="see-also">See Also</h3>
+
+<ul>
+<li><a href="https://github.com/ronin-rb/ronin-repos#synopsis">ronin-repos</a></li>
+<li><a href="https://github.com/ronin-rb/ronin-db#synopsis">ronin-db</a></li>
+<li><a href="https://github.com/ronin-rb/ronin-web#synopsis">ronin-web</a></li>
+<li><a href="https://github.com/ronin-rb/ronin-fuzzer#synopsis">ronin-fuzzer</a></li>
+<li><a href="https://github.com/ronin-rb/ronin-payloads#synopsis">ronin-payloads</a></li>
+<li><a href="https://github.com/ronin-rb/ronin-exploits#synopsis">ronin-exploits</a></li>
+<li><a href="https://github.com/ronin-rb/ronin-vulns#synopsis">ronin-vulns</a></li>
+</ul>
+
 <h2 id="requirements">Requirements</h2>
 
 <ul>
+<li><a href="http://gcc.gnu.org/">gcc</a> / <a href="http://clang.llvm.org/">clang</a></li>
+<li><a href="https://www.gnu.org/software/automake/">make</a></li>
+<li><a href="https://git-scm.com/">git</a></li>
+<li><a href="https://www.sqlite.org/index.html">libsqlite3</a></li>
+<li><a href="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home">libxml2</a></li>
+<li><a href="http://xmlsoft.org/libxslt/index.html">libxslt</a></li>
 <li><a href="https://www.ruby-lang.org">Ruby</a> &gt;= 3.0.0</li>
 <li><a href="https://github.com/postmodern/open_namespace#readme">open_namespace</a> ~&gt; 0.4</li>
 <li><a href="https://github.com/rouge-ruby/rouge#readme">rouge</a> ~&gt; 3.0</li>
@@ -224,7 +253,27 @@ Additional Ronin Commands:
 
 <h2 id="install">Install</h2>
 
+<h3 id="bash-script">Bash Script</h3>
+
+<pre class="code shell"><code class="shell">curl -o ronin-install.sh https://raw.githubusercontent.com/ronin-rb/scripts/main/ronin-install.sh &amp;&amp; bash ronin-install.sh
+</code></pre>
+
+<h3 id="manually">Manually</h3>
+
 <pre class="code shell"><code class="shell">$ gem install ronin
+</code></pre>
+
+<h3 id="docker">Docker</h3>
+
+<p>If you prefer using <a href="https://www.docker.com/">Docker</a>, there are also <a href="https://hub.docker.com/r/roninrb/ronin">Docker images</a> available:</p>
+
+<pre class="code shell"><code class="shell">docker pull roninrb/ronin
+docker run -it ronin
+</code></pre>
+
+<p>Additionally, if you want to mount your home directory into the docker image:</p>
+
+<pre class="code shell"><code class="shell">docker run --mount type=bind,source=&quot;$HOME&quot;,target=/home/ronin -it ronin
 </code></pre>
 
 <h2 id="development">Development</h2>
@@ -259,7 +308,7 @@ along with Ronin.  If not, see <a href="https://www.gnu.org/licenses/">https://w
 </div></div>
 
       <div id="footer">
-  Generated on Sun Jan  1 18:17:53 2023 by
+  Generated on Mon Jan  9 14:08:46 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.3).
 </div>
