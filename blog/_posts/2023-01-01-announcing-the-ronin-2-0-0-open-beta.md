@@ -79,10 +79,7 @@ If you prefer using [Docker][docker], there are also [Docker images][dockerhub]
 available for Ubuntu, Fedora, and Alpine, that beta testers can also pull down
 and run:
 
-```shell
-docker pull roninrb/ronin
-docker run -it ronin
-```
+{% include docker_install.md %}
 
 [ronin-install.sh]: https://github.com/ronin-rb/scripts#readme
 [docker]: https://www.docker.com/

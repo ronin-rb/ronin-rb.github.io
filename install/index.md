@@ -35,8 +35,11 @@ manual installation instructions:
 
 There are also [Docker images] available:
 
+{% include docker_install.md %}
+
+Additionally, if you want to mount your home directory into the docker image:
+
 ```shell
-docker pull roninrb/ronin
 docker run --mount type=bind,source="$$HOME",target=/home/ronin -it ronin
 ```
 
