@@ -29,7 +29,7 @@ simply run:
 docker pull roninrb/ronin
 ```
 
-Continue beta testing!
+Keep beta testing!
 
 [ronin]: https://github.com/ronin-rb/ronin#readme
 [ronin-support]: https://github.com/ronin-rb/ronin-support#readme
