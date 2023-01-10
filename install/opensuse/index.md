@@ -8,6 +8,7 @@ title: Install - OpenSUSE
 ## Copy/Paste Instructions
 
 ```shell
+sudo zypper -n in -l gcc make ruby-devel readline-devel sqlite3-devel
 sudo gem install ronin --pre
 ```
 
