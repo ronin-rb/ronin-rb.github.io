@@ -8,7 +8,7 @@ title: Install - Fedora
 ## Copy/Paste Instructions
 
 ```shell
-sudo dnf install -y gcc make ruby-devel readline-devel sqlite-devel libxml2-devel libxslt-devel
+sudo dnf install -y gcc make ruby-devel ruby-bundled-gems readline-devel sqlite-devel libxml2-devel libxslt-devel
 sudo gem install ronin --pre
 ```
 
@@ -23,8 +23,11 @@ sudo dnf install -y gcc make
 {% include install/ruby.md %}
 
 ```shell
-sudo apt install -y ruby-devel
+sudo apt install -y ruby-devel ruby-bundled-gems
 ```
+
+**Note:** `ruby-bundled-gems` is required for `net/ftp`, `net/imap`, `net/pop`, and `net/smtp`. For some reason Fedora's `ruby` package does not automatically
+install the `ruby-bundled-gems` package as a dependency of `ruby`.
 
 {% include install/c_libraries.md %}
 
