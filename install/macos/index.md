@@ -13,7 +13,7 @@ brew pin ruby
 echo 'PATH="$(brew --prefix ruby)/bin:$PATH"' >> ~/.zshrc
 echo 'PATH="$(gem env gemdir)/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
-brew install readline sqlite libxml2 libxslt
+brew install readline sqlite
 sudo gem install ronin --pre
 ```
 
@@ -50,7 +50,7 @@ source ~/.zshrc
 {% include install/c_libraries.md %}
 
 ```shell
-brew install readline sqlite libxml2 libxslt
+brew install readline sqlite
 ```
 
 {% include install/ronin.md %}

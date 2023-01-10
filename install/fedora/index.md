@@ -8,7 +8,7 @@ title: Install - Fedora
 ## Copy/Paste Instructions
 
 ```shell
-sudo dnf install -y gcc make ruby-devel ruby-bundled-gems readline-devel sqlite-devel libxml2-devel libxslt-devel
+sudo dnf install -y gcc make ruby-devel ruby-bundled-gems readline-devel sqlite-devel
 sudo gem install ronin --pre
 ```
 
@@ -32,7 +32,7 @@ install the `ruby-bundled-gems` package as a dependency of `ruby`.
 {% include install/c_libraries.md %}
 
 ```shell
-sudo dnf install -y readline-devel sqlite-devel libxml2-devel libxslt-devel
+sudo dnf install -y readline-devel sqlite-devel
 ```
 
 {% include install/ronin.md %}

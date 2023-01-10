@@ -8,7 +8,7 @@ title: Install - Arch
 ## Copy/Paste Instructions
 
 ```shell
-sudo pacman -Sy --noconfirm gcc make community/ruby readline sqlite libxml2 libxslt
+sudo pacman -Sy --noconfirm gcc make community/ruby readline sqlite
 sudo gem install ronin --pre
 ```
 
@@ -29,7 +29,7 @@ sudo pacman -Sy --noconfirm community/ruby
 {% include install/c_libraries.md %}
 
 ```shell
-sudo pacman -Sy --noconfirm readline sqlite libxml2 libxslt
+sudo pacman -Sy --noconfirm readline sqlite
 ```
 
 {% include install/ronin.md %}

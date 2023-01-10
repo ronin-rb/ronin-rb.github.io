@@ -28,7 +28,7 @@ sudo zypper -n in -l ruby-devel
 {% include install/c_libraries.md %}
 
 ```shell
-sudo zypper -n in -l readline-devel sqlite3-devel libxml2-devel libxslt-devel
+sudo zypper -n in -l readline-devel sqlite3-devel
 ```
 
 {% include install/ronin.md %}
