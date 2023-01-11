@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ronin-db 0.1.0.beta2 ronin 2.0.0.beta3 and released
+title: ronin-db 0.1.0.beta2 ronin 2.0.0.beta3 released
 author: postmodern
 tags:
   - beta
