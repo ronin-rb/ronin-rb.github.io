@@ -41,7 +41,7 @@ The Open Beta will start on **January 1st, 2023** and will conclude on
 
 ## How To Participate
 
-* Install Ronin 2.0.0 (beta).
+* [Install Ronin 2.0.0 (beta)](/install/).
 * Test the commands.
 * Test the Ruby libraries.
 * Review the [README files][ronin-rb].
