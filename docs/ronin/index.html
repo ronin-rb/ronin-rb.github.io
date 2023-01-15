@@ -212,6 +212,540 @@ Additional Ronin Commands:
 <pre class="code shell"><code class="shell">$ ronin irb
 </code></pre>
 
+<p>Generate a new Ruby script with <a href="https://github.com/ronin-rb/ronin-support#readme">ronin-support</a> preloaded:</p>
+
+<pre class="code shell"><code class="shell">$ ronin new script foo.rb
+</code></pre>
+
+<p>Generate a new Ruby project with a <code>Gemfile</code>:</p>
+
+<pre class="code shell"><code class="shell">$ ronin new project foo
+</code></pre>
+
+<h3 id="binary">Binary</h3>
+
+<p>Hexdumps data in a variety of formats:</p>
+
+<pre class="code shell"><code class="shell">$ ronin hexdump /bin/ls
+</code></pre>
+
+<p>Un-hexdumps a hexdump file back into it&#39;s original raw binary data:</p>
+
+<pre class="code shell"><code class="shell">$ ronin unhexdump -o data.bin hexdump.txt
+</code></pre>
+
+<p>Print all printable strings from a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin strings /bin/ls
+</code></pre>
+
+<p>Print all alphabetic strings from a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin strings --alpha /bin/ls
+</code></pre>
+
+<p>Print all alpha-numeric strings from a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin strings --alpha-num /bin/ls
+</code></pre>
+
+<p>Print all numeric strings from a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin strings --numeric /bin/ls
+</code></pre>
+
+<p>Print all hexadecimal strings from a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin strings --hex /bin/ls
+</code></pre>
+
+<p>Enumerate through all of the Bit-flips of a domain name:</p>
+
+<pre class="code shell"><code class="shell">$ ronin bitflip microsoft --alpha-num --append .com
+licrosoft.com
+oicrosoft.com
+iicrosoft.com
+eicrosoft.com
+Microsoft.com
+mhcrosoft.com
+mkcrosoft.com
+mmcrosoft.com
+macrosoft.com
+mycrosoft.com
+...
+</code></pre>
+
+<h3 id="encoding">Encoding</h3>
+
+<p>Base64 encode a string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin encode --base64 --string &quot;foo bar baz&quot;
+Zm9vIGJhciBiYXo=
+</code></pre>
+
+<p>Zlib compresses, Base64 encodes, and then URI encode a string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin encode --zlib --base64 --uri --string &quot;foo bar&quot;
+%65%4A%78%4C%79%38%39%58%53%45%6F%73%41%67%41%4B%63%41%4B%61%0A
+</code></pre>
+
+<p>Base64 decode a string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin decode --base64 --string &quot;Zm9vIGJhciBiYXo=&quot;
+foo bar baz
+</code></pre>
+
+<p>URI decode, Base64 decode, and then zlib inflates a string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin decode --uri --base64 --zlib --string &quot;%65%4A%78%4C%79%38%39%58%53%45%6F%73%41%67%41%4B%63%41%4B%61%0A&quot;
+foo bar
+</code></pre>
+
+<p>URI escape a string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin escape --uri --string &quot;foo bar&quot;
+foo%20bar
+</code></pre>
+
+<p>URI unescape a string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin unescape --uri --string &quot;foo%20bar&quot;
+foo bar
+</code></pre>
+
+<p>Convert a file into a quoted C string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin quote --c file.bin
+&quot;...&quot;
+</code></pre>
+
+<p>Convert a file into a quoted JavaScript string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin quote --js file.bin
+</code></pre>
+
+<p>Unquote a C string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin unquote --c --string &#39;&quot;\x66\x6f\x6f\x20\x62\x61\x72&quot;&#39;
+foo bar
+</code></pre>
+
+<h3 id="text">Text</h3>
+
+<p>De-obfuscate an email address:</p>
+
+<pre class="code shell"><code class="shell">$ ronin email-addr --deobfuscate &quot;john [dot] smith [at] example [dot] com&quot;
+john.smith@example.com
+</code></pre>
+
+<p>Enumerate through all of the obfuscations of an email address:</p>
+
+<pre class="code shell"><code class="shell">$ ronin email-addr --enum-obfuscations john.smith@example.com
+john.smith @ example.com
+john.smith AT example.com
+john.smith at example.com
+john.smith[AT]example.com
+john.smith[at]example.com
+...
+</code></pre>
+
+<p>Extract high-entropy data from a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin entropy -e 5.0 index.html
+</code></pre>
+
+<p>Grep for common patterns of data:</p>
+
+<pre class="code shell"><code class="shell">$ ronin grep --hash index.html
+</code></pre>
+
+<p>Extract common patterns from data:</p>
+
+<pre class="code shell"><code class="shell">$ ronin extract --hash index.html
+</code></pre>
+
+<p>Generate a random typo of a word:</p>
+
+<pre class="code shell"><code class="shell">$ ronin typo microsoft
+microssoft
+</code></pre>
+
+<p>Enumerate over every typo variation of a word:</p>
+
+<pre class="code shell"><code class="shell">$ ronin typo --enum microsoft
+microosoft
+microsooft
+microssoft
+</code></pre>
+
+<p>Generate a random homoglyph version of a word:</p>
+
+<pre class="code shell"><code class="shell">$ ronin homoglyph CEO
+CＥO
+</code></pre>
+
+<p>Enumerate over every homoglyph variation of a word:</p>
+
+<pre class="code shell"><code class="shell">$ ronin homoglyph --enum CEO
+ϹEO
+СEO
+ⅭEO
+ＣEO
+CΕO
+CЕO
+CＥO
+CEΟ
+CEО
+CEＯ
+</code></pre>
+
+<p>Syntax-highlights a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin highlight index.html
+</code></pre>
+
+<h3 id="cryptography">Cryptography</h3>
+
+<p>AES-256 encrypt a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin encrypt --cipher aes-256-cbc --password &quot;...&quot; file.txt &gt; encrypted.bin
+</code></pre>
+
+<p>Decrypt data:</p>
+
+<pre class="code shell"><code class="shell">$ ronin decrypt --cipher aes-256-cbc --password &quot;...&quot; encrypted.bin
+</code></pre>
+
+<p>Generates an HMAC for a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin hmac --hash sha1 --password &quot;too many secrets&quot; data.txt
+</code></pre>
+
+<p>Generates an HMAC for a string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin hmac --hash sha1 --password &quot;too many secrets&quot; --string &quot;...&quot;
+</code></pre>
+
+<p>Calculate an MD5 checksum of a string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin md5 --string &quot;hello world&quot;
+5eb63bbbe01eeed093cb22bb8f5acdc3
+</code></pre>
+
+<p>Calculate the MD5 checksum of a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin md5 file.txt
+</code></pre>
+
+<p>Calculate the MD5 checksum of every line in a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin md5 --multiline file.txt
+</code></pre>
+
+<p>Calculate an SHA1 checksum of a string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin sha1 --string &quot;hello world&quot;
+2aae6c35c94fcfb415dbe95f408b9ce91ee846ed
+</code></pre>
+
+<p>Calculate the SHA1 checksum of a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin sha1 file.txt
+</code></pre>
+
+<p>Calculate the SHA1 checksum of every line in a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin sha1 --multiline file.txt
+</code></pre>
+
+<p>Calculate an SHA256 checksum of a string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin sha256 --string &quot;hello world&quot;
+b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9
+</code></pre>
+
+<p>Calculate the SHA256 checksum of a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin sha256 file.txt
+</code></pre>
+
+<p>Calculate the SHA256 checksum of every line in a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin sha256 --multiline file.txt
+</code></pre>
+
+<p>Calculate an SHA512 checksum of a string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin sha512 --string &quot;hello world&quot;
+309ecc489c12d6eb4cc40f50c902f2b4d0ed77ee511a7c7a9bcd3ca86d4cd86f989dd35bc5ff499670da34255b45b0cfd830e81f605dcf7dc5542e93ae9cd76f
+</code></pre>
+
+<p>Calculate the SHA512 checksum of a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin sha512 file.txt
+</code></pre>
+
+<p>Calculate the SHA512 checksum of every line in a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin sha512 --multiline file.txt
+</code></pre>
+
+<p>ROT-13 encodes a string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin rot --string &quot;The quick brown fox jumps over the lazy dog&quot;
+Gur dhvpx oebja sbk whzcf bire gur ynml qbt
+</code></pre>
+
+<p>XOR encodes a string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin xor --key ABC --string &quot;The quick brown fox jumps over the lazy dog&quot;
+&quot;\x15*&amp;a36(!(a 1.5-a$,9b)4/32b,7&#39;1a6+$b/ 8:a&amp;,&amp;&quot;
+</code></pre>
+
+<h3 id="networking">Networking</h3>
+
+<p>Query the ASN of an IP address:</p>
+
+<pre class="code shell"><code class="shell">$ ronin asn -I 4.2.2.1
+4.0.0.0/9 AS3356 (US) LEVEL3
+</code></pre>
+
+<p>Get the system&#39;s external/public IP address:</p>
+
+<pre class="code shell"><code class="shell">$ ronin ip --public
+</code></pre>
+
+<p>Convert an IP address to decimal format:</p>
+
+<pre class="code shell"><code class="shell">$ ronin ip --decimal 127.0.0.1
+2130706433
+</code></pre>
+
+<p>Convert a file of IP addresses into URLs:</p>
+
+<pre class="code shell"><code class="shell">$ ronin ip --file targets.txt --http
+</code></pre>
+
+<p>Enumerate over every IP address in the IP CIDR range:</p>
+
+<pre class="code shell"><code class="shell">$ ronin iprange 10.1.0.0/15
+10.0.0.1
+10.0.0.2
+10.0.0.3
+10.0.0.4
+10.0.0.5
+10.0.0.6
+10.0.0.7
+10.0.0.8
+10.0.0.9
+...
+</code></pre>
+
+<p>Enumerate over every IP address in the IP glob range:</p>
+
+<pre class="code shell"><code class="shell">$ ronin iprange 10.1-3.0.*
+10.1.0.1
+10.1.0.2
+10.1.0.3
+10.1.0.4
+10.1.0.5
+10.1.0.6
+10.1.0.7
+10.1.0.8
+10.1.0.9
+10.1.0.10
+...
+</code></pre>
+
+<p>Enumerate over every IP address between two IP addresses:</p>
+
+<pre class="code shell"><code class="shell">$ ronin iprange --start 10.0.0.1 --stop 10.0.3.33
+10.0.0.1
+10.0.0.2
+10.0.0.3
+10.0.0.4
+10.0.0.5
+10.0.0.6
+10.0.0.7
+10.0.0.8
+10.0.0.9
+10.0.0.10
+</code></pre>
+
+<p>Connect to a remote TCP service:</p>
+
+<pre class="code shell"><code class="shell">$ ronin netcat -v example.com 80
+</code></pre>
+
+<p>Listen on a local TCP port:</p>
+
+<pre class="code shell"><code class="shell">$ ronin netcat -v -l 1337
+</code></pre>
+
+<p>Connect to a remote SSL/TLS service:</p>
+
+<pre class="code shell"><code class="shell">$ ronin netcat -v --ssl example.com 443
+</code></pre>
+
+<p>Connect to a remote UDP service:</p>
+
+<pre class="code shell"><code class="shell">$ ronin netcat -v -u example.com 1337
+</code></pre>
+
+<p>Listen on a local UDP port:</p>
+
+<pre class="code shell"><code class="shell">$ ronin netcat -v -u -l 1337
+</code></pre>
+
+<p>Opens a UNIX socket:</p>
+
+<pre class="code shell"><code class="shell">$ ronin netcat -v --unix /path/to/unix.socket
+</code></pre>
+
+<p>Hexdump all data received from a socket:</p>
+
+<pre class="code shell"><code class="shell">$ ronin netcat --hexdump example.com 80
+GET / HTTP/1.1
+Host: example.com
+User-Agent: Ruby
+
+00000000  48 54 54 50 2f 31 2e 31 20 32 30 30 20 4f 4b 0d  |HTTP/1.1 200 OK.|
+00000010  0a 41 67 65 3a 20 32 35 30 38 30 36 0d 0a 43 61  |.Age: 250806..Ca|
+00000020  63 68 65 2d 43 6f 6e 74 72 6f 6c 3a 20 6d 61 78  |che-Control: max|
+00000030  2d 61 67 65 3d 36 30 34 38 30 30 0d 0a 43 6f 6e  |-age=604800..Con|
+00000040  74 65 6e 74 2d 54 79 70 65 3a 20 74 65 78 74 2f  |tent-Type: text/|
+00000050  68 74 6d 6c 3b 20 63 68 61 72 73 65 74 3d 55 54  |html; charset=UT|
+...
+</code></pre>
+
+<h4 id="dns">DNS</h4>
+
+<p>Query DNS records:</p>
+
+<pre class="code shell"><code class="shell">$ ronin dns -t TXT github.com
+</code></pre>
+
+<p>Find all registered TLDs for a host name:</p>
+
+<pre class="code shell"><code class="shell">$ ronin host --enum-tlds --registered github.com
+github.ac
+github.actor
+github.ae
+github.africa
+github.agency
+github.ai
+...
+</code></pre>
+
+<p>Find all registered public suffixes for a host name:</p>
+
+<pre class="code shell"><code class="shell">$ ronin host --enum-suffix --registered github.com
+example.com.ag
+example.ai
+example.al
+example.am
+example.com.ar
+example.at
+example.co.at
+example.or.at
+example.com.au
+example.be
+example.com.bh
+...
+</code></pre>
+
+<p>Enumerate over every possible typosquat variation of a domain:</p>
+
+<pre class="code shell"><code class="shell">$ ronin typosquat microsoft.com
+microosoft.com
+microsooft.com
+microssoft.com
+</code></pre>
+
+<p>Find all of the registered typosquat domains for a valid domain:</p>
+
+<pre class="code shell"><code class="shell">$ ronin typosquat --registered microsoft.com
+</code></pre>
+
+<p>Find all of the typosquat domains with addresses for a valid domain:</p>
+
+<pre class="code shell"><code class="shell">$ ronin typosquat --has-addresses microsoft.com
+</code></pre>
+
+<p>Find all of the unregistered typosquat domains for a valid domain:</p>
+
+<pre class="code shell"><code class="shell">$ ronin typosquat --unregistered microsoft.com
+</code></pre>
+
+<h4 id="ssl-tls-certs">SSL/TLS Certs</h4>
+
+<p>Dump information about a SSL/TLS certificate:</p>
+
+<pre class="code shrll"><code class="shrll">$ ronin cert-dump https://example.com/
+</code></pre>
+
+<p>Download a SSL/TLS certificate from a host and port:</p>
+
+<pre class="code shell"><code class="shell">$ ronin cert-grab github.com:443
+</code></pre>
+
+<p>Generate a new SSL/TLS certificate:</p>
+
+<pre class="code shell"><code class="shell">$ ronin cert-gen -c test.com -O &quot;Test Co&quot; -U &quot;Test Dept&quot; \
+                 -L &quot;Test City&quot; -S NY -C US
+</code></pre>
+
+<h4 id="http">HTTP</h4>
+
+<p>Perform an HTTP <code>GET</code> request (with syntax highlighting):</p>
+
+<pre class="code shell"><code class="shell">$ ronin http https://example.com/
+</code></pre>
+
+<p>Send an HTTP request with additional headers:</p>
+
+<pre class="code shell"><code class="shell">$ ronin http --post --header &quot;Authorization: ...&quot; https://foo.bar/
+</code></pre>
+
+<p>Send an HTTP request with a known <code>User-Agent</code> string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin http --post --user-agent chrome-android https://foo.bar/
+</code></pre>
+
+<p>Send an HTTP request with a custom <code>User-Agent</code> string:</p>
+
+<pre class="code shell"><code class="shell">$ ronin http --post --user-agent-string &quot;...&quot; https://foo.bar/
+</code></pre>
+
+<p>Open an interactive HTTP shell:</p>
+
+<pre class="code shell"><code class="shell">$ ronin http --shell https://example.com/
+https://example.com/&gt; help
+  help [COMMAND]                        Prints the list of commands or additional help
+  get PATH[?QUERY] [BODY]               Performs a GET request
+  head PATH[?QUERY]                     Performs a HEAD request
+  patch PATH[?QUERY] [BODY]             Performs a PATCH request
+  post PATH[?QUERY] [BODY]              Performs a POST request
+  put PATH [BODY]                       Performs a PUT request
+  copy PATH DEST                        Performs a COPY request
+  delete PATH[?QUERY]                   Performs a DELETE request
+  lock PATH[?QUERY]                     Performs a LOCK request
+  options PATH[?QUERY]                  Performs a OPTIONS request
+  mkcol PATH[?QUERY]                    Performs a MKCOL request
+  move PATH[?QUERY] DEST                Performs a MOVE request
+  propfind PATH[?QUERY]                 Performs a PROPFIND request
+  proppatch PATH[?QUERY]                Performs a PROPPATCH request
+  trace PATH[?QUERY]                    Performs a TRACE request
+  unlock PATH[?QUERY]                   Performs a UNLOCK request
+  cd PATH                               Changes the base URL path
+  headers [{set | unset} NAME [VALUE]]  Manages the request headers
+</code></pre>
+
+<p>Print the HTTP status of every URL in a file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin url --file urls.txt --status
+</code></pre>
+
 <h3 id="see-also">See Also</h3>
 
 <ul>
@@ -306,7 +840,7 @@ along with Ronin.  If not, see <a href="https://www.gnu.org/licenses/">https://w
 </div></div>
 
       <div id="footer">
-  Generated on Tue Jan 10 23:59:39 2023 by
+  Generated on Sat Jan 14 20:57:31 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.3).
 </div>
