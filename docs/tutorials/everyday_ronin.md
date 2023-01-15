@@ -53,7 +53,7 @@ $ ronin irb
 Packing an [Integer](http://www.ruby-doc.org/core/classes/Integer.html):
 
 ```ruby
-0x1337.pack(Arch.i686)
+0x1337.pack(:uint32_le)
 # => "7\x13\0\0"
 ```
 
