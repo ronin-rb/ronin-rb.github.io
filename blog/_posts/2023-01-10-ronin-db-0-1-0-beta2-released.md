@@ -20,12 +20,7 @@ To update the installed beta gems, simply run:
 gem update ronin --pre
 ```
 
-The [docker images] have also been updated. To update the docker images,
-simply run:
-
-```shell
-docker pull roninrb/ronin
-```
+{% include docker_update.md %}
 
 Keep beta testing!
 
@@ -36,5 +31,3 @@ Keep beta testing!
 [ronin-db-0.1.0.beta2]: https://rubygems.org/gems/ronin-db/versions/0.1.0.beta2
 
 [sqlite3]: https://www.sqlite.org/index.html
-
-[docker images]: https://hub.docker.com/r/roninrb/ronin
