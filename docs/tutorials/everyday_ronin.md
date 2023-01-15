@@ -256,7 +256,7 @@ url.to_s
 HTTP Proxy settings:
 
 ```ruby
-Metwork::HTTP.proxy
+Network::HTTP.proxy
 # => nil
 ```
 
