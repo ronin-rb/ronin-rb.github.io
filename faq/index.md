@@ -13,13 +13,6 @@ title: Frequently Asked Questions
 
 [Ruby][ruby]
 
-### Why choose Ruby instead of Python?
-
-[Ruby][ruby]'s syntax and features are much more flexible than Python's and
-save the programmer time by giving them many ways to do things. [Ruby][ruby]
-also has a far better Object Model (literal *everything* is an Object) which
-allows writing formal Object Orientated code.
-
 ### What version of Ruby should I run Ronin on?
 
 Ronin requires [ruby] >= 3.0.0
@@ -80,6 +73,13 @@ Why yes, you can follow
 [@ronin_rb@infosec.exchange](https://infosec.exchange/@ronin_rb).
 
 ## Ruby
+
+### Why choose Ruby instead of Python?
+
+[Ruby][ruby]'s syntax and features are much more flexible than Python's and
+save the programmer time by giving them many ways to do things. [Ruby][ruby]
+also has a far better Object Model (literal *everything* is an Object) which
+allows writing formal Object Orientated code.
 
 ### What is the easiest way to install Ruby?
 
