@@ -161,7 +161,7 @@ ronin-repos new path/to/repo
 
 Then simply publish the git repository to [GitHub] or [GitLab].
 
-## Development
+## Quality
 
 ### How readable is Ronin's code-base?
 
@@ -170,14 +170,16 @@ have a [CodeClimate Maintainability score] of **A** or **B**.
 
 [CodeClimate Maintainability score]: https://docs.codeclimate.com/docs/maintainability
 
-### Where is Ronin's code-base hosted?
-
-Ronin and it's many libraries are hosted on [GitHub][ronin-rb].
-
 ### Does Ronin have a test-suite so that I can ensure that Ronin is bug free?
 
 Yes, Ronin has an extensive [RSpec] test suite. Most Ronin libraries have a
 [SimpleCov] coverage measurement of +90%.
+
+## Development
+
+### Where is Ronin's code-base hosted?
+
+Ronin and it's many libraries are hosted on [GitHub][ronin-rb].
 
 [RSpec]: https://rspec.info/
 [SimpleCov]: https://github.com/simplecov-ruby/simplecov#readme
