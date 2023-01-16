@@ -181,6 +181,12 @@ Yes, Ronin has an extensive [RSpec] test suite. Most Ronin libraries have a
 
 Ronin and it's many libraries are hosted on [GitHub][ronin-rb].
 
+### What do I need in order to contribute to Ronin?
+
+1. Knowledge of [git].
+2. A [GitHub] account.
+3. Knowledge of [Ruby][ruby].
+
 [RSpec]: https://rspec.info/
 [SimpleCov]: https://github.com/simplecov-ruby/simplecov#readme
 
