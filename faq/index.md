@@ -88,11 +88,11 @@ allows writing formal Object Orientated code.
 Probably the easiest way to install [ruby] is from your system's package
 manager:
 
-* macOS ([Homebrew](https://brew.sh/)): `sudo brew install ruby`
-* Debian / Ubuntu: `sudo apt install ruby-full`
-* Fedora: `sudo dnf install ruby-devel`
-* OpenSUSE: `sudo zypper -n in -l ruby-devel`
-* Arch: `sudo pacman install community/ruby`
+* **macOS** ([Homebrew](https://brew.sh/)): `sudo brew install ruby`
+* **Debian** / **Ubuntu**: `sudo apt install ruby-full`
+* **Fedora**: `sudo dnf install ruby-devel`
+* **OpenSUSE**: `sudo zypper -n in -l ruby-devel`
+* **Arch**: `sudo pacman install community/ruby`
 
 #### Option 2: Ruby version Manager
 
