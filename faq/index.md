@@ -187,6 +187,11 @@ Ronin and it's many libraries are hosted on [GitHub][ronin-rb].
 2. A [GitHub] account.
 3. Knowledge of [Ruby][ruby].
 
+If you just want to fix a typo in the documentation, then you can edit the
+documentation entirely via [GitHub]'s website and submit a [pull request].
+
+[pull request]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
+
 [RSpec]: https://rspec.info/
 [SimpleCov]: https://github.com/simplecov-ruby/simplecov#readme
 
