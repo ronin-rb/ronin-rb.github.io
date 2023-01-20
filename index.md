@@ -38,7 +38,6 @@ A couple of [examples](/examples/) of things Ronin simplifies.
   <!-- Random Examples -->
 </ul>
 
-[Ruby]: http://www.ruby-lang.org
 [ronin]: https://github.com/ronin-rb/ronin#readme
 [Synopsis]: https://github.com/ronin-rb/ronin#synopsis
 [GitHub]: https://github.com/ronin-rb/
