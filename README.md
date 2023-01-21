@@ -37,11 +37,13 @@ denoted by the `.md` file extension.
 
 ## Setup
 
-    $ git clone https://github.com/ronin-rb/ronin-rb.github.io.git
-    $ gem install bundler
-    $ cd ronin-rb.github.io/
-    $ bundle install # this may take a while
-    $ bundle exec jekyll serve
+```shell
+$ git clone https://github.com/ronin-rb/ronin-rb.github.io.git
+$ gem install bundler
+$ cd ronin-rb.github.io/
+$ bundle install # this may take a while
+$ bundle exec jekyll serve
+```
 
 ## License
 
