@@ -19,7 +19,6 @@ and blog for the Ronin project.
 * `images`: Contains the static images to be published.
 * `css`: Contains the CSS files to be published.
 * `js`: Contains the static JavaScript files to be published.
-* `static`: Contains static files provided by various Ronin libraries.
 * `blog/_posts`: Contains the posts for the Development Blog.
 * `examples/*/_posts/`: Contains the random examples displayed on the
   front page.
