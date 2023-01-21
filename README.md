@@ -32,6 +32,7 @@ denoted by the `.md` file extension.
 
 ## Requirements
 
+* [ruby] >= 3.1.0
 * [bundler] 2.x
 
 ## Setup
@@ -65,6 +66,7 @@ along with ronin-rb.github.io.  If not, see
 [Markdown]: http://en.wikipedia.org/wiki/Markdown
 [syntax]: http://daringfireball.net/projects/markdown/basics
 
+[ruby]: https://www.ruby-lang.org/
 [bundler]: https://bundler.io/
 [jekyll]: https://jekyllrb.com/
 [kramdown]: https://kramdown.gettalong.org/
