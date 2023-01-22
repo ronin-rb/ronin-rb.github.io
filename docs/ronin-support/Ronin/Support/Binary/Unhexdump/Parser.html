@@ -1,0 +1,2319 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Ronin::Support::Binary::Unhexdump::Parser
+  
+    &mdash; Ronin::Support Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::Support::Binary::Unhexdump::Parser";
+  relpath = '../../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../../Support.html" title="Ronin::Support (module)">Support</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Unhexdump.html" title="Ronin::Support::Binary::Unhexdump (module)">Unhexdump</a></span></span>
+     &raquo; 
+    <span class="title">Parser</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Ronin::Support::Binary::Unhexdump::Parser
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Ronin::Support::Binary::Unhexdump::Parser</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/support/binary/unhexdump/parser.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="CHAR_TYPE-constant" class="">CHAR_TYPE =
+          <div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>it uses <code>&#39;C&#39;</code> as the pack string.</p>
+</div>
+  </div>
+
+<p>The character type.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="../CTypes.html" title="Ronin::Support::Binary::CTypes (module)">CTypes</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../CTypes/CharType.html" title="Ronin::Support::Binary::CTypes::CharType (class)">CharType</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../CTypes/CharType.html#initialize-instance_method" title="Ronin::Support::Binary::CTypes::CharType#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='label'>signed:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>pack_string:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>C</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="TYPES-constant" class="">TYPES =
+          <div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>The <code>:char</code> and <code>:uchar</code> types to a custom char type that uses</p>
+</div>
+  </div>
+
+<p>Supported types.</p>
+
+<p><code>&#39;C&#39;</code> as it&#39;s pack string.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'><span class='object_link'><a href="../CTypes.html" title="Ronin::Support::Binary::CTypes (module)">CTypes</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../CTypes.html#TYPES-constant" title="Ronin::Support::Binary::CTypes::TYPES (constant)">TYPES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span>
+  <span class='label'>char:</span>  <span class='const'><span class='object_link'><a href="#CHAR_TYPE-constant" title="Ronin::Support::Binary::Unhexdump::Parser::CHAR_TYPE (constant)">CHAR_TYPE</a></span></span><span class='comma'>,</span>
+  <span class='label'>uchar:</span> <span class='const'><span class='object_link'><a href="#CHAR_TYPE-constant" title="Ronin::Support::Binary::Unhexdump::Parser::CHAR_TYPE (constant)">CHAR_TYPE</a></span></span>
+<span class='rparen'>)</span></pre></dd>
+      
+        <dt id="VISIBLE_CHARS-constant" class="">VISIBLE_CHARS =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Visible characters</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'>Hash</span><span class='lbracket'>[</span>
+  <span class='const'>Chars</span><span class='op'>::</span><span class='const'>VISIBLE</span><span class='period'>.</span><span class='id identifier rubyid_chars'>chars</span><span class='period'>.</span><span class='id identifier rubyid_sort'>sort</span><span class='period'>.</span><span class='id identifier rubyid_zip'>zip</span><span class='lparen'>(</span><span class='const'>Chars</span><span class='op'>::</span><span class='const'>VISIBLE</span><span class='period'>.</span><span class='id identifier rubyid_bytes'>bytes</span><span class='period'>.</span><span class='id identifier rubyid_sort'>sort</span><span class='rparen'>)</span>
+<span class='rbracket'>]</span></pre></dd>
+      
+        <dt id="CHARS-constant" class="">CHARS =
+          <div class="docstring">
+  <div class="discussion">
+    <p>Escaped characters</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\0</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x00</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\a</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x07</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\b</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x08</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\t</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x09</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x0a</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\v</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x0b</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\f</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x0c</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\r</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x0d</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='int'>0x20</span>
+<span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#VISIBLE_CHARS-constant" title="Ronin::Support::Binary::Unhexdump::Parser::VISIBLE_CHARS (constant)">VISIBLE_CHARS</a></span></span><span class='rparen'>)</span></pre></dd>
+      
+        <dt id="NAMED_CHARS-constant" class="">NAMED_CHARS =
+          <div class="docstring">
+  <div class="discussion">
+    <p>od named characters</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>nul</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x00</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>soh</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x01</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>stx</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x02</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>etx</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x03</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>eot</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x04</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>enq</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x05</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ack</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x06</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bel</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x07</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bs</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='int'>0x08</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ht</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='int'>0x09</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>lf</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='int'>0x0a</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>nl</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='int'>0x0a</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>vt</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='int'>0x0b</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ff</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='int'>0x0c</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cr</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='int'>0x0d</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>so</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='int'>0x0e</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>si</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='int'>0x0f</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dle</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x10</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dc1</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x11</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dc2</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x12</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dc3</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x13</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dc4</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x14</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>nak</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x15</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>syn</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x16</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>etb</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x17</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>can</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x18</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>em</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='int'>0x19</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>sub</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x1a</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>esc</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x1b</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>fs</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='int'>0x1c</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>gs</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='int'>0x1d</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>rs</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='int'>0x1e</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>us</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='int'>0x1f</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>sp</span><span class='tstring_end'>&#39;</span></span>  <span class='op'>=&gt;</span> <span class='int'>0x20</span><span class='comma'>,</span>
+  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>del</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='int'>0x7f</span>
+<span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#VISIBLE_CHARS-constant" title="Ronin::Support::Binary::Unhexdump::Parser::VISIBLE_CHARS (constant)">VISIBLE_CHARS</a></span></span><span class='rparen'>)</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#address_base-instance_method" title="#address_base (instance method)">#<strong>address_base</strong>  &#x21d2; 2, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The base of all addresses to parse.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#base-instance_method" title="#base (instance method)">#<strong>base</strong>  &#x21d2; 2, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The base of all words to parse.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#format-instance_method" title="#format (instance method)">#<strong>format</strong>  &#x21d2; :hexdump, :od </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The format to parse.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#type-instance_method" title="#type (instance method)">#<strong>type</strong>  &#x21d2; :integer, :float </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The type of data to parse.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(format: :hexdump, **kwargs)  &#x21d2; Parser </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Initializes the hexdump parser.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#pack-instance_method" title="#pack (instance method)">#<strong>pack</strong>(values)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Packs a segment back into bytes.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse-instance_method" title="#parse (instance method)">#<strong>parse</strong>(hexdump) {|address, values| ... } &#x21d2; Integer, Enumerator </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Parses a hexdump.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_address-instance_method" title="#parse_address (instance method)">#<strong>parse_address</strong>(address)  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Parses an address.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_char_or_int-instance_method" title="#parse_char_or_int (instance method)">#<strong>parse_char_or_int</strong>(string)  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Parses an integer or a ASCII character.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_float-instance_method" title="#parse_float (instance method)">#<strong>parse_float</strong>(string)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Parses a float.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_int-instance_method" title="#parse_int (instance method)">#<strong>parse_int</strong>(string)  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Parses an Integer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_line-instance_method" title="#parse_line (instance method)">#<strong>parse_line</strong>(line)  &#x21d2; (Integer, Array&lt;Integer, Float&gt;) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Parses a line from the hexdump.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unhexdump-instance_method" title="#unhexdump (instance method)">#<strong>unhexdump</strong>(hexdump)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Unhexdumps a hexdump and returns the raw data.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unpack-instance_method" title="#unpack (instance method)">#<strong>unpack</strong>(hexdump)  &#x21d2; Array&lt;Integer&gt;, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Unhexdumps a hexdump and returns the unpacked values.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(format: :hexdump, **kwargs)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Support::Binary::Unhexdump::Parser (class)">Parser</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Initializes the hexdump parser.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>format</span>
+      
+      
+        <span class='type'>(<tt>:od</tt>, <tt>:hexdump</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>:hexdump</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The expected format of the hexdump. Must be either <code>:od</code> or
+<code>:hexdump</code>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:type</span>
+          <span class="type">(<tt>Symbol</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Denotes the encoding used for the bytes within the hexdump.
+Must be one of the following:</p>
+
+<ul>
+<li><code>:byte</code> (default for <code>format: :hexdump</code>)</li>
+<li><code>:char</code></li>
+<li><code>:uint8</code></li>
+<li><code>:uint16</code></li>
+<li><code>:uint32</code></li>
+<li><code>:uint64</code></li>
+<li><code>:int8</code></li>
+<li><code>:int16</code></li>
+<li><code>:int32</code></li>
+<li><code>:int64</code></li>
+<li><code>:uchar</code></li>
+<li><code>:ushort</code></li>
+<li><code>:uint</code></li>
+<li><code>:ulong</code></li>
+<li><code>:ulong_long</code></li>
+<li><code>:short</code></li>
+<li><code>:int</code></li>
+<li><code>:long</code></li>
+<li><code>:long_long</code></li>
+<li><code>:float</code></li>
+<li><code>:double</code></li>
+<li><code>:float_le</code></li>
+<li><code>:double_le</code></li>
+<li><code>:float_be</code></li>
+<li><code>:double_be</code></li>
+<li><code>:uint16_le</code> (default for <code>format: :od</code>)</li>
+<li><code>:uint32_le</code></li>
+<li><code>:uint64_le</code></li>
+<li><code>:int16_le</code></li>
+<li><code>:int32_le</code></li>
+<li><code>:int64_le</code></li>
+<li><code>:uint16_be</code></li>
+<li><code>:uint32_be</code></li>
+<li><code>:uint64_be</code></li>
+<li><code>:int16_be</code></li>
+<li><code>:int32_be</code></li>
+<li><code>:int64_be</code></li>
+<li><code>:ushort_le</code></li>
+<li><code>:uint_le</code></li>
+<li><code>:ulong_le</code></li>
+<li><code>:ulong_long_le</code></li>
+<li><code>:short_le</code></li>
+<li><code>:int_le</code></li>
+<li><code>:long_le</code></li>
+<li><code>:long_long_le</code></li>
+<li><code>:ushort_be</code></li>
+<li><code>:uint_be</code></li>
+<li><code>:ulong_be</code></li>
+<li><code>:ulong_long_be</code></li>
+<li><code>:short_be</code></li>
+<li><code>:int_be</code></li>
+<li><code>:long_be</code></li>
+<li><code>:long_long_be</code></li>
+</ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:address_base</span>
+          <span class="type">(<tt>2</tt>, <tt>8</tt>, <tt>10</tt>, <tt>16</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The numerical base that the offset addresses are encoded in.
+Defaults to 16 when <code>format: :hexdump</code> and 8 when <code>format: :od</code>.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:base</span>
+          <span class="type">(<tt>2</tt>, <tt>8</tt>, <tt>10</tt>, <tt>16</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The numerical base that the hexdumped numbers are encoded in.
+Defaults to 16 when <code>format: :hexdump</code> and 8 when <code>format: :od</code>.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:named_chars</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Indicates to parse <code>od</code>-style named characters (ex: <code>nul</code>,
+<code>del</code>, etc). Only recognized when <code>format: :od</code> is also given.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Unsupported <code>type:</code> value, the <code>type:</code> value was not a scalar
+type, or the <code>format:</code> was not <code>:hexdump</code> or <code>:od</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/unhexdump/parser.rb', line 208</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>format:</span> <span class='symbol'>:hexdump</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_format'>format</span>
+  <span class='kw'>when</span> <span class='symbol'>:od</span>      <span class='kw'>then</span> <span class='id identifier rubyid_initialize_od'>initialize_od</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:hexdump</span> <span class='kw'>then</span> <span class='id identifier rubyid_initialize_hexdump'>initialize_hexdump</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>format: must be either :hexdump or :od, was </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>case</span> <span class='ivar'>@type</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../CTypes.html" title="Ronin::Support::Binary::CTypes (module)">CTypes</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../CTypes/FloatType.html" title="Ronin::Support::Binary::CTypes::FloatType (class)">FloatType</a></span></span>
+    <span class='ivar'>@parse_method</span> <span class='op'>=</span> <span class='id identifier rubyid_method'>method</span><span class='lparen'>(</span><span class='symbol'>:parse_float</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../CTypes.html" title="Ronin::Support::Binary::CTypes (module)">CTypes</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../CTypes/CharType.html" title="Ronin::Support::Binary::CTypes::CharType (class)">CharType</a></span></span>
+    <span class='ivar'>@parse_method</span> <span class='op'>=</span> <span class='id identifier rubyid_method'>method</span><span class='lparen'>(</span><span class='symbol'>:parse_char_or_int</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../CTypes.html" title="Ronin::Support::Binary::CTypes (module)">CTypes</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../CTypes/ScalarType.html" title="Ronin::Support::Binary::CTypes::ScalarType (class)">ScalarType</a></span></span>
+    <span class='ivar'>@parse_method</span> <span class='op'>=</span> <span class='id identifier rubyid_method'>method</span><span class='lparen'>(</span><span class='symbol'>:parse_int</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>only scalar types are support: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:type</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="address_base-instance_method">
+  
+    #<strong>address_base</strong>  &#x21d2; <tt>2</tt>, ...  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The base of all addresses to parse</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>2</tt>, <tt>8</tt>, <tt>10</tt>, <tt>16</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+118
+119
+120</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/unhexdump/parser.rb', line 118</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_address_base'>address_base</span>
+  <span class='ivar'>@address_base</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="base-instance_method">
+  
+    #<strong>base</strong>  &#x21d2; <tt>2</tt>, ...  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The base of all words to parse</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>2</tt>, <tt>8</tt>, <tt>10</tt>, <tt>16</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+123
+124
+125</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/unhexdump/parser.rb', line 123</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_base'>base</span>
+  <span class='ivar'>@base</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="format-instance_method">
+  
+    #<strong>format</strong>  &#x21d2; <tt>:hexdump</tt>, <tt>:od</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The format to parse.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>:hexdump</tt>, <tt>:od</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+108
+109
+110</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/unhexdump/parser.rb', line 108</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_format'>format</span>
+  <span class='ivar'>@format</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="type-instance_method">
+  
+    #<strong>type</strong>  &#x21d2; <tt>:integer</tt>, <tt>:float</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The type of data to parse.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>:integer</tt>, <tt>:float</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+113
+114
+115</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/unhexdump/parser.rb', line 113</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_type'>type</span>
+  <span class='ivar'>@type</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="pack-instance_method">
+  
+    #<strong>pack</strong>(values)  &#x21d2; <tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Packs a segment back into bytes.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>values</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Array.html" title="Ronin::Support::Binary::Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span>, <span class='object_link'><a href="../../../../Float.html" title="Float (class)">Float</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A segment of words.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The packed segment.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+484
+485
+486</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/unhexdump/parser.rb', line 484</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='ivar'>@type</span><span class='period'>.</span><span class='id identifier rubyid_pack_string'>pack_string</span> <span class='op'>*</span> <span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse-instance_method">
+  
+    #<strong>parse</strong>(hexdump) {|address, values| ... } &#x21d2; <tt><span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span></tt>, <tt>Enumerator</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Parses a hexdump.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>hexdump</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt>, <tt><span class='object_link'><a href="../../../../IO.html" title="IO (class)">IO</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The hexdump output.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>address</tt>, <tt>values</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed each parsed line of the
+hexdump.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>address</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The parsed address from the hexdump line.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>values</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Array.html" title="Ronin::Support::Binary::Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span>, <span class='object_link'><a href="../../../../Float.html" title="Float (class)">Float</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The parsed values from a line in the hexdump.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span></tt>, <tt>Enumerator</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, then the last address will be returned
+representing the total length of the hexdump.
+If no block is given, an Enumerator will be returned.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/unhexdump/parser.rb', line 291</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_hexdump'>hexdump</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='comma'>,</span><span class='id identifier rubyid_hexdump'>hexdump</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+
+  <span class='id identifier rubyid_previous_address'>previous_address</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='id identifier rubyid_first_address'>first_address</span>    <span class='op'>=</span> <span class='kw'>nil</span>
+
+  <span class='id identifier rubyid_previous_row'>previous_row</span>         <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='id identifier rubyid_previous_row_repeats'>previous_row_repeats</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='id identifier rubyid_previous_row_size'>previous_row_size</span>    <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='id identifier rubyid_starts_repeating_at'>starts_repeating_at</span>  <span class='op'>=</span> <span class='kw'>nil</span>
+
+  <span class='id identifier rubyid_hexdump'>hexdump</span><span class='period'>.</span><span class='id identifier rubyid_each_line'>each_line</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='op'>|</span>
+    <span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_chomp!'>chomp!</span>
+    <span class='comment'># remove GNU hexdump&#39;s ASCII column
+</span>    <span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_sub!'>sub!</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\s+\|.{1,16}\|\s*$</span><span class='regexp_end'>/</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='ivar'>@format</span> <span class='op'>==</span> <span class='symbol'>:hexdump</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_line'>line</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>*</span><span class='tstring_end'>&#39;</span></span>
+      <span class='id identifier rubyid_previous_row_repeats'>previous_row_repeats</span> <span class='op'>=</span> <span class='kw'>true</span>
+      <span class='id identifier rubyid_previous_row_size'>previous_row_size</span>    <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_previous_row'>previous_row</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>*</span> <span class='ivar'>@type</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_starts_repeating_at'>starts_repeating_at</span>  <span class='op'>=</span> <span class='id identifier rubyid_previous_address'>previous_address</span> <span class='op'>+</span> <span class='id identifier rubyid_previous_row_size'>previous_row_size</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='id identifier rubyid_row'>row</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_line'>parse_line</span><span class='lparen'>(</span><span class='id identifier rubyid_line'>line</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_first_address'>first_address</span> <span class='op'>||=</span> <span class='id identifier rubyid_address'>address</span>
+
+      <span class='kw'>if</span> <span class='id identifier rubyid_previous_row_repeats'>previous_row_repeats</span>
+        <span class='comment'># fill in the omitted repeating rows
+</span>        <span class='id identifier rubyid_range'>range</span>     <span class='op'>=</span> <span class='id identifier rubyid_starts_repeating_at'>starts_repeating_at</span><span class='op'>...</span><span class='id identifier rubyid_address'>address</span>
+        <span class='id identifier rubyid_addresses'>addresses</span> <span class='op'>=</span> <span class='id identifier rubyid_range'>range</span><span class='period'>.</span><span class='id identifier rubyid_step'>step</span><span class='lparen'>(</span><span class='id identifier rubyid_previous_row_size'>previous_row_size</span><span class='rparen'>)</span>
+
+        <span class='id identifier rubyid_addresses'>addresses</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_address'>address</span><span class='op'>|</span>
+          <span class='kw'>yield</span> <span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='id identifier rubyid_previous_row'>previous_row</span>
+        <span class='kw'>end</span>
+
+        <span class='id identifier rubyid_previous_row_repeats'>previous_row_repeats</span> <span class='op'>=</span> <span class='kw'>false</span>
+      <span class='kw'>end</span>
+
+      <span class='kw'>yield</span> <span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='id identifier rubyid_row'>row</span> <span class='kw'>if</span> <span class='id identifier rubyid_row'>row</span>
+
+      <span class='id identifier rubyid_previous_address'>previous_address</span> <span class='op'>=</span> <span class='id identifier rubyid_address'>address</span>
+      <span class='id identifier rubyid_previous_row'>previous_row</span>     <span class='op'>=</span> <span class='id identifier rubyid_row'>row</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># return the last address as the length
+</span>  <span class='kw'>return</span> <span class='id identifier rubyid_previous_address'>previous_address</span> <span class='op'>-</span> <span class='id identifier rubyid_first_address'>first_address</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_address-instance_method">
+  
+    #<strong>parse_address</strong>(address)  &#x21d2; <tt><span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Parses an address.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>address</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The text of the address.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The parsed address.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+389
+390
+391</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/unhexdump/parser.rb', line 389</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_address'>parse_address</span><span class='lparen'>(</span><span class='id identifier rubyid_address'>address</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_address'>address</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='lparen'>(</span><span class='ivar'>@address_base</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_char_or_int-instance_method">
+  
+    #<strong>parse_char_or_int</strong>(string)  &#x21d2; <tt><span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Parses an integer or a ASCII character.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The text of the integer or character.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The parsed integer or byte value of the character.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+417
+418
+419
+420
+421</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/unhexdump/parser.rb', line 417</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_char_or_int'>parse_char_or_int</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='ivar'>@chars</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_string'>string</span><span class='op'>|</span>
+    <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='lparen'>(</span><span class='ivar'>@base</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_float-instance_method">
+  
+    #<strong>parse_float</strong>(string)  &#x21d2; <tt><span class='object_link'><a href="../../../../Float.html" title="Float (class)">Float</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Parses a float.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The text of the float.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The parsed float.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+432
+433
+434</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/unhexdump/parser.rb', line 432</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_float'>parse_float</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_int-instance_method">
+  
+    #<strong>parse_int</strong>(string)  &#x21d2; <tt><span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Parses an Integer.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The text of the Integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The parsed Integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+404
+405
+406</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/unhexdump/parser.rb', line 404</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_int'>parse_int</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='lparen'>(</span><span class='ivar'>@base</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_line-instance_method">
+  
+    #<strong>parse_line</strong>(line)  &#x21d2; <tt>(<span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span>, <span class='object_link'><a href="../Array.html" title="Ronin::Support::Binary::Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span>, <span class='object_link'><a href="../../../../Float.html" title="Float (class)">Float</a></span>&gt;)</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Parses a line from the hexdump.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>line</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A line from a hexdump.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>(<span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span>, <span class='object_link'><a href="../Array.html" title="Ronin::Support::Binary::Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span>, <span class='object_link'><a href="../../../../Float.html" title="Float (class)">Float</a></span>&gt;)</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The parse address and the parsed numbers from the line.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.5.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/unhexdump/parser.rb', line 445</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_line'>parse_line</span><span class='lparen'>(</span><span class='id identifier rubyid_line'>line</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='ivar'>@type</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../CTypes.html" title="Ronin::Support::Binary::CTypes (module)">CTypes</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../CTypes/CharType.html" title="Ronin::Support::Binary::CTypes::CharType (class)">CharType</a></span></span><span class='rparen'>)</span>
+    <span class='comment'># because od/hexdump print the &#39; &#39; char as white space,
+</span>    <span class='comment'># we need special parsing logic here.
+</span>    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_start_index'>start_index</span> <span class='op'>=</span> <span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_index'>index</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_address'>address</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_address'>parse_address</span><span class='lparen'>(</span><span class='id identifier rubyid_line'>line</span><span class='lbracket'>[</span><span class='int'>0</span><span class='comma'>,</span><span class='id identifier rubyid_start_index'>start_index</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_rest'>rest</span>    <span class='op'>=</span> <span class='id identifier rubyid_line'>line</span><span class='lbracket'>[</span><span class='id identifier rubyid_start_index'>start_index</span><span class='op'>..</span><span class='rbracket'>]</span>
+      <span class='id identifier rubyid_numbers'>numbers</span> <span class='op'>=</span> <span class='id identifier rubyid_rest'>rest</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>   ( )|([^\s]+)</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_numbers'>numbers</span><span class='period'>.</span><span class='id identifier rubyid_map!'>map!</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='lparen'>(</span><span class='id identifier rubyid_sp'>sp</span><span class='comma'>,</span><span class='id identifier rubyid_char'>char</span><span class='rparen'>)</span><span class='op'>|</span> <span class='id identifier rubyid_sp'>sp</span> <span class='op'>||</span> <span class='id identifier rubyid_char'>char</span> <span class='rbrace'>}</span>
+      <span class='id identifier rubyid_numbers'>numbers</span><span class='period'>.</span><span class='id identifier rubyid_map!'>map!</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='ivar'>@parse_method</span><span class='rparen'>)</span>
+
+      <span class='kw'>return</span> <span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='id identifier rubyid_numbers'>numbers</span>
+    <span class='kw'>else</span>
+      <span class='kw'>return</span> <span class='id identifier rubyid_parse_address'>parse_address</span><span class='lparen'>(</span><span class='id identifier rubyid_line'>line</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_numbers'>numbers</span> <span class='op'>=</span> <span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span>
+    <span class='id identifier rubyid_address'>address</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_address'>parse_address</span><span class='lparen'>(</span><span class='id identifier rubyid_address'>address</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_numbers'>numbers</span><span class='period'>.</span><span class='id identifier rubyid_map!'>map!</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='ivar'>@parse_method</span><span class='rparen'>)</span>
+
+    <span class='kw'>unless</span> <span class='id identifier rubyid_numbers'>numbers</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+      <span class='kw'>return</span> <span class='id identifier rubyid_address'>address</span><span class='comma'>,</span> <span class='id identifier rubyid_numbers'>numbers</span>
+    <span class='kw'>else</span>
+      <span class='kw'>return</span> <span class='id identifier rubyid_address'>address</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="unhexdump-instance_method">
+  
+    #<strong>unhexdump</strong>(hexdump)  &#x21d2; <tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Unhexdumps a hexdump and returns the raw data.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>hexdump</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt>, <tt><span class='object_link'><a href="../../../../IO.html" title="IO (class)">IO</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The contents of the hexdump.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The raw data from the hexdump.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/unhexdump/parser.rb', line 367</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_unhexdump'>unhexdump</span><span class='lparen'>(</span><span class='id identifier rubyid_hexdump'>hexdump</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer'>buffer</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>encoding:</span> <span class='const'><span class='object_link'><a href="../../Encoding.html" title="Ronin::Support::Encoding (class)">Encoding</a></span></span><span class='op'>::</span><span class='const'>ASCII_8BIT</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_length'>length</span> <span class='op'>=</span> <span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_hexdump'>hexdump</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span><span class='id identifier rubyid_row'>row</span><span class='op'>|</span>
+    <span class='id identifier rubyid_first_address'>first_address</span> <span class='op'>||=</span> <span class='id identifier rubyid_address'>address</span>
+    <span class='id identifier rubyid_buffer'>buffer</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='id identifier rubyid_row'>row</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_byteslice'>byteslice</span><span class='lparen'>(</span><span class='int'>0</span><span class='comma'>,</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="unpack-instance_method">
+  
+    #<strong>unpack</strong>(hexdump)  &#x21d2; <tt><span class='object_link'><a href="../Array.html" title="Ronin::Support::Binary::Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span>&gt;</tt>, ... 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Unhexdumps a hexdump and returns the unpacked values.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Array.html" title="Ronin::Support::Binary::Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../../../Integer.html" title="Integer (class)">Integer</a></span>&gt;</tt>, <tt><span class='object_link'><a href="../Array.html" title="Ronin::Support::Binary::Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../../../String.html" title="String (class)">String</a></span>&gt;</tt>, <tt><span class='object_link'><a href="../Array.html" title="Ronin::Support::Binary::Array (class)">Array</a></span>&lt;<span class='object_link'><a href="../../../../Float.html" title="Float (class)">Float</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Array of unpacked values from the hexdump.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+346
+347
+348
+349
+350
+351
+352
+353
+354</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/unhexdump/parser.rb', line 346</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='id identifier rubyid_hexdump'>hexdump</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_values'>values</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_hexdump'>hexdump</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span><span class='id identifier rubyid_row'>row</span><span class='op'>|</span>
+    <span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='id identifier rubyid_row'>row</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_values'>values</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sat Jan 21 16:46:55 2023 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.28 (ruby-3.1.3).
+</div>
+
+    </div>
+  </body>
+</html>

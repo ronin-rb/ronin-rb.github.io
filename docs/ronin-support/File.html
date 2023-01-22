@@ -6,7 +6,7 @@
 <title>
   Class: File
   
-    &mdash; ronin-support Documentation
+    &mdash; Ronin::Support Documentation
   
 </title>
 
@@ -95,7 +95,7 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>lib/ronin/support/core_ext/file.rb<span class="defines">,<br />
-  lib/ronin/support/crypto/core_ext/file.rb,<br /> lib/ronin/support/archive/core_ext/file.rb,<br /> lib/ronin/support/compression/core_ext/file.rb,<br /> lib/ronin/support/binary/hexdump/core_ext/file.rb</span>
+  lib/ronin/support/crypto/core_ext/file.rb,<br /> lib/ronin/support/archive/core_ext/file.rb,<br /> lib/ronin/support/compression/core_ext/file.rb,<br /> lib/ronin/support/binary/unhexdump/core_ext/file.rb</span>
 </dd>
   </dl>
   
@@ -103,7 +103,7 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>Copyright (c) 2006-2022 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
+    <p>Copyright (c) 2006-2023 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
 
 <p>ronin-support is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published
@@ -4828,7 +4828,33 @@ Defaults to an empty ASCII 8bit encoded String.</p>
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>Unhexdump a hexdump created by GNU <code>hexdump -C</code>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="File (class)">File</a></span></span><span class='period'>.</span><span class='id identifier rubyid_unhexdump'>unhexdump</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hexdump.txt</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='comment'># =&gt; &quot;hello\n&quot;</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Unhexdump a hexdump created by GNU <code>hexdump</code>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="File (class)">File</a></span></span><span class='period'>.</span><span class='id identifier rubyid_unhexdump'>unhexdump</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hexdump.txt</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>type:</span> <span class='symbol'>:uint16_le</span><span class='rparen'>)</span>
+<span class='comment'># =&gt; &quot;hello\n&quot;</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Unhexdump a hexdump created by <code>od</code>:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="File (class)">File</a></span></span><span class='period'>.</span><span class='id identifier rubyid_unhexdump'>unhexdump</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>od.txt</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>format:</span> <span class='symbol'>:od</span><span class='rparen'>)</span>
+<span class='comment'># =&gt; &quot;hello\n&quot;</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -4857,7 +4883,7 @@ Defaults to an empty ASCII 8bit encoded String.</p>
       
         &mdash;
         <div class='inline'><p>Additional keyword arguments for
-<span class='object_link'><a href="Ronin/Support/Binary/Hexdump/Parser.html#initialize-instance_method" title="Ronin::Support::Binary::Hexdump::Parser#initialize (method)">Ronin::Support::Binary::Hexdump::Parser#initialize</a></span>.</p>
+<span class='object_link'><a href="Ronin/Support/Binary/Unhexdump/Parser.html#initialize-instance_method" title="Ronin::Support::Binary::Unhexdump::Parser#initialize (method)">Ronin::Support::Binary::Unhexdump::Parser#initialize</a></span>.</p>
 </div>
       
     </li>
@@ -5042,16 +5068,16 @@ Must be one of the following:</p>
       <pre class="lines">
 
 
-113
-114
-115
-116</pre>
+125
+126
+127
+128</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/hexdump/core_ext/file.rb', line 113</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/unhexdump/core_ext/file.rb', line 125</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_unhexdump'>unhexdump</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Support/Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Support/Binary/Hexdump.html" title="Ronin::Support::Binary::Hexdump (module)">Hexdump</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Support/Binary/Hexdump/Parser.html" title="Ronin::Support::Binary::Hexdump::Parser (class)">Parser</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Ronin/Support/Binary/Hexdump/Parser.html#initialize-instance_method" title="Ronin::Support::Binary::Hexdump::Parser#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Support/Binary.html" title="Ronin::Support::Binary (module)">Binary</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Support/Binary/Unhexdump.html" title="Ronin::Support::Binary::Unhexdump (module)">Unhexdump</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Support/Binary/Unhexdump/Parser.html" title="Ronin::Support::Binary::Unhexdump::Parser (class)">Parser</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Ronin/Support/Binary/Unhexdump/Parser.html#initialize-instance_method" title="Ronin::Support::Binary::Unhexdump::Parser#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_unhexdump'>unhexdump</span><span class='lparen'>(</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -5445,7 +5471,7 @@ Must be one of the following:</p>
 </div>
 
       <div id="footer">
-  Generated on Mon Jan  9 03:09:37 2023 by
+  Generated on Sat Jan 21 16:46:48 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.3).
 </div>
