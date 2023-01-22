@@ -1,7 +1,8 @@
 ---
 layout: post
-title: ronin 2.0.0.beta5, ronin-db 0.1.0.beta3, ronin-web 1.0.0.beta4, and
-ronin-fuzzer 0.1.0.beta2 released
+title:
+  ronin 2.0.0.beta5, ronin-db 0.1.0.beta3, ronin-web 1.0.0.beta4, and
+  ronin-fuzzer 0.1.0.beta2 released
 author: postmodern
 tags:
   - beta
