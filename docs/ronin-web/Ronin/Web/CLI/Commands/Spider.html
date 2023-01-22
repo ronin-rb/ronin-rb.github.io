@@ -166,6 +166,7 @@
     --print-status               Print the status codes for each URL
     --print-headers              Print response headers for each URL
     --print-header NAME          Prints a specific header
+    --history FILE               The history file
     --archive DIR                Archive every visited page to the DIR
     --git-archive DIR            Archive every visited page to the git repository
 -X, --xpath XPATH                Evaluates the XPath on each HTML page
@@ -611,6 +612,29 @@ ronin-web spider --site https://scanme.nmap.org/
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#define_printing_callbacks-instance_method" title="#define_printing_callbacks (instance method)">#<strong>define_printing_callbacks</strong>(agent)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Defines callbacks that print information.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(**kwargs)  &#x21d2; Spider </a>
     
 
@@ -743,6 +767,29 @@ ronin-web spider --site https://scanme.nmap.org/
 
   
     <span class="summary_desc"><div class='inline'><p>Prints the XPath or CSS-path query result for the page.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#print_status-instance_method" title="#print_status (instance method)">#<strong>print_status</strong>(page)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Prints the status of a page.</p>
 </div></span>
   
 </li>
@@ -896,13 +943,6 @@ ronin-web spider --site https://scanme.nmap.org/
       <pre class="lines">
 
 
-524
-525
-526
-527
-528
-529
-530
 531
 532
 533
@@ -915,10 +955,17 @@ ronin-web spider --site https://scanme.nmap.org/
 540
 541
 542
-543</pre>
+543
+544
+545
+546
+547
+548
+549
+550</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 524</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 531</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -1009,12 +1056,12 @@ ronin-web spider --site https://scanme.nmap.org/
       <pre class="lines">
 
 
-456
-457
-458</pre>
+463
+464
+465</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 456</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 463</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_default_headers'>default_headers</span>
   <span class='ivar'>@default_headers</span>
@@ -1083,12 +1130,12 @@ ronin-web spider --site https://scanme.nmap.org/
       <pre class="lines">
 
 
-471
-472
-473</pre>
+478
+479
+480</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 471</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 478</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_history'>history</span>
   <span class='ivar'>@history</span>
@@ -1157,12 +1204,12 @@ ronin-web spider --site https://scanme.nmap.org/
       <pre class="lines">
 
 
-461
-462
-463</pre>
+468
+469
+470</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 461</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 468</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_host_headers'>host_headers</span>
   <span class='ivar'>@host_headers</span>
@@ -1231,12 +1278,12 @@ ronin-web spider --site https://scanme.nmap.org/
       <pre class="lines">
 
 
-516
-517
-518</pre>
+523
+524
+525</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 516</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 523</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ignore_exts'>ignore_exts</span>
   <span class='ivar'>@ignore_exts</span>
@@ -1305,12 +1352,12 @@ ronin-web spider --site https://scanme.nmap.org/
       <pre class="lines">
 
 
-501
-502
-503</pre>
+508
+509
+510</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 501</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 508</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ignore_hosts'>ignore_hosts</span>
   <span class='ivar'>@ignore_hosts</span>
@@ -1379,12 +1426,12 @@ ronin-web spider --site https://scanme.nmap.org/
       <pre class="lines">
 
 
-511
-512
-513</pre>
+518
+519
+520</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 511</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 518</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ignore_links'>ignore_links</span>
   <span class='ivar'>@ignore_links</span>
@@ -1453,12 +1500,12 @@ ronin-web spider --site https://scanme.nmap.org/
       <pre class="lines">
 
 
-506
-507
-508</pre>
+513
+514
+515</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 506</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 513</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ignore_ports'>ignore_ports</span>
   <span class='ivar'>@ignore_ports</span>
@@ -1527,12 +1574,12 @@ ronin-web spider --site https://scanme.nmap.org/
       <pre class="lines">
 
 
-466
-467
-468</pre>
+473
+474
+475</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 466</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 473</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_queue'>queue</span>
   <span class='ivar'>@queue</span>
@@ -1601,12 +1648,12 @@ ronin-web spider --site https://scanme.nmap.org/
       <pre class="lines">
 
 
-496
-497
-498</pre>
+503
+504
+505</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 496</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 503</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_exts'>visit_exts</span>
   <span class='ivar'>@visit_exts</span>
@@ -1675,12 +1722,12 @@ ronin-web spider --site https://scanme.nmap.org/
       <pre class="lines">
 
 
-481
-482
-483</pre>
+488
+489
+490</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 481</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 488</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_hosts'>visit_hosts</span>
   <span class='ivar'>@visit_hosts</span>
@@ -1749,12 +1796,12 @@ ronin-web spider --site https://scanme.nmap.org/
       <pre class="lines">
 
 
-491
-492
-493</pre>
+498
+499
+500</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 491</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 498</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_links'>visit_links</span>
   <span class='ivar'>@visit_links</span>
@@ -1823,12 +1870,12 @@ ronin-web spider --site https://scanme.nmap.org/
       <pre class="lines">
 
 
-486
-487
-488</pre>
+493
+494
+495</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 486</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 493</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_ports'>visit_ports</span>
   <span class='ivar'>@visit_ports</span>
@@ -1897,12 +1944,12 @@ ronin-web spider --site https://scanme.nmap.org/
       <pre class="lines">
 
 
-476
-477
-478</pre>
+483
+484
+485</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 476</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 483</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_schemes'>visit_schemes</span>
   <span class='ivar'>@visit_schemes</span>
@@ -1980,38 +2027,6 @@ ronin-web spider --site https://scanme.nmap.org/
       <pre class="lines">
 
 
-668
-669
-670
-671
-672
-673
-674
-675
-676
-677
-678
-679
-680
-681
-682
-683
-684
-685
-686
-687
-688
-689
-690
-691
-692
-693
-694
-695
-696
-697
-698
-699
 700
 701
 702
@@ -2024,10 +2039,42 @@ ronin-web spider --site https://scanme.nmap.org/
 709
 710
 711
-712</pre>
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 668</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 700</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_agent_kwargs'>agent_kwargs</span>
   <span class='id identifier rubyid_kwargs'>kwargs</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -2073,6 +2120,152 @@ ronin-web spider --site https://scanme.nmap.org/
   <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:robots</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:robots</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:robots</span><span class='rparen'>)</span>
 
   <span class='kw'>return</span> <span class='id identifier rubyid_kwargs'>kwargs</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="define_printing_callbacks-instance_method">
+  
+    #<strong>define_printing_callbacks</strong>(agent)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Defines callbacks that print information.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>agent</span>
+      
+      
+        <span class='type'>(<tt>Ronin::Web::Spider::Agent</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The newly created agent.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 629</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_define_printing_callbacks'>define_printing_callbacks</span><span class='lparen'>(</span><span class='id identifier rubyid_agent'>agent</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_hosts</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_host'>every_host</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_host'>host</span><span class='op'>|</span>
+      <span class='id identifier rubyid_print_verbose'>print_verbose</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>spidering new host </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_host'>host</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_certs</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_cert'>every_cert</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_cert'>cert</span><span class='op'>|</span>
+      <span class='id identifier rubyid_print_verbose'>print_verbose</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>encountered new certificate for </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cert'>cert</span><span class='period'>.</span><span class='id identifier rubyid_subject'>subject</span><span class='period'>.</span><span class='id identifier rubyid_common_name'>common_name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_js_strings</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_js_string'>every_js_string</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_string'>string</span><span class='op'>|</span>
+      <span class='id identifier rubyid_print_content'>print_content</span> <span class='id identifier rubyid_string'>string</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_html_comments</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_html_comment'>every_html_comment</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_comment'>comment</span><span class='op'>|</span>
+      <span class='id identifier rubyid_print_content'>print_content</span> <span class='id identifier rubyid_comment'>comment</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_js_comments</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_js_comment'>every_js_comment</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_comment'>comment</span><span class='op'>|</span>
+      <span class='id identifier rubyid_print_content'>print_content</span> <span class='id identifier rubyid_comment'>comment</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_comments</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_comment'>every_comment</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_comment'>comment</span><span class='op'>|</span>
+      <span class='id identifier rubyid_print_content'>print_content</span> <span class='id identifier rubyid_comment'>comment</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2178,21 +2371,21 @@ it&#39;s spidering.</p>
       <pre class="lines">
 
 
-649
-650
-651
-652
-653
-654
-655
-656
-657
-658
-659
-660</pre>
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 649</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 681</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new_agent'>new_agent</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:host</span><span class='rbracket'>]</span>
@@ -2274,14 +2467,14 @@ it&#39;s spidering.</p>
       <pre class="lines">
 
 
-816
-817
-818
-819
-820</pre>
+848
+849
+850
+851
+852</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 816</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 848</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_print_content'>print_content</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_content'>content</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_each_line'>each_line</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='op'>|</span>
@@ -2356,14 +2549,14 @@ it&#39;s spidering.</p>
       <pre class="lines">
 
 
-777
-778
-779
-780
-781</pre>
+809
+810
+811
+812
+813</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 777</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 809</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_print_headers'>print_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_each_capitalized'>each_capitalized</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
@@ -2438,26 +2631,26 @@ it&#39;s spidering.</p>
       <pre class="lines">
 
 
-756
-757
-758
-759
-760
-761
-762
-763
-764
-765
-766
-767
-768
-769</pre>
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 756</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 788</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_print_page'>print_page</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_print_verbose'>print_verbose</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_verbose</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_print_status'>print_status</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_status</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_print_url'>print_url</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_headers</span><span class='rbracket'>]</span>
@@ -2538,18 +2731,18 @@ it&#39;s spidering.</p>
       <pre class="lines">
 
 
-789
-790
-791
-792
-793
-794
-795
-796
-797</pre>
+821
+822
+823
+824
+825
+826
+827
+828
+829</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 789</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 821</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_print_query'>print_query</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_html?'>html?</span>
@@ -2558,6 +2751,100 @@ it&#39;s spidering.</p>
     <span class='kw'>elsif</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:css_path</span><span class='rbracket'>]</span>
       <span class='id identifier rubyid_print_content'>print_content</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_css'>css</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:css_path</span><span class='rbracket'>]</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="print_status-instance_method">
+  
+    #<strong>print_status</strong>(page)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Prints the status of a page.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>page</span>
+      
+      
+        <span class='type'>(<tt>Spidr::Page</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A spidered page.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 752</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_print_status'>print_status</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span> <span class='op'>&lt;</span> <span class='int'>300</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_bright_green'>bright_green</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span> <span class='op'>&lt;</span> <span class='int'>400</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_bright_yellow'>bright_yellow</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span> <span class='op'>&lt;</span> <span class='int'>500</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_bright_red'>bright_red</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_bold'>bold</span><span class='lparen'>(</span><span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_bright_red'>bright_red</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -2628,20 +2915,20 @@ it&#39;s spidering.</p>
       <pre class="lines">
 
 
-738
-739
-740
-741
-742
-743
-744
-745
-746
-747
-748</pre>
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 738</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 770</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_print_url'>print_url</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span> <span class='op'>&lt;</span> <span class='int'>300</span>
@@ -2718,30 +3005,18 @@ it&#39;s spidering.</p>
       <pre class="lines">
 
 
-720
-721
-722
-723
-724
-725
-726
-727
-728
-729
-730</pre>
+836
+837
+838
+839
+840</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 720</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 836</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_print_verbose'>print_verbose</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span> <span class='op'>&lt;</span> <span class='int'>300</span>
-    <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_bright_green'>bright_green</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span>
-  <span class='kw'>elsif</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span> <span class='op'>&lt;</span> <span class='int'>400</span>
-    <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_bright_yellow'>bright_yellow</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span>
-  <span class='kw'>elsif</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span> <span class='op'>&lt;</span> <span class='int'>500</span>
-    <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_bright_red'>bright_red</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_print'>print</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_bold'>bold</span><span class='lparen'>(</span><span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_bright_red'>bright_red</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>def</span> <span class='id identifier rubyid_print_verbose'>print_verbose</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_verbose?'>verbose?</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_yellow'>yellow</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>* </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_message'>message</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -2793,13 +3068,6 @@ it&#39;s spidering.</p>
       <pre class="lines">
 
 
-548
-549
-550
-551
-552
-553
-554
 555
 556
 557
@@ -2866,22 +3134,10 @@ it&#39;s spidering.</p>
 618
 619
 620
-621
-622
-623
-624
-625
-626
-627
-628
-629
-630
-631
-632
-633</pre>
+621</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 548</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 555</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span>
   <span class='id identifier rubyid_archive'>archive</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:archive</span><span class='rbracket'>]</span>
@@ -2889,6 +3145,10 @@ it&#39;s spidering.</p>
             <span class='kw'>elsif</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:git_archive</span><span class='rbracket'>]</span>
               <span class='const'><span class='object_link'><a href="../../../Web.html" title="Ronin::Web (module)">Web</a></span></span><span class='op'>::</span><span class='const'>Spider</span><span class='op'>::</span><span class='const'>GitArchive</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:git_archive</span><span class='rbracket'>]</span><span class='rparen'>)</span>
             <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_history_file'>history_file</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:history</span><span class='rbracket'>]</span>
+                   <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:history</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>w</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+                 <span class='kw'>end</span>
 
   <span class='id identifier rubyid_agent'>agent</span> <span class='op'>=</span> <span class='id identifier rubyid_new_agent'>new_agent</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_agent'>agent</span><span class='op'>|</span>
     <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_page'>every_page</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_page'>page</span><span class='op'>|</span>
@@ -2899,39 +3159,12 @@ it&#39;s spidering.</p>
       <span class='id identifier rubyid_print_verbose'>print_verbose</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>failed to request </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
     <span class='kw'>end</span>
 
-    <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_hosts</span><span class='rbracket'>]</span>
-      <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_host'>every_host</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_host'>host</span><span class='op'>|</span>
-        <span class='id identifier rubyid_print_verbose'>print_verbose</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>spidering new host </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_host'>host</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
+    <span class='id identifier rubyid_define_printing_callbacks'>define_printing_callbacks</span><span class='lparen'>(</span><span class='id identifier rubyid_agent'>agent</span><span class='rparen'>)</span>
 
-    <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_certs</span><span class='rbracket'>]</span>
-      <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_cert'>every_cert</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_cert'>cert</span><span class='op'>|</span>
-        <span class='id identifier rubyid_print_verbose'>print_verbose</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>encountered new certificate for </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_cert'>cert</span><span class='period'>.</span><span class='id identifier rubyid_subject'>subject</span><span class='period'>.</span><span class='id identifier rubyid_common_name'>common_name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
-
-    <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_js_strings</span><span class='rbracket'>]</span>
-      <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_js_string'>every_js_string</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_string'>string</span><span class='op'>|</span>
-        <span class='id identifier rubyid_print_content'>print_content</span> <span class='id identifier rubyid_string'>string</span>
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
-
-    <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_html_comments</span><span class='rbracket'>]</span>
-      <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_html_comment'>every_html_comment</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_comment'>comment</span><span class='op'>|</span>
-        <span class='id identifier rubyid_print_content'>print_content</span> <span class='id identifier rubyid_comment'>comment</span>
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
-
-    <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_js_comments</span><span class='rbracket'>]</span>
-      <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_js_comment'>every_js_comment</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_comment'>comment</span><span class='op'>|</span>
-        <span class='id identifier rubyid_print_content'>print_content</span> <span class='id identifier rubyid_comment'>comment</span>
-      <span class='kw'>end</span>
-    <span class='kw'>end</span>
-
-    <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_comments</span><span class='rbracket'>]</span>
-      <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_comment'>every_comment</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_comment'>comment</span><span class='op'>|</span>
-        <span class='id identifier rubyid_print_content'>print_content</span> <span class='id identifier rubyid_comment'>comment</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_history_file'>history_file</span>
+      <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_page'>every_page</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_page'>page</span><span class='op'>|</span>
+        <span class='id identifier rubyid_history_file'>history_file</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_history_file'>history_file</span><span class='period'>.</span><span class='id identifier rubyid_flush'>flush</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
 
@@ -2968,6 +3201,10 @@ it&#39;s spidering.</p>
       <span class='id identifier rubyid_puts'>puts</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
+<span class='kw'>ensure</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:history</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_history_file'>history_file</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2979,7 +3216,7 @@ it&#39;s spidering.</p>
 </div>
 
       <div id="footer">
-  Generated on Sat Jan 14 20:58:24 2023 by
+  Generated on Sat Jan 21 17:07:46 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.3).
 </div>
