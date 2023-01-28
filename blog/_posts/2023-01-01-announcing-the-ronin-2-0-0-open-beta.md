@@ -177,7 +177,7 @@ repositories installed via [ronin-repos].
 
 ### ronin-db
 
-[ronin-db] provides a command-line interface (CLI) to [ronin-db-activerecord]
+[ronin-db] provides a command-line interface (CLI) to [ronin-db-activerecord].
 It provides the [`ronin-db` command][ronin-db-synopsis] for managing
 and querying database(s).
 
