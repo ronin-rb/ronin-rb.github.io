@@ -1,14 +1,36 @@
 ---
-layout: default
+layout: page
 feed: /blog/atom.xml
 css:
  - post.css
 ---
 
-<div class="post">
-  <a class="feed" href="{{ page.feed }}">{% include images/feed.svg %}</a>
-  <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
-  <p class="post-info">{{ page.date | date_to_string }} &mdash; {{ page.author }}</p>
+<article class="post">
+  <h1 class="post-title">{{ page.title }}</h1>
 
-  <div class="post-content">{{ content }}</div>
-</div>
+  <p class="post-info">
+    <time datetime="{{ page.date | date: "%Y-%m-%d" }}">{{ page.date | date: "%Y-%m-%d" }}</time>&nbsp;&mdash;&nbsp;{{ page.author }}
+  </p>
+
+  <section class="post-content">
+    {{ content }}
+  </section>
+
+  <p class="post-links">
+    <a class="button" href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}%0ahttps://ronin-rb.dev{{ page.url | uri_escape }}">
+      {% include images/twitter.svg %}
+    </a>
+
+    <a class="button" href="http://www.reddit.com/submit?url=https://ronin-rb.dev{{ page.url | uri_escape }}&title={{ page.title | uri_escape }}" title="Share on Reddit">
+      {% include images/reddit.svg %}
+    </a>
+
+    <a class="button" href="https://news.ycombinator.com/submitlink?u=https://ronin-rb.dev{{ page.url | uri_escape }}&t={{ page.title | uri_escape }}" title="Share on HackerNews">
+      {% include images/hackernews.svg %}
+    </a>
+
+    <a class="button" href="https://lobste.rs/stories/new?url=https://ronin-rb.dev{{ page.url | uri_escape }}" title="Share on Lobste.rs">
+      {% include images/lobsters.svg %}
+    </a>
+  </div>
+</article>

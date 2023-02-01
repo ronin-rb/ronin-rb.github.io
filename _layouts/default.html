@@ -1,8 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
-    <title>ronin-rb - {{ page.title }}</title>
+    <meta name="charset" value="utf-8" />
+
+    {% if page.title %}
+    <title>{{ page.title }} | Ronin</title>
+    {% else %}
+    <title>Ronin</title>
+    {% endif %}
 
     {% if page.feed != null %}
     <link rel="alternate" type="application/atom+xml" title="{{page.title }} feed" href="{{ page.feed }}" />
@@ -10,21 +15,19 @@
     <link rel="alternate" type="application/atom+xml" title="ronin-rb blog feed" href="/blog/atom.xml" />
     {% endif %}
 
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="/css/screen.css"/>
-    <link rel="stylesheet" type="text/css" media="screen" href="/css/syntax_highlighting.css"/>
-    <link rel="stylesheet" type="text/css" media="print" href="/css/print.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/default.css"/>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/default.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/syntax_highlighting.css" />
 
     {% if page.css != null %}
     {% for css in page.css %}
-    <link rel="stylesheet" type="text/css" media="screen" href="/css/{{ css }}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/{{ css }}" />
     {% endfor %}
     {% endif %}
 
     {% if page.js != null %}
     {% for js in page.js %}
-    <script type="text/javascript" src="/js/{{ js }}" /></script>
+    <script type="text/javascript" src="/javascript/{{ js }}" /></script>
     {% endfor %}
     {% endif %}
 
@@ -34,11 +37,7 @@
   <body>
     {% include header.html %}
 
-    <div id="page" class="container">
-      <div id="content">
-        {{ content }}
-      </div>
-    </div>
+    {{ content }}
 
     {% include footer.html %}
   </body>

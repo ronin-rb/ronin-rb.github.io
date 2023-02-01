@@ -1,0 +1,16 @@
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#!/usr/bin/env ruby</span>
+<span class="nb">require</span> <span class="s1">'<a href="https://github.com/ronin-rb/ronin-support#readme">ronin/support</a>'</span>
+<span class="nb">require</span> <span class="s1">'<a href="https://github.com/postmodern/wordlist.rb#readme">wordlist</a>'</span>
+
+<span class="n">domain</span>   <span class="o">=</span> <span class="no">Ronin</span><span class="o">::</span><span class="no">Support</span><span class="o">::</span><span class="no">Network</span><span class="o">::</span><span class="no"><a href="/docs/ronin-support/Ronin/Support/Network/Domain.html">Domain</a></span><span class="p">.</span><span class="nf"><a href="/docs/ronin-support/Ronin/Support/Network/Host.html#initialize-instance_method">new</a></span><span class="p">(</span><span class="s1">'github.com'</span><span class="p">)</span>
+<span class="n">wordlist</span> <span class="o">=</span> <span class="no"><a href="https://rubydoc.info/gems/wordlist/Wordlist">Wordlist</a></span><span class="p">.</span><span class="nf"><a href="https://rubydoc.info/gems/wordlist/Wordlist#open-class_method">open</a></span><span class="p">(</span><span class="s1">'<a href="https://github.com/rbsec/dnscan/blob/master/subdomains-10000.txt">subdomains-10000.txt</a>'</span><span class="p">)</span>
+
+<span class="n">wordlist</span><span class="p">.</span><span class="nf"><a href="https://rubydoc.info/gems/wordlist/Wordlist/File#each-instance_method">each</a></span> <span class="k">do</span> <span class="o">|</span><span class="n">word</span><span class="o">|</span>
+  <span class="n">host</span> <span class="o">=</span> <span class="n">domain</span><span class="p">.</span><span class="nf"><a href="/docs/ronin-support/Ronin/Support/Network/Host.html#subdomain-instance_method">subdomain</a></span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="o">!</span><span class="n">host</span><span class="p">.</span><span class="nf"><a href="/docs/ronin-support/Ronin/Support/Network/Host.html#cname-instance_method">cname</a></span> <span class="o">&amp;&amp;</span> <span class="n">host</span><span class="p">.</span><span class="nf"><a href="/docs/ronin-support/Ronin/Support/Network/Host.html#has_addresses%3F-instance_method">has_addresses?</a></span>
+    <span class="n"><a href="/docs/ronin-support/Ronin/Support/CLI/Printing.html#print_positive-instance_method">print_success</a></span> <span class="s2">"found subdomain: </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+<span class="k">rescue</span> <span class="no">Interrupt</span>
+  <span class="k">break</span>
+<span class="k">end</span></code></pre></figure>
