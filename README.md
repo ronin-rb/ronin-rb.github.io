@@ -20,8 +20,6 @@ and blog for the Ronin project.
 * `stylesheet`: Contains the CSS files to be published.
 * `javascript`: Contains the static JavaScript files to be published.
 * `blog/_posts`: Contains the posts for the Development Blog.
-* `examples/*/_posts/`: Contains the random examples displayed on the
-  front page.
 
 ## A Word about Markdown
 
