@@ -119,7 +119,7 @@
 <h2 id="options">Options</h2>
 
 <p>-o, --output FILE                Optional output file
-   -f, --format od|hexdump          Format of the hexdump input (Default: hexdump)
+   -f, --format hexdump|od          Format of the hexdump input (Default: hexdump)
    -t int8|uint8|char|uchar|byte|int16|int16_le|int16_be|int16_ne|uint16|uint16_le|uint16_be|uint16_ne|short|short_le|short_be|short_ne|ushort|ushort_le|ushort_be|ushort_ne|int32|int32_le|int32_be|int32_ne|uint32|uint32_le|uint32_be|uint32_ne|int|long|long_le|long_be|long_ne|uint|ulong|ulong_le|ulong_be|ulong_ne|int64|int64_le|int64_be|int64_ne|uint64|uint64_le|uint64_be|uint64_ne|long_long|long_long_le|long_long_be|long_long_ne|ulong_long|ulong_long_le|ulong_long_be|ulong_long_ne|float|float_le|float_be|float_ne|double|double_le|double_be|double_ne,
        --type                       The binary data type to decode the data as
    -b, --base 2|8|10|16             Numerical base of the hexdumped numbers
@@ -299,6 +299,9 @@
   <strong>This constant is part of a private API.</strong>
   You should avoid using this constant if possible, as it may be removed or be changed in the future.
 </p>
+<p>Maps command-line options to
+<code>Ronin::Support::Binary::Unhexdump::Parser#initialize</code> keyword
+arguments.</p>
 
 
   </div>
@@ -365,7 +368,7 @@
   <span class="private note title">private</span>
 
   
-    <span class="summary_desc"><div class='inline'><p>Builds a keyword arguments <code>Hash</code> of all command <code>options</code> that will be directly passed to <code>Ronin::Support::Binary::Hexdump::Parser#initialize</code>.</p>
+    <span class="summary_desc"><div class='inline'><p>Builds a keyword arguments <code>Hash</code> of all command <code>options</code> that will be directly passed to <code>Ronin::Support::Binary::Unhexdump::Parser#initialize</code>.</p>
 </div></span>
   
 </li>
@@ -427,7 +430,7 @@
 </p>
 <p>Builds a keyword arguments <code>Hash</code> of all command <code>options</code> that will
 be directly passed to
-<code>Ronin::Support::Binary::Hexdump::Parser#initialize</code>.</p>
+<code>Ronin::Support::Binary::Unhexdump::Parser#initialize</code>.</p>
 
 
   </div>
@@ -469,18 +472,18 @@ be directly passed to
       <pre class="lines">
 
 
-200
-201
-202
 203
 204
 205
 206
 207
-208</pre>
+208
+209
+210
+211</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/unhexdump.rb', line 200</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/unhexdump.rb', line 203</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hexdump_parser_options'>hexdump_parser_options</span>
   <span class='id identifier rubyid_kwargs'>kwargs</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -590,7 +593,7 @@ be directly passed to
       <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/unhexdump.rb', line 160</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Binary</span><span class='op'>::</span><span class='const'>Hexdump</span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+  <span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Binary</span><span class='op'>::</span><span class='const'>Unhexdump</span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
              <span class='op'>**</span><span class='id identifier rubyid_hexdump_parser_options'>hexdump_parser_options</span>
            <span class='rparen'>)</span>
 
@@ -623,7 +626,7 @@ be directly passed to
 </div>
 
       <div id="footer">
-  Generated on Sat Jan 14 20:57:36 2023 by
+  Generated on Wed Feb  1 13:48:17 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.3).
 </div>
