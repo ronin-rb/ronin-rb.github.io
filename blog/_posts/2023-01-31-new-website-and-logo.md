@@ -38,6 +38,11 @@ Tailwind, in order to keep things as simple as possible.
 We also have plans for adding a [dark-mode][dark-mode-issue] which we could use 
 help with.
 
+## Special Thanks
+
+A special thank you to everyone who provided feedback on the new website and
+logo.
+
 [logo]: /images/logo.svg
 [source]: https://github.com/ronin-rb/ronin-rb.github.io
 [issues]: https://github.com/ronin-rb/ronin-rb.github.io/issues
