@@ -32,15 +32,17 @@ denoted by the `.md` file extension.
 * [ruby] >= 3.1.0
 * [bundler] 2.x
 
-## Setup
+## Development
 
-```shell
-$ git clone https://github.com/ronin-rb/ronin-rb.github.io.git
-$ gem install bundler
-$ cd ronin-rb.github.io/
-$ bundle install # this may take a while
-$ bundle exec jekyll serve
-```
+1. [Fork It!](https://github.com/ronin-rb/ronin-rb.github.io/fork)
+2. Clone It! `git clone https://github.com/your-user/ronin-rb.github.io.git`
+3. `cd ronin-rb.github.io/`
+4. Install It! `bundle install` (**Note:** this may take a while)
+5. `git checkout -b my-changes`
+6. Start It! `bundle exec jekyll serve`
+7. Code It!
+8. [Review It!](http://localhost:4000)
+9. Push It! `git push origin my-changes`
 
 ## License
 
