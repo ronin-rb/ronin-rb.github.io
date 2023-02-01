@@ -9,7 +9,7 @@ title: Install - FreeBSD
 
 ```shell
 sudo pkg install -y gcc make ruby readline sqlite
-sudo gem install ronin --pre
+sudo gem install ronin
 ```
 
 ## Detailed Breakdown

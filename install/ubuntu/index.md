@@ -9,7 +9,7 @@ title: Install - Ubuntu
 
 ```shell
 sudo apt install -y gcc make ruby-full libreadline-dev libsqlite3-dev
-sudo gem install ronin --pre
+sudo gem install ronin
 ```
 
 ## Detailed Breakdown

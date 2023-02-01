@@ -9,7 +9,7 @@ title: Install - OpenSUSE
 
 ```shell
 sudo zypper -n in -l gcc make ruby-devel readline-devel sqlite3-devel
-sudo gem install ronin --pre
+sudo gem install ronin
 ```
 
 ## Detailed Breakdown

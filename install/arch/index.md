@@ -9,7 +9,7 @@ title: Install - Arch
 
 ```shell
 sudo pacman -Sy --noconfirm gcc make community/ruby readline sqlite
-sudo gem install ronin --pre
+sudo gem install ronin
 ```
 
 ## Detailed Breakdown

@@ -9,7 +9,7 @@ title: Install - Fedora
 
 ```shell
 sudo dnf install -y gcc make ruby-devel ruby-bundled-gems readline-devel sqlite-devel
-sudo gem install ronin --pre
+sudo gem install ronin
 ```
 
 ## Detailed Breakdown

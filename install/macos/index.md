@@ -14,7 +14,7 @@ echo 'PATH="$(brew --prefix ruby)/bin:$PATH"' >> ~/.zshrc
 echo 'PATH="$(gem env gemdir)/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
 brew install readline sqlite
-sudo gem install ronin --pre
+sudo gem install ronin
 ```
 
 ## Detailed Breakdown
