@@ -44,19 +44,35 @@ Most Ronin libraries have a YARD documentation coverage measurement of +80%.
 
 ### Does Ronin have a command-line interface (CLI)?
 
-Why yes. Ronin's design allows for the libraries of Ronin
-to add sub-commands to the main `ronin` command.
-To view all available commands simply run the following command:
+Why yes. Ronin provides a main [`ronin`][ronin-synopsis] command with many
+sub-commands. To view all available sub-commands simply run the following
+command:
 
 ```shell
 ronin help
 ```
 
-To view the help information of a specific command:
+To view the help information of a specific sub-command:
 
 ```shell
 ronin help COMMAND_NAME
 ```
+
+Additionally, the other Ronin libraries can provide their own
+CLIs with their own sub-commands:
+
+* [`ronin-repos`][ronin-repos-synopsis]
+* [`ronin-exploits`][ronin-exploits-synopsis]
+* [`ronin-payloads`][ronin-payloads-synopsis]
+* [`ronin-db`][ronin-db-synopsis]
+* [`ronin-web`][ronin-web-synopsis]
+
+[ronin-synopsis]: https://github.com/ronin-rb/ronin#synopsis
+[ronin-repos-synopsis]: https://github.com/ronin-rb/ronin-repos#synopsis
+[ronin-exploits-synopsis]: https://github.com/ronin-rb/ronin-exploits#synopsis
+[ronin-payloads-synopsis]: https://github.com/ronin-rb/ronin-payloads#synopsis
+[ronin-web-synopsis]: https://github.com/ronin-rb/ronin-web#synopsis
+[ronin-db-synopsis]: https://github.com/ronin-rb/ronin-db#synopsis
 
 ### Does Ronin have a Discord server?
 
