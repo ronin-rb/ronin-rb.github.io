@@ -130,8 +130,8 @@ See the [API documentation][docs-api] for more documentation and examples.
 ## Interested?
 
 Does Ronin interest you? Do you have an idea for a feature or a new `ronin-`
-library? Checkout our [GitHub](https://github.com/ronin-rb), join our
-[Discord server]({{ site.discord_link }}), and get involved!
+library? Checkout our [GitHub], join our [Discord server], follow us on
+[Twitter] or [Mastodon], and get involved!
 
 ## Special Thanks
 
@@ -142,6 +142,11 @@ which helped shape Ronin's design.
 [1]: /blog/2022/01/29/announcing-the-big-refactor.html
 [2]: https://github.com/orgs/ronin-rb/projects/2
 [3]: /blog/2023/01/01/announcing-the-ronin-2-0-0-open-beta.html
+
+[GitHub]: https://github.com/ronin-rb
+[Discord server]: {{ site.discord_link }}
+[Twitter]: https://twitter.com/ronin_rb
+[Mastodon]: https://infosec.exchange/@ronin_rb
 
 [docs-api]: /docs/#api
 
