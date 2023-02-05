@@ -23,7 +23,7 @@ sudo dnf install -y gcc make
 {% include install/ruby.md %}
 
 ```shell
-sudo apt install -y ruby-devel ruby-bundled-gems
+sudo dnf install -y ruby-devel ruby-bundled-gems
 ```
 
 **Note:** `ruby-bundled-gems` is required for `net/ftp`, `net/imap`, `net/pop`, and `net/smtp`. For some reason Fedora's `ruby` package does not automatically
