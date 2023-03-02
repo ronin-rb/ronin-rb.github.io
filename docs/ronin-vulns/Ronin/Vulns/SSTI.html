@@ -712,8 +712,8 @@ indicate that the payload will not be escaped.</p>
       <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 89</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_random_test'>random_test</span>
-  <span class='id identifier rubyid_int1'>int1</span> <span class='op'>=</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>999</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='int'>1_000</span>
-  <span class='id identifier rubyid_int2'>int2</span> <span class='op'>=</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>999</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='int'>1_000</span>
+  <span class='id identifier rubyid_int1'>int1</span> <span class='op'>=</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>1_000</span><span class='op'>..</span><span class='int'>1_999</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_int2'>int2</span> <span class='op'>=</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>1_000</span><span class='op'>..</span><span class='int'>1_999</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_string'>string</span>  <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_int1'>int1</span><span class='embexpr_end'>}</span><span class='tstring_content'>*</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_int2'>int2</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_result'>result</span>  <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_int1'>int1</span> <span class='op'>*</span> <span class='id identifier rubyid_int2'>int2</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -1208,7 +1208,7 @@ Injection (SSTI).</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Feb  2 11:30:44 2023 by
+  Generated on Wed Mar  1 22:53:34 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.3).
 </div>

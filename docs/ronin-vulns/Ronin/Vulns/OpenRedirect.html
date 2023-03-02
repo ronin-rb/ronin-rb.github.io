@@ -562,12 +562,12 @@ type.</p>
       <pre class="lines">
 
 
-112
-113
-114</pre>
+123
+124
+125</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/open_redirect.rb', line 112</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/open_redirect.rb', line 123</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_vuln_type'>vuln_type</span>
   <span class='symbol'>:open_redirect</span>
@@ -642,7 +642,18 @@ type.</p>
 94
 95
 96
-97</pre>
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/vulns/open_redirect.rb', line 76</span>
@@ -654,7 +665,7 @@ type.</p>
   <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>301</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>302</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>303</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>307</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>308</span><span class='tstring_end'>&#39;</span></span>
     <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_locations'>locations</span> <span class='op'>=</span> <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_get_fields'>get_fields</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Location</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span> <span class='op'>=</span> <span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='ivar'>@test_url</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_regexp'>regexp</span> <span class='op'>=</span> <span class='tstring'><span class='regexp_beg'>%r{</span><span class='tstring_content'>\A</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>(?:[\?&amp;].+)?\z</span><span class='regexp_end'>}</span></span>
+      <span class='id identifier rubyid_regexp'>regexp</span>           <span class='op'>=</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\A</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>(?:[\?&amp;].+)?\z</span><span class='regexp_end'>/</span></span>
 
       <span class='id identifier rubyid_locations'>locations</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span> <span class='op'>=~</span> <span class='id identifier rubyid_regexp'>regexp</span>
     <span class='kw'>end</span>
@@ -663,7 +674,18 @@ type.</p>
 
     <span class='kw'>if</span> <span class='id identifier rubyid_content_type'>content_type</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_content_type'>content_type</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>text/html</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
       <span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span> <span class='op'>=</span> <span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='const'>CGI</span><span class='period'>.</span><span class='id identifier rubyid_escapeHTML'>escapeHTML</span><span class='lparen'>(</span><span class='ivar'>@test_url</span><span class='rparen'>)</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_regexp'>regexp</span> <span class='op'>=</span> <span class='tstring'><span class='regexp_beg'>%r{</span><span class='tstring_content'>&lt;meta\s+http-equiv\s*=\s*(?:&quot;refresh&quot;|&#39;refresh&#39;|refresh)\s+content\s*=\s*(?:&quot;\s*\d+\s*;\s*url\s*=\s*&#39;\s*</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>\s*&#39;\s*&quot;|&#39;\s*\d+\s*;\s*url\s*=\s*&quot;\s*</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>\s*&quot;\s*&#39;|\s*\d+;url=(?:&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>&quot;|&#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;))\s*(?:/\s*)?&gt;</span><span class='regexp_end'>}i</span></span>
+
+      <span class='id identifier rubyid_regexp'>regexp</span> <span class='op'>=</span> <span class='tstring'><span class='regexp_beg'>%r{</span><span class='tstring_content'>
+        &lt;meta\s+
+          http-equiv\s*=\s*(?: &quot;refresh&quot; | &#39;refresh&#39; | refresh )\s+
+          content\s*=\s*
+          (?:
+           &quot;\s*\d+\s*;\s*url\s*=\s*&#39;\s*</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>\s*&#39;\s*&quot;|
+           &#39;\s*\d+\s*;\s*url\s*=\s*&quot;\s*</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>\s*&quot;\s*&#39;|
+           \s*\d+;url=(?: &quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>&quot; | &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39; )
+          )\s*
+          (?:/\s*)?&gt;
+      </span><span class='regexp_end'>}xi</span></span>
 
       <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span> <span class='op'>=~</span> <span class='id identifier rubyid_regexp'>regexp</span>
     <span class='kw'>end</span>
@@ -679,7 +701,7 @@ type.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Feb  2 11:30:44 2023 by
+  Generated on Wed Mar  1 22:53:35 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.3).
 </div>
