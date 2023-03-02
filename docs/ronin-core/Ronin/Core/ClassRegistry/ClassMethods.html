@@ -83,9 +83,10 @@
   
 </div>
 
-<div class="docstring">
+<h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    
+    <p>Class-methods.</p>
+
 
   </div>
 </div>
@@ -365,16 +366,16 @@
       <pre class="lines">
 
 
-98
-99
-100
 101
 102
 103
-104</pre>
+104
+105
+106
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/core/class_registry.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/core/class_registry.rb', line 101</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_class_dir'>class_dir</span><span class='lparen'>(</span><span class='id identifier rubyid_new_dir'>new_dir</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_new_dir'>new_dir</span>
@@ -430,14 +431,14 @@
       <pre class="lines">
 
 
-112
-113
-114
 115
-116</pre>
+116
+117
+118
+119</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/core/class_registry.rb', line 112</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/core/class_registry.rb', line 115</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list_files'>list_files</span>
   <span class='id identifier rubyid_paths'>paths</span> <span class='op'>=</span> <span class='const'>Dir</span><span class='period'>.</span><span class='id identifier rubyid_glob'>glob</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>{**/}*.rb</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>base:</span> <span class='id identifier rubyid_class_dir'>class_dir</span><span class='rparen'>)</span>
@@ -542,11 +543,6 @@ the class file.</p>
       <pre class="lines">
 
 
-218
-219
-220
-221
-222
 223
 224
 225
@@ -566,10 +562,15 @@ the class file.</p>
 239
 240
 241
-242</pre>
+242
+243
+244
+245
+246
+247</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/core/class_registry.rb', line 218</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/core/class_registry.rb', line 223</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_load_class'>load_class</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='comment'># short-circuit if the module is already loaded
@@ -694,9 +695,6 @@ the class file.</p>
       <pre class="lines">
 
 
-183
-184
-185
 186
 187
 188
@@ -710,10 +708,15 @@ the class file.</p>
 196
 197
 198
-199</pre>
+199
+200
+201
+202
+203
+204</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/core/class_registry.rb', line 183</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/core/class_registry.rb', line 186</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_load_class_from_file'>load_class_from_file</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
@@ -723,7 +726,9 @@ the class file.</p>
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_previous_entries'>previous_entries</span> <span class='op'>=</span> <span class='id identifier rubyid_registry'>registry</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>
+
   <span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
+
   <span class='id identifier rubyid_new_entries'>new_entries</span> <span class='op'>=</span> <span class='id identifier rubyid_registry'>registry</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span> <span class='op'>-</span> <span class='id identifier rubyid_previous_entries'>previous_entries</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_new_entries'>new_entries</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -808,16 +813,16 @@ the class file.</p>
       <pre class="lines">
 
 
-158
-159
-160
 161
 162
 163
-164</pre>
+164
+165
+166
+167</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/core/class_registry.rb', line 158</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/core/class_registry.rb', line 161</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_path_for'>path_for</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_class_dir'>class_dir</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'>.rb</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -898,12 +903,12 @@ the class file.</p>
       <pre class="lines">
 
 
-140
-141
-142</pre>
+143
+144
+145</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/core/class_registry.rb', line 140</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/core/class_registry.rb', line 143</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_register'>register</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span><span class='id identifier rubyid_mod'>mod</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_registry'>registry</span><span class='lbracket'>[</span><span class='id identifier rubyid_id'>id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_mod'>mod</span>
@@ -955,12 +960,12 @@ the class file.</p>
       <pre class="lines">
 
 
-124
-125
-126</pre>
+127
+128
+129</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/core/class_registry.rb', line 124</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/core/class_registry.rb', line 127</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_registry'>registry</span>
   <span class='ivar'>@registry</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -975,7 +980,7 @@ the class file.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Feb  1 13:42:13 2023 by
+  Generated on Wed Mar  1 22:22:56 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.3).
 </div>
