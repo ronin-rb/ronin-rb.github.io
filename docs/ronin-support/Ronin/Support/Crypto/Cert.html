@@ -195,7 +195,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#generate-class_method" title="generate (class method)">.<strong>generate</strong>(version: 2, serial: 0, not_before: Time.now, not_after: not_before+ONE_YEAR, subject: nil, extensions: nil, key:, ca_cert: nil, ca_key: nil, signing_hash: :sha256)  &#x21d2; Cert </a>
+      <a href="#generate-class_method" title="generate (class method)">.<strong>generate</strong>(version: 2, serial: 0, not_before: Time.now, not_after: not_before + ONE_YEAR, subject: nil, extensions: nil, key:, ca_cert: nil, ca_key: nil, signing_hash: :sha256)  &#x21d2; Cert </a>
     
 
     
@@ -536,7 +536,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="generate-class_method">
   
-    .<strong>generate</strong>(version: 2, serial: 0, not_before: Time.now, not_after: not_before+ONE_YEAR, subject: nil, extensions: nil, key:, ca_cert: nil, ca_key: nil, signing_hash: :sha256)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Support::Crypto::Cert (class)">Cert</a></span></tt> 
+    .<strong>generate</strong>(version: 2, serial: 0, not_before: Time.now, not_after: not_before + ONE_YEAR, subject: nil, extensions: nil, key:, ca_cert: nil, ca_key: nil, signing_hash: :sha256)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Support::Crypto::Cert (class)">Cert</a></span></tt> 
   
 
   
@@ -705,7 +705,7 @@ be passed to <span class='object_link'><a href="Cert/Name.html#build-class_metho
         <span class='type'>(<tt>Time</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>not_before+ONE_YEAR</tt>)</em>
+        <em class="default">(defaults to: <tt>not_before + ONE_YEAR</tt>)</em>
       
       
         &mdash;
@@ -840,6 +840,8 @@ new certificate.</p>
       <pre class="lines">
 
 
+326
+327
 328
 329
 330
@@ -881,19 +883,15 @@ new certificate.</p>
 366
 367
 368
-369
-370
-371
-372
-373</pre>
+369</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 328</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 326</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span><span class='lparen'>(</span><span class='label'>version:</span>    <span class='int'>2</span><span class='comma'>,</span>
                   <span class='label'>serial:</span>     <span class='int'>0</span><span class='comma'>,</span>
                   <span class='label'>not_before:</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='comma'>,</span>
-                  <span class='label'>not_after:</span>  <span class='id identifier rubyid_not_before'>not_before</span><span class='op'>+</span><span class='const'>ONE_YEAR</span><span class='comma'>,</span>
+                  <span class='label'>not_after:</span>  <span class='id identifier rubyid_not_before'>not_before</span> <span class='op'>+</span> <span class='const'><span class='object_link'><a href="#ONE_YEAR-constant" title="Ronin::Support::Crypto::Cert::ONE_YEAR (constant)">ONE_YEAR</a></span></span><span class='comma'>,</span>
                   <span class='label'>subject:</span>    <span class='kw'>nil</span><span class='comma'>,</span>
                   <span class='label'>extensions:</span> <span class='kw'>nil</span><span class='comma'>,</span>
                   <span class='comment'># signing arguments
@@ -901,9 +899,10 @@ new certificate.</p>
                   <span class='label'>ca_cert:</span> <span class='kw'>nil</span><span class='comma'>,</span>
                   <span class='label'>ca_key:</span>  <span class='kw'>nil</span><span class='comma'>,</span>
                   <span class='label'>signing_hash:</span> <span class='symbol'>:sha256</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_cert'>cert</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_cert'>cert</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span>
+
   <span class='id identifier rubyid_cert'>cert</span><span class='period'>.</span><span class='id identifier rubyid_version'>version</span> <span class='op'>=</span> <span class='id identifier rubyid_version'>version</span>
-  <span class='id identifier rubyid_cert'>cert</span><span class='period'>.</span><span class='id identifier rubyid_serial'>serial</span>  <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_ca_cert'>ca_cert</span> <span class='kw'>then</span> <span class='id identifier rubyid_ca_cert'>ca_cert</span><span class='period'>.</span><span class='id identifier rubyid_serial'>serial</span><span class='op'>+</span><span class='int'>1</span>
+  <span class='id identifier rubyid_cert'>cert</span><span class='period'>.</span><span class='id identifier rubyid_serial'>serial</span>  <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_ca_cert'>ca_cert</span> <span class='kw'>then</span> <span class='id identifier rubyid_ca_cert'>ca_cert</span><span class='period'>.</span><span class='id identifier rubyid_serial'>serial</span> <span class='op'>+</span> <span class='int'>1</span>
                  <span class='kw'>else</span>            <span class='id identifier rubyid_serial'>serial</span>
                  <span class='kw'>end</span>
 
@@ -916,11 +915,10 @@ new certificate.</p>
                     <span class='kw'>end</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_extensions'>extensions</span>
-    <span class='id identifier rubyid_extension_factory'>extension_factory</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>X509</span><span class='op'>::</span><span class='const'>ExtensionFactory</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_extension_factory'>extension_factory</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>X509</span><span class='op'>::</span><span class='const'>ExtensionFactory</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+
     <span class='id identifier rubyid_extension_factory'>extension_factory</span><span class='period'>.</span><span class='id identifier rubyid_subject_certificate'>subject_certificate</span> <span class='op'>=</span> <span class='id identifier rubyid_cert'>cert</span>
-    <span class='id identifier rubyid_extension_factory'>extension_factory</span><span class='period'>.</span><span class='id identifier rubyid_issuer_certificate'>issuer_certificate</span>  <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_ca_cert'>ca_cert</span> <span class='kw'>then</span> <span class='id identifier rubyid_ca_cert'>ca_cert</span>
-                                            <span class='kw'>else</span>            <span class='id identifier rubyid_cert'>cert</span>
-                                            <span class='kw'>end</span>
+    <span class='id identifier rubyid_extension_factory'>extension_factory</span><span class='period'>.</span><span class='id identifier rubyid_issuer_certificate'>issuer_certificate</span>  <span class='op'>=</span> <span class='id identifier rubyid_ca_cert'>ca_cert</span> <span class='op'>||</span> <span class='id identifier rubyid_cert'>cert</span>
 
     <span class='id identifier rubyid_extensions'>extensions</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='id identifier rubyid_critical'>critical</span><span class='rparen'>)</span><span class='op'>|</span>
       <span class='id identifier rubyid_ext'>ext</span> <span class='op'>=</span> <span class='id identifier rubyid_extension_factory'>extension_factory</span><span class='period'>.</span><span class='id identifier rubyid_create_extension'>create_extension</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='id identifier rubyid_critical'>critical</span><span class='rparen'>)</span>
@@ -928,9 +926,7 @@ new certificate.</p>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_signing_key'>signing_key</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_ca_key'>ca_key</span> <span class='kw'>then</span> <span class='id identifier rubyid_ca_key'>ca_key</span>
-                <span class='kw'>else</span>           <span class='id identifier rubyid_key'>key</span>
-                <span class='kw'>end</span>
+  <span class='id identifier rubyid_signing_key'>signing_key</span>    <span class='op'>=</span> <span class='id identifier rubyid_ca_key'>ca_key</span> <span class='op'>||</span> <span class='id identifier rubyid_key'>key</span>
   <span class='id identifier rubyid_signing_digest'>signing_digest</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>Digest</span><span class='period'>.</span><span class='id identifier rubyid_const_get'>const_get</span><span class='lparen'>(</span><span class='id identifier rubyid_signing_hash'>signing_hash</span><span class='period'>.</span><span class='id identifier rubyid_upcase'>upcase</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
 
   <span class='id identifier rubyid_cert'>cert</span><span class='period'>.</span><span class='id identifier rubyid_sign'>sign</span><span class='lparen'>(</span><span class='id identifier rubyid_signing_key'>signing_key</span><span class='comma'>,</span><span class='id identifier rubyid_signing_digest'>signing_digest</span><span class='rparen'>)</span>
@@ -1017,12 +1013,12 @@ new certificate.</p>
       <pre class="lines">
 
 
-208
-209
-210</pre>
+206
+207
+208</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 208</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 206</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='rparen'>)</span>
@@ -1108,12 +1104,12 @@ new certificate.</p>
       <pre class="lines">
 
 
-221
-222
-223</pre>
+219
+220
+221</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 221</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 219</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_load_file'>load_file</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../../File.html" title="File (class)">File</a></span></span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -1199,6 +1195,8 @@ new certificate.</p>
       <pre class="lines">
 
 
+171
+172
 173
 174
 175
@@ -1208,12 +1206,10 @@ new certificate.</p>
 179
 180
 181
-182
-183
-184</pre>
+182</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 173</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 171</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='const'>Name</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_name'>name</span>
@@ -1308,12 +1304,12 @@ new certificate.</p>
       <pre class="lines">
 
 
-195
-196
-197</pre>
+193
+194
+195</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 195</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 193</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
@@ -1382,14 +1378,14 @@ new certificate.</p>
       <pre class="lines">
 
 
-402
-403
-404
-405
-406</pre>
+398
+399
+400
+401
+402</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 402</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 398</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_common_name'>common_name</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_subject'>subject</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_subject'>subject</span><span class='rparen'>)</span>
@@ -1454,12 +1450,12 @@ new certificate.</p>
       <pre class="lines">
 
 
-413
-414
-415</pre>
+409
+410
+411</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 413</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 409</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_extension_names'>extension_names</span>
   <span class='id identifier rubyid_extensions'>extensions</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:oid</span><span class='rparen'>)</span>
@@ -1545,14 +1541,14 @@ new certificate.</p>
       <pre class="lines">
 
 
-436
-437
-438
-439
-440</pre>
+432
+433
+434
+435
+436</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 436</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 432</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_extension_value'>extension_value</span><span class='lparen'>(</span><span class='id identifier rubyid_oid'>oid</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_ext'>ext</span> <span class='op'>=</span> <span class='id identifier rubyid_find_extension'>find_extension</span><span class='lparen'>(</span><span class='id identifier rubyid_oid'>oid</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -1621,15 +1617,15 @@ new certificate.</p>
       <pre class="lines">
 
 
-423
-424
-425</pre>
+419
+420
+421</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 423</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 419</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_extensions_hash'>extensions_hash</span>
-  <span class='const'>Hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_extensions'>extensions</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ext'>ext</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id identifier rubyid_ext'>ext</span><span class='period'>.</span><span class='id identifier rubyid_oid'>oid</span><span class='comma'>,</span> <span class='id identifier rubyid_ext'>ext</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_extensions'>extensions</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ext'>ext</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='id identifier rubyid_ext'>ext</span><span class='period'>.</span><span class='id identifier rubyid_oid'>oid</span><span class='comma'>,</span> <span class='id identifier rubyid_ext'>ext</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1689,14 +1685,14 @@ new certificate.</p>
       <pre class="lines">
 
 
-380
-381
-382
-383
-384</pre>
+376
+377
+378
+379
+380</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 380</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 376</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_issuer'>issuer</span>
   <span class='ivar'>@issuer</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_issuer'>issuer</span> <span class='op'>=</span> <span class='kw'>super</span><span class='rparen'>)</span>
@@ -1806,19 +1802,19 @@ new certificate.</p>
       <pre class="lines">
 
 
+478
+479
+480
+481
 482
 483
 484
 485
 486
-487
-488
-489
-490
-491</pre>
+487</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 482</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 478</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_save'>save</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='label'>encoding:</span> <span class='symbol'>:pem</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_exported'>exported</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_encoding'>encoding</span>
@@ -1888,14 +1884,14 @@ new certificate.</p>
       <pre class="lines">
 
 
-391
-392
-393
-394
-395</pre>
+387
+388
+389
+390
+391</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 391</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 387</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_subject'>subject</span>
   <span class='ivar'>@subject</span> <span class='op'>||=</span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_subject'>subject</span> <span class='op'>=</span> <span class='kw'>super</span><span class='rparen'>)</span>
@@ -1965,12 +1961,12 @@ have the extension.</p>
       <pre class="lines">
 
 
-449
-450
-451</pre>
+445
+446
+447</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 449</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 445</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_subject_alt_name'>subject_alt_name</span>
   <span class='id identifier rubyid_extension_value'>extension_value</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>subjectAltName</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -2038,16 +2034,16 @@ have the extension.</p>
       <pre class="lines">
 
 
+456
+457
+458
+459
 460
 461
-462
-463
-464
-465
-466</pre>
+462</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 460</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 456</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_subject_alt_names'>subject_alt_names</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='id identifier rubyid_subject_alt_name'>subject_alt_name</span><span class='rparen'>)</span>
@@ -2066,7 +2062,7 @@ have the extension.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Feb  1 13:40:52 2023 by
+  Generated on Wed Mar  1 22:13:58 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.3).
 </div>

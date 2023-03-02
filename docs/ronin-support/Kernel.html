@@ -446,18 +446,20 @@ exception occurred and was ignored.</p>
 44
 45
 46
-47</pre>
+47
+48</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/support/core_ext/kernel.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_try'>try</span>
-  <span class='kw'>begin</span>
-    <span class='kw'>yield</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
-  <span class='kw'>rescue</span> <span class='const'>Exception</span>
-    <span class='kw'>return</span> <span class='kw'>nil</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
+  <span class='kw'>yield</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+<span class='kw'>rescue</span> <span class='const'>SyntaxError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_error'>error</span>
+  <span class='comment'># re-raise syntax errors
+</span>  <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='id identifier rubyid_error'>error</span><span class='rparen'>)</span>
+<span class='kw'>rescue</span> <span class='const'>StandardError</span>
+  <span class='comment'># ignore any exceptions
+</span><span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -468,7 +470,7 @@ exception occurred and was ignored.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Feb  1 13:40:40 2023 by
+  Generated on Wed Mar  1 22:13:49 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.3).
 </div>

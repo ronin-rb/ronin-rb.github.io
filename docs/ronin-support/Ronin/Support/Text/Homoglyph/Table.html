@@ -726,7 +726,7 @@
       <pre class="code"><span class="info file"># File 'lib/ronin/support/text/homoglyph/table.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_load_file'>load_file</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_table'>table</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_table'>table</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span>
 
   <span class='const'><span class='object_link'><a href="../../../../File.html" title="File (class)">File</a></span></span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_file'>file</span><span class='op'>|</span>
     <span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_each_line'>each_line</span><span class='lparen'>(</span><span class='label'>chomp:</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='op'>|</span>
@@ -1241,11 +1241,11 @@ homoglyph equivalent from the table.</p>
       <span class='id identifier rubyid_offset'>offset</span> <span class='op'>=</span> <span class='int'>0</span>
 
       <span class='kw'>while</span> <span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_index'>index</span><span class='lparen'>(</span><span class='id identifier rubyid_replaceable_char'>replaceable_char</span><span class='comma'>,</span><span class='id identifier rubyid_offset'>offset</span><span class='rparen'>)</span><span class='rparen'>)</span>
-        <span class='id identifier rubyid_homoglyph'>homoglyph</span> <span class='op'>=</span> <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+        <span class='id identifier rubyid_homoglyph'>homoglyph</span>        <span class='op'>=</span> <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
         <span class='id identifier rubyid_homoglyph'>homoglyph</span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_substitute_char'>substitute_char</span>
 
         <span class='kw'>yield</span> <span class='id identifier rubyid_homoglyph'>homoglyph</span>
-        <span class='id identifier rubyid_offset'>offset</span> <span class='op'>=</span> <span class='id identifier rubyid_index'>index</span><span class='op'>+</span><span class='int'>1</span>
+        <span class='id identifier rubyid_offset'>offset</span> <span class='op'>=</span> <span class='id identifier rubyid_index'>index</span> <span class='op'>+</span> <span class='int'>1</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
@@ -1509,7 +1509,7 @@ homoglyph equivalent from the table.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Feb  1 13:41:12 2023 by
+  Generated on Wed Mar  1 22:14:14 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.3).
 </div>

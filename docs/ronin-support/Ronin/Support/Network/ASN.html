@@ -89,6 +89,88 @@
   <div class="discussion">
     <p>Handles Autonomous System Numbers (ASN).</p>
 
+<h2 id="example">Example</h2>
+
+<p>Query the ASN record for a given IP address:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'>ASN</span><span class='period'>.</span><span class='id identifier rubyid_query'><span class='object_link'><a href="#query-class_method" title="Ronin::Support::Network::ASN.query (method)">query</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>4.2.2.1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='comment'># =&gt;
+</span><span class='comment'># #&lt;Ronin::Support::Network::ASN::DNSRecord:0x00007f34424f4ac0
+</span><span class='comment'>#  @country_code=&quot;US&quot;,
+</span><span class='comment'>#  @name=nil,
+</span><span class='comment'>#  @number=3356,
+</span><span class='comment'>#  @range=#&lt;Ronin::Support::Network::IPRange::CIDR: 4.0.0.0/9&gt;&gt;
+</span></code></pre>
+
+<p>Query all ASN records for the given ISP name:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'>ASN</span><span class='period'>.</span><span class='id identifier rubyid_list'><span class='object_link'><a href="#list-class_method" title="Ronin::Support::Network::ASN.list (method)">list</a></span></span><span class='period'>.</span><span class='id identifier rubyid_name'><span class='object_link'><a href="ASN/RecordSet.html#name-instance_method" title="Ronin::Support::Network::ASN::RecordSet#name (method)">name</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>LEVEL3</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_a'><span class='object_link'><a href="ASN/RecordSet.html#to_a-instance_method" title="Ronin::Support::Network::ASN::RecordSet#to_a (method)">to_a</a></span></span>
+<span class='comment'># =&gt; [#&lt;Ronin::Support::Network::ASN::Record:0x00007f344164ed18
+</span><span class='comment'>#      @country_code=&quot;US&quot;,
+</span><span class='comment'>#      @name=&quot;LEVEL3&quot;,
+</span><span class='comment'>#      @number=3356,
+</span><span class='comment'>#      @range=#&lt;Ronin::Support::Network::IPRange::Range: 4.0.0.0 - 4.23.87.255&gt;&gt;,
+</span><span class='comment'>#     #&lt;Ronin::Support::Network::ASN::Record:0x00007f344164d828
+</span><span class='comment'>#      @country_code=&quot;US&quot;,
+</span><span class='comment'>#      @name=&quot;LEVEL3&quot;,
+</span><span class='comment'>#      @number=3356,
+</span><span class='comment'>#      @range=#&lt;Ronin::Support::Network::IPRange::Range: 4.23.90.0 - 4.23.91.255&gt;&gt;,
+</span><span class='comment'>#     ...]
+</span></code></pre>
+
+<p>Query all IPv6 ASN records for a given company:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'>ASN</span><span class='period'>.</span><span class='id identifier rubyid_list'><span class='object_link'><a href="#list-class_method" title="Ronin::Support::Network::ASN.list (method)">list</a></span></span><span class='period'>.</span><span class='id identifier rubyid_name'><span class='object_link'><a href="ASN/RecordSet.html#name-instance_method" title="Ronin::Support::Network::ASN::RecordSet#name (method)">name</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>GOOGLE</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_ipv6'><span class='object_link'><a href="ASN/RecordSet.html#ipv6-instance_method" title="Ronin::Support::Network::ASN::RecordSet#ipv6 (method)">ipv6</a></span></span>
+<span class='comment'># =&gt;
+</span><span class='comment'># [#&lt;Ronin::Support::Network::ASN::Record:0x00007fc45b411500
+</span><span class='comment'>#   @country_code=&quot;US&quot;,
+</span><span class='comment'>#   @name=&quot;GOOGLE&quot;,
+</span><span class='comment'>#   @number=15169,
+</span><span class='comment'>#   @range=
+</span><span class='comment'>#    #&lt;Ronin::Support::Network::IPRange::Range: 2001:4860:: - 2001:4860:1024:ffff:ffff:ffff:ffff:ffff&gt;&gt;,
+</span><span class='comment'>#  #&lt;Ronin::Support::Network::ASN::Record:0x00007fc45b428d68
+</span><span class='comment'>#   @country_code=&quot;US&quot;,
+</span><span class='comment'>#   @name=&quot;GOOGLE&quot;,
+</span><span class='comment'>#   @number=15169,
+</span><span class='comment'>#   @range=
+</span><span class='comment'>#    #&lt;Ronin::Support::Network::IPRange::Range: 2001:4860:1026:: - 2001:4860:4804:ffff:ffff:ffff:ffff:ffff&gt;&gt;,
+</span><span class='comment'>#  #&lt;Ronin::Support::Network::ASN::Record:0x00007fc45b44be08
+</span><span class='comment'>#   @country_code=&quot;US&quot;,
+</span><span class='comment'>#   @name=&quot;GOOGLE&quot;,
+</span><span class='comment'>#   @number=15169,
+</span><span class='comment'>#   @range=
+</span><span class='comment'>#    #&lt;Ronin::Support::Network::IPRange::Range: 2001:4860:4806:: - 2001:4860:4864:ffff:ffff:ffff:ffff:ffff&gt;&gt;,
+</span><span class='comment'>#  #&lt;Ronin::Support::Network::ASN::Record:0x00007fc45b4562e0
+</span><span class='comment'>#   @country_code=&quot;US&quot;,
+</span><span class='comment'>#   @name=&quot;GOOGLE&quot;,
+</span><span class='comment'>#   @number=15169,
+</span><span class='comment'>#   @range=
+</span><span class='comment'>#    #&lt;Ronin::Support::Network::IPRange::Range: 2001:4860:4865:: - 2001:4860:ffff:ffff:ffff:ffff:ffff:ffff&gt;&gt;]
+</span></code></pre>
+
+<p>Return all ASN numbers for a country:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'>ASN</span><span class='period'>.</span><span class='id identifier rubyid_list'><span class='object_link'><a href="#list-class_method" title="Ronin::Support::Network::ASN.list (method)">list</a></span></span><span class='period'>.</span><span class='id identifier rubyid_country'><span class='object_link'><a href="ASN/RecordSet.html#country-instance_method" title="Ronin::Support::Network::ASN::RecordSet#country (method)">country</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>NZ</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_numbers'><span class='object_link'><a href="ASN/RecordSet.html#numbers-instance_method" title="Ronin::Support::Network::ASN::RecordSet#numbers (method)">numbers</a></span></span>
+<span class='comment'># =&gt; #&lt;Set:
+</span><span class='comment'>#     {45177,
+</span><span class='comment'>#      55759,
+</span><span class='comment'>#      55850,
+</span><span class='comment'>#      9500,
+</span><span class='comment'>#      ...}&gt;
+</span></code></pre>
+
+<p>Return all ASN names for a country:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'>ASN</span><span class='period'>.</span><span class='id identifier rubyid_list'><span class='object_link'><a href="#list-class_method" title="Ronin::Support::Network::ASN.list (method)">list</a></span></span><span class='period'>.</span><span class='id identifier rubyid_country_code'>country_code</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>NZ</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_names'>names</span>
+<span class='comment'># Network::ASN.list.country(&#39;NZ&#39;).names
+</span><span class='comment'># =&gt;
+</span><span class='comment'># #&lt;Set:
+</span><span class='comment'>#  {&quot;DEVOLI-AS-AP Devoli&quot;,
+</span><span class='comment'>#   &quot;MFAT-NET-NZ 195 Lambton Quay&quot;,
+</span><span class='comment'>#   &quot;MERCURYNZ-AS-AP Mercury NZ Limited&quot;,
+</span><span class='comment'>#   ...}&gt;
+</span></code></pre>
+
 
   </div>
 </div>
@@ -201,7 +283,15 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Downloads/updates then loads the cached file
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>The first access of <span class='object_link'><a href="#list-class_method" title="Ronin::Support::Network::ASN.list (method)">list</a></span> will take a while, as the entire ASN
+list will need to be downloaded and parsed.</p>
+</div>
+  </div>
+
+<p>Downloads/updates then loads the cached file
 (<code>~/.local/share/ronin/ronin-support/ip2asn-combined.tsv.gz</code>).</p>
 
 
@@ -209,6 +299,96 @@
 </div>
 <div class="tags">
   
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>Query the ASN record for the given IP address:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::ASN (module)">ASN</a></span></span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_ip'><span class='object_link'><a href="ASN/List.html#ip-instance_method" title="Ronin::Support::Network::ASN::List#ip (method)">ip</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>4.2.2.1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='comment'># =&gt;
+</span><span class='comment'># #&lt;Ronin::Support::Network::ASN::Record:0x00007fc46207f818
+</span><span class='comment'>#  @country_code=&quot;US&quot;,
+</span><span class='comment'>#  @name=&quot;LEVEL3&quot;,
+</span><span class='comment'>#  @number=3356,
+</span><span class='comment'>#  @range=#&lt;Ronin::Support::Network::IPRange::Range: 4.0.0.0 - 4.23.87.255&gt;&gt;</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Query all ASN records for the given ISP name:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::ASN (module)">ASN</a></span></span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_name'><span class='object_link'><a href="ASN/RecordSet.html#name-instance_method" title="Ronin::Support::Network::ASN::RecordSet#name (method)">name</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>LEVEL3</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_a'><span class='object_link'><a href="ASN/RecordSet.html#to_a-instance_method" title="Ronin::Support::Network::ASN::RecordSet#to_a (method)">to_a</a></span></span>
+<span class='comment'># =&gt; [#&lt;Ronin::Support::Network::ASN::Record:0x00007f344164ed18
+</span><span class='comment'>#      @country_code=&quot;US&quot;,
+</span><span class='comment'>#      @name=&quot;LEVEL3&quot;,
+</span><span class='comment'>#      @number=3356,
+</span><span class='comment'>#      @range=#&lt;Ronin::Support::Network::IPRange::Range: 4.0.0.0 - 4.23.87.255&gt;&gt;,
+</span><span class='comment'>#     #&lt;Ronin::Support::Network::ASN::Record:0x00007f344164d828
+</span><span class='comment'>#      @country_code=&quot;US&quot;,
+</span><span class='comment'>#      @name=&quot;LEVEL3&quot;,
+</span><span class='comment'>#      @number=3356,
+</span><span class='comment'>#      @range=#&lt;Ronin::Support::Network::IPRange::Range: 4.23.90.0 - 4.23.91.255&gt;&gt;,
+</span><span class='comment'>#     ...]</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Query all IPv6 ASN records for a given company:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::ASN (module)">ASN</a></span></span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_name'><span class='object_link'><a href="ASN/RecordSet.html#name-instance_method" title="Ronin::Support::Network::ASN::RecordSet#name (method)">name</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>GOOGLE</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_ipv6'><span class='object_link'><a href="ASN/RecordSet.html#ipv6-instance_method" title="Ronin::Support::Network::ASN::RecordSet#ipv6 (method)">ipv6</a></span></span>
+<span class='comment'># =&gt;
+</span><span class='comment'># [#&lt;Ronin::Support::Network::ASN::Record:0x00007fc45b411500
+</span><span class='comment'>#   @country_code=&quot;US&quot;,
+</span><span class='comment'>#   @name=&quot;GOOGLE&quot;,
+</span><span class='comment'>#   @number=15169,
+</span><span class='comment'>#   @range=
+</span><span class='comment'>#    #&lt;Ronin::Support::Network::IPRange::Range: 2001:4860:: - 2001:4860:1024:ffff:ffff:ffff:ffff:ffff&gt;&gt;,
+</span><span class='comment'>#  #&lt;Ronin::Support::Network::ASN::Record:0x00007fc45b428d68
+</span><span class='comment'>#   @country_code=&quot;US&quot;,
+</span><span class='comment'>#   @name=&quot;GOOGLE&quot;,
+</span><span class='comment'>#   @number=15169,
+</span><span class='comment'>#   @range=
+</span><span class='comment'>#    #&lt;Ronin::Support::Network::IPRange::Range: 2001:4860:1026:: - 2001:4860:4804:ffff:ffff:ffff:ffff:ffff&gt;&gt;,
+</span><span class='comment'>#  #&lt;Ronin::Support::Network::ASN::Record:0x00007fc45b44be08
+</span><span class='comment'>#   @country_code=&quot;US&quot;,
+</span><span class='comment'>#   @name=&quot;GOOGLE&quot;,
+</span><span class='comment'>#   @number=15169,
+</span><span class='comment'>#   @range=
+</span><span class='comment'>#    #&lt;Ronin::Support::Network::IPRange::Range: 2001:4860:4806:: - 2001:4860:4864:ffff:ffff:ffff:ffff:ffff&gt;&gt;,
+</span><span class='comment'>#  #&lt;Ronin::Support::Network::ASN::Record:0x00007fc45b4562e0
+</span><span class='comment'>#   @country_code=&quot;US&quot;,
+</span><span class='comment'>#   @name=&quot;GOOGLE&quot;,
+</span><span class='comment'>#   @number=15169,
+</span><span class='comment'>#   @range=
+</span><span class='comment'>#    #&lt;Ronin::Support::Network::IPRange::Range: 2001:4860:4865:: - 2001:4860:ffff:ffff:ffff:ffff:ffff:ffff&gt;&gt;]</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Return all ASN numbers for a country:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::ASN (module)">ASN</a></span></span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_country'><span class='object_link'><a href="ASN/RecordSet.html#country-instance_method" title="Ronin::Support::Network::ASN::RecordSet#country (method)">country</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>NZ</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_numbers'><span class='object_link'><a href="ASN/RecordSet.html#numbers-instance_method" title="Ronin::Support::Network::ASN::RecordSet#numbers (method)">numbers</a></span></span>
+<span class='comment'># =&gt; #&lt;Set:
+</span><span class='comment'>#     {45177,
+</span><span class='comment'>#      55759,
+</span><span class='comment'>#      55850,
+</span><span class='comment'>#      9500,
+</span><span class='comment'>#      ...}&gt;</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Return all ASN names for a country:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::ASN (module)">ASN</a></span></span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_country_code'>country_code</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>NZ</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_names'>names</span>
+<span class='comment'># Network::ASN.list.country(&#39;NZ&#39;).names
+</span><span class='comment'># =&gt;
+</span><span class='comment'># #&lt;Set:
+</span><span class='comment'>#  {&quot;DEVOLI-AS-AP Devoli&quot;,
+</span><span class='comment'>#   &quot;MFAT-NET-NZ 195 Lambton Quay&quot;,
+</span><span class='comment'>#   &quot;MERCURYNZ-AS-AP Mercury NZ Limited&quot;,
+</span><span class='comment'>#   ...}&gt;</span></code></pre>
+    
+  </div>
+
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -248,21 +428,21 @@
       <pre class="lines">
 
 
-79
-80
-81
-82
-83
-84</pre>
+240
+241
+242
+243
+244
+245</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/asn.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/asn.rb', line 240</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_list'>list</span>
-  <span class='ivar'>@list</span> <span class='op'>||=</span> <span class='lparen'>(</span>
-    <span class='const'><span class='object_link'><a href="ASN/List.html" title="Ronin::Support::Network::ASN::List (class)">List</a></span></span><span class='period'>.</span><span class='id identifier rubyid_update'><span class='object_link'><a href="ASN/List.html#update-class_method" title="Ronin::Support::Network::ASN::List.update (method)">update</a></span></span>
-    <span class='const'><span class='object_link'><a href="ASN/List.html" title="Ronin::Support::Network::ASN::List (class)">List</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load_file'><span class='object_link'><a href="ASN/List.html#load_file-class_method" title="Ronin::Support::Network::ASN::List.load_file (method)">load_file</a></span></span>
-  <span class='rparen'>)</span>
+  <span class='ivar'>@list</span> <span class='op'>||=</span> <span class='kw'>begin</span>
+              <span class='const'><span class='object_link'><a href="ASN/List.html" title="Ronin::Support::Network::ASN::List (class)">List</a></span></span><span class='period'>.</span><span class='id identifier rubyid_update'><span class='object_link'><a href="ASN/List.html#update-class_method" title="Ronin::Support::Network::ASN::List.update (method)">update</a></span></span>
+              <span class='const'><span class='object_link'><a href="ASN/List.html" title="Ronin::Support::Network::ASN::List (class)">List</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load_file'><span class='object_link'><a href="ASN/List.html#load_file-class_method" title="Ronin::Support::Network::ASN::List.load_file (method)">load_file</a></span></span>
+            <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -294,7 +474,21 @@ addresses and <code>*.nmap6.asn.cymru.com</code> for IPv6 addresses.</p>
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::ASN (module)">ASN</a></span></span><span class='period'>.</span><span class='id identifier rubyid_query'>query</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>4.2.2.1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='comment'># =&gt;
+</span><span class='comment'># #&lt;Ronin::Support::Network::ASN::DNSRecord:0x00007f34424f4ac0
+</span><span class='comment'>#  @country_code=&quot;US&quot;,
+</span><span class='comment'>#  @name=nil,
+</span><span class='comment'>#  @number=3356,
+</span><span class='comment'>#  @range=#&lt;Ronin::Support::Network::IPRange::CIDR: 4.0.0.0/9&gt;&gt;</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -353,32 +547,33 @@ addresses and <code>*.nmap6.asn.cymru.com</code> for IPv6 addresses.</p>
       <pre class="lines">
 
 
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70</pre>
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/asn.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/asn.rb', line 134</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_query'>query</span><span class='lparen'>(</span><span class='id identifier rubyid_ip'>ip</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ip'>ip</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../IPAddr.html" title="IPAddr (class)">IPAddr</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_ip'>ip</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_ip'>ip</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../../../IPAddr.html" title="IPAddr (class)">IPAddr</a></span></span><span class='rparen'>)</span>
@@ -397,8 +592,9 @@ addresses and <code>*.nmap6.asn.cymru.com</code> for IPv6 addresses.</p>
     <span class='kw'>return</span> <span class='kw'>nil</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_asn'>asn</span><span class='comma'>,</span> <span class='id identifier rubyid_cidr_range'>cidr_range</span><span class='comma'>,</span> <span class='id identifier rubyid_country_code'>country_code</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_rest'>rest</span> <span class='op'>=</span> <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> | </span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='int'>5</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_asn'>asn</span> <span class='op'>=</span> <span class='id identifier rubyid_asn'>asn</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+  <span class='id identifier rubyid_asn'>asn</span><span class='comma'>,</span> <span class='id identifier rubyid_cidr_range'>cidr_range</span><span class='comma'>,</span> <span class='id identifier rubyid_country_code'>country_code</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid__rest'>_rest</span> <span class='op'>=</span> <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> | </span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='int'>5</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_asn'>asn</span>        <span class='op'>=</span> <span class='id identifier rubyid_asn'>asn</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
   <span class='id identifier rubyid_cidr_range'>cidr_range</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="IPRange.html" title="Ronin::Support::Network::IPRange (class)">IPRange</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="IPRange/CIDR.html" title="Ronin::Support::Network::IPRange::CIDR (class)">CIDR</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="IPRange/CIDR.html#initialize-instance_method" title="Ronin::Support::Network::IPRange::CIDR#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_cidr_range'>cidr_range</span><span class='rparen'>)</span>
 
   <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="ASN/DNSRecord.html" title="Ronin::Support::Network::ASN::DNSRecord (class)">DNSRecord</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="ASN/DNSRecord.html#initialize-instance_method" title="Ronin::Support::Network::ASN::DNSRecord#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_asn'>asn</span><span class='comma'>,</span><span class='id identifier rubyid_cidr_range'>cidr_range</span><span class='comma'>,</span><span class='id identifier rubyid_country_code'>country_code</span><span class='rparen'>)</span>
@@ -413,7 +609,7 @@ addresses and <code>*.nmap6.asn.cymru.com</code> for IPv6 addresses.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Feb  1 13:40:36 2023 by
+  Generated on Wed Mar  1 22:13:45 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.3).
 </div>

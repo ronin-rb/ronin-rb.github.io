@@ -419,7 +419,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#connect_uri-class_method" title="connect_uri (class method)">.<strong>connect_uri</strong>(url, ssl: nil, **kwargs) {|http| ... } &#x21d2; HTTP<sup>?</sup> </a>
+      <a href="#connect_uri-class_method" title="connect_uri (class method)">.<strong>connect_uri</strong>(url, ssl: nil, user: nil, password: nil, **kwargs) {|http| ... } &#x21d2; HTTP<sup>?</sup> </a>
     
 
     
@@ -1626,11 +1626,55 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#propfind-instance_method" title="#propfind (instance method)">#<strong>propfind</strong>(path, **kwargs) {|response| ... } &#x21d2; Net::HTTPResponse </a>
+      <a href="#prop_find-instance_method" title="#prop_find (instance method)">#<strong>prop_find</strong> {|response| ... } &#x21d2; Net::HTTPResponse </a>
     
 
     
-      (also: #prop_find)
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sends a <code>PROPFIND</code> HTTP request.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#prop_patch-instance_method" title="#prop_patch (instance method)">#<strong>prop_patch</strong> {|response| ... } &#x21d2; Net::HTTPResponse </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sends a <code>PROPPATCH</code> HTTP request.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#propfind-instance_method" title="#propfind (instance method)">#<strong>propfind</strong>(path, **kwargs) {|response| ... } &#x21d2; Net::HTTPResponse </a>
+    
+
     
   </span>
   
@@ -1654,8 +1698,6 @@
       <a href="#proppatch-instance_method" title="#proppatch (instance method)">#<strong>proppatch</strong>(path, **kwargs) {|response| ... } &#x21d2; Net::HTTPResponse </a>
     
 
-    
-      (also: #prop_patch)
     
   </span>
   
@@ -2375,7 +2417,7 @@ configuration.</p>
   <span class='kw'>end</span>
 
   <span class='kw'>case</span> <span class='id identifier rubyid_ssl'>ssl</span>
-  <span class='kw'>when</span> <span class='kw'>true</span> <span class='kw'>then</span> <span class='id identifier rubyid_initialize_ssl'>initialize_ssl</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='kw'>true</span> <span class='kw'>then</span> <span class='id identifier rubyid_initialize_ssl'>initialize_ssl</span>
   <span class='kw'>when</span> <span class='const'>Hash</span> <span class='kw'>then</span> <span class='id identifier rubyid_initialize_ssl'>initialize_ssl</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_ssl'>ssl</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
@@ -2831,12 +2873,12 @@ configuration.</p>
       <pre class="lines">
 
 
-543
-544
-545</pre>
+561
+562
+563</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 543</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 561</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_user_agent'>user_agent</span>
   <span class='ivar'>@user_agent</span>
@@ -3370,29 +3412,37 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2166
-2167
-2168
-2169
-2170
-2171
-2172
-2173
-2174
-2175
-2176
-2177
-2178
-2179
-2180
-2181
-2182
-2183
-2184
-2185</pre>
+2328
+2329
+2330
+2331
+2332
+2333
+2334
+2335
+2336
+2337
+2338
+2339
+2340
+2341
+2342
+2343
+2344
+2345
+2346
+2347
+2348
+2349
+2350
+2351
+2352
+2353
+2354
+2355</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2166</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2328</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_allowed_methods'>allowed_methods</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                               <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -3402,8 +3452,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                               <span class='label'>user:</span>       <span class='kw'>nil</span><span class='comma'>,</span>
                               <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                               <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -3865,7 +3923,7 @@ returned.</p>
       <div class="method_details ">
   <h3 class="signature " id="connect_uri-class_method">
   
-    .<strong>connect_uri</strong>(url, ssl: nil, **kwargs) {|http| ... } &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Support::Network::HTTP (class)">HTTP</a></span></tt><sup>?</sup> 
+    .<strong>connect_uri</strong>(url, ssl: nil, user: nil, password: nil, **kwargs) {|http| ... } &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Support::Network::HTTP (class)">HTTP</a></span></tt><sup>?</sup> 
   
 
   
@@ -4112,6 +4170,10 @@ configuration.</p>
   
     
     
+    
+    
+    
+    
     <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
     <ul class="option">
       
@@ -4291,26 +4353,62 @@ returned.</p>
 520
 521
 522
-523</pre>
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 508</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>ssl:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
-        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
-          <span class='id identifier rubyid_url'>url</span>
-        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
-          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-        <span class='kw'>else</span>
-          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>url must be a URI::HTTP, Addressable::URI, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-        <span class='kw'>end</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>ssl:</span>      <span class='kw'>nil</span><span class='comma'>,</span>
+                          <span class='label'>user:</span>     <span class='kw'>nil</span><span class='comma'>,</span>
+                          <span class='label'>password:</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                          <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+    <span class='id identifier rubyid_host'>host</span>       <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span>
+    <span class='id identifier rubyid_port'>port</span>       <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_port'>port</span>
+    <span class='id identifier rubyid_user'>user</span>     <span class='op'>||=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span>
+    <span class='id identifier rubyid_password'>password</span> <span class='op'>||=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_password'>password</span>
+    <span class='id identifier rubyid_ssl'>ssl</span>      <span class='op'>||=</span> <span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_scheme'>scheme</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+    <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
 
-  <span class='id identifier rubyid_host'>host</span>  <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span>
-  <span class='id identifier rubyid_port'>port</span>  <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_port'>port</span>
-  <span class='id identifier rubyid_ssl'>ssl</span> <span class='op'>||=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_scheme'>scheme</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_host'>host</span>       <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span>
+    <span class='id identifier rubyid_port'>port</span>       <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_inferred_port'>inferred_port</span>
+    <span class='id identifier rubyid_user'>user</span>     <span class='op'>||=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span>
+    <span class='id identifier rubyid_password'>password</span> <span class='op'>||=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_password'>password</span>
+    <span class='id identifier rubyid_ssl'>ssl</span>      <span class='op'>||=</span> <span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_scheme'>scheme</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span>
+    <span class='id identifier rubyid_host'>host</span>       <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span>
+    <span class='id identifier rubyid_port'>port</span>       <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inferred_port'>inferred_port</span>
+    <span class='id identifier rubyid_user'>user</span>     <span class='op'>||=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span>
+    <span class='id identifier rubyid_password'>password</span> <span class='op'>||=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_password'>password</span>
+    <span class='id identifier rubyid_ssl'>ssl</span>      <span class='op'>||=</span> <span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_scheme'>scheme</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>url must be a URI::HTTP, Addressable::URI, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 
-  <span class='kw'>return</span> <span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='label'>ssl:</span> <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='label'>ssl:</span>      <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
+                            <span class='label'>user:</span>     <span class='id identifier rubyid_user'>user</span><span class='comma'>,</span>
+                            <span class='label'>password:</span> <span class='id identifier rubyid_password'>password</span><span class='comma'>,</span>
+                            <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -4869,30 +4967,38 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1695
-1696
-1697
-1698
-1699
-1700
-1701
-1702
-1703
-1704
-1705
-1706
-1707
-1708
-1709
-1710
-1711
-1712
-1713
-1714
-1715</pre>
+1769
+1770
+1771
+1772
+1773
+1774
+1775
+1776
+1777
+1778
+1779
+1780
+1781
+1782
+1783
+1784
+1785
+1786
+1787
+1788
+1789
+1790
+1791
+1792
+1793
+1794
+1795
+1796
+1797</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1695</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1769</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_copy'>copy</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                    <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -4903,8 +5009,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                    <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                    <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
                    <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -5472,30 +5586,38 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1740
-1741
-1742
-1743
-1744
-1745
-1746
-1747
-1748
-1749
-1750
-1751
-1752
-1753
-1754
-1755
-1756
-1757
-1758
-1759
-1760</pre>
+1822
+1823
+1824
+1825
+1826
+1827
+1828
+1829
+1830
+1831
+1832
+1833
+1834
+1835
+1836
+1837
+1838
+1839
+1840
+1841
+1842
+1843
+1844
+1845
+1846
+1847
+1848
+1849
+1850</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1740</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1822</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                      <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -5506,8 +5628,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                      <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                      <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
                      <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -6075,30 +6205,38 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1785
-1786
-1787
-1788
-1789
-1790
-1791
-1792
-1793
-1794
-1795
-1796
-1797
-1798
-1799
-1800
-1801
-1802
-1803
-1804
-1805</pre>
+1875
+1876
+1877
+1878
+1879
+1880
+1881
+1882
+1883
+1884
+1885
+1886
+1887
+1888
+1889
+1890
+1891
+1892
+1893
+1894
+1895
+1896
+1897
+1898
+1899
+1900
+1901
+1902
+1903</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1785</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1875</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                   <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -6109,8 +6247,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                   <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                   <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
                   <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -6643,29 +6789,37 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1902
-1903
-1904
-1905
-1906
-1907
-1908
-1909
-1910
-1911
-1912
-1913
-1914
-1915
-1916
-1917
-1918
-1919
-1920
-1921</pre>
+2016
+2017
+2018
+2019
+2020
+2021
+2022
+2023
+2024
+2025
+2026
+2027
+2028
+2029
+2030
+2031
+2032
+2033
+2034
+2035
+2036
+2037
+2038
+2039
+2040
+2041
+2042
+2043</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1902</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2016</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get_body'>get_body</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                        <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -6675,8 +6829,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                        <span class='label'>user:</span>       <span class='kw'>nil</span><span class='comma'>,</span>
                        <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                        <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -7208,29 +7370,37 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1863
-1864
-1865
-1866
-1867
-1868
-1869
-1870
-1871
-1872
-1873
-1874
-1875
-1876
-1877
-1878
-1879
-1880
-1881
-1882</pre>
+1969
+1970
+1971
+1972
+1973
+1974
+1975
+1976
+1977
+1978
+1979
+1980
+1981
+1982
+1983
+1984
+1985
+1986
+1987
+1988
+1989
+1990
+1991
+1992
+1993
+1994
+1995
+1996</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1863</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1969</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get_cookies'>get_cookies</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -7240,8 +7410,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                           <span class='label'>user:</span>       <span class='kw'>nil</span><span class='comma'>,</span>
                           <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                           <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -7774,29 +7952,37 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1825
-1826
-1827
-1828
-1829
-1830
-1831
-1832
-1833
-1834
-1835
-1836
-1837
-1838
-1839
-1840
-1841
-1842
-1843
-1844</pre>
+1923
+1924
+1925
+1926
+1927
+1928
+1929
+1930
+1931
+1932
+1933
+1934
+1935
+1936
+1937
+1938
+1939
+1940
+1941
+1942
+1943
+1944
+1945
+1946
+1947
+1948
+1949
+1950</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1825</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1923</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get_headers'>get_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -7806,8 +7992,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                           <span class='label'>user:</span>       <span class='kw'>nil</span><span class='comma'>,</span>
                           <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                           <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -8375,30 +8569,38 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1946
-1947
-1948
-1949
-1950
-1951
-1952
-1953
-1954
-1955
-1956
-1957
-1958
-1959
-1960
-1961
-1962
-1963
-1964
-1965
-1966</pre>
+2068
+2069
+2070
+2071
+2072
+2073
+2074
+2075
+2076
+2077
+2078
+2079
+2080
+2081
+2082
+2083
+2084
+2085
+2086
+2087
+2088
+2089
+2090
+2091
+2092
+2093
+2094
+2095
+2096</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1946</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2068</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_head'>head</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                    <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -8409,8 +8611,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                    <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                    <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
                    <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -8978,30 +9188,38 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1991
-1992
-1993
-1994
-1995
-1996
-1997
-1998
-1999
-2000
-2001
-2002
-2003
-2004
-2005
-2006
-2007
-2008
-2009
-2010
-2011</pre>
+2121
+2122
+2123
+2124
+2125
+2126
+2127
+2128
+2129
+2130
+2131
+2132
+2133
+2134
+2135
+2136
+2137
+2138
+2139
+2140
+2141
+2142
+2143
+2144
+2145
+2146
+2147
+2148
+2149</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1991</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2121</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_lock'>lock</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                    <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -9012,8 +9230,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                    <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                    <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
                    <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -9581,30 +9807,38 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2036
-2037
-2038
-2039
-2040
-2041
-2042
-2043
-2044
-2045
-2046
-2047
-2048
-2049
-2050
-2051
-2052
-2053
-2054
-2055
-2056</pre>
+2174
+2175
+2176
+2177
+2178
+2179
+2180
+2181
+2182
+2183
+2184
+2185
+2186
+2187
+2188
+2189
+2190
+2191
+2192
+2193
+2194
+2195
+2196
+2197
+2198
+2199
+2200
+2201
+2202</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2036</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2174</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mkcol'>mkcol</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                     <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -9615,8 +9849,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                     <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                     <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
                     <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -10184,30 +10426,38 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2081
-2082
-2083
-2084
-2085
-2086
-2087
-2088
-2089
-2090
-2091
-2092
-2093
-2094
-2095
-2096
-2097
-2098
-2099
-2100
-2101</pre>
+2227
+2228
+2229
+2230
+2231
+2232
+2233
+2234
+2235
+2236
+2237
+2238
+2239
+2240
+2241
+2242
+2243
+2244
+2245
+2246
+2247
+2248
+2249
+2250
+2251
+2252
+2253
+2254
+2255</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2081</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2227</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_move'>move</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                    <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -10218,8 +10468,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                    <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                    <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
                    <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -10768,29 +11026,37 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1489
-1490
-1491
-1492
-1493
-1494
-1495
-1496
-1497
-1498
-1499
-1500
-1501
-1502
-1503
-1504
-1505
-1506
-1507
-1508</pre>
+1523
+1524
+1525
+1526
+1527
+1528
+1529
+1530
+1531
+1532
+1533
+1534
+1535
+1536
+1537
+1538
+1539
+1540
+1541
+1542
+1543
+1544
+1545
+1546
+1547
+1548
+1549
+1550</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1489</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1523</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ok?'>ok?</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:head</span><span class='comma'>,</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                                <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -10800,8 +11066,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                                <span class='label'>user:</span>       <span class='kw'>nil</span><span class='comma'>,</span>
                                <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                                <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span>  <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+         <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+           <span class='id identifier rubyid_url'>url</span>
+         <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+           <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+         <span class='kw'>else</span>
+           <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+         <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -11369,30 +11643,38 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2126
-2127
-2128
-2129
-2130
-2131
-2132
-2133
-2134
-2135
-2136
-2137
-2138
-2139
-2140
-2141
-2142
-2143
-2144
-2145
-2146</pre>
+2280
+2281
+2282
+2283
+2284
+2285
+2286
+2287
+2288
+2289
+2290
+2291
+2292
+2293
+2294
+2295
+2296
+2297
+2298
+2299
+2300
+2301
+2302
+2303
+2304
+2305
+2306
+2307
+2308</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2126</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2280</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                       <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -11403,8 +11685,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                       <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                       <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
                       <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -11972,30 +12262,38 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2211
-2212
-2213
-2214
-2215
-2216
-2217
-2218
-2219
-2220
-2221
-2222
-2223
-2224
-2225
-2226
-2227
-2228
-2229
-2230
-2231</pre>
+2380
+2381
+2382
+2383
+2384
+2385
+2386
+2387
+2388
+2389
+2390
+2391
+2392
+2393
+2394
+2395
+2396
+2397
+2398
+2399
+2400
+2401
+2402
+2403
+2404
+2405
+2406
+2407
+2408</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2211</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2380</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_patch'>patch</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                     <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -12006,8 +12304,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                     <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                     <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
                     <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -12575,30 +12881,38 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2256
-2257
-2258
-2259
-2260
-2261
-2262
-2263
-2264
-2265
-2266
-2267
-2268
-2269
-2270
-2271
-2272
-2273
-2274
-2275
-2276</pre>
+2433
+2434
+2435
+2436
+2437
+2438
+2439
+2440
+2441
+2442
+2443
+2444
+2445
+2446
+2447
+2448
+2449
+2450
+2451
+2452
+2453
+2454
+2455
+2456
+2457
+2458
+2459
+2460
+2461</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2256</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2433</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                    <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -12609,8 +12923,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                    <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                    <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
                    <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -13143,29 +13465,37 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2335
-2336
-2337
-2338
-2339
-2340
-2341
-2342
-2343
-2344
-2345
-2346
-2347
-2348
-2349
-2350
-2351
-2352
-2353
-2354</pre>
+2528
+2529
+2530
+2531
+2532
+2533
+2534
+2535
+2536
+2537
+2538
+2539
+2540
+2541
+2542
+2543
+2544
+2545
+2546
+2547
+2548
+2549
+2550
+2551
+2552
+2553
+2554
+2555</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2335</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2528</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_post_body'>post_body</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                         <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -13175,8 +13505,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                         <span class='label'>user:</span>       <span class='kw'>nil</span><span class='comma'>,</span>
                         <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                         <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -13709,29 +14047,37 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2296
-2297
-2298
-2299
-2300
-2301
-2302
-2303
-2304
-2305
-2306
-2307
-2308
-2309
-2310
-2311
-2312
-2313
-2314
-2315</pre>
+2481
+2482
+2483
+2484
+2485
+2486
+2487
+2488
+2489
+2490
+2491
+2492
+2493
+2494
+2495
+2496
+2497
+2498
+2499
+2500
+2501
+2502
+2503
+2504
+2505
+2506
+2507
+2508</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2296</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2481</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_post_headers'>post_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                            <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -13741,8 +14087,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                            <span class='label'>user:</span>       <span class='kw'>nil</span><span class='comma'>,</span>
                            <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                            <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -14274,29 +14628,37 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1608
-1609
-1610
-1611
-1612
-1613
-1614
-1615
-1616
-1617
-1618
-1619
-1620
-1621
-1622
-1623
-1624
-1625
-1626
-1627</pre>
+1666
+1667
+1668
+1669
+1670
+1671
+1672
+1673
+1674
+1675
+1676
+1677
+1678
+1679
+1680
+1681
+1682
+1683
+1684
+1685
+1686
+1687
+1688
+1689
+1690
+1691
+1692
+1693</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1608</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1666</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_powered_by_header'>powered_by_header</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                                 <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -14306,8 +14668,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                                 <span class='label'>user:</span>       <span class='kw'>nil</span><span class='comma'>,</span>
                                 <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                                 <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -14875,30 +15245,38 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2379
-2380
-2381
-2382
-2383
-2384
-2385
-2386
-2387
-2388
-2389
-2390
-2391
-2392
-2393
-2394
-2395
-2396
-2397
-2398
-2399</pre>
+2580
+2581
+2582
+2583
+2584
+2585
+2586
+2587
+2588
+2589
+2590
+2591
+2592
+2593
+2594
+2595
+2596
+2597
+2598
+2599
+2600
+2601
+2602
+2603
+2604
+2605
+2606
+2607
+2608</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2379</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2580</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_propfind'>propfind</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                        <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -14909,8 +15287,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                        <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                        <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
                        <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -15478,30 +15864,38 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2426
-2427
-2428
-2429
-2430
-2431
-2432
-2433
-2434
-2435
-2436
-2437
-2438
-2439
-2440
-2441
-2442
-2443
-2444
-2445
-2446</pre>
+2633
+2634
+2635
+2636
+2637
+2638
+2639
+2640
+2641
+2642
+2643
+2644
+2645
+2646
+2647
+2648
+2649
+2650
+2651
+2652
+2653
+2654
+2655
+2656
+2657
+2658
+2659
+2660
+2661</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2426</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2633</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proppatch'>proppatch</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                         <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -15512,8 +15906,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                         <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                         <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
                         <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -16268,30 +16670,38 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2473
-2474
-2475
-2476
-2477
-2478
-2479
-2480
-2481
-2482
-2483
-2484
-2485
-2486
-2487
-2488
-2489
-2490
-2491
-2492
-2493</pre>
+2686
+2687
+2688
+2689
+2690
+2691
+2692
+2693
+2694
+2695
+2696
+2697
+2698
+2699
+2700
+2701
+2702
+2703
+2704
+2705
+2706
+2707
+2708
+2709
+2710
+2711
+2712
+2713
+2714</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2473</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2686</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_put'>put</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                   <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -16302,8 +16712,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                   <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                   <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
                   <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -16889,30 +17307,38 @@ class.</p>
       <pre class="lines">
 
 
-1402
-1403
-1404
-1405
-1406
-1407
-1408
-1409
-1410
-1411
-1412
-1413
-1414
-1415
-1416
-1417
-1418
-1419
 1420
 1421
-1422</pre>
+1422
+1423
+1424
+1425
+1426
+1427
+1428
+1429
+1430
+1431
+1432
+1433
+1434
+1435
+1436
+1437
+1438
+1439
+1440
+1441
+1442
+1443
+1444
+1445
+1446
+1447
+1448</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1402</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1420</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                              <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -16923,9 +17349,17 @@ class.</p>
                              <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                              <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
                              <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
-  <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
+  <span class='id identifier rubyid_uri'>uri</span>  <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+         <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+           <span class='id identifier rubyid_url'>url</span>
+         <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+           <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+         <span class='kw'>else</span>
+           <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+         <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
                           <span class='label'>user_agent:</span> <span class='id identifier rubyid_user_agent'>user_agent</span><span class='comma'>,</span>
@@ -17473,29 +17907,37 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1651
-1652
-1653
-1654
-1655
-1656
-1657
-1658
-1659
-1660
-1661
-1662
-1663
-1664
-1665
-1666
-1667
-1668
-1669
-1670</pre>
+1717
+1718
+1719
+1720
+1721
+1722
+1723
+1724
+1725
+1726
+1727
+1728
+1729
+1730
+1731
+1732
+1733
+1734
+1735
+1736
+1737
+1738
+1739
+1740
+1741
+1742
+1743
+1744</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1651</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1717</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_response_body'>response_body</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:get</span><span class='comma'>,</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                                         <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -17505,8 +17947,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                                         <span class='label'>user:</span>       <span class='kw'>nil</span><span class='comma'>,</span>
                                         <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                                         <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -18055,29 +18505,37 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1532
-1533
-1534
-1535
-1536
-1537
-1538
-1539
-1540
-1541
-1542
-1543
-1544
-1545
-1546
-1547
-1548
-1549
-1550
-1551</pre>
+1574
+1575
+1576
+1577
+1578
+1579
+1580
+1581
+1582
+1583
+1584
+1585
+1586
+1587
+1588
+1589
+1590
+1591
+1592
+1593
+1594
+1595
+1596
+1597
+1598
+1599
+1600
+1601</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1532</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1574</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_response_headers'>response_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:head</span><span class='comma'>,</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                                             <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -18087,8 +18545,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                                             <span class='label'>user:</span>       <span class='kw'>nil</span><span class='comma'>,</span>
                                             <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                                             <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span>  <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+         <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+           <span class='id identifier rubyid_url'>url</span>
+         <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+           <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+         <span class='kw'>else</span>
+           <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+         <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -18637,29 +19103,37 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1446
-1447
-1448
-1449
-1450
-1451
-1452
-1453
-1454
-1455
-1456
-1457
-1458
-1459
-1460
-1461
-1462
-1463
-1464
-1465</pre>
+1472
+1473
+1474
+1475
+1476
+1477
+1478
+1479
+1480
+1481
+1482
+1483
+1484
+1485
+1486
+1487
+1488
+1489
+1490
+1491
+1492
+1493
+1494
+1495
+1496
+1497
+1498
+1499</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1446</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1472</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_response_status'>response_status</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:head</span><span class='comma'>,</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                                            <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -18669,8 +19143,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                                            <span class='label'>user:</span>       <span class='kw'>nil</span><span class='comma'>,</span>
                                            <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                                            <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span>  <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+         <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+           <span class='id identifier rubyid_url'>url</span>
+         <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+           <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+         <span class='kw'>else</span>
+           <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+         <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -19202,29 +19684,37 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1570
-1571
-1572
-1573
-1574
-1575
-1576
-1577
-1578
-1579
-1580
-1581
-1582
-1583
-1584
-1585
-1586
-1587
-1588
-1589</pre>
+1620
+1621
+1622
+1623
+1624
+1625
+1626
+1627
+1628
+1629
+1630
+1631
+1632
+1633
+1634
+1635
+1636
+1637
+1638
+1639
+1640
+1641
+1642
+1643
+1644
+1645
+1646
+1647</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1570</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1620</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_server_header'>server_header</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                             <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -19234,8 +19724,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                             <span class='label'>user:</span>       <span class='kw'>nil</span><span class='comma'>,</span>
                             <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                             <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span>  <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+         <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+           <span class='id identifier rubyid_url'>url</span>
+         <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+           <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+         <span class='kw'>else</span>
+           <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+         <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -19803,30 +20301,38 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2518
-2519
-2520
-2521
-2522
-2523
-2524
-2525
-2526
-2527
-2528
-2529
-2530
-2531
-2532
-2533
-2534
-2535
-2536
-2537
-2538</pre>
+2739
+2740
+2741
+2742
+2743
+2744
+2745
+2746
+2747
+2748
+2749
+2750
+2751
+2752
+2753
+2754
+2755
+2756
+2757
+2758
+2759
+2760
+2761
+2762
+2763
+2764
+2765
+2766
+2767</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2518</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2739</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_trace'>trace</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                     <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -19837,8 +20343,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                     <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                     <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
                     <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -20406,30 +20920,38 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2563
-2564
-2565
-2566
-2567
-2568
-2569
-2570
-2571
-2572
-2573
-2574
-2575
-2576
-2577
-2578
-2579
-2580
-2581
-2582
-2583</pre>
+2792
+2793
+2794
+2795
+2796
+2797
+2798
+2799
+2800
+2801
+2802
+2803
+2804
+2805
+2806
+2807
+2808
+2809
+2810
+2811
+2812
+2813
+2814
+2815
+2816
+2817
+2818
+2819
+2820</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2563</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2792</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_unlock'>unlock</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                      <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -20440,8 +20962,16 @@ empty, the <code>Cookie</code> header will not be set.</p>
                      <span class='label'>password:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
                      <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
                      <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_url'>url</span>  <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
+  <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="../../../URI.html" title="URI (module)">URI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../../URI/HTTP.html" title="URI::HTTP (class)">HTTP</a></span></span>
+          <span class='id identifier rubyid_url'>url</span>
+        <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></span>
+          <span class='const'>Addressable</span><span class='op'>::</span><span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+          <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>URL argument must be either a Addressable::URI, URI::HTTP, or a String: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_request_uri'>request_uri</span>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span>
                           <span class='label'>headers:</span>    <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
@@ -20809,21 +21339,21 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1151
-1152
-1153
-1154
-1155
-1156
-1157
-1158
-1159
-1160
-1161
-1162</pre>
+1169
+1170
+1171
+1172
+1173
+1174
+1175
+1176
+1177
+1178
+1179
+1180</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1151</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1169</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_allowed_methods'>allowed_methods</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>*</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -20882,12 +21412,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1368
-1369
-1370</pre>
+1386
+1387
+1388</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1368</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1386</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span>
   <span class='ivar'>@http</span><span class='period'>.</span><span class='id identifier rubyid_finish'>finish</span> <span class='kw'>if</span> <span class='ivar'>@http</span><span class='period'>.</span><span class='id identifier rubyid_started?'>started?</span>
@@ -21133,12 +21663,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-913
-914
-915</pre>
+931
+932
+933</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 913</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 931</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_copy'>copy</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:copy</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -21384,12 +21914,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-936
-937
-938</pre>
+954
+955
+956</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 936</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 954</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:delete</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -21635,12 +22165,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-959
-960
-961</pre>
+977
+978
+979</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 959</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 977</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:get</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -21850,12 +22380,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1018
-1019
-1020</pre>
+1036
+1037
+1038</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1018</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1036</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_body'>get_body</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response_body'>response_body</span><span class='lparen'>(</span><span class='symbol'>:get</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -22065,20 +22595,20 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-993
-994
-995
-996
-997
-998
-999
-1000
-1001
-1002
-1003</pre>
+1011
+1012
+1013
+1014
+1015
+1016
+1017
+1018
+1019
+1020
+1021</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 993</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1011</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_cookies'>get_cookies</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:get</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -22296,12 +22826,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-976
-977
-978</pre>
+994
+995
+996</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 976</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 994</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_headers'>get_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response_headers'>response_headers</span><span class='lparen'>(</span><span class='symbol'>:get</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -22547,12 +23077,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1041
-1042
-1043</pre>
+1059
+1060
+1061</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1041</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1059</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_head'>head</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:head</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -22798,12 +23328,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1064
-1065
-1066</pre>
+1082
+1083
+1084</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1064</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1082</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_lock'>lock</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:lock</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -23049,12 +23579,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1087
-1088
-1089</pre>
+1105
+1106
+1107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1087</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1105</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_mkcol'>mkcol</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:mkcol</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -23300,12 +23830,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1110
-1111
-1112</pre>
+1128
+1129
+1130</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1110</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1128</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_move'>move</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:move</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -23532,12 +24062,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-794
-795
-796</pre>
+812
+813
+814</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 794</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 812</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ok?'>ok?</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:head</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response_status'>response_status</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>200</span>
@@ -23783,12 +24313,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1133
-1134
-1135</pre>
+1151
+1152
+1153</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1133</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1151</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:options</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -24034,12 +24564,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1183
-1184
-1185</pre>
+1201
+1202
+1203</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1183</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1201</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_patch'>patch</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:patch</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -24285,12 +24815,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1206
-1207
-1208</pre>
+1224
+1225
+1226</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1206</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1224</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:post</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -24500,12 +25030,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1240
-1241
-1242</pre>
+1258
+1259
+1260</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1240</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1258</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_post_body'>post_body</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response_body'>response_body</span><span class='lparen'>(</span><span class='symbol'>:post</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -24715,12 +25245,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1223
-1224
-1225</pre>
+1241
+1242
+1243</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1223</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1241</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_post_headers'>post_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response_headers'>response_headers</span><span class='lparen'>(</span><span class='symbol'>:post</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -24949,17 +25479,305 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-867
-868
-869
-870</pre>
+885
+886
+887
+888</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 867</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 885</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_powered_by_header'>powered_by_header</span><span class='lparen'>(</span><span class='label'>method:</span> <span class='symbol'>:head</span><span class='comma'>,</span> <span class='label'>path:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>X-Powered-By</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="prop_find-instance_method">
+  
+    #<strong>prop_find</strong> {|response| ... } &#x21d2; <tt>Net::HTTPResponse</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sends a <code>PROPFIND</code> HTTP request.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path to to make the request for.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Aditional keyword arguments and headers for <span class='object_link'><a href="#request-instance_method" title="Ronin::Support::Network::HTTP#request (method)">#request</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>response</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given it will be passed the received HTTP response.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>response</span>
+      
+      
+        <span class='type'>(<tt>Net::HTTPResponse</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The received HTTP response object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Net::HTTPResponse</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new HTTP Request object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1285
+1286
+1287</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1285</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_propfind'>propfind</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:propfind</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="prop_patch-instance_method">
+  
+    #<strong>prop_patch</strong> {|response| ... } &#x21d2; <tt>Net::HTTPResponse</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sends a <code>PROPPATCH</code> HTTP request.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The path to to make the request for.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Aditional keyword arguments and headers for <span class='object_link'><a href="#request-instance_method" title="Ronin::Support::Network::HTTP#request (method)">#request</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>response</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given it will be passed the received HTTP response.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>response</span>
+      
+      
+        <span class='type'>(<tt>Net::HTTPResponse</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The received HTTP response object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Net::HTTPResponse</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new HTTP Request object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1310
+1311
+1312</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1310</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_proppatch'>proppatch</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:proppatch</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -24972,10 +25790,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
     #<strong>propfind</strong>(path, **kwargs) {|response| ... } &#x21d2; <tt>Net::HTTPResponse</tt> 
   
 
-  
-    <span class="aliases">Also known as:
-    <span class="names"><span id='prop_find-instance_method'>prop_find</span></span>
-    </span>
   
 
   
@@ -25206,12 +26020,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1263
-1264
-1265</pre>
+1281
+1282
+1283</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1263</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1281</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_propfind'>propfind</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:propfind</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -25227,10 +26041,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
     #<strong>proppatch</strong>(path, **kwargs) {|response| ... } &#x21d2; <tt>Net::HTTPResponse</tt> 
   
 
-  
-    <span class="aliases">Also known as:
-    <span class="names"><span id='prop_patch-instance_method'>prop_patch</span></span>
-    </span>
   
 
   
@@ -25461,12 +26271,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1288
-1289
-1290</pre>
+1306
+1307
+1308</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1288</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1306</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_proppatch'>proppatch</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:proppatch</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -25712,12 +26522,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1313
-1314
-1315</pre>
+1331
+1332
+1333</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1313</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1331</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_put'>put</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:put</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -26076,24 +26886,6 @@ class.</p>
       <pre class="lines">
 
 
-679
-680
-681
-682
-683
-684
-685
-686
-687
-688
-689
-690
-691
-692
-693
-694
-695
-696
 697
 698
 699
@@ -26116,10 +26908,28 @@ class.</p>
 716
 717
 718
-719</pre>
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 679</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 697</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='comment'># query string keyword arguments
 </span>                         <span class='label'>query:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -26384,12 +27194,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-890
-891
-892</pre>
+908
+909
+910</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 890</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 908</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_response_body'>response_body</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:get</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span>
@@ -26616,18 +27426,18 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-816
-817
-818
-819
-820
-821
-822
-823
-824</pre>
+834
+835
+836
+837
+838
+839
+840
+841
+842</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 816</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 834</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_response_headers'>response_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:head</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -26860,13 +27670,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-771
-772
-773
-774</pre>
+789
+790
+791
+792</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 771</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 789</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_response_status'>response_status</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:head</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -27096,13 +27906,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-844
-845
-846
-847</pre>
+862
+863
+864
+865</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 844</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 862</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_server_header'>server_header</span><span class='lparen'>(</span><span class='label'>method:</span> <span class='symbol'>:head</span><span class='comma'>,</span> <span class='label'>path:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -27166,12 +27976,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-532
-533
-534</pre>
+550
+551
+552</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 532</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 550</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ssl?'>ssl?</span>
   <span class='ivar'>@http</span><span class='period'>.</span><span class='id identifier rubyid_use_ssl?'>use_ssl?</span>
@@ -27417,12 +28227,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1336
-1337
-1338</pre>
+1354
+1355
+1356</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1336</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1354</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_trace'>trace</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:trace</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -27668,12 +28478,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1359
-1360
-1361</pre>
+1377
+1378
+1379</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1359</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1377</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unlock'>unlock</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:unlock</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -27688,7 +28498,7 @@ empty, the <code>Cookie</code> header will not be set.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Feb  1 13:41:01 2023 by
+  Generated on Wed Mar  1 22:14:06 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.3).
 </div>
