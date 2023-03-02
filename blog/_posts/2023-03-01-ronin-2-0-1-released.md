@@ -26,6 +26,8 @@ After a month of usage and collecting valuable user feedback,
 have been released. These new releases are patch releases meant to address
 minor bugs discovered after the previous version releases.
 
+{% include update_ronin.md %}
+
 {% include docker_update.md %}
 
 [ronin]: https://github.com/ronin-rb/ronin#readme
