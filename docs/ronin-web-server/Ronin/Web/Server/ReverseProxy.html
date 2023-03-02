@@ -978,13 +978,13 @@ response objects will be yielded.</p>
       <pre class="lines">
 
 
-257
 258
 259
-260</pre>
+260
+261</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/reverse_proxy.rb', line 257</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/reverse_proxy.rb', line 258</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_quit!'>quit!</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span><span class='id identifier rubyid_handler'>handler</span><span class='rparen'>)</span>
   <span class='comment'># Use thins&#39; hard #stop! if available, otherwise just #stop
@@ -1082,7 +1082,8 @@ response objects will be yielded.</p>
 195
 196
 197
-198</pre>
+198
+199</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/web/server/reverse_proxy.rb', line 172</span>
@@ -1097,10 +1098,11 @@ response objects will be yielded.</p>
   <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_headers'>headers</span>
   <span class='id identifier rubyid_body'>body</span>    <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span>
 
-  <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_connection_for'>connection_for</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='label'>ssl:</span> <span class='id identifier rubyid_ssl'>ssl</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_http'>http</span>          <span class='op'>=</span> <span class='id identifier rubyid_connection_for'>connection_for</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='label'>ssl:</span> <span class='id identifier rubyid_ssl'>ssl</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_http_response'>http_response</span> <span class='op'>=</span> <span class='id identifier rubyid_http'>http</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='label'>query:</span>   <span class='id identifier rubyid_query'>query</span><span class='comma'>,</span>
                                             <span class='label'>headers:</span> <span class='id identifier rubyid_headers'>headers</span><span class='comma'>,</span>
                                             <span class='label'>body:</span>    <span class='id identifier rubyid_body'>body</span><span class='rparen'>)</span>
+
   <span class='id identifier rubyid_response_headers'>response_headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
 
   <span class='id identifier rubyid_http_response'>http_response</span><span class='period'>.</span><span class='id identifier rubyid_each_capitalized'>each_capitalized</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
@@ -1214,7 +1216,6 @@ response objects will be yielded.</p>
       <pre class="lines">
 
 
-228
 229
 230
 231
@@ -1230,20 +1231,21 @@ response objects will be yielded.</p>
 241
 242
 243
-244</pre>
+244
+245</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/reverse_proxy.rb', line 228</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/server/reverse_proxy.rb', line 229</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run!'>run!</span><span class='lparen'>(</span><span class='label'>host:</span> <span class='const'><span class='object_link'><a href="#DEFAULT_HOST-constant" title="Ronin::Web::Server::ReverseProxy::DEFAULT_HOST (constant)">DEFAULT_HOST</a></span></span><span class='comma'>,</span> <span class='label'>port:</span> <span class='const'><span class='object_link'><a href="#DEFAULT_PORT-constant" title="Ronin::Web::Server::ReverseProxy::DEFAULT_PORT (constant)">DEFAULT_PORT</a></span></span><span class='comma'>,</span> <span class='label'>server:</span> <span class='const'><span class='object_link'><a href="#DEFAULT_SERVER-constant" title="Ronin::Web::Server::ReverseProxy::DEFAULT_SERVER (constant)">DEFAULT_SERVER</a></span></span><span class='comma'>,</span>
          <span class='op'>**</span><span class='id identifier rubyid_rack_options'>rack_options</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='const'>Rack</span><span class='op'>::</span><span class='const'>Server</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
-    <span class='label'>app:</span>    <span class='kw'>self</span><span class='comma'>,</span>
-    <span class='label'>server:</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span>
-    <span class='label'>Host:</span>   <span class='id identifier rubyid_host'>host</span><span class='comma'>,</span>
-    <span class='label'>Port:</span>   <span class='id identifier rubyid_port'>port</span><span class='comma'>,</span>
-    <span class='op'>**</span><span class='id identifier rubyid_rack_options'>rack_options</span>
-  <span class='rparen'>)</span>
+             <span class='label'>app:</span>    <span class='kw'>self</span><span class='comma'>,</span>
+             <span class='label'>server:</span> <span class='id identifier rubyid_server'>server</span><span class='comma'>,</span>
+             <span class='label'>Host:</span>   <span class='id identifier rubyid_host'>host</span><span class='comma'>,</span>
+             <span class='label'>Port:</span>   <span class='id identifier rubyid_port'>port</span><span class='comma'>,</span>
+             <span class='op'>**</span><span class='id identifier rubyid_rack_options'>rack_options</span>
+           <span class='rparen'>)</span>
 
   <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_handler'>handler</span><span class='op'>|</span>
     <span class='id identifier rubyid_trap'>trap</span><span class='lparen'>(</span><span class='symbol'>:INT</span><span class='rparen'>)</span>  <span class='lbrace'>{</span> <span class='id identifier rubyid_quit!'>quit!</span><span class='lparen'>(</span><span class='id identifier rubyid_server'>server</span><span class='comma'>,</span><span class='id identifier rubyid_handler'>handler</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -1262,7 +1264,7 @@ response objects will be yielded.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Feb  1 13:43:51 2023 by
+  Generated on Wed Mar  1 22:30:54 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.3).
 </div>
