@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ronin-2.0.1, ronin-exploits-1.0.1, ronin-payloads-0.1.1, ronin-vulns-0.1.2, ronin-web-1.0.1, ronin-web-server-0.1.1, ronin-core-0.1.1, and ronin-support-1.0.1 released
+title: ronin 2.0.1, ronin-exploits 1.0.1, ronin-payloads 0.1.1, ronin-vulns 0.1.2, ronin-web 1.0.1, ronin-web-server 0.1.1, ronin-core 0.1.1, and ronin-support 1.0.1 released
 author: postmodern
 tags:
   - ronin
