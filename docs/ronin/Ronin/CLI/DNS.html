@@ -94,6 +94,7 @@
   <strong>This module is part of a private API.</strong>
   You should avoid using this module if possible, as it may be removed or be changed in the future.
 </p>
+<p>Mixin for adding DNS support to commands.</p>
 
 
   </div>
@@ -377,12 +378,12 @@
       <pre class="lines">
 
 
-45
-46
-47</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/dns.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/dns.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_nameservers'>nameservers</span>
   <span class='ivar'>@nameservers</span>
@@ -463,19 +464,19 @@ including <span class='object_link'><a href="" title="Ronin::CLI::DNS (module)">
       <pre class="lines">
 
 
-31
-32
-33
 34
 35
 36
 37
 38
 39
-40</pre>
+40
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/dns.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/dns.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_included'>included</span><span class='lparen'>(</span><span class='id identifier rubyid_command'>command</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_command'>command</span><span class='period'>.</span><span class='id identifier rubyid_option'>option</span> <span class='symbol'>:nameserver</span><span class='comma'>,</span> <span class='label'>short:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-N</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
@@ -542,14 +543,14 @@ including <span class='object_link'><a href="" title="Ronin::CLI::DNS (module)">
       <pre class="lines">
 
 
-50
-51
-52
 53
-54</pre>
+54
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/dns.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/dns.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -624,9 +625,6 @@ including <span class='object_link'><a href="" title="Ronin::CLI::DNS (module)">
       <pre class="lines">
 
 
-107
-108
-109
 110
 111
 112
@@ -650,10 +648,13 @@ including <span class='object_link'><a href="" title="Ronin::CLI::DNS (module)">
 130
 131
 132
-133</pre>
+133
+134
+135
+136</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/dns.rb', line 107</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/dns.rb', line 110</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_print_record'>print_record</span><span class='lparen'>(</span><span class='id identifier rubyid_record'>record</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_record'>record</span>
@@ -750,14 +751,14 @@ including <span class='object_link'><a href="" title="Ronin::CLI::DNS (module)">
       <pre class="lines">
 
 
-95
-96
-97
 98
-99</pre>
+99
+100
+101
+102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/dns.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/dns.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_print_records'>print_records</span><span class='lparen'>(</span><span class='id identifier rubyid_records'>records</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_records'>records</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_record'>record</span><span class='op'>|</span>
@@ -849,16 +850,16 @@ including <span class='object_link'><a href="" title="Ronin::CLI::DNS (module)">
       <pre class="lines">
 
 
-81
-82
-83
 84
 85
 86
-87</pre>
+87
+88
+89
+90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/dns.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/dns.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_query_records'>query_records</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:type</span><span class='rbracket'>]</span>
@@ -933,18 +934,18 @@ including <span class='object_link'><a href="" title="Ronin::CLI::DNS (module)">
       <pre class="lines">
 
 
-62
-63
-64
 65
 66
 67
 68
 69
-70</pre>
+70
+71
+72
+73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/dns.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/dns.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_resolver'>resolver</span>
   <span class='ivar'>@resolver</span> <span class='op'>||=</span> <span class='kw'>unless</span> <span class='ivar'>@nameservers</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -965,7 +966,7 @@ including <span class='object_link'><a href="" title="Ronin::CLI::DNS (module)">
 </div>
 
       <div id="footer">
-  Generated on Wed Feb  1 13:48:11 2023 by
+  Generated on Wed Mar  1 23:32:21 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.3).
 </div>

@@ -531,6 +531,29 @@ of <code>Hexdump.hexdump</code>.</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#hexdump_highlights_kwargs-instance_method" title="#hexdump_highlights_kwargs (instance method)">#<strong>hexdump_highlights_kwargs</strong>  &#x21d2; Hash{Symbol =&gt; Object} </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>The hexdump <code>highlights:</code> keyword arguments.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#hexdump_kwargs-instance_method" title="#hexdump_kwargs (instance method)">#<strong>hexdump_kwargs</strong>  &#x21d2; Hash{Symbol =&gt; Object} </a>
     
 
@@ -546,6 +569,29 @@ of <code>Hexdump.hexdump</code>.</p>
 
   
     <span class="summary_desc"><div class='inline'><p>Creates a keyword arguments <code>Hash</code> of all command <code>options</code> that will be directly passed to <code>Hexdump.hexdump</code>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#hexdump_style_kwargs-instance_method" title="#hexdump_style_kwargs (instance method)">#<strong>hexdump_style_kwargs</strong>  &#x21d2; Hash{Symbol =&gt; Object} </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>The hexdump <code>style:</code> keyword arguments.</p>
 </div></span>
   
 </li>
@@ -1040,7 +1086,107 @@ of <code>Hexdump.hexdump</code>.</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="hexdump_kwargs-instance_method">
+  <h3 class="signature first" id="hexdump_highlights_kwargs-instance_method">
+  
+    #<strong>hexdump_highlights_kwargs</strong>  &#x21d2; <tt>Hash{Symbol =&gt; Object}</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>The hexdump <code>highlights:</code> keyword arguments.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/hexdump.rb', line 491</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_hexdump_highlights_kwargs'>hexdump_highlights_kwargs</span>
+  <span class='id identifier rubyid_highlights'>highlights</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='kw'>unless</span> <span class='ivar'>@highlight_index</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='id identifier rubyid_highlights'>highlights</span><span class='lbracket'>[</span><span class='symbol'>:index</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@highlight_index</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>unless</span> <span class='ivar'>@highlight_numeric</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='id identifier rubyid_highlights'>highlights</span><span class='lbracket'>[</span><span class='symbol'>:numeric</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@highlight_numeric</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>unless</span> <span class='ivar'>@highlight_chars</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='id identifier rubyid_highlights'>highlights</span><span class='lbracket'>[</span><span class='symbol'>:chars</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@highlight_chars</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_highlights'>highlights</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="hexdump_kwargs-instance_method">
   
     #<strong>hexdump_kwargs</strong>  &#x21d2; <tt>Hash{Symbol =&gt; Object}</tt> 
   
@@ -1117,22 +1263,7 @@ be directly passed to <code>Hexdump.hexdump</code>.</p>
 458
 459
 460
-461
-462
-463
-464
-465
-466
-467
-468
-469
-470
-471
-472
-473
-474
-475
-476</pre>
+461</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/hexdump.rb', line 441</span>
@@ -1144,34 +1275,119 @@ be directly passed to <code>Hexdump.hexdump</code>.</p>
     <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
-  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_index_style'>index_style</span>   <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:style_index</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>||</span>
-     <span class='lparen'>(</span><span class='id identifier rubyid_numeric_style'>numeric_style</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:style_numeric</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>||</span>
-     <span class='lparen'>(</span><span class='id identifier rubyid_chars_style'>chars_style</span>   <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:style_chars</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:style</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-    <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:style</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:index</span><span class='rbracket'>]</span>   <span class='op'>=</span> <span class='id identifier rubyid_index_style'>index_style</span>   <span class='kw'>if</span> <span class='id identifier rubyid_index_style'>index_style</span>
-    <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:style</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:numeric</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_numeric_style'>numeric_style</span> <span class='kw'>if</span> <span class='id identifier rubyid_numeric_style'>numeric_style</span>
-    <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:style</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:chars</span><span class='rbracket'>]</span>   <span class='op'>=</span> <span class='id identifier rubyid_chars_style'>chars_style</span>   <span class='kw'>if</span> <span class='id identifier rubyid_chars_style'>chars_style</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:style_index</span><span class='rparen'>)</span>   <span class='op'>||</span>
+     <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:style_numeric</span><span class='rparen'>)</span> <span class='op'>||</span>
+     <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:style_chars</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:style</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_hexdump_style_kwargs'>hexdump_style_kwargs</span>
   <span class='kw'>end</span>
 
   <span class='kw'>if</span> <span class='op'>!</span><span class='ivar'>@highlight_index</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>   <span class='op'>||</span>
      <span class='op'>!</span><span class='ivar'>@highlight_numeric</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>||</span>
      <span class='op'>!</span><span class='ivar'>@highlight_chars</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-    <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:highlights</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-
-    <span class='kw'>unless</span> <span class='ivar'>@highlight_index</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-      <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:highlights</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:index</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@highlight_index</span>
-    <span class='kw'>end</span>
-
-    <span class='kw'>unless</span> <span class='ivar'>@highlight_numeric</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-      <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:highlights</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:numeric</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@highlight_numeric</span>
-    <span class='kw'>end</span>
-
-    <span class='kw'>unless</span> <span class='ivar'>@highlight_chars</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-      <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:highlights</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:chars</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@highlight_chars</span>
-    <span class='kw'>end</span>
+    <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:highlights</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_hexdump_highlights_kwargs'>hexdump_highlights_kwargs</span>
   <span class='kw'>end</span>
 
   <span class='kw'>return</span> <span class='id identifier rubyid_kwargs'>kwargs</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="hexdump_style_kwargs-instance_method">
+  
+    #<strong>hexdump_style_kwargs</strong>  &#x21d2; <tt>Hash{Symbol =&gt; Object}</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>The hexdump <code>style:</code> keyword arguments.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/hexdump.rb', line 468</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_hexdump_style_kwargs'>hexdump_style_kwargs</span>
+  <span class='id identifier rubyid_style'>style</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_index_style'>index_style</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:style_index</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_style'>style</span><span class='lbracket'>[</span><span class='symbol'>:index</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_index_style'>index_style</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_numeric_style'>numeric_style</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:style_numeric</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_style'>style</span><span class='lbracket'>[</span><span class='symbol'>:numeric</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_numeric_style'>numeric_style</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_chars_style'>chars_style</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:style_chars</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_style'>style</span><span class='lbracket'>[</span><span class='symbol'>:chars</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_chars_style'>chars_style</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_style'>style</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1511,7 +1727,7 @@ to it.</p>
     <span class='kw'>end</span>
 
     <span class='id identifier rubyid_regexp'>regexp</span> <span class='op'>=</span> <span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='lbracket'>[</span><span class='int'>1</span><span class='op'>...</span><span class='id identifier rubyid_index'>index</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_style'>style</span>  <span class='op'>=</span> <span class='id identifier rubyid_parse_style'>parse_style</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='op'>+</span><span class='int'>2</span><span class='op'>..</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_style'>style</span>  <span class='op'>=</span> <span class='id identifier rubyid_parse_style'>parse_style</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='lbracket'>[</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span> <span class='op'>+</span> <span class='int'>2</span><span class='rparen'>)</span><span class='op'>..</span><span class='rbracket'>]</span><span class='rparen'>)</span>
 
     <span class='kw'>return</span> <span class='lbracket'>[</span><span class='id identifier rubyid_regexp'>regexp</span><span class='comma'>,</span> <span class='id identifier rubyid_style'>style</span><span class='rbracket'>]</span>
   <span class='kw'>else</span>
@@ -1520,7 +1736,7 @@ to it.</p>
     <span class='kw'>end</span>
 
     <span class='id identifier rubyid_pattern'>pattern</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>...</span><span class='id identifier rubyid_index'>index</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_style'>style</span>   <span class='op'>=</span> <span class='id identifier rubyid_parse_style'>parse_style</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='op'>+</span><span class='int'>1</span><span class='op'>..</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_style'>style</span>   <span class='op'>=</span> <span class='id identifier rubyid_parse_style'>parse_style</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='lbracket'>[</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span> <span class='op'>+</span> <span class='int'>1</span><span class='rparen'>)</span><span class='op'>..</span><span class='rbracket'>]</span><span class='rparen'>)</span>
 
     <span class='kw'>return</span> <span class='lbracket'>[</span><span class='id identifier rubyid_pattern'>pattern</span><span class='comma'>,</span> <span class='id identifier rubyid_style'>style</span><span class='rbracket'>]</span>
   <span class='kw'>end</span>
@@ -1798,7 +2014,7 @@ to it.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Feb  1 13:48:16 2023 by
+  Generated on Wed Mar  1 23:32:26 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.3).
 </div>
