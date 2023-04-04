@@ -122,6 +122,224 @@ Commands:
     spider
 </code></pre>
 
+<p>Open the <code>ronin-web</code> Ruby REPL:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-web irb
+</code></pre>
+
+<p>Diff two HTML files:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-web diff index1.html index2.html
++
+
++ &lt;div&gt;hax&lt;/div&gt;
+</code></pre>
+
+<p>Diff two URLs:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-web diff http://example.com/index.html http://example.com/index2.html
+</code></pre>
+
+<p>Perform an XPath query on an HTML file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-web html --xpath //meta index.html
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+</code></pre>
+
+<p>Perform an XPath query on a URL:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-web html --xpath //meta https://example.com/
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+</code></pre>
+
+<p>Dump all links from a web page:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-web html --links https://www.google.com/
+https://www.google.com/imghp?hl=en&amp;tab=wi
+https://maps.google.com/maps?hl=en&amp;tab=wl
+https://play.google.com/?hl=en&amp;tab=w8
+https://www.youtube.com/?tab=w1
+https://news.google.com/?tab=wn
+https://mail.google.com/mail/?tab=wm
+https://drive.google.com/?tab=wo
+https://www.google.com/intl/en/about/products?tab=wh
+http://www.google.com/history/optout?hl=en
+/preferences?hl=en
+https://accounts.google.com/ServiceLogin?hl=en&amp;passive=true&amp;continue=https://www.google.com/&amp;ec=GAZAAQ
+/advanced_search?hl=en&amp;authuser=0
+https://www.google.com/url?q=https://blog.google/products/search/google-search-new-fact-checking-misinformation/&amp;source=hpp&amp;id=19034203&amp;ct=3&amp;usg=AOvVaw3UxG35a-5UX1Rl8M_VwPbd&amp;sa=X&amp;ved=0ahUKEwjM4Iq--JD-AhVtGTQIHXMBBaYQ8IcBCAU
+/intl/en/ads/
+/services/
+/intl/en/about.html
+/intl/en/policies/privacy/
+/intl/en/policies/terms/
+</code></pre>
+
+<p>Spiders a host and print all visited URLs:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-web spider --host www.ruby-lang.org
+http://www.ruby-lang.org/
+http://www.ruby-lang.org/en/
+http://www.ruby-lang.org/en/downloads/
+http://www.ruby-lang.org/en/documentation/
+http://www.ruby-lang.org/en/libraries/
+http://www.ruby-lang.org/en/community/
+https://www.ruby-lang.org/en/news/
+https://www.ruby-lang.org/en/security/
+https://www.ruby-lang.org/en/about/
+...
+</code></pre>
+
+<p>Spiders the domain and sub-domains and print every visited URL:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-web spider --domain ruby-lang.org
+http://ruby-lang.org/
+https://www.ruby-lang.org/
+https://www.ruby-lang.org/en/
+https://www.ruby-lang.org/en/downloads/
+https://www.ruby-lang.org/en/documentation/
+https://www.ruby-lang.org/en/libraries/
+https://www.ruby-lang.org/en/community/
+https://www.ruby-lang.org/en/news/
+https://www.ruby-lang.org/en/security/
+https://www.ruby-lang.org/en/about/
+...
+</code></pre>
+
+<p>Spiders a specific web-site and print every visited URL:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-web spider --site https://www.ruby-lang.org/
+https://www.ruby-lang.org/
+https://www.ruby-lang.org/en/
+https://www.ruby-lang.org/en/downloads/
+https://www.ruby-lang.org/en/documentation/
+https://www.ruby-lang.org/en/libraries/
+https://www.ruby-lang.org/en/community/
+https://www.ruby-lang.org/en/news/
+https://www.ruby-lang.org/en/security/
+https://www.ruby-lang.org/en/about/
+...
+</code></pre>
+
+<p>Spider a host and print the response statuses:</p>
+
+<pre class="code shell"><code class="shell">200 http://www.ruby-lang.org/
+200 http://www.ruby-lang.org/en/
+200 http://www.ruby-lang.org/en/downloads/
+200 http://www.ruby-lang.org/en/documentation/
+200 http://www.ruby-lang.org/en/libraries/
+200 http://www.ruby-lang.org/en/community/
+200 http://www.ruby-lang.org/en/news/
+200 http://www.ruby-lang.org/en/security/
+200 http://www.ruby-lang.org/en/about/
+...
+</code></pre>
+
+<p>Spider a host and print the response status and headers:</p>
+
+<pre class="code shell"><code class="shell">ronin-web spider --print-headers --host www.ruby-lang.org
+200 http://www.ruby-lang.org/
+    Connection: close
+    Content-Length: 887
+    Server: Cowboy
+    Strict-Transport-Security: max-age=31536000
+    Content-Type: text/html
+    Etag: W/&quot;496ac7fab29a6094e490da28025c5857&quot;
+    X-Frame-Options: SAMEORIGIN
+    Via: 1.1 vegur, 1.1 varnish
+    Accept-Ranges: bytes
+    Date: Tue, 04 Apr 2023 19:42:51 GMT
+    Age: 155
+    X-Served-By: cache-pdx12330-PDX
+    X-Cache: HIT
+    X-Cache-Hits: 1
+    X-Timer: S1680637372.808609,VS0,VE1
+    Vary: Accept-Encoding
+...
+</code></pre>
+
+<p>Start a debug web server on <a href="http://localhost:8000/:">http://localhost:8000/:</a></p>
+
+<pre class="code shell"><code class="shell">$ ronin-web server
+[2023-04-04 12:26:59] INFO  WEBrick 1.7.0
+[2023-04-04 12:26:59] INFO  ruby 3.1.3 (2022-11-24) [x86_64-linux]
+== Sinatra (v3.0.4) has taken the stage on 8000 for development with backup from WEBrick
+[2023-04-04 12:26:59] INFO  WEBrick::HTTPServer#start: pid=8966 port=8000
+</code></pre>
+
+<p>Start a debug web server on a different address and port:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-web server --host 0.0.0.0 --port 1337
+</code></pre>
+
+<p>Host the files in a directory on <a href="http://localhost:8000/:">http://localhost:8000/:</a></p>
+
+<pre class="code shell"><code class="shell">$ ronin-web server --root .
+</code></pre>
+
+<p>Mount a specific file at a specific HTTP path:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-web server --dir /dir/index.html:./index.html
+</code></pre>
+
+<p>Mount a specific directory at a specific HTTP path:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-web server --dir /dir:.
+</code></pre>
+
+<p>Add a redirect to the web server:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-web server --redirect /redirect:https://example.com/
+</code></pre>
+
+<p>Start a HTTP reverse proxy that rewrites HTTP responses on <a href="http://localhost:8080:">http://localhost:8080:</a></p>
+
+<pre class="code shell"><code class="shell">$ ronin-web reverse-proxy --rewrite-response Example:Hax
+</code></pre>
+
+<p>Test the reverse proxy:</p>
+
+<pre class="code shell"><code class="shell">$ curl -H &quot;Host: example.com&quot; http://localhost:8080/
+</code></pre>
+
+<p>Generate a new Ruby script for parsing HTML/XML:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-web new nokogiri parse.rb
+    erb nokogiri.rb.erb parse.rb
+    chmod   parse.rb
+</code></pre>
+
+<p>Generate a new web spider script:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-web new spider --host=www.example.com spider.rb
+    erb spider.rb.erb   spider.rb
+    chmod   spider.rb
+</code></pre>
+
+<p>Generate a new web server script:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-web new server server.rb
+    erb server.rb.erb   server.rb
+    chmod   server.rb
+</code></pre>
+
+<p>Generate a new web app:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-web new webapp app
+    mkdir   app
+    mkdir   app/lib
+    mkdir   app/views
+    mkdir   app/public
+    erb .ruby-version.erb   app/.ruby-version
+    cp  Gemfile app
+    erb app.rb.erb  app/app.rb
+    cp  config.ru   app
+</code></pre>
+
 <h2 id="examples">Examples</h2>
 
 <p>Get a web-page:</p>
@@ -257,7 +475,7 @@ along with ronin-web.  If not, see <a href="https://www.gnu.org/licenses/">https
 </div></div>
 
       <div id="footer">
-  Generated on Wed Mar  1 22:45:34 2023 by
+  Generated on Tue Apr  4 13:46:01 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.3).
 </div>
