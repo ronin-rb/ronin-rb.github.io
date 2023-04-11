@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Ronin is now on Open Collective!
+author: postmodern
 tags:
  - opencollective
  - donations
