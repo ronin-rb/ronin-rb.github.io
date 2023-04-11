@@ -12,9 +12,9 @@ Ronin is now accepting donations on [Open Collective]! If you want to support
 Ronin, consider financially supporting the project so that we can continue
 building high-quality Open Source security tools and libraries in Ruby.
 
-* [Become a backer for as low as 5USD per-month][backer]
-* [Become a sponsor starting at 100USD per-month][sponsor]
-* [Make a one-time donation for as low as 5USD][donate]
+* [Become a backer for as low as $5 per-month][backer]
+* [Become a sponsor starting at $100 per-month][sponsor]
+* [Make a one-time donation for as low as $5][donate]
 
 ## What is Ronin?
 
