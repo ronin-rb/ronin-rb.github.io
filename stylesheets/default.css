@@ -20,6 +20,8 @@
 :root {
 	--bg-color: white;
 	--fg-color: black;
+	--dark-mode-bg-color: #0e0e1c;
+	--dark-mode-fg-color: white;
 }
 
 body {
@@ -80,6 +82,27 @@ header a {
 #top-bar nav a:hover {
 	color: black;
 	background-color: white;
+}
+
+/*
+ * Dark Mode Toggle
+ */
+button#dark-mode-toggle {
+	background: none;
+	border: none;
+}
+
+button#dark-mode-toggle svg {
+	width: 2em;
+	height: 2em;
+}
+
+button#dark-mode-toggle svg#dark-mode-sun {
+	display: inline;
+}
+
+button#dark-mode-toggle svg#dark-mode-moon {
+	display: none;
 }
 
 /*
@@ -316,4 +339,45 @@ footer.footer a:hover {
 	footer.footer {
 		clip-path: polygon(0 100%, 100% 100%, 100% 10%, 0 0);
 	}
+}
+
+/*
+ * Dark Mode
+ */
+body.dark-mode {
+	color: var(--dark-mode-fg-color);
+	background-color: var(--dark-mode-bg-color);
+}
+
+body.dark-mode #logo,
+body.dark-mode .social-media-link svg,
+body.dark-mode #feed-icon,
+body.dark-mode #twitter-icon,
+body.dark-mode #hackernews-icon {
+	filter: invert(100%);
+}
+
+body.dark-mode main .box,
+body.dark-mode main .button,
+body.dark-mode main table {
+	color: var(--dark-mode-fg-color);
+	background-color: var(--dark-mode-bg-color);
+}
+
+body.dark-mode main code {
+	color: var(--dark-mode-fg-color);
+	background-color: black;
+}
+
+body.dark-mode main h1,
+body.dark-mode main h2,
+body.dark-mode main h3,
+body.dark-mode main h4,
+body.dark-mode main h5,
+body.dark-mode main h6,
+body.dark-mode main p,
+body.dark-mode main label,
+body.dark-mode main strong,
+body.dark-mode main a {
+	color: var(--dark-mode-fg-color);
 }
