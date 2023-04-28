@@ -34,7 +34,7 @@ $ ronin irb
 <div class="note">
   <p>
   <b>Note:</b> If you are new to the Ruby programming language, you might
-  consider reviewing the <a href="http://www.rubycentral.com/book/">Pragmatic Programmers Guide to Ruby</a>,
+  consider reviewing the <a href="https://ruby-doc.com/docs/ProgrammingRuby/">Pragmatic Programmers Guide to Ruby</a>,
   since it is expected that users of the Ronin Ruby Console have a basic
   understanding of Ruby programming practices.
   </p>
