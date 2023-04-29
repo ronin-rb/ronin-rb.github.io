@@ -60,7 +60,7 @@ I am calling this next big push "Phase 2"; think of [The Big Refactor] as
 * [ronin-exfil] (Done) - A Ruby CLI utility for receiving exfiltrated data.
 * [ronin-web-session_cookie] (Done) - A library for parsing and deserializing
   various session cookies.
-* `ronin-wordlists` (WIP) - A tool for managing and downloading wordlists.
+* [ronin-wordlists] (WIP) - A tool for managing and downloading wordlists.
 * [ronin-nmap] (WIP) - A tool for automating nmap, and querying or importing nmap XML into [ronin-db].
 * [ronin-masscan] (WIP) - A tool for automating masscan, and querying or importing masscan output files into [ronin-db].
 * [ronin-recon] (WIP) - A modular recursive recon engine.
@@ -83,6 +83,7 @@ getting involved.
 [ronin-exfil]: https://github.com/ronin-rb/ronin-exfil#readme
 [ronin-web-session_cookie]: https://github.com/ronin-rb/ronin-web-session_cookie#readme
 [ronin-web-spider]: https://github.com/ronin-rb/ronin-web-spider#readme
+[ronin-wordlists]: https://github.com/ronin-rb/ronin-wordlists#readme
 [ronin-nmap]: https://github.com/ronin-rb/ronin-nmap#readme
 [ronin-masscan]: https://github.com/ronin-rb/ronin-masscan#readme
 [ronin-recon]: https://github.com/ronin-rb/ronin-recon#readme
