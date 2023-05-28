@@ -30,6 +30,7 @@ manual installation instructions:
 * [Arch](arch/)
 * [macOS](macos/)
 * [FreeBSD](freebsd/)
+* [Nix](nixos/)
 
 ## Docker
 
