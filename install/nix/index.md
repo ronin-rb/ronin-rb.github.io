@@ -8,7 +8,7 @@ title: Install - Nix
 ## Copy/Paste Instructions
 
 ```shell
-nix-env -iA ronin
+nix-env -iA nixpkgs.ronin
 ```
 
 ## Detailed Breakdown
