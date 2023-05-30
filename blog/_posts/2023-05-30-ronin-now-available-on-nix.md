@@ -15,6 +15,10 @@ Thanks to one of our contributors, [@Ch1keen], Ronin is now available on
 packages into self-contained directories, instead of globally. Nix can be
 installed on macOS and Linux, along side the system's package manager.
 
+## What is Ronin?
+
+{% include description.md %}
+
 ## Install
 
 Nix users can install Ronin globally with:
