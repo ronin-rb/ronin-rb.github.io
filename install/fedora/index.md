@@ -40,3 +40,12 @@ sudo dnf install -y readline-devel sqlite-devel
 {% include install/post_install.md %}
 
 {% include install/troubleshooting.md %}
+
+If you get an exception saying `cannot load such file -- net/ftp` when trying to
+run `ronin irb` or requiring `ronin/support` in Ruby, this is because the
+Fedora `ruby-bundled-gems` rpm package isn't installed. You can fix this by
+running:
+
+```shell
+sudo dnf install -y ruby-bundled-gems
+```
