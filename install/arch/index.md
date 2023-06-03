@@ -23,7 +23,7 @@ sudo pacman -Sy --noconfirm gcc make
 {% include install/ruby.md %}
 
 ```shell
-sudo pacman -Sy --noconfirm community/ruby
+sudo pacman -Sy --noconfirm ruby
 ```
 
 {% include install/c_libraries.md %}
