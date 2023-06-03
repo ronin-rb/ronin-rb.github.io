@@ -108,7 +108,7 @@ manager:
 * **Debian** / **Ubuntu**: `sudo apt install ruby-full`
 * **Fedora**: `sudo dnf install ruby-devel`
 * **OpenSUSE**: `sudo zypper -n in -l ruby-devel`
-* **Arch**: `sudo pacman install community/ruby`
+* **Arch**: `sudo pacman install ruby`
 
 #### Option 2: Ruby version Manager
 
