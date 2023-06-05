@@ -31,22 +31,21 @@ command:
 $ ronin irb
 ```
 
-<div class="note">
-  <p>
-  <b>Note:</b> If you are new to the Ruby programming language, you might
-  consider reviewing the <a href="https://ruby-doc.com/docs/ProgrammingRuby/">Pragmatic Programmers Guide to Ruby</a>,
+<article class="message is-dark">
+  <div class="message-header">Note:</div>
+  <div class="message-body" markdown="1">
+  If you are new to the Ruby programming language, you might
+  consider reviewing the [Pragmatic Programmers Guide to Ruby](https://ruby-doc.com/docs/ProgrammingRuby/),
   since it is expected that users of the Ronin Ruby Console have a basic
   understanding of Ruby programming practices.
-  </p>
 
-  <p>
   If you have questions regarding the methods or Classes defined within
-  Ronin, you can consult the <a href="/docs/ronin-support/">API Documentation</a>
+  Ronin, you can consult the [API Documentation](/docs/ronin-support/)
   for Ronin. If on the other hand, you have questions about methods or
   Classes provided by Ruby itself, I recommend using
-  <a href="https://rubydoc.info/stdlib/core">rubydoc.info</a>.
-  </p>
-</div>
+  [rubydoc.info](https://rubydoc.info/stdlib/core).
+  </div>
+</article>
 
 ## Formatting Binary Data
 
@@ -57,13 +56,18 @@ Packing an [Integer](http://www.ruby-doc.org/core/classes/Integer.html):
 # => "7\x13\0\0"
 ```
 
-**Note:** In Ruby everything is an [Object](http://www.ruby-doc.org/core/classes/Object.html)
+<article class="message is-dark">
+  <div class="message-header">Note:</div>
+  <div class="message-body" markdown="1">
+In Ruby everything is an [Object](http://www.ruby-doc.org/core/classes/Object.html)
 even [Integers](http://www.ruby-doc.org/core/classes/Integer.html) and
 [Strings](http://www.ruby-doc.org/core/classes/String.html)
 are represented as Objects. These Objects have methods and are defined by
 Classes, much like any other Object in Ruby. In the example above Ronin has
 added the [pack](/docs/ronin/Integer.html#pack-instance_method)
 method to the `Integer` class.
+  </div>
+</article>
 
 Packing an `Integer` with a custom address length:
 
@@ -219,8 +223,13 @@ udp_connect('www.example.com', 3030) do |sock|
 end
 ```
 
-**Note:** For more Networking convenience methods, consult the documentation
+<article class="message is-dark">
+  <div class="message-header">Note:</div>
+  <div class="message-body" markdown="1">
+For more Networking convenience methods, consult the documentation
 for the [Net](/docs/ronin/Net.html) namespace.
+  </div>
+</article>
 
 ## URLs
 

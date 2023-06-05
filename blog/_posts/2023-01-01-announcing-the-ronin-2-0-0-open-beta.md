@@ -72,9 +72,14 @@ and execute the installation script:
 
 {% include install_script.md %}
 
-**Note:** the [ronin-install.sh] script will automatically install any
+<article class="message is-dark">
+  <div class="message-header">Note:</div>
+  <div class="message-body" markdown="1">
+the [ronin-install.sh] script will automatically install any
 required external dependencies (ex: `ruby`, `libsqlite3`, etc) if they are not
 already installed.
+  </div>
+</article>
 
 If you prefer using [Docker][docker], there are also [Docker images][dockerhub] 
 available for Ubuntu, Fedora, and Alpine, that beta testers can also pull down
