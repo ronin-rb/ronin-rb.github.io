@@ -104,7 +104,7 @@ HTTP, <a href="https://github.com/ronin-rb/ronin-vulns#synopsis">scanning for we
 <ul>
 <li>A toolkit of useful commands.</li>
 <li>A fully-loaded Ruby REPL.</li>
-<li>An ecosystem of high-quality security related Ruby libraries, API, and
+<li>An ecosystem of high-quality security related Ruby libraries, APIs, and
 commands.</li>
 </ul>
 
@@ -333,23 +333,6 @@ foo bar
 
 <h3 id="text">Text</h3>
 
-<p>De-obfuscate an email address:</p>
-
-<pre class="code shell"><code class="shell">$ ronin email-addr --deobfuscate &quot;john [dot] smith [at] example [dot] com&quot;
-john.smith@example.com
-</code></pre>
-
-<p>Enumerate through all of the obfuscations of an email address:</p>
-
-<pre class="code shell"><code class="shell">$ ronin email-addr --enum-obfuscations john.smith@example.com
-john.smith @ example.com
-john.smith AT example.com
-john.smith at example.com
-john.smith[AT]example.com
-john.smith[at]example.com
-...
-</code></pre>
-
 <p>Extract high-entropy data from a file:</p>
 
 <pre class="code shell"><code class="shell">$ ronin entropy -e 5.0 index.html
@@ -417,12 +400,12 @@ CEＯ
 <pre class="code shell"><code class="shell">$ ronin decrypt --cipher aes-256-cbc --password &quot;...&quot; encrypted.bin
 </code></pre>
 
-<p>Generates an HMAC for a file:</p>
+<p>Generates a HMAC for a file:</p>
 
 <pre class="code shell"><code class="shell">$ ronin hmac --hash sha1 --password &quot;too many secrets&quot; data.txt
 </code></pre>
 
-<p>Generates an HMAC for a string:</p>
+<p>Generates a HMAC for a string:</p>
 
 <pre class="code shell"><code class="shell">$ ronin hmac --hash sha1 --password &quot;too many secrets&quot; --string &quot;...&quot;
 </code></pre>
@@ -655,6 +638,24 @@ example.com.bh
 ...
 </code></pre>
 
+<p>Find all subdomains that have addresses:</p>
+
+<pre class="code shell"><code class="shell">$ ronin host --enum-subdomains subdomains.txt --has-addresses google.com
+www.google.com
+mail.google.com
+smtp.google.com
+ns1.google.com
+ns2.google.com
+m.google.com
+ns.google.com
+blog.google.com
+admin.google.com
+news.google.com
+vpn.google.com
+ns3.google.com
+...
+</code></pre>
+
 <p>Enumerate over every possible typosquat variation of a domain:</p>
 
 <pre class="code shell"><code class="shell">$ ronin typosquat microsoft.com
@@ -676,6 +677,23 @@ microssoft.com
 <p>Find all of the unregistered typosquat domains for a valid domain:</p>
 
 <pre class="code shell"><code class="shell">$ ronin typosquat --unregistered microsoft.com
+</code></pre>
+
+<p>De-obfuscate an email address:</p>
+
+<pre class="code shell"><code class="shell">$ ronin email-addr --deobfuscate &quot;john [dot] smith [at] example [dot] com&quot;
+john.smith@example.com
+</code></pre>
+
+<p>Enumerate through all of the obfuscations of an email address:</p>
+
+<pre class="code shell"><code class="shell">$ ronin email-addr --enum-obfuscations john.smith@example.com
+john.smith @ example.com
+john.smith AT example.com
+john.smith at example.com
+john.smith[AT]example.com
+john.smith[at]example.com
+...
 </code></pre>
 
 <h4 id="ssl-tls-certs">SSL/TLS Certs</h4>
@@ -841,9 +859,9 @@ along with Ronin.  If not, see <a href="https://www.gnu.org/licenses/">https://w
 </div></div>
 
       <div id="footer">
-  Generated on Wed Mar  1 23:32:21 2023 by
+  Generated on Fri Jun  9 17:54:59 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.28 (ruby-3.1.3).
+  0.9.34 (ruby-3.1.4).
 </div>
 
     </div>

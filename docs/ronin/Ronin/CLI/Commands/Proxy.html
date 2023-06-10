@@ -114,7 +114,7 @@
   <strong>This class is part of a private API.</strong>
   You should avoid using this class if possible, as it may be removed or be changed in the future.
 </p>
-<p>Starts a TCP/UDP intercept proxy.</p>
+<p>Starts a TCP/UDP/SSL/TLS intercept proxy server.</p>
 
 <h2 id="usage">Usage</h2>
 
@@ -123,35 +123,26 @@
 
 <h2 id="options">Options</h2>
 
-<pre class="code ruby"><code class="ruby">-v, --[no-]verbose               Enable verbose output.
--q, --[no-]quiet                 Disable verbose output.
-    --[no-]silent                Silence all output.
--t, --[no-]tcp                   TCP Proxy.
-                                 Default: true
--S, --[no-]ssl                   SSL Proxy.
--T, --[no-]tls                   TLS Proxy.
--u, --[no-]udp                   UDP Proxy.
--x, --[no-]hexdump               Enable hexdump output.
--r, --rewrite [/REGEXP/:STRING] Rewrite rules.
-    --rewrite-client [/REGEXP/:STRING]
-                                 Client rewrite rules.
-    --rewrite-server [/REGEXP/:STRING]
-                                 Server rewrite rules.
--i, --ignore [/REGEXP/ [...]]    Ignore rules.
-    --ignore-client [/REGEXP/ [...]]
-                                 Client ignore rules.
-    --ignore-server [/REGEXP/ [...]]
-                                 Server ignore rules.
--C, --close [/REGEXP/ [...]]     Close rules.
-    --close-client [/REGEXP/ [...]]
-                                 Client close rules.
-    --close-server [/REGEXP/ [...]]
-                                 Server close rules.
--R, --reset [/REGEXP/ [...]]     Reset rules.
-    --reset-client [/REGEXP/ [...]]
-                                 Client reset rules.
-    --reset-server [/REGEXP/ [...]]
-                                 Server reset rules.
+<pre class="code ruby"><code class="ruby">-t, --tcp                        TCP Proxy
+-S, --ssl                        SSL Proxy
+-T, --tls                        TLS Proxy
+-u, --udp                        UDP Proxy
+-x, --[no-]hexdump               Enable hexdump output
+-r, --rewrite /REGEXP/:STRING    Rewrite rules
+    --rewrite-client /REGEXP/:STRING
+                                 Client rewrite rules
+    --rewrite-server /REGEXP/:STRING
+                                 Server rewrite rules
+-i, --ignore /REGEXP/            Ignore rules
+    --ignore-client /REGEXP/     Client ignore rules
+    --ignore-server /REGEXP/     Server ignore rules
+-C, --close /REGEXP/             Close rules
+    --close-client /REGEXP/      Client close rules
+    --close-server /REGEXP/      Server close rules
+-R, --reset /REGEXP/             Reset rules
+    --reset-client /REGEXP/      Client reset rules
+    --reset-server /REGEXP/      Server reset rules
+-h, --help                       Print help information
 </code></pre>
 
 <h2 id="arguments">Arguments</h2>
@@ -159,6 +150,12 @@
 <pre class="code ruby"><code class="ruby">[PROXY_HOST:]PROXY_PORT          The local host and/or port to
                                  listen on.
 REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
+</code></pre>
+
+<h2 id="examples">Examples</h2>
+
+<pre class="code ruby"><code class="ruby">ronin proxy 8080 google.com:80
+ronin proxy --udp --hexdump 0.0.0.0:53 8.8.8.8:53
 </code></pre>
 
 
@@ -841,6 +838,10 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
+264
+265
+266
+267
 268
 269
 270
@@ -859,14 +860,10 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
 283
 284
 285
-286
-287
-288
-289
-290</pre>
+286</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 268</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 264</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>protocol:</span> <span class='symbol'>:tcp</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -960,12 +957,12 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
-250
-251
-252</pre>
+246
+247
+248</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 250</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 246</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span>
   <span class='ivar'>@close</span>
@@ -1034,12 +1031,12 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
-210
-211
-212</pre>
+206
+207
+208</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 210</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 206</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close_client'>close_client</span>
   <span class='ivar'>@close_client</span>
@@ -1108,12 +1105,12 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
-230
-231
-232</pre>
+226
+227
+228</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 230</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 226</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close_server'>close_server</span>
   <span class='ivar'>@close_server</span>
@@ -1182,12 +1179,12 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
-255
-256
-257</pre>
+251
+252
+253</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 255</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 251</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ignore'>ignore</span>
   <span class='ivar'>@ignore</span>
@@ -1256,12 +1253,12 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
-215
-216
-217</pre>
+211
+212
+213</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 215</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 211</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ignore_client'>ignore_client</span>
   <span class='ivar'>@ignore_client</span>
@@ -1330,12 +1327,12 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
-235
-236
-237</pre>
+231
+232
+233</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 235</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 231</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ignore_server'>ignore_server</span>
   <span class='ivar'>@ignore_server</span>
@@ -1404,12 +1401,12 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
-200
-201
-202</pre>
+196
+197
+198</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 200</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 196</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_protocol'>protocol</span>
   <span class='ivar'>@protocol</span>
@@ -1478,12 +1475,12 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
-245
-246
-247</pre>
+241
+242
+243</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 245</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 241</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reset'>reset</span>
   <span class='ivar'>@reset</span>
@@ -1552,12 +1549,12 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
-205
-206
-207</pre>
+201
+202
+203</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 205</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 201</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reset_client'>reset_client</span>
   <span class='ivar'>@reset_client</span>
@@ -1626,12 +1623,12 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
-225
-226
-227</pre>
+221
+222
+223</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 225</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 221</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reset_server'>reset_server</span>
   <span class='ivar'>@reset_server</span>
@@ -1700,12 +1697,12 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
-260
-261
-262</pre>
+256
+257
+258</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 260</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 256</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rewrite'>rewrite</span>
   <span class='ivar'>@rewrite</span>
@@ -1774,12 +1771,12 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
-220
-221
-222</pre>
+216
+217
+218</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 220</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 216</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rewrite_client'>rewrite_client</span>
   <span class='ivar'>@rewrite_client</span>
@@ -1848,12 +1845,12 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
-240
-241
-242</pre>
+236
+237
+238</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 240</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 236</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rewrite_server'>rewrite_server</span>
   <span class='ivar'>@rewrite_server</span>
@@ -1950,6 +1947,10 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
+461
+462
+463
+464
 465
 466
 467
@@ -1957,14 +1958,10 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
 469
 470
 471
-472
-473
-474
-475
-476</pre>
+472</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 465</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 461</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_address'>address</span><span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_connection'>connection</span>
@@ -2026,19 +2023,19 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
+423
+424
+425
+426
 427
 428
 429
 430
 431
-432
-433
-434
-435
-436</pre>
+432</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 427</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 423</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parse_rewrite_rule'>parse_rewrite_rule</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_rindex'>rindex</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/:</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -2118,14 +2115,14 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
-510
-511
-512
-513
-514</pre>
+506
+507
+508
+509
+510</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 510</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 506</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_print_data'>print_data</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='ivar'>@hexdumper</span> <span class='kw'>then</span> <span class='ivar'>@hexdumper</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
@@ -2217,12 +2214,12 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
-487
-488
-489</pre>
+483
+484
+485</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 487</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 483</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_print_incoming'>print_incoming</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_event'>event</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_log_info'>log_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> &lt;- </span><span class='embexpr_beg'>#{</span><span class='ivar'>@proxy</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_event'>event</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -2312,12 +2309,12 @@ REMOTE_HOST:REMOTE_PORT          The remote server to proxy data to.
       <pre class="lines">
 
 
-500
-501
-502</pre>
+496
+497
+498</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 500</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 496</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_print_outgoing'>print_outgoing</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='comma'>,</span><span class='id identifier rubyid_type'>type</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_log_info'>log_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='lparen'>(</span><span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'> -&gt; </span><span class='embexpr_beg'>#{</span><span class='ivar'>@proxy</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_type'>type</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -2389,19 +2386,19 @@ options.</p>
       <pre class="lines">
 
 
+441
+442
+443
+444
 445
 446
 447
 448
 449
-450
-451
-452
-453
-454</pre>
+450</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 445</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 441</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_proxy_class'>proxy_class</span>
   <span class='kw'>case</span> <span class='ivar'>@protocol</span>
@@ -2462,6 +2459,10 @@ options.</p>
       <pre class="lines">
 
 
+291
+292
+293
+294
 295
 296
 297
@@ -2586,14 +2587,10 @@ options.</p>
 416
 417
 418
-419
-420
-421
-422
-423</pre>
+419</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 295</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/proxy.rb', line 291</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_local'>local</span><span class='comma'>,</span> <span class='id identifier rubyid_upstream'>upstream</span> <span class='op'>=</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span>
@@ -2734,9 +2731,9 @@ options.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Mar  1 23:32:25 2023 by
+  Generated on Fri Jun  9 17:55:03 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.28 (ruby-3.1.3).
+  0.9.34 (ruby-3.1.4).
 </div>
 
     </div>
