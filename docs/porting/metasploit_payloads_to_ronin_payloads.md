@@ -3,7 +3,7 @@ layout: page
 title: Porting Metasploit Payloads to Ronin Payloads
 ---
 
-# Porting Metasploit Payloads modules to Ronin Payloads
+# Porting Metasploit Payloads to Ronin Payloads
 
 This guide explains how to convert a Metasploit payloads into a
 [Ronin payloads][Ronin::Payloads::Payload].
