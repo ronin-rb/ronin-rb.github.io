@@ -25,16 +25,6 @@ title: Documentation
 
 [ronin-support]: https://github.com/ronin-rb/ronin-support#readme
 
-## Tutorials
-
-* [Everyday Ronin](tutorials/everyday_ronin.html) - 
-  A somewhat lengthy guide covering the everyday usage of various
-  convenience methods within the Ronin Ruby Console.
-* [Using ronin-web](tutorials/using_ronin_web.html) -
-  A brief guide showing basic usage of the [ronin-web] library.
-
-[ronin-web]: https://github.com/ronin-rb/ronin-web#readme
-
 ## Porting
 
 * [Porting Metasploit Exploits to Ronin Exploits](porting/metasploit_exploits_to_ronin_exploits.html) -
