@@ -22,6 +22,7 @@ in the `ronin irb` command that caused [ronin-support]'s Mixin methods
 [ronin-support]: https://github.com/ronin-rb/ronin-support#readme
 [ronin-payloads]: https://github.com/ronin-rb/ronin-payloads#readme
 [ronin-exploits]: https://github.com/ronin-rb/ronin-exploits#readme
+[ronin]: https://github.com/ronin-rb/ronin#readme
 
 [ronin-payloads-0.1.3]: https://github.com/ronin-rb/ronin-payloads/releases/tag/v0.1.3
 [ronin-exploits-1.0.2]: https://github.com/ronin-rb/ronin-exploits/releases/tag/v1.0.2
