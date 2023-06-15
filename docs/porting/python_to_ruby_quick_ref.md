@@ -829,8 +829,8 @@ methods.
   </div>
 
   <div class="level-right">
-    <a class="button" href="pwnlib_to_ronin.html">
-      Porting Pwnlib to Ronin &raquo;
+    <a class="button" href="pwnlib_to_ronin_quick_ref.html">
+      Porting Pwnlib to Ronin Quick Ref &raquo;
     </a>
   </div>
 </div>
