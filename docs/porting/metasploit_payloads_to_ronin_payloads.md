@@ -765,3 +765,23 @@ Metasploit                          | Ronin
 
 [ronin-payloads]: /docs/ronin-payloads/
 [Ronin::Payloads::Payload]: /docs/ronin-payloads/Ronin/Payloads/Payload.html
+
+<div class="level">
+  <div class="level-left">
+    <a class="button" href="metasploit_exploits_to_ronin_exploits.html">
+      &laquo; Porting Metasploit Exploits to Ronin Exploits
+    </a>
+  </div>
+
+  <div class="level-item">
+    <a class="button" href="index.html">
+      &#x2303; Porting
+    </a>
+  </div>
+
+  <div class="level-right">
+    <a class="button" href="metasploit_payloads_to_ronin_payloads.html">
+      Porting Metasploit Payloads to Ronin Payloads &raquo;
+    </a>
+  </div>
+</div>
