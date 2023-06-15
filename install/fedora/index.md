@@ -28,12 +28,10 @@ sudo dnf install -y ruby-devel ruby-bundled-gems
 
 <article class="message is-dark">
   <div class="message-header">Note:</div>
-  <div class="message-body">
-    <code>ruby-bundled-gems</code> is required for <code>net/ftp</code>,
-    <code>net/imap</code>, <code>net/pop</code>, and <code>net/smtp</code>.
-    For some reason Fedora's <code>ruby</code> package does not automatically
-    install the <code>ruby-bundled-gems</code> package as a dependency of
-    <code>ruby</code>.
+  <div class="message-body" markdown="1">
+`ruby-bundled-gems` is required for `net/ftp`, `net/imap`, `net/pop`, and
+`net/smtp`. For some reason Fedora's `ruby` package does not automatically
+install the `ruby-bundled-gems` package as a dependency of `ruby`.
   </div>
 </article>
 
