@@ -5,6 +5,27 @@ title: Ruby Quick Ref
 
 # Ruby Quick Ref
 
+## Table of Contents
+
+* [Literal Values](#literal-values)
+* [Variables](#variables)
+* [Operators](#operators)
+  * [Boolean](#boolean)
+  * [Comparison](#comparison)
+  * [Arithmetic](#arithmetic)
+  * [Bitwise](#bitwise)
+* [Printing](#printing)
+* [Statements](#statements)
+* [Exception Handling](#exception-handling)
+* [Conversion Methods](#conversion-methods)
+* [Coercion Methods](#coercion-methods)
+* [String Methods](#string-methods)
+* [Array Methods](#array-methods)
+* [Enumerable Methods](#enumerable-methods)
+* [Classes](#classes)
+* [Methods](#methods)
+* [See Also](#see-also)
+
 ## Literal Values
 
 ----------------------------------------|---------------------------------------
