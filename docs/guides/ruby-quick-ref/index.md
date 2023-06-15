@@ -334,6 +334,10 @@ end</pre>
 `string.gsub(/[ABC]/,'X')`            | replace all occurrances of the Regex with `X`
 `string.gsub(/[ABC]/) { |match| ... }`| replace all occurrances of the Regex with whatever the block returns
 
+See the documentation of [String] for more methods.
+
+[String]: https://rubydoc.info/stdlib/core/String
+
 ## Array Methods
 
 -----------------------------|--------------------------------------------------
@@ -352,6 +356,10 @@ end</pre>
 `array1.concat(array2)`                 | concats another Array to the Array
 `array.join(' ')`                       | joins he elements with a String and returns a String
 
+See the documentation of [Array] for more methods.
+
+[Array]: https://rubydoc.info/stdlib/core/Array
+
 ## Enumerable Methods
 
 ----------------------------------|---------------------------------------------
@@ -361,6 +369,10 @@ end</pre>
 `enum.select { |elem| elem > 2 }` | select some of the Array's elements
 `enum.reject { |elem| elem > 2 }` | opposite of `array.select`
 `enum.grep(/regex-here/)`         | select elements based on the Regex
+
+See the documentation of [Enumerable] for more methods.
+
+[Enumerable]: https://rubydoc.info/stdlib/core/Enumerable
 
 ## Classes
 
