@@ -11,8 +11,8 @@ title: Porting
 * [Porting Metasploit Payloads to Ronin Payloads](metasploit_payloads_to_ronin_payloads.html) -
   A guide that explains how to convert Metasploit payloads into
   [Ronin payloads][ronin-payloads].
-* [Porting Python to Ruby Quick Ref](python_to_ruby_quick_ref.html) -
-  Provides a quick references for converting Python code to Ruby.
+* [Porting Python to Ronin Quick Ref](python_to_ronin_quick_ref.html) -
+  Provides a quick references for converting Python code to Ronin.
 * [Porting Pwnlib to Ronin Quick Ref](pwnlib_to_ronin_quick_ref.html) -
   Provides a quick references for converting Pwnlib code to Ronin.
 
