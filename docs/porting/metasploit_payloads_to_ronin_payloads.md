@@ -1,1 +1,0 @@
-metasploit-payloads-to-ronin-payloads/index.md

@@ -1,1 +1,0 @@
-pwnlib-to-ronin-quick-ref/index.md
