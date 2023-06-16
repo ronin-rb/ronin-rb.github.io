@@ -529,14 +529,14 @@ Python                                 | Ruby
 `string.find(substr)`                  | `string.index(substr)`
 `string.format(...)`                   | `string % [...]` / `format(string, ...)`
 `string.index(substr)`                 | `string.index(substr)`
-`string.isalnum()`                     | `string =~ /\A[[:alnum:]]+\z/`
-`string.isalpha()`                     | `string =~ /\A[[:alpha:]]+\z/`
-`string.isascii()`                     | `string =~ /\A[[:ascii:]]+\z/`
-`string.isdigit()`                     | `string =~ /\A[[:digit:]]+\z/`
-`string.islower()`                     | `string =~ /\A[[:lower:]]\z+/`
-`string.isprintable()`                 | `string =~ /\A[[:print:]]+\z/`
-`string.isspace()`                     | `string =~ /\A[[:space:]]+\z/`
-`string.isupper()`                     | `string =~ /\A[[:upper:]]\z+/`
+`string.isalnum()`                     | `string.alpha_numeric?`
+`string.isalpha()`                     | `string.alpha?`
+`string.isascii()`                     | `string.ascii?`
+`string.isdigit()`                     | `string.numeric?`
+`string.islower()`                     | `string.lowercase_alpha?`
+`string.isprintable()`                 | `string.printable?`
+`string.isspace()`                     | `string.space?`
+`string.isupper()`                     | `string.uppercase_alpha?`
 `string.join(list)`                    | `array.join(string)`
 `string.ljust(20)`                     | `string.ljust(20)`
 `string.lower()`                       | `string.downcase`
@@ -689,7 +689,8 @@ methods.
         <code>import socket</code>
       </td>
       <td>
-        <code>require 'socket'</code>
+        <pre>require 'ronin/support/network/tcp/mixin'
+include Ronin::Support::Network::TCP::Mixin</pre>
       </td>
     </tr>
     <tr>
@@ -698,7 +699,7 @@ methods.
 s.connect((ip, port))</pre>
       </td>
       <td>
-        <code>s = TCPSocket.new(host,port)</code>
+        <code>s = tcp_connect(host,port)</code>
       </td>
     </tr>
     <tr>
@@ -709,9 +710,7 @@ s.listen(4)
 conn, addr = s.accept()</pre>
       </td>
       <td>
-        <pre>s = TCPServer.new('127.0.0.1',1337)
-s.listen(4)
-client = s.accept</pre>
+        <code>client = tcp_accept(host,port)</code>
       </td>
     </tr>
     <tr>
@@ -741,12 +740,11 @@ client = s.accept</pre>
   </tbody>
 </table>
 
-See the documentation of [TCPSocket], [TCPServer], and [UDPSocket] for more
-available methods.
+See the documentation of [Ronin::Support::Network::TCP::Mixin] and
+[Ronin::Support::Network::UDP::Mixin] for more methods.
 
-[TCPSocket]: https://rubydoc.info/stdlib/socket/TCPSocket
-[TCPServer]: https://rubydoc.info/stdlib/socket/TCPServer
-[UDPSocket]: https://rubydoc.info/stdlib/socket/UDPSocket
+[Ronin::Support::Network::TCP::Mixin]: /docs/ronin-support/Ronin/Support/Network/TCP/Mixin.html
+[Ronin::Support::Network::UDP::Mixin]: /docs/ronin-support/Ronin/Support/Network/UDP/Mixin.html
 
 ## HTTP
 
