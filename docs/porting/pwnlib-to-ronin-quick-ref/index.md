@@ -248,7 +248,7 @@ See the documentation for [Integer#pack] and [String#unpack] for more examples.
   </div>
 
   <div class="level-item">
-    <a class="button" href="../">
+    <a class="button" href="/docs/#porting">
       &#x2303; Porting
     </a>
   </div>

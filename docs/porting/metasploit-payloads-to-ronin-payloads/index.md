@@ -774,7 +774,7 @@ Metasploit                          | Ronin
   </div>
 
   <div class="level-item">
-    <a class="button" href="../">
+    <a class="button" href="/docs/#porting">
       &#x2303; Porting
     </a>
   </div>
