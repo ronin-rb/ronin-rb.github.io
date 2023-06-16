@@ -24,7 +24,7 @@ Ronin now has eight brand new [guides]!
   Provides a quick reference of Ruby's syntax.
 * [Writing Ronin Ruby Scripts](/docs/guides/writing-ronin-ruby-scripts/) -
   Explains how to write Ruby scripts using [ronin-support].
-* [Porting Metasploit Payloads to Ronin Payloads](/docs/porting/metasploit_payloads_to_ronin_payloads.html) -
+* [Porting Metasploit Payloads to Ronin Payloads](/docs/porting/metasploit-payloads-to-ronin-payloads/) -
   Explains how to port Metasploit Payloads to [ronin-payloads].
 
 [ronin-support]: https://github.com/ronin-rb/ronin-support#readme
