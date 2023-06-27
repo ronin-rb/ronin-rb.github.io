@@ -123,7 +123,7 @@
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#case-instance_method" title="#case (instance method)">#<strong>case</strong>  &#x21d2; Object </a>
+      <a href="#case-instance_method" title="#case (instance method)">#<strong>case</strong>  &#x21d2; :lower, ... </a>
     
 
     
@@ -151,7 +151,35 @@
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#quotes-instance_method" title="#quotes (instance method)">#<strong>quotes</strong>  &#x21d2; Object </a>
+      <a href="#comment-instance_method" title="#comment (instance method)">#<strong>comment</strong>  &#x21d2; String<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>String to use as &#39;comment&#39; or <code>nil</code> to let the emitter decide.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#quotes-instance_method" title="#quotes (instance method)">#<strong>quotes</strong>  &#x21d2; :single, :double </a>
     
 
     
@@ -179,7 +207,7 @@
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#space-instance_method" title="#space (instance method)">#<strong>space</strong>  &#x21d2; Object </a>
+      <a href="#space-instance_method" title="#space (instance method)">#<strong>space</strong>  &#x21d2; String </a>
     
 
     
@@ -199,6 +227,34 @@
 
   
     <span class="summary_desc"><div class='inline'><p>String to use for white-space.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#syntax-instance_method" title="#syntax (instance method)">#<strong>syntax</strong>  &#x21d2; nil, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Generate DB-specific code.</p>
 </div></span>
   
 </li>
@@ -327,6 +383,29 @@
 
   
     <span class="summary_desc"><div class='inline'><p>Emits multiple SQL Clauses.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#emit_comment-instance_method" title="#emit_comment (instance method)">#<strong>emit_comment</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Emits a SQL comment.</p>
 </div></span>
   
 </li>
@@ -542,7 +621,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#emit_operator-instance_method" title="#emit_operator (instance method)">#<strong>emit_operator</strong>(op)  &#x21d2; String </a>
+      <a href="#emit_operator-instance_method" title="#emit_operator (instance method)">#<strong>emit_operator</strong>(operator)  &#x21d2; String </a>
     
 
     
@@ -657,7 +736,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(space: &#39; &#39;, quotes: :single, **kwargs)  &#x21d2; Emitter </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(space: &#39; &#39;, quotes: :single, syntax: nil, comment: nil, **kwargs)  &#x21d2; Emitter </a>
     
 
     
@@ -688,7 +767,7 @@
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    #<strong>initialize</strong>(space: &#39; &#39;, quotes: :single, **kwargs)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Code::SQL::Emitter (class)">Emitter</a></span></tt> 
+    #<strong>initialize</strong>(space: &#39; &#39;, quotes: :single, syntax: nil, comment: nil, **kwargs)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Code::SQL::Emitter (class)">Emitter</a></span></tt> 
   
 
   
@@ -745,6 +824,40 @@
   
     <li>
       
+        <span class='name'>syntax</span>
+      
+      
+        <span class='type'>(<tt>nil</tt>, <tt>:mysql</tt>, <tt>:postgres</tt>, <tt>:oracle</tt>, <tt>:mssql</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Syntax used during code-generation</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>comment</span>
+      
+      
+        <span class='type'>(<tt>nil</tt>, <tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>String to use as the comment when terminating injection string</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
         <span class='name'>kwargs</span>
       
       
@@ -761,6 +874,10 @@
 </ul>
 
   
+    
+    
+    
+    
     
     
     
@@ -792,19 +909,23 @@
       <pre class="lines">
 
 
-57
-58
-59
-60
-61</pre>
+79
+80
+81
+82
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 79</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>space:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>quotes:</span> <span class='symbol'>:single</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
-  <span class='ivar'>@case</span>   <span class='op'>=</span> <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:case</span><span class='rbracket'>]</span> <span class='comment'># HACK: because `case` is a ruby keyword
-</span>  <span class='ivar'>@space</span>  <span class='op'>=</span> <span class='id identifier rubyid_space'>space</span>
-  <span class='ivar'>@quotes</span> <span class='op'>=</span> <span class='id identifier rubyid_quotes'>quotes</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>space:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>quotes:</span> <span class='symbol'>:single</span><span class='comma'>,</span> <span class='label'>syntax:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>comment:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='ivar'>@case</span>    <span class='op'>=</span> <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:case</span><span class='rbracket'>]</span> <span class='comment'># HACK: because `case` is a ruby keyword
+</span>  <span class='ivar'>@syntax</span>  <span class='op'>=</span> <span class='id identifier rubyid_syntax'>syntax</span>
+  <span class='ivar'>@comment</span> <span class='op'>=</span> <span class='id identifier rubyid_comment'>comment</span>
+  <span class='ivar'>@space</span>   <span class='op'>=</span> <span class='id identifier rubyid_space'>space</span>
+  <span class='ivar'>@quotes</span>  <span class='op'>=</span> <span class='id identifier rubyid_quotes'>quotes</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -821,7 +942,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="case-instance_method">
   
-    #<strong>case</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+    #<strong>case</strong>  &#x21d2; <tt>:lower</tt>, ...  <span class="extras">(readonly)</span>
   
 
   
@@ -840,6 +961,19 @@
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>:lower</tt>, <tt>:upper</tt>, <tt>:random</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -847,12 +981,12 @@
       <pre class="lines">
 
 
-34
-35
-36</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='kw'>case</span>
   <span class='ivar'>@case</span>
@@ -865,9 +999,68 @@
       
       <span id=""></span>
       <div class="method_details ">
+  <h3 class="signature " id="comment-instance_method">
+  
+    #<strong>comment</strong>  &#x21d2; <tt>String</tt><sup>?</sup>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>String to use as &#39;comment&#39; or <code>nil</code> to let the emitter decide</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_comment'>comment</span>
+  <span class='ivar'>@comment</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
   <h3 class="signature " id="quotes-instance_method">
   
-    #<strong>quotes</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+    #<strong>quotes</strong>  &#x21d2; <tt>:single</tt>, <tt>:double</tt>  <span class="extras">(readonly)</span>
   
 
   
@@ -886,6 +1079,19 @@
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>:single</tt>, <tt>:double</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -893,12 +1099,12 @@
       <pre class="lines">
 
 
-40
-41
-42</pre>
+46
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_quotes'>quotes</span>
   <span class='ivar'>@quotes</span>
@@ -913,7 +1119,7 @@
       <div class="method_details ">
   <h3 class="signature " id="space-instance_method">
   
-    #<strong>space</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+    #<strong>space</strong>  &#x21d2; <tt>String</tt>  <span class="extras">(readonly)</span>
   
 
   
@@ -932,6 +1138,19 @@
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -939,15 +1158,74 @@
       <pre class="lines">
 
 
-37
-38
-39</pre>
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_space'>space</span>
   <span class='ivar'>@space</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="syntax-instance_method">
+  
+    #<strong>syntax</strong>  &#x21d2; <tt>nil</tt>, ...  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Generate DB-specific code</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>, <tt>:mysql</tt>, <tt>:postgres</tt>, <tt>:oracle</tt>, <tt>:mssql</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_syntax'>syntax</span>
+  <span class='ivar'>@syntax</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1043,35 +1321,35 @@
       <pre class="lines">
 
 
-297
-298
-299
-300
-301
-302
-303
-304
-305
-306
-307
-308
-309
-310
-311
-312
-313
-314
-315
-316
-317
-318
-319
-320
-321
-322</pre>
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 297</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 336</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit'>emit</span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_object'>object</span>
@@ -1184,15 +1462,15 @@
       <pre class="lines">
 
 
-232
-233
-234
-235
-236
-237</pre>
+270
+271
+272
+273
+274
+275</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 232</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 270</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit_argument'>emit_argument</span><span class='lparen'>(</span><span class='id identifier rubyid_operand'>operand</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_operand'>operand</span>
@@ -1270,14 +1548,14 @@
       <pre class="lines">
 
 
-215
-216
-217
-218
-219</pre>
+253
+254
+255
+256
+257</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 215</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 253</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit_assignments'>emit_assignments</span><span class='lparen'>(</span><span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
@@ -1354,18 +1632,18 @@
       <pre class="lines">
 
 
-333
-334
-335
-336
-337
-338
-339
-340
-341</pre>
+372
+373
+374
+375
+376
+377
+378
+379
+380</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 333</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 372</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit_clause'>emit_clause</span><span class='lparen'>(</span><span class='id identifier rubyid_clause'>clause</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_sql'>sql</span> <span class='op'>=</span> <span class='id identifier rubyid_emit_keyword'>emit_keyword</span><span class='lparen'>(</span><span class='id identifier rubyid_clause'>clause</span><span class='period'>.</span><span class='id identifier rubyid_keyword'>keyword</span><span class='rparen'>)</span>
@@ -1446,15 +1724,93 @@
       <pre class="lines">
 
 
-352
-353
-354</pre>
+391
+392
+393</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 352</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 391</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit_clauses'>emit_clauses</span><span class='lparen'>(</span><span class='id identifier rubyid_clauses'>clauses</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_clauses'>clauses</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_clause'>clause</span><span class='op'>|</span> <span class='id identifier rubyid_emit_clause'>emit_clause</span><span class='lparen'>(</span><span class='id identifier rubyid_clause'>clause</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='ivar'>@space</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="emit_comment-instance_method">
+  
+    #<strong>emit_comment</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Emits a SQL comment.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The raw SQL.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+168
+169
+170
+171</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 168</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_emit_comment'>emit_comment</span>
+  <span class='comment'># Return chosen comment or default one which works everywhere
+</span>  <span class='ivar'>@comment</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-- </span><span class='tstring_end'>&#39;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1526,12 +1882,12 @@
       <pre class="lines">
 
 
-157
-158
-159</pre>
+195
+196
+197</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 157</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 195</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit_decimal'>emit_decimal</span><span class='lparen'>(</span><span class='id identifier rubyid_decimal'>decimal</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_decimal'>decimal</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -1606,36 +1962,38 @@
       <pre class="lines">
 
 
-248
-249
-250
-251
-252
-253
-254
-255
-256
-257
-258
-259
-260
-261
-262
-263
-264
-265
-266
-267</pre>
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 248</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 286</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit_expression'>emit_expression</span><span class='lparen'>(</span><span class='id identifier rubyid_expr'>expr</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_op'>op</span> <span class='op'>=</span> <span class='id identifier rubyid_emit_operator'>emit_operator</span><span class='lparen'>(</span><span class='id identifier rubyid_expr'>expr</span><span class='period'>.</span><span class='id identifier rubyid_operator'>operator</span><span class='rparen'>)</span>
 
   <span class='kw'>case</span> <span class='id identifier rubyid_expr'>expr</span>
   <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="BinaryExpr.html" title="Ronin::Code::SQL::BinaryExpr (class)">BinaryExpr</a></span></span>
-    <span class='id identifier rubyid_left'>left</span><span class='comma'>,</span> <span class='id identifier rubyid_right'>right</span> <span class='op'>=</span> <span class='id identifier rubyid_emit_argument'>emit_argument</span><span class='lparen'>(</span><span class='id identifier rubyid_expr'>expr</span><span class='period'>.</span><span class='id identifier rubyid_left'>left</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_emit_argument'>emit_argument</span><span class='lparen'>(</span><span class='id identifier rubyid_expr'>expr</span><span class='period'>.</span><span class='id identifier rubyid_right'>right</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_left'>left</span>  <span class='op'>=</span> <span class='id identifier rubyid_emit_argument'>emit_argument</span><span class='lparen'>(</span><span class='id identifier rubyid_expr'>expr</span><span class='period'>.</span><span class='id identifier rubyid_left'>left</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_right'>right</span> <span class='op'>=</span> <span class='id identifier rubyid_emit_argument'>emit_argument</span><span class='lparen'>(</span><span class='id identifier rubyid_expr'>expr</span><span class='period'>.</span><span class='id identifier rubyid_right'>right</span><span class='rparen'>)</span>
 
     <span class='kw'>case</span> <span class='id identifier rubyid_op'>op</span>
     <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\W+$</span><span class='regexp_end'>/</span></span> <span class='kw'>then</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_left'>left</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_op'>op</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_right'>right</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -1701,12 +2059,12 @@
       <pre class="lines">
 
 
-121
-122
-123</pre>
+146
+147
+148</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 121</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 146</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit_false'>emit_false</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>1=0</span><span class='tstring_end'>&quot;</span></span>
@@ -1781,18 +2139,18 @@
       <pre class="lines">
 
 
-183
-184
-185
-186
-187
-188
-189
-190
-191</pre>
+221
+222
+223
+224
+225
+226
+227
+228
+229</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 183</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 221</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit_field'>emit_field</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_emit_keyword'>emit_keyword</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -1873,15 +2231,15 @@
       <pre class="lines">
 
 
-278
-279
-280
-281
-282
-283</pre>
+317
+318
+319
+320
+321
+322</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 278</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 317</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit_function'>emit_function</span><span class='lparen'>(</span><span class='id identifier rubyid_function'>function</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_name'>name</span>      <span class='op'>=</span> <span class='id identifier rubyid_emit_keyword'>emit_keyword</span><span class='lparen'>(</span><span class='id identifier rubyid_function'>function</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -1959,12 +2317,12 @@
       <pre class="lines">
 
 
-144
-145
-146</pre>
+182
+183
+184</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 144</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 182</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit_integer'>emit_integer</span><span class='lparen'>(</span><span class='id identifier rubyid_int'>int</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_int'>int</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -2039,42 +2397,44 @@
       <pre class="lines">
 
 
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88</pre>
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 96</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit_keyword'>emit_keyword</span><span class='lparen'>(</span><span class='id identifier rubyid_keyword'>keyword</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_keyword'>keyword</span> <span class='op'>=</span> <span class='const'>Array</span><span class='lparen'>(</span><span class='id identifier rubyid_keyword'>keyword</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='ivar'>@space</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_string'>string</span> <span class='op'>=</span> <span class='const'>Array</span><span class='lparen'>(</span><span class='id identifier rubyid_keyword'>keyword</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='ivar'>@space</span><span class='rparen'>)</span>
 
   <span class='kw'>case</span> <span class='ivar'>@case</span>
-  <span class='kw'>when</span> <span class='symbol'>:upper</span>  <span class='kw'>then</span> <span class='id identifier rubyid_keyword'>keyword</span><span class='period'>.</span><span class='id identifier rubyid_upcase'>upcase</span>
-  <span class='kw'>when</span> <span class='symbol'>:lower</span>  <span class='kw'>then</span> <span class='id identifier rubyid_keyword'>keyword</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
+  <span class='kw'>when</span> <span class='symbol'>:upper</span>  <span class='kw'>then</span> <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_upcase'>upcase</span>
+  <span class='kw'>when</span> <span class='symbol'>:lower</span>  <span class='kw'>then</span> <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span>
   <span class='kw'>when</span> <span class='symbol'>:random</span>
-    <span class='id identifier rubyid_keyword'>keyword</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span>
-      <span class='lparen'>(</span><span class='id identifier rubyid_keyword'>keyword</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>/</span> <span class='int'>2</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span> <span class='kw'>do</span>
-        <span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='id identifier rubyid_keyword'>keyword</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span>
-        <span class='id identifier rubyid_keyword'>keyword</span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_keyword'>keyword</span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_swapcase'>swapcase</span>
+    <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span>
+      <span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>/</span> <span class='int'>2</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span> <span class='kw'>do</span>
+        <span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='rparen'>)</span>
+
+        <span class='id identifier rubyid_string'>string</span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_string'>string</span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_swapcase'>swapcase</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_keyword'>keyword</span>
+    <span class='id identifier rubyid_string'>string</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -2147,15 +2507,15 @@
       <pre class="lines">
 
 
-202
-203
-204</pre>
+240
+241
+242</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 202</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 240</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit_list'>emit_list</span><span class='lparen'>(</span><span class='id identifier rubyid_list'>list</span><span class='rparen'>)</span>
-  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>(</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_element'>element</span><span class='op'>|</span> <span class='id identifier rubyid_emit'>emit</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>,</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>)</span><span class='tstring_end'>&#39;</span></span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_element'>element</span><span class='op'>|</span> <span class='id identifier rubyid_emit'>emit</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>,</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2204,12 +2564,12 @@
       <pre class="lines">
 
 
-111
-112
-113</pre>
+136
+137
+138</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 111</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 136</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit_null'>emit_null</span>
   <span class='id identifier rubyid_emit_keyword'>emit_keyword</span><span class='lparen'>(</span><span class='symbol'>:NULL</span><span class='rparen'>)</span>
@@ -2222,7 +2582,7 @@
       <div class="method_details ">
   <h3 class="signature " id="emit_operator-instance_method">
   
-    #<strong>emit_operator</strong>(op)  &#x21d2; <tt>String</tt> 
+    #<strong>emit_operator</strong>(operator)  &#x21d2; <tt>String</tt> 
   
 
   
@@ -2245,7 +2605,7 @@
   
     <li>
       
-        <span class='name'>op</span>
+        <span class='name'>operator</span>
       
       
         <span class='type'>(<tt>Array&lt;Symbol&gt;</tt>, <tt>Symbol</tt>)</span>
@@ -2284,20 +2644,20 @@
       <pre class="lines">
 
 
-99
-100
-101
-102
-103
-104</pre>
+124
+125
+126
+127
+128
+129</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 99</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 124</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_emit_operator'>emit_operator</span><span class='lparen'>(</span><span class='id identifier rubyid_op'>op</span><span class='rparen'>)</span>
-  <span class='kw'>case</span> <span class='id identifier rubyid_op'>op</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\W+$</span><span class='regexp_end'>/</span></span>          <span class='kw'>then</span> <span class='id identifier rubyid_op'>op</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
-  <span class='kw'>else</span>                       <span class='id identifier rubyid_emit_keyword'>emit_keyword</span><span class='lparen'>(</span><span class='id identifier rubyid_op'>op</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_emit_operator'>emit_operator</span><span class='lparen'>(</span><span class='id identifier rubyid_operator'>operator</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_operator'>operator</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\W+$</span><span class='regexp_end'>/</span></span> <span class='kw'>then</span> <span class='id identifier rubyid_operator'>operator</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='kw'>else</span>              <span class='id identifier rubyid_emit_keyword'>emit_keyword</span><span class='lparen'>(</span><span class='id identifier rubyid_operator'>operator</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -2370,46 +2730,46 @@
       <pre class="lines">
 
 
-365
-366
-367
-368
-369
-370
-371
-372
-373
-374
-375
-376
-377
-378
-379
-380
-381
-382
-383
-384
-385
-386</pre>
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 365</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 404</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit_statement'>emit_statement</span><span class='lparen'>(</span><span class='id identifier rubyid_stmt'>stmt</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_sql'>sql</span> <span class='op'>=</span> <span class='id identifier rubyid_emit_keyword'>emit_keyword</span><span class='lparen'>(</span><span class='id identifier rubyid_stmt'>stmt</span><span class='period'>.</span><span class='id identifier rubyid_keyword'>keyword</span><span class='rparen'>)</span>
 
   <span class='kw'>unless</span> <span class='id identifier rubyid_stmt'>stmt</span><span class='period'>.</span><span class='id identifier rubyid_argument'>argument</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-    <span class='kw'>case</span> <span class='id identifier rubyid_stmt'>stmt</span><span class='period'>.</span><span class='id identifier rubyid_argument'>argument</span>
-    <span class='kw'>when</span> <span class='const'>Array</span>
-      <span class='id identifier rubyid_sql'>sql</span> <span class='op'>&lt;&lt;</span> <span class='ivar'>@space</span> <span class='op'>&lt;&lt;</span> <span class='kw'>if</span> <span class='id identifier rubyid_stmt'>stmt</span><span class='period'>.</span><span class='id identifier rubyid_argument'>argument</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>==</span> <span class='int'>1</span>
+    <span class='id identifier rubyid_sql'>sql</span> <span class='op'>&lt;&lt;</span> <span class='ivar'>@space</span> <span class='op'>&lt;&lt;</span> <span class='kw'>case</span> <span class='id identifier rubyid_stmt'>stmt</span><span class='period'>.</span><span class='id identifier rubyid_argument'>argument</span>
+                     <span class='kw'>when</span> <span class='const'>Array</span>
+                       <span class='kw'>if</span> <span class='id identifier rubyid_stmt'>stmt</span><span class='period'>.</span><span class='id identifier rubyid_argument'>argument</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>==</span> <span class='int'>1</span>
                          <span class='id identifier rubyid_emit_argument'>emit_argument</span><span class='lparen'>(</span><span class='id identifier rubyid_stmt'>stmt</span><span class='period'>.</span><span class='id identifier rubyid_argument'>argument</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rparen'>)</span>
                        <span class='kw'>else</span>
                          <span class='id identifier rubyid_emit_list'>emit_list</span><span class='lparen'>(</span><span class='id identifier rubyid_stmt'>stmt</span><span class='period'>.</span><span class='id identifier rubyid_argument'>argument</span><span class='rparen'>)</span>
                        <span class='kw'>end</span>
-    <span class='kw'>else</span>
-      <span class='id identifier rubyid_sql'>sql</span> <span class='op'>&lt;&lt;</span> <span class='ivar'>@space</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_emit_argument'>emit_argument</span><span class='lparen'>(</span><span class='id identifier rubyid_stmt'>stmt</span><span class='period'>.</span><span class='id identifier rubyid_argument'>argument</span><span class='rparen'>)</span>
-    <span class='kw'>end</span>
+                     <span class='kw'>else</span>
+                       <span class='id identifier rubyid_emit_argument'>emit_argument</span><span class='lparen'>(</span><span class='id identifier rubyid_stmt'>stmt</span><span class='period'>.</span><span class='id identifier rubyid_argument'>argument</span><span class='rparen'>)</span>
+                     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
   <span class='kw'>unless</span> <span class='id identifier rubyid_stmt'>stmt</span><span class='period'>.</span><span class='id identifier rubyid_clauses'>clauses</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -2488,14 +2848,14 @@
       <pre class="lines">
 
 
-397
-398
-399
-400
-401</pre>
+436
+437
+438
+439
+440</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 397</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 436</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit_statement_list'>emit_statement_list</span><span class='lparen'>(</span><span class='id identifier rubyid_list'>list</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_list'>list</span><span class='period'>.</span><span class='id identifier rubyid_statements'>statements</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_stmt'>stmt</span><span class='op'>|</span>
@@ -2572,12 +2932,12 @@
       <pre class="lines">
 
 
-170
-171
-172</pre>
+208
+209
+210</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 208</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit_string'>emit_string</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
   <span class='const'>Support</span><span class='op'>::</span><span class='const'>Encoding</span><span class='op'>::</span><span class='const'>SQL</span><span class='period'>.</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='label'>quotes:</span> <span class='ivar'>@quotes</span><span class='rparen'>)</span>
@@ -2633,12 +2993,12 @@
       <pre class="lines">
 
 
-131
-132
-133</pre>
+156
+157
+158</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 131</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/emitter.rb', line 156</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_emit_true'>emit_true</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>1=1</span><span class='tstring_end'>&quot;</span></span>
@@ -2653,7 +3013,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Jun 22 21:45:36 2023 by
+  Generated on Mon Jun 26 19:29:34 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.4).
 </div>

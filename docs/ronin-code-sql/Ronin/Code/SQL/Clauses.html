@@ -323,7 +323,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#into-instance_method" title="#into (instance method)">#<strong>into</strong>(table)  &#x21d2; self </a>
+      <a href="#into-instance_method" title="#into (instance method)">#<strong>into</strong>(table = nil, &amp;block)  &#x21d2; self </a>
     
 
     
@@ -337,7 +337,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Appends a <code>INTO</code> clause.</p>
+    <span class="summary_desc"><div class='inline'><p>Appends an <code>INTO</code> clause.</p>
 </div></span>
   
 </li>
@@ -476,6 +476,29 @@
 
   
     <span class="summary_desc"><div class='inline'><p>Appends a <code>ON</code> clause.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#order_by-instance_method" title="#order_by (instance method)">#<strong>order_by</strong>(*columns, &amp;block)  &#x21d2; self </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Appends a <code>ORDER BY</code> clause.</p>
 </div></span>
   
 </li>
@@ -874,12 +897,12 @@ Otherwise the block will be evaluated within the clause.</p>
       <pre class="lines">
 
 
-271
-272
-273</pre>
+273
+274
+275</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 271</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 273</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_default_values'>default_values</span>
   <span class='id identifier rubyid_clause'>clause</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='symbol'>:DEFAULT</span><span class='comma'>,</span> <span class='symbol'>:VALUES</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -1147,12 +1170,12 @@ Otherwise the block will be evaluated within the clause.</p>
       <pre class="lines">
 
 
-202
-203
-204</pre>
+216
+217
+218</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 202</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 216</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_having'>having</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_clause'>clause</span><span class='lparen'>(</span><span class='symbol'>:HAVING</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -1219,12 +1242,12 @@ Otherwise the block will be evaluated within the clause.</p>
       <pre class="lines">
 
 
-295
-296
-297</pre>
+297
+298
+299</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 295</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 297</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_indexed_by'>indexed_by</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_clause'>clause</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='symbol'>:INDEXED</span><span class='comma'>,</span> <span class='symbol'>:BY</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -1311,7 +1334,7 @@ Otherwise the block will be evaluated within the clause.</p>
       <div class="method_details ">
   <h3 class="signature " id="into-instance_method">
   
-    #<strong>into</strong>(table)  &#x21d2; <tt>self</tt> 
+    #<strong>into</strong>(table = nil, &amp;block)  &#x21d2; <tt>self</tt> 
   
 
   
@@ -1319,7 +1342,7 @@ Otherwise the block will be evaluated within the clause.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Appends a <code>INTO</code> clause.</p>
+    <p>Appends an <code>INTO</code> clause.</p>
 
 
   </div>
@@ -1333,12 +1356,14 @@ Otherwise the block will be evaluated within the clause.</p>
         <span class='name'>table</span>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Field.html" title="Ronin::Code::SQL::Field (class)">Field</a></span></tt>, <tt>Symbol</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="Field.html" title="Ronin::Code::SQL::Field (class)">Field</a></span></tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
       
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
       
       
         &mdash;
-        <div class='inline'><p>The table to insert/replace into.</p>
+        <div class='inline'><p>The table to insert into.</p>
 </div>
       
     </li>
@@ -1585,12 +1610,12 @@ Otherwise the block will be evaluated within the clause.</p>
       <pre class="lines">
 
 
-214
-215
-216</pre>
+228
+229
+230</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 214</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 228</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_limit'>limit</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_clause'>clause</span><span class='lparen'>(</span><span class='symbol'>:LIMIT</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -1638,12 +1663,12 @@ Otherwise the block will be evaluated within the clause.</p>
       <pre class="lines">
 
 
-304
-305
-306</pre>
+306
+307
+308</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 304</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 306</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_not_indexed'>not_indexed</span>
   <span class='id identifier rubyid_clause'>clause</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='symbol'>:NOT</span><span class='comma'>,</span> <span class='symbol'>:INDEXED</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -1710,12 +1735,12 @@ Otherwise the block will be evaluated within the clause.</p>
       <pre class="lines">
 
 
-226
-227
-228</pre>
+240
+241
+242</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 226</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 240</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_offset'>offset</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_clause'>clause</span><span class='lparen'>(</span><span class='symbol'>:OFFSET</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -1772,6 +1797,93 @@ Otherwise the block will be evaluated within the clause.</p>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_on'>on</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_clause'>clause</span><span class='lparen'>(</span><span class='symbol'>:ON</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="order_by-instance_method">
+  
+    #<strong>order_by</strong>(*columns, &amp;block)  &#x21d2; <tt>self</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Appends a <code>ORDER BY</code> clause.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>columns</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Field.html" title="Ronin::Code::SQL::Field (class)">Field</a></span>, Symbol&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The columns for <code>ORDER BY</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>self</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+207
+208
+209</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 207</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_order_by'>order_by</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_columns'>columns</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_clause'>clause</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='symbol'>:ORDER</span><span class='comma'>,</span> <span class='symbol'>:BY</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_columns'>columns</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1911,12 +2023,12 @@ Otherwise the block will be evaluated within the clause.</p>
       <pre class="lines">
 
 
-283
-284
-285</pre>
+285
+286
+287</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 283</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 285</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set'>set</span><span class='lparen'>(</span><span class='id identifier rubyid_values'>values</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_clause'>clause</span><span class='lparen'>(</span><span class='symbol'>:SET</span><span class='comma'>,</span><span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span>
@@ -1983,12 +2095,12 @@ Otherwise the block will be evaluated within the clause.</p>
       <pre class="lines">
 
 
-238
-239
-240</pre>
+252
+253
+254</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 238</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 252</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_top'>top</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_clause'>clause</span><span class='lparen'>(</span><span class='symbol'>:TOP</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -2176,12 +2288,12 @@ Otherwise the block will be evaluated within the clause.</p>
       <pre class="lines">
 
 
-262
-263
-264</pre>
+264
+265
+266</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 262</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/code/sql/clauses.rb', line 264</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_values'>values</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_clause'>clause</span><span class='lparen'>(</span><span class='symbol'>:VALUES</span><span class='comma'>,</span><span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span>
@@ -2249,7 +2361,7 @@ Otherwise the block will be evaluated within the clause.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Jun 22 21:45:35 2023 by
+  Generated on Mon Jun 26 19:29:32 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.1.4).
 </div>
