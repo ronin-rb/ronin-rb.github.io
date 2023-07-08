@@ -26,5 +26,5 @@ sudo gem update ronin-vulns
 {% include docker_update.md %}
 
 [ronin-vulns]: https://github.com/ronin-rb/ronin-vulns#readme
-[0.1.3]: https://github.com/ronin-rb/ronin-vulns/releases/tag/v0.1.3
+[ronin-vulns-0.1.3]: https://github.com/ronin-rb/ronin-vulns/releases/tag/v0.1.3
 [@quadule]: https://github.com/quadule
