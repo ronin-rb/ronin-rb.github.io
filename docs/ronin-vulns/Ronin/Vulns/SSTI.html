@@ -269,7 +269,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#scan-class_method" title="scan (class method)">.<strong>scan</strong>(url, **kwargs) {|vuln| ... } &#x21d2; Array&lt;SSTI&gt; </a>
+      <a href="#scan-class_method" title="scan (class method)">.<strong>scan</strong>(url, escape: ESCAPES, **kwargs) {|vuln| ... } &#x21d2; Array&lt;SSTI&gt; </a>
     
 
     
@@ -728,7 +728,7 @@ indicate that the payload will not be escaped.</p>
       <div class="method_details ">
   <h3 class="signature " id="scan-class_method">
   
-    .<strong>scan</strong>(url, **kwargs) {|vuln| ... } &#x21d2; <tt>Array&lt;<span class='object_link'><a href="" title="Ronin::Vulns::SSTI (class)">SSTI</a></span>&gt;</tt> 
+    .<strong>scan</strong>(url, escape: ESCAPES, **kwargs) {|vuln| ... } &#x21d2; <tt>Array&lt;<span class='object_link'><a href="" title="Ronin::Vulns::SSTI (class)">SSTI</a></span>&gt;</tt> 
   
 
   
@@ -762,6 +762,24 @@ indicate that the payload will not be escaped.</p>
   
     <li>
       
+        <span class='name'>escape</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Proc&gt;</tt>, <tt>Proc</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>ESCAPES</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The escape method to use. If <code>escape:</code> is not given, then all escapes
+in <span class='object_link'><a href="#ESCAPES-constant" title="Ronin::Vulns::SSTI::ESCAPES (constant)">ESCAPES</a></span> will be tested..</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
         <span class='name'>kwargs</span>
       
       
@@ -782,21 +800,10 @@ indicate that the payload will not be escaped.</p>
     
     
     
+    
+    
     <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
     <ul class="option">
-      
-        <li>
-          <span class="name">:escape</span>
-          <span class="type">(<tt>Proc</tt>, <tt>nil</tt>)</span>
-          <span class="default">
-            
-          </span>
-          
-            &mdash; <div class='inline'><p>The escape method to use. If <code>escape:</code> is not given, then all escapes
-in <span class='object_link'><a href="#ESCAPES-constant" title="Ronin::Vulns::SSTI::ESCAPES (constant)">ESCAPES</a></span> will be tested..</p>
-</div>
-          
-        </li>
       
         <li>
           <span class="name">:query_params</span>
@@ -982,14 +989,14 @@ in <span class='object_link'><a href="#ESCAPES-constant" title="Ronin::Vulns::SS
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 148</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_kwargs'>kwargs</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:escape</span><span class='rparen'>)</span>
-    <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
-    <span class='const'><span class='object_link'><a href="#ESCAPES-constant" title="Ronin::Vulns::SSTI::ESCAPES (constant)">ESCAPES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_escape'>escape</span><span class='op'>|</span>
-      <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>escape:</span> <span class='id identifier rubyid_escape'>escape</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-    <span class='kw'>end</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>escape:</span> <span class='const'><span class='object_link'><a href="#ESCAPES-constant" title="Ronin::Vulns::SSTI::ESCAPES (constant)">ESCAPES</a></span></span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_vulns'>vulns</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='const'>Array</span><span class='lparen'>(</span><span class='id identifier rubyid_escape'>escape</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_escape_char'>escape_char</span><span class='op'>|</span>
+    <span class='id identifier rubyid_vulns'>vulns</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>escape:</span> <span class='id identifier rubyid_escape_char'>escape_char</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_vulns'>vulns</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1208,9 +1215,9 @@ Injection (SSTI).</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Mar  1 22:53:34 2023 by
+  Generated on Fri Jul  7 17:46:49 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.28 (ruby-3.1.3).
+  0.9.28 (ruby-3.1.4).
 </div>
 
     </div>
