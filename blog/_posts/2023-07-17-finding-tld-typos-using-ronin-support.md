@@ -6,6 +6,7 @@ tags:
   - ronin-support
   - tld
   - typos
+  - typo-squatting
 ---
 
 You may have recently read a [news story][1] about how a typo in a US military
