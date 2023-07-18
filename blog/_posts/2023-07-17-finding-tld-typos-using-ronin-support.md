@@ -309,7 +309,7 @@ it's libraries, only in a couple lines of Ruby. Enjoy.
 
 **PS:** you may also be interested in the
 [Ronin::Support::Network::PublicSuffix] and 
-[Ronin::Support::Text::Typo] modules.
+[Ronin::Support::Text::Typo] modules or the `ronin typosquat` command.
 
 [1]: https://www.bbc.com/news/world-us-canada-66226873
 [ronin-support]: https://github.com/ronin-rb/ronin-support#readme
