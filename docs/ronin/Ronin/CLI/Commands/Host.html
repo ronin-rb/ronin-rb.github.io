@@ -176,6 +176,12 @@
 </div>
 
 
+  <h2>Constant Summary</h2>
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="../DNS.html" title="Ronin::CLI::DNS (module)">DNS</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../DNS.html#RECORD_TYPES-constant" title="Ronin::CLI::DNS::RECORD_TYPES (constant)">DNS::RECORD_TYPES</a></span></p>
+
 
 
 
@@ -257,7 +263,7 @@
   
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="../DNS.html" title="Ronin::CLI::DNS (module)">DNS</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../DNS.html#included-class_method" title="Ronin::CLI::DNS.included (method)">included</a></span>, <span class='object_link'><a href="../DNS.html#initialize-instance_method" title="Ronin::CLI::DNS#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../DNS.html#print_record-instance_method" title="Ronin::CLI::DNS#print_record (method)">#print_record</a></span>, <span class='object_link'><a href="../DNS.html#print_records-instance_method" title="Ronin::CLI::DNS#print_records (method)">#print_records</a></span>, <span class='object_link'><a href="../DNS.html#query_records-instance_method" title="Ronin::CLI::DNS#query_records (method)">#query_records</a></span>, <span class='object_link'><a href="../DNS.html#resolver-instance_method" title="Ronin::CLI::DNS#resolver (method)">#resolver</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../DNS.html#included-class_method" title="Ronin::CLI::DNS.included (method)">included</a></span>, <span class='object_link'><a href="../DNS.html#initialize-instance_method" title="Ronin::CLI::DNS#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../DNS.html#print_record-instance_method" title="Ronin::CLI::DNS#print_record (method)">#print_record</a></span>, <span class='object_link'><a href="../DNS.html#print_records-instance_method" title="Ronin::CLI::DNS#print_records (method)">#print_records</a></span>, <span class='object_link'><a href="../DNS.html#resolver-instance_method" title="Ronin::CLI::DNS#resolver (method)">#resolver</a></span></p>
 
   
   
@@ -345,6 +351,21 @@
       <pre class="lines">
 
 
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
 192
 193
 194
@@ -356,25 +377,10 @@
 200
 201
 202
-203
-204
-205
-206
-207
-208
-209
-210
-211
-212
-213
-214
-215
-216
-217
-218</pre>
+203</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/host.rb', line 192</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/host.rb', line 177</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_process_hostname'>process_hostname</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:subdomain</span><span class='rbracket'>]</span>
@@ -398,7 +404,7 @@
 
     <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_host'>host</span> <span class='kw'>unless</span> <span class='id identifier rubyid_records'>records</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:query</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_print_records'>print_records</span><span class='lparen'>(</span><span class='id identifier rubyid_query_records'>query_records</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_print_records'>print_records</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_get_records'>get_records</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:query</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
   <span class='kw'>end</span>
@@ -467,6 +473,21 @@
       <pre class="lines">
 
 
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
 157
 158
 159
@@ -479,25 +500,10 @@
 166
 167
 168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184</pre>
+169</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/host.rb', line 157</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/host.rb', line 142</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_process_value'>process_value</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_host'>host</span> <span class='op'>=</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Network</span><span class='op'>::</span><span class='const'>Host</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='rparen'>)</span>
@@ -537,7 +543,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Jun 22 21:43:18 2023 by
+  Generated on Tue Jul 18 18:29:37 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.1.4).
 </div>
