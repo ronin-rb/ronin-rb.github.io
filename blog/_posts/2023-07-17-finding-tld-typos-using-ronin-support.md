@@ -1,7 +1,7 @@
 ---
 layout: post
 author: postmodern
-title: Finding TLD Typos using ronin-support
+title: Finding all TLD typos using Ruby and ronin-support
 tags:
   - ronin-support
   - tld
