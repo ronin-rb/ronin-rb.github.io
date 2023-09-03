@@ -131,7 +131,7 @@ See the [API documentation][docs-api] for more documentation and examples.
 
 Does Ronin interest you? Do you have an idea for a feature or a new `ronin-`
 library? Checkout our [GitHub], join our [Discord server], follow us on
-[Twitter] or [Mastodon], and get involved!
+[Mastodon], and get involved!
 
 ## Special Thanks
 
@@ -145,7 +145,6 @@ which helped shape Ronin's design.
 
 [GitHub]: https://github.com/ronin-rb
 [Discord server]: {{ site.discord_link }}
-[Twitter]: https://twitter.com/ronin_rb
 [Mastodon]: https://infosec.exchange/@ronin_rb
 
 [docs-api]: /docs/#api

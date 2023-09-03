@@ -79,10 +79,6 @@ CLIs with their own sub-commands:
 Why yes, Ronin does have a [Discord server]({{ site.discord_link }})
 you can join.
 
-### Does Ronin have a Twitter account that I can follow?
-
-Why yes, you can follow [@ronin_rb](https://twitter.com/ronin_rb) on Twitter.
-
 ### Does Ronin have a Mastodon account that I can follow?
 
 Why yes, you can follow

@@ -4,7 +4,6 @@
 * [Source](https://github.com/ronin-rb/ronin-rb.github.io)
 * [Issues](https://github.com/ronin-rb/ronin-rb.github.io/issues)
 * [Discord](https://discord.gg/6WAb3PsVX9) |
-  [Twitter](https://twitter.com/ronin_rb) |
   [Mastodon](https://infosec.exchange/@ronin_rb)
 
 [ronin-rb.github.io][website] is the [Jekyll][jekyll] powered static website
