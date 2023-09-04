@@ -9,21 +9,23 @@ const randomRoninCLIExamples = [
   "ronin_dns_enum"
 ];
 
-const ready = (callback) => {
-  if (document.readyState != "loading") callback();
-  else document.addEventListener("DOMContentLoaded", callback);
-}
+(() => {
+  const ready = (callback) => {
+    if (document.readyState != "loading") callback();
+    else document.addEventListener("DOMContentLoaded", callback);
+  }
 
-ready(() => {
-  let newRoninCLIObject     = document.createElement("object");
-  let randomRoninCLIExample = randomRoninCLIExamples[Math.floor(Math.random() * randomRoninCLIExamples.length)];
+  ready(() => {
+    let newRoninCLIObject     = document.createElement("object");
+    let randomRoninCLIExample = randomRoninCLIExamples[Math.floor(Math.random() * randomRoninCLIExamples.length)];
 
-  newRoninCLIObject.setAttribute("class","demo");
-  newRoninCLIObject.setAttribute("data",`/images/demos/${randomRoninCLIExample}_js.svg`);
+    newRoninCLIObject.setAttribute("class","demo");
+    newRoninCLIObject.setAttribute("data",`/images/demos/${randomRoninCLIExample}_js.svg`);
 
-  let roninCLIDemo = document.querySelector("#ronin-cli-demo");
-  roninCLIDemo.prepend(newRoninCLIObject);
-});
+    let roninCLIDemo = document.querySelector("#ronin-cli-demo");
+    roninCLIDemo.prepend(newRoninCLIObject);
+  });
+})();
 </script>
 
 <main id="key-points">

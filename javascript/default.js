@@ -42,11 +42,13 @@ class DarkModeToggle {
   }
 }
 
-const ready = (callback) => {
-  if (document.readyState != "loading") { callback(); }
-  else { document.addEventListener("DOMContentLoaded", callback); }
-}
+(() => {
+  const ready = (callback) => {
+    if (document.readyState != "loading") { callback(); }
+    else { document.addEventListener("DOMContentLoaded", callback); }
+  }
 
-ready(() => {
-  const dark_mode_toggle = new DarkModeToggle();
-});
+  ready(() => {
+    const dark_mode_toggle = new DarkModeToggle();
+  });
+})();
