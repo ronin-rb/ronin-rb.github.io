@@ -654,8 +654,6 @@ be closed.</p>
       <pre class="lines">
 
 
-726
-727
 728
 729
 730
@@ -663,10 +661,12 @@ be closed.</p>
 732
 733
 734
-735</pre>
+735
+736
+737</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl/mixin.rb', line 726</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl/mixin.rb', line 728</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ssl_accept'>ssl_accept</span><span class='lparen'>(</span><span class='label'>port:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>host:</span> <span class='kw'>nil</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_tcp_server_session'>tcp_server_session</span><span class='lparen'>(</span><span class='label'>port:</span> <span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='label'>host:</span> <span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='label'>backlog:</span> <span class='int'>1</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
@@ -966,8 +966,6 @@ May be one of the following:</p>
       <pre class="lines">
 
 
-460
-461
 462
 463
 464
@@ -977,10 +975,12 @@ May be one of the following:</p>
 468
 469
 470
-471</pre>
+471
+472
+473</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl/mixin.rb', line 460</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl/mixin.rb', line 462</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ssl_banner'>ssl_banner</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='label'>bind_host:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>bind_port:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_banner'>banner</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -1207,16 +1207,16 @@ May be one of the following:</p>
       <pre class="lines">
 
 
-392
-393
 394
 395
 396
 397
-398</pre>
+398
+399
+400</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl/mixin.rb', line 392</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl/mixin.rb', line 394</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ssl_cert'>ssl_cert</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_socket'>socket</span> <span class='op'>=</span> <span class='id identifier rubyid_ssl_connect'>ssl_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -1524,7 +1524,9 @@ returned.</p>
 275
 276
 277
-278</pre>
+278
+279
+280</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl/mixin.rb', line 266</span>
@@ -1533,6 +1535,8 @@ returned.</p>
   <span class='id identifier rubyid_socket'>socket</span>     <span class='op'>=</span> <span class='id identifier rubyid_tcp_connect'>tcp_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='label'>bind_host:</span> <span class='id identifier rubyid_bind_host'>bind_host</span><span class='comma'>,</span>
                                      <span class='label'>bind_port:</span> <span class='id identifier rubyid_bind_port'>bind_port</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ssl_socket'>ssl_socket</span> <span class='op'>=</span> <span class='id identifier rubyid_ssl_socket'>ssl_socket</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_ssl_socket'>ssl_socket</span><span class='period'>.</span><span class='id identifier rubyid_hostname'>hostname</span> <span class='op'>=</span> <span class='id identifier rubyid_host'>host</span>
   <span class='id identifier rubyid_ssl_socket'>ssl_socket</span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1820,8 +1824,6 @@ May be one of the following:</p>
       <pre class="lines">
 
 
-335
-336
 337
 338
 339
@@ -1830,10 +1832,12 @@ May be one of the following:</p>
 342
 343
 344
-345</pre>
+345
+346
+347</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl/mixin.rb', line 335</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl/mixin.rb', line 337</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ssl_connect_and_send'>ssl_connect_and_send</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='label'>bind_host:</span> <span class='kw'>nil</span><span class='comma'>,</span>
                                          <span class='label'>bind_port:</span> <span class='kw'>nil</span><span class='comma'>,</span>
@@ -2613,17 +2617,17 @@ May be one of the following:</p>
       <pre class="lines">
 
 
-531
-532
 533
 534
 535
 536
 537
-538</pre>
+538
+539
+540</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl/mixin.rb', line 531</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl/mixin.rb', line 533</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ssl_send'>ssl_send</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='label'>bind_host:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>bind_port:</span> <span class='kw'>nil</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ssl_connect'>ssl_connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='label'>bind_host:</span> <span class='id identifier rubyid_bind_host'>bind_host</span><span class='comma'>,</span>
@@ -2915,8 +2919,6 @@ After the block has finished, the client will be closed.</p>
       <pre class="lines">
 
 
-648
-649
 650
 651
 652
@@ -2926,10 +2928,12 @@ After the block has finished, the client will be closed.</p>
 656
 657
 658
-659</pre>
+659
+660
+661</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl/mixin.rb', line 648</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl/mixin.rb', line 650</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ssl_server_loop'>ssl_server_loop</span><span class='lparen'>(</span><span class='label'>port:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>host:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>backlog:</span> <span class='int'>5</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_tcp_server_session'>tcp_server_session</span><span class='lparen'>(</span><span class='label'>port:</span> <span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='label'>host:</span> <span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='label'>backlog:</span> <span class='id identifier rubyid_backlog'>backlog</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
@@ -3144,14 +3148,14 @@ May be one of the following:</p>
       <pre class="lines">
 
 
-580
-581
 582
 583
-584</pre>
+584
+585
+586</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl/mixin.rb', line 580</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl/mixin.rb', line 582</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ssl_server_socket'>ssl_server_socket</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span> <span class='label'>key:</span>  <span class='const'><span class='object_link'><a href="../../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../SSL.html" title="Ronin::Support::Network::SSL (module)">SSL</a></span></span><span class='period'>.</span><span class='id identifier rubyid_key'><span class='object_link'><a href="../SSL.html#key-class_method" title="Ronin::Support::Network::SSL.key (method)">key</a></span></span><span class='comma'>,</span>
                               <span class='label'>cert:</span> <span class='const'><span class='object_link'><a href="../../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../SSL.html" title="Ronin::Support::Network::SSL (module)">SSL</a></span></span><span class='period'>.</span><span class='id identifier rubyid_cert'><span class='object_link'><a href="../SSL.html#cert-class_method" title="Ronin::Support::Network::SSL.cert (method)">cert</a></span></span><span class='comma'>,</span>
@@ -3371,9 +3375,9 @@ May be one of the following:</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Jun 22 21:41:55 2023 by
+  Generated on Tue Sep 19 15:05:21 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.28 (ruby-3.1.4).
+  0.9.34 (ruby-3.1.4).
 </div>
 
     </div>
