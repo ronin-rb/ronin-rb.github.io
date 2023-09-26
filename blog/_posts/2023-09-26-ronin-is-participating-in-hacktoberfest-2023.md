@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Ronin is participating in Hacktoberfest 10!
+title: Ronin is participating in Hacktoberfest 2023!
 author: postmodern
 tags:
   - hacktoberfest
 ---
 
-Ronin is participating in [Hacktoberfest 10][hacktoberfest]! Hacktoberfest is
+Ronin is participating in [Hacktoberfest 2023][hacktoberfest]! Hacktoberfest is
 DigitalOcean's annual online event during the month of October, which
 encourages people to contribute to Open Source projects that choose to
 participate in Hacktoberfest.
