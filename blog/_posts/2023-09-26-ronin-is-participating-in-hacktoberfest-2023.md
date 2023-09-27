@@ -36,6 +36,6 @@ Hacktoberfest officially starts on **September 26** and officially ends on
 [ronin-stickers]: https://merch.ronin-rb.dev/category/stickers
 [ronin-rb]: https://github.com/ronin-rb
 [ronin-discord-hacktoberfest]: https://discord.gg/Cw5WWnycRH
-[ronin-issues]: https://github.com/issues?q=is%3Aopen+is%3Aissue+archived%3Afalse+user%3Aronin-rb+
-[ronin-issues-help-wanted]: https://github.com/issues?q=is%3Aopen+is%3Aissue+archived%3Afalse+user%3Aronin-rb+label%3Ahelp-wanted
-[ronin-issues-good-first-issue]: https://github.com/issues?q=is%3Aopen+is%3Aissue+archived%3Afalse+user%3Aronin-rb+label%3A%22good+first+issue%22
+[ronin-issues]: https://github.com/search?q=org%3Aronin-rb+state%3Aopen+&type=issues
+[ronin-issues-help-wanted]: https://github.com/search?q=org%3Aronin-rb+state%3Aopen+label%3Ahelp-wanted&type=issues
+[ronin-issues-good-first-issue]: https://github.com/search?q=org%3Aronin-rb+state%3Aopen+label%3A%22good+first+issue%22&type=issues
