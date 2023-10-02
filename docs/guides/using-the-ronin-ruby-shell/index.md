@@ -148,7 +148,7 @@ To view a full list of the available Mixin methods, see the documentation for
   </div>
 
   <div class="level-right">
-    <a class="button" href="../writting-ronin-ruby-scripts/">
+    <a class="button" href="../writing-ronin-ruby-scripts/">
       Writing Ronin Ruby Scripts &raquo;
     </a>
   </div>
