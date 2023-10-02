@@ -126,7 +126,7 @@ and networking.
   </div>
 
   <div class="level-item">
-    <a class="button" href="../index.html#guides">
+    <a class="button" href="/docs/#guides">
       &#x2303; Guides
     </a>
   </div>
