@@ -170,7 +170,6 @@ there are pending migrations. You will have to run `ronin-db migrate`.
   </div>
 </div>
 
-
 [ronin-db]: https://github.com/ronin-rb/ronin-db#readme
 [ronin-db-synopsis]: https://github.com/ronin-rb/ronin-db#synopsis
 [ronin-db-activerecord]: https://github.com/ronin-rb/ronin-db-activerecord#readme
