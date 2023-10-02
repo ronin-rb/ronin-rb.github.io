@@ -24,7 +24,7 @@ title: Documentation
 
 * [Using the Ronin Ruby Shell](guides/using-the-ronin-ruby-shell/) -
   Explains how to use Ronin's interactive Ruby Shell.
-* [Ruby Quick Ref](guides/ruby-quick-ref/) - 
+* [Ruby Quick Ref](guides/ruby-quick-ref/) -
   Provides a quick reference of Ruby's syntax.
 * [Writing Ronin Ruby Scripts](guides/writing-ronin-ruby-scripts/) -
   Explains how to write Ruby scripts using [ronin-support].
