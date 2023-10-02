@@ -158,8 +158,8 @@ there are pending migrations. You will have to run `ronin-db migrate`.
 
 <div class="level">
   <div class="level-left">
-    <a class="button" href="../using-ronin-repos/">
-      &laquo; Using Ronin Repos
+    <a class="button" href="../using-the-ronin-cli/">
+      Using the Ronin CLI &raquo;
     </a>
   </div>
 
@@ -168,13 +168,8 @@ there are pending migrations. You will have to run `ronin-db migrate`.
       &#x2303; Guides
     </a>
   </div>
-
-  <div class="level-right">
-    <a class="button" href="../ruby-quick-ref/">
-      Ruby Quick Ref &raquo;
-    </a>
-  </div>
 </div>
+
 
 [ronin-db]: https://github.com/ronin-rb/ronin-db#readme
 [ronin-db-synopsis]: https://github.com/ronin-rb/ronin-db#synopsis
