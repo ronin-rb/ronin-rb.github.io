@@ -159,7 +159,7 @@ there are pending migrations. You will have to run `ronin-db migrate`.
 <div class="level">
   <div class="level-left">
     <a class="button" href="../using-the-ronin-cli/">
-      Using the Ronin CLI &raquo;
+       &laquo; Using the Ronin CLI
     </a>
   </div>
 
