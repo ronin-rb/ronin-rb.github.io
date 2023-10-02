@@ -616,9 +616,6 @@ end</pre>
 
 <div class="level">
   <div class="level-left">
-    <a class="button" href="../using-ronin-db/">
-      &laquo; Using Ronin DB
-    </a>
   </div>
 
   <div class="level-item">
