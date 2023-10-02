@@ -205,8 +205,8 @@ commands. The Ronin CLI isn't just the main `ronin` command, but is split up
 into multiple other CLIs. These other `ronin-` commands each have their own
 sub-commands with their own man-pages.
 
-* [ronin-repos](https://github.com/ronin-rb/ronin-repos#synopsis)
 * [ronin-db](https://github.com/ronin-rb/ronin-db#synopsis)
+* [ronin-repos](https://github.com/ronin-rb/ronin-repos#synopsis)
 * [ronin-exploits](https://github.com/ronin-rb/ronin-exploits#synopsis)
 * [ronin-payloads](https://github.com/ronin-rb/ronin-payloads#synopsis)
 * [ronin-vulns](https://github.com/ronin-rb/ronin-vulns#synopsis)
@@ -226,8 +226,8 @@ sub-commands with their own man-pages.
   </div>
 
   <div class="level-right">
-    <a class="button" href="../using-the-ronin-ruby-shell/">
-      Using the Ronin Ruby Shell &raquo;
+    <a class="button" href="../using-ronin-db/">
+      Using Ronin DB &raquo;
     </a>
   </div>
 </div>

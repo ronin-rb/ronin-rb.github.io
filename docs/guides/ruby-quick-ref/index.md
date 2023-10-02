@@ -616,6 +616,9 @@ end</pre>
 
 <div class="level">
   <div class="level-left">
+    <a class="button" href="../using-the-ronin-ruby-shell/">
+      Using the Ronin Ruby Shell &raquo;
+    </a>
   </div>
 
   <div class="level-item">

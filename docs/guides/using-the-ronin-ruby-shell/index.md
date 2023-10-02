@@ -148,8 +148,8 @@ To view a full list of the available Mixin methods, see the documentation for
   </div>
 
   <div class="level-right">
-    <a class="button" href="../writing-ronin-ruby-scripts/">
-      Writing Ronin Ruby Scripts &raquo;
+    <a class="button" href="../ruby-quick-ref/">
+      Ruby Quick Ref &raquo;
     </a>
   </div>
 </div>

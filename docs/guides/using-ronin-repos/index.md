@@ -90,8 +90,8 @@ ronin-repos purge
 
 <div class="level">
   <div class="level-left">
-    <a class="button" href="../using-the-ronin-cli/">
-      &laquo; Using the Ronin CLI
+    <a class="button" href="../using-ronin-db/">
+      &laquo; Using ronin-db
     </a>
   </div>
 

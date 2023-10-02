@@ -168,6 +168,12 @@ there are pending migrations. You will have to run `ronin-db migrate`.
       &#x2303; Guides
     </a>
   </div>
+
+  <div class="level-right">
+    <a class="button" href="../using-ronin-repos/">
+       Using ronin-repos &raquo;
+    </a>
+  </div>
 </div>
 
 [ronin-db]: https://github.com/ronin-rb/ronin-db#readme
