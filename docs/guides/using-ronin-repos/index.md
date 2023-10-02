@@ -90,20 +90,14 @@ ronin-repos purge
 
 <div class="level">
   <div class="level-left">
-    <a class="button" href="../using-the-ronin-ruby-shell/">
-      &laquo; Using the Ronin Ruby Shell
+    <a class="button" href="../using-the-ronin-cli/">
+      Using the Ronin CLI &raquo;
     </a>
   </div>
 
   <div class="level-item">
     <a class="button" href="/docs/#guides">
       &#x2303; Guides
-    </a>
-  </div>
-
-  <div class="level-right">
-    <a class="button" href="../using-ronin-db/">
-      Using Ronin DB &raquo;
     </a>
   </div>
 </div>
