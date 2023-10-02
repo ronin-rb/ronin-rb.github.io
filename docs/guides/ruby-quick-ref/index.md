@@ -616,10 +616,13 @@ end</pre>
 
 <div class="level">
   <div class="level-left">
+    <a class="button" href="../using-ronin-db/">
+      &laquo; Using Ronin DB
+    </a>
   </div>
 
   <div class="level-item">
-    <a class="button" href="../index.html#guides">
+    <a class="button" href="/docs/#guides">
       &#x2303; Guides
     </a>
   </div>
