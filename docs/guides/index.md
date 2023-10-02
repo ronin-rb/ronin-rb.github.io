@@ -3,7 +3,7 @@ layout: page
 title: Guides
 ---
 
-## Guides
+# Guides
 
 * [Getting Started](guides/getting-started/) -
   Explains how to install Ronin.
