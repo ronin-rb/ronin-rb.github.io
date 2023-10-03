@@ -18,7 +18,7 @@ title: Writing Ronin Ruby Scripts - Binary
 * [Packet](#packet)
 * [Stack](#stack)
 
-## Packing / Upacking
+## Packing / Unpacking
 
 [ronin-support][ronin-support-docs] adds special `pack` methods to Ruby's
 built-in [Integer][Integer#pack], [Float][Float#pack], and [Array][Array#pack]

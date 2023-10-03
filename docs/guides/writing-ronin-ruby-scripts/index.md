@@ -121,7 +121,7 @@ and networking.
 <div class="level">
   <div class="level-left">
     <a class="button" href="../ruby-quick-ref/">
-      &laquo; Ruby Qucik Ref
+      &laquo; Ruby Quick Ref
     </a>
   </div>
 

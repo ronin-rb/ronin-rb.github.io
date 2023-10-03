@@ -191,7 +191,7 @@ methods to Ruby's built-in [Integer] class:
 0x26.html_escape
 # => "&amp;"
 
-0x41.html_enocde
+0x41.html_encode
 # => "&#65;"
 ```
 

@@ -327,12 +327,12 @@ end</pre>
 `string =~ /regex-here/`     | test if the String matches the Regex
 `string.match(/regex-here/)` | get the Regex MatchData back
 `string.scan(/regex-here/)`  | get an Array of all matching substrings
-`string.sub('A','X')`                 | replace the first occurrance of `A` with `X`
-`string.sub(/[ABC]/,'X')`             | replace the first occurrance of the Regex with `X`
-`string.sub(/[ABC]/) { |match| ... }` | replace the first occurrance of the Regex with whatever the block returns
-`string.gsub('A','X')`                | replace all occurrances of `A` with `X`
-`string.gsub(/[ABC]/,'X')`            | replace all occurrances of the Regex with `X`
-`string.gsub(/[ABC]/) { |match| ... }`| replace all occurrances of the Regex with whatever the block returns
+`string.sub('A','X')`                 | replace the first occurrence of `A` with `X`
+`string.sub(/[ABC]/,'X')`             | replace the first occurrence of the Regex with `X`
+`string.sub(/[ABC]/) { |match| ... }` | replace the first occurrence of the Regex with whatever the block returns
+`string.gsub('A','X')`                | replace all occurrences of `A` with `X`
+`string.gsub(/[ABC]/,'X')`            | replace all occurrences of the Regex with `X`
+`string.gsub(/[ABC]/) { |match| ... }`| replace all occurrences of the Regex with whatever the block returns
 
 See the documentation of [String] for more methods.
 
