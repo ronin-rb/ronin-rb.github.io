@@ -139,6 +139,17 @@ it is extremely easy to write your own exploits using
 [ronin-exploits](https://github.com/ronin-rb/ronin-exploits#examples)
 and distribute them via [3rd party repositories](#3rd-party-repositories).
 
+### Can I use Ronin on the OSCP?
+
+Yes! The [OSCP Exam Guide] states that tools which performs "automatic
+exploitation" (meaning the tool can both find a vulnerability and automatically
+exploit it), which includes tools such as Metasploit or SQLmap.
+
+[OSCP Exam Guide]: https://help.offsec.com/hc/en-us/articles/360040165632-OSCP-Exam-Guide#exam-restrictions
+
+Ronin **does not** provide any automatic exploitation functionality, therefor
+it should be safe to use Ronin on the OSCP exam.
+
 ## 3rd party repositories
 
 ### What is a 3rd party repository?
