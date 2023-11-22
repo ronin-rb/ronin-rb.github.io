@@ -20,7 +20,8 @@ not how well you can use `db_autopwn`.
 However, Ronin does not provide any "automatic exploitation" functionality,
 which can scan, fingerprint services, identify vulnerabilities, *and* exploit
 them, automatically without *any* user interaction. Instead, using Ronin one
-would have to perform each step manually.
+would have to perform each step manually with [ronin-vulns], [ronin-payloads] /
+[ronin-exploits], etc.
 
 Just to be sure, I emailed the OSCP staff and asked for clarification on what
 is and is not considered "automatic exploitation"; for example is running a
@@ -68,3 +69,6 @@ want to perform.
 
 [OSCP Exam]: https://www.offsec.com/courses/pen-200/
 [exam restrictions]: https://help.offsec.com/hc/en-us/articles/360040165632-OSCP-Exam-Guide#exam-restrictions
+[ronin-vulns]: https://github.com/ronin-rb/ronin-vulns#readme
+[ronin-payloads]: https://github.com/ronin-rb/ronin-payloads#readme
+[ronin-exploits]: https://github.com/ronin-rb/ronin-exploits#readme
