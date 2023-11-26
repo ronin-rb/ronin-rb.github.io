@@ -10,9 +10,9 @@ tags:
   - ruby
 ---
 
-This [HackThisSite] level gives you a link to a [wordlist.zip] file and a list
-of scrambled words. Your task is to translate the scrambled words back into
-their original words from the wordlist.
+[HackThisSite Programming Level 1] gives you a link to a [wordlist.zip] file
+and a list of scrambled words. Your task is to translate the scrambled words
+back into their original words from the wordlist.
 
 ```
 This level is about unscrambling words.
@@ -99,5 +99,6 @@ Finally, copy/paste the answer into the text box and click Submit.
 
 [ronin]: https://github.com/ronin-rb/ronin#readme
 [HackThisSite]: https://hackthissite.org/
+[HackThisSite Programming Level 1]: https://www.hackthissite.org/missions/prog/1/
 [wordlist.rb]: https://github.com/postmodern/wordlist.rb#readme
 [wordlist.zip]: https://www.hackthissite.org/missions/prog/1/wordlist.zip
