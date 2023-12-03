@@ -13,3 +13,35 @@ namespace :docs do
     end
   end
 end
+
+LIBRARIES.each_key do |library|
+  Dir.glob(File.join(__dir__,'..',library,'man','*.md')) do |man_page_path|
+    man_page_name = File.basename(man_page_path,'.1.md')
+    markdown_page = File.join('docs','man',library,"#{man_page_name}.1.md")
+
+    file(markdown_page => man_page_path) do
+      markdown = File.read(man_page_path)
+
+      # remove the header line
+      markdown.sub!(/\A.+\n\n/,'')
+
+      # rewrite the man: links
+      markdown.gsub!(/man:ronin-[^)]+/) do |match|
+        "#{match[4..-3]}.html"
+      end
+
+      File.open(markdown_page,'w') do |file|
+        file.puts <<~HEADER
+          ---
+          layout: page
+          title: Docs - Man Pages - #{man_page_name}
+          ---
+
+          #{markdown}
+        HEADER
+      end
+    end
+
+    task 'docs:man' => markdown_page
+  end
+end
