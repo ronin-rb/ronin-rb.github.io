@@ -52,6 +52,23 @@ title: Documentation
 * [Setting up a Ruby Development Environment](dev/setting-up-a-ruby-dev-environment/) - 
   A guide on how to setup a Ruby Development Environment to contribute to Ronin.
 
+## Man Pages
+
+* [ronin](man#ronin)
+* [ronin-app](man#ronin-app)
+* [ronin-db](man#ronin-db)
+* [ronin-exploits](man#ronin-exploits)
+* [ronin-fuzzer](man#ronin-fuzzer)
+* [ronin-listener](man#ronin-listener)
+* [ronin-masscan](man#ronin-masscan)
+* [ronin-nmap](man#ronin-nmap)
+* [ronin-payloads](man#ronin-payloads)
+* [ronin-recon](man#ronin-recon)
+* [ronin-repos](man#ronin-repos)
+* [ronin-vulns](man#ronin-vulns)
+* [ronin-web](man#ronin-web)
+* [ronin-wordlists](man#ronin-wordlists)
+
 ## API
 
 <table class="table">
