@@ -70,7 +70,7 @@ end
 ```
 
 Now to run the bruteforcing Ruby script against the target machine IP address.
-We will add the `--jit` option to try to speed it up our Ruby script as much as
+We will add the `--jit` option to try to speed up our Ruby script as much as
 possible.
 
 ```shell
