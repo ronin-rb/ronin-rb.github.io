@@ -15,7 +15,7 @@ namespace :docs do
 end
 
 LIBRARIES.each_key do |library|
-  Dir.glob(File.join(__dir__,'..',library,'man','*.md')) do |man_page_path|
+  Dir.glob(File.join(__dir__,'..',library,'man','*.1.md')) do |man_page_path|
     man_page_name = File.basename(man_page_path,'.1.md')
     markdown_page = File.join('docs','man',library,"#{man_page_name}.1.md")
 
@@ -25,9 +25,9 @@ LIBRARIES.each_key do |library|
       # remove the header line
       markdown.sub!(/\A.+\n\n/,'')
 
-      # rewrite the man: links
-      markdown.gsub!(/man:ronin-[^)]+/) do |match|
-        "#{match[4..-3]}.html"
+      # rewrite the man-page links
+      markdown.gsub!(/ronin-[^.)]+.1.md/) do |match|
+        match.sub(/\.md\z/,'.html')
       end
 
       File.open(markdown_page,'w') do |file|
@@ -42,6 +42,7 @@ LIBRARIES.each_key do |library|
       end
     end
 
+    task "docs:man:#{library}" => markdown_page
     task 'docs:man' => markdown_page
   end
 end
