@@ -33,7 +33,7 @@ HTTP 302 redirect to `error.php` can be considered a successful login.
 Next we will write a bruteforcing Ruby script which will send every possible
 three character combination of numbers and uppercase hexadecimal characters.
 To do that we will use the [chars] library, which provides a
-[Chars::UPPERCASE_HEXADECIMAL] constant containing characters `0` - `9` and
+[Chars::UPPERCASE_HEXADECIMAL] constant containing the characters `0` - `9` and
 `A` - `F`. Then we will call the [Chars::CharSet#strings_of_length] method to
 generate every three character combination of uppercase hexadecimal characters.
 Then we will use [ronin-support] to establish a persistent HTTP connection and
