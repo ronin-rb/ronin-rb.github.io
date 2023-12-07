@@ -34,20 +34,18 @@ Next we will write a bruteforcing Ruby script which will send every possible
 three character combination of numbers and uppercase hexadecimal characters.
 To do that we will use the [chars] library, which provides a
 [Chars::UPPERCASE_HEXADECIMAL] constant containing characters `0` - `9` and
-`A` - `F`. Then we will use the [wordlist] library to generate every character
-combination of uppercase hexadecimal characters. Then we will use
-[ronin-support] to establish a persistent HTTP connection and send login
-requestions until a non-HTTP 302 redirect response is returned.
+`A` - `F`. Then we will call the [Chars::CharSet#strings_of_length] method to
+generate every three character combination of uppercase hexadecimal characters.
+Then we will use [ronin-support] to establish a persistent HTTP connection and
+send login requestions until a non-HTTP 302 redirect response is returned.
 
 ```ruby
 require 'ronin/support'
-require 'wordlist'
 require 'chars'
 
 include Ronin::Support
 
-charset  = Chars::UPPERCASE_HEXADECIMAL.chars
-wordlist = Wordlist::Words.new(charset) ** 3
+wordlist = Chars::UPPERCASE_HEXADECIMAL.strings_of_length(3)
 
 ip   = ARGV[0]
 http = http_connect(ip,8000)
@@ -94,5 +92,5 @@ CTF challenges easy and fun.
 [crunch]: https://www.kali.org/tools/crunch/
 [hydra]: https://www.kali.org/tools/hydra/
 [chars]: https://github.com/postmodern/chars.rb#readme
-[wordlist]: https://github.com/postmodern/wordlist.rb#readme
+[Chars::CharSet#strings_of_length]: https://rubydoc.info/gems/chars/Chars/CharSet#strings_of_length-instance_method
 [ronin-support]: https://github.com/ronin-rb/ronin-support#readme
