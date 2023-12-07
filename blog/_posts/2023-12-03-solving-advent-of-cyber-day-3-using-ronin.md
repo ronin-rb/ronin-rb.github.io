@@ -92,5 +92,6 @@ CTF challenges easy and fun.
 [crunch]: https://www.kali.org/tools/crunch/
 [hydra]: https://www.kali.org/tools/hydra/
 [chars]: https://github.com/postmodern/chars.rb#readme
+[Chars::UPPERCASE_HEXADECIMAL]: https://rubydoc.info/gems/chars/Chars
 [Chars::CharSet#strings_of_length]: https://rubydoc.info/gems/chars/Chars/CharSet#strings_of_length-instance_method
 [ronin-support]: https://github.com/ronin-rb/ronin-support#readme
