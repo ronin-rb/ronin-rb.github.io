@@ -293,7 +293,7 @@ codes.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#[]-class_method" title="[] (class method)">.<strong>[]</strong>(*fields, **kwargs)  &#x21d2; Object </a>
+      <a href="#[]-class_method" title="[] (class method)">.<strong>[]</strong>(*fields, **kwargs)  &#x21d2; Template </a>
     
 
     
@@ -307,7 +307,8 @@ codes.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Alias for <code>Template.new</code>.</p>
+</div></span>
   
 </li>
 
@@ -449,6 +450,8 @@ codes.</p>
 
 <p>The desired architecture for the values within the template.</p>
 
+<p>The Operating System (OS) to use.</p>
+
 
   </div>
 </div>
@@ -458,7 +461,7 @@ codes.</p>
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code"><code><span class='id identifier rubyid_template'>template</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Template (class)">Template</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='symbol'>:uint32</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:char</span><span class='comma'>,</span> <span class='int'>100</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <pre class="example code"><code><span class='id identifier rubyid_template'>template</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Template (class)">Template</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='symbol'>:uint32</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:char</span><span class='comma'>,</span> <span class='int'>10</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='rparen'>)</span>
 <span class='id identifier rubyid_template'>template</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='int'>0x123456</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>B</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>C</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
 <span class='comment'># =&gt; &quot;CBA\x00XYZ\x00\x00\x00\x00\x00\x00\x00&quot;
 </span><span class='id identifier rubyid_template'>template</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CBA\x00XYZ\x00\x00\x00\x00\x00\x00\x00</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -529,6 +532,15 @@ codes.</p>
           
         </li>
       
+        <li>
+          <span class="name">:os</span>
+          <span class="type">(<tt>:linux</tt>, <tt>:macos</tt>, <tt>:windows</tt>, <tt>:android</tt>, <tt>:apple_ios</tt>, <tt>:bsd</tt>, <tt>:freebsd</tt>, <tt>:openbsd</tt>, <tt>:netbsd</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
     </ul>
   
 
@@ -556,11 +568,6 @@ codes.</p>
       <pre class="lines">
 
 
-145
-146
-147
-148
-149
 150
 151
 152
@@ -576,10 +583,15 @@ codes.</p>
 162
 163
 164
-165</pre>
+165
+166
+167
+168
+169
+170</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/template.rb', line 145</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/template.rb', line 150</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_fields'>fields</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_initialize_type_system'>initialize_type_system</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -821,7 +833,7 @@ CTypes::UnboundArrayType&gt;</tt>)</span>
       <div class="method_details first">
   <h3 class="signature first" id="[]-class_method">
   
-    .<strong>[]</strong>(*fields, **kwargs)  &#x21d2; <tt>Object</tt> 
+    .<strong>[]</strong>(*fields, **kwargs)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Support::Binary::Template (class)">Template</a></span></tt> 
   
 
   
@@ -829,7 +841,12 @@ CTypes::UnboundArrayType&gt;</tt>)</span>
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p>Alias for <code>Template.new</code>.</p>
+
+<p>The desired architecture for the values within the template.</p>
+
+<p>The Operating System (OS) to use.</p>
+
 
   </div>
 </div>
@@ -839,14 +856,123 @@ CTypes::UnboundArrayType&gt;</tt>)</span>
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code"><code><span class='id identifier rubyid_template'>template</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Template (class)">Template</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Ronin::Support::Binary::Template#initialize (method)">new</a></span></span><span class='lbracket'>[</span><span class='symbol'>:uint32</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:char</span><span class='comma'>,</span> <span class='int'>10</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+      <pre class="example code"><code><span class='id identifier rubyid_template'>template</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Ronin::Support::Binary::Template (class)">Template</a></span></span><span class='lbracket'>[</span><span class='symbol'>:uint32</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='symbol'>:char</span><span class='comma'>,</span> <span class='int'>10</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
 <span class='id identifier rubyid_template'>template</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='int'>0x123456</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>B</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>C</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
 <span class='comment'># =&gt; &quot;CBA\x00XYZ\x00\x00\x00\x00\x00\x00\x00&quot;
 </span><span class='id identifier rubyid_template'>template</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CBA\x00XYZ\x00\x00\x00\x00\x00\x00\x00</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='comment'># =&gt; [4276803, #&lt;Ronin::Support::Binary::Array: &quot;XYZ\x00\x00\x00\x00\x00\x00\x00&quot;&gt;]</span></code></pre>
     
   </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>fields</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Array.html" title="Array (class)">::Array</a></span>&lt;Symbol, (Symbol, <span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span>)&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The C-types which the packer will use.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:endian</span>
+          <span class="type">(<tt>:little</tt>, <tt>:big</tt>, <tt>:net</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The desired endianness of the values within the template.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:arch</span>
+          <span class="type">(<tt>:x86</tt>, <tt>:x86_64</tt>, <tt>:ppc</tt>, <tt>:ppc64</tt>, <tt>:mips</tt>, <tt>:mips_le</tt>, <tt>:mips_be</tt>, <tt>:mips64</tt>, <tt>:mips64_le</tt>, <tt>:mips64_be</tt>, <tt>:arm</tt>, <tt>:arm_le</tt>, <tt>:arm_be</tt>, <tt>:arm64</tt>, <tt>:arm64_le</tt>, <tt>:arm64_be</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+        <li>
+          <span class="name">:os</span>
+          <span class="type">(<tt>:linux</tt>, <tt>:macos</tt>, <tt>:windows</tt>, <tt>:android</tt>, <tt>:apple_ios</tt>, <tt>:bsd</tt>, <tt>:freebsd</tt>, <tt>:openbsd</tt>, <tt>:netbsd</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Support::Binary::Template (class)">Template</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new template object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A given type is not known.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
   <p class="tag_title">See Also:</p>
   <ul class="see">
@@ -876,12 +1002,12 @@ CTypes::UnboundArrayType&gt;</tt>)</span>
       <pre class="lines">
 
 
-179
-180
-181</pre>
+214
+215
+216</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/template.rb', line 179</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/template.rb', line 214</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='op'>[]</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_fields'>fields</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_fields'>fields</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -968,30 +1094,30 @@ CTypes::UnboundArrayType&gt;</tt>)</span>
       <pre class="lines">
 
 
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208
-209
-210
-211
-212
-213
-214
-215
-216
-217</pre>
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/template.rb', line 197</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/template.rb', line 232</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='ivar'>@pack_string</span>
@@ -1082,12 +1208,12 @@ CTypes::UnboundArrayType&gt;</tt>)</span>
       <pre class="lines">
 
 
-272
-273
-274</pre>
+307
+308
+309</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/template.rb', line 272</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/template.rb', line 307</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
   <span class='ivar'>@pack_string</span>
@@ -1168,34 +1294,34 @@ CTypes::UnboundArrayType&gt;</tt>)</span>
       <pre class="lines">
 
 
-233
-234
-235
-236
-237
-238
-239
-240
-241
-242
-243
-244
-245
-246
-247
-248
-249
-250
-251
-252
-253
-254
-255
-256
-257</pre>
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/template.rb', line 233</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/template.rb', line 268</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='ivar'>@pack_string</span>
@@ -1232,7 +1358,7 @@ CTypes::UnboundArrayType&gt;</tt>)</span>
 </div>
 
       <div id="footer">
-  Generated on Tue Sep 19 15:05:40 2023 by
+  Generated on Fri Dec 15 16:44:29 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.1.4).
 </div>
