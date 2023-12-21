@@ -196,7 +196,6 @@ methods to Ruby's built-in [Integer] class:
 ```
 
 ## HTTP
-{: #encoding-http}
 
 [ronin-support][ronin-support-docs] adds HTTP encoding/decoding methods to
 Ruby's built-in [String] class:
