@@ -43,7 +43,7 @@ access to everything defined within the [Ronin::Support] namespace.
   <div class="message-body" markdown="1">
 While requiring *all* of `ronin/support` allows you to play around with
 [ronin-support][ronin-support-docs] in `irb`, it is always faster to selectively
-require only the files you need from `ronin/support`.
+require only the files you need from within `ronin/support/`.
 
 [ronin-support-docs]: /docs/ronin-support/
   </div>
