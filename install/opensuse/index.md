@@ -23,7 +23,7 @@ sudo zypper -n in -l gcc make awk
 <article class="message is-dark">
   <div class="message-header">Note:</div>
   <div class="message-body" markdown="1">
-  `awk` is not installed by default in some OpenSUSE docker containers.
+  `awk` is not installed by default in the official OpenSUSE docker image.
   </div>
 </article>
 
