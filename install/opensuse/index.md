@@ -8,7 +8,7 @@ title: Install - OpenSUSE
 ## Copy/Paste Instructions
 
 ```shell
-sudo zypper -n in -l gcc make ruby-devel readline-devel sqlite3-devel
+sudo zypper -n in -l gcc make awk ruby-devel readline-devel sqlite3-devel
 sudo gem install ronin
 ```
 
@@ -17,8 +17,16 @@ sudo gem install ronin
 {% include install/gcc_and_make.md %}
 
 ```shell
-sudo zypper -n in -l gcc make
+sudo zypper -n in -l gcc make awk
 ```
+
+<article class="message is-dark">
+  <div class="message-header">Note:</div>
+  <div class="message-body" markdown="1">
+  `awk` is not installed by default in some OpenSUSE docker containers.
+  </div>
+</article>
+
 
 {% include install/ruby.md %}
 
