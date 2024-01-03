@@ -47,6 +47,11 @@ title: Documentation
 [ronin-exploits]: https://github.com/ronin-rb/ronin-exploits#readme
 [ronin-payloads]: https://github.com/ronin-rb/ronin-payloads#readme
 
+## Dev
+
+* [Setting up a Ruby Development Environment](dev/setting-up-a-ruby-dev-environment/) - 
+  A guide on how to setup a Ruby Development Environment to contribute to Ronin.
+
 ## API
 
 <table class="table">
