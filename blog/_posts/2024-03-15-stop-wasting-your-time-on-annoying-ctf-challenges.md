@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Stop wasting your time on annoying CTF challenges!
+title: Stop wasting your time on annoying CTF challenges (and just use Ronin)!
 author: postmodern
 tags:
   - ctf
