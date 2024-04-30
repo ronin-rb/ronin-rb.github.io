@@ -10,7 +10,7 @@ tags:
 Recently we fixed a few dependency issues in the [automatic installation
 script][install] and [manual instructions][install-freebsd] for [FreeBSD].
 
-So now installing [Ronin] on FreeBSD is as easy as:
+Now installing [Ronin] on FreeBSD is as easy as:
 
 {% include install_script.md %}
 
@@ -22,6 +22,6 @@ sudo gem install ronin
 ```
 
 [Ronin]: /
-[install]: /install/
+[install]: /install/#bash-script
 [install-freebsd]: /install/freebsd/
 [FreeBSD]: https://www.freebsd.org/
