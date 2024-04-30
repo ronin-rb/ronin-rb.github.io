@@ -8,7 +8,7 @@ title: Install - OpenSUSE
 ## Copy/Paste Instructions
 
 ```shell
-sudo zypper -n in -l gcc make awk ruby-devel readline-devel
+sudo zypper -n in -l gcc make awk ruby-devel
 sudo gem install ronin
 ```
 
@@ -32,12 +32,6 @@ sudo zypper -n in -l gcc make awk
 
 ```shell
 sudo zypper -n in -l ruby-devel
-```
-
-{% include install/c_libraries.md %}
-
-```shell
-sudo zypper -n in -l readline-devel
 ```
 
 {% include install/ronin.md %}
