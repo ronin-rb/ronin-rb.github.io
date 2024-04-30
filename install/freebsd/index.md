@@ -8,7 +8,7 @@ title: Install - FreeBSD
 ## Copy/Paste Instructions
 
 ```shell
-sudo pkg install -y gcc make devel/pkgconf ruby deve/ruby-gems readline sqlite
+sudo pkg install -y gcc make devel/pkgconf ruby deve/ruby-gems readline
 sudo gem install ronin
 ```
 
@@ -29,7 +29,7 @@ sudo pkg install -y ruby devel/ruby-gems
 {% include install/c_libraries.md %}
 
 ```shell
-sudo pkg install -y readline sqlite
+sudo pkg install -y readline
 ```
 
 {% include install/ronin.md %}

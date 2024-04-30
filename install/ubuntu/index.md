@@ -8,7 +8,7 @@ title: Install - Ubuntu
 ## Copy/Paste Instructions
 
 ```shell
-sudo apt install -y gcc make ruby-full libreadline-dev libsqlite3-dev
+sudo apt install -y gcc make ruby-full libreadline-dev
 sudo gem install ronin
 ```
 
@@ -29,7 +29,7 @@ sudo apt install -y ruby-full
 {% include install/c_libraries.md %}
 
 ```shell
-sudo apt install -y libreadline-dev libsqlite3-dev
+sudo apt install -y libreadline-dev
 ```
 
 {% include install/ronin.md %}

@@ -8,7 +8,7 @@ title: Install - Arch
 ## Copy/Paste Instructions
 
 ```shell
-sudo pacman -Sy --noconfirm gcc make ruby readline sqlite
+sudo pacman -Sy --noconfirm gcc make ruby readline
 sudo gem install ronin
 ```
 
@@ -29,7 +29,7 @@ sudo pacman -Sy --noconfirm ruby
 {% include install/c_libraries.md %}
 
 ```shell
-sudo pacman -Sy --noconfirm readline sqlite
+sudo pacman -Sy --noconfirm readline
 ```
 
 {% include install/ronin.md %}
