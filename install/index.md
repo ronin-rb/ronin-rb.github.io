@@ -9,8 +9,8 @@ title: Install
 
 The [ronin-install.sh] bash script will auto-detect the OS and package manager,
 install all external dependencies from the system's package manager, and then
-installs Ronin. Supports Debian, Ubuntu, Fedora, OpenSUSE, Arch, macOS, and
-FreeBSD.
+installs Ronin. Supports Debian, Ubuntu, Fedora, OpenSUSE, Arch, Termux, macOS, 
+and FreeBSD.
 
 {% include install_script.md %}
 
@@ -31,6 +31,7 @@ manual installation instructions:
 * [macOS](macos/)
 * [FreeBSD](freebsd/)
 * [Nix](nix/)
+* [Termux](termux/)
 
 ## Docker
 
