@@ -14,7 +14,7 @@ sudo gem install ronin
 
 ## Detailed Breakdown
 
-{% include install/gcc_and_make.md %}
+{% include install/cc_and_make.md %}
 
 ```shell
 sudo pacman -Sy --noconfirm gcc make
