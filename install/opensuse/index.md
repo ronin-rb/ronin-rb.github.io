@@ -14,7 +14,7 @@ sudo gem install ronin
 
 ## Detailed Breakdown
 
-{% include install/cc_and_make.md %}
+{% include install/build_deps.md %}
 
 ```shell
 sudo zypper -n in -l gcc make awk
