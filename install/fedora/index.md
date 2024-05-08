@@ -8,7 +8,7 @@ title: Install - Fedora
 ## Copy/Paste Instructions
 
 ```shell
-sudo dnf install -y gcc make ruby-devel ruby-bundled-gems
+sudo dnf install -y gcc make ruby-devel ruby-bundled-gems git zip
 sudo gem install ronin
 ```
 
@@ -34,6 +34,12 @@ sudo dnf install -y ruby-devel ruby-bundled-gems
 install the `ruby-bundled-gems` package as a dependency of `ruby`.
   </div>
 </article>
+
+{% include install/runtime_deps.md %}
+
+```shell
+sudo dnf install -y git zip
+```
 
 {% include install/ronin.md %}
 

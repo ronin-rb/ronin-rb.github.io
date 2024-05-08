@@ -8,7 +8,7 @@ title: Install - Ubuntu
 ## Copy/Paste Instructions
 
 ```shell
-sudo apt install -y gcc make ruby-full
+sudo apt install -y gcc make ruby-full git zip
 sudo gem install ronin
 ```
 
@@ -24,6 +24,12 @@ sudo apt install -y gcc make
 
 ```shell
 sudo apt install -y ruby-full
+```
+
+{% include install/runtime_deps.md %}
+
+```shell
+sudo apt install -y git zip
 ```
 
 {% include install/ronin.md %}

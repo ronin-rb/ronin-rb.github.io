@@ -8,7 +8,7 @@ title: Install - FreeBSD
 ## Copy/Paste Instructions
 
 ```shell
-sudo pkg install -y gcc make devel/pkgconf ruby deve/ruby-gems
+sudo pkg install -y gcc make devel/pkgconf ruby deve/ruby-gems git zip
 sudo gem install ronin
 ```
 
@@ -18,6 +18,12 @@ sudo gem install ronin
 
 ```shell
 sudo pkg install -y gcc make devel/pkgconf
+```
+
+{% include install/runtime_deps.md %}
+
+```shell
+sudo pkg install -y git zip
 ```
 
 {% include install/ruby.md %}

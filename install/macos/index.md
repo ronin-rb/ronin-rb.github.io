@@ -8,7 +8,7 @@ title: Install - macOS
 ## Copy/Paste Instructions
 
 ```shell
-brew install gcc make ruby
+brew install gcc make ruby git zip
 brew pin ruby
 echo 'PATH="$(brew --prefix ruby)/bin:$PATH"' >> ~/.zshrc
 echo 'PATH="$(gem env gemdir)/bin:$PATH"' >> ~/.zshrc
@@ -44,6 +44,12 @@ configuration.
 echo 'PATH="$(brew --prefix ruby)/bin:$PATH"' >> ~/.zshrc
 echo 'PATH="$(gem env gemdir)/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
+```
+
+{% include install/runtime_deps.md %}
+
+```shell
+brew install git zip
 ```
 
 {% include install/ronin.md %}

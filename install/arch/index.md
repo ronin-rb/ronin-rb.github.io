@@ -8,7 +8,7 @@ title: Install - Arch
 ## Copy/Paste Instructions
 
 ```shell
-sudo pacman -Sy --noconfirm gcc make ruby
+sudo pacman -Sy --noconfirm gcc make ruby git zip
 sudo gem install ronin
 ```
 
@@ -24,6 +24,12 @@ sudo pacman -Sy --noconfirm gcc make
 
 ```shell
 sudo pacman -Sy --noconfirm ruby
+```
+
+{% include install/runtime_deps.md %}
+
+```shell
+sudo pacman -Sy --noconfirm git zip
 ```
 
 {% include install/ronin.md %}
