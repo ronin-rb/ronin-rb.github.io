@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Install - Fedora
+js: ["copy-button.js"]
 ---
 
 # Installing Ronin on Fedora

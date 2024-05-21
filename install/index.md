@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Install
+js: ["copy-button.js"]
 ---
 
 # Install

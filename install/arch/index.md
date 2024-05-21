@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Install - Arch
+js: ["copy-button.js"]
 ---
 
 # Installing Ronin on Arch

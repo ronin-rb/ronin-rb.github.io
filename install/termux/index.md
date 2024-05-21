@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Install - Termux
+js: ["copy-button.js"]
 ---
 
 # Installing Ronin on Termux

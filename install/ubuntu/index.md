@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Install - Ubuntu
+js: ["copy-button.js"]
 ---
 
 # Installing Ronin on Ubuntu

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Install - OpenSUSE
+js: ["copy-button.js"]
 ---
 
 # Installing Ronin on OpenSUSE
