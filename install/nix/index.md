@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Install - Nix
+js: ["copy-button.js"]
 ---
 
 # Installing Ronin on Nix

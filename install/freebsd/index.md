@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Install - FreeBSD
+js: ["copy-button.js"]
 ---
 
 # Installing Ronin on FreeBSD

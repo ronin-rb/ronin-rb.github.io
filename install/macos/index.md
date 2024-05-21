@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Install - macOS
+js: ["copy-button.js"]
 ---
 
 # Installing Ronin on macOS
