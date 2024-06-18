@@ -32,7 +32,7 @@ I am calling this next big push "Phase 2"; think of [The Big Refactor] as
   * [x] `nmap`
   * [x] `masscan`
 * [x] Create a modular, recursive, and async recon engine.
-  * [ ] Add additional worker classes for port scanning, subdomain enumeration,
+  * [x] Add additional worker classes for port scanning, subdomain enumeration,
         directory enumeration, etc.
 * [ ] Create a modular rule-based security scanning engine.
 * [ ] Create a protocol agnostic C2.
@@ -41,16 +41,16 @@ I am calling this next big push "Phase 2"; think of [The Big Refactor] as
   * [ ] Initially support JSON RPC 2.0 as the command message format, but should
         allow supporting *any* C2 command message format.
 * [x] Create a local-only web interface for Ronin.
-  * [ ] Allow searching and navigating *all* of [ronin-db] and it's many models.
+  * [x] Allow searching and navigating *all* of [ronin-db] and it's many models.
   * [x] Allow performing `nmap` scans and importing the data into the
         [ronin-db].
-    * [ ] Map *all* of `nmap`'s options to HTTP form fields.
+    * [x] Map *all* of `nmap`'s options to HTTP form fields.
   * [x] Allow performing `masscan` scans and importing the data into the
         [ronin-db].
-    * [ ] Map *all* of `masscan`'s options to HTTP form fields.
+    * [x] Map *all* of `masscan`'s options to HTTP form fields.
   * [x] Allow spidering websites and import every URL into the [ronin-db].
-    * [ ] Map *all* of [ronin-web-spider]'s options to HTTP form fields.
-  * [ ] Allow performing recon and importing the results into the [ronin-db].
+    * [x] Map *all* of [ronin-web-spider]'s options to HTTP form fields.
+  * [x] Allow performing recon and importing the results into the [ronin-db].
 
 ## New Libraries
 
@@ -60,13 +60,13 @@ I am calling this next big push "Phase 2"; think of [The Big Refactor] as
 * [ronin-exfil] (Done) - A Ruby CLI utility for receiving exfiltrated data.
 * [ronin-web-session_cookie] (Done) - A library for parsing and deserializing
   various session cookies.
-* [ronin-wordlists] (WIP) - A tool for managing and downloading wordlists.
-* [ronin-nmap] (WIP) - A tool for automating nmap, and querying or importing nmap XML into [ronin-db].
-* [ronin-masscan] (WIP) - A tool for automating masscan, and querying or importing masscan output files into [ronin-db].
-* [ronin-recon] (WIP) - A modular recursive recon engine.
+* [ronin-wordlists] (Done) - A tool for managing and downloading wordlists.
+* [ronin-nmap] (Done) - A tool for automating nmap, and querying or importing nmap XML into [ronin-db].
+* [ronin-masscan] (Done) - A tool for automating masscan, and querying or importing masscan output files into [ronin-db].
+* [ronin-recon] (Done) - A modular recursive recon engine.
 * `ronin-scanner` (Planned) - A modular scanner engine that can be hooked up to `ronin-recon`.
 * `ronin-c2` (Prototyping) - A protocol agnostic C2 server.
-* [ronin-app] (WIP) - A local Web App for automated recon, scanning, and exploring the [ronin-db].
+* [ronin-app] (Done) - A local Web App for automated recon, scanning, and exploring the [ronin-db].
 
 If you want to see the complete list of GitHub Issues or see what is currently
 being worked on, checkout the [GitHub Project Board][Phase-2]. If any of these
