@@ -55,9 +55,9 @@ I am calling this next big push "Phase 2"; think of [The Big Refactor] as
 ## New Libraries
 
 * [ronin-dns-proxy] (Done) - A configurable DNS proxy server library.
-* [ronin-exfil-dns] (Done) - A DNS server for receiving exfiltrated data.
-* [ronin-exfil-http] (Done) - A HTTP server for receiving exfiltrated data.
-* [ronin-exfil] (Done) - A Ruby CLI utility for receiving exfiltrated data.
+* [ronin-listener-dns] (Done) - A DNS server for receiving exfiltrated data.
+* [ronin-listener-http] (Done) - A HTTP server for receiving exfiltrated data.
+* [ronin-listener] (Done) - A Ruby CLI utility for receiving exfiltrated data.
 * [ronin-web-session_cookie] (Done) - A library for parsing and deserializing
   various session cookies.
 * [ronin-wordlists] (Done) - A tool for managing and downloading wordlists.
@@ -78,9 +78,9 @@ getting involved.
 
 [ronin-db]: https://github.com/ronin-rb/ronin-db#readme
 [ronin-dns-proxy]: https://github.com/ronin-rb/ronin-dns-proxy#readme
-[ronin-exfil-dns]: https://github.com/ronin-rb/ronin-exfil-dns#readme
-[ronin-exfil-http]: https://github.com/ronin-rb/ronin-exfil-http#readme
-[ronin-exfil]: https://github.com/ronin-rb/ronin-exfil#readme
+[ronin-listener-dns]: https://github.com/ronin-rb/ronin-listener-dns#readme
+[ronin-listener-http]: https://github.com/ronin-rb/ronin-listener-http#readme
+[ronin-listener]: https://github.com/ronin-rb/ronin-listener#readme
 [ronin-web-session_cookie]: https://github.com/ronin-rb/ronin-web-session_cookie#readme
 [ronin-web-spider]: https://github.com/ronin-rb/ronin-web-spider#readme
 [ronin-wordlists]: https://github.com/ronin-rb/ronin-wordlists#readme
