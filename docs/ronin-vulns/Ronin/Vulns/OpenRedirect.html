@@ -562,12 +562,12 @@ type.</p>
       <pre class="lines">
 
 
-123
-124
-125</pre>
+147
+148
+149</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/open_redirect.rb', line 123</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/open_redirect.rb', line 147</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_vuln_type'>vuln_type</span>
   <span class='symbol'>:open_redirect</span>
@@ -653,7 +653,31 @@ type.</p>
 105
 106
 107
-108</pre>
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/vulns/open_redirect.rb', line 76</span>
@@ -665,7 +689,7 @@ type.</p>
   <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>301</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>302</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>303</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>307</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>308</span><span class='tstring_end'>&#39;</span></span>
     <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_locations'>locations</span> <span class='op'>=</span> <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_get_fields'>get_fields</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Location</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span> <span class='op'>=</span> <span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='ivar'>@test_url</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_regexp'>regexp</span>           <span class='op'>=</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\A</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>(?:[\?&amp;].+)?\z</span><span class='regexp_end'>/</span></span>
+      <span class='id identifier rubyid_regexp'>regexp</span>           <span class='op'>=</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\A</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>.*\z</span><span class='regexp_end'>/</span></span>
 
       <span class='id identifier rubyid_locations'>locations</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span> <span class='op'>=~</span> <span class='id identifier rubyid_regexp'>regexp</span>
     <span class='kw'>end</span>
@@ -680,10 +704,34 @@ type.</p>
           http-equiv\s*=\s*(?: &quot;refresh&quot; | &#39;refresh&#39; | refresh )\s+
           content\s*=\s*
           (?:
-           &quot;\s*\d+\s*;\s*url\s*=\s*&#39;\s*</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>\s*&#39;\s*&quot;|
-           &#39;\s*\d+\s*;\s*url\s*=\s*&quot;\s*</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>\s*&quot;\s*&#39;|
-           \s*\d+;url=(?: &quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>&quot; | &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39; )
-          )\s*
+            # content=&quot;...&quot;
+            &quot;\s*\d+\s*;\s*url\s*=\s*
+            (?:
+              # content=&quot;0; url=&#39;...&#39;&quot;
+              &#39;\s*</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>[^&#39;&quot;]*&#39; |
+              # content=&quot;0; url=...&quot;
+              </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>[^&quot;]*
+            )\s*&quot; |
+            # content=&#39;...&#39;
+            &#39;\s*\d+\s*;\s*url\s*=\s*
+            (?:
+              # content=&#39;0; url=&quot;...&quot;&#39;
+              &quot;\s*</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>[^&quot;&#39;]*&quot; |
+              # content=&#39;0; url=...&#39;
+              </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>[^&#39;]*
+            )\s*&#39; |
+            # content=...
+            \s*\d+;url=(?:
+              # content=0;url=&quot;...&quot;
+              &quot;\s*</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>[^\s&quot;]*&quot; |
+              # content=0;url=&#39;...&#39;
+              &#39;\s*</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>[^\s&#39;]*&#39; |
+              # content=0;url=...
+              </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escaped_test_url'>escaped_test_url</span><span class='embexpr_end'>}</span><span class='tstring_content'>[^\s/&gt;]*
+            )
+          )
+          \s*
+          # /&gt; or / &gt;
           (?:/\s*)?&gt;
       </span><span class='regexp_end'>}xi</span></span>
 
@@ -701,9 +749,9 @@ type.</p>
 </div>
 
       <div id="footer">
-  Generated on Tue Sep 19 15:27:07 2023 by
+  Generated on Wed Jun 19 22:34:04 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.1.4).
+  0.9.36 (ruby-3.1.6).
 </div>
 
     </div>
