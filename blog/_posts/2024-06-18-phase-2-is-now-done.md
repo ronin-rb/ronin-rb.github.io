@@ -81,7 +81,7 @@ for Ronin. Phase 2 resulted in many new projects, such as:
 The next step will be to release release-candidate versions and announce a call
 for beta testers.
 
-Also, big shout out to our new core team member, [AI-Mozi], who helped out with
+Also, big shout out to our new core-team member, [AI-Mozi], who helped out with
 writing tests, fixing bugs, and implementing many of [ronin-app]'s features.
 
 [Phase 2]: https://github.com/orgs/ronin-rb/projects/9/views/1
