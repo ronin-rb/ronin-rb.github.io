@@ -116,7 +116,6 @@
 cidr.each { |ip puts }
 # 10.0.0.0
 # 10.0.0.1
-# 10.0.0.2
 # ...
 # 10.0.0.254
 # 10.0.0.255
@@ -586,14 +585,14 @@ backwards compatibility with <code>IPAddr#initialize</code>.</p>
       <pre class="lines">
 
 
+61
 62
 63
 64
-65
-66</pre>
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span><span class='id identifier rubyid_family'>family</span><span class='op'>=</span><span class='const'>Socket</span><span class='op'>::</span><span class='const'>AF_UNSPEC</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span><span class='id identifier rubyid_family'>family</span><span class='rparen'>)</span>
@@ -665,12 +664,12 @@ backwards compatibility with <code>IPAddr#initialize</code>.</p>
       <pre class="lines">
 
 
+49
 50
-51
-52</pre>
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_string'>string</span>
   <span class='ivar'>@string</span>
@@ -711,8 +710,8 @@ netmask. Supports both IPv4 and IPv6 addresses.</p>
     
       
       <pre class="example code"><code><span class='const'><span class='object_link'><a href="../IPRange.html" title="Ronin::Support::Network::IPRange (class)">IPRange</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::IPRange::CIDR (class)">CIDR</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>10.0.0.1/24</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ip'>ip</span><span class='op'>|</span> <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_ip'>ip</span> <span class='rbrace'>}</span>
-<span class='comment'># 10.0.0.1
-</span><span class='comment'># 10.0.0.2
+<span class='comment'># 10.0.0.0
+</span><span class='comment'># 10.0.0.1
 </span><span class='comment'># ...
 </span><span class='comment'># 10.0.0.254
 </span><span class='comment'># 10.0.0.255</span></code></pre>
@@ -797,12 +796,12 @@ netmask of the IPAddr object.</p>
       <pre class="lines">
 
 
+159
 160
-161
-162</pre>
+161</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 160</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 159</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -895,12 +894,12 @@ netmask of the IPAddr object.</p>
       <pre class="lines">
 
 
+78
 79
-80
-81</pre>
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 78</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
@@ -1010,6 +1009,7 @@ netmask of the IPAddr object.</p>
       <pre class="lines">
 
 
+110
 111
 112
 113
@@ -1034,11 +1034,10 @@ netmask of the IPAddr object.</p>
 132
 133
 134
-135
-136</pre>
+135</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 111</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 110</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_range'>range</span><span class='lparen'>(</span><span class='id identifier rubyid_first'>first</span><span class='comma'>,</span><span class='id identifier rubyid_last'>last</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_first_ip'>first_ip</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_first'>first</span>
@@ -1088,14 +1087,7 @@ netmask of the IPAddr object.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-  <div class="note notetag">
-    <strong>Note:</strong>
-    <div class='inline'><p>This method will skip IPv4 addresses ending in <code>.0</code> or <code>.255</code>.</p>
-</div>
-  </div>
-
-<p>Iterates over each IP address that is included in the addresses
+    <p>Iterates over each IP address that is included in the addresses
 netmask. Supports both IPv4 and IPv6 addresses.</p>
 
 
@@ -1109,11 +1101,11 @@ netmask. Supports both IPv4 and IPv6 addresses.</p>
       
       <pre class="example code"><code><span class='id identifier rubyid_cidr'>cidr</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../../IPAddr.html" title="IPAddr (class)">IPAddr</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>10.1.1.1/24</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='id identifier rubyid_cidr'>cidr</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ip'>ip</span><span class='op'>|</span> <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_ip'>ip</span> <span class='rbrace'>}</span>
-<span class='comment'># 10.0.0.1
-</span><span class='comment'># 10.0.0.2
+<span class='comment'># 10.0.0.0
+</span><span class='comment'># 10.0.0.1
 </span><span class='comment'># ...
-</span><span class='comment'># 10.0.0.253
-</span><span class='comment'># 10.0.0.254</span></code></pre>
+</span><span class='comment'># 10.0.0.254
+</span><span class='comment'># 10.0.0.255</span></code></pre>
     
   </div>
 
@@ -1189,27 +1181,20 @@ netmask of the IPAddr object.</p>
       <pre class="lines">
 
 
+185
+186
+187
+188
 189
 190
 191
 192
 193
 194
-195
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206</pre>
+195</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 189</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 185</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1217,14 +1202,7 @@ netmask of the IPAddr object.</p>
   <span class='id identifier rubyid_family_mask'>family_mask</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#MASKS-constant" title="Ronin::Support::Network::IPRange::CIDR::MASKS (constant)">MASKS</a></span></span><span class='lbracket'>[</span><span class='ivar'>@family</span><span class='rbracket'>]</span>
 
   <span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='op'>~</span><span class='ivar'>@mask_addr</span><span class='rparen'>)</span> <span class='op'>&amp;</span> <span class='id identifier rubyid_family_mask'>family_mask</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
-    <span class='id identifier rubyid_ip_uint'>ip_uint</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='ivar'>@addr</span> <span class='op'>|</span> <span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span>
-
-    <span class='comment'># skip IPv4 addresses ending in .0 or .255
-</span>    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_ipv4?'>ipv4?</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_ip_uint'>ip_uint</span> <span class='op'>&amp;</span> <span class='int'>0xff</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='id identifier rubyid_ip_uint'>ip_uint</span> <span class='op'>&amp;</span> <span class='int'>0xff</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0xff</span><span class='rparen'>)</span><span class='rparen'>)</span>
-      <span class='kw'>next</span>
-    <span class='kw'>end</span>
-
-    <span class='kw'>yield</span> <span class='id identifier rubyid__to_string'>_to_string</span><span class='lparen'>(</span><span class='id identifier rubyid_ip_uint'>ip_uint</span><span class='rparen'>)</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid__to_string'>_to_string</span><span class='lparen'>(</span><span class='ivar'>@addr</span> <span class='op'>|</span> <span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='kw'>return</span> <span class='kw'>self</span>
@@ -1287,12 +1265,12 @@ netmask of the IPAddr object.</p>
       <pre class="lines">
 
 
-213
-214
-215</pre>
+202
+203
+204</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 213</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 202</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_first'>first</span>
   <span class='id identifier rubyid__to_string'>_to_string</span><span class='lparen'>(</span><span class='ivar'>@addr</span><span class='rparen'>)</span>
@@ -1355,12 +1333,12 @@ netmask of the IPAddr object.</p>
       <pre class="lines">
 
 
-240
-241
-242</pre>
+229
+230
+231</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 240</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 229</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='embexpr_end'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@string</span><span class='embexpr_end'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
@@ -1423,12 +1401,12 @@ netmask of the IPAddr object.</p>
       <pre class="lines">
 
 
-222
-223
-224</pre>
+211
+212
+213</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 222</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 211</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_last'>last</span>
   <span class='id identifier rubyid__to_string'>_to_string</span><span class='lparen'>(</span><span class='ivar'>@addr</span> <span class='op'>|</span> <span class='op'>~</span><span class='ivar'>@mask_addr</span><span class='rparen'>)</span>
@@ -1491,12 +1469,12 @@ netmask of the IPAddr object.</p>
       <pre class="lines">
 
 
-231
-232
-233</pre>
+220
+221
+222</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 231</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip_range/cidr.rb', line 220</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
   <span class='ivar'>@string</span>
@@ -1511,9 +1489,9 @@ netmask of the IPAddr object.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Dec 27 23:10:49 2023 by
+  Generated on Wed Jun 19 22:22:25 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.3.0).
+  0.9.36 (ruby-3.1.6).
 </div>
 
     </div>

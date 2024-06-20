@@ -525,17 +525,17 @@ will be closed.</p>
       <pre class="lines">
 
 
-430
-431
-432
 433
 434
 435
 436
-437</pre>
+437
+438
+439
+440</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp.rb', line 430</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp.rb', line 433</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_accept'>accept</span><span class='lparen'>(</span><span class='label'>backlog:</span> <span class='int'>1</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_server_session'>server_session</span><span class='lparen'>(</span><span class='label'>backlog:</span> <span class='id identifier rubyid_backlog'>backlog</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
@@ -739,19 +739,19 @@ port.</p>
       <pre class="lines">
 
 
-216
-217
-218
 219
 220
 221
 222
 223
 224
-225</pre>
+225
+226
+227
+228</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp.rb', line 216</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp.rb', line 219</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_banner'>banner</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_banner'>banner</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -970,7 +970,10 @@ will be returned.</p>
 136
 137
 138
-139</pre>
+139
+140
+141
+142</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp.rb', line 123</span>
@@ -986,8 +989,11 @@ will be returned.</p>
            <span class='kw'>end</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='kw'>yield</span> <span class='id identifier rubyid_socket'>socket</span>
-    <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+    <span class='kw'>begin</span>
+      <span class='kw'>yield</span> <span class='id identifier rubyid_socket'>socket</span>
+    <span class='kw'>ensure</span>
+      <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+    <span class='kw'>end</span>
   <span class='kw'>else</span>
     <span class='kw'>return</span> <span class='id identifier rubyid_socket'>socket</span>
   <span class='kw'>end</span>
@@ -1194,16 +1200,16 @@ The given data will then be written to the newly created TCPSocket.</p>
       <pre class="lines">
 
 
-174
-175
-176
 177
 178
 179
-180</pre>
+180
+181
+182
+183</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp.rb', line 174</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp.rb', line 177</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_connect_and_send'>connect_and_send</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_socket'>socket</span> <span class='op'>=</span> <span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -1601,16 +1607,16 @@ closes the connection.</p>
       <pre class="lines">
 
 
-259
-260
-261
 262
 263
 264
-265</pre>
+265
+266
+267
+268</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp.rb', line 259</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp.rb', line 262</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_socket'>socket</span><span class='op'>|</span>
@@ -1787,9 +1793,6 @@ closes the connection.</p>
       <pre class="lines">
 
 
-295
-296
-297
 298
 299
 300
@@ -1797,10 +1800,13 @@ closes the connection.</p>
 302
 303
 304
-305</pre>
+305
+306
+307
+308</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp.rb', line 295</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp.rb', line 298</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_server'>server</span><span class='lparen'>(</span><span class='label'>port:</span> <span class='int'>0</span><span class='comma'>,</span> <span class='label'>host:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>backlog:</span> <span class='int'>5</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_host'>host</span>
@@ -1989,19 +1995,19 @@ After the block has finished, the client will be closed.</p>
       <pre class="lines">
 
 
-384
-385
-386
 387
 388
 389
 390
 391
 392
-393</pre>
+393
+394
+395
+396</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp.rb', line 384</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp.rb', line 387</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_server_loop'>server_loop</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_server_session'>server_session</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
@@ -2194,14 +2200,14 @@ After the block has finished, the server will be closed.</p>
       <pre class="lines">
 
 
-344
-345
-346
 347
-348</pre>
+348
+349
+350
+351</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp.rb', line 344</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/tcp.rb', line 347</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_server_session'>server_session</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='id identifier rubyid_server'>server</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -2218,9 +2224,9 @@ After the block has finished, the server will be closed.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Dec 27 23:10:22 2023 by
+  Generated on Wed Jun 19 22:21:59 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.3.0).
+  0.9.36 (ruby-3.1.6).
 </div>
 
     </div>

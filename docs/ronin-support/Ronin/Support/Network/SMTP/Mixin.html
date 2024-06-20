@@ -687,7 +687,10 @@ returned.</p>
 169
 170
 171
-172</pre>
+172
+173
+174
+175</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/support/network/smtp/mixin.rb', line 144</span>
@@ -715,8 +718,11 @@ returned.</p>
   <span class='id identifier rubyid_smtp'>smtp</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span><span class='lparen'>(</span><span class='id identifier rubyid_helo'>helo</span><span class='comma'>,</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span><span class='id identifier rubyid_password'>password</span><span class='comma'>,</span><span class='id identifier rubyid_auth'>auth</span><span class='rparen'>)</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='kw'>yield</span> <span class='id identifier rubyid_smtp'>smtp</span>
-    <span class='id identifier rubyid_smtp'>smtp</span><span class='period'>.</span><span class='id identifier rubyid_finish'>finish</span>
+    <span class='kw'>begin</span>
+      <span class='kw'>yield</span> <span class='id identifier rubyid_smtp'>smtp</span>
+    <span class='kw'>ensure</span>
+      <span class='id identifier rubyid_smtp'>smtp</span><span class='period'>.</span><span class='id identifier rubyid_finish'>finish</span>
+    <span class='kw'>end</span>
   <span class='kw'>else</span>
     <span class='kw'>return</span> <span class='id identifier rubyid_smtp'>smtp</span>
   <span class='kw'>end</span>
@@ -1250,9 +1256,6 @@ returned.</p>
       <pre class="lines">
 
 
-255
-256
-257
 258
 259
 260
@@ -1280,10 +1283,13 @@ returned.</p>
 282
 283
 284
-285</pre>
+285
+286
+287
+288</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/smtp/mixin.rb', line 255</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/smtp/mixin.rb', line 258</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_smtp_send_message'>smtp_send_message</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='label'>user:</span> <span class='comma'>,</span>
                             <span class='label'>password:</span> <span class='comma'>,</span>
@@ -1326,9 +1332,9 @@ returned.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Dec 27 23:10:31 2023 by
+  Generated on Wed Jun 19 22:22:08 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.3.0).
+  0.9.36 (ruby-3.1.6).
 </div>
 
     </div>

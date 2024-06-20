@@ -407,7 +407,10 @@ returned.</p>
 105
 106
 107
-108</pre>
+108
+109
+110
+111</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/support/network/pop3/mixin.rb', line 77</span>
@@ -438,8 +441,11 @@ returned.</p>
   <span class='id identifier rubyid_pop3'>pop3</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='comma'>,</span><span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='kw'>yield</span> <span class='id identifier rubyid_pop3'>pop3</span>
-    <span class='id identifier rubyid_pop3'>pop3</span><span class='period'>.</span><span class='id identifier rubyid_finish'>finish</span>
+    <span class='kw'>begin</span>
+      <span class='kw'>yield</span> <span class='id identifier rubyid_pop3'>pop3</span>
+    <span class='kw'>ensure</span>
+      <span class='id identifier rubyid_pop3'>pop3</span><span class='period'>.</span><span class='id identifier rubyid_finish'>finish</span>
+    <span class='kw'>end</span>
   <span class='kw'>else</span>
     <span class='kw'>return</span> <span class='id identifier rubyid_pop3'>pop3</span>
   <span class='kw'>end</span>
@@ -454,9 +460,9 @@ returned.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Dec 27 23:10:31 2023 by
+  Generated on Wed Jun 19 22:22:08 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.3.0).
+  0.9.36 (ruby-3.1.6).
 </div>
 
     </div>

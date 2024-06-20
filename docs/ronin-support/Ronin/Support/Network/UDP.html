@@ -532,19 +532,19 @@ port.</p>
       <pre class="lines">
 
 
-260
-261
-262
 263
 264
 265
 266
 267
 268
-269</pre>
+269
+270
+271
+272</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/udp.rb', line 260</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/udp.rb', line 263</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_banner'>banner</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_banner'>banner</span> <span class='op'>=</span> <span class='kw'>nil</span>
@@ -763,7 +763,10 @@ will be returned.</p>
 142
 143
 144
-145</pre>
+145
+146
+147
+148</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/support/network/udp.rb', line 127</span>
@@ -781,8 +784,11 @@ will be returned.</p>
   <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='rparen'>)</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='kw'>yield</span> <span class='id identifier rubyid_socket'>socket</span>
-    <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+    <span class='kw'>begin</span>
+      <span class='kw'>yield</span> <span class='id identifier rubyid_socket'>socket</span>
+    <span class='kw'>ensure</span>
+      <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+    <span class='kw'>end</span>
   <span class='kw'>else</span>
     <span class='kw'>return</span> <span class='id identifier rubyid_socket'>socket</span>
   <span class='kw'>end</span>
@@ -989,16 +995,16 @@ The given data will then be written to the newly created UDPSocket.</p>
       <pre class="lines">
 
 
-180
-181
-182
 183
 184
 185
-186</pre>
+186
+187
+188
+189</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/udp.rb', line 180</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/udp.rb', line 183</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_connect_and_send'>connect_and_send</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_socket'>socket</span> <span class='op'>=</span> <span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -1435,16 +1441,16 @@ received message.</p>
       <pre class="lines">
 
 
-423
-424
-425
 426
 427
 428
-429</pre>
+429
+430
+431
+432</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/udp.rb', line 423</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/udp.rb', line 426</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_recv'>recv</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_server_session'>server_session</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
@@ -1629,16 +1635,16 @@ closes the connection.</p>
       <pre class="lines">
 
 
-222
-223
-224
 225
 226
 227
-228</pre>
+228
+229
+230
+231</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/udp.rb', line 222</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/udp.rb', line 225</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_socket'>socket</span><span class='op'>|</span>
@@ -1775,16 +1781,16 @@ closes the connection.</p>
       <pre class="lines">
 
 
-290
-291
-292
 293
 294
 295
-296</pre>
+296
+297
+298
+299</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/udp.rb', line 290</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/udp.rb', line 293</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_server'>server</span><span class='lparen'>(</span><span class='label'>port:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>host:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='const'>UDPSocket</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -1996,18 +2002,18 @@ received message.</p>
       <pre class="lines">
 
 
-373
-374
-375
 376
 377
 378
 379
 380
-381</pre>
+381
+382
+383
+384</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/udp.rb', line 373</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/udp.rb', line 376</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_server_loop'>server_loop</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_server_session'>server_session</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
@@ -2176,14 +2182,14 @@ After the block has finished, the server will be closed.</p>
       <pre class="lines">
 
 
-327
-328
-329
 330
-331</pre>
+331
+332
+333
+334</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/udp.rb', line 327</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/udp.rb', line 330</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_server_session'>server_session</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='id identifier rubyid_server'>server</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -2200,9 +2206,9 @@ After the block has finished, the server will be closed.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Dec 27 23:10:22 2023 by
+  Generated on Wed Jun 19 22:21:59 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.3.0).
+  0.9.36 (ruby-3.1.6).
 </div>
 
     </div>

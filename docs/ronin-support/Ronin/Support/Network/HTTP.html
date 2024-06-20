@@ -2873,12 +2873,12 @@ configuration.</p>
       <pre class="lines">
 
 
-561
-562
-563</pre>
+564
+565
+566</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 561</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 564</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_user_agent'>user_agent</span>
   <span class='ivar'>@user_agent</span>
@@ -3412,9 +3412,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2328
-2329
-2330
 2331
 2332
 2333
@@ -3439,10 +3436,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 2352
 2353
 2354
-2355</pre>
+2355
+2356
+2357
+2358</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2328</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2331</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_allowed_methods'>allowed_methods</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                               <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -3900,7 +3900,10 @@ returned.</p>
 478
 479
 480
-481</pre>
+481
+482
+483
+484</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 472</span>
@@ -3909,8 +3912,11 @@ returned.</p>
   <span class='id identifier rubyid_http'>http</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='label'>ssl:</span> <span class='id identifier rubyid_ssl'>ssl</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
-    <span class='kw'>yield</span> <span class='id identifier rubyid_http'>http</span>
-    <span class='id identifier rubyid_http'>http</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+    <span class='kw'>begin</span>
+      <span class='kw'>yield</span> <span class='id identifier rubyid_http'>http</span>
+    <span class='kw'>ensure</span>
+      <span class='id identifier rubyid_http'>http</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+    <span class='kw'>end</span>
   <span class='kw'>else</span>
     <span class='kw'>return</span> <span class='id identifier rubyid_http'>http</span>
   <span class='kw'>end</span>
@@ -4338,9 +4344,6 @@ returned.</p>
       <pre class="lines">
 
 
-508
-509
-510
 511
 512
 513
@@ -4371,10 +4374,13 @@ returned.</p>
 538
 539
 540
-541</pre>
+541
+542
+543
+544</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 508</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 511</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_connect_uri'>connect_uri</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>ssl:</span>      <span class='kw'>nil</span><span class='comma'>,</span>
                           <span class='label'>user:</span>     <span class='kw'>nil</span><span class='comma'>,</span>
@@ -4967,9 +4973,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1769
-1770
-1771
 1772
 1773
 1774
@@ -4995,10 +4998,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 1794
 1795
 1796
-1797</pre>
+1797
+1798
+1799
+1800</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1769</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1772</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_copy'>copy</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                    <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -5586,9 +5592,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1822
-1823
-1824
 1825
 1826
 1827
@@ -5614,10 +5617,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 1847
 1848
 1849
-1850</pre>
+1850
+1851
+1852
+1853</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1822</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1825</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                      <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -6205,9 +6211,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1875
-1876
-1877
 1878
 1879
 1880
@@ -6233,10 +6236,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 1900
 1901
 1902
-1903</pre>
+1903
+1904
+1905
+1906</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1875</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1878</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                   <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -6789,9 +6795,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2016
-2017
-2018
 2019
 2020
 2021
@@ -6816,10 +6819,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 2040
 2041
 2042
-2043</pre>
+2043
+2044
+2045
+2046</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2016</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2019</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get_body'>get_body</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                        <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -7370,9 +7376,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1969
-1970
-1971
 1972
 1973
 1974
@@ -7397,10 +7400,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 1993
 1994
 1995
-1996</pre>
+1996
+1997
+1998
+1999</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1969</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1972</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get_cookies'>get_cookies</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -7952,9 +7958,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1923
-1924
-1925
 1926
 1927
 1928
@@ -7979,10 +7982,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 1947
 1948
 1949
-1950</pre>
+1950
+1951
+1952
+1953</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1923</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1926</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get_headers'>get_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                           <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -8569,9 +8575,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2068
-2069
-2070
 2071
 2072
 2073
@@ -8597,10 +8600,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 2093
 2094
 2095
-2096</pre>
+2096
+2097
+2098
+2099</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2068</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2071</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_head'>head</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                    <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -9188,9 +9194,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2121
-2122
-2123
 2124
 2125
 2126
@@ -9216,10 +9219,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 2146
 2147
 2148
-2149</pre>
+2149
+2150
+2151
+2152</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2121</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2124</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_lock'>lock</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                    <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -9807,9 +9813,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2174
-2175
-2176
 2177
 2178
 2179
@@ -9835,10 +9838,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 2199
 2200
 2201
-2202</pre>
+2202
+2203
+2204
+2205</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2174</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2177</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mkcol'>mkcol</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                     <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -10426,9 +10432,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2227
-2228
-2229
 2230
 2231
 2232
@@ -10454,10 +10457,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 2252
 2253
 2254
-2255</pre>
+2255
+2256
+2257
+2258</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2227</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2230</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_move'>move</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                    <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -11026,9 +11032,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1523
-1524
-1525
 1526
 1527
 1528
@@ -11053,10 +11056,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 1547
 1548
 1549
-1550</pre>
+1550
+1551
+1552
+1553</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1523</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1526</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ok?'>ok?</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:head</span><span class='comma'>,</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                                <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -11643,9 +11649,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2280
-2281
-2282
 2283
 2284
 2285
@@ -11671,10 +11674,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 2305
 2306
 2307
-2308</pre>
+2308
+2309
+2310
+2311</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2280</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2283</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_options'>options</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                       <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -12262,9 +12268,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2380
-2381
-2382
 2383
 2384
 2385
@@ -12290,10 +12293,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 2405
 2406
 2407
-2408</pre>
+2408
+2409
+2410
+2411</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2380</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2383</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_patch'>patch</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                     <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -12881,9 +12887,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2433
-2434
-2435
 2436
 2437
 2438
@@ -12909,10 +12912,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 2458
 2459
 2460
-2461</pre>
+2461
+2462
+2463
+2464</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2433</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2436</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                    <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -13465,9 +13471,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2528
-2529
-2530
 2531
 2532
 2533
@@ -13492,10 +13495,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 2552
 2553
 2554
-2555</pre>
+2555
+2556
+2557
+2558</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2528</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2531</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_post_body'>post_body</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                         <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -14047,9 +14053,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2481
-2482
-2483
 2484
 2485
 2486
@@ -14074,10 +14077,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 2505
 2506
 2507
-2508</pre>
+2508
+2509
+2510
+2511</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2481</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2484</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_post_headers'>post_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                            <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -14628,9 +14634,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1666
-1667
-1668
 1669
 1670
 1671
@@ -14655,10 +14658,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 1690
 1691
 1692
-1693</pre>
+1693
+1694
+1695
+1696</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1666</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1669</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_powered_by_header'>powered_by_header</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                                 <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -15245,9 +15251,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2580
-2581
-2582
 2583
 2584
 2585
@@ -15273,10 +15276,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 2605
 2606
 2607
-2608</pre>
+2608
+2609
+2610
+2611</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2580</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2583</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_propfind'>propfind</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                        <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -15864,9 +15870,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2633
-2634
-2635
 2636
 2637
 2638
@@ -15892,10 +15895,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 2658
 2659
 2660
-2661</pre>
+2661
+2662
+2663
+2664</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2633</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2636</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proppatch'>proppatch</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                         <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -16670,9 +16676,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2686
-2687
-2688
 2689
 2690
 2691
@@ -16698,10 +16701,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 2711
 2712
 2713
-2714</pre>
+2714
+2715
+2716
+2717</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2686</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2689</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_put'>put</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                   <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -17307,9 +17313,6 @@ class.</p>
       <pre class="lines">
 
 
-1420
-1421
-1422
 1423
 1424
 1425
@@ -17335,10 +17338,13 @@ class.</p>
 1445
 1446
 1447
-1448</pre>
+1448
+1449
+1450
+1451</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1420</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1423</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                              <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -17907,9 +17913,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1717
-1718
-1719
 1720
 1721
 1722
@@ -17934,10 +17937,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 1741
 1742
 1743
-1744</pre>
+1744
+1745
+1746
+1747</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1717</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1720</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_response_body'>response_body</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:get</span><span class='comma'>,</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                                         <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -18505,9 +18511,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1574
-1575
-1576
 1577
 1578
 1579
@@ -18532,10 +18535,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 1598
 1599
 1600
-1601</pre>
+1601
+1602
+1603
+1604</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1574</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1577</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_response_headers'>response_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:head</span><span class='comma'>,</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                                             <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -19103,9 +19109,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1472
-1473
-1474
 1475
 1476
 1477
@@ -19130,10 +19133,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 1496
 1497
 1498
-1499</pre>
+1499
+1500
+1501
+1502</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1472</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1475</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_response_status'>response_status</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:head</span><span class='comma'>,</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                                            <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -19684,9 +19690,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1620
-1621
-1622
 1623
 1624
 1625
@@ -19711,10 +19714,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 1644
 1645
 1646
-1647</pre>
+1647
+1648
+1649
+1650</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1620</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1623</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_server_header'>server_header</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                             <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -20301,9 +20307,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2739
-2740
-2741
 2742
 2743
 2744
@@ -20329,10 +20332,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 2764
 2765
 2766
-2767</pre>
+2767
+2768
+2769
+2770</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2739</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2742</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_trace'>trace</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                     <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -20920,9 +20926,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-2792
-2793
-2794
 2795
 2796
 2797
@@ -20948,10 +20951,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 2817
 2818
 2819
-2820</pre>
+2820
+2821
+2822
+2823</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2792</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 2795</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_unlock'>unlock</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>proxy:</span>      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                      <span class='label'>ssl:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -21339,9 +21345,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1169
-1170
-1171
 1172
 1173
 1174
@@ -21350,10 +21353,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 1177
 1178
 1179
-1180</pre>
+1180
+1181
+1182
+1183</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1169</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1172</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_allowed_methods'>allowed_methods</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>*</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -21412,12 +21418,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1386
-1387
-1388</pre>
+1389
+1390
+1391</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1386</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1389</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span>
   <span class='ivar'>@http</span><span class='period'>.</span><span class='id identifier rubyid_finish'>finish</span> <span class='kw'>if</span> <span class='ivar'>@http</span><span class='period'>.</span><span class='id identifier rubyid_started?'>started?</span>
@@ -21663,12 +21669,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-931
-932
-933</pre>
+934
+935
+936</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 931</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 934</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_copy'>copy</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:copy</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -21914,12 +21920,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-954
-955
-956</pre>
+957
+958
+959</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 954</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 957</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:delete</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -22165,12 +22171,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-977
-978
-979</pre>
+980
+981
+982</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 977</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 980</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:get</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -22380,12 +22386,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1036
-1037
-1038</pre>
+1039
+1040
+1041</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1036</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1039</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_body'>get_body</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response_body'>response_body</span><span class='lparen'>(</span><span class='symbol'>:get</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -22595,9 +22601,6 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1011
-1012
-1013
 1014
 1015
 1016
@@ -22605,10 +22608,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
 1018
 1019
 1020
-1021</pre>
+1021
+1022
+1023
+1024</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1011</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1014</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_cookies'>get_cookies</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:get</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -22826,12 +22832,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-994
-995
-996</pre>
+997
+998
+999</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 994</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 997</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_headers'>get_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response_headers'>response_headers</span><span class='lparen'>(</span><span class='symbol'>:get</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -23077,12 +23083,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1059
-1060
-1061</pre>
+1062
+1063
+1064</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1059</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1062</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_head'>head</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:head</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -23328,12 +23334,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1082
-1083
-1084</pre>
+1085
+1086
+1087</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1082</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1085</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_lock'>lock</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:lock</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -23579,12 +23585,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1105
-1106
-1107</pre>
+1108
+1109
+1110</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1105</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1108</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_mkcol'>mkcol</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:mkcol</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -23830,12 +23836,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1128
-1129
-1130</pre>
+1131
+1132
+1133</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1128</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1131</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_move'>move</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:move</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -24062,12 +24068,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-812
-813
-814</pre>
+815
+816
+817</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 812</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 815</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ok?'>ok?</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:head</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response_status'>response_status</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>200</span>
@@ -24313,12 +24319,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1151
-1152
-1153</pre>
+1154
+1155
+1156</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1151</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1154</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_options'>options</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:options</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -24564,12 +24570,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1201
-1202
-1203</pre>
+1204
+1205
+1206</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1201</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1204</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_patch'>patch</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:patch</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -24815,12 +24821,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1224
-1225
-1226</pre>
+1227
+1228
+1229</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1224</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1227</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:post</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -25030,12 +25036,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1258
-1259
-1260</pre>
+1261
+1262
+1263</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1258</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1261</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_post_body'>post_body</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response_body'>response_body</span><span class='lparen'>(</span><span class='symbol'>:post</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -25245,12 +25251,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1241
-1242
-1243</pre>
+1244
+1245
+1246</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1241</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1244</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_post_headers'>post_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response_headers'>response_headers</span><span class='lparen'>(</span><span class='symbol'>:post</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -25479,13 +25485,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-885
-886
-887
-888</pre>
+888
+889
+890
+891</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 885</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 888</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_powered_by_header'>powered_by_header</span><span class='lparen'>(</span><span class='label'>method:</span> <span class='symbol'>:head</span><span class='comma'>,</span> <span class='label'>path:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -25625,12 +25631,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1285
-1286
-1287</pre>
+1288
+1289
+1290</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1285</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1288</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_propfind'>propfind</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:propfind</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -25769,12 +25775,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1310
-1311
-1312</pre>
+1313
+1314
+1315</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1310</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1313</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_proppatch'>proppatch</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:proppatch</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -26020,12 +26026,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1281
-1282
-1283</pre>
+1284
+1285
+1286</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1281</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1284</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_propfind'>propfind</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:propfind</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -26271,12 +26277,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1306
-1307
-1308</pre>
+1309
+1310
+1311</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1306</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1309</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_proppatch'>proppatch</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:proppatch</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -26522,12 +26528,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1331
-1332
-1333</pre>
+1334
+1335
+1336</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1331</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1334</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_put'>put</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:put</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -26886,9 +26892,6 @@ class.</p>
       <pre class="lines">
 
 
-697
-698
-699
 700
 701
 702
@@ -26926,10 +26929,13 @@ class.</p>
 734
 735
 736
-737</pre>
+737
+738
+739
+740</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 697</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 700</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='comment'># query string keyword arguments
 </span>                         <span class='label'>query:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
@@ -27194,12 +27200,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-908
-909
-910</pre>
+911
+912
+913</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 908</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 911</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_response_body'>response_body</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:get</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span>
@@ -27426,18 +27432,18 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-834
-835
-836
 837
 838
 839
 840
 841
-842</pre>
+842
+843
+844
+845</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 834</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 837</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_response_headers'>response_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:head</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -27670,13 +27676,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-789
-790
-791
-792</pre>
+792
+793
+794
+795</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 789</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 792</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_response_status'>response_status</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:head</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -27906,13 +27912,13 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-862
-863
-864
-865</pre>
+865
+866
+867
+868</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 862</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 865</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_server_header'>server_header</span><span class='lparen'>(</span><span class='label'>method:</span> <span class='symbol'>:head</span><span class='comma'>,</span> <span class='label'>path:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -27976,12 +27982,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-550
-551
-552</pre>
+553
+554
+555</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 550</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 553</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ssl?'>ssl?</span>
   <span class='ivar'>@http</span><span class='period'>.</span><span class='id identifier rubyid_use_ssl?'>use_ssl?</span>
@@ -28227,12 +28233,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1354
-1355
-1356</pre>
+1357
+1358
+1359</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1354</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1357</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_trace'>trace</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:trace</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -28478,12 +28484,12 @@ empty, the <code>Cookie</code> header will not be set.</p>
       <pre class="lines">
 
 
-1377
-1378
-1379</pre>
+1380
+1381
+1382</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1377</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/http.rb', line 1380</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unlock'>unlock</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='symbol'>:unlock</span><span class='comma'>,</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -28498,9 +28504,9 @@ empty, the <code>Cookie</code> header will not be set.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Dec 27 23:10:42 2023 by
+  Generated on Wed Jun 19 22:22:17 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.3.0).
+  0.9.36 (ruby-3.1.6).
 </div>
 
     </div>
