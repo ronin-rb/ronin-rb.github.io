@@ -543,6 +543,8 @@ the class file.</p>
       <pre class="lines">
 
 
+221
+222
 223
 224
 225
@@ -566,12 +568,10 @@ the class file.</p>
 243
 244
 245
-246
-247
-248</pre>
+246</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/core/class_registry.rb', line 223</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/core/class_registry.rb', line 221</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_load_class'>load_class</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='comment'># short-circuit if the module is already loaded
@@ -713,9 +713,7 @@ the class file.</p>
 199
 200
 201
-202
-203
-204</pre>
+202</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/core/class_registry.rb', line 186</span>
@@ -727,17 +725,15 @@ the class file.</p>
     <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="ClassNotFound.html" title="Ronin::Core::ClassRegistry::ClassNotFound (class)">ClassNotFound</a></span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>no such file or directory: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_previous_entries'>previous_entries</span> <span class='op'>=</span> <span class='id identifier rubyid_registry'>registry</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>
-
   <span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
 
-  <span class='id identifier rubyid_new_entries'>new_entries</span> <span class='op'>=</span> <span class='id identifier rubyid_registry'>registry</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span> <span class='op'>-</span> <span class='id identifier rubyid_previous_entries'>previous_entries</span>
+  <span class='id identifier rubyid_registry'>registry</span><span class='period'>.</span><span class='id identifier rubyid_each_value'>each_value</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_worker_class'>worker_class</span><span class='op'>|</span>
+    <span class='id identifier rubyid_class_file'>class_file</span><span class='comma'>,</span> <span class='op'>=</span> <span class='id identifier rubyid_worker_class'>worker_class</span><span class='period'>.</span><span class='id identifier rubyid_const_source_location'>const_source_location</span><span class='lparen'>(</span><span class='id identifier rubyid_worker_class'>worker_class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
 
-  <span class='kw'>if</span> <span class='id identifier rubyid_new_entries'>new_entries</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="ClassNotFound.html" title="Ronin::Core::ClassRegistry::ClassNotFound (class)">ClassNotFound</a></span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>file did not register a class: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_worker_class'>worker_class</span> <span class='kw'>if</span> <span class='id identifier rubyid_class_file'>class_file</span> <span class='op'>==</span> <span class='id identifier rubyid_file'>file</span>
   <span class='kw'>end</span>
 
-  <span class='kw'>return</span> <span class='id identifier rubyid_registry'>registry</span><span class='lbracket'>[</span><span class='id identifier rubyid_new_entries'>new_entries</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="ClassNotFound.html" title="Ronin::Core::ClassRegistry::ClassNotFound (class)">ClassNotFound</a></span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>file did not register a class: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file'>file</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -982,9 +978,9 @@ the class file.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Oct 26 06:18:06 2023 by
+  Generated on Wed Jun 19 22:26:42 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.1.4).
+  0.9.36 (ruby-3.1.6).
 </div>
 
     </div>
