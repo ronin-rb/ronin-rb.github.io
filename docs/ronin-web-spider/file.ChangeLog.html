@@ -57,7 +57,27 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'><h3 id="0-1-0-2023-xx-xx">0.1.0 / 2023-XX-XX</h3>
+      <div id="content"><div id='filecontents'><h3 id="0-1-1-2024-06-19">0.1.1 / 2024-06-19</h3>
+
+<ul>
+<li>Fixed <span class='object_link'><a href="Ronin/Web/Spider/Agent.html#every_html_comment-instance_method" title="Ronin::Web::Spider::Agent#every_html_comment (method)">Ronin::Web::Spider::Agent#every_html_comment</a></span> and
+<span class='object_link'><a href="Ronin/Web/Spider/Agent.html#every_javascript-instance_method" title="Ronin::Web::Spider::Agent#every_javascript (method)">Ronin::Web::Spider::Agent#every_javascript</a></span> when the page&#39;s <code>Content-Type</code>
+header included <code>text/html</code> but lacked a response body, causing <code>page.doc</code> to
+be <code>nil</code>.</li>
+<li>Fixed a bug in <span class='object_link'><a href="Ronin/Web/Spider/Agent.html#every_javascript-instance_method" title="Ronin::Web::Spider::Agent#every_javascript (method)">Ronin::Web::Spider::Agent#every_javascript</a></span> where parsed
+JavaScript source code strings containing UTF-8 characters where being
+incorrectly encoded as ASCII-8bit strings, if the page&#39;s <code>Content-Type</code> header
+did not include a <code>charset=</code> attribute.</li>
+<li>Fixed a bug in <span class='object_link'><a href="Ronin/Web/Spider/Agent.html#every_javascript_string-instance_method" title="Ronin::Web::Spider::Agent#every_javascript_string (method)">Ronin::Web::Spider::Agent#every_javascript_string</a></span> where
+inline JavaScript regexes containing the <code>&quot;</code> or <code>&#39;</code> characters (ex: <code>/[&quot;&#39;=]/</code>)
+would incorrectly be treated as the beginning or ends of JavaScript string
+literals. Note that while this greatly improves the accuracy of
+<span class='object_link'><a href="Ronin/Web/Spider/Agent.html#every_javascript_string-instance_method" title="Ronin::Web::Spider::Agent#every_javascript_string (method)">Ronin::Web::Spider::Agent#every_javascript_string</a></span>, it still does not
+support parsing JavaScript template literals that may also contain string
+literals (ex: <code>Hello \&quot;World\&quot;</code> or <code>Hello ${myFunc(&quot;string literal&quot;)}</code>).</li>
+</ul>
+
+<h3 id="0-1-0-2023-02-01">0.1.0 / 2023-02-01</h3>
 
 <ul>
 <li>Extracted and refactored from <a href="https://github.com/ronin-rb/ronin-web/tree/v0.3.0.rc1">ronin-web</a>.</li>
@@ -66,7 +86,7 @@
 
 <ul>
 <li>Requires <code>ruby</code> &gt;= 3.0.0.</li>
-<li>Built on top of the battle tested and versatile [spidr] gem.</li>
+<li>Built on top of the battle tested and versatile <a href="https://github.com/postmodern/spidr#readme">spidr</a> gem.</li>
 <li>Provides additional callback methods:</li>
 <li><code>every_host</code> - yields every unique host name that&#39;s spidered.</li>
 <li><code>every_cert</code> - yields every unique SSL/TLS certificate encountered while
@@ -86,9 +106,9 @@ String literal from all JavaScript source code.</li>
 </div></div>
 
       <div id="footer">
-  Generated on Wed Feb  1 13:44:14 2023 by
+  Generated on Wed Jun 19 22:43:45 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.28 (ruby-3.1.3).
+  0.9.36 (ruby-3.1.6).
 </div>
 
     </div>

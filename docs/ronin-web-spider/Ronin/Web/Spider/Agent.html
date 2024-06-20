@@ -112,6 +112,106 @@
   
 
 </div>
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="JAVASCRIPT_INLINE_REGEX-constant" class="">JAVASCRIPT_INLINE_REGEX =
+          <div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This constant is part of a private API.</strong>
+  You should avoid using this constant if possible, as it may be removed or be changed in the future.
+</p>
+<p>Regex to match and skip JavaScript inline regexes.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.1.1</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='regexp_beg'>%r{</span><span class='tstring_content'>
+  (?# match before the regex to avoid matching division operators )
+  (?:[\{\[\(;:,]\s*|=\s*)
+  /
+    (?# inline regex contents )
+    (?:
+      \[ (?:\\. | [^\]]) \] (?# [...] ) |
+      \\.                   (?# backslash escaped characters ) |
+      [^/]                  (?# everything else )
+    )+
+  /[dgimsuvy]* (?# also match any regex flags )
+</span><span class='regexp_end'>}mx</span></span></pre></dd>
+      
+        <dt id="JAVASCRIPT_TEMPLATE_LITERAL-constant" class="">JAVASCRIPT_TEMPLATE_LITERAL =
+          <div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This constant is part of a private API.</strong>
+  You should avoid using this constant if possible, as it may be removed or be changed in the future.
+</p>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>This regex will not properly match nested template literals:</p>
+
+<pre class="code javascript"><code class="javascript">`foo ${`bar ${1+1}`}`
+</code></pre>
+</div>
+  </div>
+
+<p>Regex to match and skip JavaScript template literals.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.1.1</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>`(?:\\`|[^`])+`</span><span class='regexp_end'>/m</span></span></pre></dd>
+      
+    </dl>
+  
+
 
 
 
@@ -696,7 +796,6 @@ agent.</p>
       <pre class="lines">
 
 
-96
 97
 98
 99
@@ -720,10 +819,11 @@ agent.</p>
 117
 118
 119
-120</pre>
+120
+121</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 96</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 97</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>proxy:</span>      <span class='const'>Support</span><span class='op'>::</span><span class='const'>Network</span><span class='op'>::</span><span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_proxy'>proxy</span><span class='comma'>,</span>
                <span class='label'>user_agent:</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Network</span><span class='op'>::</span><span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_user_agent'>user_agent</span><span class='comma'>,</span>
@@ -800,12 +900,12 @@ agent.</p>
       <pre class="lines">
 
 
-161
 162
-163</pre>
+163
+164</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 161</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 162</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_collected_certs'>collected_certs</span>
   <span class='ivar'>@collected_certs</span>
@@ -855,12 +955,12 @@ agent.</p>
       <pre class="lines">
 
 
-127
 128
-129</pre>
+129
+130</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 127</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 128</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visited_hosts'>visited_hosts</span>
   <span class='ivar'>@visited_hosts</span>
@@ -941,7 +1041,6 @@ agent.</p>
       <pre class="lines">
 
 
-178
 179
 180
 181
@@ -958,10 +1057,11 @@ agent.</p>
 192
 193
 194
-195</pre>
+195
+196</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 178</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 179</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_every_cert'>every_cert</span>
   <span class='ivar'>@collected_certs</span> <span class='op'>||=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -1066,13 +1166,13 @@ agent.</p>
       <pre class="lines">
 
 
-354
-355
-356
-357</pre>
+410
+411
+412
+413</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 354</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 410</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_every_comment'>every_comment</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_every_html_comment'>every_html_comment</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -1161,14 +1261,14 @@ agent.</p>
       <pre class="lines">
 
 
-215
 216
 217
 218
-219</pre>
+219
+220</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 215</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 216</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_every_favicon'>every_favicon</span>
   <span class='id identifier rubyid_every_page'>every_page</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_page'>page</span><span class='op'>|</span>
@@ -1244,7 +1344,6 @@ block and populates <span class='object_link'><a href="#visited_hosts-instance_m
       <pre class="lines">
 
 
-144
 145
 146
 147
@@ -1254,10 +1353,11 @@ block and populates <span class='object_link'><a href="#visited_hosts-instance_m
 151
 152
 153
-154</pre>
+154
+155</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 144</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 145</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_every_host'>every_host</span>
   <span class='ivar'>@visited_hosts</span> <span class='op'>||=</span> <span class='const'>Set</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -1347,7 +1447,6 @@ stripped.</p>
       <pre class="lines">
 
 
-238
 239
 240
 241
@@ -1357,13 +1456,18 @@ stripped.</p>
 245
 246
 247
-248</pre>
+248
+249
+250
+251</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 238</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 239</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_every_html_comment'>every_html_comment</span>
   <span class='id identifier rubyid_every_html_page'>every_html_page</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_page'>page</span><span class='op'>|</span>
+    <span class='kw'>next</span> <span class='kw'>unless</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_doc'>doc</span>
+
     <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_xpath'>xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>//comment()</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_comment'>comment</span><span class='op'>|</span>
       <span class='id identifier rubyid_comment_text'>comment_text</span> <span class='op'>=</span> <span class='id identifier rubyid_comment'>comment</span><span class='period'>.</span><span class='id identifier rubyid_inner_text'>inner_text</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span>
 
@@ -1453,9 +1557,6 @@ stripped.</p>
       <pre class="lines">
 
 
-266
-267
-268
 269
 270
 271
@@ -1467,24 +1568,43 @@ stripped.</p>
 277
 278
 279
-280</pre>
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 266</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 269</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_every_javascript'>every_javascript</span>
   <span class='comment'># yield inner text of every `&lt;script type=&quot;text/javascript&quot;&gt;` tag
 </span>  <span class='comment'># and every `.js` URL.
 </span>  <span class='id identifier rubyid_every_html_page'>every_html_page</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_page'>page</span><span class='op'>|</span>
+    <span class='kw'>next</span> <span class='kw'>unless</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_doc'>doc</span>
+
     <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_doc'>doc</span><span class='period'>.</span><span class='id identifier rubyid_xpath'>xpath</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>//script[@type=&quot;text/javascript&quot;]</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_script'>script</span><span class='op'>|</span>
-      <span class='kw'>unless</span> <span class='id identifier rubyid_script'>script</span><span class='period'>.</span><span class='id identifier rubyid_inner_text'>inner_text</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-        <span class='kw'>yield</span> <span class='id identifier rubyid_script'>script</span><span class='period'>.</span><span class='id identifier rubyid_inner_text'>inner_text</span>
+      <span class='id identifier rubyid_source'>source</span> <span class='op'>=</span> <span class='id identifier rubyid_script'>script</span><span class='period'>.</span><span class='id identifier rubyid_inner_text'>inner_text</span>
+      <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_force_encoding'>force_encoding</span><span class='lparen'>(</span><span class='const'>Encoding</span><span class='op'>::</span><span class='const'>UTF_8</span><span class='rparen'>)</span>
+
+      <span class='kw'>unless</span> <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+        <span class='kw'>yield</span> <span class='id identifier rubyid_source'>source</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_every_javascript_page'>every_javascript_page</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_page'>page</span><span class='op'>|</span>
-    <span class='kw'>yield</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span>
+    <span class='id identifier rubyid_source'>source</span> <span class='op'>=</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span>
+    <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_force_encoding'>force_encoding</span><span class='lparen'>(</span><span class='const'>Encoding</span><span class='op'>::</span><span class='const'>UTF_8</span><span class='rparen'>)</span>
+
+    <span class='kw'>yield</span> <span class='id identifier rubyid_source'>source</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1567,14 +1687,14 @@ stripped.</p>
       <pre class="lines">
 
 
-327
-328
-329
-330
-331</pre>
+383
+384
+385
+386
+387</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 327</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 383</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_every_javascript_comment'>every_javascript_comment</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_every_javascript'>every_javascript</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_js'>js</span><span class='op'>|</span>
@@ -1603,8 +1723,6 @@ stripped.</p>
   <div class="discussion">
     <p>Passes every JavaScript string value to the given block.</p>
 
-<p>end</p>
-
 
   </div>
 </div>
@@ -1614,8 +1732,9 @@ stripped.</p>
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code"><code>spider.every_javascript_string do |str|
- puts str</code></pre>
+      <pre class="example code"><code><span class='id identifier rubyid_spider'>spider</span><span class='period'>.</span><span class='id identifier rubyid_every_javascript_string'>every_javascript_string</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_str'>str</span><span class='op'>|</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_str'>str</span>
+<span class='kw'>end</span></code></pre>
     
   </div>
 
@@ -1663,21 +1782,47 @@ marks removed.</p>
       <pre class="lines">
 
 
-301
-302
-303
-304
-305
-306
-307</pre>
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 301</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/spider/agent.rb', line 344</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_every_javascript_string'>every_javascript_string</span>
   <span class='id identifier rubyid_every_javascript'>every_javascript</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_js'>js</span><span class='op'>|</span>
-    <span class='id identifier rubyid_js'>js</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='const'>Support</span><span class='op'>::</span><span class='const'>Text</span><span class='op'>::</span><span class='const'>Patterns</span><span class='op'>::</span><span class='const'>STRING</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_js_string'>js_string</span><span class='op'>|</span>
-      <span class='kw'>yield</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Encoding</span><span class='op'>::</span><span class='const'>JS</span><span class='period'>.</span><span class='id identifier rubyid_unquote'>unquote</span><span class='lparen'>(</span><span class='id identifier rubyid_js_string'>js_string</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_scanner'>scanner</span> <span class='op'>=</span> <span class='const'>StringScanner</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_js'>js</span><span class='rparen'>)</span>
+
+    <span class='kw'>until</span> <span class='id identifier rubyid_scanner'>scanner</span><span class='period'>.</span><span class='id identifier rubyid_eos?'>eos?</span>
+      <span class='comment'># NOTE: this is a naive JavaScript string scanner and should
+</span>      <span class='comment'># eventually be replaced with a real JavaScript lexer or parser.
+</span>      <span class='kw'>case</span> <span class='id identifier rubyid_scanner'>scanner</span><span class='period'>.</span><span class='id identifier rubyid_peek'>peek</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
+      <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&quot;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&#39;</span><span class='tstring_end'>&quot;</span></span> <span class='comment'># beginning of a quoted string
+</span>        <span class='id identifier rubyid_js_string'>js_string</span> <span class='op'>=</span> <span class='id identifier rubyid_scanner'>scanner</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='const'>Support</span><span class='op'>::</span><span class='const'>Text</span><span class='op'>::</span><span class='const'>Patterns</span><span class='op'>::</span><span class='const'>STRING</span><span class='rparen'>)</span>
+
+        <span class='kw'>yield</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Encoding</span><span class='op'>::</span><span class='const'>JS</span><span class='period'>.</span><span class='id identifier rubyid_unquote'>unquote</span><span class='lparen'>(</span><span class='id identifier rubyid_js_string'>js_string</span><span class='rparen'>)</span>
+      <span class='kw'>else</span>
+        <span class='id identifier rubyid_scanner'>scanner</span><span class='period'>.</span><span class='id identifier rubyid_skip'>skip</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#JAVASCRIPT_INLINE_REGEX-constant" title="Ronin::Web::Spider::Agent::JAVASCRIPT_INLINE_REGEX (constant)">JAVASCRIPT_INLINE_REGEX</a></span></span><span class='rparen'>)</span> <span class='op'>||</span>
+          <span class='id identifier rubyid_scanner'>scanner</span><span class='period'>.</span><span class='id identifier rubyid_skip'>skip</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#JAVASCRIPT_TEMPLATE_LITERAL-constant" title="Ronin::Web::Spider::Agent::JAVASCRIPT_TEMPLATE_LITERAL (constant)">JAVASCRIPT_TEMPLATE_LITERAL</a></span></span><span class='rparen'>)</span> <span class='op'>||</span>
+          <span class='id identifier rubyid_scanner'>scanner</span><span class='period'>.</span><span class='id identifier rubyid_getch'>getch</span>
+      <span class='kw'>end</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -1691,9 +1836,9 @@ marks removed.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Feb  1 13:44:14 2023 by
+  Generated on Wed Jun 19 22:43:45 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.28 (ruby-3.1.3).
+  0.9.36 (ruby-3.1.6).
 </div>
 
     </div>
