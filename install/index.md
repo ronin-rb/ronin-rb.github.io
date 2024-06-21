@@ -46,6 +46,16 @@ Additionally, if you want to mount your home directory into the docker image:
 docker run --mount type=bind,source="$HOME",target=/home/ronin -it ronin
 ```
 
+## Snapcraft
+
+Ronin is also available on the [Snap store]:
+
+```shell
+sudo snap install ronin
+```
+
+**Note:** this requires installing and starting [snapd] first.
+
 ## Windows
 
 Windows users are recommended to either use [WSL2], or use [Docker][Docker on
@@ -53,5 +63,7 @@ Windows] and run the [Docker images].
 
 [ronin-install.sh]: https://github.com/ronin-rb/scripts/blob/main/ronin-install.sh
 [Docker images]: https://hub.docker.com/r/roninrb/ronin
+[Snap store]: https://snapcraft.io/ronin
+[snapd]: https://snapcraft.io/snapd
 [WSL2]: https://learn.microsoft.com/en-us/windows/wsl/install
 [Docker on Windows]: https://docs.docker.com/desktop/install/windows-install/
