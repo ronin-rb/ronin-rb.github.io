@@ -43,7 +43,7 @@ There are also [Docker images] available:
 Additionally, if you want to mount your home directory into the docker image:
 
 ```shell
-docker run --mount type=bind,source="$HOME",target=/home/ronin -it ronin
+docker run --mount type=bind,source="$HOME",target=/home/ronin --rm -it ronin
 ```
 
 ## Snapcraft
