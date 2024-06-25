@@ -282,7 +282,7 @@ can join.
 
 ## Will there be prizes?
 
-Beta tests that successfully submit a bug report or a Pull Request are illegible
+Beta tests that successfully submit a bug report or a Pull Request are eligible
 for a [free sticker][stickers].
 
 [stickers]: https://roninrb.bigcartel.com/category/stickers
