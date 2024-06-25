@@ -70,7 +70,7 @@ new [ronin-install.sh] installation script with the `--pre` option flag.
 Simply copy and paste the follow two commands into your terminal to download
 and execute the installation script:
 
-{% include install_script.md %}
+{% include install_script_pre.md %}
 
 <article class="message is-dark">
   <div class="message-header">Note:</div>
