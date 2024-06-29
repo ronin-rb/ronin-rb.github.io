@@ -260,10 +260,10 @@ If you prefer using [Docker], there are also `roninrb/ronin:2.1.0.rc1`
 also pull down and run:
 
 ```shell
-$ docker pull roninrb/ronin:2.1.0.rc1
-$ docker run --rm -it roninrb/ronin:2.1.0.rc1
-root@ad24537b200e:/# ronin -V
-ronin 2.1.0.rc1
+$ docker pull roninrb/ronin:2.1.0.rc1.1
+$ docker run --rm -it roninrb/ronin:2.1.0.rc1.1
+root@98e039844d53:/# ronin -V
+ronin 2.1.0.rc2
 ```
 
 [Docker]: https://www.docker.com/
