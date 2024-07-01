@@ -4,10 +4,10 @@ and [Ruby libraries][ronin-rb] for a variety of security tasks, such as
 encoding/decoding data, filter IPs/hosts/URLs, querying ASNs, querying DNS,
 HTTP, [scanning for web vulnerabilities][ronin-vulns-synopsis],
 [spidering websites][ronin-web-spider],
-[install 3rd party repositories][ronin-repos-synopsis] of
+[installing 3rd-party repositories][ronin-repos-synopsis] of
 [exploits][ronin-exploits] and/or
-[payloads][ronin-payloads], [run exploits][ronin-exploits-synopsis],
-[write new exploits][ronin-exploits-examples],
+[payloads][ronin-payloads], [running exploits][ronin-exploits-synopsis],
+[generating new exploits][ronin-exploits-examples],
 [managing local databases][ronin-db-synopsis],
 [fuzzing data][ronin-fuzzer], and much more.
 
