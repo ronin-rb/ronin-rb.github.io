@@ -7,7 +7,7 @@ HTTP, [scanning for web vulnerabilities][ronin-vulns-synopsis],
 [installing 3rd-party repositories][ronin-repos-synopsis] of
 [exploits][ronin-exploits] and/or
 [payloads][ronin-payloads], [running exploits][ronin-exploits-synopsis],
-[generating new exploits][ronin-exploits-examples],
+[developing new exploits][ronin-exploits-examples],
 [managing local databases][ronin-db-synopsis],
 [fuzzing data][ronin-fuzzer], and much more.
 
