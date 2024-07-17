@@ -5,7 +5,7 @@ namespace :blog do
     title  = args.title
     author = ENV['USER']
 
-    slug = title.sub(/[[:punct:]]$/,'').gsub(/[^a-zA-Z0-9]+/,'-')
+    slug = title.downcase.sub(/[[:punct:]]$/,'').gsub(/[^a-zA-Z0-9]+/,'-')
     path = File.join('blog','_posts',"#{date}-#{slug}.md")
 
     contents = <<~BLOG_POST
@@ -28,7 +28,7 @@ namespace :blog do
     title  = args.title
     author = ENV['USER']
 
-    slug = title.chomp('!').gsub(/[^a-zA-Z0-9]+/,'-')
+    slug = title.chomp('!').downcase.gsub(/[^a-zA-Z0-9]+/,'-')
     path = File.join('blog','_posts',"#{date}-#{slug}.md")
 
     contents = <<~BLOG_POST
