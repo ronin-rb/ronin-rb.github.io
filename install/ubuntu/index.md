@@ -9,7 +9,7 @@ js: ["copy-button.js"]
 ## Copy/Paste Instructions
 
 ```shell
-sudo apt install -y gcc make ruby-full git zip
+sudo apt install -y gcc make ruby-full git zip nmap masscan graphviz
 sudo gem install ronin
 ```
 

@@ -9,7 +9,7 @@ js: ["copy-button.js"]
 ## Copy/Paste Instructions
 
 ```shell
-sudo zypper -n in -l gcc make awk ruby-devel git zip
+sudo zypper -n in -l gcc make awk ruby-devel git zip nmap masscan graphviz
 sudo gem install ronin
 ```
 

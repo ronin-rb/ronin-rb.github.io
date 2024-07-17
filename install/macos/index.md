@@ -9,7 +9,7 @@ js: ["copy-button.js"]
 ## Copy/Paste Instructions
 
 ```shell
-brew install gcc make ruby git zip
+brew install gcc make ruby git zip nmap masscan graphviz
 brew pin ruby
 echo 'PATH="$(brew --prefix ruby)/bin:$PATH"' >> ~/.zshrc
 echo 'PATH="$(gem env gemdir)/bin:$PATH"' >> ~/.zshrc

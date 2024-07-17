@@ -9,7 +9,7 @@ js: ["copy-button.js"]
 ## Copy/Paste Instructions
 
 ```shell
-sudo pacman -Sy --noconfirm gcc make ruby git zip
+sudo pacman -Sy --noconfirm gcc make ruby git zip nmap masscan graphviz
 sudo gem install ronin
 ```
 

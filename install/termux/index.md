@@ -9,7 +9,7 @@ js: ["copy-button.js"]
 ## Copy/Paste Instructions
 
 ```shell
-pkg install -y binutils clang make ruby libxml2 libxslt git zip
+pkg install -y binutils clang make ruby libxml2 libxslt git zip nmap masscan graphviz
 gem install nokogiri --platform ruby -- --use-system-libraries
 gem install ronin
 ```

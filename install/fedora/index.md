@@ -9,7 +9,7 @@ js: ["copy-button.js"]
 ## Copy/Paste Instructions
 
 ```shell
-sudo dnf install -y gcc make ruby-devel ruby-bundled-gems git zip
+sudo dnf install -y gcc make ruby-devel ruby-bundled-gems git zip nmap masscan graphviz
 sudo gem install ronin
 ```
 
