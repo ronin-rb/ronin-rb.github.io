@@ -96,6 +96,14 @@ code from either inline <code>&lt;script&gt;</code> or <code>.js</code> files.</
 <li><a href="https://ronin-rb.dev/docs/ronin-web-spider/Ronin/Web/Spider/Agent.html#every_javascript_string-instance_method">every_javascript_string</a> - yields every
 single-quoted or double-quoted String literal from all JavaScript source
 code.</li>
+<li><a href="https://ronin-rb.dev/docs/ronin-web-spider/Ronin/Web/Spider/Agent.html#every_javascript_relative_path_string-instance_method">every_javascript_relative_path_string</a> -
+yields every relative path JavaScript string (ex: <code>foo/bar</code>).</li>
+<li><a href="https://ronin-rb.dev/docs/ronin-web-spider/Ronin/Web/Spider/Agent.html#every_javascript_absolute_path_string-instance_method">every_javascript_absolute_path_string</a> -
+yields every relative path JavaScript string (ex: <code>/foo/bar</code>).</li>
+<li><a href="https://ronin-rb.dev/docs/ronin-web-spider/Ronin/Web/Spider/Agent.html#every_javascript_path_string-instance_method">every_javascript_path_string</a> -
+yields every relative path JavaScript string (ex: <code>foo/bar</code> or <code>/foo/bar</code>).</li>
+<li><a href="https://ronin-rb.dev/docs/ronin-web-spider/Ronin/Web/Spider/Agent.html#every_javascript_url_string-instance_method">every_javascript_url_string</a> -
+yields every URL JavaScript string (ex: <code>https://example.com/foo/bar</code>).</li>
 <li><a href="https://ronin-rb.dev/docs/ronin-web-spider/Ronin/Web/Spider/Agent.html#every_javascript_comment-instance_method">every_javascript_comment</a> - yields every
 JavaScript comment.</li>
 <li><a href="https://ronin-rb.dev/docs/ronin-web-spider/Ronin/Web/Spider/Agent.html#every_comment-instance_method">every_comment</a> - yields every HTML or JavaScript
@@ -336,6 +344,15 @@ comment.</li>
 <span class='kw'>end</span>
 </code></pre>
 
+<p>Print every JavaScript URL string literal:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Web.html" title="Ronin::Web (module)">Web</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Web/Spider.html" title="Ronin::Web::Spider (module)">Spider</a></span></span><span class='period'>.</span><span class='id identifier rubyid_domain'><span class='object_link'><a href="Ronin/Web/Spider.html#domain-class_method" title="Ronin::Web::Spider.domain (method)">domain</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>example.com</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_spider'>spider</span><span class='op'>|</span>
+  <span class='id identifier rubyid_spider'>spider</span><span class='period'>.</span><span class='id identifier rubyid_every_javascript_url_string'>every_javascript_url_string</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_url'>url</span><span class='op'>|</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_url'>url</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
 <p>Print every JavaScript comment:</p>
 
 <pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Web.html" title="Ronin::Web (module)">Web</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Web/Spider.html" title="Ronin::Web::Spider (module)">Spider</a></span></span><span class='period'>.</span><span class='id identifier rubyid_domain'><span class='object_link'><a href="Ronin/Web/Spider.html#domain-class_method" title="Ronin::Web::Spider.domain (method)">domain</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>example.com</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_spider'>spider</span><span class='op'>|</span>
@@ -419,7 +436,7 @@ comment.</li>
 
 <h2 id="license">License</h2>
 
-<p>Copyright (c) 2006-2023 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
+<p>Copyright (c) 2006-2024 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
 
 <p>ronin-web-spider is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published
@@ -436,9 +453,9 @@ along with ronin-web-spider.  If not, see <a href="https://www.gnu.org/licenses/
 </div></div>
 
       <div id="footer">
-  Generated on Wed Jun 19 22:43:45 2024 by
+  Generated on Mon Jul 22 12:17:19 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.36 (ruby-3.1.6).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>
