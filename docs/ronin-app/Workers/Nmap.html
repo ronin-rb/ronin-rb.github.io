@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Workers::Nmap
+  
+    &mdash; Ronin::App Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Workers::Nmap";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (N)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Workers.html" title="Workers (module)">Workers</a></span></span>
+     &raquo; 
+    <span class="title">Nmap</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Workers::Nmap
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Workers::Nmap</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd><span class='object_link'><a href="../Ronin/App.html" title="Ronin::App (module)">Ronin::App</a></span>, Sidekiq::Worker</dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>workers/nmap.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p><code>nmap</code> scanner worker.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="Params-constant" class="">Params =
+          <div class="docstring">
+  <div class="discussion">
+    <p>The accepted JSON params which will be passed to <span class='object_link'><a href="#perform-instance_method" title="Workers::Nmap#perform (method)">#perform</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='const'>Dry</span><span class='op'>::</span><span class='const'>Schema</span><span class='op'>::</span><span class='const'>JSON</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_required'>required</span><span class='lparen'>(</span><span class='symbol'>:targets</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_array'>array</span><span class='lparen'>(</span><span class='symbol'>:string</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='symbol'>:string</span><span class='rparen'>)</span>
+
+  <span class='comment'># TARGET SPECIFICATIONS:
+</span>  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:target_file</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:random_targets</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:integer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:exclude</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:array</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:exclude_file</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:string</span><span class='rparen'>)</span>
+
+  <span class='comment'># HOST DISCOVERY:
+</span>  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:ping</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:skip_discovery</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:syn_discovery</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'>Bool</span> <span class='op'>|</span> <span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#PortRangeList-constant" title="Ronin::App::Types::Nmap::PortRangeList (constant)">PortRangeList</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:ack_discovery</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'>Bool</span> <span class='op'>|</span> <span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#PortRangeList-constant" title="Ronin::App::Types::Nmap::PortRangeList (constant)">PortRangeList</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:udp_discovery</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'>Bool</span> <span class='op'>|</span> <span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#PortRangeList-constant" title="Ronin::App::Types::Nmap::PortRangeList (constant)">PortRangeList</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:sctp_init_ping</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'>Bool</span> <span class='op'>|</span> <span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#PortRangeList-constant" title="Ronin::App::Types::Nmap::PortRangeList (constant)">PortRangeList</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:icmp_echo_discovery</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:icmp_timestamp_discovery</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:icmp_netmask_discovery</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:ip_ping</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'>Bool</span> <span class='op'>|</span> <span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#ProtocolList-constant" title="Ronin::App::Types::Nmap::ProtocolList (constant)">ProtocolList</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:arp_ping</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:traceroute</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:disable_dns</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:enable_dns</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:resolve_all</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:unique</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:dns_servers</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:array</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:system_dns</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+
+  <span class='comment'># PORT SCANNING TECHNIQUES:
+</span>  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:syn_scan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:connect_scan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:udp_scan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:sctp_init_scan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:null_scan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:fin_scan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:xmas_scan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:ack_scan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:window_scan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:maimon_scan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:scan_flags</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#ScanFlags-constant" title="Ronin::App::Types::Nmap::ScanFlags (constant)">ScanFlags</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:sctp_cookie_echo_scan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:idle_scan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:ip_scan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:ftp_bounce_scan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:string</span><span class='rparen'>)</span>
+
+  <span class='comment'># PORT SPECIFICATION AND SCAN ORDER:
+</span>  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:ports</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#PortRangeList-constant" title="Ronin::App::Types::Nmap::PortRangeList (constant)">PortRangeList</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:exclude_ports</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#PortRangeList-constant" title="Ronin::App::Types::Nmap::PortRangeList (constant)">PortRangeList</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:fast</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:consecutively</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:top_ports</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:integer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:port_ratio</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:float</span><span class='rparen'>)</span>
+
+  <span class='comment'># SERVICE/VERSION DETECTION:
+</span>  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:service_scan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:all_ports</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:version_intensity</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:integer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:version_light</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:version_all</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:version_trace</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+
+  <span class='comment'># OS DETECTION:
+</span>  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:os_fingerprint</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:limit_os_scan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:max_os_scan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:max_os_tries</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+
+  <span class='comment'># TIMING AND PERFORMANCE:
+</span>  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:min_host_group</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:integer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:max_host_group</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:integer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:min_parallelism</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:integer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:max_parallelism</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:integer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:min_rtt_timeout</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#Time-constant" title="Ronin::App::Types::Nmap::Time (constant)">Time</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:max_rtt_timeout</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#Time-constant" title="Ronin::App::Types::Nmap::Time (constant)">Time</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:initial_rtt_timeout</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#Time-constant" title="Ronin::App::Types::Nmap::Time (constant)">Time</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:max_retries</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:integer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:host_timeout</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#Time-constant" title="Ronin::App::Types::Nmap::Time (constant)">Time</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:script_timeout</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#Time-constant" title="Ronin::App::Types::Nmap::Time (constant)">Time</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:scan_delay</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#Time-constant" title="Ronin::App::Types::Nmap::Time (constant)">Time</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:max_scan_delay</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#Time-constant" title="Ronin::App::Types::Nmap::Time (constant)">Time</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:min_rate</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:integer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:max_rate</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:integer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:defeat_rst_ratelimit</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:defeat_icmp_ratelimit</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:nsock_engine</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#NsockEngine-constant" title="Ronin::App::Types::Nmap::NsockEngine (constant)">NsockEngine</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:timing_template</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#TimingTemplate-constant" title="Ronin::App::Types::Nmap::TimingTemplate (constant)">TimingTemplate</a></span></span><span class='rparen'>)</span>
+
+  <span class='comment'># FIREWALL/IDS EVASION AND SPOOFING:
+</span>  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:packet_fragments</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:mtu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'>Bool</span> <span class='op'>|</span> <span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'>Integer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:decoys</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:array</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:spoof</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:interface</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:source_port</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#Port-constant" title="Ronin::App::Types::Nmap::Port (constant)">Port</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:proxies</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:array</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:data</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types.html" title="Ronin::App::Types (module)">Types</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html" title="Ronin::App::Types::Nmap (module)">Nmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Ronin/App/Types/Nmap.html#HexString-constant" title="Ronin::App::Types::Nmap::HexString (constant)">HexString</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:data_string</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:data_length</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:integer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:ip_options</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:ttl</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:integer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:randomize_hosts</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:spoof_mac</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:bad_checksum</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:sctp_adler32</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+
+  <span class='comment'># MISC:
+</span>  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:ipv6</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:all</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:nmap_datadir</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:servicedb</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:versiondb</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:send_eth</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:send_ip</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:privileged</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:unprivileged</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_optional'>optional</span><span class='lparen'>(</span><span class='symbol'>:release_memory</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maybe'>maybe</span><span class='lparen'>(</span><span class='symbol'>:bool</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="../Ronin/App.html" title="Ronin::App (module)">Ronin::App</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Ronin/App.html#ROOT-constant" title="Ronin::App::ROOT (constant)">Ronin::App::ROOT</a></span>, <span class='object_link'><a href="../Ronin/App.html#VERSION-constant" title="Ronin::App::VERSION (constant)">Ronin::App::VERSION</a></span></p>
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#perform-instance_method" title="#perform (instance method)">#<strong>perform</strong>(params)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Processes an <code>nmap</code> job.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#validate-instance_method" title="#validate (instance method)">#<strong>validate</strong>(params)  &#x21d2; Hash{Symbol =&gt; Object} </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Validates the given job params.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="perform-instance_method">
+  
+    #<strong>perform</strong>(params)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Processes an <code>nmap</code> job.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>params</span>
+      
+      
+        <span class='type'>(<tt>Hash{String =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The JSON deserialized params for the job.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The params could not be validated or coerced.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>RuntimeError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The <code>nmap</code> command failed or is not installed.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'workers/nmap.rb', line 171</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_perform'>perform</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_kwargs'>kwargs</span> <span class='op'>=</span> <span class='id identifier rubyid_validate'>validate</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
+
+  <span class='const'>Tempfile</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>nmap-</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.xml</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_tempfile'>tempfile</span><span class='op'>|</span>
+    <span class='id identifier rubyid_status'>status</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Nmap</span><span class='op'>::</span><span class='const'>Command</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span><span class='lparen'>(</span>
+      <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
+      <span class='label'>verbose:</span>    <span class='kw'>true</span><span class='comma'>,</span>
+      <span class='label'>privileged:</span> <span class='kw'>true</span><span class='comma'>,</span>
+      <span class='label'>output_xml:</span> <span class='id identifier rubyid_tempfile'>tempfile</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span>
+    <span class='rparen'>)</span>
+
+    <span class='kw'>case</span> <span class='id identifier rubyid_status'>status</span>
+    <span class='kw'>when</span> <span class='kw'>true</span>
+      <span class='const'><span class='object_link'><a href="../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'>Nmap</span><span class='op'>::</span><span class='const'>Importer</span><span class='period'>.</span><span class='id identifier rubyid_import_file'>import_file</span><span class='lparen'>(</span><span class='id identifier rubyid_tempfile'>tempfile</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='kw'>false</span>
+      <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>nmap command failed</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='kw'>nil</span>
+      <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>nmap command not installed</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="validate-instance_method">
+  
+    #<strong>validate</strong>(params)  &#x21d2; <tt>Hash{Symbol =&gt; Object}</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Validates the given job params.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>params</span>
+      
+      
+        <span class='type'>(<tt>Hash{String =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The JSON deserialized params for the job.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The validated and coerced params as a Symbol Hash.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The params could not be validated or coerced.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+205
+206
+207
+208
+209
+210
+211
+212
+213</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'workers/nmap.rb', line 205</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_validate'>validate</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#Params-constant" title="Workers::Nmap::Params (constant)">Params</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_failure?'>failure?</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>invalid nmap params (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'>): </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Mon Jul 22 14:08:49 2024 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.36 (ruby-3.3.4).
+</div>
+
+    </div>
+  </body>
+</html>
