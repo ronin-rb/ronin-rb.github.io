@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; Ronin::Masscan Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'><h1 id="ronin-masscan">ronin-masscan</h1>
+
+<p><a href="https://github.com/ronin-rb/ronin-masscan/actions/workflows/ruby.yml"><img src="https://github.com/ronin-rb/ronin-masscan/actions/workflows/ruby.yml/badge.svg" alt="CI"></a>
+<a href="https://codeclimate.com/github/ronin-rb/ronin-masscan"><img src="https://codeclimate.com/github/ronin-rb/ronin-masscan.svg" alt="Code Climate"></a></p>
+
+<ul>
+<li><a href="https://ronin-rb.dev/">Website</a></li>
+<li><a href="https://github.com/ronin-rb/ronin-masscan">Source</a></li>
+<li><a href="https://github.com/ronin-rb/ronin-masscan/issues">Issues</a></li>
+<li><a href="https://ronin-rb.dev/docs/ronin-masscan">Documentation</a></li>
+<li><a href="https://discord.gg/6WAb3PsVX9">Discord</a> |
+<a href="https://infosec.exchange/@ronin_rb">Mastodon</a></li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<p>ronin-masscan is a Ruby library and CLI for working with masscan.</p>
+
+<h2 id="features">Features</h2>
+
+<ul>
+<li>Supports automating <code>masscan</code> using <a href="https://github.com/postmodern/ruby-masscan#readme">ruby-masscan</a>.</li>
+<li>Supports parsing and filtering masscan scan files.</li>
+<li>Supports converting masscan scan files into JSON or CSV.</li>
+<li>Supports importing masscan scan files into the <a href="https://github.com/ronin-rb/ronin-db#readme">ronin-db</a> database.</li>
+</ul>
+
+<h2 id="synopsis">Synopsis</h2>
+
+<pre class="code ruby"><code class="ruby">Usage: ronin-masscan [options]
+
+Options:
+    -V, --version                    Prints the version and exits
+    -h, --help                       Print help information
+
+Arguments:
+    [COMMAND]                        The command name to run
+    [ARGS ...]                       Additional arguments for the command
+
+Commands:
+    completion
+    convert
+    dump
+    grep
+    help
+    import
+    new
+    print
+    scan
+</code></pre>
+
+<p>Import a binary <code>masscan</code> scan file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-masscan import masscan.bin
+</code></pre>
+
+<p>Perform a masscan scan and import it&#39;s results into the <a href="https://github.com/ronin-rb/ronin-db#readme">ronin-db</a>:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-masscan scan --import -- 192.168.1.1 -p22,25,80,443
+</code></pre>
+
+<p>Parse and filter an nmap XML scan file:</p>
+
+<p>Import a JSON <code>masscan</code> scan file:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-masscan import masscan.json
+</code></pre>
+
+<p>Dumps a masscan scan file to a list of <code>IP:PORT</code> pairs:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-masscan dump --print-ip-ports masscan.bin
+</code></pre>
+
+<p>Dump a masscan scan file to a list of <code>HOST:PORT</code> pairs:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-masscan dump --print-host-ports masscan.bin
+</code></pre>
+
+<p>Dump a masscan scan file to a list of <code>http</code>://<code>or</code>https://` URIs:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-masscan dump --print-uris masscan.bin
+</code></pre>
+
+<p>Convert a binary <code>masscan</code> scan file to CSV:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-masscan convert masscan.bin masscan.csv
+</code></pre>
+
+<p>Convert a binary <code>masscan</code> scan file to JSON:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-masscan convert masscan.bin masscan.json
+</code></pre>
+
+<p>Generate a new masscan scanner Ruby script:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-masscan new scanner.rb --ips &#39;192.168.1.*&#39; --ports 22,80,443,8000-9000
+</code></pre>
+
+<p>Generate a new masscan output file parser script:</p>
+
+<pre class="code shell"><code class="shell">$ ronin-masscan new parser.rb --parser --xml-file path/to/masscan.bin --printing
+</code></pre>
+
+<h2 id="examples">Examples</h2>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ronin/masscan</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_output_file'>output_file</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Masscan.html" title="Ronin::Masscan (module)">Masscan</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="Ronin/Masscan.html#scan-class_method" title="Ronin::Masscan.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>192.168.1.1</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>ports:</span> <span class='lbracket'>[</span><span class='int'>80</span><span class='comma'>,</span><span class='int'>443</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='comment'># =&gt; #&lt;Masscan::OutputFile:...&gt;
+</span>
+<span class='id identifier rubyid_output_file'>output_file</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Masscan.html" title="Ronin::Masscan (module)">Masscan</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="Ronin/Masscan.html#scan-class_method" title="Ronin::Masscan.scan (method)">scan</a></span></span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_masscan'>masscan</span><span class='op'>|</span>
+  <span class='id identifier rubyid_masscan'>masscan</span><span class='period'>.</span><span class='id identifier rubyid_ports'>ports</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='int'>80</span><span class='comma'>,</span><span class='int'>443</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_masscan'>masscan</span><span class='period'>.</span><span class='id identifier rubyid_ips'>ips</span>   <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>192.168.1.1</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>end</span>
+<span class='comment'># =&gt; #&lt;Masscan::OutputFile:...&gt;
+</span></code></pre>
+
+<p>Accessing the masscan scan data:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_output_file'>output_file</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_record'>record</span><span class='op'>|</span>
+  <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_record'>record</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'>#&lt;struct Masscan::Status status=:open, protocol=:tcp, port=80, reason=[:syn, :ack], ttl=54, ip=#&lt;IPAddr: IPv4:93.184.216.34/255.255.255.255&gt;, timestamp=2021-08-26 16:07:33 -0700, mac=nil&gt;
+</span><span class='comment'>#&lt;struct Masscan::Status status=:open, protocol=:tcp, port=443, reason=[:syn, :ack], ttl=54, ip=#&lt;IPAddr: IPv4:93.184.216.34/255.255.255.255&gt;, timestamp=2021-08-26 16:07:33 -0700, mac=nil&gt;
+</span><span class='comment'>#&lt;struct Masscan::Status status=:open, protocol=:icmp, port=0, reason=[], ttl=54, ip=#&lt;IPAddr: IPv4:93.184.216.34/255.255.255.255&gt;, timestamp=2021-08-26 16:07:33 -0700, mac=nil&gt;
+</span><span class='comment'>#&lt;struct Masscan::Banner protocol=:tcp, port=443, ip=#&lt;IPAddr: IPv4:93.184.216.34/255.255.255.255&gt;, timestamp=2021-08-26 16:07:35 -0700, app_protocol=:ssl3, payload=&quot;TLS/1.1 cipher:0xc013, www.example.org, www.example.org, example.com, example.edu, example.net, example.org, www.example.com, www.example.edu, www.example.net&quot;&gt;
+</span><span class='comment'>#&lt;struct Masscan::Banner protocol=:tcp, port=443, ip=#&lt;IPAddr: IPv4:93.184.216.34/255.255.255.255&gt;, timestamp=2021-08-26 16:07:35 -0700, app_protocol=:x509_cert, payload=&quot;MIIG1TCCBb2gAwIBAgIQD74IsIVNBXOKsMzhya/uyTANBgkqhkiG9w0BAQsFADBPMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMSkwJwYDVQQDEyBEaWdpQ2VydCBUTFMgUlNBIFNIQTI1NiAyMDIwIENBMTAeFw0yMDExMjQwMDAwMDBaFw0yMTEyMjUyMzU5NTlaMIGQMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEUMBIGA1UEBxMLTG9zIEFuZ2VsZXMxPDA6BgNVBAoTM0ludGVybmV0IENvcnBvcmF0aW9uIGZvciBBc3NpZ25lZCBOYW1lcyBhbmQgTnVtYmVyczEYMBYGA1UEAxMPd3d3LmV4YW1wbGUub3JnMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuvzuzMoKCP8Okx2zvgucA5YinrFPEK5RQP1TX7PEYUAoBO6i5hIAsIKFmFxtW2sghERilU5rdnxQcF3fEx3sY4OtY6VSBPLPhLrbKozHLrQ8ZN/rYTb+hgNUeT7NA1mP78IEkxAj4qG5tli4Jq41aCbUlCt7equGXokImhC+UY5IpQEZS0tKD4vu2ksZ04Qetp0k8jWdAvMA27W3EwgHHNeVGWbJPC0Dn7RqPw13r7hFyS5TpleywjdY1nB7ad6kcZXZbEcaFZ7ZuerA6RkPGE+PsnZRb1oFJkYoXimsuvkVFhWeHQXCGC1cuDWSrM3cpQvOzKH2vS7d15+zGls4IwIDAQABo4IDaTCCA2UwHwYDVR0jBBgwFoAUt2ui6qiqhIx56rTaD5iyxZV2ufQwHQYDVR0OBBYEFCYa+OSxsHKEztqBBtInmPvtOj0XMIGBBgNVHREEejB4gg93d3cuZXhhbXBsZS5vcmeCC2V4YW1wbGUuY29tggtleGFtcGxlLmVkdYILZXhhbXBsZS5uZXSCC2V4YW1wbGUub3Jngg93d3cuZXhhbXBsZS5jb22CD3d3dy5leGFtcGxlLmVkdYIPd3d3LmV4YW1wbGUubmV0MA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwgYsGA1UdHwSBgzCBgDA+oDygOoY4aHR0cDovL2NybDMuZGlnaWNlcnQuY29tL0RpZ2lDZXJ0VExTUlNBU0hBMjU2MjAyMENBMS5jcmwwPqA8oDqGOGh0dHA6Ly9jcmw0LmRpZ2ljZXJ0LmNv&quot;&gt;
+</span><span class='comment'>#&lt;struct Masscan::Banner protocol=:tcp, port=80, ip=#&lt;IPAddr: IPv4:93.184.216.34/255.255.255.255&gt;, timestamp=2021-08-26 16:07:35 -0700, app_protocol=:http_server, payload=&quot;ECS (sec/97A6)&quot;&gt;
+</span><span class='comment'>#&lt;struct Masscan::Banner protocol=:tcp, port=80, ip=#&lt;IPAddr: IPv4:93.184.216.34/255.255.255.255&gt;, timestamp=2021-08-26 16:07:35 -0700, app_protocol=:html_title, payload=&quot;404 - Not Found&quot;&gt;
+</span><span class='comment'>#&lt;struct Masscan::Banner protocol=:tcp, port=80, ip=#&lt;IPAddr: IPv4:93.184.216.34/255.255.255.255&gt;, timestamp=2021-08-26 16:07:35 -0700, app_protocol=:http, payload=&quot;HTTP/1.0 404 Not Found\r\nContent-Type: text/html\r\nDate: Thu, 26 Aug 2021 23:07:35 GMT\r\nServer: ECS (sec/97A6)\r\nContent-Length: 345\r\nConnection: close\r\n\r&quot;&gt;
+</span></code></pre>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+<li><a href="https://www.ruby-lang.org">Ruby</a> &gt;= 3.0.0</li>
+<li><a href="https://github.com/robertdavidgraham/masscan#readme">masscan</a> &gt;= 1.0.0</li>
+<li><a href="https://github.com/postmodern/ruby-masscan#readme">ruby-masscan</a> ~&gt; 0.1</li>
+<li><a href="https://github.com/ronin-rb/ronin-core#readme">ronin-core</a> ~&gt; 0.2</li>
+<li><a href="https://github.com/ronin-rb/ronin-db#readme">ronin-db</a> ~&gt; 0.2</li>
+</ul>
+
+<h2 id="install">Install</h2>
+
+<pre class="code shell"><code class="shell">$ gem install ronin-masscan
+</code></pre>
+
+<h3 id="gemfile">Gemfile</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ronin-masscan</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>~&gt; 0.1</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<h3 id="gemspec">gemspec</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span><span class='period'>.</span><span class='id identifier rubyid_add_dependency'>add_dependency</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ronin-masscan</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>~&gt; 0.1</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<h2 id="development">Development</h2>
+
+<ol>
+<li><a href="https://github.com/ronin-rb/ronin-masscan/fork">Fork It!</a></li>
+<li>Clone It!</li>
+<li><code>cd ronin-masscan/</code></li>
+<li><code>./scripts/setup</code></li>
+<li><code>git checkout -b my_feature</code></li>
+<li>Code It!</li>
+<li><code>bundle exec rake spec</code></li>
+<li><code>git push origin my_feature</code></li>
+</ol>
+
+<h2 id="license">License</h2>
+
+<p>Copyright (c) 2023-2024 Hal Brodigan (<a href="mailto:postmodern.mod3@gmail.com">postmodern.mod3@gmail.com</a>)</p>
+
+<p>ronin-masscan is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+
+<p>ronin-masscan is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.</p>
+
+<p>You should have received a copy of the GNU Lesser General Public License
+along with ronin-masscan.  If not, see <a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>.</p>
+</div></div>
+
+      <div id="footer">
+  Generated on Mon Jul 22 13:34:20 2024 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.36 (ruby-3.3.4).
+</div>
+
+    </div>
+  </body>
+</html>
