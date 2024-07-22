@@ -550,6 +550,29 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#Key-class_method" title="Key (class method)">.<strong>Key</strong>(key)  &#x21d2; RSA, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Coerces a value into a <span class='object_link'><a href="Crypto/Key.html" title="Ronin::Support::Crypto::Key (module)">Key</a></span> object.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#rot-class_method" title="rot (class method)">.<strong>rot</strong>(string, n = 13, alphabets: [(&#39;A&#39;..&#39;Z&#39;).to_a, (&#39;a&#39;..&#39;z&#39;).to_a, (&#39;0&#39;..&#39;9&#39;).to_a])  &#x21d2; String </a>
     
 
@@ -2654,21 +2677,21 @@
       <pre class="lines">
 
 
-512
-513
-514
-515
-516
-517
-518
-519
-520
-521
-522
-523</pre>
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 512</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/cert.rb', line 554</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='const'>Cert</span><span class='lparen'>(</span><span class='id identifier rubyid_cert'>cert</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_cert'>cert</span>
@@ -3760,6 +3783,163 @@ then be populated.</p>
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="Key-class_method">
+  
+    .<strong>Key</strong>(key)  &#x21d2; <tt>RSA</tt>, ... 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Coerces a value into a <span class='object_link'><a href="Crypto/Key.html" title="Ronin::Support::Crypto::Key (module)">Key</a></span> object.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>OpenSSL::PKey::DSA</tt>, <tt>OpenSSL::PKey::DH</tt>, <tt>OpenSSL::PKey::EC</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The key String or <code>OpenSSL::PKey::PKey</code> value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>RSA</tt>, <tt>DSA</tt>, <tt>DH</tt>, <tt>EC</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The coerced certificate.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The key value was not a String or a <code>OpenSSL::PKey::PKey</code> object.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>NotImplementedError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A new <code>OpenSSL::PKey::PKey</code> value that was not <code>OpenSSL::PKey::RSA</code>,
+<code>OpenSSL::PKey::DSA</code>, <code>OpenSSL::PKey::DH</code>, or <code>OpenSSL::PKey::EC</code>
+was given.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/crypto/key.rb', line 130</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='const'>Key</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_key'>key</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></span> <span class='kw'>then</span> <span class='const'><span class='object_link'><a href="Crypto/Key.html" title="Ronin::Support::Crypto::Key (module)">Key</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="Crypto/Key.html#parse-class_method" title="Ronin::Support::Crypto::Key.parse (method)">parse</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>PKey</span><span class='op'>::</span><span class='const'>PKey</span>
+    <span class='id identifier rubyid_key_class'>key_class</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_key'>key</span>
+                <span class='kw'>when</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>PKey</span><span class='op'>::</span><span class='const'>RSA</span> <span class='kw'>then</span> <span class='const'><span class='object_link'><a href="Crypto/Key.html" title="Ronin::Support::Crypto::Key (module)">Key</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">RSA</a></span></span>
+                <span class='kw'>when</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>PKey</span><span class='op'>::</span><span class='const'>DSA</span> <span class='kw'>then</span> <span class='const'><span class='object_link'><a href="Crypto/Key.html" title="Ronin::Support::Crypto::Key (module)">Key</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Crypto/Key/DSA.html" title="Ronin::Support::Crypto::Key::DSA (class)">DSA</a></span></span>
+                <span class='kw'>when</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>PKey</span><span class='op'>::</span><span class='const'>DH</span>  <span class='kw'>then</span> <span class='const'><span class='object_link'><a href="Crypto/Key.html" title="Ronin::Support::Crypto::Key (module)">Key</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Crypto/Key/DH.html" title="Ronin::Support::Crypto::Key::DH (class)">DH</a></span></span>
+                <span class='kw'>when</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>PKey</span><span class='op'>::</span><span class='const'>EC</span>  <span class='kw'>then</span> <span class='const'><span class='object_link'><a href="Crypto/Key.html" title="Ronin::Support::Crypto::Key (module)">Key</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Crypto/Key/EC.html" title="Ronin::Support::Crypto::Key::EC (class)">EC</a></span></span>
+                <span class='kw'>else</span>
+                  <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>NotImplementedError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'> is not supported</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+                <span class='kw'>end</span>
+
+    <span class='id identifier rubyid_new_key'>new_key</span> <span class='op'>=</span> <span class='id identifier rubyid_key_class'>key_class</span><span class='period'>.</span><span class='id identifier rubyid_allocate'>allocate</span>
+    <span class='id identifier rubyid_new_key'>new_key</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='symbol'>:initialize_copy</span><span class='comma'>,</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_new_key'>new_key</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>value must be either a String or a OpenSSL::PKey::PKey object: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_key'>key</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="rot-class_method">
   
     .<strong>rot</strong>(string, n = 13, alphabets: [(&#39;A&#39;..&#39;Z&#39;).to_a, (&#39;a&#39;..&#39;z&#39;).to_a, (&#39;0&#39;..&#39;9&#39;).to_a])  &#x21d2; <tt><span class='object_link'><a href="../../String.html" title="String (class)">String</a></span></tt> 
@@ -4671,9 +4851,9 @@ cryptographic communications.</p>
 </div>
 
       <div id="footer">
-  Generated on Sat Jul 13 20:13:54 2024 by
+  Generated on Mon Jul 22 11:13:06 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.36 (ruby-3.1.6).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>

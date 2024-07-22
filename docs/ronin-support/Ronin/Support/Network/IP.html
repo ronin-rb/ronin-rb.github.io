@@ -178,6 +178,36 @@
 
     <dl class="constants">
       
+        <dt id="REGEX-constant" class="">REGEX =
+          <div class="docstring">
+  <div class="discussion">
+    <p>A regular expression for matching IP addresses.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='tstring'><span class='regexp_beg'>/</span><span class='embexpr_beg'>#{</span><span class='const'>RE_IPV4ADDRLIKE</span><span class='embexpr_end'>}</span><span class='tstring_content'>|</span><span class='embexpr_beg'>#{</span><span class='const'>RE_IPV6ADDRLIKE_FULL</span><span class='embexpr_end'>}</span><span class='tstring_content'>|</span><span class='embexpr_beg'>#{</span><span class='const'>RE_IPV6ADDRLIKE_COMPRESSED</span><span class='embexpr_end'>}</span><span class='regexp_end'>/</span></span></pre></dd>
+      
         <dt id="IPINFO_URI-constant" class="">IPINFO_URI =
           <div class="docstring">
   <div class="discussion">
@@ -753,6 +783,29 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#ipv4-instance_method" title="#ipv4 (instance method)">#<strong>ipv4</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Converts the IP address to it&#39;s IPv4 version.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#logical%3F-instance_method" title="#logical? (instance method)">#<strong>logical?</strong>  &#x21d2; Boolean </a>
     
 
@@ -934,11 +987,6 @@ backwards compatibility with <code>IPAddr#initialize</code>.</p>
       <pre class="lines">
 
 
-89
-90
-91
-92
-93
 94
 95
 96
@@ -951,10 +999,15 @@ backwards compatibility with <code>IPAddr#initialize</code>.</p>
 103
 104
 105
-106</pre>
+106
+107
+108
+109
+110
+111</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 89</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 94</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_address'>address</span><span class='comma'>,</span><span class='id identifier rubyid_family'>family</span><span class='op'>=</span><span class='const'>Socket</span><span class='op'>::</span><span class='const'>AF_UNSPEC</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_address'>address</span>
@@ -1132,21 +1185,21 @@ backwards compatibility with <code>IPAddr#initialize</code>.</p>
       <pre class="lines">
 
 
-256
-257
-258
-259
-260
 261
 262
 263
 264
 265
 266
-267</pre>
+267
+268
+269
+270
+271
+272</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 256</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 261</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_extract'>extract</span><span class='lparen'>(</span><span class='id identifier rubyid_text'>text</span><span class='comma'>,</span><span class='id identifier rubyid_version'>version</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='id identifier rubyid___method__'>__method__</span><span class='comma'>,</span><span class='id identifier rubyid_text'>text</span><span class='comma'>,</span><span class='id identifier rubyid_version'>version</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
@@ -1227,12 +1280,12 @@ backwards compatibility with <code>IPAddr#initialize</code>.</p>
       <pre class="lines">
 
 
-212
-213
-214</pre>
+217
+218
+219</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 212</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 217</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_local_address'>local_address</span>
   <span class='const'>Socket</span><span class='period'>.</span><span class='id identifier rubyid_ip_address_list'>ip_address_list</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='period'>.</span><span class='id identifier rubyid_ip_address'>ip_address</span>
@@ -1304,20 +1357,20 @@ backwards compatibility with <code>IPAddr#initialize</code>.</p>
       <pre class="lines">
 
 
-175
-176
-177
-178
-179
 180
 181
 182
 183
 184
-185</pre>
+185
+186
+187
+188
+189
+190</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 175</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 180</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_local_addresses'>local_addresses</span>
   <span class='const'>Socket</span><span class='period'>.</span><span class='id identifier rubyid_ip_address_list'>ip_address_list</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_addrinfo'>addrinfo</span><span class='op'>|</span>
@@ -1397,12 +1450,12 @@ backwards compatibility with <code>IPAddr#initialize</code>.</p>
       <pre class="lines">
 
 
-225
-226
-227</pre>
+230
+231
+232</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 225</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 230</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_local_ip'>local_ip</span>
   <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_local_address'>local_address</span><span class='rparen'>)</span>
@@ -1477,12 +1530,12 @@ backwards compatibility with <code>IPAddr#initialize</code>.</p>
       <pre class="lines">
 
 
-199
-200
-201</pre>
+204
+205
+206</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 199</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 204</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_local_ips'>local_ips</span>
   <span class='id identifier rubyid_local_addresses'>local_addresses</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_method'>method</span><span class='lparen'>(</span><span class='symbol'>:new</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -1549,20 +1602,20 @@ backwards compatibility with <code>IPAddr#initialize</code>.</p>
       <pre class="lines">
 
 
-142
-143
-144
-145
-146
 147
 148
 149
 150
 151
-152</pre>
+152
+153
+154
+155
+156
+157</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 142</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 147</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_public_address'>public_address</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='kw'>begin</span>
@@ -1637,14 +1690,14 @@ backwards compatibility with <code>IPAddr#initialize</code>.</p>
       <pre class="lines">
 
 
-160
-161
-162
-163
-164</pre>
+165
+166
+167
+168
+169</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 160</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 165</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_public_ip'>public_ip</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_address'>address</span> <span class='op'>=</span> <span class='id identifier rubyid_public_address'>public_address</span><span class='rparen'>)</span>
@@ -1719,12 +1772,12 @@ backwards compatibility with <code>IPAddr#initialize</code>.</p>
       <pre class="lines">
 
 
-316
-317
-318</pre>
+321
+322
+323</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 316</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 321</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_address'>address</span>
   <span class='ivar'>@address</span> <span class='op'>||=</span> <span class='id identifier rubyid_to_s'>to_s</span>
@@ -1801,12 +1854,12 @@ ip.asn
       <pre class="lines">
 
 
-334
-335
-336</pre>
+339
+340
+341</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 334</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 339</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_asn'>asn</span>
   <span class='ivar'>@asn</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="ASN.html" title="Ronin::Support::Network::ASN (module)">ASN</a></span></span><span class='period'>.</span><span class='id identifier rubyid_query'><span class='object_link'><a href="ASN.html#query-class_method" title="Ronin::Support::Network::ASN.query (method)">query</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
@@ -1885,13 +1938,13 @@ ip.asn
       <pre class="lines">
 
 
-285
-286
-287
-288</pre>
+290
+291
+292
+293</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 285</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 290</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_broadcast?'>broadcast?</span>
   <span class='comment'># NOTE: IPv6 does not have broadcast addresses
@@ -2022,14 +2075,14 @@ ip.asn
       <pre class="lines">
 
 
-408
-409
-410
-411
-412</pre>
+413
+414
+415
+416
+417</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 408</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 413</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_host'>get_host</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_get_name'>get_name</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -2161,12 +2214,12 @@ ip.asn
       <pre class="lines">
 
 
-434
-435
-436</pre>
+439
+440
+441</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 434</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 439</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_hosts'>get_hosts</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_get_names'>get_names</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span> <span class='const'><span class='object_link'><a href="Host.html" title="Ronin::Support::Network::Host (class)">Host</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Host.html#initialize-instance_method" title="Ronin::Support::Network::Host#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -2300,12 +2353,12 @@ ip.asn
       <pre class="lines">
 
 
-358
-359
-360</pre>
+363
+364
+365</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 358</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 363</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_name'>get_name</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="DNS.html" title="Ronin::Support::Network::DNS (module)">DNS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get_name'><span class='object_link'><a href="DNS.html#get_name-class_method" title="Ronin::Support::Network::DNS.get_name (method)">get_name</a></span></span><span class='lparen'>(</span><span class='ivar'>@address</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -2435,12 +2488,12 @@ ip.asn
       <pre class="lines">
 
 
-384
-385
-386</pre>
+389
+390
+391</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 384</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 389</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_names'>get_names</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="DNS.html" title="Ronin::Support::Network::DNS (module)">DNS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get_names'><span class='object_link'><a href="DNS.html#get_names-class_method" title="Ronin::Support::Network::DNS.get_names (method)">get_names</a></span></span><span class='lparen'>(</span><span class='ivar'>@address</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -2560,12 +2613,12 @@ ip.asn
       <pre class="lines">
 
 
-508
-509
-510</pre>
+513
+514
+515</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 508</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 513</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_ptr_name'>get_ptr_name</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="DNS.html" title="Ronin::Support::Network::DNS (module)">DNS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get_ptr_name'><span class='object_link'><a href="DNS.html#get_ptr_name-class_method" title="Ronin::Support::Network::DNS.get_ptr_name (method)">get_ptr_name</a></span></span><span class='lparen'>(</span><span class='ivar'>@address</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -2685,12 +2738,12 @@ ip.asn
       <pre class="lines">
 
 
-548
-549
-550</pre>
+553
+554
+555</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 548</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 553</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_ptr_names'>get_ptr_names</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="DNS.html" title="Ronin::Support::Network::DNS (module)">DNS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get_ptr_names'><span class='object_link'><a href="DNS.html#get_ptr_names-class_method" title="Ronin::Support::Network::DNS.get_ptr_names (method)">get_ptr_names</a></span></span><span class='lparen'>(</span><span class='ivar'>@address</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -2818,12 +2871,12 @@ name has no <code>PTR</code> records.</p>
       <pre class="lines">
 
 
-489
-490
-491</pre>
+494
+495
+496</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 489</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 494</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_ptr_record'>get_ptr_record</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="DNS.html" title="Ronin::Support::Network::DNS (module)">DNS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get_ptr_record'><span class='object_link'><a href="DNS.html#get_ptr_record-class_method" title="Ronin::Support::Network::DNS.get_ptr_record (method)">get_ptr_record</a></span></span><span class='lparen'>(</span><span class='ivar'>@address</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -2950,12 +3003,12 @@ name has no <code>PTR</code> records.</p>
       <pre class="lines">
 
 
-529
-530
-531</pre>
+534
+535
+536</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 529</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 534</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_ptr_records'>get_ptr_records</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="DNS.html" title="Ronin::Support::Network::DNS (module)">DNS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_get_ptr_records'><span class='object_link'><a href="DNS.html#get_ptr_records-class_method" title="Ronin::Support::Network::DNS.get_ptr_records (method)">get_ptr_records</a></span></span><span class='lparen'>(</span><span class='ivar'>@address</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -3032,12 +3085,12 @@ name has no <code>PTR</code> records.</p>
       <pre class="lines">
 
 
-467
-468
-469</pre>
+472
+473
+474</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 467</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 472</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_host'>host</span>
   <span class='id identifier rubyid_hosts'>hosts</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
@@ -3122,12 +3175,12 @@ has no host names.</p>
       <pre class="lines">
 
 
-452
-453
-454</pre>
+457
+458
+459</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 452</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 457</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_hosts'>hosts</span>
   <span class='ivar'>@hosts</span> <span class='op'>||=</span> <span class='id identifier rubyid_get_hosts'>get_hosts</span>
@@ -3194,15 +3247,135 @@ has no host names.</p>
       <pre class="lines">
 
 
-562
-563
-564</pre>
+603
+604
+605</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 562</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 603</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='embexpr_end'>}</span><span class='tstring_content'>: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_address'>address</span><span class='embexpr_end'>}</span><span class='tstring_content'>&gt;</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="ipv4-instance_method">
+  
+    #<strong>ipv4</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>[IP]
+If the IP address is an IPv4-mapped IPv6 address then the IPv6
+address will be extracted from the IPv6 address. If the IP address
+is a regular IPv4 address, then the IP address will be returned.</p>
+</div>
+  </div>
+
+<p>Converts the IP address to it&#39;s IPv4 version.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>Converting an IPv4-mapped IPv6 address to an IPv4 address:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_ip'>ip</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::IP (class)">IP</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Ronin::Support::Network::IP#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>::ffff:127.0.0.1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_ip'>ip</span><span class='period'>.</span><span class='id identifier rubyid_ipv4'>ipv4</span>
+<span class='comment'># =&gt; #&lt;Ronin::Support::Network::IP: 127.0.0.1&gt;</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>When the IP address is already an IPv4 address:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_ip'>ip</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::IP (class)">IP</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Ronin::Support::Network::IP#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_ip'>ip</span><span class='period'>.</span><span class='id identifier rubyid_ipv4'>ipv4</span>
+<span class='comment'># =&gt; #&lt;Ronin::Support::Network::IP: 127.0.0.1&gt;</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="InvalidIP.html" title="Ronin::Support::Network::InvalidIP (class)">InvalidIP</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The IP address was a regular IPv6 address and cannot be converted to
+a smaller IPv4 address.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 581</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ipv4'>ipv4</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_ipv6?'>ipv6?</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_ipv4_mapped?'>ipv4_mapped?</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>&amp;</span> <span class='int'>0xffffffff</span><span class='comma'>,</span><span class='const'>Socket</span><span class='op'>::</span><span class='const'>AF_INET</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="InvalidIP.html" title="Ronin::Support::Network::InvalidIP (class)">InvalidIP</a></span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>cannot convert a regular IPv6 address to an IPv4 address: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+    <span class='kw'>self</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3278,12 +3451,12 @@ has no host names.</p>
       <pre class="lines">
 
 
-306
-307
-308</pre>
+311
+312
+313</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 306</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 311</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_logical?'>logical?</span>
   <span class='id identifier rubyid_ipv4?'>ipv4?</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='ivar'>@addr</span> <span class='op'>&amp;</span> <span class='int'>0xff</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0x00</span>
@@ -3384,16 +3557,16 @@ has no host names.</p>
       <pre class="lines">
 
 
-123
-124
-125
-126
-127
 128
-129</pre>
+129
+130
+131
+132
+133
+134</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 123</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ip.rb', line 128</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set'>set</span><span class='lparen'>(</span><span class='id identifier rubyid_addr'>addr</span><span class='comma'>,</span><span class='op'>*</span><span class='id identifier rubyid_family'>family</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_addr'>addr</span><span class='comma'>,</span><span class='op'>*</span><span class='id identifier rubyid_family'>family</span><span class='rparen'>)</span>
@@ -3412,9 +3585,9 @@ has no host names.</p>
 </div>
 
       <div id="footer">
-  Generated on Sat Jul 13 20:14:10 2024 by
+  Generated on Mon Jul 22 11:13:18 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.36 (ruby-3.1.6).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>

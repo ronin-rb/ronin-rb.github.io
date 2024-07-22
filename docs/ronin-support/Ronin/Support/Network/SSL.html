@@ -135,9 +135,15 @@
 </div>
         </dt>
         <dd><pre class="code"><span class='lbrace'>{</span>
-  <span class='int'>1</span>   <span class='op'>=&gt;</span> <span class='symbol'>:TLSv1</span><span class='comma'>,</span>
-  <span class='float'>1.1</span> <span class='op'>=&gt;</span> <span class='symbol'>:TLSv1_1</span><span class='comma'>,</span>
-  <span class='float'>1.2</span> <span class='op'>=&gt;</span> <span class='symbol'>:TLSv1_2</span>
+  <span class='int'>1</span>   <span class='op'>=&gt;</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>TLS1_VERSION</span><span class='comma'>,</span>
+  <span class='float'>1.1</span> <span class='op'>=&gt;</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>TLS1_1_VERSION</span><span class='comma'>,</span>
+  <span class='float'>1.2</span> <span class='op'>=&gt;</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>TLS1_2_VERSION</span><span class='comma'>,</span>
+  <span class='float'>1.3</span> <span class='op'>=&gt;</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>TLS1_3_VERSION</span><span class='comma'>,</span>
+
+  <span class='comment'># deprecated TLS version symbols
+</span>  <span class='symbol'>:TLSv1</span>   <span class='op'>=&gt;</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>TLS1_VERSION</span><span class='comma'>,</span>
+  <span class='symbol'>:TLSv1_1</span> <span class='op'>=&gt;</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>TLS1_1_VERSION</span><span class='comma'>,</span>
+  <span class='symbol'>:TLSv1_2</span> <span class='op'>=&gt;</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>TLS1_2_VERSION</span>
 <span class='rbrace'>}</span></pre></dd>
       
         <dt id="VERIFY-constant" class="">VERIFY =
@@ -178,6 +184,52 @@
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#accept-class_method" title="accept (class method)">.<strong>accept</strong>(**kwargs) {|client| ... } &#x21d2; nil </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new SSL socket listening on a given host and port, accepts only one client and then stops listening.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#banner-class_method" title="banner (class method)">.<strong>banner</strong>(host, port, **kwargs) {|banner| ... } &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Reads the banner from the service running on the given host and port.</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -228,7 +280,53 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#context-class_method" title="context (class method)">.<strong>context</strong>(version: nil, verify: :none, key: nil, key_file: nil, cert: nil, cert_file: nil, ca_bundle: nil)  &#x21d2; OpenSSL::SSL::SSLContext </a>
+      <a href="#connect-class_method" title="connect (class method)">.<strong>connect</strong>(host, port, hostname: host, bind_host: nil, bind_port: nil, **kwargs) {|ssl_socket| ... } &#x21d2; OpenSSL::SSL::SSLSocket<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Establishes a SSL connection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#connect_and_send-class_method" title="connect_and_send (class method)">.<strong>connect_and_send</strong>(data, host, port, **kwargs) {|ssl_socket| ... } &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new SSL connection and sends the given data.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#context-class_method" title="context (class method)">.<strong>context</strong>(version: nil, min_version: nil, max_version: nil, verify: :none, key: nil, key_file: nil, cert: nil, cert_file: nil, ca_bundle: nil)  &#x21d2; OpenSSL::SSL::SSLContext </a>
     
 
     
@@ -243,6 +341,29 @@
 
   
     <span class="summary_desc"><div class='inline'><p>Creates a new SSL Context.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_cert-class_method" title="get_cert (class method)">.<strong>get_cert</strong>(host, port, **kwargs)  &#x21d2; Crypto::Cert </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Connects to the host and port and returns the server&#39;s certificate.</p>
 </div></span>
   
 </li>
@@ -294,6 +415,167 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#open%3F-class_method" title="open? (class method)">.<strong>open?</strong>(host, port, timeout: 5, **kwargs)  &#x21d2; Boolean<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Tests whether a remote SSLed TCP port is open.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#send-class_method" title="send (class method)">.<strong>send</strong>(data, host, port, **kwargs)  &#x21d2; true </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Connects to a specified host and port, sends the given data and then closes the connection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#server-class_method" title="server (class method)">.<strong>server</strong>(port: 0, host: nil, backlog: 5, key: Network::SSL.key, cert: Network::SSL.cert, **kwargs) {|server| ... } &#x21d2; OpenSSL::SSL::SSLServer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new SSL server listening on a given host and port.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#server_loop-class_method" title="server_loop (class method)">.<strong>server_loop</strong>(**kwargs) {|client| ... } &#x21d2; nil </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new SSL socket listening on a given host and port, accepting clients in a loop.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#server_session-class_method" title="server_session (class method)">.<strong>server_session</strong>(**kwargs) {|server| ... } &#x21d2; OpenSSL::SSL::SSLServer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Creates a new temporary SSL server listening on a given host and port.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#server_socket-class_method" title="server_socket (class method)">.<strong>server_socket</strong>(socket, key: Network::SSL.key, cert: Network::SSL.cert, **kwargs)  &#x21d2; OpenSSL::SSL::SSLSocket </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Accepts an SSL session from an existing TCP socket.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#socket-class_method" title="socket (class method)">.<strong>socket</strong>(socket, **kwargs)  &#x21d2; OpenSSL::SSL::SSLSocket </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Initiates an SSL session with an existing TCP socket.</p>
+</div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -304,7 +586,696 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="cert-class_method">
+  <h3 class="signature first" id="accept-class_method">
+  
+    .<strong>accept</strong>(**kwargs) {|client| ... } &#x21d2; <tt>nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new SSL socket listening on a given host and port,
+accepts only one client and then stops listening.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_ssl_accept'>ssl_accept</span><span class='lparen'>(</span><span class='int'>1337</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='op'>|</span>
+  <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>lol</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>end</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Using a self-signed certificate:e</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='comment'># $ openssl genrsa -out ssl.key 1024
+</span><span class='comment'># $ openssl req -new -key ssl.key -x509 -days 3653 -out ssl.crt
+</span><span class='comment'># $ cat ssl.key ssl.crt &gt; ssl.pem
+</span><span class='comment'># $ chmod 600 ssl.key ssl.pem
+</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::SSL (module)">SSL</a></span></span><span class='period'>.</span><span class='id identifier rubyid_accept'>accept</span><span class='lparen'>(</span><span class='label'>port:</span> <span class='int'>1337</span><span class='comma'>,</span> <span class='label'>cert:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ssl.crt</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>key:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ssl.key</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='op'>|</span>
+  <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>lol</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>end</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <span class='object_link'><a href="#server-class_method" title="Ronin::Support::Network::SSL.server (method)">server</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:port</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>0</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The local port to listen on.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:host</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The host to bind to.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:backlog</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>5</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The maximum backlog of pending connections.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">Crypto::Key::RSA</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>Network::SSL.key</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The RSA key to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>, <tt>OpenSSL::X509::Certificate</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>Network::SSL.cert</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The X509 certificate to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:min_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The minimum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The maximum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:verify</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether to verify the SSL certificate.
+May be one of the following:</p>
+
+<ul>
+<li><code>:none</code></li>
+<li><code>:peer</code></li>
+<li><code>:fail_if_no_peer_cert</code></li>
+<li><code>:client_once</code></li>
+</ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">Crypto::Key::RSA</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The RSA key to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.key</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>, <tt>OpenSSL::X509::Certificate</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The X509 certificate to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.crt</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ca_bundle</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Path to the CA certificate file or directory.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>client</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed the newly connected client.
+After the block has finished, both the client and the server will
+be closed.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>client</span>
+      
+      
+        <span class='type'>(<tt>OpenSSL::SSL::SSLSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The newly connected client.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+744
+745
+746
+747
+748
+749
+750
+751</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 744</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_accept'>accept</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_server_session'>server_session</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+    <span class='id identifier rubyid_ssl_client'>ssl_client</span> <span class='op'>=</span> <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_accept'>accept</span>
+
+    <span class='kw'>yield</span> <span class='id identifier rubyid_ssl_client'>ssl_client</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='id identifier rubyid_ssl_client'>ssl_client</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="banner-class_method">
+  
+    .<strong>banner</strong>(host, port, **kwargs) {|banner| ... } &#x21d2; <tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Reads the banner from the service running on the given host and
+port.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::SSL (module)">SSL</a></span></span><span class='period'>.</span><span class='id identifier rubyid_banner'>banner</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>smtp.gmail.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='int'>465</span><span class='rparen'>)</span>
+<span class='comment'># =&gt; &quot;220 mx.google.com ESMTP c20sm3096959rvf.1&quot;</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The host to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>port</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The port to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <span class='object_link'><a href="#connect-class_method" title="Ronin::Support::Network::SSL.connect (method)">connect</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:bind_host</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The local host to bind to.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:bind_port</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The local port to bind to.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:min_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The minimum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The maximum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:verify</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether to verify the SSL certificate.
+May be one of the following:</p>
+
+<ul>
+<li><code>:none</code></li>
+<li><code>:peer</code></li>
+<li><code>:fail_if_no_peer_cert</code></li>
+<li><code>:client_once</code></li>
+</ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">Crypto::Key::RSA</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The RSA key to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.key</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>, <tt>OpenSSL::X509::Certificate</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The X509 certificate to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.crt</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ca_bundle</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Path to the CA certificate file or directory.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="#banner-class_method" title="Ronin::Support::Network::SSL.banner (method)">banner</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed the grabbed banner.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>banner</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The grabbed banner.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The grabbed banner.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 490</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_banner'>banner</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_banner'>banner</span> <span class='op'>=</span> <span class='kw'>nil</span>
+
+  <span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ssl_socket'>ssl_socket</span><span class='op'>|</span>
+    <span class='id identifier rubyid_banner'>banner</span> <span class='op'>=</span> <span class='id identifier rubyid_ssl_socket'>ssl_socket</span><span class='period'>.</span><span class='id identifier rubyid_readline'>readline</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>yield</span> <span class='id identifier rubyid_banner'>banner</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_banner'>banner</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="cert-class_method">
   
     .<strong>cert</strong>  &#x21d2; <tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt> 
   
@@ -345,12 +1316,12 @@
       <pre class="lines">
 
 
-78
-79
-80</pre>
+85
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_cert'>cert</span>
   <span class='ivar'>@cert</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="SSL/LocalCert.html" title="Ronin::Support::Network::SSL::LocalCert (module)">LocalCert</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'><span class='object_link'><a href="SSL/LocalCert.html#fetch-class_method" title="Ronin::Support::Network::SSL::LocalCert.fetch (method)">fetch</a></span></span>
@@ -421,12 +1392,12 @@
       <pre class="lines">
 
 
-91
-92
-93</pre>
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_cert='>cert=</span><span class='lparen'>(</span><span class='id identifier rubyid_new_cert'>new_cert</span><span class='rparen'>)</span>
   <span class='ivar'>@cert</span> <span class='op'>=</span> <span class='id identifier rubyid_new_cert'>new_cert</span>
@@ -437,9 +1408,734 @@
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="connect-class_method">
+  
+    .<strong>connect</strong>(host, port, hostname: host, bind_host: nil, bind_port: nil, **kwargs) {|ssl_socket| ... } &#x21d2; <tt>OpenSSL::SSL::SSLSocket</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Establishes a SSL connection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_socket'>socket</span> <span class='op'>=</span> <span class='id identifier rubyid_ssl_connect'>ssl_connect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>twitter.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='int'>443</span><span class='rparen'>)</span></code></pre>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_ssl_connect'>ssl_connect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>twitter.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='int'>443</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_sock'>sock</span><span class='op'>|</span>
+  <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GET / HTTP/1.1\n\r\n\r</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_each_line'>each_line</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='op'>|</span> <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_line'>line</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></code></pre>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_socket'>socket</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::SSL (module)">SSL</a></span></span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>twitter.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='int'>443</span><span class='rparen'>)</span></code></pre>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::SSL (module)">SSL</a></span></span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>twitter.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='int'>443</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_sock'>sock</span><span class='op'>|</span>
+  <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GET / HTTP/1.1\n\r\n\r</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_each_line'>each_line</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='op'>|</span> <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_line'>line</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The host to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>port</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The port to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>hostname</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>host</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Sets the hostname used for SNI.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>bind_host</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The local host to bind to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>bind_port</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The local port to bind to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <span class='object_link'><a href="#socket-class_method" title="Ronin::Support::Network::SSL.socket (method)">socket</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:min_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The minimum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The maximum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:verify</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether to verify the SSL certificate.
+May be one of the following:</p>
+
+<ul>
+<li><code>:none</code></li>
+<li><code>:peer</code></li>
+<li><code>:fail_if_no_peer_cert</code></li>
+<li><code>:client_once</code></li>
+</ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">Crypto::Key::RSA</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The RSA key to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.key</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>, <tt>OpenSSL::X509::Certificate</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The X509 certificate to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.crt</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ca_bundle</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Path to the CA certificate file or directory.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ssl_socket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed the new SSL socket. Once the block
+returns the SSL socket will be closed.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>ssl_socket</span>
+      
+      
+        <span class='type'>(<tt>OpenSSL::SSL::SSLSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new SSL Socket.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>OpenSSL::SSL::SSLSocket</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new SSL Socket. If a block is given, then <code>nil</code> will be
+returned.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://rubydoc.info/stdlib/openssl/OpenSSL/SSL/SSLSocket" target="_parent" title="http://rubydoc.info/stdlib/openssl/OpenSSL/SSL/SSLSocket">http://rubydoc.info/stdlib/openssl/OpenSSL/SSL/SSLSocket</a></li>
+    
+  </ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 375</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='label'>hostname:</span> <span class='id identifier rubyid_host'>host</span><span class='comma'>,</span>
+                            <span class='label'>bind_host:</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                            <span class='label'>bind_port:</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                            <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_socket'>socket</span>     <span class='op'>=</span> <span class='const'><span class='object_link'><a href="TCP.html" title="Ronin::Support::Network::TCP (module)">TCP</a></span></span><span class='period'>.</span><span class='id identifier rubyid_connect'><span class='object_link'><a href="TCP.html#connect-class_method" title="Ronin::Support::Network::TCP.connect (method)">connect</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='label'>bind_host:</span> <span class='id identifier rubyid_bind_host'>bind_host</span><span class='comma'>,</span>
+                                     <span class='label'>bind_port:</span> <span class='id identifier rubyid_bind_port'>bind_port</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ssl_socket'>ssl_socket</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_socket'>socket</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_ssl_socket'>ssl_socket</span><span class='period'>.</span><span class='id identifier rubyid_hostname'>hostname</span> <span class='op'>=</span> <span class='id identifier rubyid_hostname'>hostname</span>
+  <span class='id identifier rubyid_ssl_socket'>ssl_socket</span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid_ssl_socket'>ssl_socket</span>
+    <span class='id identifier rubyid_ssl_socket'>ssl_socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+  <span class='kw'>else</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_ssl_socket'>ssl_socket</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="connect_and_send-class_method">
+  
+    .<strong>connect_and_send</strong>(data, host, port, **kwargs) {|ssl_socket| ... } &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new SSL connection and sends the given data.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The data to send through the connection.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The host to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>port</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The port to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <span class='object_link'><a href="#connect-class_method" title="Ronin::Support::Network::SSL.connect (method)">connect</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:bind_host</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The local host to bind to.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:bind_port</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The local port to bind to.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:min_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The minimum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The maximum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:verify</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether to verify the SSL certificate.
+May be one of the following:</p>
+
+<ul>
+<li><code>:none</code></li>
+<li><code>:peer</code></li>
+<li><code>:fail_if_no_peer_cert</code></li>
+<li><code>:client_once</code></li>
+</ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">Crypto::Key::RSA</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The RSA key to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.key</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>, <tt>OpenSSL::X509::Certificate</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The X509 certificate to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.crt</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ca_bundle</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Path to the CA certificate file or directory.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ssl_socket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed the newly created SSL Socket.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>ssl_socket</span>
+      
+      
+        <span class='type'>(<tt>OpenSSL::SSL::SSLSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The newly created SSL Socket.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+421
+422
+423
+424
+425
+426
+427</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 421</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_connect_and_send'>connect_and_send</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_socket'>socket</span> <span class='op'>=</span> <span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+
+  <span class='kw'>yield</span> <span class='id identifier rubyid_socket'>socket</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_socket'>socket</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="context-class_method">
   
-    .<strong>context</strong>(version: nil, verify: :none, key: nil, key_file: nil, cert: nil, cert_file: nil, ca_bundle: nil)  &#x21d2; <tt>OpenSSL::SSL::SSLContext</tt> 
+    .<strong>context</strong>(version: nil, min_version: nil, max_version: nil, verify: :none, key: nil, key_file: nil, cert: nil, cert_file: nil, ca_bundle: nil)  &#x21d2; <tt>OpenSSL::SSL::SSLContext</tt> 
   
 
   
@@ -461,7 +2157,7 @@
         <span class='name'>version</span>
       
       
-        <span class='type'>(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+        <span class='type'>(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>nil</tt>)</em>
@@ -469,6 +2165,40 @@
       
         &mdash;
         <div class='inline'><p>The SSL version to use.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>min_version</span>
+      
+      
+        <span class='type'>(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The minimum SSL version to use.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>max_version</span>
+      
+      
+        <span class='type'>(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The maximum SSL version to use.</p>
 </div>
       
     </li>
@@ -642,19 +2372,6 @@ or <code>key:</code> keyword argument.</p>
       <pre class="lines">
 
 
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
 149
 150
 151
@@ -678,22 +2395,59 @@ or <code>key:</code> keyword argument.</p>
 169
 170
 171
-172</pre>
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 136</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 149</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_context'>context</span><span class='lparen'>(</span><span class='label'>version:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
-                 <span class='label'>verify:</span>    <span class='symbol'>:none</span><span class='comma'>,</span>
-                 <span class='label'>key:</span>       <span class='kw'>nil</span><span class='comma'>,</span>
-                 <span class='label'>key_file:</span>  <span class='kw'>nil</span><span class='comma'>,</span>
-                 <span class='label'>cert:</span>      <span class='kw'>nil</span><span class='comma'>,</span>
-                 <span class='label'>cert_file:</span> <span class='kw'>nil</span><span class='comma'>,</span>
-                 <span class='label'>ca_bundle:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_context'>context</span><span class='lparen'>(</span><span class='label'>version:</span>     <span class='kw'>nil</span><span class='comma'>,</span>
+                 <span class='label'>min_version:</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                 <span class='label'>max_version:</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                 <span class='label'>verify:</span>      <span class='symbol'>:none</span><span class='comma'>,</span>
+                 <span class='label'>key:</span>         <span class='kw'>nil</span><span class='comma'>,</span>
+                 <span class='label'>key_file:</span>    <span class='kw'>nil</span><span class='comma'>,</span>
+                 <span class='label'>cert:</span>        <span class='kw'>nil</span><span class='comma'>,</span>
+                 <span class='label'>cert_file:</span>   <span class='kw'>nil</span><span class='comma'>,</span>
+                 <span class='label'>ca_bundle:</span>   <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_context'>context</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>SSLContext</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_version'>version</span>
-    <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_ssl_version'>ssl_version</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#VERSIONS-constant" title="Ronin::Support::Network::SSL::VERSIONS (constant)">VERSIONS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_version'>version</span><span class='comma'>,</span><span class='id identifier rubyid_version'>version</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_version'>version</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#VERSIONS-constant" title="Ronin::Support::Network::SSL::VERSIONS (constant)">VERSIONS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_version'>version</span><span class='comma'>,</span><span class='id identifier rubyid_version'>version</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_min_version'>min_version</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_max_version'>max_version</span> <span class='op'>=</span> <span class='id identifier rubyid_version'>version</span>
+  <span class='kw'>else</span> <span class='id identifier rubyid_min_version'>min_version</span> <span class='op'>||</span> <span class='id identifier rubyid_max_version'>max_version</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_min_version'>min_version</span>
+      <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_min_version'>min_version</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#VERSIONS-constant" title="Ronin::Support::Network::SSL::VERSIONS (constant)">VERSIONS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_min_version'>min_version</span><span class='comma'>,</span><span class='id identifier rubyid_min_version'>min_version</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_max_version'>max_version</span>
+      <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_max_version'>max_version</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#VERSIONS-constant" title="Ronin::Support::Network::SSL::VERSIONS (constant)">VERSIONS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_max_version'>max_version</span><span class='comma'>,</span><span class='id identifier rubyid_max_version'>max_version</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_verify_mode'>verify_mode</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#VERIFY-constant" title="Ronin::Support::Network::SSL::VERIFY (constant)">VERIFY</a></span></span><span class='lbracket'>[</span><span class='id identifier rubyid_verify'>verify</span><span class='rbracket'>]</span>
@@ -719,6 +2473,288 @@ or <code>key:</code> keyword argument.</p>
   <span class='kw'>end</span>
 
   <span class='kw'>return</span> <span class='id identifier rubyid_context'>context</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_cert-class_method">
+  
+    .<strong>get_cert</strong>(host, port, **kwargs)  &#x21d2; <tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Connects to the host and port and returns the server&#39;s certificate.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The host to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>port</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The port to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <span class='object_link'><a href="#connect-class_method" title="Ronin::Support::Network::SSL.connect (method)">connect</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:bind_host</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The local host to bind to.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:bind_port</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The local port to bind to.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:min_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The minimum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The maximum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:verify</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether to verify the SSL certificate.
+May be one of the following:</p>
+
+<ul>
+<li><code>:none</code></li>
+<li><code>:peer</code></li>
+<li><code>:fail_if_no_peer_cert</code></li>
+<li><code>:client_once</code></li>
+</ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">Crypto::Key::RSA</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The RSA key to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.key</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>, <tt>OpenSSL::X509::Certificate</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The X509 certificate to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.crt</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ca_bundle</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Path to the CA certificate file or directory.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The server&#39;s certificate.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+450
+451
+452
+453
+454
+455
+456</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 450</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_get_cert'>get_cert</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_socket'>socket</span> <span class='op'>=</span> <span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_cert'>cert</span>   <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Crypto.html" title="Ronin::Support::Crypto (module)">Crypto</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Cert</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_peer_cert'>peer_cert</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_cert'>cert</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -767,12 +2803,12 @@ or <code>key:</code> keyword argument.</p>
       <pre class="lines">
 
 
-55
-56
-57</pre>
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key'>key</span>
   <span class='ivar'>@key</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="SSL/LocalKey.html" title="Ronin::Support::Network::SSL::LocalKey (module)">LocalKey</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'><span class='object_link'><a href="SSL/LocalKey.html#fetch-class_method" title="Ronin::Support::Network::SSL::LocalKey.fetch (method)">fetch</a></span></span>
@@ -843,15 +2879,2213 @@ or <code>key:</code> keyword argument.</p>
       <pre class="lines">
 
 
-68
-69
-70</pre>
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_key='>key=</span><span class='lparen'>(</span><span class='id identifier rubyid_new_key'>new_key</span><span class='rparen'>)</span>
   <span class='ivar'>@key</span> <span class='op'>=</span> <span class='id identifier rubyid_new_key'>new_key</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="open?-class_method">
+  
+    .<strong>open?</strong>(host, port, timeout: 5, **kwargs)  &#x21d2; <tt>Boolean</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Tests whether a remote SSLed TCP port is open.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_ssl_open?'>ssl_open?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>www.bankofamerica.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='int'>443</span><span class='rparen'>)</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Using a timeout:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_ssl_open?'>ssl_open?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='int'>80</span><span class='comma'>,</span> <span class='label'>timeout:</span> <span class='int'>5</span><span class='rparen'>)</span>
+<span class='comment'># =&gt; nil</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The host to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>port</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The port to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>timeout</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>5</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>(5)
+The maximum time to attempt connecting.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <span class='object_link'><a href="#connect-class_method" title="Ronin::Support::Network::SSL.connect (method)">connect</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:bind_host</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The local host to bind to.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:bind_port</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The local port to bind to.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:min_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The minimum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The maximum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:verify</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether to verify the SSL certificate.
+May be one of the following:</p>
+
+<ul>
+<li><code>:none</code></li>
+<li><code>:peer</code></li>
+<li><code>:fail_if_no_peer_cert</code></li>
+<li><code>:client_once</code></li>
+</ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">Crypto::Key::RSA</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The RSA key to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.key</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>, <tt>OpenSSL::X509::Certificate</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The X509 certificate to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.crt</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ca_bundle</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Path to the CA certificate file or directory.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether the remote SSLed TCP port is open.
+If the connection was not accepted, <code>nil</code> will be returned.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 303</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_open?'>open?</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='label'>timeout:</span> <span class='int'>5</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='const'>Timeout</span><span class='period'>.</span><span class='id identifier rubyid_timeout'>timeout</span><span class='lparen'>(</span><span class='id identifier rubyid_timeout'>timeout</span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='kw'>true</span>
+<span class='kw'>rescue</span> <span class='const'>Timeout</span><span class='op'>::</span><span class='const'>Error</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span>
+<span class='kw'>rescue</span> <span class='const'>SocketError</span><span class='comma'>,</span> <span class='const'>SystemCallError</span>
+  <span class='kw'>return</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="send-class_method">
+  
+    .<strong>send</strong>(data, host, port, **kwargs)  &#x21d2; <tt>true</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Connects to a specified host and port, sends the given data and then
+closes the connection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_buffer'>buffer</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GET /</span><span class='embexpr_beg'>#{</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A</span><span class='tstring_end'>&#39;</span></span> <span class='op'>*</span> <span class='int'>4096</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n\r</span><span class='tstring_end'>&quot;</span></span>
+<span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::SSL (module)">SSL</a></span></span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>victim.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='int'>443</span><span class='rparen'>)</span>
+<span class='comment'># =&gt; true</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The data to send through the connection.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The host to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>port</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The port to connect to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <span class='object_link'><a href="#connect-class_method" title="Ronin::Support::Network::SSL.connect (method)">connect</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:bind_host</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The local host to bind to.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:bind_port</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The local port to bind to.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:min_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The minimum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The maximum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:verify</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether to verify the SSL certificate.
+May be one of the following:</p>
+
+<ul>
+<li><code>:none</code></li>
+<li><code>:peer</code></li>
+<li><code>:fail_if_no_peer_cert</code></li>
+<li><code>:client_once</code></li>
+</ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">Crypto::Key::RSA</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The RSA key to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.key</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>, <tt>OpenSSL::X509::Certificate</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The X509 certificate to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.crt</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ca_bundle</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Path to the CA certificate file or directory.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>true</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The data was successfully sent.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+531
+532
+533
+534
+535
+536
+537</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 531</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='comma'>,</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_socket'>socket</span><span class='op'>|</span>
+    <span class='id identifier rubyid_socket'>socket</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="server-class_method">
+  
+    .<strong>server</strong>(port: 0, host: nil, backlog: 5, key: Network::SSL.key, cert: Network::SSL.cert, **kwargs) {|server| ... } &#x21d2; <tt>OpenSSL::SSL::SSLServer</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new SSL server listening on a given host and port.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>port</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>0</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The local port to listen on.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The host to bind to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>backlog</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>5</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>(5)
+The maximum backlog of pending connections.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">Crypto::Key::RSA</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>Network::SSL.key</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The RSA key to use for the SSL context.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>cert</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>, <tt>OpenSSL::X509::Certificate</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>Network::SSL.cert</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The X509 certificate to use for the SSL context.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>a customizable set of options</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:min_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The minimum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The maximum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:verify</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether to verify the SSL certificate.
+May be one of the following:</p>
+
+<ul>
+<li><code>:none</code></li>
+<li><code>:peer</code></li>
+<li><code>:fail_if_no_peer_cert</code></li>
+<li><code>:client_once</code></li>
+</ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">Crypto::Key::RSA</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The RSA key to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.key</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>, <tt>OpenSSL::X509::Certificate</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The X509 certificate to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.crt</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ca_bundle</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Path to the CA certificate file or directory.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="#server-class_method" title="Ronin::Support::Network::SSL.server (method)">server</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed the newly created SSL server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>server</span>
+      
+      
+        <span class='type'>(<tt>OpenSSL::SSL::SSLServer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The newly created SSL server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>OpenSSL::SSL::SSLServer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The newly created SSL server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 602</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_server'>server</span><span class='lparen'>(</span><span class='label'>port:</span>    <span class='int'>0</span><span class='comma'>,</span>
+                <span class='label'>host:</span>    <span class='kw'>nil</span><span class='comma'>,</span>
+                <span class='label'>backlog:</span> <span class='int'>5</span><span class='comma'>,</span>
+                <span class='label'>key:</span>     <span class='const'><span class='object_link'><a href="../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::SSL (module)">SSL</a></span></span><span class='period'>.</span><span class='id identifier rubyid_key'><span class='object_link'><a href="#key-class_method" title="Ronin::Support::Network::SSL.key (method)">key</a></span></span><span class='comma'>,</span>
+                <span class='label'>cert:</span>    <span class='const'><span class='object_link'><a href="../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::SSL (module)">SSL</a></span></span><span class='period'>.</span><span class='id identifier rubyid_cert'><span class='object_link'><a href="#cert-class_method" title="Ronin::Support::Network::SSL.cert (method)">cert</a></span></span><span class='comma'>,</span>
+                <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_context'>context</span>    <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_context'>context</span><span class='lparen'>(</span><span class='label'>key:</span> <span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='label'>cert:</span> <span class='id identifier rubyid_cert'>cert</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_tcp_server'>tcp_server</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="TCP.html" title="Ronin::Support::Network::TCP (module)">TCP</a></span></span><span class='period'>.</span><span class='id identifier rubyid_server'><span class='object_link'><a href="TCP.html#server-class_method" title="Ronin::Support::Network::TCP.server (method)">server</a></span></span><span class='lparen'>(</span><span class='label'>port:</span> <span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='label'>host:</span> <span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='label'>backlog:</span> <span class='id identifier rubyid_backlog'>backlog</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ssl_server'>ssl_server</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>SSLServer</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_tcp_server'>tcp_server</span><span class='comma'>,</span><span class='id identifier rubyid_context'>context</span><span class='rparen'>)</span>
+
+  <span class='kw'>yield</span> <span class='id identifier rubyid_ssl_server'>ssl_server</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_ssl_server'>ssl_server</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="server_loop-class_method">
+  
+    .<strong>server_loop</strong>(**kwargs) {|client| ... } &#x21d2; <tt>nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new SSL socket listening on a given host and port,
+accepting clients in a loop.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='comment'># $ openssl genrsa -out ssl.key 1024
+</span><span class='comment'># $ openssl req -new -key ssl.key -x509 -days 3653 -out ssl.crt
+</span><span class='comment'># $ cat ssl.key ssl.crt &gt; ssl.pem
+</span><span class='comment'># $ chmod 600 ssl.key ssl.pem
+</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::SSL (module)">SSL</a></span></span><span class='period'>.</span><span class='id identifier rubyid_server_loop'>server_loop</span><span class='lparen'>(</span><span class='label'>port:</span> <span class='int'>1337</span><span class='comma'>,</span> <span class='label'>cert:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ssl.crt</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>key:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ssl.key</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_sock'>sock</span><span class='op'>|</span>
+  <span class='id identifier rubyid_sock'>sock</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>lol</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>end</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <span class='object_link'><a href="#server-class_method" title="Ronin::Support::Network::SSL.server (method)">server</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:port</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>0</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The local port to listen on.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:host</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The host to bind to.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:backlog</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>5</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The maximum backlog of pending connections.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">Crypto::Key::RSA</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>Network::SSL.key</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The RSA key to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>, <tt>OpenSSL::X509::Certificate</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>Network::SSL.cert</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The X509 certificate to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:min_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The minimum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The maximum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:verify</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether to verify the SSL certificate.
+May be one of the following:</p>
+
+<ul>
+<li><code>:none</code></li>
+<li><code>:peer</code></li>
+<li><code>:fail_if_no_peer_cert</code></li>
+<li><code>:client_once</code></li>
+</ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">Crypto::Key::RSA</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The RSA key to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.key</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>, <tt>OpenSSL::X509::Certificate</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The X509 certificate to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.crt</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ca_bundle</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Path to the CA certificate file or directory.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>client</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed the newly connected client.
+After the block has finished, the client will be closed.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>client</span>
+      
+      
+        <span class='type'>(<tt>OpenSSL::SSL::SSLSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A newly connected client.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 696</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_server_loop'>server_loop</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_server'>server</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_ssl_server'>ssl_server</span><span class='op'>|</span>
+    <span class='id identifier rubyid_loop'>loop</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_ssl_client'>ssl_client</span> <span class='op'>=</span> <span class='id identifier rubyid_ssl_server'>ssl_server</span><span class='period'>.</span><span class='id identifier rubyid_accept'>accept</span>
+
+      <span class='kw'>yield</span> <span class='id identifier rubyid_ssl_client'>ssl_client</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+      <span class='id identifier rubyid_ssl_client'>ssl_client</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="server_session-class_method">
+  
+    .<strong>server_session</strong>(**kwargs) {|server| ... } &#x21d2; <tt>OpenSSL::SSL::SSLServer</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Creates a new temporary SSL server listening on a given host and
+port.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <span class='object_link'><a href="#server-class_method" title="Ronin::Support::Network::SSL.server (method)">server</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:port</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>0</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The local port to listen on.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:host</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The host to bind to.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:backlog</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>5</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The maximum backlog of pending connections.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">Crypto::Key::RSA</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>Network::SSL.key</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The RSA key to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>, <tt>OpenSSL::X509::Certificate</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>Network::SSL.cert</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The X509 certificate to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:min_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The minimum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The maximum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:verify</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether to verify the SSL certificate.
+May be one of the following:</p>
+
+<ul>
+<li><code>:none</code></li>
+<li><code>:peer</code></li>
+<li><code>:fail_if_no_peer_cert</code></li>
+<li><code>:client_once</code></li>
+</ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">Crypto::Key::RSA</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The RSA key to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.key</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>, <tt>OpenSSL::X509::Certificate</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The X509 certificate to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.crt</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ca_bundle</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Path to the CA certificate file or directory.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="#server-class_method" title="Ronin::Support::Network::SSL.server (method)">server</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be passed the newly created SSL server.
+Once the block has finished, the server will be closed.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>server</span>
+      
+      
+        <span class='type'>(<tt>OpenSSL::SSL::SSLServer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The newly created SSL server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>OpenSSL::SSL::SSLServer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The newly created SSL server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+659
+660
+661
+662
+663</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 659</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_server_session'>server_session</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ssl_server'>ssl_server</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_server'>server</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ssl_server'>ssl_server</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_ssl_server'>ssl_server</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="server_socket-class_method">
+  
+    .<strong>server_socket</strong>(socket, key: Network::SSL.key, cert: Network::SSL.cert, **kwargs)  &#x21d2; <tt>OpenSSL::SSL::SSLSocket</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Accepts an SSL session from an existing TCP socket.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>socket</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The existing TCP socket.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">Crypto::Key::RSA</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>Network::SSL.key</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The RSA key to use for the SSL context.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>cert</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>, <tt>OpenSSL::X509::Certificate</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>Network::SSL.cert</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The X509 certificate to use for the SSL context.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <span class='object_link'><a href="#socket-class_method" title="Ronin::Support::Network::SSL.socket (method)">socket</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:min_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The minimum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The maximum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:verify</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether to verify the SSL certificate.
+May be one of the following:</p>
+
+<ul>
+<li><code>:none</code></li>
+<li><code>:peer</code></li>
+<li><code>:fail_if_no_peer_cert</code></li>
+<li><code>:client_once</code></li>
+</ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">Crypto::Key::RSA</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The RSA key to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.key</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>, <tt>OpenSSL::X509::Certificate</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The X509 certificate to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.crt</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ca_bundle</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Path to the CA certificate file or directory.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>OpenSSL::SSL::SSLSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new SSL Socket.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+563
+564
+565
+566
+567</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 563</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_server_socket'>server_socket</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span> <span class='label'>key:</span>  <span class='const'><span class='object_link'><a href="../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::SSL (module)">SSL</a></span></span><span class='period'>.</span><span class='id identifier rubyid_key'><span class='object_link'><a href="#key-class_method" title="Ronin::Support::Network::SSL.key (method)">key</a></span></span><span class='comma'>,</span>
+                               <span class='label'>cert:</span> <span class='const'><span class='object_link'><a href="../Network.html" title="Ronin::Support::Network (module)">Network</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Ronin::Support::Network::SSL (module)">SSL</a></span></span><span class='period'>.</span><span class='id identifier rubyid_cert'><span class='object_link'><a href="#cert-class_method" title="Ronin::Support::Network::SSL.cert (method)">cert</a></span></span><span class='comma'>,</span>
+                               <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_socket'>socket</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span> <span class='label'>cert:</span> <span class='id identifier rubyid_cert'>cert</span><span class='comma'>,</span> <span class='label'>key:</span> <span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="socket-class_method">
+  
+    .<strong>socket</strong>(socket, **kwargs)  &#x21d2; <tt>OpenSSL::SSL::SSLSocket</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Initiates an SSL session with an existing TCP socket.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>socket</span>
+      
+      
+        <span class='type'>(<tt>TCPSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The existing TCP socket.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <span class='object_link'><a href="#context-class_method" title="Ronin::Support::Network::SSL.context (method)">context</a></span>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:min_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The minimum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_version</span>
+          <span class="type">(<tt>1</tt>, <tt>1.1</tt>, <tt>1.2</tt>, <tt>1.3</tt>, <tt>Symbol</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The maximum SSL version to use.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:verify</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Specifies whether to verify the SSL certificate.
+May be one of the following:</p>
+
+<ul>
+<li><code>:none</code></li>
+<li><code>:peer</code></li>
+<li><code>:fail_if_no_peer_cert</code></li>
+<li><code>:client_once</code></li>
+</ul>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Key/RSA.html" title="Ronin::Support::Crypto::Key::RSA (class)">Crypto::Key::RSA</a></span></tt>, <tt>OpenSSL::PKey::RSA</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The RSA key to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:key_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.key</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert</span>
+          <span class="type">(<tt><span class='object_link'><a href="../Crypto/Cert.html" title="Ronin::Support::Crypto::Cert (class)">Crypto::Cert</a></span></tt>, <tt>OpenSSL::X509::Certificate</tt>, <tt>nil</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The X509 certificate to use for the SSL context.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:cert_file</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>The path to the SSL <code>.crt</code> file.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ca_bundle</span>
+          <span class="type">(<tt><span class='object_link'><a href="../../../String.html" title="String (class)">String</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Path to the CA certificate file or directory.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>OpenSSL::SSL::SSLSocket</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new SSL Socket.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+253
+254
+255
+256
+257
+258</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/network/ssl.rb', line 253</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_socket'>socket</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ssl_socket'>ssl_socket</span> <span class='op'>=</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>SSLSocket</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_socket'>socket</span><span class='comma'>,</span><span class='id identifier rubyid_context'>context</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_ssl_socket'>ssl_socket</span><span class='period'>.</span><span class='id identifier rubyid_sync_close'>sync_close</span> <span class='op'>=</span> <span class='kw'>true</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_ssl_socket'>ssl_socket</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -863,9 +5097,9 @@ or <code>key:</code> keyword argument.</p>
 </div>
 
       <div id="footer">
-  Generated on Sat Jul 13 20:13:56 2024 by
+  Generated on Mon Jul 22 11:13:08 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.36 (ruby-3.1.6).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>

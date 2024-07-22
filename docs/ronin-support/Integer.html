@@ -95,7 +95,7 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>lib/ronin/support/core_ext/integer.rb<span class="defines">,<br />
-  lib/ronin/support/binary/core_ext/integer.rb,<br /> lib/ronin/support/encoding/c/core_ext/integer.rb,<br /> lib/ronin/support/encoding/js/core_ext/integer.rb,<br /> lib/ronin/support/encoding/hex/core_ext/integer.rb,<br /> lib/ronin/support/encoding/uri/core_ext/integer.rb,<br /> lib/ronin/support/encoding/xml/core_ext/integer.rb,<br /> lib/ronin/support/encoding/html/core_ext/integer.rb,<br /> lib/ronin/support/encoding/http/core_ext/integer.rb,<br /> lib/ronin/support/encoding/shell/core_ext/integer.rb,<br /> lib/ronin/support/binary/bit_flip/core_ext/integer.rb,<br /> lib/ronin/support/encoding/powershell/core_ext/integer.rb</span>
+  lib/ronin/support/binary/core_ext/integer.rb,<br /> lib/ronin/support/encoding/c/core_ext/integer.rb,<br /> lib/ronin/support/encoding/js/core_ext/integer.rb,<br /> lib/ronin/support/encoding/hex/core_ext/integer.rb,<br /> lib/ronin/support/encoding/uri/core_ext/integer.rb,<br /> lib/ronin/support/encoding/xml/core_ext/integer.rb,<br /> lib/ronin/support/encoding/html/core_ext/integer.rb,<br /> lib/ronin/support/encoding/http/core_ext/integer.rb,<br /> lib/ronin/support/encoding/shell/core_ext/integer.rb,<br /> lib/ronin/support/binary/bit_flip/core_ext/integer.rb,<br /> lib/ronin/support/encoding/base36/core_ext/integer.rb,<br /> lib/ronin/support/encoding/base62/core_ext/integer.rb,<br /> lib/ronin/support/encoding/powershell/core_ext/integer.rb</span>
 </dd>
   </dl>
   
@@ -103,7 +103,7 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    <p>Copyright (c) 2006-2023 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
+    <p>Copyright (c) 2006-2024 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
 
 <p>ronin-support is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published
@@ -138,6 +138,52 @@ along with ronin-support.  If not, see <a href="https://www.gnu.org/licenses/">h
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#base36_encode-instance_method" title="#base36_encode (instance method)">#<strong>base36_encode</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>[Base36] encodes the Integer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#base62_encode-instance_method" title="#base62_encode (instance method)">#<strong>base62_encode</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>[Base62] encodes the Integer.</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -917,7 +963,169 @@ along with ronin-support.  If not, see <a href="https://www.gnu.org/licenses/">h
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="bit_flips-instance_method">
+  <h3 class="signature first" id="base36_encode-instance_method">
+  
+    #<strong>base36_encode</strong>  &#x21d2; <tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p><a href="https://en.wikipedia.org/wiki/Base36">Base36</a> encodes the Integer.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='int'>1000</span><span class='period'>.</span><span class='id identifier rubyid_base36_encode'>base36_encode</span>
+<span class='comment'># =&gt; &quot;rs&quot;</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Base36 encoded String.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/encoding/base36/core_ext/integer.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_base36_encode'>base36_encode</span>
+  <span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Support/Encoding.html" title="Ronin::Support::Encoding (class)">Encoding</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Support/Encoding/Base36.html" title="Ronin::Support::Encoding::Base36 (module)">Base36</a></span></span><span class='period'>.</span><span class='id identifier rubyid_encode_int'><span class='object_link'><a href="Ronin/Support/Encoding/Base36.html#encode_int-class_method" title="Ronin::Support::Encoding::Base36.encode_int (method)">encode_int</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="base62_encode-instance_method">
+  
+    #<strong>base62_encode</strong>  &#x21d2; <tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p><a href="https://en.wikipedia.org/wiki/Base62">Base62</a> encodes the Integer.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='int'>1337</span><span class='period'>.</span><span class='id identifier rubyid_base62_encode'>base62_encode</span>
+<span class='comment'># =&gt; &quot;LZ&quot;</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Base62 encoded String.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/encoding/base62/core_ext/integer.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_base62_encode'>base62_encode</span>
+  <span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Support.html" title="Ronin::Support (module)">Support</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Support/Encoding.html" title="Ronin::Support::Encoding (class)">Encoding</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Support/Encoding/Base62.html" title="Ronin::Support::Encoding::Base62 (module)">Base62</a></span></span><span class='period'>.</span><span class='id identifier rubyid_encode_int'><span class='object_link'><a href="Ronin/Support/Encoding/Base62.html#encode_int-class_method" title="Ronin::Support::Encoding::Base62.encode_int (method)">encode_int</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="bit_flips-instance_method">
   
     #<strong>bit_flips</strong>(bits)  &#x21d2; <tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="" title="Integer (class)">Integer</a></span>&gt;</tt> 
   
@@ -2615,7 +2823,7 @@ Defaults to uppercase hexadecimal.</p>
       
         <li>
           <span class="name">:os</span>
-          <span class="type">(<tt>:linux</tt>, <tt>:macos</tt>, <tt>:windows</tt>, <tt>:bsd</tt>, <tt>:freebsd</tt>, <tt>:openbsd</tt>, <tt>:netbsd</tt>)</span>
+          <span class="type">(<tt>:linux</tt>, <tt>:macos</tt>, <tt>:windows</tt>, <tt>:android</tt>, <tt>:apple_ios</tt>, <tt>:bsd</tt>, <tt>:freebsd</tt>, <tt>:openbsd</tt>, <tt>:netbsd</tt>)</span>
           <span class="default">
             
           </span>
@@ -2675,7 +2883,6 @@ Defaults to uppercase hexadecimal.</p>
       <pre class="lines">
 
 
-79
 80
 81
 82
@@ -2686,10 +2893,11 @@ Defaults to uppercase hexadecimal.</p>
 87
 88
 89
-90</pre>
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 80</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='id identifier rubyid_argument'>argument</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_argument'>argument</span>
@@ -3245,7 +3453,6 @@ Defaults to uppercase hexadecimal.</p>
       <pre class="lines">
 
 
-189
 190
 191
 192
@@ -3254,10 +3461,11 @@ Defaults to uppercase hexadecimal.</p>
 195
 196
 197
-198</pre>
+198
+199</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 189</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 190</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_int16'>to_int16</span>
   <span class='id identifier rubyid_int'>int</span> <span class='op'>=</span> <span class='kw'>self</span> <span class='op'>&amp;</span> <span class='int'>0xffff</span>
@@ -3335,7 +3543,6 @@ Defaults to uppercase hexadecimal.</p>
       <pre class="lines">
 
 
-212
 213
 214
 215
@@ -3344,10 +3551,11 @@ Defaults to uppercase hexadecimal.</p>
 218
 219
 220
-221</pre>
+221
+222</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 212</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 213</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_int32'>to_int32</span>
   <span class='id identifier rubyid_int'>int</span> <span class='op'>=</span> <span class='kw'>self</span> <span class='op'>&amp;</span> <span class='int'>0xffffffff</span>
@@ -3425,7 +3633,6 @@ Defaults to uppercase hexadecimal.</p>
       <pre class="lines">
 
 
-235
 236
 237
 238
@@ -3434,10 +3641,11 @@ Defaults to uppercase hexadecimal.</p>
 241
 242
 243
-244</pre>
+244
+245</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 235</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 236</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_int64'>to_int64</span>
   <span class='id identifier rubyid_int'>int</span> <span class='op'>=</span> <span class='kw'>self</span> <span class='op'>&amp;</span> <span class='int'>0xffffffffffffffff</span>
@@ -3515,7 +3723,6 @@ Defaults to uppercase hexadecimal.</p>
       <pre class="lines">
 
 
-166
 167
 168
 169
@@ -3524,10 +3731,11 @@ Defaults to uppercase hexadecimal.</p>
 172
 173
 174
-175</pre>
+175
+176</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 166</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 167</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_int8'>to_int8</span>
   <span class='id identifier rubyid_int'>int</span> <span class='op'>=</span> <span class='kw'>self</span> <span class='op'>&amp;</span> <span class='int'>0xff</span>
@@ -3605,12 +3813,12 @@ Defaults to uppercase hexadecimal.</p>
       <pre class="lines">
 
 
-118
 119
-120</pre>
+120
+121</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 118</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 119</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_uint16'>to_uint16</span>
   <span class='kw'>self</span> <span class='op'>&amp;</span> <span class='int'>0xffff</span>
@@ -3681,12 +3889,12 @@ Defaults to uppercase hexadecimal.</p>
       <pre class="lines">
 
 
-134
 135
-136</pre>
+136
+137</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 134</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 135</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_uint32'>to_uint32</span>
   <span class='kw'>self</span> <span class='op'>&amp;</span> <span class='int'>0xffffffff</span>
@@ -3757,12 +3965,12 @@ Defaults to uppercase hexadecimal.</p>
       <pre class="lines">
 
 
-150
 151
-152</pre>
+152
+153</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 150</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 151</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_uint64'>to_uint64</span>
   <span class='kw'>self</span> <span class='op'>&amp;</span> <span class='int'>0xffffffffffffffff</span>
@@ -3833,12 +4041,12 @@ Defaults to uppercase hexadecimal.</p>
       <pre class="lines">
 
 
-102
 103
-104</pre>
+104
+105</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 102</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/binary/core_ext/integer.rb', line 103</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_uint8'>to_uint8</span>
   <span class='kw'>self</span> <span class='op'>&amp;</span> <span class='int'>0xff</span>
@@ -4687,9 +4895,9 @@ characters. Defaults to lowercase hexadecimal.</p>
 </div>
 
       <div id="footer">
-  Generated on Sat Jul 13 20:14:21 2024 by
+  Generated on Mon Jul 22 11:13:27 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.36 (ruby-3.1.6).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>
