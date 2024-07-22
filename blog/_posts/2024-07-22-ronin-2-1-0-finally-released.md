@@ -54,7 +54,6 @@ a *ton* of [new libraries and commands](#what-is-new).
 * 22 [new versions](#changelogs)
 * 12 [new libraries](#new-libraries)
 * 33 [new commands](#new-commands)
-* 12 [new database models][ronin-db-activerecord-changelog]
 * 13 [new payloads][ronin-payloads-changelog]
 * New [networking and OSINT database models][ronin-db-activerecord-changelog]
   and [CLI commands][ronin-db-changelog].
