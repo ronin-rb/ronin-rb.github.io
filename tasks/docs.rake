@@ -5,7 +5,10 @@ namespace :docs do
       task(library) do
         library_doc_dir = "docs/#{library}"
 
-        sh 'git', 'rm', '-r', library_doc_dir
+        if File.directory?(library_doc_dir)
+          sh 'git', 'rm', '-r', library_doc_dir
+        end
+
         sh 'cp', '-r', "../#{library}/doc", "#{library_doc_dir}"
         sh 'git', 'add',    library_doc_dir
         sh 'git', 'commit', library_doc_dir
