@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Ronin::DNS::Proxy::Server
+  
+    &mdash; Ronin::DNS::Proxy Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::DNS::Proxy::Server";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../DNS.html" title="Ronin::DNS (module)">DNS</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Proxy.html" title="Ronin::DNS::Proxy (module)">Proxy</a></span></span>
+     &raquo; 
+    <span class="title">Server</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Ronin::DNS::Proxy::Server
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Async::DNS::Server</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Async::DNS::Server</li>
+          
+            <li class="next">Ronin::DNS::Proxy::Server</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/dns/proxy/server.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>A rule based DNS proxy server.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="RECORD_TYPES-constant" class="">RECORD_TYPES =
+          <div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This constant is part of a private API.</strong>
+  You should avoid using this constant if possible, as it may be removed or be changed in the future.
+</p>
+<p>Mapping of Resolv resource classes to Symbols.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Resource</span><span class='op'>::</span><span class='const'>IN</span><span class='op'>::</span><span class='const'>A</span>     <span class='op'>=&gt;</span> <span class='symbol'>:A</span><span class='comma'>,</span>
+  <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Resource</span><span class='op'>::</span><span class='const'>IN</span><span class='op'>::</span><span class='const'>AAAA</span>  <span class='op'>=&gt;</span> <span class='symbol'>:AAAA</span><span class='comma'>,</span>
+  <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Resource</span><span class='op'>::</span><span class='const'>IN</span><span class='op'>::</span><span class='const'>ANY</span>   <span class='op'>=&gt;</span> <span class='symbol'>:ANY</span><span class='comma'>,</span>
+  <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Resource</span><span class='op'>::</span><span class='const'>IN</span><span class='op'>::</span><span class='const'>CNAME</span> <span class='op'>=&gt;</span> <span class='symbol'>:CNAME</span><span class='comma'>,</span>
+  <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Resource</span><span class='op'>::</span><span class='const'>IN</span><span class='op'>::</span><span class='const'>HINFO</span> <span class='op'>=&gt;</span> <span class='symbol'>:HINFO</span><span class='comma'>,</span>
+  <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Resource</span><span class='op'>::</span><span class='const'>IN</span><span class='op'>::</span><span class='const'>LOC</span>   <span class='op'>=&gt;</span> <span class='symbol'>:LOC</span><span class='comma'>,</span>
+  <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Resource</span><span class='op'>::</span><span class='const'>IN</span><span class='op'>::</span><span class='const'>MINFO</span> <span class='op'>=&gt;</span> <span class='symbol'>:MINFO</span><span class='comma'>,</span>
+  <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Resource</span><span class='op'>::</span><span class='const'>IN</span><span class='op'>::</span><span class='const'>MX</span>    <span class='op'>=&gt;</span> <span class='symbol'>:MX</span><span class='comma'>,</span>
+  <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Resource</span><span class='op'>::</span><span class='const'>IN</span><span class='op'>::</span><span class='const'>NS</span>    <span class='op'>=&gt;</span> <span class='symbol'>:NS</span><span class='comma'>,</span>
+  <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Resource</span><span class='op'>::</span><span class='const'>IN</span><span class='op'>::</span><span class='const'>PTR</span>   <span class='op'>=&gt;</span> <span class='symbol'>:PTR</span><span class='comma'>,</span>
+  <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Resource</span><span class='op'>::</span><span class='const'>IN</span><span class='op'>::</span><span class='const'>SOA</span>   <span class='op'>=&gt;</span> <span class='symbol'>:SOA</span><span class='comma'>,</span>
+  <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Resource</span><span class='op'>::</span><span class='const'>IN</span><span class='op'>::</span><span class='const'>SRV</span>   <span class='op'>=&gt;</span> <span class='symbol'>:SRV</span><span class='comma'>,</span>
+  <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Resource</span><span class='op'>::</span><span class='const'>IN</span><span class='op'>::</span><span class='const'>TXT</span>   <span class='op'>=&gt;</span> <span class='symbol'>:TXT</span><span class='comma'>,</span>
+  <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Resource</span><span class='op'>::</span><span class='const'>IN</span><span class='op'>::</span><span class='const'>WKS</span>   <span class='op'>=&gt;</span> <span class='symbol'>:WKS</span>
+<span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#host-instance_method" title="#host (instance method)">#<strong>host</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The host the server will listen on.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#port-instance_method" title="#port (instance method)">#<strong>port</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The port the server will listen on.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#resolver-instance_method" title="#resolver (instance method)">#<strong>resolver</strong>  &#x21d2; Async::DNS::Resolver </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>The upstream DNS resolver.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rules-instance_method" title="#rules (instance method)">#<strong>rules</strong>  &#x21d2; Array&lt;Rule&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>The defined rules for the proxy server.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(host, port, nameservers: Ronin::Support::Network::DNS.nameservers, rules: nil) {|server| ... } &#x21d2; Server </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Initializes the DNS server.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#process-instance_method" title="#process (instance method)">#<strong>process</strong>(name, resource_class, transaction)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Processes a received query.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rule-instance_method" title="#rule (instance method)">#<strong>rule</strong>(record_type, name, result = nil) {|type, name, transaction| ... } &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Adds a rule to the server.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(host, port, nameservers: Ronin::Support::Network::DNS.nameservers, rules: nil) {|server| ... } &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::DNS::Proxy::Server (class)">Server</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Initializes the DNS server.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>Initializes a new DNS proxy server:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../DNS.html" title="Ronin::DNS (module)">DNS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Proxy.html" title="Ronin::DNS::Proxy (module)">Proxy</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>2346</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_rule'>rule</span> <span class='symbol'>:A</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>10.0.0.1</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_rule'>rule</span> <span class='symbol'>:AAAA</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dead:beef::1</span><span class='tstring_end'>&#39;</span></span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>Initializing a new DNS proxy server with a block:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_server'>server</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../DNS.html" title="Ronin::DNS (module)">DNS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Proxy.html" title="Ronin::DNS::Proxy (module)">Proxy</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>2346</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_rule'>rule</span> <span class='symbol'>:A</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>10.0.0.1</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_rule'>rule</span> <span class='symbol'>:AAAA</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dead:beef::1</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>end</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>host</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The interface to listen on.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>port</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The local port to listen on.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>nameservers</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>Ronin::Support::Network::DNS.nameservers</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The upstream DNS server(s) to pass queries to.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rules</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;(Symbol, String, String), (Symbol, Regexp, String), (Symbol, Regexp, Proc)&gt;</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Optional rules to populate the server with.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>server</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If a block is given, it will be passed the newly created server.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/dns/proxy/server.rb', line 89</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='label'>nameservers:</span> <span class='const'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'>Support</span><span class='op'>::</span><span class='const'>Network</span><span class='op'>::</span><span class='const'>DNS</span><span class='period'>.</span><span class='id identifier rubyid_nameservers'>nameservers</span><span class='comma'>,</span>
+                          <span class='label'>rules:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='ivar'>@host</span> <span class='op'>=</span> <span class='id identifier rubyid_host'>host</span>
+  <span class='ivar'>@port</span> <span class='op'>=</span> <span class='id identifier rubyid_port'>port</span>
+
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='lbracket'>[</span><span class='symbol'>:udp</span><span class='comma'>,</span> <span class='id identifier rubyid_host'>host</span><span class='comma'>,</span> <span class='id identifier rubyid_port'>port</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@resolver</span> <span class='op'>=</span> <span class='const'>Async</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Resolver</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+    <span class='id identifier rubyid_nameservers'>nameservers</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ip'>ip</span><span class='op'>|</span> <span class='lbracket'>[</span><span class='symbol'>:udp</span><span class='comma'>,</span> <span class='id identifier rubyid_ip'>ip</span><span class='comma'>,</span> <span class='int'>53</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+  <span class='rparen'>)</span>
+
+  <span class='ivar'>@rules</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_rules'>rules</span>
+    <span class='id identifier rubyid_rules'>rules</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='lparen'>(</span><span class='id identifier rubyid_record_type'>record_type</span><span class='comma'>,</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_result'>result</span><span class='rparen'>)</span><span class='op'>|</span>
+      <span class='id identifier rubyid_rule'>rule</span><span class='lparen'>(</span><span class='id identifier rubyid_record_type'>record_type</span><span class='comma'>,</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_result'>result</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>yield</span> <span class='kw'>self</span> <span class='kw'>if</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="host-instance_method">
+  
+    #<strong>host</strong>  &#x21d2; <tt>String</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The host the server will listen on.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/dns/proxy/server.rb', line 37</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_host'>host</span>
+  <span class='ivar'>@host</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="port-instance_method">
+  
+    #<strong>port</strong>  &#x21d2; <tt>Integer</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The port the server will listen on.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/dns/proxy/server.rb', line 42</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_port'>port</span>
+  <span class='ivar'>@port</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="resolver-instance_method">
+  
+    #<strong>resolver</strong>  &#x21d2; <tt>Async::DNS::Resolver</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>The upstream DNS resolver.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Async::DNS::Resolver</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/dns/proxy/server.rb', line 49</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_resolver'>resolver</span>
+  <span class='ivar'>@resolver</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="rules-instance_method">
+  
+    #<strong>rules</strong>  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Rule.html" title="Ronin::DNS::Proxy::Rule (class)">Rule</a></span>&gt;</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>The defined rules for the proxy server.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Rule.html" title="Ronin::DNS::Proxy::Rule (class)">Rule</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/dns/proxy/server.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_rules'>rules</span>
+  <span class='ivar'>@rules</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="process-instance_method">
+  
+    #<strong>process</strong>(name, resource_class, transaction)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Processes a received query.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The query value (ex: <code>www.example.com</code>).</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>resource_class</span>
+      
+      
+        <span class='type'>(<tt>Class&lt;Resolv::DNS::Resource&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The resource class (ex: <code>Resolv::DNS::Resource::IN::A</code>).</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>transaction</span>
+      
+      
+        <span class='type'>(<tt>Async::DNS::Transaction</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The DNS transaction object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/dns/proxy/server.rb', line 209</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_process'>process</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_resource_class'>resource_class</span><span class='comma'>,</span><span class='id identifier rubyid_transaction'>transaction</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_query_type'>query_type</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#RECORD_TYPES-constant" title="Ronin::DNS::Proxy::Server::RECORD_TYPES (constant)">RECORD_TYPES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_class'>resource_class</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_matched_rule'>matched_rule</span> <span class='op'>=</span> <span class='ivar'>@rules</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_rule'>rule</span><span class='op'>|</span>
+    <span class='id identifier rubyid_rule'>rule</span><span class='period'>.</span><span class='id identifier rubyid_matches?'>matches?</span><span class='lparen'>(</span><span class='id identifier rubyid_query_type'>query_type</span><span class='comma'>,</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_matched_rule'>matched_rule</span>
+    <span class='id identifier rubyid_matched_rule'>matched_rule</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_query_type'>query_type</span><span class='comma'>,</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_transaction'>transaction</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_passthrough!'>passthrough!</span><span class='lparen'>(</span><span class='ivar'>@resolver</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="rule-instance_method">
+  
+    #<strong>rule</strong>(record_type, name, result = nil) {|type, name, transaction| ... } &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Adds a rule to the server.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>override the IP address for a domain:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_rule'>rule</span> <span class='symbol'>:A</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>10.0.0.42</span><span class='tstring_end'>&#39;</span></span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>return multiple IP addresses:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_rule'>rule</span> <span class='symbol'>:A</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>10.0.0.42</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>10.0.0.43</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>return an error for the given hostname:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_rule'>rule</span> <span class='symbol'>:A</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>updates.example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbol'>:ServFail</span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>match a query using a regex:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_rule'>rule</span> <span class='symbol'>:TXT</span><span class='comma'>,</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^spf\.</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>v=spf1 include:10.0.0.1 ~all</span><span class='tstring_end'>&quot;</span></span></code></pre>
+    
+      
+        <p class="example_title"><div class='inline'><p>define a dynamic rule:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_rule'>rule</span><span class='lparen'>(</span><span class='symbol'>:CNAME</span><span class='comma'>,</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^www\.</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_transaction'>transaction</span><span class='op'>|</span>
+  <span class='comment'># append &#39;.hax&#39; to the domain name
+</span>  <span class='id identifier rubyid_names'>names</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hax</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_respond!'>respond!</span><span class='lparen'>(</span><span class='id identifier rubyid_names'>names</span><span class='rparen'>)</span>
+<span class='kw'>end</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>record_type</span>
+      
+      
+        <span class='type'>(<tt>:A</tt>, <tt>:AAAA</tt>, <tt>:ANY</tt>, <tt>:CNAME</tt>, <tt>:HINFO</tt>, <tt>:LOC</tt>, <tt>:MINFO</tt>, <tt>:MX</tt>, <tt>:NS</tt>, <tt>:PTR</tt>, <tt>:SOA</tt>, <tt>:SRV</tt>, <tt>:TXT</tt>, <tt>:WKS</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The record type that the rule will match against.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Regexp</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The record name that the rule will match against.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>result</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Array&lt;String&gt;</tt>, <tt>Symbol</tt>, <tt>#call</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The result to respond with. It can be a String, or an Array of
+Strings, or an error code:</p>
+
+<ul>
+<li><code>:NoError</code> - No error occurred.</li>
+<li><code>:FormErr</code> - The incoming data was not formatted correctly.</li>
+<li><code>:ServFail</code> - The operation caused a server failure (internal error, etc).</li>
+<li><code>:NXDomain</code> - Non-eXistant Domain (domain record does not exist).</li>
+<li><code>:NotImp</code> - The operation requested is not implemented.</li>
+<li><code>:Refused</code> - The operation was refused by the server.</li>
+<li><code>:NotAuth</code> - The server is not authoritive for the zone.</li>
+</ul>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>type</tt>, <tt>name</tt>, <tt>transaction</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>If no result argument is given, the given block will be passed the
+DNS query&#39;s type, name, and transaction object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>type</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The query type.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The queried host name.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>transaction</span>
+      
+      
+        <span class='type'>(<tt>Async::DNS::Transaction</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The DNS query transaction object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+167
+168
+169
+170
+171
+172
+173</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/dns/proxy/server.rb', line 167</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_rule'>rule</span><span class='lparen'>(</span><span class='id identifier rubyid_record_type'>record_type</span><span class='comma'>,</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_result'>result</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id identifier rubyid_result'>result</span> <span class='op'>||</span> <span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>must specify a result value or a block</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='ivar'>@rules</span> <span class='op'>&lt;&lt;</span> <span class='const'><span class='object_link'><a href="Rule.html" title="Ronin::DNS::Proxy::Rule (class)">Rule</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Rule.html#initialize-instance_method" title="Ronin::DNS::Proxy::Rule#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_record_type'>record_type</span><span class='comma'>,</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_result'>result</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Mon Jul 22 12:45:29 2024 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.36 (ruby-3.3.4).
+</div>
+
+    </div>
+  </body>
+</html>

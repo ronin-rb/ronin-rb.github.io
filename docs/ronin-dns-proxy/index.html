@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; Ronin::DNS::Proxy Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'><h1 id="ronin-dns-proxy">ronin-dns-proxy</h1>
+
+<p><a href="https://github.com/ronin-rb/ronin-dns-proxy/actions/workflows/ruby.yml"><img src="https://github.com/ronin-rb/ronin-dns-proxy/actions/workflows/ruby.yml/badge.svg" alt="CI"></a>
+<a href="https://codeclimate.com/github/ronin-rb/ronin-dns-proxy"><img src="https://codeclimate.com/github/ronin-rb/ronin-dns-proxy.svg" alt="Code Climate"></a></p>
+
+<ul>
+<li><a href="https://ronin-rb.dev/">Website</a></li>
+<li><a href="https://github.com/ronin-rb/ronin-dns-proxy">Source</a></li>
+<li><a href="https://github.com/ronin-rb/ronin-dns-proxy/issues">Issues</a></li>
+<li><a href="https://ronin-rb.dev/docs/ronin-dns-proxy">Documentation</a></li>
+<li><a href="https://discord.gg/6WAb3PsVX9">Discord</a> |
+<a href="https://infosec.exchange/@ronin_rb">Mastodon</a></li>
+</ul>
+
+<h2 id="description">Description</h2>
+
+<p>ronin-dns-proxy is a configurable DNS proxy server library. It supports
+returning spoofing DNS results or passing DNS queries through to the upstream
+DNS nameserver.</p>
+
+<h2 id="features">Features</h2>
+
+<ul>
+<li>Supports returning spoofed results to specific DNS queries.</li>
+<li>Supports matching queries with regular expressions.</li>
+<li>Supports dynamic DNS server rules.</li>
+<li>Passing through all other DNS queries.</li>
+<li>Has 95% documentation coverage.</li>
+<li>Has 100% test coverage.</li>
+</ul>
+
+<h2 id="examples">Examples</h2>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ronin/dns/proxy</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/DNS.html" title="Ronin::DNS (module)">DNS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/DNS/Proxy.html" title="Ronin::DNS::Proxy (module)">Proxy</a></span></span><span class='period'>.</span><span class='id identifier rubyid_run'><span class='object_link'><a href="Ronin/DNS/Proxy.html#run-class_method" title="Ronin::DNS::Proxy.run (method)">run</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>2346</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_server'>server</span><span class='op'>|</span>
+  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_rule'>rule</span> <span class='symbol'>:A</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>10.0.0.1</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_rule'>rule</span> <span class='symbol'>:AAAA</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dead:beef::1</span><span class='tstring_end'>&#39;</span></span>
+
+  <span class='comment'># return multiple values
+</span>  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_rule'>rule</span> <span class='symbol'>:A</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ftp.example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>10.0.0.42</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>10.0.0.43</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+
+  <span class='comment'># match a query using a regex
+</span>  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_rule'>rule</span> <span class='symbol'>:TXT</span><span class='comma'>,</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^spf\.</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>v=spf1 include:10.0.0.1 ~all</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='comment'># return an error for a valid hostname
+</span>  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_rule'>rule</span> <span class='symbol'>:A</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>updates.example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbol'>:ServFail</span>
+
+  <span class='comment'># define a dynamic rule
+</span>  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_rule'>rule</span><span class='lparen'>(</span><span class='symbol'>:CNAME</span><span class='comma'>,</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^www\.</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_transaction'>transaction</span><span class='op'>|</span>
+    <span class='comment'># append &#39;.hax&#39; to the domain name
+</span>    <span class='id identifier rubyid_names'>names</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hax</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_respond!'>respond!</span><span class='lparen'>(</span><span class='id identifier rubyid_names'>names</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># return MX records
+</span>  <span class='id identifier rubyid_server'>server</span><span class='period'>.</span><span class='id identifier rubyid_rule'>rule</span><span class='lparen'>(</span><span class='symbol'>:MX</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>example.com</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_transaction'>transaction</span><span class='op'>|</span>
+    <span class='id identifier rubyid_transaction'>transaction</span><span class='period'>.</span><span class='id identifier rubyid_respond!'>respond!</span><span class='lparen'>(</span><span class='int'>10</span><span class='comma'>,</span> <span class='const'>Resolv</span><span class='op'>::</span><span class='const'>DNS</span><span class='op'>::</span><span class='const'>Name</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>email.evil.com</span><span class='tstring_end'>&#39;</span></span> <span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Then try running <code>host -p 2346 example.com 127.0.0.1</code> once the server is
+running.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+<li><a href="https://www.ruby-lang.org">Ruby</a> &gt;= 3.0.0</li>
+<li><a href="https://github.com/socketry/async-dns#readme">async-dns</a> ~&gt; 1.0</li>
+<li><a href="https://github.com/ronin-rb/ronin-support#readme">ronin-support</a> ~&gt; 1.0</li>
+</ul>
+
+<h2 id="install">Install</h2>
+
+<pre class="code shell"><code class="shell">$ gem install ronin-dns-proxy
+</code></pre>
+
+<h3 id="gemfile">Gemfile</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ronin-dns-proxy</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>~&gt; 0.1</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<h3 id="gemspec">gemspec</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span><span class='period'>.</span><span class='id identifier rubyid_add_dependency'>add_dependency</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ronin-dns-proxy</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>~&gt; 0.1</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<h2 id="development">Development</h2>
+
+<ol>
+<li><a href="https://github.com/ronin-rb/ronin-dns-proxy/fork">Fork It!</a></li>
+<li>Clone It!</li>
+<li><code>cd ronin-dns-proxy/</code></li>
+<li><code>bundle install</code></li>
+<li><code>git checkout -b my_feature</code></li>
+<li>Code It!</li>
+<li><code>bundle exec rake spec</code></li>
+<li><code>git push origin my_feature</code></li>
+</ol>
+
+<h2 id="license">License</h2>
+
+<p>Copyright (c) 2023-2024 Hal Brodigan (<a href="mailto:postmodern.mod3@gmail.com">postmodern.mod3@gmail.com</a>)</p>
+
+<p>ronin-dns-proxy is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+
+<p>ronin-dns-proxy is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.</p>
+
+<p>You should have received a copy of the GNU Lesser General Public License
+along with ronin-dns-proxy.  If not, see <a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>.</p>
+</div></div>
+
+      <div id="footer">
+  Generated on Mon Jul 22 12:45:29 2024 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.36 (ruby-3.3.4).
+</div>
+
+    </div>
+  </body>
+</html>
