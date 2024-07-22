@@ -95,7 +95,7 @@
   
   <dl>
       <dt>Includes:</dt>
-      <dd><span class='object_link'><a href="../HostAndPort.html" title="Ronin::CLI::HostAndPort (module)">HostAndPort</a></span>, Support::Network::SSL::Mixin</dd>
+      <dd><span class='object_link'><a href="../HostAndPort.html" title="Ronin::CLI::HostAndPort (module)">HostAndPort</a></span></dd>
   </dl>
   
   
@@ -264,7 +264,6 @@ ronin cert-grab https://github.com/
   
   
   
-  
   <h3 class="inherited">Methods included from <span class='object_link'><a href="../HostAndPort.html" title="Ronin::CLI::HostAndPort (module)">HostAndPort</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="../HostAndPort.html#host_and_port-instance_method" title="Ronin::CLI::HostAndPort#host_and_port (method)">#host_and_port</a></span>, <span class='object_link'><a href="../HostAndPort.html#host_and_port_from_url-instance_method" title="Ronin::CLI::HostAndPort#host_and_port_from_url (method)">#host_and_port_from_url</a></span></p>
 
@@ -384,12 +383,12 @@ ronin cert-grab https://github.com/
       <pre class="lines">
 
 
-105
 106
-107</pre>
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/cert_grab.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/cert_grab.rb', line 106</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cert_file_for'>cert_file_for</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='rparen'>)</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_host'>host</span><span class='embexpr_end'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_port'>port</span><span class='embexpr_end'>}</span><span class='tstring_content'>.crt</span><span class='tstring_end'>&quot;</span></span>
@@ -477,17 +476,17 @@ ronin cert-grab https://github.com/
       <pre class="lines">
 
 
-118
 119
 120
 121
-122</pre>
+122
+123</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/cert_grab.rb', line 118</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/cert_grab.rb', line 119</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_grab_cert'>grab_cert</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_cert'>cert</span> <span class='op'>=</span> <span class='id identifier rubyid_ssl_cert'>ssl_cert</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_cert'>cert</span> <span class='op'>=</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Network</span><span class='op'>::</span><span class='const'>SSL</span><span class='period'>.</span><span class='id identifier rubyid_get_cert'>get_cert</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_cert'>cert</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span><span class='lparen'>(</span><span class='id identifier rubyid_cert_file_for'>cert_file_for</span><span class='lparen'>(</span><span class='id identifier rubyid_host'>host</span><span class='comma'>,</span><span class='id identifier rubyid_port'>port</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -559,7 +558,6 @@ ronin cert-grab https://github.com/
       <pre class="lines">
 
 
-79
 80
 81
 82
@@ -573,10 +571,11 @@ ronin cert-grab https://github.com/
 90
 91
 92
-93</pre>
+93
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/cert_grab.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/cert_grab.rb', line 80</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_process_value'>process_value</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_value'>value</span>
@@ -603,9 +602,9 @@ ronin cert-grab https://github.com/
 </div>
 
       <div id="footer">
-  Generated on Tue Sep 19 16:17:44 2023 by
+  Generated on Mon Jul 22 14:40:04 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.1.4).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>

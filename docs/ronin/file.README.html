@@ -80,12 +80,13 @@ and development. Ronin contains many different <a href="#synopsis">CLI commands<
 encoding/decoding data, filter IPs/hosts/URLs, querying ASNs, querying DNS,
 HTTP, <a href="https://github.com/ronin-rb/ronin-vulns#synopsis">scanning for web vulnerabilities</a>,
 <a href="https://github.com/ronin-rb/ronin-web-spider#readme">spidering websites</a>,
-<a href="https://github.com/ronin-rb/ronin-repos#synopsis">install 3rd party repositories</a> of
+<a href="https://github.com/ronin-rb/ronin-repos#synopsis">installing 3rd-party repositories</a> of
 <a href="https://github.com/ronin-rb/ronin-exploits#readme">exploits</a> and/or
-<a href="https://github.com/ronin-rb/ronin-payloads#readme">payloads</a>, <a href="https://github.com/ronin-rb/ronin-exploits#synopsis">run exploits</a>,
-<a href="https://github.com/ronin-rb/ronin-exploits#examples">write new exploits</a>,
+<a href="https://github.com/ronin-rb/ronin-payloads#readme">payloads</a>, <a href="https://github.com/ronin-rb/ronin-exploits#synopsis">running exploits</a>,
+<a href="https://github.com/ronin-rb/ronin-exploits#examples">developing new exploits</a>,
 <a href="https://github.com/ronin-rb/ronin-db#synopsis">managing local databases</a>,
-<a href="https://github.com/ronin-rb/ronin-fuzzer#readme">fuzzing data</a>, and much more.</p>
+<a href="https://github.com/ronin-rb/ronin-fuzzer#readme">fuzzing data</a>,
+<a href="https://github.com/ronin-rb/ronin-recon#synopsis">performing recon</a>, and much more.</p>
 
 <h3 id="who-is-ronin-for">Who is Ronin for?</h3>
 
@@ -105,6 +106,7 @@ HTTP, <a href="https://github.com/ronin-rb/ronin-vulns#synopsis">scanning for we
 <li>A fully-loaded Ruby REPL.</li>
 <li>An ecosystem of high-quality security related Ruby libraries, APIs, and
 commands.</li>
+<li>A lightweight local web UI.</li>
 </ul>
 
 <h3 id="what-can-you-do-with-ronin">What can you do with Ronin?</h3>
@@ -118,9 +120,11 @@ libraries.</li>
 using <a href="https://github.com/ronin-rb/ronin-repos#readme">ronin-repos</a>.</li>
 <li>Import and query data using the <a href="https://github.com/ronin-rb/ronin-db#readme">ronin-db</a> database.</li>
 <li>Fuzz data using <a href="https://github.com/ronin-rb/ronin-fuzzer#readme">ronin-fuzzer</a>.</li>
+<li>Perform recon using <a href="https://github.com/ronin-rb/ronin-recon#readme">ronin-recon</a>.</li>
 <li>Use common payloads or write your own using <a href="https://github.com/ronin-rb/ronin-payloads#readme">ronin-payloads</a>.</li>
 <li>Write/run exploits using <a href="https://github.com/ronin-rb/ronin-exploits#readme">ronin-exploits</a>.</li>
 <li>Scan for web vulnerabilities using <a href="https://github.com/ronin-rb/ronin-vulns#readme">ronin-vulns</a>.</li>
+<li>Performs scans and browse the database in your browser using <a href="https://github.com/ronin-rb/ronin-app#readme">ronin-app</a>.</li>
 </ul>
 
 <h2 id="synopsis">Synopsis</h2>
@@ -135,15 +139,18 @@ Arguments:
     [ARGS ...]                       Additional arguments for the command
 
 Commands:
+    archive
     asn
     banner-grab
     bitflip
     cert-dump
     cert-gen
     cert-grab
+    completion
     decode, dec
     decrypt
     dns
+    dns-proxy
     email-addr
     encode, enc
     encrypt
@@ -164,6 +171,7 @@ Commands:
     md5
     netcat, nc
     new
+    pack
     proxy
     public-suffix-list
     quote
@@ -176,20 +184,27 @@ Commands:
     tips
     typo
     typosquat
+    unarchive
     unescape
     unhexdump
+    unpack
     unquote
     url
     xor
 
 Additional Ronin Commands:
     $ ronin-repos
+    $ ronin-wordlists
     $ ronin-db
     $ ronin-web
     $ ronin-fuzzer
+    $ ronin-masscan
+    $ ronin-nmap
+    $ ronin-recon
     $ ronin-payloads
     $ ronin-exploits
     $ ronin-vulns
+    $ ronin-app
 </code></pre>
 
 <p>List ronin commands:</p>
@@ -209,17 +224,33 @@ Additional Ronin Commands:
 
 <p>Open the Ronin Ruby REPL:</p>
 
-<pre class="code shell"><code class="shell">$ ronin irb
+<pre class="code ruby"><code class="ruby">$ ronin irb
+                                                                   , Jµ     ▓▓█▓
+                                                  J▌      ▐▓██▌ ████ ██    ▐███D
+                                      ╓▄▓▓█████▌  ██µ     ████ ▄███ÖJ██▌   ███▌
+        ,╓µ▄▄▄▄▄▄▄▄µ;,            ,▄▓██████████  ▐███    ▐███▀ ███▌ ████µ ▄███
+¬∞MÆ▓███████████████████████▓M  ▄██████▀▀╙████▌  ████▌   ████ ▄███ J█████ ███▌
+           `█████▀▀▀▀▀███████  -████▀└    ████  ▐█████n ▄███O ███▌ ██████████
+           ▓████L       ████▀  ▓████     ▓███Ö  ███████ ███▌ ▓███ ▐█████████▀
+          ▄████▀  ,╓▄▄▄█████  J████Ü    ,███▌  ▄███████████ J███▀ ████ █████
+         J█████████████████─  ████▌     ████   ████`██████▌ ████ ▐███Ü ▐███Ü
+         ███████████▀▀▀╙└    ▐████     J███▌  ▓███▌ ²█████ J███Ü ███▌   ▀█▌
+        ▓██████████▌         ████▌     ████  ;████   ▀███▀ ███▌ J▀▀▀-    █
+       ▄█████▀ ▀█████µ      ▐████  ,▄▓████▀  ████▀    ███ J███           `
+      J█████-    ╙▀███▄     ████████████▀╙  J█▀▀▀      █U  ▀█▌
+      ████▀         ▀███   ▄████████▀▀                 ╨    █
+     ▓██▀             ²▀█▄ █▀▀▀╙└
+    ▄██╜                 ╙W
+   J█▀
+   ▌└
+  ┘
+
+irb(ronin)&gt;
 </code></pre>
 
-<p>Generate a new Ruby script with <a href="https://github.com/ronin-rb/ronin-support#readme">ronin-support</a> preloaded:</p>
+<p>Starts and opens the interactive Web UI for Ronin:</p>
 
-<pre class="code shell"><code class="shell">$ ronin new script foo.rb
-</code></pre>
-
-<p>Generate a new Ruby project with a <code>Gemfile</code>:</p>
-
-<pre class="code shell"><code class="shell">$ ronin new project foo
+<pre class="code ruby"><code class="ruby">$ ronin-app
 </code></pre>
 
 <h3 id="binary">Binary</h3>
@@ -764,10 +795,90 @@ https://example.com/&gt; help
 <pre class="code shell"><code class="shell">$ ronin url --file urls.txt --status
 </code></pre>
 
+<h3 id="generators">Generators</h3>
+
+<p>Generate a new Ruby script with <a href="https://github.com/ronin-rb/ronin-support#readme">ronin-support</a> preloaded:</p>
+
+<pre class="code shell"><code class="shell">$ ronin new script foo.rb
+</code></pre>
+
+<p>Generate a new Ruby project with a <code>Gemfile</code>:</p>
+
+<pre class="code shell"><code class="shell">$ ronin new project foo
+</code></pre>
+
+<p>Generate a new <a href="https://nokogiri.org/">nokogiri</a> Ruby script for parsing HTML/XML:</p>
+
+<pre class="code shell"><code class="shell">$ ronin new nokogiri foo.rb
+</code></pre>
+
+<p>Generate a new <a href="https://github.com/ronin-rb/ronin-web-server#readme">ronin-web-server</a> Ruby script:</p>
+
+<pre class="code shell"><code class="shell">$ ronin new web-server my_server.rb
+</code></pre>
+
+<p>Generate a new <a href="https://github.com/ronin-rb/ronin-web-server#readme">ronin-web-server</a> based web app:</p>
+
+<pre class="code shell"><code class="shell">$ ronin new web-app my_app
+</code></pre>
+
+<p>Generate a new <a href="https://github.com/ronin-rb/ronin-web-spider#readme">ronin-web-spider</a> Ruby script:</p>
+
+<pre class="code shell"><code class="shell">$ ronin new web-spider --host=example.com my_spider.rb
+</code></pre>
+
+<p>Generate a <a href="https://github.com/ronin-rb/ronin-listener-dns#readme">ronin-listener-dns</a> script:</p>
+
+<pre class="code shell"><code class="shell">$ ronin new dns-listener my_dns_listener.rb
+</code></pre>
+
+<p>Generate a <a href="https://github.com/ronin-rb/ronin-dns-proxy#readme">ronin-dns-proxy</a> script:</p>
+
+<pre class="code shell"><code class="shell">$ ronin new dns-proxy my_dns_proxy.rb
+</code></pre>
+
+<p>Generate a <a href="https://github.com/ronin-rb/ronin-listener-http#readme">ronin-listener-http</a> script:</p>
+
+<pre class="code shell"><code class="shell">$ ronin new http-listener my_http_listener.rb
+</code></pre>
+
+<p>Generate a <a href="https://github.com/ronin-rb/ronin-exploits#readme">ronin-exploits</a> script:</p>
+
+<pre class="code shell"><code class="shell">$ ronin new exploit my_exploit.rb
+</code></pre>
+
+<p>Generate a <a href="https://github.com/ronin-rb/ronin-payloads#readme">ronin-payloads</a> script:</p>
+
+<pre class="code shell"><code class="shell">$ ronin new payload my_payload.rb
+</code></pre>
+
+<h3 id="archive">Archive</h3>
+
+<p>Archive files:</p>
+
+<pre class="code shell"><code class="shell">$ ronin archive -o archive.zip file1.txt file2.txt
+</code></pre>
+
+<p>Archive files using tar format:</p>
+
+<pre class="code shell"><code class="shell">$ ronin archive -o archive.tar file1.txt file2.txt
+</code></pre>
+
+<p>Unarchive files:</p>
+
+<pre class="code shell"><code class="shell">$ ronin unarchive arch1.tar arch2.zip
+</code></pre>
+
+<p>Unarchive a file with explicit format:</p>
+
+<pre class="code shell"><code class="shell">$ ronin unarchive -f zip arch2.jar
+</code></pre>
+
 <h3 id="see-also">See Also</h3>
 
 <ul>
 <li><a href="https://github.com/ronin-rb/ronin-repos#synopsis">ronin-repos</a></li>
+<li><a href="https://github.com/ronin-rb/ronin-wordlists#synopsis">ronin-wordlists</a></li>
 <li><a href="https://github.com/ronin-rb/ronin-db#synopsis">ronin-db</a></li>
 <li><a href="https://github.com/ronin-rb/ronin-web#synopsis">ronin-web</a></li>
 <li><a href="https://github.com/ronin-rb/ronin-fuzzer#synopsis">ronin-fuzzer</a></li>
@@ -783,22 +894,29 @@ https://example.com/&gt; help
 <li><a href="https://www.gnu.org/software/automake/">make</a></li>
 <li><a href="https://git-scm.com/">git</a></li>
 <li><a href="https://www.sqlite.org/index.html">libsqlite3</a></li>
-<li><a href="https://www.ruby-lang.org">Ruby</a> &gt;= 3.0.0</li>
+<li><a href="https://www.ruby-lang.org">Ruby</a> &gt;= 3.1.0</li>
 <li><a href="https://github.com/postmodern/open_namespace#readme">open_namespace</a> ~&gt; 0.4</li>
 <li><a href="https://github.com/rouge-ruby/rouge#readme">rouge</a> ~&gt; 3.0</li>
 <li><a href="https://github.com/socketry/async-io#readme">async-io</a> ~&gt; 1.0</li>
-<li><a href="https://github.com/postmodern/wordlist.rb#readme">wordlist</a> ~&gt; 1.0, &gt;= 1.0.3</li>
-<li><a href="https://github.com/ronin-rb/ronin-support#readme">ronin-support</a> ~&gt; 1.0, &gt;= 1.0.3</li>
-<li><a href="https://github.com/ronin-rb/ronin-core#readme">ronin-core</a> ~&gt; 0.1, &gt;= 0.1.2</li>
+<li><a href="https://github.com/postmodern/wordlist.rb#readme">wordlist</a> ~&gt; 1.1</li>
+<li><a href="https://github.com/ronin-rb/ronin-support#readme">ronin-support</a> ~&gt; 1.1</li>
+<li><a href="https://github.com/ronin-rb/ronin-dns-proxy#readme">ronin-dns-proxy</a> ~&gt; 0.1</li>
+<li><a href="https://github.com/ronin-rb/ronin-core#readme">ronin-core</a> ~&gt; 0.2</li>
 <li><a href="https://github.com/ronin-rb/ronin-repos#readme">ronin-repos</a> ~&gt; 0.1</li>
+<li><a href="https://github.com/ronin-rb/ronin-wordlists#readme">ronin-wordlists</a> ~&gt; 0.1</li>
 <li><a href="https://github.com/ronin-rb/ronin-db#readme">ronin-db</a> ~&gt; 0.1</li>
+<li><a href="https://github.com/ronin-rb/ronin-listener#readme">ronin-listener</a> ~&gt; 0.1</li>
+<li><a href="https://github.com/ronin-rb/ronin-nmap#readme">ronin-nmap</a> ~&gt; 0.1</li>
+<li><a href="https://github.com/ronin-rb/ronin-masscan#readme">ronin-masscan</a> ~&gt; 0.1</li>
+<li><a href="https://github.com/ronin-rb/ronin-recon#readme">ronin-recon</a> ~&gt; 0.1</li>
 <li><a href="https://github.com/ronin-rb/ronin-fuzzer#readme">ronin-fuzzer</a> ~&gt; 0.1</li>
-<li><a href="https://github.com/ronin-rb/ronin-web#readme">ronin-web</a> ~&gt; 1.0</li>
+<li><a href="https://github.com/ronin-rb/ronin-web#readme">ronin-web</a> ~&gt; 2.0</li>
 <li><a href="https://github.com/ronin-rb/ronin-code-asm#readme">ronin-code-asm</a> ~&gt; 1.0</li>
 <li><a href="https://github.com/ronin-rb/ronin-code-sql#readme">ronin-code-sql</a> ~&gt; 2.0</li>
 <li><a href="https://github.com/ronin-rb/ronin-payloads#readme">ronin-payloads</a> ~&gt; 0.1</li>
 <li><a href="https://github.com/ronin-rb/ronin-exploits#readme">ronin-exploits</a> ~&gt; 1.0</li>
-<li><a href="https://github.com/ronin-rb/ronin-vulns#readme">ronin-vulns</a> ~&gt; 0.1</li>
+<li><a href="https://github.com/ronin-rb/ronin-vulns#readme">ronin-vulns</a> ~&gt; 0.2</li>
+<li><a href="https://github.com/ronin-rb/ronin-app#readme">ronin-app</a> ~&gt; 0.1</li>
 </ul>
 
 <h2 id="install">Install</h2>
@@ -832,7 +950,7 @@ docker run -it roninrb/ronin
 <li><a href="https://github.com/ronin-rb/ronin/fork">Fork It!</a></li>
 <li>Clone It!</li>
 <li><code>cd ronin</code></li>
-<li><code>bundle install</code></li>
+<li><code>./scripts/setup</code></li>
 <li><code>git checkout -b my_feature</code></li>
 <li>Code It!</li>
 <li><code>bundle exec rake spec</code></li>
@@ -858,9 +976,9 @@ along with Ronin.  If not, see <a href="https://www.gnu.org/licenses/">https://w
 </div></div>
 
       <div id="footer">
-  Generated on Tue Sep 19 16:17:38 2023 by
+  Generated on Mon Jul 22 14:39:58 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.1.4).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>

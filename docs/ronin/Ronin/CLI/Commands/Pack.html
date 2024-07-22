@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Ronin::CLI::Commands::Pack
+  
+    &mdash; Ronin Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::CLI::Commands::Pack";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../CLI.html" title="Ronin::CLI (class)">CLI</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Commands.html" title="Ronin::CLI::Commands (module)">Commands</a></span></span>
+     &raquo; 
+    <span class="title">Pack</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Ronin::CLI::Commands::Pack
+  
+  
+  <span class="private note title">Private</span>
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="../Command.html" title="Ronin::CLI::Command (class)">Ronin::CLI::Command</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Core::CLI::Command</li>
+          
+            <li class="next"><span class='object_link'><a href="../Command.html" title="Ronin::CLI::Command (class)">Ronin::CLI::Command</a></span></li>
+          
+            <li class="next">Ronin::CLI::Commands::Pack</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd><span class='object_link'><a href="../BinaryTemplate.html" title="Ronin::CLI::BinaryTemplate (module)">BinaryTemplate</a></span></dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/cli/commands/pack.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This class is part of a private API.</strong>
+  You should avoid using this class if possible, as it may be removed or be changed in the future.
+</p>
+<p>Packs values into binary data.</p>
+
+<h2 id="usage">Usage</h2>
+
+<pre class="code ruby"><code class="ruby">ronin pack [options] TYPE:VALUE [...]
+</code></pre>
+
+<h2 id="options">Options</h2>
+
+<pre class="code ruby"><code class="ruby">-E, --endian little|big|net      Sets the endianness
+-A x86|x86_64|ppc|ppc64|mips|mips_le|mips_be|mips64|mips64_le|mips64_be|arm|arm_le|arm_be|arm64|arm64_le|arm64_be,
+    --arch                       Sets the architecture
+-O linux|macos|windows|android|apple_ios|bsd|freebsd|openbsd|netbsd,
+    --os                         Sets the OS
+-x, --hexdump                    Hexdumps the packed data, instead of writing it out
+    --output PATH                Optional output file to write to
+-h, --help                       Print help information
+</code></pre>
+
+<h2 id="arguments">Arguments</h2>
+
+<pre class="code ruby"><code class="ruby">TYPE:VALUE                      A value and it&#39;s type.
+</code></pre>
+
+<h3 id="types">Types</h3>
+
+<pre class="code ruby"><code class="ruby">Native             Little-endian       Big-endian          Network-endian
+------             -------------       ----------          --------------
+
+char
+uchar
+byte
+string
+int                int_le              int_be              int_net
+int8
+int16              int16_le            int16_be            int16_net
+int32              int32_le            int32_be            int32_net
+int64              int64_le            int64_be            int64_net
+short              short_le            short_be            short_net
+long               long_le             long_be             long_net
+long_long          long_long_le        long_long_be        long_long_net
+uint               uint_le             uint_be             uint_net
+uint8
+uint1616           uint16_le           uint16_be           uint16_net
+uint3232           uint32_le           uint32_be           uint32_net
+uint6464           uint64_le           uint64_be           uint64_net
+ushort             ushort_le           ushort_be           ushort_net
+ulong              ulong_le            ulong_be            ulong_net
+ulong_long         ulong_long_le       ulong_long_be       ulong_long_net
+float              float_le            float_be            float_net
+float32            float32_le          float32_be          float32_net
+float64            float64_le          float64_be          float64_net
+double             double_le           double_be           double_net
+pointer            pointer_le          pointer_be          pointer_net
+</code></pre>
+
+<h2 id="examples">Examples</h2>
+
+<pre class="code ruby"><code class="ruby">ronin pack int32:-1 uint32:0x12345678 char:A string:hello
+ronin pack int32[4]:1,2,3,4 string[3]:hello,world
+ronin pack uint32_le:0x12345678
+ronin pack uint32_be:0x12345678
+ronin pack --endian big int:4096 uint:0x12345678
+ronin pack --arch arm_le int:4096 long:0x12345678
+ronin pack --arch x86_64 --os windows uint:0x12345678
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#help_arguments-instance_method" title="#help_arguments (instance method)">#<strong>help_arguments</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Prints the help information for the arguments and lists <code>TYPE</code>s.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_array_value-instance_method" title="#parse_array_value (instance method)">#<strong>parse_array_value</strong>(ctype, string)  &#x21d2; Array&lt;Integer&gt;, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Parses an array.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_float-instance_method" title="#parse_float (instance method)">#<strong>parse_float</strong>(string)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Parses an float value.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_int-instance_method" title="#parse_int (instance method)">#<strong>parse_int</strong>(string)  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Parses an integer value.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_types_and_values-instance_method" title="#parse_types_and_values (instance method)">#<strong>parse_types_and_values</strong>(args)  &#x21d2; (Array&lt;Symbol, (Symbol, Integer)&gt;, Array&lt;String&gt;) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Performs an initial parsing of the <code>TYPE:VALUE</code> arguments into two separate lists of <code>TYPE</code>s and <code>VALUE</code>s.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_value-instance_method" title="#parse_value (instance method)">#<strong>parse_value</strong>(ctype, string)  &#x21d2; Array&lt;Integer&gt;, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Parses the value based on it&#39;s C type.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_values-instance_method" title="#parse_values (instance method)">#<strong>parse_values</strong>(types, values)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Performs a second parsing of the values based on their desired C types.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#run-instance_method" title="#run (instance method)">#<strong>run</strong>(*args)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Runs the <code>ronin pack</code> command.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write_output-instance_method" title="#write_output (instance method)">#<strong>write_output</strong>(data)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Writes the packed data to the <code>--output</code> file or stdout.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../BinaryTemplate.html" title="Ronin::CLI::BinaryTemplate (module)">BinaryTemplate</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../BinaryTemplate.html#build_template-instance_method" title="Ronin::CLI::BinaryTemplate#build_template (method)">#build_template</a></span>, <span class='object_link'><a href="../BinaryTemplate.html#included-class_method" title="Ronin::CLI::BinaryTemplate.included (method)">included</a></span>, <span class='object_link'><a href="../BinaryTemplate.html#parse_type-instance_method" title="Ronin::CLI::BinaryTemplate#parse_type (method)">#parse_type</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="help_arguments-instance_method">
+  
+    #<strong>help_arguments</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Prints the help information for the arguments and lists <code>TYPE</code>s.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/pack.rb', line 153</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_help_arguments'>help_arguments</span>
+  <span class='kw'>super</span>
+
+  <span class='id identifier rubyid_puts'>puts</span>
+  <span class='id identifier rubyid_puts'>puts</span> <span class='heredoc_beg'>&lt;&lt;HELP</span>
+<span class='tstring_content'>Types:
+
+    Native             Little-endian       Big-endian          Network-endian
+    ------             -------------       ----------          --------------
+
+    char
+    uchar
+    byte
+    string
+    int                int_le              int_be              int_net
+    int8
+    int16              int16_le            int16_be            int16_net
+    int32              int32_le            int32_be            int32_net
+    int64              int64_le            int64_be            int64_net
+    short              short_le            short_be            short_net
+    long               long_le             long_be             long_net
+    long_long          long_long_le        long_long_be        long_long_net
+    uint               uint_le             uint_be             uint_net
+    uint8
+    uint1616           uint16_le           uint16_be           uint16_net
+    uint3232           uint32_le           uint32_be           uint32_net
+    uint6464           uint64_le           uint64_be           uint64_net
+    ushort             ushort_le           ushort_be           ushort_net
+    ulong              ulong_le            ulong_be            ulong_net
+    ulong_long         ulong_long_le       ulong_long_be       ulong_long_net
+    float              float_le            float_be            float_net
+    float32            float32_le          float32_be          float32_net
+    float64            float64_le          float64_be          float64_net
+    double             double_le           double_be           double_net
+    pointer            pointer_le          pointer_be          pointer_net
+</span><span class='heredoc_end'>HELP
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_array_value-instance_method">
+  
+    #<strong>parse_array_value</strong>(ctype, string)  &#x21d2; <tt>Array&lt;Integer&gt;</tt>, ... 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Parses an array.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>ctype</span>
+      
+      
+        <span class='type'>(<tt>Ronin::Support::Binary::CTypes::Type</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The C type that represents the array type.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The raw string to parse.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Integer&gt;</tt>, <tt>Array&lt;Float&gt;</tt>, <tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The parsed array.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/pack.rb', line 275</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_array_value'>parse_array_value</span><span class='lparen'>(</span><span class='id identifier rubyid_ctype'>ctype</span><span class='comma'>,</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='comment'># create array of the desired size
+</span>  <span class='id identifier rubyid_array'>array</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_ctype'>ctype</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='period'>.</span><span class='id identifier rubyid_finite?'>finite?</span>
+            <span class='const'>Array</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_ctype'>ctype</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span><span class='comma'>,</span><span class='id identifier rubyid_ctype'>ctype</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_uninitialized_value'>uninitialized_value</span><span class='rparen'>)</span>
+          <span class='kw'>else</span>
+            <span class='lbracket'>[</span><span class='rbracket'>]</span>
+          <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>(?!\\),</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each_with_index'>each_with_index</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span><span class='id identifier rubyid_index'>index</span><span class='op'>|</span>
+    <span class='id identifier rubyid_array'>array</span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_value'>parse_value</span><span class='lparen'>(</span><span class='id identifier rubyid_ctype'>ctype</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span><span class='comma'>,</span><span class='id identifier rubyid_element'>element</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_array'>array</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_float-instance_method">
+  
+    #<strong>parse_float</strong>(string)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Parses an float value.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The raw string to parse.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The parsed Float.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+315
+316
+317
+318
+319
+320</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/pack.rb', line 315</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_float'>parse_float</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='const'>Float</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+<span class='kw'>rescue</span> <span class='const'>ArgumentError</span>
+  <span class='id identifier rubyid_print_error'>print_error</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>cannot parse float: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_string'>string</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_exit'>exit</span><span class='lparen'>(</span><span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_int-instance_method">
+  
+    #<strong>parse_int</strong>(string)  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Parses an integer value.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The raw string to parse.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The parsed Integer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+299
+300
+301
+302
+303
+304</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/pack.rb', line 299</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_int'>parse_int</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='const'>Integer</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+<span class='kw'>rescue</span> <span class='const'>ArgumentError</span>
+  <span class='id identifier rubyid_print_error'>print_error</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>cannot parse integer: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_string'>string</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_exit'>exit</span><span class='lparen'>(</span><span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_types_and_values-instance_method">
+  
+    #<strong>parse_types_and_values</strong>(args)  &#x21d2; <tt>(Array&lt;Symbol, (Symbol, Integer)&gt;, Array&lt;String&gt;)</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Performs an initial parsing of the <code>TYPE:VALUE</code> arguments into two
+separate lists of <code>TYPE</code>s and <code>VALUE</code>s.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The <code>TYPE:VALUE</code> argumens to parse.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>(Array&lt;Symbol, (Symbol, Integer)&gt;, Array&lt;String&gt;)</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The parsed types and values.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/pack.rb', line 201</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_types_and_values'>parse_types_and_values</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_types'>types</span>  <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_values'>values</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_string'>string</span><span class='op'>|</span>
+    <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>:</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='int'>2</span><span class='rparen'>)</span>
+
+    <span class='id identifier rubyid_types'>types</span>  <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_parse_type'>parse_type</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_values'>values</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_value'>value</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_types'>types</span><span class='comma'>,</span> <span class='id identifier rubyid_values'>values</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_value-instance_method">
+  
+    #<strong>parse_value</strong>(ctype, string)  &#x21d2; <tt>Array&lt;Integer&gt;</tt>, ... 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Parses the value based on it&#39;s C type.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>ctype</span>
+      
+      
+        <span class='type'>(<tt>Ronin::Support::Binary::CType::Type</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The C type of the value.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The raw unparsed string.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Integer&gt;</tt>, <tt>Array&lt;Float&gt;</tt>, <tt>Array&lt;String&gt;</tt>, <tt>Integer</tt>, <tt>Float</tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The parsed value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/pack.rb', line 244</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_value'>parse_value</span><span class='lparen'>(</span><span class='id identifier rubyid_ctype'>ctype</span><span class='comma'>,</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_ctype'>ctype</span>
+  <span class='kw'>when</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Binary</span><span class='op'>::</span><span class='const'>CTypes</span><span class='op'>::</span><span class='const'>ArrayType</span><span class='comma'>,</span>
+       <span class='const'>Support</span><span class='op'>::</span><span class='const'>Binary</span><span class='op'>::</span><span class='const'>CTypes</span><span class='op'>::</span><span class='const'>ArrayObjectType</span><span class='comma'>,</span>
+       <span class='const'>Support</span><span class='op'>::</span><span class='const'>Binary</span><span class='op'>::</span><span class='const'>CTypes</span><span class='op'>::</span><span class='const'>UnboundedArrayType</span>
+    <span class='id identifier rubyid_parse_array_value'>parse_array_value</span><span class='lparen'>(</span><span class='id identifier rubyid_ctype'>ctype</span><span class='comma'>,</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Binary</span><span class='op'>::</span><span class='const'>CTypes</span><span class='op'>::</span><span class='const'>IntType</span><span class='comma'>,</span>
+       <span class='const'>Support</span><span class='op'>::</span><span class='const'>Binary</span><span class='op'>::</span><span class='const'>CTypes</span><span class='op'>::</span><span class='const'>UIntType</span>
+    <span class='id identifier rubyid_parse_int'>parse_int</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Binary</span><span class='op'>::</span><span class='const'>CTypes</span><span class='op'>::</span><span class='const'>FloatType</span>
+    <span class='id identifier rubyid_parse_float'>parse_float</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='const'>Support</span><span class='op'>::</span><span class='const'>Binary</span><span class='op'>::</span><span class='const'>CTypes</span><span class='op'>::</span><span class='const'>CharType</span><span class='comma'>,</span>
+       <span class='const'>Support</span><span class='op'>::</span><span class='const'>Binary</span><span class='op'>::</span><span class='const'>CTypes</span><span class='op'>::</span><span class='const'>StringType</span>
+    <span class='id identifier rubyid_string'>string</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>NotImplementedError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unable to parse value for CType </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_ctype'>ctype</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse_values-instance_method">
+  
+    #<strong>parse_values</strong>(types, values)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Performs a second parsing of the values based on their desired
+C types.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>types</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Ronin::Support::Binary::CTypes::Type&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The desired types of the values.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>values</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String, Array&lt;String&gt;&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The values to further parse.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+225
+226
+227
+228
+229
+230</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/pack.rb', line 225</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_values'>parse_values</span><span class='lparen'>(</span><span class='id identifier rubyid_types'>types</span><span class='comma'>,</span><span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span>
+  <span class='comment'># now parse the values based on their resolved CType types
+</span>  <span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='period'>.</span><span class='id identifier rubyid_with_index'>with_index</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='id identifier rubyid_index'>index</span><span class='op'>|</span>
+    <span class='id identifier rubyid_parse_value'>parse_value</span><span class='lparen'>(</span><span class='id identifier rubyid_types'>types</span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="run-instance_method">
+  
+    #<strong>run</strong>(*args)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Runs the <code>ronin pack</code> command.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The <code>TYPE:VALUE</code> strings to parse and pack.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/pack.rb', line 130</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='comment'># perform an initial parsing of the arguments to extract types/values
+</span>  <span class='id identifier rubyid_types'>types</span><span class='comma'>,</span> <span class='id identifier rubyid_values'>values</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_types_and_values'>parse_types_and_values</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+
+  <span class='comment'># build the template using the parsed `TYPE`s
+</span>  <span class='id identifier rubyid_template'>template</span> <span class='op'>=</span> <span class='id identifier rubyid_build_template'>build_template</span><span class='lparen'>(</span><span class='id identifier rubyid_types'>types</span><span class='rparen'>)</span>
+
+  <span class='comment'># parse the values, but using the resolved C types.
+</span>  <span class='id identifier rubyid_values'>values</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_values'>parse_values</span><span class='lparen'>(</span><span class='id identifier rubyid_template'>template</span><span class='period'>.</span><span class='id identifier rubyid_types'>types</span><span class='comma'>,</span><span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span>
+
+  <span class='comment'># finally pack the parsed values using the binary template
+</span>  <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_template'>template</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:hexdump</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_hexdump'>hexdump</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_write_output'>write_output</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write_output-instance_method">
+  
+    #<strong>write_output</strong>(data)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Writes the packed data to the <code>--output</code> file or stdout.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The packed data to output.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.1.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+328
+329
+330
+331
+332
+333
+334</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/cli/commands/pack.rb', line 328</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write_output'>write_output</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:output</span><span class='rbracket'>]</span>
+    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_binwrite'>binwrite</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:output</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_stdout'>stdout</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Mon Jul 22 14:40:01 2024 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.36 (ruby-3.3.4).
+</div>
+
+    </div>
+  </body>
+</html>
