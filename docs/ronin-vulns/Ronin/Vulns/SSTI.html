@@ -151,14 +151,15 @@
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='lbracket'>[</span>
-  <span class='kw'>nil</span><span class='comma'>,</span> <span class='comment'># does not escape the expression
-</span>  <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_expression'>expression</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>{{</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expression'>expression</span><span class='embexpr_end'>}</span><span class='tstring_content'>}}</span><span class='tstring_end'>&quot;</span></span>    <span class='rbrace'>}</span><span class='comma'>,</span>
-  <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_expression'>expression</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>${</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expression'>expression</span><span class='embexpr_end'>}</span><span class='tstring_content'>}</span><span class='tstring_end'>&quot;</span></span>     <span class='rbrace'>}</span><span class='comma'>,</span>
-  <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_expression'>expression</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>${{</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expression'>expression</span><span class='embexpr_end'>}</span><span class='tstring_content'>}}</span><span class='tstring_end'>&quot;</span></span>   <span class='rbrace'>}</span><span class='comma'>,</span>
-  <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_expression'>expression</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\#{</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expression'>expression</span><span class='embexpr_end'>}</span><span class='tstring_content'>}</span><span class='tstring_end'>&quot;</span></span>    <span class='rbrace'>}</span><span class='comma'>,</span>
-  <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_expression'>expression</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;%= </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expression'>expression</span><span class='embexpr_end'>}</span><span class='tstring_content'> %&gt;</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
-<span class='rbracket'>]</span></pre></dd>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='kw'>nil</span> <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='comment'># does not escape the expression
+</span>
+  <span class='label'>double_curly_braces:</span>        <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_expression'>expression</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>{{</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expression'>expression</span><span class='embexpr_end'>}</span><span class='tstring_content'>}}</span><span class='tstring_end'>&quot;</span></span>    <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>dollar_curly_braces:</span>        <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_expression'>expression</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>${</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expression'>expression</span><span class='embexpr_end'>}</span><span class='tstring_content'>}</span><span class='tstring_end'>&quot;</span></span>     <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>dollar_double_curly_braces:</span> <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_expression'>expression</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>${{</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expression'>expression</span><span class='embexpr_end'>}</span><span class='tstring_content'>}}</span><span class='tstring_end'>&quot;</span></span>   <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>pound_curly_braces:</span>         <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_expression'>expression</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\#{</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expression'>expression</span><span class='embexpr_end'>}</span><span class='tstring_content'>}</span><span class='tstring_end'>&quot;</span></span>    <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>angle_brackets_percent:</span>     <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_expression'>expression</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;%= </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expression'>expression</span><span class='embexpr_end'>}</span><span class='tstring_content'> %&gt;</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+<span class='rbrace'>}</span></pre></dd>
       
     </dl>
   
@@ -200,6 +201,34 @@
       <li class="public ">
   <span class="summary_signature">
     
+      <a href="#escape_type-instance_method" title="#escape_type (instance method)">#<strong>escape_type</strong>  &#x21d2; :double_curly_braces, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>The type of SSTI escape used.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#test_expr-instance_method" title="#test_expr (instance method)">#<strong>test_expr</strong>  &#x21d2; TestExpression </a>
     
 
@@ -232,7 +261,7 @@
   
   
   <h3 class="inherited">Attributes inherited from <span class='object_link'><a href="WebVuln.html" title="Ronin::Vulns::WebVuln (class)">WebVuln</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="WebVuln.html#cookie-instance_method" title="Ronin::Vulns::WebVuln#cookie (method)">#cookie</a></span>, <span class='object_link'><a href="WebVuln.html#cookie_param-instance_method" title="Ronin::Vulns::WebVuln#cookie_param (method)">#cookie_param</a></span>, <span class='object_link'><a href="WebVuln.html#form_data-instance_method" title="Ronin::Vulns::WebVuln#form_data (method)">#form_data</a></span>, <span class='object_link'><a href="WebVuln.html#form_param-instance_method" title="Ronin::Vulns::WebVuln#form_param (method)">#form_param</a></span>, <span class='object_link'><a href="WebVuln.html#header_name-instance_method" title="Ronin::Vulns::WebVuln#header_name (method)">#header_name</a></span>, <span class='object_link'><a href="WebVuln.html#headers-instance_method" title="Ronin::Vulns::WebVuln#headers (method)">#headers</a></span>, <span class='object_link'><a href="WebVuln.html#http-instance_method" title="Ronin::Vulns::WebVuln#http (method)">#http</a></span>, <span class='object_link'><a href="WebVuln.html#password-instance_method" title="Ronin::Vulns::WebVuln#password (method)">#password</a></span>, <span class='object_link'><a href="WebVuln.html#query_param-instance_method" title="Ronin::Vulns::WebVuln#query_param (method)">#query_param</a></span>, <span class='object_link'><a href="WebVuln.html#query_params-instance_method" title="Ronin::Vulns::WebVuln#query_params (method)">#query_params</a></span>, <span class='object_link'><a href="WebVuln.html#referer-instance_method" title="Ronin::Vulns::WebVuln#referer (method)">#referer</a></span>, <span class='object_link'><a href="WebVuln.html#request_method-instance_method" title="Ronin::Vulns::WebVuln#request_method (method)">#request_method</a></span>, <span class='object_link'><a href="WebVuln.html#url-instance_method" title="Ronin::Vulns::WebVuln#url (method)">#url</a></span>, <span class='object_link'><a href="WebVuln.html#user-instance_method" title="Ronin::Vulns::WebVuln#user (method)">#user</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="WebVuln.html#cookie-instance_method" title="Ronin::Vulns::WebVuln#cookie (method)">#cookie</a></span>, <span class='object_link'><a href="WebVuln.html#cookie_param-instance_method" title="Ronin::Vulns::WebVuln#cookie_param (method)">#cookie_param</a></span>, <span class='object_link'><a href="WebVuln.html#form_data-instance_method" title="Ronin::Vulns::WebVuln#form_data (method)">#form_data</a></span>, <span class='object_link'><a href="WebVuln.html#form_param-instance_method" title="Ronin::Vulns::WebVuln#form_param (method)">#form_param</a></span>, <span class='object_link'><a href="WebVuln.html#header_name-instance_method" title="Ronin::Vulns::WebVuln#header_name (method)">#header_name</a></span>, <span class='object_link'><a href="WebVuln.html#headers-instance_method" title="Ronin::Vulns::WebVuln#headers (method)">#headers</a></span>, <span class='object_link'><a href="WebVuln.html#http-instance_method" title="Ronin::Vulns::WebVuln#http (method)">#http</a></span>, <span class='object_link'><a href="WebVuln.html#password-instance_method" title="Ronin::Vulns::WebVuln#password (method)">#password</a></span>, <span class='object_link'><a href="WebVuln.html#query_param-instance_method" title="Ronin::Vulns::WebVuln#query_param (method)">#query_param</a></span>, <span class='object_link'><a href="WebVuln.html#query_params-instance_method" title="Ronin::Vulns::WebVuln#query_params (method)">#query_params</a></span>, <span class='object_link'><a href="WebVuln.html#referer-instance_method" title="Ronin::Vulns::WebVuln#referer (method)">#referer</a></span>, <span class='object_link'><a href="WebVuln.html#request_method-instance_method" title="Ronin::Vulns::WebVuln#request_method (method)">#request_method</a></span>, <span class='object_link'><a href="WebVuln.html#url-instance_method" title="Ronin::Vulns::WebVuln#url (method)">#url</a></span>, <span class='object_link'><a href="WebVuln.html#user-instance_method" title="Ronin::Vulns::WebVuln#user (method)">#user</a></span>, <span class='object_link'><a href="WebVuln.html#user_agent-instance_method" title="Ronin::Vulns::WebVuln#user_agent (method)">#user_agent</a></span></p>
 
 
   
@@ -269,7 +298,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#scan-class_method" title="scan (class method)">.<strong>scan</strong>(url, escape: ESCAPES, **kwargs) {|vuln| ... } &#x21d2; Array&lt;SSTI&gt; </a>
+      <a href="#test_param-class_method" title="test_param (class method)">.<strong>test_param</strong>(url, escape: ESCAPES.keys, http:, **kwargs)  &#x21d2; SSTI<sup>?</sup> </a>
     
 
     
@@ -280,10 +309,10 @@
   
   
   
-  
+  <span class="private note title">private</span>
 
   
-    <span class="summary_desc"><div class='inline'><p>Scans the URL for Server Side Template Injection (SSTI) vulnerabilities.</p>
+    <span class="summary_desc"><div class='inline'><p>Tests the URL and a specific query param, header name, cookie param, or form param for a Server Side Template Injection (SSTI) vulnerability by enumerating over various SSTI syntaxes.</p>
 </div></span>
   
 </li>
@@ -405,7 +434,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="WebVuln.html" title="Ronin::Vulns::WebVuln (class)">WebVuln</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="WebVuln.html#exploit-instance_method" title="Ronin::Vulns::WebVuln#exploit (method)">#exploit</a></span>, <span class='object_link'><a href="WebVuln.html#exploit_cookie-instance_method" title="Ronin::Vulns::WebVuln#exploit_cookie (method)">#exploit_cookie</a></span>, <span class='object_link'><a href="WebVuln.html#exploit_form_data-instance_method" title="Ronin::Vulns::WebVuln#exploit_form_data (method)">#exploit_form_data</a></span>, <span class='object_link'><a href="WebVuln.html#exploit_headers-instance_method" title="Ronin::Vulns::WebVuln#exploit_headers (method)">#exploit_headers</a></span>, <span class='object_link'><a href="WebVuln.html#exploit_query_params-instance_method" title="Ronin::Vulns::WebVuln#exploit_query_params (method)">#exploit_query_params</a></span>, <span class='object_link'><a href="WebVuln.html#original_value-instance_method" title="Ronin::Vulns::WebVuln#original_value (method)">#original_value</a></span>, <span class='object_link'><a href="WebVuln.html#random_value-instance_method" title="Ronin::Vulns::WebVuln#random_value (method)">#random_value</a></span>, <span class='object_link'><a href="WebVuln.html#request-instance_method" title="Ronin::Vulns::WebVuln#request (method)">#request</a></span>, <span class='object_link'><a href="WebVuln.html#scan_cookie_params-class_method" title="Ronin::Vulns::WebVuln.scan_cookie_params (method)">scan_cookie_params</a></span>, <span class='object_link'><a href="WebVuln.html#scan_form_params-class_method" title="Ronin::Vulns::WebVuln.scan_form_params (method)">scan_form_params</a></span>, <span class='object_link'><a href="WebVuln.html#scan_headers-class_method" title="Ronin::Vulns::WebVuln.scan_headers (method)">scan_headers</a></span>, <span class='object_link'><a href="WebVuln.html#scan_query_params-class_method" title="Ronin::Vulns::WebVuln.scan_query_params (method)">scan_query_params</a></span>, <span class='object_link'><a href="WebVuln.html#test-class_method" title="Ronin::Vulns::WebVuln.test (method)">test</a></span>, <span class='object_link'><a href="WebVuln.html#to_curl-instance_method" title="Ronin::Vulns::WebVuln#to_curl (method)">#to_curl</a></span>, <span class='object_link'><a href="WebVuln.html#to_http-instance_method" title="Ronin::Vulns::WebVuln#to_http (method)">#to_http</a></span>, <span class='object_link'><a href="WebVuln.html#to_s-instance_method" title="Ronin::Vulns::WebVuln#to_s (method)">#to_s</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="WebVuln.html#exploit-instance_method" title="Ronin::Vulns::WebVuln#exploit (method)">#exploit</a></span>, <span class='object_link'><a href="WebVuln.html#exploit_cookie-instance_method" title="Ronin::Vulns::WebVuln#exploit_cookie (method)">#exploit_cookie</a></span>, <span class='object_link'><a href="WebVuln.html#exploit_form_data-instance_method" title="Ronin::Vulns::WebVuln#exploit_form_data (method)">#exploit_form_data</a></span>, <span class='object_link'><a href="WebVuln.html#exploit_headers-instance_method" title="Ronin::Vulns::WebVuln#exploit_headers (method)">#exploit_headers</a></span>, <span class='object_link'><a href="WebVuln.html#exploit_query_params-instance_method" title="Ronin::Vulns::WebVuln#exploit_query_params (method)">#exploit_query_params</a></span>, <span class='object_link'><a href="WebVuln.html#original_value-instance_method" title="Ronin::Vulns::WebVuln#original_value (method)">#original_value</a></span>, <span class='object_link'><a href="WebVuln.html#random_value-instance_method" title="Ronin::Vulns::WebVuln#random_value (method)">#random_value</a></span>, <span class='object_link'><a href="WebVuln.html#request-instance_method" title="Ronin::Vulns::WebVuln#request (method)">#request</a></span>, <span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">scan</a></span>, <span class='object_link'><a href="WebVuln.html#scan_cookie_params-class_method" title="Ronin::Vulns::WebVuln.scan_cookie_params (method)">scan_cookie_params</a></span>, <span class='object_link'><a href="WebVuln.html#scan_form_params-class_method" title="Ronin::Vulns::WebVuln.scan_form_params (method)">scan_form_params</a></span>, <span class='object_link'><a href="WebVuln.html#scan_headers-class_method" title="Ronin::Vulns::WebVuln.scan_headers (method)">scan_headers</a></span>, <span class='object_link'><a href="WebVuln.html#scan_query_params-class_method" title="Ronin::Vulns::WebVuln.scan_query_params (method)">scan_query_params</a></span>, <span class='object_link'><a href="WebVuln.html#test-class_method" title="Ronin::Vulns::WebVuln.test (method)">test</a></span>, <span class='object_link'><a href="WebVuln.html#to_curl-instance_method" title="Ronin::Vulns::WebVuln#to_curl (method)">#to_curl</a></span>, <span class='object_link'><a href="WebVuln.html#to_http-instance_method" title="Ronin::Vulns::WebVuln#to_http (method)">#to_http</a></span>, <span class='object_link'><a href="WebVuln.html#to_s-instance_method" title="Ronin::Vulns::WebVuln#to_s (method)">#to_s</a></span></p>
 
   
   
@@ -455,7 +484,7 @@
         <span class='name'>escape</span>
       
       
-        <span class='type'>(<tt>Proc</tt>, <tt>nil</tt>)</span>
+        <span class='type'>(<tt>:double_curly_braces</tt>, <tt>:dollar_curly_braces</tt>, <tt>:dollar_double_curly_braces</tt>, <tt>:pound_curly_braces</tt>, <tt>:angle_brackets_percent</tt>, <tt>:custom</tt>, <tt>Proc</tt>, <tt>nil</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>nil</tt>)</em>
@@ -463,8 +492,8 @@
       
         &mdash;
         <div class='inline'><p>How to escape a given payload. Either a proc that will accept a String
-and return a String, or <code>nil</code> to indicate that the payload will not
-be escaped.</p>
+and return a String, a Symbol describing the template syntax to use,
+or <code>nil</code> to indicate that the payload will not be escaped.</p>
 </div>
       
     </li>
@@ -489,6 +518,24 @@ for SSTI.</p>
   
 </ul>
 
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>An unknown <code>escape_type:</code> or <code>escape:</code> value was given, or no
+<code>test_expr:</code> was given.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -496,28 +543,54 @@ for SSTI.</p>
       <pre class="lines">
 
 
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81</pre>
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 82</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>escape:</span> <span class='kw'>nil</span><span class='comma'>,</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>escape:</span>    <span class='kw'>nil</span><span class='comma'>,</span>
                     <span class='label'>test_expr:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_random_test'>random_test</span><span class='comma'>,</span>
                     <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
 
-  <span class='ivar'>@escape</span>    <span class='op'>=</span> <span class='id identifier rubyid_escape'>escape</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_escape'>escape</span>
+  <span class='kw'>when</span> <span class='const'>Symbol</span>
+    <span class='ivar'>@escape_type</span> <span class='op'>=</span> <span class='id identifier rubyid_escape'>escape</span>
+    <span class='ivar'>@escape</span>      <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#ESCAPES-constant" title="Ronin::Vulns::SSTI::ESCAPES (constant)">ESCAPES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_escape'>escape</span><span class='rparen'>)</span> <span class='kw'>do</span>
+                     <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown template syntax: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escape_type'>escape_type</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+                   <span class='kw'>end</span>
+  <span class='kw'>when</span> <span class='const'>Proc</span>
+    <span class='ivar'>@escape_type</span> <span class='op'>=</span> <span class='symbol'>:custom</span>
+    <span class='ivar'>@escape</span>      <span class='op'>=</span> <span class='id identifier rubyid_escape'>escape</span>
+  <span class='kw'>when</span> <span class='kw'>nil</span> <span class='comment'># no-op
+</span>  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>invalid escape type, must be a Symbol, Proc, or nil: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_escape'>escape</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
   <span class='ivar'>@test_expr</span> <span class='op'>=</span> <span class='id identifier rubyid_test_expr'>test_expr</span>
 
   <span class='kw'>unless</span> <span class='ivar'>@test_expr</span>
@@ -579,15 +652,85 @@ indicate that the payload will not be escaped.</p>
       <pre class="lines">
 
 
-48
-49
-50</pre>
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_escape'>escape</span>
   <span class='ivar'>@escape</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="escape_type-instance_method">
+  
+    #<strong>escape_type</strong>  &#x21d2; <tt>:double_curly_braces</tt>, ...  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>The type of SSTI escape used.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>:double_curly_braces</tt>, <tt>:dollar_curly_braces</tt>, <tt>:dollar_double_curly_braces</tt>, <tt>:pound_curly_braces</tt>, <tt>:angle_brackets_percent</tt>, <tt>:custom</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 49</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_escape_type'>escape_type</span>
+  <span class='ivar'>@escape_type</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -634,12 +777,12 @@ indicate that the payload will not be escaped.</p>
       <pre class="lines">
 
 
-53
-54
-55</pre>
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_test_expr'>test_expr</span>
   <span class='ivar'>@test_expr</span>
@@ -698,18 +841,18 @@ indicate that the payload will not be escaped.</p>
       <pre class="lines">
 
 
-89
-90
-91
-92
-93
-94
-95
-96
-97</pre>
+114
+115
+116
+117
+118
+119
+120
+121
+122</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 89</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 114</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_random_test'>random_test</span>
   <span class='id identifier rubyid_int1'>int1</span> <span class='op'>=</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>1_000</span><span class='op'>..</span><span class='int'>1_999</span><span class='rparen'>)</span>
@@ -726,9 +869,9 @@ indicate that the payload will not be escaped.</p>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="scan-class_method">
+  <h3 class="signature " id="test_param-class_method">
   
-    .<strong>scan</strong>(url, escape: ESCAPES, **kwargs) {|vuln| ... } &#x21d2; <tt>Array&lt;<span class='object_link'><a href="" title="Ronin::Vulns::SSTI (class)">SSTI</a></span>&gt;</tt> 
+    .<strong>test_param</strong>(url, escape: ESCAPES.keys, http:, **kwargs)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Vulns::SSTI (class)">SSTI</a></span></tt><sup>?</sup> 
   
 
   
@@ -736,7 +879,13 @@ indicate that the payload will not be escaped.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Scans the URL for Server Side Template Injection (SSTI) vulnerabilities.</p>
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Tests the URL and a specific query param, header name, cookie param, or
+form param for a Server Side Template Injection (SSTI) vulnerability
+by enumerating over various SSTI syntaxes.</p>
 
 
   </div>
@@ -750,12 +899,12 @@ indicate that the payload will not be escaped.</p>
         <span class='name'>url</span>
       
       
-        <span class='type'>(<tt>URI::HTTP</tt>, <tt>String</tt>)</span>
+        <span class='type'>(<tt>URI::HTTP</tt>)</span>
       
       
       
         &mdash;
-        <div class='inline'><p>The URL to scan.</p>
+        <div class='inline'><p>The URL to test.</p>
 </div>
       
     </li>
@@ -765,15 +914,30 @@ indicate that the payload will not be escaped.</p>
         <span class='name'>escape</span>
       
       
-        <span class='type'>(<tt>Array&lt;Proc&gt;</tt>, <tt>Proc</tt>, <tt>nil</tt>)</span>
+        <span class='type'>(<tt>Array&lt;Symbol, Proc&gt;</tt>, <tt>Symbol</tt>, <tt>Proc</tt>, <tt>nil</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>ESCAPES</tt>)</em>
+        <em class="default">(defaults to: <tt>ESCAPES.keys</tt>)</em>
       
       
         &mdash;
         <div class='inline'><p>The escape method to use. If <code>escape:</code> is not given, then all escapes
-in <span class='object_link'><a href="#ESCAPES-constant" title="Ronin::Vulns::SSTI::ESCAPES (constant)">ESCAPES</a></span> will be tested..</p>
+names in <span class='object_link'><a href="#ESCAPES-constant" title="Ronin::Vulns::SSTI::ESCAPES (constant)">ESCAPES</a></span> will be tested..</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>http</span>
+      
+      
+        <span class='type'>(<tt>Ronin::Support::Network::HTTP</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The HTTP session to use for testing the URL.</p>
 </div>
       
     </li>
@@ -802,113 +966,55 @@ in <span class='object_link'><a href="#ESCAPES-constant" title="Ronin::Vulns::SS
     
     
     
+    
+    
     <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
     <ul class="option">
       
         <li>
-          <span class="name">:query_params</span>
-          <span class="type">(<tt>Array&lt;Symbol, String&gt;</tt>, <tt>Symbol</tt>, <tt>String</tt>, <tt>true</tt>, <tt>nil</tt>)</span>
+          <span class="name">:query_param</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>String</tt>, <tt>true</tt>, <tt>nil</tt>)</span>
           <span class="default">
             
           </span>
           
-            &mdash; <div class='inline'><p>The query param name(s) to test.</p>
+            &mdash; <div class='inline'><p>The query param name to test.</p>
 </div>
           
         </li>
       
         <li>
-          <span class="name">:header_names</span>
-          <span class="type">(<tt>Array&lt;Symbol, String&gt;</tt>, <tt>Symbol</tt>, <tt>String</tt>, <tt>nil</tt>)</span>
+          <span class="name">:header_name</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>String</tt>, <tt>nil</tt>)</span>
           <span class="default">
             
           </span>
           
-            &mdash; <div class='inline'><p>The header name(s) to test.</p>
+            &mdash; <div class='inline'><p>The header name to test.</p>
 </div>
           
         </li>
       
         <li>
-          <span class="name">:cookie_params</span>
-          <span class="type">(<tt>Array&lt;Symbol, String&gt;</tt>, <tt>Symbol</tt>, <tt>String</tt>, <tt>true</tt>, <tt>nil</tt>)</span>
+          <span class="name">:cookie_param</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>String</tt>, <tt>true</tt>, <tt>nil</tt>)</span>
           <span class="default">
             
           </span>
           
-            &mdash; <div class='inline'><p>The cookie param name(s) to test.</p>
+            &mdash; <div class='inline'><p>The cookie param name to test.</p>
 </div>
           
         </li>
       
         <li>
-          <span class="name">:form_params</span>
-          <span class="type">(<tt>Array&lt;Symbol, String&gt;</tt>, <tt>Symbol</tt>, <tt>String</tt>, <tt>nil</tt>)</span>
+          <span class="name">:form_param</span>
+          <span class="type">(<tt>Symbol</tt>, <tt>String</tt>, <tt>nil</tt>)</span>
           <span class="default">
             
           </span>
           
-            &mdash; <div class='inline'><p>The form param name(s) to test.</p>
-</div>
-          
-        </li>
-      
-        <li>
-          <span class="name">:http</span>
-          <span class="type">(<tt>Ronin::Support::Network::HTTP</tt>, <tt>nil</tt>)</span>
-          <span class="default">
-            
-          </span>
-          
-            &mdash; <div class='inline'><p>An HTTP session to use for testing the LFI.</p>
-</div>
-          
-        </li>
-      
-        <li>
-          <span class="name">:headers</span>
-          <span class="type">(<tt>Hash{String =&gt; String}</tt>, <tt>nil</tt>)</span>
-          <span class="default">
-            
-          </span>
-          
-            &mdash; <div class='inline'><p>Additional headers to send with requests.</p>
-</div>
-          
-        </li>
-      
-        <li>
-          <span class="name">:cookie</span>
-          <span class="type">(<tt>String</tt>, <tt>Ronin::Support::Network::HTTP::Cookie</tt>, <tt>nil</tt>)</span>
-          <span class="default">
-            
-          </span>
-          
-            &mdash; <div class='inline'><p>Additional cookie params to send with requests.</p>
-</div>
-          
-        </li>
-      
-        <li>
-          <span class="name">:referer</span>
-          <span class="type">(<tt>String</tt>, <tt>nil</tt>)</span>
-          <span class="default">
-            
-          </span>
-          
-            &mdash; <div class='inline'><p>Optional <code>Referer</code> header to send with requests.</p>
-</div>
-          
-        </li>
-      
-        <li>
-          <span class="name">:form_data</span>
-          <span class="type">(<tt>Hash{String =&gt; String}</tt>, <tt>nil</tt>)</span>
-          <span class="default">
-            
-          </span>
-          
-            &mdash; <div class='inline'><p>Additional form data to send with requests.</p>
+            &mdash; <div class='inline'><p>The form param name to test.</p>
 </div>
           
         </li>
@@ -916,54 +1022,34 @@ in <span class='object_link'><a href="#ESCAPES-constant" title="Ronin::Vulns::SS
     </ul>
   
 
-<p class="tag_title">Yields:</p>
-<ul class="yield">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>vuln</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>If a block is given it will be yielded each discovered vulnerability.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Yield Parameters:</p>
-<ul class="yieldparam">
-  
-    <li>
-      
-        <span class='name'>vuln</span>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Vulns::SSTI (class)">SSTI</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>A discovered SSTI vulnerability in the URL.</p>
-</div>
-      
-    </li>
-  
-</ul>
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
     <li>
       
       
-        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="" title="Ronin::Vulns::SSTI (class)">SSTI</a></span>&gt;</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Ronin::Vulns::SSTI (class)">SSTI</a></span></tt>, <tt>nil</tt>)</span>
       
       
       
         &mdash;
-        <div class='inline'><p>All discovered SSTI vulnerabilities.</p>
+        <div class='inline'><p>The first discovered web vulnerability for the specific query param,
+header name, cookie param, or form param.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
 </div>
       
     </li>
@@ -976,27 +1062,31 @@ in <span class='object_link'><a href="#ESCAPES-constant" title="Ronin::Vulns::SS
       <pre class="lines">
 
 
-148
-149
-150
-151
-152
-153
-154
-155
-156</pre>
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 148</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 162</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>escape:</span> <span class='const'><span class='object_link'><a href="#ESCAPES-constant" title="Ronin::Vulns::SSTI::ESCAPES (constant)">ESCAPES</a></span></span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_vulns'>vulns</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_test_param'>test_param</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>escape:</span> <span class='const'><span class='object_link'><a href="#ESCAPES-constant" title="Ronin::Vulns::SSTI::ESCAPES (constant)">ESCAPES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='comma'>,</span>
+                         <span class='comment'># initialize keyword arguments
+</span>                         <span class='label'>http:</span> <span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='const'>Array</span><span class='lparen'>(</span><span class='id identifier rubyid_escape'>escape</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_escape_value'>escape_value</span><span class='op'>|</span>
+    <span class='id identifier rubyid_vuln'>vuln</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>escape:</span> <span class='id identifier rubyid_escape_value'>escape_value</span><span class='comma'>,</span> <span class='label'>http:</span> <span class='id identifier rubyid_http'>http</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
 
-  <span class='const'>Array</span><span class='lparen'>(</span><span class='id identifier rubyid_escape'>escape</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_escape_char'>escape_char</span><span class='op'>|</span>
-    <span class='id identifier rubyid_vulns'>vulns</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>escape:</span> <span class='id identifier rubyid_escape_char'>escape_char</span><span class='comma'>,</span> <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>return</span> <span class='id identifier rubyid_vuln'>vuln</span> <span class='kw'>if</span> <span class='id identifier rubyid_vuln'>vuln</span><span class='period'>.</span><span class='id identifier rubyid_vulnerable?'>vulnerable?</span>
   <span class='kw'>end</span>
 
-  <span class='kw'>return</span> <span class='id identifier rubyid_vulns'>vulns</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1057,12 +1147,12 @@ type.</p>
       <pre class="lines">
 
 
-197
-198
-199</pre>
+213
+214
+215</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 197</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 213</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_vuln_type'>vuln_type</span>
   <span class='symbol'>:ssti</span>
@@ -1131,14 +1221,14 @@ type.</p>
       <pre class="lines">
 
 
-165
-166
-167
-168
-169</pre>
+181
+182
+183
+184
+185</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 165</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 181</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encode_payload'>encode_payload</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='ivar'>@escape</span> <span class='kw'>then</span> <span class='ivar'>@escape</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
@@ -1189,15 +1279,15 @@ Injection (SSTI).</p>
       <pre class="lines">
 
 
-177
-178
-179
-180
-181
-182</pre>
+193
+194
+195
+196
+197
+198</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 177</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/ssti.rb', line 193</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_vulnerable?'>vulnerable?</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_exploit'>exploit</span><span class='lparen'>(</span><span class='ivar'>@test_expr</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
@@ -1215,9 +1305,9 @@ Injection (SSTI).</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Jun 19 22:34:03 2024 by
+  Generated on Mon Jul 22 12:28:48 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.36 (ruby-3.1.6).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>

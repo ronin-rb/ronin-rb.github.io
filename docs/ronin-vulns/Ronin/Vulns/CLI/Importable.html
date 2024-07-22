@@ -73,7 +73,7 @@
   
   <dl>
       <dt>Includes:</dt>
-      <dd>DB::CLI::Printing, <span class='object_link'><a href="Logging.html" title="Ronin::Vulns::CLI::Logging (module)">Logging</a></span></dd>
+      <dd>DB::CLI::Printing, <span class='object_link'><a href="Printing.html" title="Ronin::Vulns::CLI::Printing (module)">Printing</a></span></dd>
   </dl>
   
   
@@ -129,8 +129,8 @@
   <h2>Constant Summary</h2>
   
   <h3 class="inherited">Constants included
-     from <span class='object_link'><a href="Logging.html" title="Ronin::Vulns::CLI::Logging (module)">Logging</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Logging.html#VULN_TYPES-constant" title="Ronin::Vulns::CLI::Logging::VULN_TYPES (constant)">Logging::VULN_TYPES</a></span></p>
+     from <span class='object_link'><a href="Printing.html" title="Ronin::Vulns::CLI::Printing (module)">Printing</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Printing.html#VULN_TYPES-constant" title="Ronin::Vulns::CLI::Printing::VULN_TYPES (constant)">Printing::VULN_TYPES</a></span></p>
 
 
 
@@ -211,9 +211,10 @@
   
   
   
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="Logging.html" title="Ronin::Vulns::CLI::Logging (module)">Logging</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Logging.html#log_vuln-instance_method" title="Ronin::Vulns::CLI::Logging#log_vuln (method)">#log_vuln</a></span>, <span class='object_link'><a href="Logging.html#vuln_location-instance_method" title="Ronin::Vulns::CLI::Logging#vuln_location (method)">#vuln_location</a></span>, <span class='object_link'><a href="Logging.html#vuln_type-instance_method" title="Ronin::Vulns::CLI::Logging#vuln_type (method)">#vuln_type</a></span></p>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Printing.html" title="Ronin::Vulns::CLI::Printing (module)">Printing</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Printing.html#log_vuln-instance_method" title="Ronin::Vulns::CLI::Printing#log_vuln (method)">#log_vuln</a></span>, <span class='object_link'><a href="Printing.html#print_vuln-instance_method" title="Ronin::Vulns::CLI::Printing#print_vuln (method)">#print_vuln</a></span>, <span class='object_link'><a href="Printing.html#print_vulns-instance_method" title="Ronin::Vulns::CLI::Printing#print_vulns (method)">#print_vulns</a></span>, <span class='object_link'><a href="Printing.html#vuln_param_name-instance_method" title="Ronin::Vulns::CLI::Printing#vuln_param_name (method)">#vuln_param_name</a></span>, <span class='object_link'><a href="Printing.html#vuln_param_type-instance_method" title="Ronin::Vulns::CLI::Printing#vuln_param_type (method)">#vuln_param_type</a></span>, <span class='object_link'><a href="Printing.html#vuln_type-instance_method" title="Ronin::Vulns::CLI::Printing#vuln_type (method)">#vuln_type</a></span></p>
 
+  
   
   
 
@@ -380,7 +381,8 @@ class.</p>
 68
 69
 70
-71</pre>
+71
+72</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/vulns/cli/importable.rb', line 60</span>
@@ -388,13 +390,14 @@ class.</p>
 <span class='kw'>def</span> <span class='id identifier rubyid_import_vuln'>import_vuln</span><span class='lparen'>(</span><span class='id identifier rubyid_vuln'>vuln</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="../Importer.html" title="Ronin::Vulns::Importer (module)">Importer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_import'><span class='object_link'><a href="../Importer.html#import-class_method" title="Ronin::Vulns::Importer.import (method)">import</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_vuln'>vuln</span><span class='rparen'>)</span>
 
-  <span class='id identifier rubyid_vuln_name'>vuln_name</span> <span class='op'>=</span> <span class='id identifier rubyid_vuln_type'>vuln_type</span><span class='lparen'>(</span><span class='id identifier rubyid_vuln'>vuln</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_location'>location</span>  <span class='op'>=</span> <span class='id identifier rubyid_vuln_location'>vuln_location</span><span class='lparen'>(</span><span class='id identifier rubyid_vuln'>vuln</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_vuln_type'>vuln_type</span>  <span class='op'>=</span> <span class='id identifier rubyid_vuln_type'>vuln_type</span><span class='lparen'>(</span><span class='id identifier rubyid_vuln'>vuln</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_param_type'>param_type</span> <span class='op'>=</span> <span class='id identifier rubyid_vuln_param_type'>vuln_param_type</span><span class='lparen'>(</span><span class='id identifier rubyid_vuln'>vuln</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_param_name'>param_name</span> <span class='op'>=</span> <span class='id identifier rubyid_vuln_param_name'>vuln_param_name</span><span class='lparen'>(</span><span class='id identifier rubyid_vuln'>vuln</span><span class='rparen'>)</span>
 
-  <span class='kw'>if</span> <span class='id identifier rubyid_location'>location</span>
-    <span class='id identifier rubyid_log_info'>log_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Imported </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vuln_name'>vuln_name</span><span class='embexpr_end'>}</span><span class='tstring_content'> vulnerability on URL </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vuln'>vuln</span><span class='period'>.</span><span class='id identifier rubyid_url'>url</span><span class='embexpr_end'>}</span><span class='tstring_content'> and </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_location'>location</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_param_type'>param_type</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_param_name'>param_name</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_log_info'>log_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Imported </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vuln_type'>vuln_type</span><span class='embexpr_end'>}</span><span class='tstring_content'> vulnerability on URL </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vuln'>vuln</span><span class='period'>.</span><span class='id identifier rubyid_url'>url</span><span class='embexpr_end'>}</span><span class='tstring_content'> and </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_param_type'>param_type</span><span class='embexpr_end'>}</span><span class='tstring_content'> &#39;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_param_name'>param_name</span><span class='embexpr_end'>}</span><span class='tstring_content'>&#39;</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_log_info'>log_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Imported </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vuln_name'>vuln_name</span><span class='embexpr_end'>}</span><span class='tstring_content'> vulnerability on URL </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vuln'>vuln</span><span class='period'>.</span><span class='id identifier rubyid_url'>url</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_log_info'>log_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Imported </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vuln_type'>vuln_type</span><span class='embexpr_end'>}</span><span class='tstring_content'> vulnerability on URL </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vuln'>vuln</span><span class='period'>.</span><span class='id identifier rubyid_url'>url</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -407,9 +410,9 @@ class.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Nov 30 18:06:17 2023 by
+  Generated on Mon Jul 22 12:28:48 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.1.4).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>

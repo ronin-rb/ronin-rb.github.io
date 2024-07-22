@@ -57,7 +57,56 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'><h3 id="0-1-5-2024-06-19">0.1.5 / 2024-06-19</h3>
+      <div id="content"><div id='filecontents'><h3 id="0-2-0-2024-07-22">0.2.0 / 2024-07-22</h3>
+
+<ul>
+<li>Require <a href="https://github.com/ronin-rb/ronin-db#readme">ronin-db</a> ~&gt; 0.2</li>
+<li>Added <span class='object_link'><a href="Ronin/Vulns/Importer.html" title="Ronin::Vulns::Importer (module)">Ronin::Vulns::Importer</a></span>.</li>
+<li>Added the <code>user_agent:</code> keyword argument to
+<span class='object_link'><a href="Ronin/Vulns/WebVuln.html#initialize-instance_method" title="Ronin::Vulns::WebVuln#initialize (method)">Ronin::Vulns::WebVuln#initialize</a></span>.</li>
+<li>Added <span class='object_link'><a href="Ronin/Vulns/WebVuln.html#user_agent-instance_method" title="Ronin::Vulns::WebVuln#user_agent (method)">Ronin::Vulns::WebVuln#user_agent</a></span>.</li>
+<li>Added <span class='object_link'><a href="Ronin/Vulns/CommandInjection.html" title="Ronin::Vulns::CommandInjection (class)">Ronin::Vulns::CommandInjection</a></span>.</li>
+<li>Added the <code>command_injection:</code> keyword argument to
+<span class='object_link'><a href="Ronin/Vulns/URLScanner.html#scan-class_method" title="Ronin::Vulns::URLScanner.scan (method)">Ronin::Vulns::URLScanner.scan</a></span>.</li>
+<li>Added <span class='object_link'><a href="Ronin/Vulns/RFI.html#script_lang-instance_method" title="Ronin::Vulns::RFI#script_lang (method)">Ronin::Vulns::RFI#script_lang</a></span>.</li>
+<li>Support inferring the <span class='object_link'><a href="Ronin/Vulns/RFI.html#script_lang-instance_method" title="Ronin::Vulns::RFI#script_lang (method)">Ronin::Vulns::RFI#script_lang</a></span> from the URL given to
+<span class='object_link'><a href="Ronin/Vulns/RFI.html#initialize-instance_method" title="Ronin::Vulns::RFI#initialize (method)">Ronin::Vulns::RFI#initialize</a></span>.</li>
+<li>Bruteforce test every different kind of RFI test URL in
+<span class='object_link'><a href="Ronin/Vulns/RFI.html#vulnerable%3F-instance_method" title="Ronin::Vulns::RFI#vulnerable? (method)">Ronin::Vulns::RFI#vulnerable?</a></span> if a test script URL was not given or the
+<span class='object_link'><a href="Ronin/Vulns/RFI.html#script_lang-instance_method" title="Ronin::Vulns::RFI#script_lang (method)">Ronin::Vulns::RFI#script_lang</a></span> cannot be inferred from the given URL.</li>
+<li>Allow the <code>escape_type:</code> keyword argument for <span class='object_link'><a href="Ronin/Vulns/SSTI.html#initialize-instance_method" title="Ronin::Vulns::SSTI#initialize (method)">Ronin::Vulns::SSTI#initialize</a></span>
+to accept a Symbol value to specify the specific
+Server-Side-Template-Injection interpolation syntax:
+
+<ul>
+<li><code>:double_curly_braces</code> - <code>{{expression}}</code></li>
+<li><code>:dollar_curly_braces</code> - <code>${expression}</code></li>
+<li><code>:dollar_double_curly_braces</code> - <code>${{expression}}</code></li>
+<li><code>:pound_curly_braces</code> - <code>#{expression}</code></li>
+<li><code>:angle_brackets_percent</code> - <code>&lt;%= expression %&gt;</code></li>
+</ul></li>
+</ul>
+
+<h4 id="cli">CLI</h4>
+
+<ul>
+<li>Added the <code>ronin-vulns command-injection</code> command.</li>
+<li>Added the <code>ronin-vulns irb</code> command.</li>
+<li>Added the <code>ronin-vulns completion</code> command to install shell completion files
+for all <code>ronin-vulns</code> commands for Bash and Zsh shells.</li>
+<li>Added the <code>-H,--request-method</code> option to all commands.</li>
+<li>Added the <code>--user-agent</code> and <code>--user-agent-string</code> options to all commands.</li>
+<li>Added the <code>--test-all-form-params</code> option to all commands.</li>
+<li>Added the <code>--print-curl</code> and <code>--print-http</code> options to all commands.</li>
+<li>Added the <code>--import</code> option to all commands.</li>
+<li>Print a summary of all vulnerabilities found after scanning a URL, in addition
+to logging messages indicating when a new vulnerability has just been found.</li>
+<li>Use hyphenated values for the <code>--lfi-filter-bypass</code> option in the
+<code>ronin-vulns scan</code> command and <code>--filter-bypass</code> option in the
+<code>ronin-vulns lfi</code> command.</li>
+</ul>
+
+<h3 id="0-1-5-2024-06-19">0.1.5 / 2024-06-19</h3>
 
 <ul>
 <li>Improve the accuracy of <span class='object_link'><a href="Ronin/Vulns/OpenRedirect.html#vulnerable%3F-instance_method" title="Ronin::Vulns::OpenRedirect#vulnerable? (method)">Ronin::Vulns::OpenRedirect#vulnerable?</a></span> when
@@ -89,9 +138,9 @@ cookie strings together.</li>
 <h3 id="0-1-3-2023-07-07">0.1.3 / 2023-07-07</h3>
 
 <ul>
-<li>Fixed a bug in <span class='object_link'><a href="Ronin/Vulns/SSTI.html#scan-class_method" title="Ronin::Vulns::SSTI.scan (method)">Ronin::Vulns::SSTI.scan</a></span> where when called without <code>escape:</code>
+<li>Fixed a bug in <span class='object_link'><a href="Ronin/Vulns/WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">Ronin::Vulns::WebVuln.scan</a></span> where when called without <code>escape:</code>
 it would not return all found vulnerabilities.</li>
-<li>Fixed a bug in <span class='object_link'><a href="Ronin/Vulns/SQLI.html#scan-class_method" title="Ronin::Vulns::SQLI.scan (method)">Ronin::Vulns::SQLI.scan</a></span> where repeat requests would be sent
+<li>Fixed a bug in <span class='object_link'><a href="Ronin/Vulns/WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">Ronin::Vulns::WebVuln.scan</a></span> where repeat requests would be sent
 even if <code>escape_quote:</code>, <code>escape_parens:</code>, or <code>terminate:</code> keyword arguments
 are given.</li>
 <li>Improved <span class='object_link'><a href="Ronin/Vulns/ReflectedXSS/Context.html" title="Ronin::Vulns::ReflectedXSS::Context (class)">Ronin::Vulns::ReflectedXSS::Context</a></span> to detect when the XSS occurs
@@ -152,9 +201,9 @@ the <code>ronin-vulns lfi</code> command and others.</li>
 </div></div>
 
       <div id="footer">
-  Generated on Wed Jun 19 22:34:03 2024 by
+  Generated on Mon Jul 22 12:28:48 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.36 (ruby-3.1.6).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>

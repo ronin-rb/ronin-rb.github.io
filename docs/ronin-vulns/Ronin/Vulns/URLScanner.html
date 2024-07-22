@@ -122,7 +122,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#scan-class_method" title="scan (class method)">.<strong>scan</strong>(url, lfi: {}, rfi: {}, sqli: {}, ssti: {}, reflected_xss: {}, open_redirect: {}, **kwargs) {|vuln| ... } &#x21d2; Array&lt;LFI, RFI, SQLI, SSTI, ReflectedXSS, OpenRedirect&gt; </a>
+      <a href="#scan-class_method" title="scan (class method)">.<strong>scan</strong>(url, lfi: {}, rfi: {}, sqli: {}, ssti: {}, reflected_xss: {}, open_redirect: {}, command_injection: {}, **kwargs) {|vuln| ... } &#x21d2; Array&lt;LFI, RFI, SQLI, SSTI, ReflectedXSS, OpenRedirect&gt; </a>
     
 
     
@@ -177,7 +177,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="scan-class_method">
   
-    .<strong>scan</strong>(url, lfi: {}, rfi: {}, sqli: {}, ssti: {}, reflected_xss: {}, open_redirect: {}, **kwargs) {|vuln| ... } &#x21d2; <tt>Array&lt;<span class='object_link'><a href="LFI.html" title="Ronin::Vulns::LFI (class)">LFI</a></span>, <span class='object_link'><a href="RFI.html" title="Ronin::Vulns::RFI (class)">RFI</a></span>, <span class='object_link'><a href="SQLI.html" title="Ronin::Vulns::SQLI (class)">SQLI</a></span>, <span class='object_link'><a href="SSTI.html" title="Ronin::Vulns::SSTI (class)">SSTI</a></span>, <span class='object_link'><a href="ReflectedXSS.html" title="Ronin::Vulns::ReflectedXSS (class)">ReflectedXSS</a></span>, <span class='object_link'><a href="OpenRedirect.html" title="Ronin::Vulns::OpenRedirect (class)">OpenRedirect</a></span>&gt;</tt> 
+    .<strong>scan</strong>(url, lfi: {}, rfi: {}, sqli: {}, ssti: {}, reflected_xss: {}, open_redirect: {}, command_injection: {}, **kwargs) {|vuln| ... } &#x21d2; <tt>Array&lt;<span class='object_link'><a href="LFI.html" title="Ronin::Vulns::LFI (class)">LFI</a></span>, <span class='object_link'><a href="RFI.html" title="Ronin::Vulns::RFI (class)">RFI</a></span>, <span class='object_link'><a href="SQLI.html" title="Ronin::Vulns::SQLI (class)">SQLI</a></span>, <span class='object_link'><a href="SSTI.html" title="Ronin::Vulns::SSTI (class)">SSTI</a></span>, <span class='object_link'><a href="ReflectedXSS.html" title="Ronin::Vulns::ReflectedXSS (class)">ReflectedXSS</a></span>, <span class='object_link'><a href="OpenRedirect.html" title="Ronin::Vulns::OpenRedirect (class)">OpenRedirect</a></span>&gt;</tt> 
   
 
   
@@ -257,7 +257,7 @@
       
       
         &mdash;
-        <div class='inline'><p>Additional options for <span class='object_link'><a href="SQLI.html#scan-class_method" title="Ronin::Vulns::SQLI.scan (method)">SQLI.scan</a></span>.</p>
+        <div class='inline'><p>Additional options for <span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">WebVuln.scan</a></span>.</p>
 </div>
       
     </li>
@@ -274,7 +274,7 @@
       
       
         &mdash;
-        <div class='inline'><p>Additional options for <span class='object_link'><a href="SSTI.html#scan-class_method" title="Ronin::Vulns::SSTI.scan (method)">SSTI.scan</a></span>.</p>
+        <div class='inline'><p>Additional options for <span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">WebVuln.scan</a></span>.</p>
 </div>
       
     </li>
@@ -299,6 +299,23 @@
     <li>
       
         <span class='name'>open_redirect</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>, <tt>false</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional options for <span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">WebVuln.scan</a></span>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>command_injection</span>
       
       
         <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>, <tt>false</tt>)</span>
@@ -548,6 +565,8 @@ for SSTI.</p>
   
     
     
+    
+    
     <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
     <ul class="option">
       
@@ -757,10 +776,6 @@ vulnerability.</p>
       <pre class="lines">
 
 
-171
-172
-173
-174
 175
 176
 177
@@ -792,10 +807,19 @@ vulnerability.</p>
 203
 204
 205
-206</pre>
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/url_scanner.rb', line 171</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/url_scanner.rb', line 175</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>lfi:</span>  <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
                    <span class='label'>rfi:</span>  <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
@@ -803,6 +827,7 @@ vulnerability.</p>
                    <span class='label'>ssti:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
                    <span class='label'>reflected_xss:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
                    <span class='label'>open_redirect:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
+                   <span class='label'>command_injection:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
                    <span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span>
                    <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_vulns'>vulns</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -816,11 +841,11 @@ vulnerability.</p>
   <span class='kw'>end</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_sqli'>sqli</span>
-    <span class='id identifier rubyid_vulns'>vulns</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="SQLI.html" title="Ronin::Vulns::SQLI (class)">SQLI</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="SQLI.html#scan-class_method" title="Ronin::Vulns::SQLI.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_sqli'>sqli</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_vulns'>vulns</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="SQLI.html" title="Ronin::Vulns::SQLI (class)">SQLI</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_sqli'>sqli</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_ssti'>ssti</span>
-    <span class='id identifier rubyid_vulns'>vulns</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="SSTI.html" title="Ronin::Vulns::SSTI (class)">SSTI</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="SSTI.html#scan-class_method" title="Ronin::Vulns::SSTI.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_ssti'>ssti</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_vulns'>vulns</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="SSTI.html" title="Ronin::Vulns::SSTI (class)">SSTI</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_ssti'>ssti</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_reflected_xss'>reflected_xss</span>
@@ -829,6 +854,10 @@ vulnerability.</p>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_open_redirect'>open_redirect</span>
     <span class='id identifier rubyid_vulns'>vulns</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="OpenRedirect.html" title="Ronin::Vulns::OpenRedirect (class)">OpenRedirect</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_open_redirect'>open_redirect</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_command_injection'>command_injection</span>
+    <span class='id identifier rubyid_vulns'>vulns</span><span class='period'>.</span><span class='id identifier rubyid_concat'>concat</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="CommandInjection.html" title="Ronin::Vulns::CommandInjection (class)">CommandInjection</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_command_injection'>command_injection</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
   <span class='kw'>return</span> <span class='id identifier rubyid_vulns'>vulns</span>
@@ -916,16 +945,16 @@ were discovered.</p>
       <pre class="lines">
 
 
-222
-223
-224
-225
-226
-227
-228</pre>
+231
+232
+233
+234
+235
+236
+237</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/url_scanner.rb', line 222</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/url_scanner.rb', line 231</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_test'>test</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vuln'>vuln</span><span class='op'>|</span>
@@ -944,9 +973,9 @@ were discovered.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Jun 19 22:34:03 2024 by
+  Generated on Mon Jul 22 12:28:48 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.36 (ruby-3.1.6).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>

@@ -337,7 +337,11 @@
 91
 92
 93
-94</pre>
+94
+95
+96
+97
+98</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ronin/vulns/importer.rb', line 58</span>
@@ -370,6 +374,10 @@
     <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='symbol'>:sqli_terminate</span><span class='rbracket'>]</span>     <span class='op'>=</span> <span class='id identifier rubyid_vuln'>vuln</span><span class='period'>.</span><span class='id identifier rubyid_terminate'>terminate</span>
   <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="SSTI.html" title="Ronin::Vulns::SSTI (class)">SSTI</a></span></span>
     <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='symbol'>:ssti_escape_type</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_vuln'>vuln</span><span class='period'>.</span><span class='id identifier rubyid_escape_type'>escape_type</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="CommandInjection.html" title="Ronin::Vulns::CommandInjection (class)">CommandInjection</a></span></span>
+    <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='symbol'>:command_injection_escape_quote</span><span class='rbracket'>]</span>    <span class='op'>=</span> <span class='id identifier rubyid_vuln'>vuln</span><span class='period'>.</span><span class='id identifier rubyid_escape_quote'>escape_quote</span>
+    <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='symbol'>:command_injection_escape_operator</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_vuln'>vuln</span><span class='period'>.</span><span class='id identifier rubyid_escape_operator'>escape_operator</span>
+    <span class='id identifier rubyid_attributes'>attributes</span><span class='lbracket'>[</span><span class='symbol'>:command_injection_terminator</span><span class='rbracket'>]</span>      <span class='op'>=</span> <span class='id identifier rubyid_vuln'>vuln</span><span class='period'>.</span><span class='id identifier rubyid_terminator'>terminator</span>
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_imported_vuln'>imported_vuln</span> <span class='op'>=</span> <span class='const'>DB</span><span class='op'>::</span><span class='const'>WebVuln</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span> <span class='kw'>do</span>
@@ -460,14 +468,14 @@
       <pre class="lines">
 
 
-105
-106
-107
-108
-109</pre>
+109
+110
+111
+112
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/importer.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/importer.rb', line 109</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_import_url'>import_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
   <span class='const'>DB</span><span class='op'>::</span><span class='const'>URL</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span> <span class='kw'>do</span>
@@ -484,9 +492,9 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Nov 30 18:06:17 2023 by
+  Generated on Mon Jul 22 12:28:48 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.1.4).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>

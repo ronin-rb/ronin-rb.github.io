@@ -120,9 +120,20 @@
 
 <h2 id="options">Options</h2>
 
-<pre class="code ruby"><code class="ruby">    --first                      Only find the first vulnerability for each URL
+<pre class="code ruby"><code class="ruby">    --db NAME                    The database to connect to (Default: default)
+    --db-uri URI                 The database URI to connect to
+    --db-file PATH               The sqlite3 database file to use
+    --import                     Imports discovered vulnerabilities into the database
+    --first                      Only find the first vulnerability for each URL
 -A, --all                        Find all vulnerabilities for each URL
+    --print-curl                 Also prints an example curl command for each vulnerability
+    --print-http                 Also prints an example HTTP request for each vulnerability
+-M COPY|DELETE|GET|HEAD|LOCK|MKCOL|MOVE|OPTIONS|PATCH|POST|PROPFIND|PROPPATCH|PUT|TRACE|UNLOCK,
+    --request-method             The HTTP request method to use
 -H, --header &quot;Name: value&quot;       Sets an additional header
+-U, --user-agent-string STRING   Sets the User-Agent header
+-u chrome-linux|chrome-macos|chrome-windows|chrome-iphone|chrome-ipad|chrome-android|firefox-linux|firefox-macos|firefox-windows|firefox-iphone|firefox-ipad|firefox-android|safari-macos|safari-iphone|safari-ipad|edge,
+    --user-agent                 Sets the User-Agent to use
 -C, --cookie COOKIE              Sets the raw Cookie header
 -c, --cookie-param NAME=VALUE    Sets an additional cookie param
 -R, --referer URL                Sets the Referer header
@@ -131,10 +142,11 @@
     --test-header-names NAME     Tests the HTTP Header name
     --test-cookie-params NAME    Tests the HTTP Cookie name
     --test-form-params NAME      Tests the form param name
+    --test-all-form-params       Test all form param names
 -i, --input FILE                 Reads URLs from the list file
     --lfi-os unix|windows        Sets the OS to test for
     --lfi-depth COUNT            Sets the directory depth to escape up
-    --lfi-filter-bypass null_byte|double_escape|base64|rot13|zlib
+    --lfi-filter-bypass null-byte|double-escape|base64|rot13|zlib
                                  Sets the filter bypass strategy to use
     --rfi-filter-bypass double-encode|suffix-escape|null-byte
                                  Optional filter-bypass strategy to use
@@ -167,8 +179,8 @@
   <h2>Constant Summary</h2>
   
   <h3 class="inherited">Constants included
-     from <span class='object_link'><a href="../Logging.html" title="Ronin::Vulns::CLI::Logging (module)">Logging</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Logging.html#VULN_TYPES-constant" title="Ronin::Vulns::CLI::Logging::VULN_TYPES (constant)">Logging::VULN_TYPES</a></span></p>
+     from <span class='object_link'><a href="../Printing.html" title="Ronin::Vulns::CLI::Printing (module)">Printing</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Printing.html#VULN_TYPES-constant" title="Ronin::Vulns::CLI::Printing::VULN_TYPES (constant)">Printing::VULN_TYPES</a></span></p>
 
 
 
@@ -384,7 +396,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../WebVulnCommand.html" title="Ronin::Vulns::CLI::WebVulnCommand (class)">WebVulnCommand</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../WebVulnCommand.html#cookie-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#cookie (method)">#cookie</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#form_data-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#form_data (method)">#form_data</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#headers-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#headers (method)">#headers</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#initialize-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#process_url-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#process_url (method)">#process_url</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#referer-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#referer (method)">#referer</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#referer=-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#referer= (method)">#referer=</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#run-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#run (method)">#run</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#test_cookie_params-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#test_cookie_params (method)">#test_cookie_params</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#test_cookie_params=-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#test_cookie_params= (method)">#test_cookie_params=</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#test_form_params-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#test_form_params (method)">#test_form_params</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#test_header_names-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#test_header_names (method)">#test_header_names</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#test_query_params-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#test_query_params (method)">#test_query_params</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#test_query_params=-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#test_query_params= (method)">#test_query_params=</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../WebVulnCommand.html#cookie-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#cookie (method)">#cookie</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#form_data-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#form_data (method)">#form_data</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#headers-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#headers (method)">#headers</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#initialize-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#print_vuln-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#print_vuln (method)">#print_vuln</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#print_vulns-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#print_vulns (method)">#print_vulns</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#process_url-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#process_url (method)">#process_url</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#process_vuln-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#process_vuln (method)">#process_vuln</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#referer-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#referer (method)">#referer</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#referer=-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#referer= (method)">#referer=</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#request_method-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#request_method (method)">#request_method</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#request_method=-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#request_method= (method)">#request_method=</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#run-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#run (method)">#run</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#test_cookie_params-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#test_cookie_params (method)">#test_cookie_params</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#test_cookie_params=-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#test_cookie_params= (method)">#test_cookie_params=</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#test_form_params-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#test_form_params (method)">#test_form_params</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#test_form_params=-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#test_form_params= (method)">#test_form_params=</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#test_header_names-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#test_header_names (method)">#test_header_names</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#test_query_params-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#test_query_params (method)">#test_query_params</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#test_query_params=-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#test_query_params= (method)">#test_query_params=</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#user_agent-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#user_agent (method)">#user_agent</a></span>, <span class='object_link'><a href="../WebVulnCommand.html#user_agent=-instance_method" title="Ronin::Vulns::CLI::WebVulnCommand#user_agent= (method)">#user_agent=</a></span></p>
 
   
   
@@ -394,9 +406,22 @@
   
   
   
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Logging.html" title="Ronin::Vulns::CLI::Logging (module)">Logging</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Logging.html#log_vuln-instance_method" title="Ronin::Vulns::CLI::Logging#log_vuln (method)">#log_vuln</a></span>, <span class='object_link'><a href="../Logging.html#vuln_type-instance_method" title="Ronin::Vulns::CLI::Logging#vuln_type (method)">#vuln_type</a></span></p>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Importable.html" title="Ronin::Vulns::CLI::Importable (module)">Importable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Importable.html#import_vuln-instance_method" title="Ronin::Vulns::CLI::Importable#import_vuln (method)">#import_vuln</a></span>, <span class='object_link'><a href="../Importable.html#included-class_method" title="Ronin::Vulns::CLI::Importable.included (method)">included</a></span></p>
 
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../Printing.html" title="Ronin::Vulns::CLI::Printing (module)">Printing</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Printing.html#log_vuln-instance_method" title="Ronin::Vulns::CLI::Printing#log_vuln (method)">#log_vuln</a></span>, <span class='object_link'><a href="../Printing.html#print_vuln-instance_method" title="Ronin::Vulns::CLI::Printing#print_vuln (method)">#print_vuln</a></span>, <span class='object_link'><a href="../Printing.html#print_vulns-instance_method" title="Ronin::Vulns::CLI::Printing#print_vulns (method)">#print_vulns</a></span>, <span class='object_link'><a href="../Printing.html#vuln_param_name-instance_method" title="Ronin::Vulns::CLI::Printing#vuln_param_name (method)">#vuln_param_name</a></span>, <span class='object_link'><a href="../Printing.html#vuln_param_type-instance_method" title="Ronin::Vulns::CLI::Printing#vuln_param_type (method)">#vuln_param_type</a></span>, <span class='object_link'><a href="../Printing.html#vuln_type-instance_method" title="Ronin::Vulns::CLI::Printing#vuln_type (method)">#vuln_type</a></span></p>
+
+  
+  
   
   
   
@@ -459,12 +484,12 @@
       <pre class="lines">
 
 
-173
-174
-175</pre>
+185
+186
+187</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/cli/commands/scan.rb', line 173</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/cli/commands/scan.rb', line 185</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_lfi_kwargs'>lfi_kwargs</span>
   <span class='id identifier rubyid_scan_kwargs'>scan_kwargs</span><span class='lbracket'>[</span><span class='symbol'>:lfi</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -517,12 +542,12 @@
       <pre class="lines">
 
 
-213
-214
-215</pre>
+225
+226
+227</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/cli/commands/scan.rb', line 213</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/cli/commands/scan.rb', line 225</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_open_redirect_kwargs'>open_redirect_kwargs</span>
   <span class='id identifier rubyid_scan_kwargs'>scan_kwargs</span><span class='lbracket'>[</span><span class='symbol'>:open_redirect</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -575,12 +600,12 @@
       <pre class="lines">
 
 
-223
-224
-225</pre>
+235
+236
+237</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/cli/commands/scan.rb', line 223</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/cli/commands/scan.rb', line 235</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reflected_xss_kwargs'>reflected_xss_kwargs</span>
   <span class='id identifier rubyid_scan_kwargs'>scan_kwargs</span><span class='lbracket'>[</span><span class='symbol'>:reflected_xss</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -633,12 +658,12 @@
       <pre class="lines">
 
 
-183
-184
-185</pre>
+195
+196
+197</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/cli/commands/scan.rb', line 183</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/cli/commands/scan.rb', line 195</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rfi_kwargs'>rfi_kwargs</span>
   <span class='id identifier rubyid_scan_kwargs'>scan_kwargs</span><span class='lbracket'>[</span><span class='symbol'>:rfi</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -730,12 +755,12 @@
       <pre class="lines">
 
 
-244
-245
-246</pre>
+256
+257
+258</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/cli/commands/scan.rb', line 244</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/cli/commands/scan.rb', line 256</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_scan_url'>scan_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="../../../Vulns.html" title="Ronin::Vulns (module)">Vulns</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../URLScanner.html" title="Ronin::Vulns::URLScanner (module)">URLScanner</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="../../URLScanner.html#scan-class_method" title="Ronin::Vulns::URLScanner.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_scan_kwargs'>scan_kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -788,12 +813,12 @@
       <pre class="lines">
 
 
-193
-194
-195</pre>
+205
+206
+207</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/cli/commands/scan.rb', line 193</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/cli/commands/scan.rb', line 205</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sqli_kwargs'>sqli_kwargs</span>
   <span class='id identifier rubyid_scan_kwargs'>scan_kwargs</span><span class='lbracket'>[</span><span class='symbol'>:sqli</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -846,12 +871,12 @@
       <pre class="lines">
 
 
-203
-204
-205</pre>
+215
+216
+217</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/cli/commands/scan.rb', line 203</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/cli/commands/scan.rb', line 215</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ssti_kwargs'>ssti_kwargs</span>
   <span class='id identifier rubyid_scan_kwargs'>scan_kwargs</span><span class='lbracket'>[</span><span class='symbol'>:ssti</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -924,12 +949,12 @@
       <pre class="lines">
 
 
-262
-263
-264</pre>
+274
+275
+276</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/cli/commands/scan.rb', line 262</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/vulns/cli/commands/scan.rb', line 274</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_test_url'>test_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="../../../Vulns.html" title="Ronin::Vulns (module)">Vulns</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../URLScanner.html" title="Ronin::Vulns::URLScanner (module)">URLScanner</a></span></span><span class='period'>.</span><span class='id identifier rubyid_test'><span class='object_link'><a href="../../URLScanner.html#test-class_method" title="Ronin::Vulns::URLScanner.test (method)">test</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_scan_kwargs'>scan_kwargs</span><span class='rparen'>)</span>
@@ -944,9 +969,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Jun 19 22:34:05 2024 by
+  Generated on Mon Jul 22 12:28:50 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.36 (ruby-3.1.6).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>
