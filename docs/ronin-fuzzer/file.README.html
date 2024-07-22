@@ -69,7 +69,6 @@
 <li><a href="https://github.com/ronin-rb/ronin-fuzzer/issues">Issues</a></li>
 <li><a href="https://ronin-rb.dev/docs/ronin-fuzzer/frames">Documentation</a></li>
 <li><a href="https://discord.gg/6WAb3PsVX9">Discord</a> |
-<a href="https://twitter.com/ronin_rb">Twitter</a> |
 <a href="https://infosec.exchange/@ronin_rb">Mastodon</a></li>
 </ul>
 
@@ -95,13 +94,26 @@ customizable.</p>
 <pre class="code shell"><code class="shell">$ ronin-fuzzer fuzz -i http_request.txt -o bad.txt -r unix_path:bad_strings
 </code></pre>
 
+<h2 id="examples">Examples</h2>
+
+<p>Replace every <code>e</code>, <code>i</code>, <code>o</code>, <code>u</code> with <code>(</code>, 100 <code>A</code>s and a <code>\0</code>:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ronin/fuzzing</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>the quick brown fox</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_fuzz'>fuzz</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[eiou]</span><span class='regexp_end'>/</span></span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>(</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A</span><span class='tstring_end'>&#39;</span></span> <span class='op'>*</span> <span class='int'>100</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\0</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_str'>str</span><span class='op'>|</span>
+  <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_str'>str</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>For more examples, please see the <a href="https://ronin-rb.dev/docs/ronin-fuzzer/String.html">API documentation</a>.</p>
+
 <h2 id="requirements">Requirements</h2>
 
 <ul>
 <li><a href="https://www.ruby-lang.org">Ruby</a> &gt;= 3.0.0</li>
 <li><a href="https://github.com/postmodern/combinatorics#readme">combinatorics</a> ~&gt; 0.4</li>
 <li><a href="https://github.com/ronin-rb/ronin-support#readme">ronin-support</a> ~&gt; 1.0</li>
-<li><a href="https://github.com/ronin-rb/ronin-core#readme">ronin-core</a> ~&gt; 0.1</li>
+<li><a href="https://github.com/ronin-rb/ronin-core#readme">ronin-core</a> ~&gt; 0.2</li>
 </ul>
 
 <h2 id="install">Install</h2>
@@ -125,7 +137,7 @@ customizable.</p>
 <li><a href="https://github.com/ronin-rb/ronin-fuzzer/fork">Fork It!</a></li>
 <li>Clone It!</li>
 <li><code>cd ronin-fuzzer/</code></li>
-<li><code>bundle install</code></li>
+<li><code>./scripts/setup</code></li>
 <li><code>git checkout -b my_feature</code></li>
 <li>Code It!</li>
 <li><code>bundle exec rake spec</code></li>
@@ -134,7 +146,7 @@ customizable.</p>
 
 <h2 id="license">License</h2>
 
-<p>Copyright (c) 2006-2023 Hal Brodigan (<a href="mailto:postmodern.mod3@gmail.com">postmodern.mod3@gmail.com</a>)</p>
+<p>Copyright (c) 2006-2024 Hal Brodigan (<a href="mailto:postmodern.mod3@gmail.com">postmodern.mod3@gmail.com</a>)</p>
 
 <p>This file is part of ronin-fuzzer.</p>
 
@@ -153,9 +165,9 @@ along with ronin-fuzzer.  If not, see <a href="https://www.gnu.org/licenses/">ht
 </div></div>
 
       <div id="footer">
-  Generated on Thu Jun 22 21:52:46 2023 by
+  Generated on Mon Jul 22 14:03:53 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.28 (ruby-3.1.4).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>

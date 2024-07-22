@@ -246,12 +246,6 @@
     <p class="tag_title">Examples:</p>
     
       
-        <p class="example_title"><div class='inline'><p>Generate Strings with ranges of repeating sub-strings:</p>
-</div></p>
-      
-      <pre class="example code"><code></code></pre>
-    
-      
         <p class="example_title"><div class='inline'><p>Generate Strings with three alpha chars and one numeric chars:</p>
 </div></p>
       
@@ -314,7 +308,8 @@
       
         &mdash;
         <div class='inline'><p>The fields which defines the string or character sets which will
-make up parts of the String.</p>
+make up parts of the String. Symbols corresponds to
+<a href="https://rubydoc.info/gems/chars/Chars">Chars method names</a>.</p>
 </div>
       
     </li>
@@ -412,12 +407,12 @@ A given string set length was not an Integer or Enumerable.</p>
       <pre class="lines">
 
 
+87
 88
-89
-90</pre>
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/core_ext/string.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/core_ext/string.rb', line 87</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_fields'>fields</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Fuzzing.html" title="Ronin::Fuzzing (module)">Fuzzing</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Fuzzing/Template.html" title="Ronin::Fuzzing::Template (class)">Template</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Ronin/Fuzzing/Template.html#initialize-instance_method" title="Ronin::Fuzzing::Template#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_fields'>fields</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'><span class='object_link'><a href="Ronin/Fuzzing/Template.html#each-instance_method" title="Ronin::Fuzzing::Template#each (method)">each</a></span></span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -474,7 +469,7 @@ A given string set length was not an Integer or Enumerable.</p>
         <p class="example_title"><div class='inline'><p>Replace a <code>Regexp::UNIX_PATH</code> with <span class='object_link'>Ronin::Fuzzing#format_strings</span>:</p>
 </div></p>
       
-      <pre class="example code"><code><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GET /downloads/</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_fuzz'>fuzz</span><span class='lparen'>(</span><span class='label'>unix_path:</span> <span class='symbol'>:format_string</span><span class='rparen'>)</span></code></pre>
+      <pre class="example code"><code><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>GET /downloads/</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_fuzz'>fuzz</span><span class='lparen'>(</span><span class='label'>unix_path:</span> <span class='symbol'>:format_strings</span><span class='rparen'>)</span></code></pre>
     
   </div>
 <p class="tag_title">Parameters:</p>
@@ -492,7 +487,9 @@ A given string set length was not an Integer or Enumerable.</p>
       
       
         &mdash;
-        <div class='inline'><p>Patterns and their substitutions.</p>
+        <div class='inline'><p>Patterns and their substitutions. Symbols are resolved to
+<a href="https://ronin-rb.dev/docs/ronin-support/Ronin/Support/Text/Patterns.html">Ronin::Support::Text::Patterns</a>
+constants.</p>
 </div>
       
     </li>
@@ -559,12 +556,12 @@ A given string set length was not an Integer or Enumerable.</p>
       <pre class="lines">
 
 
-169
 170
-171</pre>
+171
+172</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/core_ext/string.rb', line 169</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/core_ext/string.rb', line 170</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_fuzz'>fuzz</span><span class='lparen'>(</span><span class='id identifier rubyid_substitutions'>substitutions</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Fuzzing.html" title="Ronin::Fuzzing (module)">Fuzzing</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Fuzzing/Fuzzer.html" title="Ronin::Fuzzing::Fuzzer (class)">Fuzzer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Ronin/Fuzzing/Fuzzer.html#initialize-instance_method" title="Ronin::Fuzzing::Fuzzer#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_substitutions'>substitutions</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'><span class='object_link'><a href="Ronin/Fuzzing/Fuzzer.html#each-instance_method" title="Ronin::Fuzzing::Fuzzer#each (method)">each</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -701,12 +698,12 @@ A mutation substitution was not a Symbol or Enumerable.</p>
       <pre class="lines">
 
 
-199
 200
-201</pre>
+201
+202</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/core_ext/string.rb', line 199</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/core_ext/string.rb', line 200</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_mutate'>mutate</span><span class='lparen'>(</span><span class='id identifier rubyid_mutations'>mutations</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Fuzzing.html" title="Ronin::Fuzzing (module)">Fuzzing</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Fuzzing/Mutator.html" title="Ronin::Fuzzing::Mutator (class)">Mutator</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Ronin/Fuzzing/Mutator.html#initialize-instance_method" title="Ronin::Fuzzing::Mutator#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_mutations'>mutations</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each'><span class='object_link'><a href="Ronin/Fuzzing/Mutator.html#each-instance_method" title="Ronin::Fuzzing::Mutator#each (method)">each</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -855,6 +852,7 @@ A mutation substitution was not a Symbol or Enumerable.</p>
       <pre class="lines">
 
 
+125
 126
 127
 128
@@ -865,11 +863,10 @@ A mutation substitution was not a Symbol or Enumerable.</p>
 133
 134
 135
-136
-137</pre>
+136</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/core_ext/string.rb', line 126</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/fuzzing/core_ext/string.rb', line 125</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_repeating'>repeating</span><span class='lparen'>(</span><span class='id identifier rubyid_lengths'>lengths</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_lengths'>lengths</span>
@@ -893,9 +890,9 @@ A mutation substitution was not a Symbol or Enumerable.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Jun 22 21:52:46 2023 by
+  Generated on Mon Jul 22 14:03:53 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.28 (ruby-3.1.4).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>
