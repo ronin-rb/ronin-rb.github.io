@@ -78,8 +78,6 @@
           
             <li class="next"><span class='object_link'><a href="../Command.html" title="Ronin::DB::CLI::Command (class)">Ronin::DB::CLI::Command</a></span></li>
           
-            <li class="next"><span class='object_link'><a href="../DatabaseCommand.html" title="Ronin::DB::CLI::DatabaseCommand (class)">DatabaseCommand</a></span></li>
-          
             <li class="next"><span class='object_link'><a href="../ModelCommand.html" title="Ronin::DB::CLI::ModelCommand (class)">ModelCommand</a></span></li>
           
             <li class="next">Ronin::DB::CLI::Commands::Urls</li>
@@ -129,6 +127,7 @@
 
 <pre class="code ruby"><code class="ruby">    --db NAME                    The database to connect to (Default: default)
     --db-uri URI                 The database URI to connect to
+    --db-file PATH               The sqlite3 database file to use
 -v, --verbose                    Enables verbose output
     --add VALUE                  Adds a value to the database
     --import FILE                Imports the values from the FILE into the database
@@ -180,7 +179,7 @@
   <h2>Method Summary</h2>
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="../Modifiable.html" title="Ronin::DB::CLI::Modifiable (module)">Modifiable</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Modifiable.html#add-instance_method" title="Ronin::DB::CLI::Modifiable#add (method)">#add</a></span>, <span class='object_link'><a href="../Modifiable.html#delete-instance_method" title="Ronin::DB::CLI::Modifiable#delete (method)">#delete</a></span>, <span class='object_link'><a href="../Modifiable.html#delete_all-instance_method" title="Ronin::DB::CLI::Modifiable#delete_all (method)">#delete_all</a></span>, <span class='object_link'><a href="../Modifiable.html#import_file-instance_method" title="Ronin::DB::CLI::Modifiable#import_file (method)">#import_file</a></span>, <span class='object_link'><a href="../Modifiable.html#included-class_method" title="Ronin::DB::CLI::Modifiable.included (method)">included</a></span>, <span class='object_link'><a href="../Modifiable.html#run-instance_method" title="Ronin::DB::CLI::Modifiable#run (method)">#run</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../Modifiable.html#included-class_method" title="Ronin::DB::CLI::Modifiable.included (method)">included</a></span></p>
 
   
   
@@ -191,7 +190,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../ModelCommand.html" title="Ronin::DB::CLI::ModelCommand (class)">ModelCommand</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../ModelCommand.html#connect-instance_method" title="Ronin::DB::CLI::ModelCommand#connect (method)">#connect</a></span>, <span class='object_link'><a href="../ModelCommand.html#initialize-instance_method" title="Ronin::DB::CLI::ModelCommand#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../ModelCommand.html#list-instance_method" title="Ronin::DB::CLI::ModelCommand#list (method)">#list</a></span>, <span class='object_link'><a href="../ModelCommand.html#load_model-instance_method" title="Ronin::DB::CLI::ModelCommand#load_model (method)">#load_model</a></span>, <span class='object_link'><a href="../ModelCommand.html#model-instance_method" title="Ronin::DB::CLI::ModelCommand#model (method)">#model</a></span>, <span class='object_link'><a href="../ModelCommand.html#model_file-class_method" title="Ronin::DB::CLI::ModelCommand.model_file (method)">model_file</a></span>, <span class='object_link'><a href="../ModelCommand.html#model_name-class_method" title="Ronin::DB::CLI::ModelCommand.model_name (method)">model_name</a></span>, <span class='object_link'><a href="../ModelCommand.html#print_record-instance_method" title="Ronin::DB::CLI::ModelCommand#print_record (method)">#print_record</a></span>, <span class='object_link'><a href="../ModelCommand.html#query-instance_method" title="Ronin::DB::CLI::ModelCommand#query (method)">#query</a></span>, <span class='object_link'><a href="../ModelCommand.html#run-instance_method" title="Ronin::DB::CLI::ModelCommand#run (method)">#run</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../ModelCommand.html#db_connect-instance_method" title="Ronin::DB::CLI::ModelCommand#db_connect (method)">#db_connect</a></span>, <span class='object_link'><a href="../ModelCommand.html#initialize-instance_method" title="Ronin::DB::CLI::ModelCommand#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../ModelCommand.html#list-instance_method" title="Ronin::DB::CLI::ModelCommand#list (method)">#list</a></span>, <span class='object_link'><a href="../ModelCommand.html#load_model-instance_method" title="Ronin::DB::CLI::ModelCommand#load_model (method)">#load_model</a></span>, <span class='object_link'><a href="../ModelCommand.html#model-instance_method" title="Ronin::DB::CLI::ModelCommand#model (method)">#model</a></span>, <span class='object_link'><a href="../ModelCommand.html#model_file-class_method" title="Ronin::DB::CLI::ModelCommand.model_file (method)">model_file</a></span>, <span class='object_link'><a href="../ModelCommand.html#model_name-class_method" title="Ronin::DB::CLI::ModelCommand.model_name (method)">model_name</a></span>, <span class='object_link'><a href="../ModelCommand.html#print_record-instance_method" title="Ronin::DB::CLI::ModelCommand#print_record (method)">#print_record</a></span>, <span class='object_link'><a href="../ModelCommand.html#query-instance_method" title="Ronin::DB::CLI::ModelCommand#query (method)">#query</a></span>, <span class='object_link'><a href="../ModelCommand.html#run-instance_method" title="Ronin::DB::CLI::ModelCommand#run (method)">#run</a></span></p>
 
   
   
@@ -203,8 +202,8 @@
   
   
   
-  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../DatabaseCommand.html" title="Ronin::DB::CLI::DatabaseCommand (class)">DatabaseCommand</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../DatabaseCommand.html#config-instance_method" title="Ronin::DB::CLI::DatabaseCommand#config (method)">#config</a></span>, <span class='object_link'><a href="../DatabaseCommand.html#connect-instance_method" title="Ronin::DB::CLI::DatabaseCommand#connect (method)">#connect</a></span></p>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../DatabaseOptions.html" title="Ronin::DB::CLI::DatabaseOptions (module)">DatabaseOptions</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../DatabaseOptions.html#db_config-instance_method" title="Ronin::DB::CLI::DatabaseOptions#db_config (method)">#db_config</a></span>, <span class='object_link'><a href="../DatabaseOptions.html#db_connect-instance_method" title="Ronin::DB::CLI::DatabaseOptions#db_connect (method)">#db_connect</a></span>, <span class='object_link'><a href="../DatabaseOptions.html#included-class_method" title="Ronin::DB::CLI::DatabaseOptions.included (method)">included</a></span></p>
 
   
   
@@ -234,9 +233,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Dec 13 20:12:19 2023 by
+  Generated on Mon Jul 22 12:01:17 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.1.4).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>

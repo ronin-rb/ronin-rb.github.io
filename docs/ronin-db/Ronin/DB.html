@@ -79,7 +79,7 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>lib/ronin/db.rb<span class="defines">,<br />
-  lib/ronin/db/cli.rb,<br /> lib/ronin/db/home.rb,<br /> lib/ronin/db/root.rb,<br /> lib/ronin/db/version.rb,<br /> lib/ronin/db/exceptions.rb,<br /> lib/ronin/db/cli/command.rb,<br /> lib/ronin/db/config_file.rb,<br /> lib/ronin/db/cli/modifiable.rb,<br /> lib/ronin/db/cli/ruby_shell.rb,<br /> lib/ronin/db/cli/uri_methods.rb,<br /> lib/ronin/db/cli/commands/add.rb,<br /> lib/ronin/db/cli/commands/asn.rb,<br /> lib/ronin/db/cli/commands/ips.rb,<br /> lib/ronin/db/cli/commands/irb.rb,<br /> lib/ronin/db/cli/commands/edit.rb,<br /> lib/ronin/db/cli/commands/list.rb,<br /> lib/ronin/db/cli/commands/urls.rb,<br /> lib/ronin/db/cli/model_command.rb,<br /> lib/ronin/db/cli/commands/creds.rb,<br /> lib/ronin/db/cli/commands/hosts.rb,<br /> lib/ronin/db/cli/commands/emails.rb,<br /> lib/ronin/db/cli/commands/remove.rb,<br /> lib/ronin/db/cli/commands/migrate.rb,<br /> lib/ronin/db/cli/database_command.rb,<br /> lib/ronin/db/cli/resources_command.rb</span>
+  lib/ronin/db/cli.rb,<br /> lib/ronin/db/home.rb,<br /> lib/ronin/db/root.rb,<br /> lib/ronin/db/tasks.rb,<br /> lib/ronin/db/version.rb,<br /> lib/ronin/db/exceptions.rb,<br /> lib/ronin/db/cli/command.rb,<br /> lib/ronin/db/config_file.rb,<br /> lib/ronin/db/cli/printing.rb,<br /> lib/ronin/db/cli/deletable.rb,<br /> lib/ronin/db/cli/importable.rb,<br /> lib/ronin/db/cli/modifiable.rb,<br /> lib/ronin/db/cli/ruby_shell.rb,<br /> lib/ronin/db/cli/uri_methods.rb,<br /> lib/ronin/db/cli/commands/add.rb,<br /> lib/ronin/db/cli/commands/asn.rb,<br /> lib/ronin/db/cli/commands/ips.rb,<br /> lib/ronin/db/cli/commands/irb.rb,<br /> lib/ronin/db/cli/commands/edit.rb,<br /> lib/ronin/db/cli/commands/list.rb,<br /> lib/ronin/db/cli/commands/oses.rb,<br /> lib/ronin/db/cli/commands/urls.rb,<br /> lib/ronin/db/cli/model_command.rb,<br /> lib/ronin/db/cli/commands/certs.rb,<br /> lib/ronin/db/cli/commands/creds.rb,<br /> lib/ronin/db/cli/commands/hosts.rb,<br /> lib/ronin/db/cli/commands/ports.rb,<br /> lib/ronin/db/cli/commands/emails.rb,<br /> lib/ronin/db/cli/commands/people.rb,<br /> lib/ronin/db/cli/commands/remove.rb,<br /> lib/ronin/db/cli/commands/migrate.rb,<br /> lib/ronin/db/cli/database_options.rb,<br /> lib/ronin/db/cli/commands/services.rb,<br /> lib/ronin/db/cli/commands/software.rb,<br /> lib/ronin/db/cli/commands/passwords.rb,<br /> lib/ronin/db/cli/commands/web_vulns.rb,<br /> lib/ronin/db/cli/commands/completion.rb,<br /> lib/ronin/db/cli/commands/open_ports.rb,<br /> lib/ronin/db/cli/commands/phone_numbers.rb,<br /> lib/ronin/db/cli/commands/street_addresses.rb</span>
 </dd>
   </dl>
   
@@ -99,11 +99,11 @@
 <p class="children">
   
     
-      <strong class="modules">Modules:</strong> <span class='object_link'><a href="DB/CLI.html" title="Ronin::DB::CLI (module)">CLI</a></span>, <span class='object_link'><a href="DB/ConfigFile.html" title="Ronin::DB::ConfigFile (module)">ConfigFile</a></span>, <span class='object_link'><a href="DB/Home.html" title="Ronin::DB::Home (module)">Home</a></span>
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="DB/ConfigFile.html" title="Ronin::DB::ConfigFile (module)">ConfigFile</a></span>, <span class='object_link'><a href="DB/Home.html" title="Ronin::DB::Home (module)">Home</a></span>
     
   
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="DB/InvalidConfig.html" title="Ronin::DB::InvalidConfig (class)">InvalidConfig</a></span>, <span class='object_link'><a href="DB/UnknownDatabase.html" title="Ronin::DB::UnknownDatabase (class)">UnknownDatabase</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="DB/CLI.html" title="Ronin::DB::CLI (class)">CLI</a></span>, <span class='object_link'><a href="DB/InvalidConfig.html" title="Ronin::DB::InvalidConfig (class)">InvalidConfig</a></span>, <span class='object_link'><a href="DB/Tasks.html" title="Ronin::DB::Tasks (class)">Tasks</a></span>, <span class='object_link'><a href="DB/UnknownDatabase.html" title="Ronin::DB::UnknownDatabase (class)">UnknownDatabase</a></span>
     
   
 </p>
@@ -148,7 +148,7 @@
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0.1.3</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0.2.0</span><span class='tstring_end'>&#39;</span></span></pre></dd>
       
     </dl>
   
@@ -193,7 +193,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#connect-class_method" title="connect (class method)">.<strong>connect</strong>(database = :default, migrate: nil, load_models: true)  &#x21d2; Object </a>
+      <a href="#connect-class_method" title="connect (class method)">.<strong>connect</strong>(database = :default, pool: nil, migrate: nil, load_models: true)  &#x21d2; Object </a>
     
 
     
@@ -351,7 +351,7 @@
       <div class="method_details ">
   <h3 class="signature " id="connect-class_method">
   
-    .<strong>connect</strong>(database = :default, migrate: nil, load_models: true)  &#x21d2; <tt>Object</tt> 
+    .<strong>connect</strong>(database = :default, pool: nil, migrate: nil, load_models: true)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -396,14 +396,31 @@
         <span class='name'>database</span>
       
       
-        <span class='type'>(<tt>Symbol</tt>, <tt>Hash</tt>)</span>
+        <span class='type'>(<tt>Symbol</tt>, <tt>String</tt>, <tt>Hash</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>:default</tt>)</em>
       
       
         &mdash;
-        <div class='inline'><p>The optional database name or Hash of database information.</p>
+        <div class='inline'><p>The optional database name, String URL, or Hash of database information.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>pool</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Sets the connection pool for the database.</p>
 </div>
       
     </li>
@@ -468,7 +485,7 @@
       
       
         &mdash;
-        <div class='inline'><p>The given database was not a Symbol or a Hash.</p>
+        <div class='inline'><p>The given database was not a Symbol, String, or a Hash.</p>
 </div>
       
     </li>
@@ -481,9 +498,6 @@
       <pre class="lines">
 
 
-105
-106
-107
 108
 109
 110
@@ -511,15 +525,25 @@
 132
 133
 134
-135</pre>
+135
+136
+137
+138
+139
+140
+141
+142
+143</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/db.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/db.rb', line 108</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_database'>database</span><span class='op'>=</span><span class='symbol'>:default</span><span class='comma'>,</span> <span class='label'>migrate:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>load_models:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span><span class='lparen'>(</span><span class='id identifier rubyid_database'>database</span><span class='op'>=</span><span class='symbol'>:default</span><span class='comma'>,</span> <span class='label'>pool:</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                                    <span class='label'>migrate:</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                                    <span class='label'>load_models:</span> <span class='kw'>true</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_config'>config</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_database'>database</span>
-           <span class='kw'>when</span> <span class='const'>Hash</span>
-             <span class='id identifier rubyid_database'>database</span>
+           <span class='kw'>when</span> <span class='const'>Hash</span>   <span class='kw'>then</span> <span class='id identifier rubyid_database'>database</span>
+           <span class='kw'>when</span> <span class='const'>String</span> <span class='kw'>then</span> <span class='lbrace'>{</span><span class='label'>url:</span> <span class='id identifier rubyid_database'>database</span><span class='rbrace'>}</span>
            <span class='kw'>when</span> <span class='const'>Symbol</span>
              <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_database'>database</span><span class='rparen'>)</span> <span class='kw'>do</span>
                <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="DB/UnknownDatabase.html" title="Ronin::DB::UnknownDatabase (class)">UnknownDatabase</a></span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown database: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_database'>database</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -527,6 +551,9 @@
            <span class='kw'>else</span>
              <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='embexpr_end'>}</span><span class='tstring_content'>.</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid___method__'>__method__</span><span class='embexpr_end'>}</span><span class='tstring_content'> only accepts a Symbol or a Hash</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
            <span class='kw'>end</span>
+
+  <span class='comment'># set/override the connection pool setting
+</span>  <span class='id identifier rubyid_config'>config</span> <span class='op'>=</span> <span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='label'>pool:</span> <span class='id identifier rubyid_pool'>pool</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_pool'>pool</span>
 
   <span class='comment'># load activerecord
 </span>  <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>active_record</span><span class='tstring_end'>&#39;</span></span>
@@ -700,9 +727,9 @@ user that there are pending migrations.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Dec 13 20:12:18 2023 by
+  Generated on Mon Jul 22 12:01:15 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.1.4).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>

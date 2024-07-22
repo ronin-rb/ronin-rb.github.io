@@ -69,7 +69,7 @@
   <dl>
     <dt>Inherits:</dt>
     <dd>
-      <span class="inheritName"><span class='object_link'><a href="../DatabaseCommand.html" title="Ronin::DB::CLI::DatabaseCommand (class)">DatabaseCommand</a></span></span>
+      <span class="inheritName"><span class='object_link'><a href="../Command.html" title="Ronin::DB::CLI::Command (class)">Ronin::DB::CLI::Command</a></span></span>
       
         <ul class="fullTree">
           <li>Object</li>
@@ -77,8 +77,6 @@
             <li class="next">Core::CLI::Command</li>
           
             <li class="next"><span class='object_link'><a href="../Command.html" title="Ronin::DB::CLI::Command (class)">Ronin::DB::CLI::Command</a></span></li>
-          
-            <li class="next"><span class='object_link'><a href="../DatabaseCommand.html" title="Ronin::DB::CLI::DatabaseCommand (class)">DatabaseCommand</a></span></li>
           
             <li class="next">Ronin::DB::CLI::Commands::Irb</li>
           
@@ -92,6 +90,11 @@
   
   
   
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd><span class='object_link'><a href="../DatabaseOptions.html" title="Ronin::DB::CLI::DatabaseOptions (module)">DatabaseOptions</a></span></dd>
+  </dl>
   
   
 
@@ -122,6 +125,7 @@
 
 <pre class="code ruby"><code class="ruby">    --db NAME                    The database to connect to (Default: default)
     --db-uri URI                 The database URI to connect to
+    --db-file PATH               The sqlite3 database file to use
     --no-connect                 Do not connect to a database on startup
 -h, --help                       Print help information
 </code></pre>
@@ -233,8 +237,8 @@
   
   
   
-  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../DatabaseCommand.html" title="Ronin::DB::CLI::DatabaseCommand (class)">DatabaseCommand</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../DatabaseCommand.html#config-instance_method" title="Ronin::DB::CLI::DatabaseCommand#config (method)">#config</a></span>, <span class='object_link'><a href="../DatabaseCommand.html#connect-instance_method" title="Ronin::DB::CLI::DatabaseCommand#connect (method)">#connect</a></span></p>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../DatabaseOptions.html" title="Ronin::DB::CLI::DatabaseOptions (module)">DatabaseOptions</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../DatabaseOptions.html#db_config-instance_method" title="Ronin::DB::CLI::DatabaseOptions#db_config (method)">#db_config</a></span>, <span class='object_link'><a href="../DatabaseOptions.html#db_connect-instance_method" title="Ronin::DB::CLI::DatabaseOptions#db_connect (method)">#db_connect</a></span>, <span class='object_link'><a href="../DatabaseOptions.html#included-class_method" title="Ronin::DB::CLI::DatabaseOptions.included (method)">included</a></span></p>
 
   
   
@@ -288,13 +292,13 @@
       <pre class="lines">
 
 
-72
-73
-74
-75</pre>
+76
+77
+78
+79</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/irb.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/irb.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_load_models'>load_models</span>
   <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ronin/db/models</span><span class='tstring_end'>&#39;</span></span>
@@ -334,29 +338,29 @@
       <pre class="lines">
 
 
-53
-54
-55
-56
 57
 58
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/irb.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/irb.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span>
   <span class='kw'>unless</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:no_connect</span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_connect'>connect</span>
+    <span class='id identifier rubyid_db_connect'>db_connect</span>
     <span class='id identifier rubyid_load_models'>load_models</span>
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_set_logger'>set_logger</span>
 
-  <span class='const'><span class='object_link'><a href="../../CLI.html" title="Ronin::DB::CLI (module)">CLI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../RubyShell.html" title="Ronin::DB::CLI::RubyShell (class)">RubyShell</a></span></span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span>
+  <span class='const'><span class='object_link'><a href="../../CLI.html" title="Ronin::DB::CLI (class)">CLI</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../RubyShell.html" title="Ronin::DB::CLI::RubyShell (class)">RubyShell</a></span></span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -391,13 +395,13 @@
       <pre class="lines">
 
 
-64
-65
-66
-67</pre>
+68
+69
+70
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/irb.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/irb.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_logger'>set_logger</span>
   <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>logger</span><span class='tstring_end'>&#39;</span></span>
@@ -413,9 +417,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Dec 13 20:12:19 2023 by
+  Generated on Mon Jul 22 12:01:16 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.1.4).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>

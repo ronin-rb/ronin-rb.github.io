@@ -78,8 +78,6 @@
           
             <li class="next"><span class='object_link'><a href="../Command.html" title="Ronin::DB::CLI::Command (class)">Ronin::DB::CLI::Command</a></span></li>
           
-            <li class="next"><span class='object_link'><a href="../DatabaseCommand.html" title="Ronin::DB::CLI::DatabaseCommand (class)">DatabaseCommand</a></span></li>
-          
             <li class="next"><span class='object_link'><a href="../ModelCommand.html" title="Ronin::DB::CLI::ModelCommand (class)">ModelCommand</a></span></li>
           
             <li class="next">Ronin::DB::CLI::Commands::Asn</li>
@@ -129,11 +127,13 @@
 
 <pre class="code ruby"><code class="ruby">    --db NAME                    The database to connect to (Default: default)
     --db-uri URI                 The database URI to connect to
+    --db-file PATH               The sqlite3 database file to use
 -v, --verbose                    Enables verbose output
 -n, --number INT                 Searches for all ASN records with the AS number
 -C XX|None|Unknown,              Searches for all ASN records with the country code
     --country-code
 -N, --name NAME                  Searches for all ASN records with the matching name
+    --named NAME                 Searches for all ASN records containing the name
 -I, --ip IP                      Queries the ASN record for the IP
 -4, --ipv4                       Filter ASN records for only IPv4 ranges
 -6, --ipv6                       Filter ASN records for only IPv6 ranges
@@ -327,7 +327,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../ModelCommand.html" title="Ronin::DB::CLI::ModelCommand (class)">ModelCommand</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../ModelCommand.html#connect-instance_method" title="Ronin::DB::CLI::ModelCommand#connect (method)">#connect</a></span>, <span class='object_link'><a href="../ModelCommand.html#initialize-instance_method" title="Ronin::DB::CLI::ModelCommand#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../ModelCommand.html#list-instance_method" title="Ronin::DB::CLI::ModelCommand#list (method)">#list</a></span>, <span class='object_link'><a href="../ModelCommand.html#load_model-instance_method" title="Ronin::DB::CLI::ModelCommand#load_model (method)">#load_model</a></span>, <span class='object_link'><a href="../ModelCommand.html#model-instance_method" title="Ronin::DB::CLI::ModelCommand#model (method)">#model</a></span>, <span class='object_link'><a href="../ModelCommand.html#model_file-class_method" title="Ronin::DB::CLI::ModelCommand.model_file (method)">model_file</a></span>, <span class='object_link'><a href="../ModelCommand.html#model_name-class_method" title="Ronin::DB::CLI::ModelCommand.model_name (method)">model_name</a></span>, <span class='object_link'><a href="../ModelCommand.html#print_record-instance_method" title="Ronin::DB::CLI::ModelCommand#print_record (method)">#print_record</a></span>, <span class='object_link'><a href="../ModelCommand.html#query-instance_method" title="Ronin::DB::CLI::ModelCommand#query (method)">#query</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../ModelCommand.html#db_connect-instance_method" title="Ronin::DB::CLI::ModelCommand#db_connect (method)">#db_connect</a></span>, <span class='object_link'><a href="../ModelCommand.html#initialize-instance_method" title="Ronin::DB::CLI::ModelCommand#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../ModelCommand.html#list-instance_method" title="Ronin::DB::CLI::ModelCommand#list (method)">#list</a></span>, <span class='object_link'><a href="../ModelCommand.html#load_model-instance_method" title="Ronin::DB::CLI::ModelCommand#load_model (method)">#load_model</a></span>, <span class='object_link'><a href="../ModelCommand.html#model-instance_method" title="Ronin::DB::CLI::ModelCommand#model (method)">#model</a></span>, <span class='object_link'><a href="../ModelCommand.html#model_file-class_method" title="Ronin::DB::CLI::ModelCommand.model_file (method)">model_file</a></span>, <span class='object_link'><a href="../ModelCommand.html#model_name-class_method" title="Ronin::DB::CLI::ModelCommand.model_name (method)">model_name</a></span>, <span class='object_link'><a href="../ModelCommand.html#print_record-instance_method" title="Ronin::DB::CLI::ModelCommand#print_record (method)">#print_record</a></span>, <span class='object_link'><a href="../ModelCommand.html#query-instance_method" title="Ronin::DB::CLI::ModelCommand#query (method)">#query</a></span></p>
 
   
   
@@ -339,8 +339,8 @@
   
   
   
-  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../DatabaseCommand.html" title="Ronin::DB::CLI::DatabaseCommand (class)">DatabaseCommand</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../DatabaseCommand.html#config-instance_method" title="Ronin::DB::CLI::DatabaseCommand#config (method)">#config</a></span>, <span class='object_link'><a href="../DatabaseCommand.html#connect-instance_method" title="Ronin::DB::CLI::DatabaseCommand#connect (method)">#connect</a></span></p>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../DatabaseOptions.html" title="Ronin::DB::CLI::DatabaseOptions (module)">DatabaseOptions</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../DatabaseOptions.html#db_config-instance_method" title="Ronin::DB::CLI::DatabaseOptions#db_config (method)">#db_config</a></span>, <span class='object_link'><a href="../DatabaseOptions.html#db_connect-instance_method" title="Ronin::DB::CLI::DatabaseOptions#db_connect (method)">#db_connect</a></span>, <span class='object_link'><a href="../DatabaseOptions.html#included-class_method" title="Ronin::DB::CLI::DatabaseOptions.included (method)">included</a></span></p>
 
   
   
@@ -415,24 +415,24 @@
       <pre class="lines">
 
 
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207
 208
 209
 210
 211
-212</pre>
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/asn.rb', line 198</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/asn.rb', line 208</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_import_asn_record'>import_asn_record</span><span class='lparen'>(</span><span class='id identifier rubyid_record'>record</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_asn'>asn</span> <span class='op'>=</span> <span class='id identifier rubyid_model'>model</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
@@ -496,12 +496,12 @@
       <pre class="lines">
 
 
-166
-167
-168</pre>
+176
+177
+178</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/asn.rb', line 166</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/asn.rb', line 176</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_is_list_file_stale?'>is_list_file_stale?</span>
   <span class='const'>Support</span><span class='op'>::</span><span class='const'>Network</span><span class='op'>::</span><span class='const'>ASN</span><span class='op'>::</span><span class='const'>List</span><span class='period'>.</span><span class='id identifier rubyid_stale?'>stale?</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -581,12 +581,12 @@
       <pre class="lines">
 
 
-189
-190
-191</pre>
+199
+200
+201</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/asn.rb', line 189</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/asn.rb', line 199</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_parse_list_file'>parse_list_file</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='const'>Support</span><span class='op'>::</span><span class='const'>Network</span><span class='op'>::</span><span class='const'>ASN</span><span class='op'>::</span><span class='const'>List</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:file</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -625,21 +625,21 @@
       <pre class="lines">
 
 
-133
-134
-135
-136
-137
-138
-139
-140
-141</pre>
+143
+144
+145
+146
+147
+148
+149
+150
+151</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/asn.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/asn.rb', line 143</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span>
-  <span class='id identifier rubyid_connect'>connect</span>
+  <span class='id identifier rubyid_db_connect'>db_connect</span>
 
   <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:update</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_update'>update</span>
@@ -681,25 +681,25 @@
       <pre class="lines">
 
 
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
 156
 157
 158
 159
 160
-161</pre>
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/asn.rb', line 146</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/asn.rb', line 156</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_is_list_file_stale?'>is_list_file_stale?</span>
@@ -751,15 +751,15 @@
       <pre class="lines">
 
 
-173
-174
-175
-176
-177
-178</pre>
+183
+184
+185
+186
+187
+188</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/asn.rb', line 173</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/db/cli/commands/asn.rb', line 183</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_list_file'>update_list_file</span>
   <span class='const'>Support</span><span class='op'>::</span><span class='const'>Network</span><span class='op'>::</span><span class='const'>ASN</span><span class='op'>::</span><span class='const'>List</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span>
@@ -777,9 +777,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Dec 13 20:12:19 2023 by
+  Generated on Mon Jul 22 12:01:16 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.1.4).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>
