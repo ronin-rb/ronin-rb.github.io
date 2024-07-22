@@ -91,8 +91,9 @@ research and development.</p>
 possible.</li>
 <li>Supports defining Payloads as plain old Ruby classes.</li>
 <li>Provides base classes for a variety of languages and payload types
-(ASM, Shellcode, C, Go, Rust, Java, JSP, PHP, Python, Ruby, NodeJS, Shell,
-PowerShell, SQL, XML, HTML, URL).</li>
+(ASM, Shellcode, C, Go, Rust, Java, Groovy, JSP, PHP, Python, Ruby, NodeJS,
+Nashorn, Shell, PowerShell, SQL, XML, HTML, URL).</li>
+<li>Supports cross compiling C payloads to different architectures and OSes.</li>
 <li>Provides built-in common payloads:
 
 <ul>
@@ -107,7 +108,21 @@ PowerShell, SQL, XML, HTML, URL).</li>
 <li>PowerShell</li>
 <li>Python</li>
 <li>Ruby</li>
+<li>Zsh</li>
 <li>Java</li>
+<li>Reverse shell</li>
+<li>JavaScript</li>
+<li>Node.js
+
+<ul>
+<li>Reverse shell</li>
+</ul></li>
+<li>Nashorn
+
+<ul>
+<li>Reverse shell</li>
+</ul></li>
+<li>Groovy</li>
 <li>Reverse shell</li>
 <li>PHP</li>
 <li>Command exec.</li>
@@ -135,6 +150,13 @@ PowerShell, SQL, XML, HTML, URL).</li>
 <li>macOS (x86-64)</li>
 <li>FreeBSD (x86)</li>
 <li>NetBSD (x86)</li>
+</ul></li>
+<li>C payloads:</li>
+<li>reverse shell:
+
+<ul>
+<li>Windows (x86-64 and i686)</li>
+<li>UNIX (Linux, FreeBSD, OpenBSD, NetBSD, macOS)</li>
 </ul></li>
 </ul></li>
 <li>Supports adding additional encoders to payloads for further obfuscation.</li>
@@ -168,6 +190,7 @@ Arguments:
 
 Commands:
     build
+    completion
     encode
     encoder
     encoders
@@ -182,45 +205,58 @@ Commands:
 <p>List available payloads:</p>
 
 <pre class="code shell"><code class="shell">$ ronin-payloads list
+  bin/unix/reverse_shell
+  bin/windows/reverse_shell
   cmd/awk/reverse_shell
   cmd/bash/reverse_shell
   cmd/lua/reverse_shell
+  cmd/netcat/bind_shell
   cmd/node/reverse_shell
   cmd/openssl/reverse_shell
   cmd/perl/reverse_shell
   cmd/php/reverse_shell
+  cmd/ping
   cmd/powershell/reverse_shell
   cmd/python/reverse_shell
   cmd/ruby/reverse_shell
+  cmd/sleep
+  cmd/touch
+  cmd/windows/download
+  cmd/zsh/reverse_shell
+  groovy/reverse_shell
   java/reverse_shell
+  js/nashorn/reverse_shell
+  js/node/reverse_shell
   php/cmd_exec
   php/download_exec
   shellcode/freebsd/x86/bind_shell
-  shellcode/freebsd/x86/execve
+  shellcode/freebsd/x86/exec_shell
   shellcode/freebsd/x86/reverse_shell
-  shellcode/freebsd/x86_64/execve
+  shellcode/freebsd/x86_64/exec_shell
   shellcode/linux/arm/bind_shell
-  shellcode/linux/arm/execve
+  shellcode/linux/arm/exec_shell
   shellcode/linux/arm/reverse_shell
   shellcode/linux/mips/bind_shell
-  shellcode/linux/mips/execve
+  shellcode/linux/mips/exec_shell
   shellcode/linux/mips/reverse_shell
-  shellcode/linux/ppc/execve
+  shellcode/linux/ppc/exec_shell
   shellcode/linux/ppc/reverse_shell
   shellcode/linux/x86/bind_shell
-  shellcode/linux/x86/execve
+  shellcode/linux/x86/exec_shell
   shellcode/linux/x86/reverse_shell
   shellcode/linux/x86_64/bind_shell
-  shellcode/linux/x86_64/execve
+  shellcode/linux/x86_64/exec_shell
   shellcode/linux/x86_64/reverse_shell
-  shellcode/macos/x86_64/execve
+  shellcode/macos/x86_64/exec_shell
   shellcode/macos/x86_64/reverse_shell
-  shellcode/netbsd/x86/execve
+  shellcode/netbsd/x86/exec_shell
   shellcode/netbsd/x86/reverse_shell
   shellcode/openbsd/x86/bind_shell
-  shellcode/openbsd/x86/execve
+  shellcode/openbsd/x86/exec_shell
   shellcode/windows/x86_64/cmd
+  test/cmd
   test/open_redirect
+  test/url
   test/xss
 </code></pre>
 
@@ -383,7 +419,7 @@ $ git push
 <li><a href="https://github.com/ronin-rb/ronin-support#readme">ronin-support</a> ~&gt; 1.0</li>
 <li><a href="https://github.com/ronin-rb/ronin-code-asm#readme">ronin-code-asm</a> ~&gt; 1.0</li>
 <li><a href="https://github.com/ronin-rb/ronin-post_ex#readme">ronin-post_ex</a> ~&gt; 0.1</li>
-<li><a href="https://github.com/ronin-rb/ronin-core#readme">ronin-core</a> ~&gt; 0.1</li>
+<li><a href="https://github.com/ronin-rb/ronin-core#readme">ronin-core</a> ~&gt; 0.2</li>
 <li><a href="https://github.com/ronin-rb/ronin-repos#readme">ronin-repos</a> ~&gt; 0.1</li>
 </ul>
 
@@ -408,7 +444,7 @@ $ git push
 <li><a href="https://github.com/ronin-rb/ronin-payloads/fork">Fork It!</a></li>
 <li>Clone It!</li>
 <li><code>cd ronin-payloads/</code></li>
-<li><code>bundle install</code></li>
+<li><code>./scripts/setup</code></li>
 <li><code>git checkout -b my_feature</code></li>
 <li>Code It!</li>
 <li><code>bundle exec rake spec</code></li>
@@ -426,7 +462,7 @@ malicious software (malware) or malicious in nature.</p>
 
 <h2 id="license">License</h2>
 
-<p>Copyright (c) 2007-2023 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
+<p>Copyright (c) 2007-2024 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
 
 <p>ronin-payloads is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published
@@ -443,9 +479,9 @@ along with ronin-payloads.  If not, see <a href="https://www.gnu.org/licenses/">
 </div></div>
 
       <div id="footer">
-  Generated on Tue Jul  2 20:47:59 2024 by
+  Generated on Mon Jul 22 13:06:14 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.36 (ruby-3.1.6).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>
