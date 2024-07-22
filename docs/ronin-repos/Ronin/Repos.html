@@ -79,7 +79,7 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>lib/ronin/repos.rb<span class="defines">,<br />
-  lib/ronin/repos/cli.rb,<br /> lib/ronin/repos/root.rb,<br /> lib/ronin/repos/version.rb,<br /> lib/ronin/repos/cache_dir.rb,<br /> lib/ronin/repos/class_dir.rb,<br /> lib/ronin/repos/exceptions.rb,<br /> lib/ronin/repos/repository.rb,<br /> lib/ronin/repos/cli/command.rb,<br /> lib/ronin/repos/cli/commands/new.rb,<br /> lib/ronin/repos/cli/commands/list.rb,<br /> lib/ronin/repos/cli/commands/purge.rb,<br /> lib/ronin/repos/cli/commands/remove.rb,<br /> lib/ronin/repos/cli/commands/update.rb,<br /> lib/ronin/repos/cli/commands/install.rb</span>
+  lib/ronin/repos/cli.rb,<br /> lib/ronin/repos/root.rb,<br /> lib/ronin/repos/version.rb,<br /> lib/ronin/repos/cache_dir.rb,<br /> lib/ronin/repos/class_dir.rb,<br /> lib/ronin/repos/exceptions.rb,<br /> lib/ronin/repos/repository.rb,<br /> lib/ronin/repos/cli/command.rb,<br /> lib/ronin/repos/cli/commands/new.rb,<br /> lib/ronin/repos/cli/commands/list.rb,<br /> lib/ronin/repos/cli/commands/show.rb,<br /> lib/ronin/repos/cli/commands/purge.rb,<br /> lib/ronin/repos/cli/commands/remove.rb,<br /> lib/ronin/repos/cli/commands/update.rb,<br /> lib/ronin/repos/cli/commands/install.rb,<br /> lib/ronin/repos/cli/commands/completion.rb</span>
 </dd>
   </dl>
   
@@ -148,7 +148,7 @@
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0.1.1</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0.2.0</span><span class='tstring_end'>&#39;</span></span></pre></dd>
       
     </dl>
   
@@ -166,6 +166,29 @@
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cache_dir-class_method" title="cache_dir (class method)">.<strong>cache_dir</strong>  &#x21d2; CacheDir </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>The global repositories cache directory.</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -246,7 +269,90 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="find_file-class_method">
+  <h3 class="signature first" id="cache_dir-class_method">
+  
+    .<strong>cache_dir</strong>  &#x21d2; <tt><span class='object_link'><a href="Repos/CacheDir.html" title="Ronin::Repos::CacheDir (class)">CacheDir</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>This method lazy initializes <span class='object_link'><a href="Repos/CacheDir.html" title="Ronin::Repos::CacheDir (class)">CacheDir</a></span> when first called.</p>
+</div>
+  </div>
+
+<p>The global repositories cache directory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Repos/CacheDir.html" title="Ronin::Repos::CacheDir (class)">CacheDir</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The global repositories cache directory (<code>~/.cache/ronin-repos</code>).</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.2.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repos.rb', line 40</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_cache_dir'>cache_dir</span>
+  <span class='ivar'>@cache_dir</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="Repos/CacheDir.html" title="Ronin::Repos::CacheDir (class)">CacheDir</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Repos/CacheDir.html#initialize-instance_method" title="Ronin::Repos::CacheDir#initialize (method)">new</a></span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="find_file-class_method">
   
     .<strong>find_file</strong>(path)  &#x21d2; <tt>String</tt><sup>?</sup> 
   
@@ -316,15 +422,15 @@ could be found.</p>
       <pre class="lines">
 
 
-44
-45
-46</pre>
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repos.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repos.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_file'>find_file</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
-  <span class='ivar'>@cache_dir</span><span class='period'>.</span><span class='id identifier rubyid_find_file'>find_file</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_cache_dir'>cache_dir</span><span class='period'>.</span><span class='id identifier rubyid_find_file'>find_file</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -404,15 +510,15 @@ could be found.</p>
       <pre class="lines">
 
 
-64
-65
-66</pre>
+78
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repos.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repos.rb', line 78</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_glob'>glob</span><span class='lparen'>(</span><span class='id identifier rubyid_pattern'>pattern</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='ivar'>@cache_dir</span><span class='period'>.</span><span class='id identifier rubyid_glob'>glob</span><span class='lparen'>(</span><span class='id identifier rubyid_pattern'>pattern</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_cache_dir'>cache_dir</span><span class='period'>.</span><span class='id identifier rubyid_glob'>glob</span><span class='lparen'>(</span><span class='id identifier rubyid_pattern'>pattern</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -482,15 +588,15 @@ could be found.</p>
       <pre class="lines">
 
 
-77
-78
-79</pre>
+91
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/repos.rb', line 77</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/repos.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_list_files'>list_files</span><span class='lparen'>(</span><span class='id identifier rubyid_pattern'>pattern</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>{**/}*.*</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='ivar'>@cache_dir</span><span class='period'>.</span><span class='id identifier rubyid_list_files'>list_files</span><span class='lparen'>(</span><span class='id identifier rubyid_pattern'>pattern</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_cache_dir'>cache_dir</span><span class='period'>.</span><span class='id identifier rubyid_list_files'>list_files</span><span class='lparen'>(</span><span class='id identifier rubyid_pattern'>pattern</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -502,9 +608,9 @@ could be found.</p>
 </div>
 
       <div id="footer">
-  Generated on Fri Jun  9 17:54:46 2023 by
+  Generated on Mon Jul 22 11:48:58 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.28 (ruby-3.1.4).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>

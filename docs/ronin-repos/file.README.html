@@ -69,14 +69,26 @@
 <li><a href="https://github.com/ronin-rb/ronin-repos/issues">Issues</a></li>
 <li><a href="https://ronin-rb.dev/docs/ronin-repos/frames">Documentation</a></li>
 <li><a href="https://discord.gg/6WAb3PsVX9">Discord</a> |
-<a href="https://twitter.com/ronin_rb">Twitter</a> |
 <a href="https://infosec.exchange/@ronin_rb">Mastodon</a></li>
 </ul>
 
 <h2 id="description">Description</h2>
 
 <p>ronin-repos provides a repository system for installing, managing, and accessing
-third-party git repositories, which can contain code or other data.</p>
+third-party git repositories, that can contain additional Ruby code or other
+data.</p>
+
+<p>Third-party git repositories can be used to extend parts of Ronin. Other Ronin
+libraries can then list and load additional third-party Ruby classes from
+specific directories within the installed third-party repos:</p>
+
+<ul>
+<li><code>exploits/</code> - may contain additional exploits for <a href="https://github.com/ronin-rb/ronin-exploits#readme">ronin-exploits</a>.</li>
+<li><code>payloads/</code> - may contain additional payloads for <a href="https://github.com/ronin-rb/ronin-payloads#readme">ronin-payloads</a>.</li>
+</ul>
+
+<p><strong>tl;dr</strong> ronin-repos is essentially a decentralized plugin system for Ronin
+using git repos.</p>
 
 <p>ronin-repos is part of the <a href="https://ronin-rb.dev/">ronin-rb</a> project, a toolkit for security research
 and development.</p>
@@ -102,12 +114,14 @@ Arguments:
     [ARGS ...]                       Additional arguments for the command
 
 Commands:
+    completion
     help
     install
     list, ls
     new
     purge
     remove, rm
+    show, info
     update, up
 </code></pre>
 
@@ -166,7 +180,7 @@ $ git push -u origin main
 
 <ul>
 <li><a href="https://www.ruby-lang.org">Ruby</a> &gt;= 3.0.0</li>
-<li><a href="https://github.com/ronin-rb/ronin-core#readme">ronin-core</a> ~&gt; 0.1</li>
+<li><a href="https://github.com/ronin-rb/ronin-core#readme">ronin-core</a> ~&gt; 0.2</li>
 </ul>
 
 <h2 id="install">Install</h2>
@@ -185,7 +199,7 @@ $ git push -u origin main
 <li><a href="https://github.com/ronin-rb/ronin-repos/fork">Fork It!</a></li>
 <li>Clone It!</li>
 <li><code>cd ronin-repos</code></li>
-<li><code>bundle install</code></li>
+<li><code>./scripts/server</code></li>
 <li><code>git checkout -b my_feature</code></li>
 <li>Code It!</li>
 <li><code>bundle exec rake spec</code></li>
@@ -194,7 +208,7 @@ $ git push -u origin main
 
 <h2 id="license">License</h2>
 
-<p>Copyright (c) 2021-2023 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
+<p>Copyright (c) 2021-2024 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
 
 <p>ronin-repos is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published
@@ -211,9 +225,9 @@ along with ronin-repos.  If not, see <a href="https://www.gnu.org/licenses/">htt
 </div></div>
 
       <div id="footer">
-  Generated on Fri Jun  9 17:54:46 2023 by
+  Generated on Mon Jul 22 11:48:58 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.28 (ruby-3.1.4).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>
