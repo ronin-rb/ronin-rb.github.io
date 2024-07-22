@@ -93,7 +93,7 @@
   
   <dl>
       <dt>Includes:</dt>
-      <dd>CommandKit::Terminal</dd>
+      <dd>CommandKit::Colors</dd>
   </dl>
   
   
@@ -130,6 +130,7 @@ URL | FILE                       The modified URL or file
 <h2 id="options">Options</h2>
 
 <pre class="code ruby"><code class="ruby">-h, --help                       Print help information
+-f, --format                     Pass the format of the URL or files. Supported formats are html and xml. (Default: html)
 </code></pre>
 
 
@@ -167,6 +168,52 @@ URL | FILE                       The modified URL or file
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse_doc-instance_method" title="#parse_doc (instance method)">#<strong>parse_doc</strong>(page)  &#x21d2; Nokogiri::HTML::Document, Nokogiri::XML::Document </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Loads the given html or xml sources.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#print_change-instance_method" title="#print_change (instance method)">#<strong>print_change</strong>(change, node)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Prints a change to the document.</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -232,7 +279,232 @@ URL | FILE                       The modified URL or file
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="read-instance_method">
+  <h3 class="signature first" id="parse_doc-instance_method">
+  
+    #<strong>parse_doc</strong>(page)  &#x21d2; <tt>Nokogiri::HTML::Document</tt>, <tt>Nokogiri::XML::Document</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Loads the given html or xml sources</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>page</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The URL or file path of the original page.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Nokogiri::HTML::Document</tt>, <tt>Nokogiri::XML::Document</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>html or xml document depends upon --format option</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/diff.rb', line 145</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse_doc'>parse_doc</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:format</span><span class='rbracket'>]</span>
+  <span class='kw'>when</span> <span class='symbol'>:html</span>
+    <span class='const'>Nokogiri</span><span class='op'>::</span><span class='const'>HTML</span><span class='lparen'>(</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='symbol'>:xml</span>
+    <span class='const'>Nokogiri</span><span class='op'>::</span><span class='const'>XML</span><span class='lparen'>(</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>NotImplementedError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unsupported format: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:format</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="print_change-instance_method">
+  
+    #<strong>print_change</strong>(change, node)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Prints a change to the document.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>change</span>
+      
+      
+        <span class='type'>(<tt>"+"</tt>, <tt>"-"</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The type of change.</p>
+
+<ul>
+<li><code>+</code> - indicates an added node.</li>
+<li><code>-</code> - indicates a removed node.</li>
+</ul>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>node</span>
+      
+      
+        <span class='type'>(<tt>Nokogiri::HTML::Node</tt>, <tt>Nokogiri::HTML::Node</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The node that was changed.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/diff.rb', line 105</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_print_change'>print_change</span><span class='lparen'>(</span><span class='id identifier rubyid_change'>change</span><span class='comma'>,</span><span class='id identifier rubyid_node'>node</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_color'>color</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_change'>change</span>
+          <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>+</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>then</span> <span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_method'>method</span><span class='lparen'>(</span><span class='symbol'>:green</span><span class='rparen'>)</span>
+          <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>-</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>then</span> <span class='id identifier rubyid_colors'>colors</span><span class='period'>.</span><span class='id identifier rubyid_method'>method</span><span class='lparen'>(</span><span class='symbol'>:red</span><span class='rparen'>)</span>
+          <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_content'>content</span> <span class='op'>=</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+
+  <span class='id identifier rubyid_content'>content</span><span class='period'>.</span><span class='id identifier rubyid_each_line'>each_line</span><span class='lparen'>(</span><span class='label'>chomp:</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='op'>|</span>
+    <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_color'>color</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_change'>change</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_line'>line</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read-instance_method">
   
     #<strong>read</strong>(source)  &#x21d2; <tt>String</tt>, <tt>File</tt> 
   
@@ -311,17 +583,17 @@ URL | FILE                       The modified URL or file
       <pre class="lines">
 
 
-94
-95
-96
-97
-98
-99
-100
-101</pre>
+127
+128
+129
+130
+131
+132
+133
+134</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/diff.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/diff.rb', line 127</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_source'>source</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_start_with?'>start_with?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='op'>||</span>
@@ -414,27 +686,27 @@ URL | FILE                       The modified URL or file
       <pre class="lines">
 
 
-74
-75
-76
-77
-78
-79
-80
-81
 82
-83</pre>
+83
+84
+85
+86
+87
+88
+89
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/diff.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/diff.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span><span class='lparen'>(</span><span class='id identifier rubyid_page1'>page1</span><span class='comma'>,</span><span class='id identifier rubyid_page2'>page2</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_doc1'>doc1</span> <span class='op'>=</span> <span class='const'>Nokogiri</span><span class='op'>::</span><span class='const'>HTML</span><span class='lparen'>(</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_page1'>page1</span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_doc2'>doc2</span> <span class='op'>=</span> <span class='const'>Nokogiri</span><span class='op'>::</span><span class='const'>HTML</span><span class='lparen'>(</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_page2'>page2</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_doc1'>doc1</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_doc'>parse_doc</span><span class='lparen'>(</span><span class='id identifier rubyid_page1'>page1</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_doc2'>doc2</span> <span class='op'>=</span> <span class='id identifier rubyid_parse_doc'>parse_doc</span><span class='lparen'>(</span><span class='id identifier rubyid_page2'>page2</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_doc1'>doc1</span><span class='period'>.</span><span class='id identifier rubyid_diff'>diff</span><span class='lparen'>(</span><span class='id identifier rubyid_doc2'>doc2</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_change'>change</span><span class='comma'>,</span><span class='id identifier rubyid_node'>node</span><span class='op'>|</span>
-    <span class='kw'>unless</span> <span class='id identifier rubyid_change'>change</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span>
-      <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_change'>change</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_node'>node</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>unless</span> <span class='id identifier rubyid_change'>change</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span> <span class='comment'># ignroe unchanged nodes
+</span>      <span class='id identifier rubyid_print_change'>print_change</span><span class='lparen'>(</span><span class='id identifier rubyid_change'>change</span><span class='comma'>,</span><span class='id identifier rubyid_node'>node</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -448,9 +720,9 @@ URL | FILE                       The modified URL or file
 </div>
 
       <div id="footer">
-  Generated on Thu Jun 22 21:48:27 2023 by
+  Generated on Mon Jul 22 12:40:43 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.28 (ruby-3.1.4).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>

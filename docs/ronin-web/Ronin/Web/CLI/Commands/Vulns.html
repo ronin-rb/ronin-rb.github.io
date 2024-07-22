@@ -1,0 +1,2178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Ronin::Web::CLI::Commands::Vulns
+  
+    &mdash; Ronin Web Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::Web::CLI::Commands::Vulns";
+  relpath = '../../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../../_index.html">Index (V)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../../Web.html" title="Ronin::Web (module)">Web</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../CLI.html" title="Ronin::Web::CLI (class)">CLI</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Commands.html" title="Ronin::Web::CLI::Commands (module)">Commands</a></span></span>
+     &raquo; 
+    <span class="title">Vulns</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Ronin::Web::CLI::Commands::Vulns
+  
+  
+  <span class="private note title">Private</span>
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="../Command.html" title="Ronin::Web::CLI::Command (class)">Ronin::Web::CLI::Command</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Core::CLI::Command</li>
+          
+            <li class="next"><span class='object_link'><a href="../Command.html" title="Ronin::Web::CLI::Command (class)">Ronin::Web::CLI::Command</a></span></li>
+          
+            <li class="next">Ronin::Web::CLI::Commands::Vulns</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd>Core::CLI::Logging, Vulns::CLI::Importable, Vulns::CLI::Printing, <span class='object_link'><a href="../SpiderOptions.html" title="Ronin::Web::CLI::SpiderOptions (module)">SpiderOptions</a></span></dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/web/cli/commands/vulns.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This class is part of a private API.</strong>
+  You should avoid using this class if possible, as it may be removed or be changed in the future.
+</p>
+<h2 id="usage">Usage</h2>
+
+<pre class="code ruby"><code class="ruby">ronin-web vulns [options] {--host HOST | --domain DOMAIN | --site URL}
+</code></pre>
+
+<h2 id="options">Options</h2>
+
+<pre class="code ruby"><code class="ruby">    --host HOST                  Spiders the specific HOST
+    --domain DOMAIN              Spiders the whole domain
+    --site URL                   Spiders the website, starting at the URL
+    --open-timeout SECS          Sets the connection open timeout
+    --read-timeout SECS          Sets the read timeout
+    --ssl-timeout SECS           Sets the SSL connection timeout
+    --continue-timeout SECS      Sets the continue timeout
+    --keep-alive-timeout SECS    Sets the connection keep alive timeout
+-P, --proxy PROXY                Sets the proxy to use.
+-H, --header NAME: VALUE         Sets a default header
+    --host-header NAME=VALUE     Sets a default header
+-u chrome-linux|chrome-macos|chrome-windows|chrome-iphone|chrome-ipad|chrome-android|firefox-linux|firefox-macos|firefox-windows|firefox-iphone|firefox-ipad|firefox-android|safari-macos|safari-iphone|safari-ipad|edge,
+    --user-agent                 The User-Agent to use
+-U, --user-agent-string STRING   The User-Agent string to use
+-R, --referer URL                Sets the Referer URL
+    --delay SECS                 Sets the delay in seconds between each request
+-l, --limit COUNT                Only spiders up to COUNT pages
+-d, --max-depth DEPTH            Only spiders up to max depth
+    --enqueue URL                Adds the URL to the queue
+    --visited URL                Marks the URL as previously visited
+    --strip-fragments            Enables/disables stripping the fragment component of every URL
+    --strip-query                Enables/disables stripping the query component of every URL
+    --visit-host HOST            Visit URLs with the matching host name
+    --visit-hosts-like /REGEX/   Visit URLs with hostnames that match the REGEX
+    --ignore-host HOST           Ignore the host name
+    --ignore-hosts-like /REGEX/  Ignore the host names matching the REGEX
+    --visit-port PORT            Visit URLs with the matching port number
+    --visit-ports-like /REGEX/   Visit URLs with port numbers that match the REGEX
+    --ignore-port PORT           Ignore the port number
+    --ignore-ports-like /REGEX/  Ignore the port numbers matching the REGEXP
+    --visit-link URL             Visit the URL
+    --visit-links-like /REGEX/   Visit URLs that match the REGEX
+    --ignore-link URL            Ignore the URL
+    --ignore-links-like /REGEX/  Ignore URLs matching the REGEX
+    --visit-ext FILE_EXT         Visit URLs with the matching file ext
+    --visit-exts-like /REGEX/    Visit URLs with file exts that match the REGEX
+    --ignore-ext FILE_EXT        Ignore the URLs with the file ext
+    --ignore-exts-like /REGEX/   Ignore URLs with file exts matching the REGEX
+-r, --robots                     Specifies whether to honor robots.txt
+-v, --verbose                    Enables verbose output
+    --lfi-os unix|windows        Sets the OS to test for
+    --lfi-depth COUNT            Sets the directory depth to escape up
+    --lfi-filter-bypass null-byte|double-escape|base64|rot13|zlib
+                                 Sets the filter bypass strategy to use
+    --rfi-filter-bypass double-encode|suffix-escape|null-byte
+                                 Optional filter-bypass strategy to use
+    --rfi-script-lang asp|asp.net|coldfusion|jsp|php|perl
+                                 Explicitly specify the scripting language to test for
+    --rfi-test-script-url URL    Use an alternative test script URL
+    --sqli-escape-quote          Escapes quotation marks
+    --sqli-escape-parens         Escapes parenthesis
+    --sqli-terminate             Terminates the SQL expression with a --
+    --ssti-test-expr {X*Y | X/Z | X+Y | X-Y}
+                                 Optional numeric test to use
+    --open-redirect-url URL      Optional test URL to try to redirect to
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#scan_kwargs-instance_method" title="#scan_kwargs (instance method)">#<strong>scan_kwargs</strong>  &#x21d2; Hash{Symbol =&gt; Object} </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Keyword arguments for <code>Ronin::Vulns::URLScanner.scan</code>.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#scan_mode-instance_method" title="#scan_mode (instance method)">#<strong>scan_mode</strong>  &#x21d2; :first, :all </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>The scan mode.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+  
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="../SpiderOptions.html" title="Ronin::Web::CLI::SpiderOptions (module)">SpiderOptions</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../SpiderOptions.html#agent_kwargs-instance_method" title="Ronin::Web::CLI::SpiderOptions#agent_kwargs (method)">#agent_kwargs</a></span></p>
+
+
+  
+    <h2>
+      URL Scanning Methods
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#lfi_kwargs-instance_method" title="#lfi_kwargs (instance method)">#<strong>lfi_kwargs</strong>  &#x21d2; Hash{Symbol =&gt; Object} </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Keyword arguments which will be passed to <code>Ronin::Vulns::URLScanner.scan</code> or <code>Ronin::Vulns::URLScanner.test</code> via the <code>lfi:</code> keyword.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#open_redirect_kwargs-instance_method" title="#open_redirect_kwargs (instance method)">#<strong>open_redirect_kwargs</strong>  &#x21d2; Hash{Symbol =&gt; Object} </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Keyword arguments which will be passed to <code>Ronin::Vulns::URLScanner.scan</code> or <code>Ronin::Vulns::URLScanner.test</code> via the <code>open_redirect:</code> keyword.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reflected_xss_kwargs-instance_method" title="#reflected_xss_kwargs (instance method)">#<strong>reflected_xss_kwargs</strong>  &#x21d2; Hash{Symbol =&gt; Object} </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Keyword arguments which will be passed to <code>Ronin::Vulns::URLScanner.scan</code> or <code>Ronin::Vulns::URLScanner.test</code> via the <code>reflected_xss:</code> keyword.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rfi_kwargs-instance_method" title="#rfi_kwargs (instance method)">#<strong>rfi_kwargs</strong>  &#x21d2; Hash{Symbol =&gt; Object} </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Keyword arguments which will be passed to <code>Ronin::Vulns::URLScanner.scan</code> or <code>Ronin::Vulns::URLScanner.test</code> via the <code>rfi:</code> keyword.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#scan_url-instance_method" title="#scan_url (instance method)">#<strong>scan_url</strong>(url, **kwargs) {|vuln| ... } &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Scans the URL for web vulnerabilities.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sqli_kwargs-instance_method" title="#sqli_kwargs (instance method)">#<strong>sqli_kwargs</strong>  &#x21d2; Hash{Symbol =&gt; Object} </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Keyword arguments which will be passed to <code>Ronin::Vulns::URLScanner.scan</code> or <code>Ronin::Vulns::URLScanner.test</code> via the <code>sqli:</code> keyword.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#ssti_kwargs-instance_method" title="#ssti_kwargs (instance method)">#<strong>ssti_kwargs</strong>  &#x21d2; Hash{Symbol =&gt; Object} </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Keyword arguments which will be passed to <code>Ronin::Vulns::URLScanner.scan</code> or <code>Ronin::Vulns::URLScanner.test</code> via the <code>ssti:</code> keyword.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test_url-instance_method" title="#test_url (instance method)">#<strong>test_url</strong>(url, **kwargs)  &#x21d2; Ronin::Vulns::LFI, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Tests the URL for web vulnerabilities and prints the first vulnerability.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#default_headers-instance_method" title="#default_headers (instance method)">#<strong>default_headers</strong>  &#x21d2; Hash{String =&gt; String} </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>The default headers to send with every request.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(**kwargs)  &#x21d2; Vulns </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Initializes the <code>ronin-web vulns</code> command.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#print_vulns-instance_method" title="#print_vulns (instance method)">#<strong>print_vulns</strong>(vulns, print_curl: , print_http: )  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Prints detailed information about a discovered web vulnerability.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#process_vuln-instance_method" title="#process_vuln (instance method)">#<strong>process_vuln</strong>(vuln)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Logs and optioanlly imports a new discovered web vulnerability.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#referer=-instance_method" title="#referer= (instance method)">#<strong>referer=</strong>(new_referer)  &#x21d2; String<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets the <code>Referer</code> header that will be sent with every request.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#run-instance_method" title="#run (instance method)">#<strong>run</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Runs the <code>ronin-web vulns</code> command.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#user_agent=-instance_method" title="#user_agent= (instance method)">#<strong>user_agent=</strong>(new_user_agent)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  <span class="private note title">private</span>
+
+  
+    <span class="summary_desc"><div class='inline'><p>Sets the <code>User-Agent</code> header that will be sent with every request.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../SpiderOptions.html" title="Ronin::Web::CLI::SpiderOptions (module)">SpiderOptions</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../SpiderOptions.html#continue_timeout-instance_method" title="Ronin::Web::CLI::SpiderOptions#continue_timeout (method)">#continue_timeout</a></span>, <span class='object_link'><a href="../SpiderOptions.html#continue_timeout=-instance_method" title="Ronin::Web::CLI::SpiderOptions#continue_timeout= (method)">#continue_timeout=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#delay-instance_method" title="Ronin::Web::CLI::SpiderOptions#delay (method)">#delay</a></span>, <span class='object_link'><a href="../SpiderOptions.html#delay=-instance_method" title="Ronin::Web::CLI::SpiderOptions#delay= (method)">#delay=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#history-instance_method" title="Ronin::Web::CLI::SpiderOptions#history (method)">#history</a></span>, <span class='object_link'><a href="../SpiderOptions.html#host_headers-instance_method" title="Ronin::Web::CLI::SpiderOptions#host_headers (method)">#host_headers</a></span>, <span class='object_link'><a href="../SpiderOptions.html#ignore_exts-instance_method" title="Ronin::Web::CLI::SpiderOptions#ignore_exts (method)">#ignore_exts</a></span>, <span class='object_link'><a href="../SpiderOptions.html#ignore_hosts-instance_method" title="Ronin::Web::CLI::SpiderOptions#ignore_hosts (method)">#ignore_hosts</a></span>, <span class='object_link'><a href="../SpiderOptions.html#ignore_links-instance_method" title="Ronin::Web::CLI::SpiderOptions#ignore_links (method)">#ignore_links</a></span>, <span class='object_link'><a href="../SpiderOptions.html#ignore_ports-instance_method" title="Ronin::Web::CLI::SpiderOptions#ignore_ports (method)">#ignore_ports</a></span>, <span class='object_link'><a href="../SpiderOptions.html#ignore_schemes-instance_method" title="Ronin::Web::CLI::SpiderOptions#ignore_schemes (method)">#ignore_schemes</a></span>, <span class='object_link'><a href="../SpiderOptions.html#included-class_method" title="Ronin::Web::CLI::SpiderOptions.included (method)">included</a></span>, <span class='object_link'><a href="../SpiderOptions.html#keep_alive_timeout-instance_method" title="Ronin::Web::CLI::SpiderOptions#keep_alive_timeout (method)">#keep_alive_timeout</a></span>, <span class='object_link'><a href="../SpiderOptions.html#keep_alive_timeout=-instance_method" title="Ronin::Web::CLI::SpiderOptions#keep_alive_timeout= (method)">#keep_alive_timeout=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#limit-instance_method" title="Ronin::Web::CLI::SpiderOptions#limit (method)">#limit</a></span>, <span class='object_link'><a href="../SpiderOptions.html#limit=-instance_method" title="Ronin::Web::CLI::SpiderOptions#limit= (method)">#limit=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#max_depth-instance_method" title="Ronin::Web::CLI::SpiderOptions#max_depth (method)">#max_depth</a></span>, <span class='object_link'><a href="../SpiderOptions.html#max_depth=-instance_method" title="Ronin::Web::CLI::SpiderOptions#max_depth= (method)">#max_depth=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#new_agent-instance_method" title="Ronin::Web::CLI::SpiderOptions#new_agent (method)">#new_agent</a></span>, <span class='object_link'><a href="../SpiderOptions.html#open_timeout-instance_method" title="Ronin::Web::CLI::SpiderOptions#open_timeout (method)">#open_timeout</a></span>, <span class='object_link'><a href="../SpiderOptions.html#open_timeout=-instance_method" title="Ronin::Web::CLI::SpiderOptions#open_timeout= (method)">#open_timeout=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#proxy-instance_method" title="Ronin::Web::CLI::SpiderOptions#proxy (method)">#proxy</a></span>, <span class='object_link'><a href="../SpiderOptions.html#proxy=-instance_method" title="Ronin::Web::CLI::SpiderOptions#proxy= (method)">#proxy=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#queue-instance_method" title="Ronin::Web::CLI::SpiderOptions#queue (method)">#queue</a></span>, <span class='object_link'><a href="../SpiderOptions.html#read_timeout-instance_method" title="Ronin::Web::CLI::SpiderOptions#read_timeout (method)">#read_timeout</a></span>, <span class='object_link'><a href="../SpiderOptions.html#read_timeout=-instance_method" title="Ronin::Web::CLI::SpiderOptions#read_timeout= (method)">#read_timeout=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#referer-instance_method" title="Ronin::Web::CLI::SpiderOptions#referer (method)">#referer</a></span>, <span class='object_link'><a href="../SpiderOptions.html#robots-instance_method" title="Ronin::Web::CLI::SpiderOptions#robots (method)">#robots</a></span>, <span class='object_link'><a href="../SpiderOptions.html#robots=-instance_method" title="Ronin::Web::CLI::SpiderOptions#robots= (method)">#robots=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#ssl_timeout-instance_method" title="Ronin::Web::CLI::SpiderOptions#ssl_timeout (method)">#ssl_timeout</a></span>, <span class='object_link'><a href="../SpiderOptions.html#ssl_timeout=-instance_method" title="Ronin::Web::CLI::SpiderOptions#ssl_timeout= (method)">#ssl_timeout=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#strip_fragments-instance_method" title="Ronin::Web::CLI::SpiderOptions#strip_fragments (method)">#strip_fragments</a></span>, <span class='object_link'><a href="../SpiderOptions.html#strip_fragments=-instance_method" title="Ronin::Web::CLI::SpiderOptions#strip_fragments= (method)">#strip_fragments=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#strip_query-instance_method" title="Ronin::Web::CLI::SpiderOptions#strip_query (method)">#strip_query</a></span>, <span class='object_link'><a href="../SpiderOptions.html#strip_query=-instance_method" title="Ronin::Web::CLI::SpiderOptions#strip_query= (method)">#strip_query=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#user_agent-instance_method" title="Ronin::Web::CLI::SpiderOptions#user_agent (method)">#user_agent</a></span>, <span class='object_link'><a href="../SpiderOptions.html#visit_exts-instance_method" title="Ronin::Web::CLI::SpiderOptions#visit_exts (method)">#visit_exts</a></span>, <span class='object_link'><a href="../SpiderOptions.html#visit_hosts-instance_method" title="Ronin::Web::CLI::SpiderOptions#visit_hosts (method)">#visit_hosts</a></span>, <span class='object_link'><a href="../SpiderOptions.html#visit_links-instance_method" title="Ronin::Web::CLI::SpiderOptions#visit_links (method)">#visit_links</a></span>, <span class='object_link'><a href="../SpiderOptions.html#visit_ports-instance_method" title="Ronin::Web::CLI::SpiderOptions#visit_ports (method)">#visit_ports</a></span>, <span class='object_link'><a href="../SpiderOptions.html#visit_schemes-instance_method" title="Ronin::Web::CLI::SpiderOptions#visit_schemes (method)">#visit_schemes</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(**kwargs)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Web::CLI::Commands::Vulns (class)">Vulns</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Initializes the <code>ronin-web vulns</code> command.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+229
+230
+231
+232
+233
+234</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/vulns.rb', line 229</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@scan_mode</span>   <span class='op'>=</span> <span class='symbol'>:all</span>
+  <span class='ivar'>@scan_kwargs</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="scan_kwargs-instance_method">
+  
+    #<strong>scan_kwargs</strong>  &#x21d2; <tt>Hash{Symbol =&gt; Object}</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Keyword arguments for <code>Ronin::Vulns::URLScanner.scan</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+221
+222
+223</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/vulns.rb', line 221</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_scan_kwargs'>scan_kwargs</span>
+  <span class='ivar'>@scan_kwargs</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="scan_mode-instance_method">
+  
+    #<strong>scan_mode</strong>  &#x21d2; <tt>:first</tt>, <tt>:all</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>The scan mode</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>:first</tt>, <tt>:all</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+216
+217
+218</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/vulns.rb', line 216</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_scan_mode'>scan_mode</span>
+  <span class='ivar'>@scan_mode</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="default_headers-instance_method">
+  
+    #<strong>default_headers</strong>  &#x21d2; <tt>Hash{String =&gt; String}</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>The default headers to send with every request.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash{String =&gt; String}</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+312
+313
+314</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/vulns.rb', line 312</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_default_headers'>default_headers</span>
+  <span class='ivar'>@scan_kwargs</span><span class='lbracket'>[</span><span class='symbol'>:headers</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="lfi_kwargs-instance_method">
+  
+    #<strong>lfi_kwargs</strong>  &#x21d2; <tt>Hash{Symbol =&gt; Object}</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Keyword arguments which will be passed to
+<code>Ronin::Vulns::URLScanner.scan</code> or <code>Ronin::Vulns::URLScanner.test</code>
+via the <code>lfi:</code> keyword.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+353
+354
+355</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/vulns.rb', line 353</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_lfi_kwargs'>lfi_kwargs</span>
+  <span class='ivar'>@scan_kwargs</span><span class='lbracket'>[</span><span class='symbol'>:lfi</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="open_redirect_kwargs-instance_method">
+  
+    #<strong>open_redirect_kwargs</strong>  &#x21d2; <tt>Hash{Symbol =&gt; Object}</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Keyword arguments which will be passed to
+<code>Ronin::Vulns::URLScanner.scan</code> or <code>Ronin::Vulns::URLScanner.test</code>
+via the <code>open_redirect:</code> keyword.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+397
+398
+399</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/vulns.rb', line 397</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_open_redirect_kwargs'>open_redirect_kwargs</span>
+  <span class='ivar'>@scan_kwargs</span><span class='lbracket'>[</span><span class='symbol'>:open_redirect</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="print_vulns-instance_method">
+  
+    #<strong>print_vulns</strong>(vulns, print_curl: , print_http: )  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Prints detailed information about a discovered web vulnerability.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>vulns</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Ronin::Vulns::WebVuln&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The web vulnerability to log.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>print_curl</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt></tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Prints an example <code>curl</code> command to trigger the web vulnerability.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>print_http</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt></tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Prints an example HTTP request to trigger the web vulnerability.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+300
+301
+302
+303</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/vulns.rb', line 300</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_print_vulns'>print_vulns</span><span class='lparen'>(</span><span class='id identifier rubyid_vulns'>vulns</span><span class='comma'>,</span> <span class='label'>print_curl:</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_curl</span><span class='rbracket'>]</span><span class='comma'>,</span>
+                       <span class='label'>print_http:</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_http</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_vulns'>vulns</span><span class='comma'>,</span> <span class='label'>print_curl:</span> <span class='id identifier rubyid_print_curl'>print_curl</span><span class='comma'>,</span> <span class='label'>print_http:</span> <span class='id identifier rubyid_print_http'>print_http</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="process_vuln-instance_method">
+  
+    #<strong>process_vuln</strong>(vuln)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Logs and optioanlly imports a new discovered web vulnerability.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>vuln</span>
+      
+      
+        <span class='type'>(<tt>Ronin::Vulns::WebVuln</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The discovered web vulnerability.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+283
+284
+285
+286</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/vulns.rb', line 283</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_process_vuln'>process_vuln</span><span class='lparen'>(</span><span class='id identifier rubyid_vuln'>vuln</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_log_vuln'>log_vuln</span><span class='lparen'>(</span><span class='id identifier rubyid_vuln'>vuln</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_import_vuln'>import_vuln</span><span class='lparen'>(</span><span class='id identifier rubyid_vuln'>vuln</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:import</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="referer=-instance_method">
+  
+    #<strong>referer=</strong>(new_referer)  &#x21d2; <tt>String</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>Also sets the <code>Referer</code> header that will be used during web
+vulnerability scanning.</p>
+</div>
+  </div>
+
+<p>Sets the <code>Referer</code> header that will be sent with every request.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>new_referer</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+338
+339
+340</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/vulns.rb', line 338</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_referer='>referer=</span><span class='lparen'>(</span><span class='id identifier rubyid_new_referer'>new_referer</span><span class='rparen'>)</span>
+  <span class='ivar'>@scan_kwargs</span><span class='lbracket'>[</span><span class='symbol'>:referer</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_new_referer'>new_referer</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reflected_xss_kwargs-instance_method">
+  
+    #<strong>reflected_xss_kwargs</strong>  &#x21d2; <tt>Hash{Symbol =&gt; Object}</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Keyword arguments which will be passed to
+<code>Ronin::Vulns::URLScanner.scan</code> or <code>Ronin::Vulns::URLScanner.test</code>
+via the <code>reflected_xss:</code> keyword.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+408
+409
+410</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/vulns.rb', line 408</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_reflected_xss_kwargs'>reflected_xss_kwargs</span>
+  <span class='ivar'>@scan_kwargs</span><span class='lbracket'>[</span><span class='symbol'>:reflected_xss</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="rfi_kwargs-instance_method">
+  
+    #<strong>rfi_kwargs</strong>  &#x21d2; <tt>Hash{Symbol =&gt; Object}</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Keyword arguments which will be passed to
+<code>Ronin::Vulns::URLScanner.scan</code> or <code>Ronin::Vulns::URLScanner.test</code>
+via the <code>rfi:</code> keyword.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+364
+365
+366</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/vulns.rb', line 364</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_rfi_kwargs'>rfi_kwargs</span>
+  <span class='ivar'>@scan_kwargs</span><span class='lbracket'>[</span><span class='symbol'>:rfi</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="run-instance_method">
+  
+    #<strong>run</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Runs the <code>ronin-web vulns</code> command.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/vulns.rb', line 239</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span>
+  <span class='id identifier rubyid_db_connect'>db_connect</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:import</span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_vulns'>vulns</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+
+  <span class='kw'>begin</span>
+    <span class='id identifier rubyid_new_agent'>new_agent</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_agent'>agent</span><span class='op'>|</span>
+      <span class='kw'>case</span> <span class='ivar'>@scan_mode</span>
+      <span class='kw'>when</span> <span class='symbol'>:first</span>
+        <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_url'>every_url</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_url'>url</span><span class='op'>|</span>
+          <span class='id identifier rubyid_log_info'>log_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Testing </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+
+          <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_vuln'>vuln</span> <span class='op'>=</span> <span class='id identifier rubyid_test_url'>test_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span><span class='rparen'>)</span>
+            <span class='id identifier rubyid_process_vuln'>process_vuln</span><span class='lparen'>(</span><span class='id identifier rubyid_vuln'>vuln</span><span class='rparen'>)</span>
+            <span class='id identifier rubyid_vulns'>vulns</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_vuln'>vuln</span>
+
+            <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_pause!'>pause!</span>
+          <span class='kw'>end</span>
+        <span class='kw'>end</span>
+      <span class='kw'>when</span> <span class='symbol'>:all</span>
+        <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_url'>every_url</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_url'>url</span><span class='op'>|</span>
+          <span class='id identifier rubyid_log_info'>log_info</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Testing </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_url'>url</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+
+          <span class='id identifier rubyid_scan_url'>scan_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vuln'>vuln</span><span class='op'>|</span>
+            <span class='id identifier rubyid_process_vuln'>process_vuln</span><span class='lparen'>(</span><span class='id identifier rubyid_vuln'>vuln</span><span class='rparen'>)</span>
+            <span class='id identifier rubyid_vulns'>vulns</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_vuln'>vuln</span>
+          <span class='kw'>end</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>rescue</span> <span class='const'>Interrupt</span>
+    <span class='id identifier rubyid_puts'>puts</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_puts'>puts</span> <span class='kw'>unless</span> <span class='id identifier rubyid_vulns'>vulns</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+  <span class='id identifier rubyid_print_vulns'>print_vulns</span><span class='lparen'>(</span><span class='id identifier rubyid_vulns'>vulns</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="scan_url-instance_method">
+  
+    #<strong>scan_url</strong>(url, **kwargs) {|vuln| ... } &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Scans the URL for web vulnerabilities.</p>
+
+<p>A discovered web vulnerability in the URL.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>url</span>
+      
+      
+        <span class='type'>(<tt>URI::HTTP</tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The URL to scan.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <code>Ronin::Vulns::URLScanner.scan</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>vuln</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The given block will be yielded each discovered web vulnerability.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>vuln</span>
+      
+      
+        <span class='type'>(<tt>Ronin::Vulns::LFI</tt>, <tt>Ronin::Vulns::RFI</tt>, <tt>Ronin::Vulns::SQLI</tt>, <tt>Ronin::Vulns::SSTI</tt>, <tt>Ronin::Vulns::ReflectedXSS</tt>, <tt>Ronin::Vulns::OpenRedirect</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+432
+433
+434</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/vulns.rb', line 432</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_scan_url'>scan_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'>Vulns</span><span class='op'>::</span><span class='const'>URLScanner</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>**</span><span class='ivar'>@scan_kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sqli_kwargs-instance_method">
+  
+    #<strong>sqli_kwargs</strong>  &#x21d2; <tt>Hash{Symbol =&gt; Object}</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Keyword arguments which will be passed to
+<code>Ronin::Vulns::URLScanner.scan</code> or <code>Ronin::Vulns::URLScanner.test</code>
+via the <code>sqli:</code> keyword.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+375
+376
+377</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/vulns.rb', line 375</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_sqli_kwargs'>sqli_kwargs</span>
+  <span class='ivar'>@scan_kwargs</span><span class='lbracket'>[</span><span class='symbol'>:sqli</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="ssti_kwargs-instance_method">
+  
+    #<strong>ssti_kwargs</strong>  &#x21d2; <tt>Hash{Symbol =&gt; Object}</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Keyword arguments which will be passed to
+<code>Ronin::Vulns::URLScanner.scan</code> or <code>Ronin::Vulns::URLScanner.test</code>
+via the <code>ssti:</code> keyword.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+386
+387
+388</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/vulns.rb', line 386</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_ssti_kwargs'>ssti_kwargs</span>
+  <span class='ivar'>@scan_kwargs</span><span class='lbracket'>[</span><span class='symbol'>:ssti</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="test_url-instance_method">
+  
+    #<strong>test_url</strong>(url, **kwargs)  &#x21d2; <tt>Ronin::Vulns::LFI</tt>, ... 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Tests the URL for web vulnerabilities and prints the first
+vulnerability.</p>
+
+<p>The first discovered web vulnerability or <code>nil</code> if no
+  vulnerabilities were discovered.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>url</span>
+      
+      
+        <span class='type'>(<tt>URI::HTTP</tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The URL to scan.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments for <code>Ronin::Vulns::URLScanner.test</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Ronin::Vulns::LFI</tt>, <tt>Ronin::Vulns::RFI</tt>, <tt>Ronin::Vulns::SQLI</tt>, <tt>Ronin::Vulns::SSTI</tt>, <tt>Ronin::Vulns::ReflectedXSS</tt>, <tt>Ronin::Vulns::OpenRedirect</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+455
+456
+457</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/vulns.rb', line 455</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_test_url'>test_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../../../../Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'>Vulns</span><span class='op'>::</span><span class='const'>URLScanner</span><span class='period'>.</span><span class='id identifier rubyid_test'>test</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>**</span><span class='ivar'>@scan_kwargs</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="user_agent=-instance_method">
+  
+    #<strong>user_agent=</strong>(new_user_agent)  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Sets the <code>User-Agent</code> header that will be sent with every request.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>new_user_agent</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>2.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+323
+324
+325</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/vulns.rb', line 323</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_user_agent='>user_agent=</span><span class='lparen'>(</span><span class='id identifier rubyid_new_user_agent'>new_user_agent</span><span class='rparen'>)</span>
+  <span class='ivar'>@scan_kwargs</span><span class='lbracket'>[</span><span class='symbol'>:user_agent</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_new_user_agent'>new_user_agent</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Mon Jul 22 12:40:44 2024 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.36 (ruby-3.3.4).
+</div>
+
+    </div>
+  </body>
+</html>

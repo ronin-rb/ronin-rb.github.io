@@ -93,7 +93,7 @@
   
   <dl>
       <dt>Includes:</dt>
-      <dd>CommandKit::Colors, CommandKit::Options::Verbose, CommandKit::Printing::Indent</dd>
+      <dd>CommandKit::Colors, CommandKit::Options::Verbose, CommandKit::Printing::Indent, <span class='object_link'><a href="../SpiderOptions.html" title="Ronin::Web::CLI::SpiderOptions (module)">SpiderOptions</a></span></dd>
   </dl>
   
   
@@ -123,18 +123,20 @@
 
 <h2 id="options">Options</h2>
 
-<pre class="code ruby"><code class="ruby">-v, --verbose                    Enables verbose output
+<pre class="code ruby"><code class="ruby">    --host HOST                  Spiders the specific HOST
+    --domain DOMAIN              Spiders the whole domain
+    --site URL                   Spiders the website, starting at the URL
     --open-timeout SECS          Sets the connection open timeout
     --read-timeout SECS          Sets the read timeout
     --ssl-timeout SECS           Sets the SSL connection timeout
     --continue-timeout SECS      Sets the continue timeout
     --keep-alive-timeout SECS    Sets the connection keep alive timeout
--P, --proxy PROXY                Sets the proxy to use.
+-P, --proxy PROXY                Sets the proxy to use
 -H, --header NAME: VALUE         Sets a default header
     --host-header NAME=VALUE     Sets a default header
+-U, --user-agent-string STRING   The User-Agent string to use
 -u chrome-linux|chrome-macos|chrome-windows|chrome-iphone|chrome-ipad|chrome-android|firefox-linux|firefox-macos|firefox-windows|firefox-iphone|firefox-ipad|firefox-android|safari-macos|safari-iphone|safari-ipad|edge,
     --user-agent                 The User-Agent to use
--U, --user-agent-string STRING   The User-Agent string to use
 -R, --referer URL                Sets the Referer URL
     --delay SECS                 Sets the delay in seconds between each request
 -l, --limit COUNT                Only spiders up to COUNT pages
@@ -143,6 +145,11 @@
     --visited URL                Marks the URL as previously visited
     --strip-fragments            Enables/disables stripping the fragment component of every URL
     --strip-query                Enables/disables stripping the query component of every URL
+    --visit-scheme SCHEME        Visit URLs with the URI scheme
+    --visit-schemes-like /REGEX/ Visit URLs with URI schemes that match the REGEX
+    --ignore-scheme SCHEME       Ignore the URLs with the URI scheme
+    --ignore-schemes-like /REGEX/
+                                 Ignore the URLs with URI schemes matching the REGEX
     --visit-host HOST            Visit URLs with the matching host name
     --visit-hosts-like /REGEX/   Visit URLs with hostnames that match the REGEX
     --ignore-host HOST           Ignore the host name
@@ -160,10 +167,8 @@
     --ignore-ext FILE_EXT        Ignore the URLs with the file ext
     --ignore-exts-like /REGEX/   Ignore URLs with file exts matching the REGEX
 -r, --robots                     Specifies whether to honor robots.txt
-    --host HOST                  Spiders the specific HOST
-    --domain DOMAIN              Spiders the whole domain
-    --site URL                   Spiders the website, starting at the URL
-    --print-status               Print the status codes for each URL
+-v, --verbose                    Enables verbose output
+    --print-stauts               Print the status codes for each URL
     --print-headers              Print response headers for each URL
     --print-header NAME          Prints a specific header
     --history FILE               The history file
@@ -171,6 +176,19 @@
     --git-archive DIR            Archive every visited page to the git repository
 -X, --xpath XPATH                Evaluates the XPath on each HTML page
 -C, --css-path XPATH             Evaluates the CSS-path on each HTML page
+    --print-hosts                Print all discovered hostnames
+    --print-certs                Print all encountered SSL/TLS certificates
+    --save-certs                 Saves all encountered SSL/TLS certificates
+    --print-js-strings           Print all JavaScript strings
+    --print-js-url-strings       Print URL strings found in JavaScript
+    --print-js-path-strings      Print path strings found in JavaScript
+    --print-js-absolute-path-strings
+                                 Only print absolute path strings found in JavaScript
+    --print-js-relative-path-strings
+                                 Only print relative path strings found in JavaScript
+    --print-html-comments        Print HTML comments
+    --print-js-comments          Print JavaScript comments
+    --print-comments             Print all HTML and JavaScript comments
 -h, --help                       Print help information
 </code></pre>
 
@@ -206,376 +224,12 @@ ronin-web spider --site https://scanme.nmap.org/
 
 
 
-  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
-  <ul class="summary">
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#default_headers-instance_method" title="#default_headers (instance method)">#<strong>default_headers</strong>  &#x21d2; Hash{String =&gt; String} </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>The default HTTP headers to send with every request.</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#history-instance_method" title="#history (instance method)">#<strong>history</strong>  &#x21d2; Array&lt;String&gt; </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>The pre-existing of previously visited URLs to start spidering with.</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#host_headers-instance_method" title="#host_headers (instance method)">#<strong>host_headers</strong>  &#x21d2; Hash{String =&gt; String} </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>The mapping of custom <code>Host</code> headers.</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#ignore_exts-instance_method" title="#ignore_exts (instance method)">#<strong>ignore_exts</strong>  &#x21d2; Array&lt;String, Regexp&gt; </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>The URL file extensions to ignore.</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#ignore_hosts-instance_method" title="#ignore_hosts (instance method)">#<strong>ignore_hosts</strong>  &#x21d2; Array&lt;String, Regexp&gt; </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>The hosts to ignore.</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#ignore_links-instance_method" title="#ignore_links (instance method)">#<strong>ignore_links</strong>  &#x21d2; Array&lt;String, Regexp&gt; </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>The links to ignore.</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#ignore_ports-instance_method" title="#ignore_ports (instance method)">#<strong>ignore_ports</strong>  &#x21d2; Array&lt;Integer, Regexp&gt; </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>The port numbers to ignore.</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#queue-instance_method" title="#queue (instance method)">#<strong>queue</strong>  &#x21d2; Array&lt;String&gt; </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>The pre-existing queue of URLs to start spidering with.</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#visit_exts-instance_method" title="#visit_exts (instance method)">#<strong>visit_exts</strong>  &#x21d2; Array&lt;String, Regexp&gt; </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>The URL file extensions to visit.</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#visit_hosts-instance_method" title="#visit_hosts (instance method)">#<strong>visit_hosts</strong>  &#x21d2; Array&lt;String, Regexp&gt; </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>The hosts to visit.</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#visit_links-instance_method" title="#visit_links (instance method)">#<strong>visit_links</strong>  &#x21d2; Array&lt;String, Regexp&gt; </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>The links to visit.</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#visit_ports-instance_method" title="#visit_ports (instance method)">#<strong>visit_ports</strong>  &#x21d2; Array&lt;Integer, Regexp&gt; </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>The port numbers to visit.</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#visit_schemes-instance_method" title="#visit_schemes (instance method)">#<strong>visit_schemes</strong>  &#x21d2; Array&lt;String&gt; </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>The schemes to visit.</p>
-</div></span>
-  
-</li>
-
-    
-  </ul>
 
 
+  <h2>Instance Attribute Summary</h2>
+  
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="../SpiderOptions.html" title="Ronin::Web::CLI::SpiderOptions (module)">SpiderOptions</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../SpiderOptions.html#agent_kwargs-instance_method" title="Ronin::Web::CLI::SpiderOptions#agent_kwargs (method)">#agent_kwargs</a></span></p>
 
 
   
@@ -585,29 +239,6 @@ ronin-web spider --site https://scanme.nmap.org/
     </h2>
 
     <ul class="summary">
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#agent_kwargs-instance_method" title="#agent_kwargs (instance method)">#<strong>agent_kwargs</strong>  &#x21d2; Hash{Symbol =&gt; Object} </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>Builds keyword arguments for <code>Ronin::Web::Spider::Agent#initialize</code>.</p>
-</div></span>
-  
-</li>
-
       
         <li class="public ">
   <span class="summary_signature">
@@ -627,54 +258,6 @@ ronin-web spider --site https://scanme.nmap.org/
 
   
     <span class="summary_desc"><div class='inline'><p>Defines callbacks that print information.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(**kwargs)  &#x21d2; Spider </a>
-    
-
-    
-  </span>
-  
-  
-    <span class="note title constructor">constructor</span>
-  
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>Initializes the spider command.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#new_agent-instance_method" title="#new_agent (instance method)">#<strong>new_agent</strong> {|agent| ... } &#x21d2; Ronin::Web::Spider::Agent </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  <span class="private note title">private</span>
-
-  
-    <span class="summary_desc"><div class='inline'><p>Creates a new web spider agent.</p>
 </div></span>
   
 </li>
@@ -877,1259 +460,25 @@ ronin-web spider --site https://scanme.nmap.org/
   
   
   
-  <div id="constructor_details" class="method_details_list">
-  <h2>Constructor Details</h2>
   
-    <div class="method_details first">
-  <h3 class="signature first" id="initialize-instance_method">
   
-    #<strong>initialize</strong>(**kwargs)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Web::CLI::Commands::Spider (class)">Spider</a></span></tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-<p>Initializes the spider command.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>kwargs</span>
-      
-      
-        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>Additional keyword arguments.</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-530
-531
-532
-533
-534
-535
-536
-537
-538
-539
-540
-541
-542
-543
-544
-545
-546
-547
-548
-549</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 530</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
-  <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
-
-  <span class='ivar'>@default_headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-  <span class='ivar'>@host_headers</span>    <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-
-  <span class='ivar'>@queue</span>   <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='ivar'>@history</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-
-  <span class='ivar'>@visit_schemes</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='ivar'>@visit_hosts</span>   <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='ivar'>@visit_ports</span>   <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='ivar'>@visit_links</span>   <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='ivar'>@visit_exts</span>    <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-
-  <span class='ivar'>@ignore_hosts</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='ivar'>@ignore_ports</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='ivar'>@ignore_links</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='ivar'>@ignore_exts</span>  <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-  
-</div>
-
-  <div id="instance_attr_details" class="attr_details">
-    <h2>Instance Attribute Details</h2>
-    
-      
-      <span id=""></span>
-      <div class="method_details first">
-  <h3 class="signature first" id="default_headers-instance_method">
-  
-    #<strong>default_headers</strong>  &#x21d2; <tt>Hash{String =&gt; String}</tt>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-<p>The default HTTP headers to send with every request.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Hash{String =&gt; String}</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-462
-463
-464</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 462</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_default_headers'>default_headers</span>
-  <span class='ivar'>@default_headers</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="history-instance_method">
-  
-    #<strong>history</strong>  &#x21d2; <tt>Array&lt;String&gt;</tt>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-<p>The pre-existing of previously visited URLs to start spidering with.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-477
-478
-479</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 477</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_history'>history</span>
-  <span class='ivar'>@history</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="host_headers-instance_method">
-  
-    #<strong>host_headers</strong>  &#x21d2; <tt>Hash{String =&gt; String}</tt>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-<p>The mapping of custom <code>Host</code> headers.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Hash{String =&gt; String}</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-467
-468
-469</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 467</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_host_headers'>host_headers</span>
-  <span class='ivar'>@host_headers</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="ignore_exts-instance_method">
-  
-    #<strong>ignore_exts</strong>  &#x21d2; <tt>Array&lt;String, Regexp&gt;</tt>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-<p>The URL file extensions to ignore.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;String, Regexp&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-522
-523
-524</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 522</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_ignore_exts'>ignore_exts</span>
-  <span class='ivar'>@ignore_exts</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="ignore_hosts-instance_method">
-  
-    #<strong>ignore_hosts</strong>  &#x21d2; <tt>Array&lt;String, Regexp&gt;</tt>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-<p>The hosts to ignore.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;String, Regexp&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-507
-508
-509</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 507</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_ignore_hosts'>ignore_hosts</span>
-  <span class='ivar'>@ignore_hosts</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="ignore_links-instance_method">
-  
-    #<strong>ignore_links</strong>  &#x21d2; <tt>Array&lt;String, Regexp&gt;</tt>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-<p>The links to ignore.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;String, Regexp&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-517
-518
-519</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 517</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_ignore_links'>ignore_links</span>
-  <span class='ivar'>@ignore_links</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="ignore_ports-instance_method">
-  
-    #<strong>ignore_ports</strong>  &#x21d2; <tt>Array&lt;Integer, Regexp&gt;</tt>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-<p>The port numbers to ignore.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;Integer, Regexp&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-512
-513
-514</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 512</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_ignore_ports'>ignore_ports</span>
-  <span class='ivar'>@ignore_ports</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="queue-instance_method">
-  
-    #<strong>queue</strong>  &#x21d2; <tt>Array&lt;String&gt;</tt>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-<p>The pre-existing queue of URLs to start spidering with.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-472
-473
-474</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 472</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_queue'>queue</span>
-  <span class='ivar'>@queue</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="visit_exts-instance_method">
-  
-    #<strong>visit_exts</strong>  &#x21d2; <tt>Array&lt;String, Regexp&gt;</tt>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-<p>The URL file extensions to visit.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;String, Regexp&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-502
-503
-504</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 502</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_visit_exts'>visit_exts</span>
-  <span class='ivar'>@visit_exts</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="visit_hosts-instance_method">
-  
-    #<strong>visit_hosts</strong>  &#x21d2; <tt>Array&lt;String, Regexp&gt;</tt>  <span class="extras">(readonly)</span>
-  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../SpiderOptions.html" title="Ronin::Web::CLI::SpiderOptions (module)">SpiderOptions</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../SpiderOptions.html#continue_timeout-instance_method" title="Ronin::Web::CLI::SpiderOptions#continue_timeout (method)">#continue_timeout</a></span>, <span class='object_link'><a href="../SpiderOptions.html#continue_timeout=-instance_method" title="Ronin::Web::CLI::SpiderOptions#continue_timeout= (method)">#continue_timeout=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#default_headers-instance_method" title="Ronin::Web::CLI::SpiderOptions#default_headers (method)">#default_headers</a></span>, <span class='object_link'><a href="../SpiderOptions.html#delay-instance_method" title="Ronin::Web::CLI::SpiderOptions#delay (method)">#delay</a></span>, <span class='object_link'><a href="../SpiderOptions.html#delay=-instance_method" title="Ronin::Web::CLI::SpiderOptions#delay= (method)">#delay=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#history-instance_method" title="Ronin::Web::CLI::SpiderOptions#history (method)">#history</a></span>, <span class='object_link'><a href="../SpiderOptions.html#host_headers-instance_method" title="Ronin::Web::CLI::SpiderOptions#host_headers (method)">#host_headers</a></span>, <span class='object_link'><a href="../SpiderOptions.html#ignore_exts-instance_method" title="Ronin::Web::CLI::SpiderOptions#ignore_exts (method)">#ignore_exts</a></span>, <span class='object_link'><a href="../SpiderOptions.html#ignore_hosts-instance_method" title="Ronin::Web::CLI::SpiderOptions#ignore_hosts (method)">#ignore_hosts</a></span>, <span class='object_link'><a href="../SpiderOptions.html#ignore_links-instance_method" title="Ronin::Web::CLI::SpiderOptions#ignore_links (method)">#ignore_links</a></span>, <span class='object_link'><a href="../SpiderOptions.html#ignore_ports-instance_method" title="Ronin::Web::CLI::SpiderOptions#ignore_ports (method)">#ignore_ports</a></span>, <span class='object_link'><a href="../SpiderOptions.html#ignore_schemes-instance_method" title="Ronin::Web::CLI::SpiderOptions#ignore_schemes (method)">#ignore_schemes</a></span>, <span class='object_link'><a href="../SpiderOptions.html#included-class_method" title="Ronin::Web::CLI::SpiderOptions.included (method)">included</a></span>, <span class='object_link'><a href="../SpiderOptions.html#initialize-instance_method" title="Ronin::Web::CLI::SpiderOptions#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../SpiderOptions.html#keep_alive_timeout-instance_method" title="Ronin::Web::CLI::SpiderOptions#keep_alive_timeout (method)">#keep_alive_timeout</a></span>, <span class='object_link'><a href="../SpiderOptions.html#keep_alive_timeout=-instance_method" title="Ronin::Web::CLI::SpiderOptions#keep_alive_timeout= (method)">#keep_alive_timeout=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#limit-instance_method" title="Ronin::Web::CLI::SpiderOptions#limit (method)">#limit</a></span>, <span class='object_link'><a href="../SpiderOptions.html#limit=-instance_method" title="Ronin::Web::CLI::SpiderOptions#limit= (method)">#limit=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#max_depth-instance_method" title="Ronin::Web::CLI::SpiderOptions#max_depth (method)">#max_depth</a></span>, <span class='object_link'><a href="../SpiderOptions.html#max_depth=-instance_method" title="Ronin::Web::CLI::SpiderOptions#max_depth= (method)">#max_depth=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#new_agent-instance_method" title="Ronin::Web::CLI::SpiderOptions#new_agent (method)">#new_agent</a></span>, <span class='object_link'><a href="../SpiderOptions.html#open_timeout-instance_method" title="Ronin::Web::CLI::SpiderOptions#open_timeout (method)">#open_timeout</a></span>, <span class='object_link'><a href="../SpiderOptions.html#open_timeout=-instance_method" title="Ronin::Web::CLI::SpiderOptions#open_timeout= (method)">#open_timeout=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#proxy-instance_method" title="Ronin::Web::CLI::SpiderOptions#proxy (method)">#proxy</a></span>, <span class='object_link'><a href="../SpiderOptions.html#proxy=-instance_method" title="Ronin::Web::CLI::SpiderOptions#proxy= (method)">#proxy=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#queue-instance_method" title="Ronin::Web::CLI::SpiderOptions#queue (method)">#queue</a></span>, <span class='object_link'><a href="../SpiderOptions.html#read_timeout-instance_method" title="Ronin::Web::CLI::SpiderOptions#read_timeout (method)">#read_timeout</a></span>, <span class='object_link'><a href="../SpiderOptions.html#read_timeout=-instance_method" title="Ronin::Web::CLI::SpiderOptions#read_timeout= (method)">#read_timeout=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#referer-instance_method" title="Ronin::Web::CLI::SpiderOptions#referer (method)">#referer</a></span>, <span class='object_link'><a href="../SpiderOptions.html#referer=-instance_method" title="Ronin::Web::CLI::SpiderOptions#referer= (method)">#referer=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#robots-instance_method" title="Ronin::Web::CLI::SpiderOptions#robots (method)">#robots</a></span>, <span class='object_link'><a href="../SpiderOptions.html#robots=-instance_method" title="Ronin::Web::CLI::SpiderOptions#robots= (method)">#robots=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#ssl_timeout-instance_method" title="Ronin::Web::CLI::SpiderOptions#ssl_timeout (method)">#ssl_timeout</a></span>, <span class='object_link'><a href="../SpiderOptions.html#ssl_timeout=-instance_method" title="Ronin::Web::CLI::SpiderOptions#ssl_timeout= (method)">#ssl_timeout=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#strip_fragments-instance_method" title="Ronin::Web::CLI::SpiderOptions#strip_fragments (method)">#strip_fragments</a></span>, <span class='object_link'><a href="../SpiderOptions.html#strip_fragments=-instance_method" title="Ronin::Web::CLI::SpiderOptions#strip_fragments= (method)">#strip_fragments=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#strip_query-instance_method" title="Ronin::Web::CLI::SpiderOptions#strip_query (method)">#strip_query</a></span>, <span class='object_link'><a href="../SpiderOptions.html#strip_query=-instance_method" title="Ronin::Web::CLI::SpiderOptions#strip_query= (method)">#strip_query=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#user_agent-instance_method" title="Ronin::Web::CLI::SpiderOptions#user_agent (method)">#user_agent</a></span>, <span class='object_link'><a href="../SpiderOptions.html#user_agent=-instance_method" title="Ronin::Web::CLI::SpiderOptions#user_agent= (method)">#user_agent=</a></span>, <span class='object_link'><a href="../SpiderOptions.html#visit_exts-instance_method" title="Ronin::Web::CLI::SpiderOptions#visit_exts (method)">#visit_exts</a></span>, <span class='object_link'><a href="../SpiderOptions.html#visit_hosts-instance_method" title="Ronin::Web::CLI::SpiderOptions#visit_hosts (method)">#visit_hosts</a></span>, <span class='object_link'><a href="../SpiderOptions.html#visit_links-instance_method" title="Ronin::Web::CLI::SpiderOptions#visit_links (method)">#visit_links</a></span>, <span class='object_link'><a href="../SpiderOptions.html#visit_ports-instance_method" title="Ronin::Web::CLI::SpiderOptions#visit_ports (method)">#visit_ports</a></span>, <span class='object_link'><a href="../SpiderOptions.html#visit_schemes-instance_method" title="Ronin::Web::CLI::SpiderOptions#visit_schemes (method)">#visit_schemes</a></span></p>
 
   
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-<p>The hosts to visit.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;String, Regexp&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-487
-488
-489</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 487</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_visit_hosts'>visit_hosts</span>
-  <span class='ivar'>@visit_hosts</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="visit_links-instance_method">
-  
-    #<strong>visit_links</strong>  &#x21d2; <tt>Array&lt;String, Regexp&gt;</tt>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-<p>The links to visit.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;String, Regexp&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-497
-498
-499</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 497</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_visit_links'>visit_links</span>
-  <span class='ivar'>@visit_links</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="visit_ports-instance_method">
-  
-    #<strong>visit_ports</strong>  &#x21d2; <tt>Array&lt;Integer, Regexp&gt;</tt>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-<p>The port numbers to visit.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;Integer, Regexp&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-492
-493
-494</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 492</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_visit_ports'>visit_ports</span>
-  <span class='ivar'>@visit_ports</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="visit_schemes-instance_method">
-  
-    #<strong>visit_schemes</strong>  &#x21d2; <tt>Array&lt;String&gt;</tt>  <span class="extras">(readonly)</span>
-  
-
-  
-
   
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-<p>The schemes to visit.</p>
-
-
-  </div>
-</div>
-<div class="tags">
   
-<p class="tag_title">Returns:</p>
-<ul class="return">
   
-    <li>
-      
-      
-        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
-      
-      
-      
-    </li>
   
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
   
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
   
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-482
-483
-484</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 482</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_visit_schemes'>visit_schemes</span>
-  <span class='ivar'>@visit_schemes</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
-
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="agent_kwargs-instance_method">
-  
-    #<strong>agent_kwargs</strong>  &#x21d2; <tt>Hash{Symbol =&gt; Object}</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-<p>Builds keyword arguments for <code>Ronin::Web::Spider::Agent#initialize</code>.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The keyword arguments for <code>Ronin::Web::Spider::Agent#initialize</code>.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-701
-702
-703
-704
-705
-706
-707
-708
-709
-710
-711
-712
-713
-714
-715
-716
-717
-718
-719
-720
-721
-722
-723
-724
-725
-726
-727
-728
-729
-730
-731
-732
-733
-734
-735
-736
-737
-738
-739
-740
-741
-742
-743
-744
-745
-746</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 701</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_agent_kwargs'>agent_kwargs</span>
-  <span class='id identifier rubyid_kwargs'>kwargs</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:proxy</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:proxy</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:proxy</span><span class='rbracket'>]</span>
-
-  <span class='kw'>unless</span> <span class='ivar'>@default_headers</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-    <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:default_headers</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@default_headers</span>
-  <span class='kw'>end</span>
-
-  <span class='kw'>unless</span> <span class='ivar'>@host_headers</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-    <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:host_headers</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@host_headers</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:user_agent</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@user_agent</span>       <span class='kw'>if</span> <span class='ivar'>@user_agent</span>
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:referer</span><span class='rbracket'>]</span>    <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:referer</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:referer</span><span class='rbracket'>]</span>
-
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:delay</span><span class='rbracket'>]</span>     <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:delay</span><span class='rbracket'>]</span>     <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:delay</span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:limit</span><span class='rbracket'>]</span>     <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:limit</span><span class='rbracket'>]</span>     <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:limit</span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:max_depth</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:max_depth</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:max_depth</span><span class='rbracket'>]</span>
-
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:queue</span><span class='rbracket'>]</span>   <span class='op'>=</span> <span class='ivar'>@queue</span>   <span class='kw'>unless</span> <span class='ivar'>@queue</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:history</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@history</span> <span class='kw'>unless</span> <span class='ivar'>@history</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-
-  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:strip_fragments</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:strip_fragments</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:strip_fragments</span><span class='rbracket'>]</span>
-  <span class='kw'>end</span>
-
-  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:strip_query</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:strip_query</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:strip_query</span><span class='rbracket'>]</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:schemes</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@visit_schemes</span> <span class='kw'>unless</span> <span class='ivar'>@visit_schemes</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:hosts</span><span class='rbracket'>]</span>   <span class='op'>=</span> <span class='ivar'>@visit_hosts</span>   <span class='kw'>unless</span> <span class='ivar'>@visit_hosts</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:ports</span><span class='rbracket'>]</span>   <span class='op'>=</span> <span class='ivar'>@visit_ports</span>   <span class='kw'>unless</span> <span class='ivar'>@visit_ports</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:links</span><span class='rbracket'>]</span>   <span class='op'>=</span> <span class='ivar'>@visit_links</span>   <span class='kw'>unless</span> <span class='ivar'>@visit_links</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:exts</span><span class='rbracket'>]</span>    <span class='op'>=</span> <span class='ivar'>@visit_exts</span>    <span class='kw'>unless</span> <span class='ivar'>@visit_exts</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:ignore_hosts</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@ignore_hosts</span> <span class='kw'>unless</span> <span class='ivar'>@ignore_hosts</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:ignore_ports</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@ignore_ports</span> <span class='kw'>unless</span> <span class='ivar'>@ignore_ports</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:ignore_links</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@ignore_links</span> <span class='kw'>unless</span> <span class='ivar'>@ignore_links</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:ignore_exts</span><span class='rbracket'>]</span>  <span class='op'>=</span> <span class='ivar'>@ignore_exts</span>  <span class='kw'>unless</span> <span class='ivar'>@ignore_exts</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-
-  <span class='id identifier rubyid_kwargs'>kwargs</span><span class='lbracket'>[</span><span class='symbol'>:robots</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:robots</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='symbol'>:robots</span><span class='rparen'>)</span>
-
-  <span class='kw'>return</span> <span class='id identifier rubyid_kwargs'>kwargs</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="define_printing_callbacks-instance_method">
+  <h3 class="signature first" id="define_printing_callbacks-instance_method">
   
     #<strong>define_printing_callbacks</strong>(agent)  &#x21d2; <tt>Object</tt> 
   
@@ -2191,46 +540,70 @@ ronin-web spider --site https://scanme.nmap.org/
       <pre class="lines">
 
 
-630
-631
-632
-633
-634
-635
-636
-637
-638
-639
-640
-641
-642
-643
-644
-645
-646
-647
-648
-649
-650
-651
-652
-653
-654
-655
-656
-657
-658
-659
-660
-661
-662
-663
-664
-665
-666</pre>
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 630</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 280</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_define_printing_callbacks'>define_printing_callbacks</span><span class='lparen'>(</span><span class='id identifier rubyid_agent'>agent</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_hosts</span><span class='rbracket'>]</span>
@@ -2251,6 +624,30 @@ ronin-web spider --site https://scanme.nmap.org/
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_js_url_strings</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_js_url_string'>every_js_url_string</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_url'>url</span><span class='op'>|</span>
+      <span class='id identifier rubyid_print_content'>print_content</span> <span class='id identifier rubyid_url'>url</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_js_path_strings</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_js_path_string'>every_js_path_string</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_path'>path</span><span class='op'>|</span>
+      <span class='id identifier rubyid_print_content'>print_content</span> <span class='id identifier rubyid_path'>path</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_js_absolute_path_strings</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_js_absolute_path_string'>every_js_absolute_path_string</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_path'>path</span><span class='op'>|</span>
+      <span class='id identifier rubyid_print_content'>print_content</span> <span class='id identifier rubyid_path'>path</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_js_relative_path_strings</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_js_relative_path_string'>every_js_relative_path_string</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_path'>path</span><span class='op'>|</span>
+      <span class='id identifier rubyid_print_content'>print_content</span> <span class='id identifier rubyid_path'>path</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
   <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_html_comments</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_html_comment'>every_html_comment</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_comment'>comment</span><span class='op'>|</span>
       <span class='id identifier rubyid_print_content'>print_content</span> <span class='id identifier rubyid_comment'>comment</span>
@@ -2267,138 +664,6 @@ ronin-web spider --site https://scanme.nmap.org/
     <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_every_comment'>every_comment</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_comment'>comment</span><span class='op'>|</span>
       <span class='id identifier rubyid_print_content'>print_content</span> <span class='id identifier rubyid_comment'>comment</span>
     <span class='kw'>end</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="new_agent-instance_method">
-  
-    #<strong>new_agent</strong> {|agent| ... } &#x21d2; <tt>Ronin::Web::Spider::Agent</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    <p class="note private">
-  <strong>This method is part of a private API.</strong>
-  You should avoid using this method if possible, as it may be removed or be changed in the future.
-</p>
-<p>Creates a new web spider agent.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Yields:</p>
-<ul class="yield">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>agent</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The given block will be given the newly created and configured
-web spider agent.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Yield Parameters:</p>
-<ul class="yieldparam">
-  
-    <li>
-      
-        <span class='name'>agent</span>
-      
-      
-        <span class='type'>(<tt>Ronin::Web::Spider::Agent</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The newly created web spider agent.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Ronin::Web::Spider::Agent</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>The newly created web spider agent, after the agent has completed
-it&#39;s spidering.</p>
-</div>
-      
-    </li>
-  
-</ul>
-<p class="tag_title">Since:</p>
-<ul class="since">
-  
-    <li>
-      
-      
-      
-      
-        
-        <div class='inline'><p>1.0.0</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-682
-683
-684
-685
-686
-687
-688
-689
-690
-691
-692
-693</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 682</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_new_agent'>new_agent</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:host</span><span class='rbracket'>]</span>
-    <span class='const'><span class='object_link'><a href="../../../Web.html" title="Ronin::Web (module)">Web</a></span></span><span class='op'>::</span><span class='const'>Spider</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:host</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_agent_kwargs'>agent_kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='kw'>elsif</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:domain</span><span class='rbracket'>]</span>
-    <span class='const'><span class='object_link'><a href="../../../Web.html" title="Ronin::Web (module)">Web</a></span></span><span class='op'>::</span><span class='const'>Spider</span><span class='period'>.</span><span class='id identifier rubyid_domain'>domain</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:domain</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_agent_kwargs'>agent_kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='kw'>elsif</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:site</span><span class='rbracket'>]</span>
-    <span class='const'><span class='object_link'><a href="../../../Web.html" title="Ronin::Web (module)">Web</a></span></span><span class='op'>::</span><span class='const'>Spider</span><span class='period'>.</span><span class='id identifier rubyid_site'>site</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:site</span><span class='rbracket'>]</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_agent_kwargs'>agent_kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_print_error'>print_error</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>must specify --host, --domain, or --site</span><span class='tstring_end'>&quot;</span></span>
-    <span class='id identifier rubyid_exit'>exit</span><span class='lparen'>(</span><span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -2469,14 +734,14 @@ it&#39;s spidering.</p>
       <pre class="lines">
 
 
-850
-851
-852
-853
-854</pre>
+444
+445
+446
+447
+448</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 850</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 444</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_print_content'>print_content</span><span class='lparen'>(</span><span class='id identifier rubyid_content'>content</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_content'>content</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_each_line'>each_line</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='op'>|</span>
@@ -2551,14 +816,14 @@ it&#39;s spidering.</p>
       <pre class="lines">
 
 
-811
-812
-813
-814
-815</pre>
+405
+406
+407
+408
+409</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 811</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 405</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_print_headers'>print_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_each_capitalized'>each_capitalized</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
@@ -2633,23 +898,23 @@ it&#39;s spidering.</p>
       <pre class="lines">
 
 
-790
-791
-792
-793
-794
-795
-796
-797
-798
-799
-800
-801
-802
-803</pre>
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 790</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 384</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_print_page'>print_page</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_print_status'>print_status</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:print_status</span><span class='rbracket'>]</span>
@@ -2733,18 +998,18 @@ it&#39;s spidering.</p>
       <pre class="lines">
 
 
-823
-824
-825
-826
-827
-828
-829
-830
-831</pre>
+417
+418
+419
+420
+421
+422
+423
+424
+425</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 823</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 417</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_print_query'>print_query</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_html?'>html?</span>
@@ -2823,20 +1088,20 @@ it&#39;s spidering.</p>
       <pre class="lines">
 
 
-754
-755
-756
-757
-758
-759
-760
-761
-762
-763
-764</pre>
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 754</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 348</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_print_status'>print_status</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span> <span class='op'>&lt;</span> <span class='int'>300</span>
@@ -2917,20 +1182,20 @@ it&#39;s spidering.</p>
       <pre class="lines">
 
 
-772
-773
-774
-775
-776
-777
-778
-779
-780
-781
-782</pre>
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 772</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 366</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_print_url'>print_url</span><span class='lparen'>(</span><span class='id identifier rubyid_page'>page</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span> <span class='op'>&lt;</span> <span class='int'>300</span>
@@ -3007,14 +1272,14 @@ it&#39;s spidering.</p>
       <pre class="lines">
 
 
-838
-839
-840
-841
-842</pre>
+432
+433
+434
+435
+436</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 838</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 432</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_print_verbose'>print_verbose</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_verbose?'>verbose?</span>
@@ -3070,78 +1335,78 @@ it&#39;s spidering.</p>
       <pre class="lines">
 
 
-554
-555
-556
-557
-558
-559
-560
-561
-562
-563
-564
-565
-566
-567
-568
-569
-570
-571
-572
-573
-574
-575
-576
-577
-578
-579
-580
-581
-582
-583
-584
-585
-586
-587
-588
-589
-590
-591
-592
-593
-594
-595
-596
-597
-598
-599
-600
-601
-602
-603
-604
-605
-606
-607
-608
-609
-610
-611
-612
-613
-614
-615
-616
-617
-618
-619
-620
-621
-622</pre>
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 554</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/cli/commands/spider.rb', line 204</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_run'>run</span>
   <span class='id identifier rubyid_archive'>archive</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:archive</span><span class='rbracket'>]</span>
@@ -3222,9 +1487,9 @@ it&#39;s spidering.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Jun 22 21:48:28 2023 by
+  Generated on Mon Jul 22 12:40:44 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.28 (ruby-3.1.4).
+  0.9.36 (ruby-3.3.4).
 </div>
 
     </div>
