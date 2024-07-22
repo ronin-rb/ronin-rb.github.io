@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Ronin::Recon::Worker
+  
+    &mdash; Ronin::Recon Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::Recon::Worker";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../_index.html">Index (W)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Recon.html" title="Ronin::Recon (module)">Recon</a></span></span>
+     &raquo; 
+    <span class="title">Worker</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Ronin::Recon::Worker
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Ronin::Recon::Worker</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd>Core::Metadata::Authors, Core::Metadata::Description, Core::Metadata::ID, Core::Metadata::References, Core::Metadata::Summary, Core::Params::Mixin, <span class='object_link'><a href="Values.html" title="Ronin::Recon::Values (module)">Values</a></span></dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/recon/worker.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Base class for all recon workers.</p>
+
+<h2 id="philosophy">Philosophy</h2>
+
+<p>Recon involves performing multiple strategies on input values
+(ex: a domain) in order to produce discovered output values
+(ex: sub-domains). These recon strategies can be defined as classes
+which have a <code>process</code> method that accepts certiain input <span class='object_link'><a href="Values.html" title="Ronin::Recon::Values (module)">value</a></span>
+types and yield zero or more output <span class='object_link'><a href="Values.html" title="Ronin::Recon::Values (module)">value types</a></span>.</p>
+
+<p>The <span class='object_link'><a href="" title="Ronin::Recon::Worker (class)">Worker</a></span> class defines three key parts:</p>
+
+<ol>
+<li>Metadata - defines information about the recon worker.</li>
+<li><a href="https://ronin-rb.dev/docs/ronin-core/Ronin/Core/Params/Mixin.html">Params</a> - optional user configurable parameters.</li>
+<li><span class='object_link'><a href="#process-instance_method" title="Ronin::Recon::Worker#process (method)">process</a></span> - method which receives a <span class='object_link'><a href="Values.html" title="Ronin::Recon::Values (module)">Value</a></span> class</li>
+</ol>
+
+<h2 id="example">Example</h2>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ronin/recon/worker</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='kw'>module</span> <span class='const'><span class='object_link'><a href="../../Ronin.html" title="Ronin (module)">Ronin</a></span></span>
+  <span class='kw'>module</span> <span class='const'><span class='object_link'><a href="../Recon.html" title="Ronin::Recon (module)">Recon</a></span></span>
+    <span class='kw'>module</span> <span class='const'><span class='object_link'><a href="DNS.html" title="Ronin::Recon::DNS (module)">DNS</a></span></span>
+      <span class='kw'>class</span> <span class='const'>FooBar</span>
+
+        <span class='id identifier rubyid_register'>register</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dns/foo_bar</span><span class='tstring_end'>&#39;</span></span>
+
+        <span class='id identifier rubyid_summary'>summary</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>My DNS recon technique</span><span class='tstring_end'>&#39;</span></span>
+        <span class='id identifier rubyid_description'>description</span> <span class='heredoc_beg'>&lt;&lt;~DESC</span>
+<span class='tstring_content'>          This recon worker uses the foo-bar technique.
+</span><span class='tstring_content'>          Bla bla bla bla.
+</span><span class='heredoc_end'>        DESC
+</span>        <span class='id identifier rubyid_author'>author</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>John Smith</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>email:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>...</span><span class='tstring_end'>&#39;</span></span>
+
+        <span class='id identifier rubyid_accepts'>accepts</span> <span class='const'><span class='object_link'><a href="Values/Domain.html" title="Ronin::Recon::Values::Domain (class)">Domain</a></span></span>
+        <span class='id identifier rubyid_outputs'>outputs</span> <span class='const'><span class='object_link'><a href="Values/Host.html" title="Ronin::Recon::Values::Host (class)">Host</a></span></span>
+        <span class='id identifier rubyid_intensity'>intensity</span> <span class='symbol'>:passive</span>
+
+        <span class='id identifier rubyid_param'>param</span> <span class='symbol'>:wordlist</span><span class='comma'>,</span> <span class='const'>String</span><span class='comma'>,</span> <span class='label'>desc:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Optional wordlist to use</span><span class='tstring_end'>&#39;</span></span>
+
+        <span class='kw'>def</span> <span class='id identifier rubyid_process'>process</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+          <span class='comment'># ...
+</span>          <span class='kw'>yield</span> <span class='const'><span class='object_link'><a href="Values/Host.html" title="Ronin::Recon::Values::Host (class)">Host</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Values/Host.html#initialize-instance_method" title="Ronin::Recon::Values::Host#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_discovered_host_name'>discovered_host_name</span><span class='rparen'>)</span>
+          <span class='comment'># ...
+</span>        <span class='kw'>end</span>
+
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h3 id="register">register</h3>
+
+<p>Registers the worker with <span class='object_link'><a href="../Recon.html" title="Ronin::Recon (module)">Ronin::Recon</a></span>.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_register'>register</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dns/foo_bar</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<h3 id="accepts">accepts</h3>
+
+<p>Defines which <span class='object_link'><a href="Values.html" title="Ronin::Recon::Values (module)">Value</a></span> types the worker accepts.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_accepts'>accepts</span> <span class='const'><span class='object_link'><a href="Values/Domain.html" title="Ronin::Recon::Values::Domain (class)">Domain</a></span></span>
+</code></pre>
+
+<p>Available <span class='object_link'><a href="Values.html" title="Ronin::Recon::Values (module)">Value</a></span> types are:</p>
+
+<ul>
+<li><span class='object_link'><a href="Values/Domain.html" title="Ronin::Recon::Values::Domain (class)">Domain</a></span> - a domain name (ex: <code>example.com</code>).</li>
+<li><span class='object_link'><a href="Values/Host.html" title="Ronin::Recon::Values::Host (class)">Host</a></span> - a host-name (ex: <code>www.example.com</code>).</li>
+<li><span class='object_link'><a href="Values/IP.html" title="Ronin::Recon::Values::IP (class)">Values::IP</a></span> - a single IP address (ex: `192.168.1.1&#39;).</li>
+<li><span class='object_link'><a href="Values/IPRange.html" title="Ronin::Recon::Values::IPRange (class)">Values::IPRange</a></span> - a CIDR IP range (ex: <code>192.168.1.1/24</code>).</li>
+<li><span class='object_link'><a href="Values/Mailserver.html" title="Ronin::Recon::Values::Mailserver (class)">Values::Mailserver</a></span> - represents a mailserver for a domain
+(ex: <code>smtp.google.com</code>).</li>
+<li><span class='object_link'><a href="Values/Nameserver.html" title="Ronin::Recon::Values::Nameserver (class)">Values::Nameserver</a></span> - represents a nameserver for a domain
+(ex: <code>ns1.google.com</code>).</li>
+<li><span class='object_link'><a href="Values/OpenPort.html" title="Ronin::Recon::Values::OpenPort (class)">Values::OpenPort</a></span> - represents a discovered open port on an IP address.</li>
+<li><span class='object_link'><a href="Values/URL.html" title="Ronin::Recon::Values::URL (class)">Values::URL</a></span> - represents a discovered URL
+(ex: <code>https://example.com/index.html</code>).</li>
+<li><span class='object_link'><a href="Values/Website.html" title="Ronin::Recon::Values::Website (class)">Values::Website</a></span> - represents a discovered website
+(ex: <code>https://example.com/</code>).</li>
+<li><span class='object_link'><a href="Values/Wildcard.html" title="Ronin::Recon::Values::Wildcard (class)">Values::Wildcard</a></span> - represent a wildcard host name
+(ex: <code>*.example.com</code>).</li>
+</ul>
+
+<p><strong>Note:</strong> the recon worker may specify that it accepts multiple value
+types:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_accepts'>accepts</span> <span class='const'><span class='object_link'><a href="Values/Domain.html" title="Ronin::Recon::Values::Domain (class)">Domain</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Values/Host.html" title="Ronin::Recon::Values::Host (class)">Host</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Values/IP.html" title="Ronin::Recon::Values::IP (class)">IP</a></span></span>
+</code></pre>
+
+<h3 id="outputs">outputs</h3>
+
+<p>Similar to <code>accepts</code>, but defines the possible output value types of the
+worker.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_outputs'>outputs</span> <span class='const'><span class='object_link'><a href="Values/Host.html" title="Ronin::Recon::Values::Host (class)">Host</a></span></span>
+</code></pre>
+
+<p><strong>Note:</strong> the recon worker may specify that it can output multiple
+different value types:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_outputs'>outputs</span> <span class='const'><span class='object_link'><a href="Values/Host.html" title="Ronin::Recon::Values::Host (class)">Host</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Values/IP.html" title="Ronin::Recon::Values::IP (class)">IP</a></span></span>
+</code></pre>
+
+<h3 id="intensity">intensity</h3>
+
+<p>Indicates the intensity level of the worker class.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_intensity'>intensity</span> <span class='symbol'>:passive</span>
+</code></pre>
+
+<p>The possible intensity levels are:</p>
+
+<ul>
+<li><code>:passive</code> - does not send any network traffic to the target system.</li>
+<li><code>:active</code> - sends a moderate amount of network traffic to the target
+system.</li>
+<li><code>:aggressive</code> - sends an excessive amount of network traffic to the
+target system and may trigger alerts.</li>
+</ul>
+
+<p><strong>Note:</strong> if the intensity level of the worker class is not defined,
+it will default to <code>:active</code>.</p>
+
+<h3 id="summary">summary</h3>
+
+<p>Defines a short one-sentence description of the recon worker.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_summary'>summary</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>My DNS recon technique</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<h3 id="description">description</h3>
+
+<p>Defines a longer multi-paragraph description of the recon worker.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_description'>description</span> <span class='heredoc_beg'>&lt;&lt;~DESC</span>
+<span class='tstring_content'>  This recon worker uses the foo-bar technique.
+</span><span class='tstring_content'>  Bla bla bla bla.
+</span><span class='heredoc_end'>DESC
+</span></code></pre>
+
+<p><strong>Note:</strong> that <code>&lt;&lt;~</code> heredoc, unlike the regular <code>&lt;&lt;</code> heredoc, removes
+leading whitespace.</p>
+
+<h3 id="author">author</h3>
+
+<p>Add an author&#39;s name and additional information to the recon worker.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_author'>author</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>John Smith</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_author'>author</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>doctor_doom</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>email:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>...</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>twitter:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>...</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<h3 id="param">param</h3>
+
+<p>Defines a user configurable param. Params may have a type class, but
+default to <code>String</code>. Params must have a one-line description.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_param'>param</span> <span class='symbol'>:str</span><span class='comma'>,</span> <span class='label'>desc:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A basic string param</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_param'>param</span> <span class='symbol'>:feature_flag</span><span class='comma'>,</span> <span class='const'>Boolean</span><span class='comma'>,</span> <span class='label'>desc:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A boolean param</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_param'>param</span> <span class='symbol'>:enum</span><span class='comma'>,</span> <span class='const'>Enum</span><span class='lbracket'>[</span><span class='symbol'>:one</span><span class='comma'>,</span> <span class='symbol'>:two</span><span class='comma'>,</span> <span class='symbol'>:three</span><span class='rbracket'>]</span><span class='comma'>,</span>
+             <span class='label'>desc:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>An enum param</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_param'>param</span> <span class='symbol'>:num1</span><span class='comma'>,</span> <span class='const'>Integer</span><span class='comma'>,</span> <span class='label'>desc:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>An integer param</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_param'>param</span> <span class='symbol'>:num2</span><span class='comma'>,</span> <span class='const'>Integer</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='int'>42</span><span class='comma'>,</span>
+                     <span class='label'>desc:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A param with a default value</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_param'>param</span> <span class='symbol'>:num3</span><span class='comma'>,</span> <span class='const'>Integer</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='tlambda'>-&gt;</span><span class='tlambeg'>{</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>42</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='comma'>,</span>
+                      <span class='label'>desc:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>A param with a dynamic default value</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_param'>param</span> <span class='symbol'>:float</span><span class='comma'>,</span> <span class='const'>Float</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Floating point param</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_param'>param</span> <span class='symbol'>:url</span><span class='comma'>,</span> <span class='const'>URI</span><span class='comma'>,</span> <span class='label'>desc:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>URL param</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='id identifier rubyid_param'>param</span> <span class='symbol'>:pattern</span><span class='comma'>,</span> <span class='const'>Regexp</span><span class='comma'>,</span> <span class='label'>desc:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Regular Expression param</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<p>Params may then be accessed in instance methods using <code>params</code> Hash.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_param'>param</span> <span class='symbol'>:retries</span><span class='comma'>,</span> <span class='const'>Integer</span><span class='comma'>,</span> <span class='label'>default:</span> <span class='int'>4</span><span class='comma'>,</span>
+                         <span class='label'>desc:</span>    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Number of retries</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_process'>process</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_retry_count'>retry_count</span> <span class='op'>=</span> <span class='int'>0</span>
+
+  <span class='kw'>begin</span>
+    <span class='comment'># ...
+</span>  <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_error'>error</span>
+    <span class='id identifier rubyid_retry_count'>retry_count</span> <span class='op'>+=</span> <span class='int'>1</span>
+
+    <span class='kw'>if</span> <span class='id identifier rubyid_retry_count'>retry_count</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:retries</span><span class='rbracket'>]</span>
+      <span class='kw'>retry</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='id identifier rubyid_error'>error</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><div id="subclasses">
+  <h2>Direct Known Subclasses</h2>
+  <p class="children"><span class='object_link'><a href="API/CrtSh.html" title="Ronin::Recon::API::CrtSh (class)">API::CrtSh</a></span>, <span class='object_link'><a href="DNSWorker.html" title="Ronin::Recon::DNSWorker (class)">DNSWorker</a></span>, <span class='object_link'><a href="Net/IPRangeEnum.html" title="Ronin::Recon::Net::IPRangeEnum (class)">Net::IPRangeEnum</a></span>, <span class='object_link'><a href="Net/PortScan.html" title="Ronin::Recon::Net::PortScan (class)">Net::PortScan</a></span>, <span class='object_link'><a href="Net/ServiceID.html" title="Ronin::Recon::Net::ServiceID (class)">Net::ServiceID</a></span>, <span class='object_link'><a href="SSL/CertEnum.html" title="Ronin::Recon::SSL::CertEnum (class)">SSL::CertEnum</a></span>, <span class='object_link'><a href="SSL/CertGrab.html" title="Ronin::Recon::SSL::CertGrab (class)">SSL::CertGrab</a></span>, <span class='object_link'><a href="WebWorker.html" title="Ronin::Recon::WebWorker (class)">WebWorker</a></span></p>
+</div>
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#accepts-class_method" title="accepts (class method)">.<strong>accepts</strong>(*value_classes)  &#x21d2; Array&lt;Class&lt;Value&gt;&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets or sets the value class which the recon worker accepts.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#concurrency-class_method" title="concurrency (class method)">.<strong>concurrency</strong>(new_concurrency = nil)  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets or sets the worker&#39;s default concurrency.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#intensity-class_method" title="intensity (class method)">.<strong>intensity</strong>(new_intensity = nil)  &#x21d2; :passive, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets or sets the worker&#39;s intensity level.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#outputs-class_method" title="outputs (class method)">.<strong>outputs</strong>(*value_classes)  &#x21d2; Array&lt;Class&lt;Value&gt;&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Gets or sets the value class which the recon worker outputs.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#register-class_method" title="register (class method)">.<strong>register</strong>(worker_id)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Registers the recon worker with the given name.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#run-class_method" title="run (class method)">.<strong>run</strong>(value, **kwargs, &amp;block)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Initializes the worker and runs it with the single value.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(**kwargs)  &#x21d2; Worker </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Initializes the worker.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#process-instance_method" title="#process (instance method)">#<strong>process</strong>(value) {|new_value| ... } &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  <span class="abstract note title">abstract</span>
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calls the recon worker with the given input value.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(**kwargs)  &#x21d2; <tt><span class='object_link'><a href="" title="Ronin::Recon::Worker (class)">Worker</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Initializes the worker.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+271
+272
+273</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/recon/worker.rb', line 271</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="accepts-class_method">
+  
+    .<strong>accepts</strong>(*value_classes)  &#x21d2; <tt>Array&lt;Class&lt;<span class='object_link'><a href="Value.html" title="Ronin::Recon::Value (class)">Value</a></span>&gt;&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Gets or sets the value class which the recon worker accepts.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>define that the recon worker accepts IP addresses:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_accepts'>accepts</span> <span class='const'><span class='object_link'><a href="Values/IP.html" title="Ronin::Recon::Values::IP (class)">IP</a></span></span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value_classes</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Class&lt;<span class='object_link'><a href="Value.html" title="Ronin::Recon::Value (class)">Value</a></span>&gt;&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The optional new value class(es) to accept.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Class&lt;<span class='object_link'><a href="Value.html" title="Ronin::Recon::Value (class)">Value</a></span>&gt;&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the value class which the recon worker accepts.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>NotImplementedError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>No value class was defined for the recon worker.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/recon/worker.rb', line 290</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_accepts'>accepts</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_value_classes'>value_classes</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_value_classes'>value_classes</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='ivar'>@accepts</span> <span class='op'>=</span> <span class='id identifier rubyid_value_classes'>value_classes</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@accepts</span> <span class='op'>||</span> <span class='kw'>if</span> <span class='id identifier rubyid_superclass'>superclass</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="" title="Ronin::Recon::Worker (class)">Worker</a></span></span>
+                  <span class='id identifier rubyid_superclass'>superclass</span><span class='period'>.</span><span class='id identifier rubyid_accepts'>accepts</span>
+                <span class='kw'>else</span>
+                  <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>NotImplementedError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='embexpr_end'>}</span><span class='tstring_content'> did not set accepts</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+                <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="concurrency-class_method">
+  
+    .<strong>concurrency</strong>(new_concurrency = nil)  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Gets or sets the worker&#39;s default concurrency.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>sets the recon worker&#39;s default concurrency:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_concurrency'>concurrency</span> <span class='int'>3</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>new_concurrency</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The optional new concurrency to set.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The worker&#39;s concurrency. Defaults to <code>1</code> if not set.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/recon/worker.rb', line 341</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_concurrency'>concurrency</span><span class='lparen'>(</span><span class='id identifier rubyid_new_concurrency'>new_concurrency</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_new_concurrency'>new_concurrency</span>
+    <span class='ivar'>@concurrency</span> <span class='op'>=</span> <span class='id identifier rubyid_new_concurrency'>new_concurrency</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@concurrency</span> <span class='op'>||</span> <span class='kw'>if</span> <span class='id identifier rubyid_superclass'>superclass</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="" title="Ronin::Recon::Worker (class)">Worker</a></span></span>
+                      <span class='id identifier rubyid_superclass'>superclass</span><span class='period'>.</span><span class='id identifier rubyid_concurrency'>concurrency</span>
+                    <span class='kw'>else</span>
+                      <span class='int'>1</span>
+                    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="intensity-class_method">
+  
+    .<strong>intensity</strong>(new_intensity = nil)  &#x21d2; <tt>:passive</tt>, ... 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Gets or sets the worker&#39;s intensity level.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>sets the recon worker&#39;s intensity level:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_intensity'>intensity</span> <span class='symbol'>:passive</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>new_intensity</span>
+      
+      
+        <span class='type'>(<tt>:passive</tt>, <tt>:active</tt>, <tt>:aggressive</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The optional new intensity level to set.</p>
+
+<ul>
+<li><code>:passive</code> - does not send any network traffic to the target system.</li>
+<li><code>:active</code> - sends a moderate amount of network traffic to the target
+system.</li>
+<li><code>:aggressive</code> - sends an excessive amount of network traffic to the
+target system and may trigger alerts.</li>
+</ul>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>:passive</tt>, <tt>:active</tt>, <tt>:aggressive</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The worker&#39;s intensity level. Defaults to <code>:active</code> if not set.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The new intensity level was not <code>:passive</code>, <code>:active</code>, or
+<code>:aggressive</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/recon/worker.rb', line 375</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_intensity'>intensity</span><span class='lparen'>(</span><span class='id identifier rubyid_new_intensity'>new_intensity</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_new_intensity'>new_intensity</span>
+    <span class='kw'>case</span> <span class='id identifier rubyid_new_intensity'>new_intensity</span>
+    <span class='kw'>when</span> <span class='symbol'>:passive</span><span class='comma'>,</span> <span class='symbol'>:active</span><span class='comma'>,</span> <span class='symbol'>:aggressive</span>
+      <span class='ivar'>@intensity</span> <span class='op'>=</span> <span class='id identifier rubyid_new_intensity'>new_intensity</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>intensity must be :passive, :active, or :aggressive: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_new_intensity'>new_intensity</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@intensity</span> <span class='op'>||</span> <span class='kw'>if</span> <span class='id identifier rubyid_superclass'>superclass</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="" title="Ronin::Recon::Worker (class)">Worker</a></span></span>
+                    <span class='id identifier rubyid_superclass'>superclass</span><span class='period'>.</span><span class='id identifier rubyid_intensity'>intensity</span>
+                  <span class='kw'>else</span>
+                    <span class='symbol'>:active</span>
+                  <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="outputs-class_method">
+  
+    .<strong>outputs</strong>(*value_classes)  &#x21d2; <tt>Array&lt;Class&lt;<span class='object_link'><a href="Value.html" title="Ronin::Recon::Value (class)">Value</a></span>&gt;&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Gets or sets the value class which the recon worker outputs.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'><p>define that the recon worker outputs Host values:</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_outputs'>outputs</span> <span class='const'><span class='object_link'><a href="Values/Host.html" title="Ronin::Recon::Values::Host (class)">Host</a></span></span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value_classes</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Class&lt;<span class='object_link'><a href="Value.html" title="Ronin::Recon::Value (class)">Value</a></span>&gt;&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The optional new value class(es) to outputs.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Class&lt;<span class='object_link'><a href="Value.html" title="Ronin::Recon::Value (class)">Value</a></span>&gt;&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the value class which the recon worker outputs.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>NotImplementedError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>No value class was defined for the recon worker.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/recon/worker.rb', line 317</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_outputs'>outputs</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_value_classes'>value_classes</span><span class='rparen'>)</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_value_classes'>value_classes</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+    <span class='ivar'>@outputs</span> <span class='op'>=</span> <span class='id identifier rubyid_value_classes'>value_classes</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@outputs</span> <span class='op'>||</span> <span class='kw'>if</span> <span class='id identifier rubyid_superclass'>superclass</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="" title="Ronin::Recon::Worker (class)">Worker</a></span></span>
+                  <span class='id identifier rubyid_superclass'>superclass</span><span class='period'>.</span><span class='id identifier rubyid_outputs'>outputs</span>
+                <span class='kw'>else</span>
+                  <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>NotImplementedError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='embexpr_end'>}</span><span class='tstring_content'> did not set outputs</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+                <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="register-class_method">
+  
+    .<strong>register</strong>(worker_id)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Registers the recon worker with the given name.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ronin/recon/worker</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='kw'>module</span> <span class='const'><span class='object_link'><a href="../../Ronin.html" title="Ronin (module)">Ronin</a></span></span>
+  <span class='kw'>module</span> <span class='const'><span class='object_link'><a href="../Recon.html" title="Ronin::Recon (module)">Recon</a></span></span>
+    <span class='kw'>module</span> <span class='const'><span class='object_link'><a href="DNS.html" title="Ronin::Recon::DNS (module)">DNS</a></span></span>
+      <span class='kw'>class</span> <span class='const'>SubdomainBruteforcer</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="" title="Ronin::Recon::Worker (class)">Worker</a></span></span>
+
+        <span class='id identifier rubyid_register'>register</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dns/subdomain_bruteforcer</span><span class='tstring_end'>&#39;</span></span>
+
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>worker_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The recon worker&#39;s <code>id</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+260
+261
+262
+263</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/recon/worker.rb', line 260</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_register'>register</span><span class='lparen'>(</span><span class='id identifier rubyid_worker_id'>worker_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_id'>id</span><span class='lparen'>(</span><span class='id identifier rubyid_worker_id'>worker_id</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="../Recon.html" title="Ronin::Recon (module)">Recon</a></span></span><span class='period'>.</span><span class='id identifier rubyid_register'>register</span><span class='lparen'>(</span><span class='id identifier rubyid_worker_id'>worker_id</span><span class='comma'>,</span><span class='kw'>self</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="run-class_method">
+  
+    .<strong>run</strong>(value, **kwargs, &amp;block)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'><p>This method is mainly for testing workers and running them
+individually.</p>
+</div>
+  </div>
+
+<p>Initializes the worker and runs it with the single value.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Value.html" title="Ronin::Recon::Value (class)">Value</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The input value to process.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>kwargs</span>
+      
+      
+        <span class='type'>(<tt>Hash{Symbol =&gt; Object}</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Additional keyword arguments to initialize the worker with.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+405
+406
+407
+408
+409
+410
+411</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/recon/worker.rb', line 405</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_worker'>worker</span> <span class='op'>=</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
+
+  <span class='const'>Async</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_worker'>worker</span><span class='period'>.</span><span class='id identifier rubyid_process'>process</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="process-instance_method">
+  
+    #<strong>process</strong>(value) {|new_value| ... } &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note abstract">
+  <strong>This method is abstract.</strong>
+  <div class='inline'></div>
+</div>
+<p>Calls the recon worker with the given input value.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Value.html" title="Ronin::Recon::Value (class)">Value</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The input value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>new_value</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The <code>call</code> method can then <code>yield</code> one or more newly discovered values</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>new_value</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Value.html" title="Ronin::Recon::Value (class)">Value</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>An newly discovered output value from the input value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>NotImplementedError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+427
+428
+429</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/recon/worker.rb', line 427</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_process'>process</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>NotImplementedError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='embexpr_end'>}</span><span class='tstring_content'> did not define a #process method</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Mon Jul 22 13:56:16 2024 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.36 (ruby-3.3.4).
+</div>
+
+    </div>
+  </body>
+</html>

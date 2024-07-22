@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: Ronin::Recon::Importer
+  
+    &mdash; Ronin::Recon Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Ronin::Recon::Importer";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../_index.html">Index (I)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Ronin.html" title="Ronin (module)">Ronin</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Recon.html" title="Ronin::Recon (module)">Recon</a></span></span>
+     &raquo; 
+    <span class="title">Importer</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: Ronin::Recon::Importer
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ronin/recon/importer.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Handles importing recon values into <a href="https://github.com/ronin-rb/ronin-db#readme">ronin-db</a>.</p>
+
+<h2 id="examples">Examples</h2>
+
+<pre class="code ruby"><code class="ruby">require &#39;ronin/db&#39;
+require &#39;ronin/recon/importer&#39;
+
+Ronin::DB.connect
+
+values = [Ronin::Recon::Values::Domain.new(&#39;...&#39;), ...]
+
+Ronin::Recon::Engine.run(values) do |engine|
+  engine.on(:value) do |value|
+    puts &quot;Fond new value #{value}&quot;
+    Ronin::Recon::Importer.import_value(value)
+  end
+end
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#import_cert-class_method" title="import_cert (class method)">.<strong>import_cert</strong>(cert)  &#x21d2; Ronin::DB::Cert </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Imports a SSL/TLS certificate.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#import_connection-class_method" title="import_connection (class method)">.<strong>import_connection</strong>(value, parent)  &#x21d2; (Ronin::DB::Model, Ronin::DB::Model) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Imports the connection between two values.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#import_host_name-class_method" title="import_host_name (class method)">.<strong>import_host_name</strong>(host_name)  &#x21d2; Ronin::DB::HostName </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Imports a host value.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#import_ip_address-class_method" title="import_ip_address (class method)">.<strong>import_ip_address</strong>(address)  &#x21d2; Ronin::DB::IPAddress </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Imports a IP address.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#import_open_port-class_method" title="import_open_port (class method)">.<strong>import_open_port</strong>(open_port)  &#x21d2; Ronin::DB::Open_port </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Imports an open port value.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#import_port-class_method" title="import_port (class method)">.<strong>import_port</strong>(protocol, number)  &#x21d2; Ronin::DB::Port </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Imports a port number.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#import_service-class_method" title="import_service (class method)">.<strong>import_service</strong>(service)  &#x21d2; Ronin::DB::Service </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Imports a service name.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#import_url-class_method" title="import_url (class method)">.<strong>import_url</strong>(url)  &#x21d2; Ronin::DB::URL </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Imports a URL.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#import_value-class_method" title="import_value (class method)">.<strong>import_value</strong>(value)  &#x21d2; Ronin::DB::HostName, ... </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Imports a value into the database.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="import_cert-class_method">
+  
+    .<strong>import_cert</strong>(cert)  &#x21d2; <tt>Ronin::DB::Cert</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Imports a SSL/TLS certificate.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>cert</span>
+      
+      
+        <span class='type'>(<tt>Ronin::Support::Crypto::Cert</tt>, <tt>OpenSSL::X509::Certificate</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The SSL/TLS certificate to import.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Ronin::DB::Cert</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The imported certificate.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+217
+218
+219
+220
+221</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/recon/importer.rb', line 217</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_import_cert'>import_cert</span><span class='lparen'>(</span><span class='id identifier rubyid_cert'>cert</span><span class='rparen'>)</span>
+  <span class='const'>DB</span><span class='op'>::</span><span class='const'>Cert</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span> <span class='kw'>do</span>
+    <span class='const'>DB</span><span class='op'>::</span><span class='const'>Cert</span><span class='period'>.</span><span class='id identifier rubyid_find_or_import'>find_or_import</span><span class='lparen'>(</span><span class='id identifier rubyid_cert'>cert</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="import_connection-class_method">
+  
+    .<strong>import_connection</strong>(value, parent)  &#x21d2; <tt>(Ronin::DB::Model, Ronin::DB::Model)</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Imports the connection between two values.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Value.html" title="Ronin::Recon::Value (class)">Value</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A discovered recon value to import.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>parent</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Value.html" title="Ronin::Recon::Value (class)">Value</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The parent value of the discovered recon value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>(Ronin::DB::Model, Ronin::DB::Model)</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The imported value and the imported parent value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/recon/importer.rb', line 61</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_import_connection'>import_connection</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span><span class='id identifier rubyid_parent'>parent</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_imported_value'>imported_value</span>  <span class='op'>=</span> <span class='id identifier rubyid_import_value'>import_value</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_imported_parent'>imported_parent</span> <span class='op'>=</span> <span class='id identifier rubyid_import_value'>import_value</span><span class='lparen'>(</span><span class='id identifier rubyid_parent'>parent</span><span class='rparen'>)</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_imported_value'>imported_value</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>DB</span><span class='op'>::</span><span class='const'>IPAddress</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+     <span class='id identifier rubyid_imported_parent'>imported_parent</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>DB</span><span class='op'>::</span><span class='const'>HostName</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_imported_value'>imported_value</span><span class='period'>.</span><span class='id identifier rubyid_host_name_ip_addresses'>host_name_ip_addresses</span><span class='period'>.</span><span class='id identifier rubyid_find_or_create_by'>find_or_create_by</span><span class='lparen'>(</span>
+      <span class='label'>host_name:</span> <span class='id identifier rubyid_imported_parent'>imported_parent</span>
+    <span class='rparen'>)</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_imported_value'>imported_value</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>DB</span><span class='op'>::</span><span class='const'>Cert</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span>
+        <span class='id identifier rubyid_imported_parent'>imported_parent</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'>DB</span><span class='op'>::</span><span class='const'>OpenPort</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_imported_parent'>imported_parent</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='label'>cert:</span> <span class='id identifier rubyid_imported_value'>imported_value</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_imported_value'>imported_value</span><span class='comma'>,</span> <span class='id identifier rubyid_imported_parent'>imported_parent</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="import_host_name-class_method">
+  
+    .<strong>import_host_name</strong>(host_name)  &#x21d2; <tt>Ronin::DB::HostName</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Imports a host value.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>host_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The host name to import.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Ronin::DB::HostName</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The imported host name record.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+110
+111
+112
+113
+114</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/recon/importer.rb', line 110</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_import_host_name'>import_host_name</span><span class='lparen'>(</span><span class='id identifier rubyid_host_name'>host_name</span><span class='rparen'>)</span>
+  <span class='const'>DB</span><span class='op'>::</span><span class='const'>HostName</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span> <span class='kw'>do</span>
+    <span class='const'>DB</span><span class='op'>::</span><span class='const'>HostName</span><span class='period'>.</span><span class='id identifier rubyid_find_or_import'>find_or_import</span><span class='lparen'>(</span><span class='id identifier rubyid_host_name'>host_name</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="import_ip_address-class_method">
+  
+    .<strong>import_ip_address</strong>(address)  &#x21d2; <tt>Ronin::DB::IPAddress</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Imports a IP address.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>address</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The IP address to import.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Ronin::DB::IPAddress</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The imported IP address record.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+125
+126
+127
+128
+129</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/recon/importer.rb', line 125</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_import_ip_address'>import_ip_address</span><span class='lparen'>(</span><span class='id identifier rubyid_address'>address</span><span class='rparen'>)</span>
+  <span class='const'>DB</span><span class='op'>::</span><span class='const'>IPAddress</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span> <span class='kw'>do</span>
+    <span class='const'>DB</span><span class='op'>::</span><span class='const'>IPAddress</span><span class='period'>.</span><span class='id identifier rubyid_find_or_import'>find_or_import</span><span class='lparen'>(</span><span class='id identifier rubyid_address'>address</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="import_open_port-class_method">
+  
+    .<strong>import_open_port</strong>(open_port)  &#x21d2; <tt>Ronin::DB::Open_port</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Imports an open port value.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>open_port</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Values/OpenPort.html" title="Ronin::Recon::Values::OpenPort (class)">Values::OpenPort</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The open port value to import.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Ronin::DB::Open_port</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The imported open port record.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/recon/importer.rb', line 191</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_import_open_port'>import_open_port</span><span class='lparen'>(</span><span class='id identifier rubyid_open_port'>open_port</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_imported_ip_address'>imported_ip_address</span> <span class='op'>=</span> <span class='id identifier rubyid_import_ip_address'>import_ip_address</span><span class='lparen'>(</span><span class='id identifier rubyid_open_port'>open_port</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_imported_port'>imported_port</span>       <span class='op'>=</span> <span class='id identifier rubyid_import_port'>import_port</span><span class='lparen'>(</span><span class='id identifier rubyid_open_port'>open_port</span><span class='period'>.</span><span class='id identifier rubyid_protocol'>protocol</span><span class='comma'>,</span><span class='id identifier rubyid_open_port'>open_port</span><span class='period'>.</span><span class='id identifier rubyid_number'>number</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_imported_service'>imported_service</span>    <span class='op'>=</span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_service'>service</span> <span class='op'>=</span> <span class='id identifier rubyid_open_port'>open_port</span><span class='period'>.</span><span class='id identifier rubyid_service'>service</span><span class='rparen'>)</span>
+                          <span class='id identifier rubyid_import_service'>import_service</span><span class='lparen'>(</span><span class='id identifier rubyid_service'>service</span><span class='rparen'>)</span>
+                        <span class='kw'>end</span>
+  <span class='id identifier rubyid_imported_open_port'>imported_open_port</span>  <span class='op'>=</span> <span class='const'>DB</span><span class='op'>::</span><span class='const'>OpenPort</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span> <span class='kw'>do</span>
+                          <span class='const'>DB</span><span class='op'>::</span><span class='const'>OpenPort</span><span class='period'>.</span><span class='id identifier rubyid_find_or_create_by'>find_or_create_by</span><span class='lparen'>(</span>
+                            <span class='label'>ip_address:</span> <span class='id identifier rubyid_imported_ip_address'>imported_ip_address</span><span class='comma'>,</span>
+                            <span class='label'>port:</span>       <span class='id identifier rubyid_imported_port'>imported_port</span><span class='comma'>,</span>
+                            <span class='label'>service:</span>    <span class='id identifier rubyid_imported_service'>imported_service</span>
+                          <span class='rparen'>)</span>
+                        <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='id identifier rubyid_imported_open_port'>imported_open_port</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="import_port-class_method">
+  
+    .<strong>import_port</strong>(protocol, number)  &#x21d2; <tt>Ronin::DB::Port</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Imports a port number.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>protocol</span>
+      
+      
+        <span class='type'>(<tt>:tcp</tt>, <tt>:udp</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The protocol that the port uses.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>number</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The port number to import.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Ronin::DB::Port</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The imported port record.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+158
+159
+160
+161
+162
+163
+164
+165</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/recon/importer.rb', line 158</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_import_port'>import_port</span><span class='lparen'>(</span><span class='id identifier rubyid_protocol'>protocol</span><span class='comma'>,</span><span class='id identifier rubyid_number'>number</span><span class='rparen'>)</span>
+  <span class='const'>DB</span><span class='op'>::</span><span class='const'>Port</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span> <span class='kw'>do</span>
+    <span class='const'>DB</span><span class='op'>::</span><span class='const'>Port</span><span class='period'>.</span><span class='id identifier rubyid_find_or_create_by'>find_or_create_by</span><span class='lparen'>(</span>
+      <span class='label'>protocol:</span> <span class='id identifier rubyid_protocol'>protocol</span><span class='comma'>,</span>
+      <span class='label'>number:</span>   <span class='id identifier rubyid_number'>number</span>
+    <span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="import_service-class_method">
+  
+    .<strong>import_service</strong>(service)  &#x21d2; <tt>Ronin::DB::Service</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Imports a service name.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>service</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The service name to import.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Ronin::DB::Service</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The imported service record.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+176
+177
+178
+179
+180</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/recon/importer.rb', line 176</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_import_service'>import_service</span><span class='lparen'>(</span><span class='id identifier rubyid_service'>service</span><span class='rparen'>)</span>
+  <span class='const'>DB</span><span class='op'>::</span><span class='const'>Service</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span> <span class='kw'>do</span>
+    <span class='const'>DB</span><span class='op'>::</span><span class='const'>Service</span><span class='period'>.</span><span class='id identifier rubyid_find_or_import'>find_or_import</span><span class='lparen'>(</span><span class='id identifier rubyid_service'>service</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="import_url-class_method">
+  
+    .<strong>import_url</strong>(url)  &#x21d2; <tt>Ronin::DB::URL</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Imports a URL.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>url</span>
+      
+      
+        <span class='type'>(<tt>URI::HTTP</tt>, <tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The URL string to import.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Ronin::DB::URL</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The imported URL record.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+140
+141
+142
+143
+144</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/recon/importer.rb', line 140</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_import_url'>import_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+  <span class='const'>DB</span><span class='op'>::</span><span class='const'>URL</span><span class='period'>.</span><span class='id identifier rubyid_transaction'>transaction</span> <span class='kw'>do</span>
+    <span class='const'>DB</span><span class='op'>::</span><span class='const'>URL</span><span class='period'>.</span><span class='id identifier rubyid_find_or_import'>find_or_import</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="import_value-class_method">
+  
+    .<strong>import_value</strong>(value)  &#x21d2; <tt>Ronin::DB::HostName</tt>, ... 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Imports a value into the database.</p>
+
+<p>The imported record.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Value.html" title="Ronin::Recon::Value (class)">Value</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>A discovered recon value to import.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Ronin::DB::HostName</tt>, <tt>Ronin::DB::IPAddress</tt>, <tt>Ronin::DB::OpenPort</tt>, <tt>Ronin::DB::URL</tt>, <tt>Ronin::DB::Cert</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+91
+92
+93
+94
+95
+96
+97
+98
+99</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/recon/importer.rb', line 91</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_import_value'>import_value</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id identifier rubyid_value'>value</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Values.html" title="Ronin::Recon::Values (module)">Values</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Values/Host.html" title="Ronin::Recon::Values::Host (class)">Host</a></span></span>     <span class='kw'>then</span> <span class='id identifier rubyid_import_host_name'>import_host_name</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Values.html" title="Ronin::Recon::Values (module)">Values</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Values/IP.html" title="Ronin::Recon::Values::IP (class)">IP</a></span></span>       <span class='kw'>then</span> <span class='id identifier rubyid_import_ip_address'>import_ip_address</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_address'>address</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Values.html" title="Ronin::Recon::Values (module)">Values</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Values/OpenPort.html" title="Ronin::Recon::Values::OpenPort (class)">OpenPort</a></span></span> <span class='kw'>then</span> <span class='id identifier rubyid_import_open_port'>import_open_port</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Values.html" title="Ronin::Recon::Values (module)">Values</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Values/URL.html" title="Ronin::Recon::Values::URL (class)">URL</a></span></span>      <span class='kw'>then</span> <span class='id identifier rubyid_import_url'>import_url</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_uri'>uri</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Values.html" title="Ronin::Recon::Values (module)">Values</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Values/Cert.html" title="Ronin::Recon::Values::Cert (class)">Cert</a></span></span>     <span class='kw'>then</span> <span class='id identifier rubyid_import_cert'>import_cert</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_cert'>cert</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Mon Jul 22 13:56:14 2024 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.36 (ruby-3.3.4).
+</div>
+
+    </div>
+  </body>
+</html>
