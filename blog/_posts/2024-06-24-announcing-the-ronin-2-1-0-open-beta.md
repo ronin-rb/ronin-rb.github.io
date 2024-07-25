@@ -28,7 +28,7 @@ tags:
   - ronin-app
 ---
 
-<div class="notification is-success" markdown="1">
+<div class="notification is-link" markdown="1">
   **Update:** [Ronin 2.1.0 has finally been released!](/blog/2024/07/22/ronin-2-1-0-finally-released.html)
 </div>
 
