@@ -28,6 +28,11 @@ tags:
   - ronin-app
 ---
 
+<div class="notification is-success">
+  <strong>Update:</strong>
+  <a href="/blog/2024/07/22/ronin-2-1-0-finally-released.html">Ronin 2.1.0 has finally been released!</a>
+</div>
+
 Now that [Phase 2 has been completed][1], and the first `rc` versions have been
 released, it is time to begin the Open Beta Testing Phase for Ronin 2.1.0.
 
