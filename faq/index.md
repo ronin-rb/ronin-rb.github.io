@@ -15,7 +15,7 @@ title: Frequently Asked Questions
 
 ### What version of Ruby should I run Ronin on?
 
-Ronin requires [ruby] >= 3.0.0
+Ronin requires [ruby] >= 3.1.0
 
 <!--
 Ronin can run on:
