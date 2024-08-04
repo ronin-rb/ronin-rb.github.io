@@ -123,6 +123,7 @@ a Ruby Version Manager:
 * [Try Ruby](https://try.ruby-lang.org/)
 * [Ruby in Twenty Minutes](https://www.ruby-lang.org/en/documentation/quickstart/)
 * [Exercism](https://exercism.org/tracks/ruby)
+* [The Odin Project](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-programming)
 
 #### Books
 
