@@ -35,16 +35,16 @@ will also allow for the rapid development of newer ronin libraries and tools.
 
 ## High-Level Plan
 
-* [ ] Bring repositories up to date with current Ruby best practices.
+* [x] Bring repositories up to date with current Ruby best practices.
   * [x] Require ruby >= 2.7.0.
-  * [ ] Set `.ruby-version` to `ruby-3.0` (WIP).
-  * [ ] Use keyword arguments (WIP).
-  * [ ] Rename all `extensions/` directories to `core_ext/` (WIP).
+  * [x] Set `.ruby-version` to `ruby-3.0`.
+  * [x] Use keyword arguments.
+  * [x] Rename all `extensions/` directories to `core_ext/`.
   * [x] Replace TravisCI with [GitHub Actions].
   * [x] Rename `master` branches to `main`.
   * [x] Add a `CONTRIBUTING.md` file.
-  * [ ] Setup [rubocop] style checker (pending).
-  * [ ] Opt-in to [rubygems.org MFA requirement] \(WIP\).
+  * [x] Setup [rubocop] style checker.
+  * [x] Opt-in to [rubygems.org MFA requirement].
 * [x] Split larger libraries apart into smaller more manageable libraries.
   - Tier 1: ronin gems that only provide commands (ex: the main [ronin] gem).
   - Tier 2: `ronin-*` gems that also contain commands and some library code
@@ -53,12 +53,12 @@ will also allow for the rapid development of newer ronin libraries and tools.
     `ronin-web-server`).
 * [x] Change the licenses of all libraries from GPLv3 to LGPLv3; excluding
       Tier 1 libraries.
-* [ ] Avoid excessive meta-programming in favor of simple Plain-Old-Ruby-Objects
+* [x] Avoid excessive meta-programming in favor of simple Plain-Old-Ruby-Objects
      (PORO).
-* [ ] Add more commands to each `ronin-` library to better expose the APIs for
+* [x] Add more commands to each `ronin-` library to better expose the APIs for
   non-Ruby-programmers.
-* [ ] Standardize on using the [command_kit] gem for all things CLI (WIP).
-* [ ] Store all user data and configuration in [XDG directories] \(`~/.config/`,
+* [x] Standardize on using the [command_kit] gem for all things CLI.
+* [x] Store all user data and configuration in [XDG directories] \(`~/.config/`,
   `~/.cache/`, `~/.local/share/`\) (WIP).
 * [x] Create a [ronin-core] library for reusable internal library code.
 * [x] Create a [ronin-repos] library for handling 3rd-party Git repositories of
@@ -68,7 +68,7 @@ will also allow for the rapid development of newer ronin libraries and tools.
 * [x] Extract and refactor the [ronin-fuzzer] library from [ronin-support].
 * [x] Extract and refactor [ronin-web-server], [ronin-web-spider], and
       [ronin-web-user_agents] libraries from [ronin-web].
-* [ ] Replace [ronin-php] with a new [ronin-vuln] library.
+* [x] Replace [ronin-php] with a new [ronin-vuln] library.
 * [x] Extract and refactor [ronin-payloads], [ronin-post_ex],
       [ronin-agent-node], [ronin-agent-php], and [ronin-agent-ruby], libraries
       from [ronin-exploits].
@@ -131,92 +131,42 @@ scripts.
 **Note:** Development work is currently taking place on the
 [1.0.0](https://github.com/ronin-rb/ronin-support/tree/1.0.0) branch.
 
-* [ ] [Add support for a RONIN_HTTP_PROXY env variable][ronin-support#146]
-* [ ] [Style the [ ] part as ANSI bold+bright in CLI::Printing#print_\* methods][ronin-support#138]
-* [ ] [Remove ANSI coloring from the message in CLI::Printing#print_\* methods?][ronin-support#137]
-* [ ] [Add an ANSI reset to the CLI::Printing#print_\* methods][ronin-support#136]
-* [ ] [Add print_debug statements to Network methods][ronin-support#130]
-* [ ] [Add a Hash of built-in User-Agent strings][ronin-support#125]
-* [ ] [Allow the user_agent: keyword argument to accept a Symbol][ronin-support#124]
-* [ ] [Add a user_agent: :random option to Network::HTTP methods][ronin-support#123]
-* [ ] [Add Ronin::Support::Interactive][ronin-support#121]
-* [ ] [Remove data_paths dependency][ronin-support#114]
-* [ ] [Add Ronin::IP value-object class][ronin-support#111]
-* [ ] [Add Ronin::Host value-object class][ronin-support#110]
-* [ ] [Add Ronin::Domain value-object class][ronin-support#109]
-* [ ] [Add Ronin::Port value-object class?][ronin-support#108]
-* [ ] [Rename ronin/formatting to just ronin/format][ronin-support#107]
-* [ ] [Rename ronin/extensions/regexp to ronin/text/patterns][ronin-support#105]
-* [ ] [Add Ronin::IP::CIDR][ronin-support#104]
-* [ ] [Add a Ronin::IP::Glob class][ronin-support#103]
-* [ ] [Refactor Ronin::Templates::Erb to Ronin::Text::ERB][ronin-support#102]
-* [ ] [Add support for Base32][ronin-support#101]
-* [ ] [Add support for Base64, with a custom table][ronin-support#100]
-* [ ] [Add Ronin::Text::Typo][ronin-support#99]
-* [ ] [Add bash shell command formatting methods to ronin/formatting][ronin-support#98]
-* [ ] [Add helper methods for converting between ASCII and UTF8][ronin-support#97]
-* [ ] [Add Ronin::Network::DNS::Resolver][ronin-support#96]
-* [ ] [Add dns_record(type, name) method to Ronin::Network::DNS][ronin-support#95]
-* [ ] [Add dns_mx(name), dns_cname(name), dns_txt(name), etc methods to Ronin::Network::DNS][ronin-support#94]
-* [ ] [Add a basic connect() port scanner method/class to Ronin::Network::TCP][ronin-support#93]
-* [ ] [Add a method for generating our own self-signed cert in Ronin::Network::SSL][ronin-support#92]
-* [ ] [Allow configuring the ssl_version in Ronin::Network::SSL][ronin-support#91]
-* [ ] [Add Ronin::Network::SSL::Server][ronin-support#90]
-* [ ] [Add Ronin::Network::TLS][ronin-support#89]
-* [ ] [Add Ronin::Network::HTTP::Client class][ronin-support#87]
-* [ ] [Refactor http_\* methods to accept a single String or URI argument][ronin-support#86]
-* [ ] [Allow http_\* methods to support passing a block to receive each response chunk][ronin-support#85]
-* [ ] [Add methods for parsing .key, .pem, or .crt files to Ronin::Crypto][ronin-support#84]
-* [ ] [Add 3DES encryption method to Ronin::Crypto][ronin-support#83]
-* [ ] [Add AES encryption/decryption methods to Ronin::Crypto][ronin-support#82]
-* [ ] [Add RSA encryption/decryption methods to Ronin::Crypto][ronin-support#81]
-* [ ] [Add String#rot(n=13) as a joke to Ronin::Crypto][ronin-support#80]
-* [ ] [Add a Type system called Ronin::Binary::Types][ronin-support#75]
-* [ ] [Add Ronin::Arch namespace][ronin-support#74]
-
-[ronin-support#146]: https://github.com/ronin-rb/ronin-support/issues/146
-[ronin-support#138]: https://github.com/ronin-rb/ronin-support/issues/138
-[ronin-support#137]: https://github.com/ronin-rb/ronin-support/issues/137
-[ronin-support#136]: https://github.com/ronin-rb/ronin-support/issues/136
-[ronin-support#130]: https://github.com/ronin-rb/ronin-support/issues/130
-[ronin-support#125]: https://github.com/ronin-rb/ronin-support/issues/125
-[ronin-support#124]: https://github.com/ronin-rb/ronin-support/issues/124
-[ronin-support#123]: https://github.com/ronin-rb/ronin-support/issues/123
-[ronin-support#121]: https://github.com/ronin-rb/ronin-support/issues/121
-[ronin-support#114]: https://github.com/ronin-rb/ronin-support/issues/114
-[ronin-support#111]: https://github.com/ronin-rb/ronin-support/issues/111
-[ronin-support#110]: https://github.com/ronin-rb/ronin-support/issues/110
-[ronin-support#109]: https://github.com/ronin-rb/ronin-support/issues/109
-[ronin-support#108]: https://github.com/ronin-rb/ronin-support/issues/108
-[ronin-support#107]: https://github.com/ronin-rb/ronin-support/issues/107
-[ronin-support#105]: https://github.com/ronin-rb/ronin-support/issues/105
-[ronin-support#104]: https://github.com/ronin-rb/ronin-support/issues/104
-[ronin-support#103]: https://github.com/ronin-rb/ronin-support/issues/103
-[ronin-support#102]: https://github.com/ronin-rb/ronin-support/issues/102
-[ronin-support#101]: https://github.com/ronin-rb/ronin-support/issues/101
-[ronin-support#100]: https://github.com/ronin-rb/ronin-support/issues/100
-[ronin-support#99]: https://github.com/ronin-rb/ronin-support/issues/99
-[ronin-support#98]: https://github.com/ronin-rb/ronin-support/issues/98
-[ronin-support#97]: https://github.com/ronin-rb/ronin-support/issues/97
-[ronin-support#96]: https://github.com/ronin-rb/ronin-support/issues/96
-[ronin-support#95]: https://github.com/ronin-rb/ronin-support/issues/95
-[ronin-support#94]: https://github.com/ronin-rb/ronin-support/issues/94
-[ronin-support#93]: https://github.com/ronin-rb/ronin-support/issues/93
-[ronin-support#92]: https://github.com/ronin-rb/ronin-support/issues/92
-[ronin-support#91]: https://github.com/ronin-rb/ronin-support/issues/91
-[ronin-support#90]: https://github.com/ronin-rb/ronin-support/issues/90
-[ronin-support#89]: https://github.com/ronin-rb/ronin-support/issues/89
-[ronin-support#87]: https://github.com/ronin-rb/ronin-support/issues/87
-[ronin-support#86]: https://github.com/ronin-rb/ronin-support/issues/86
-[ronin-support#85]: https://github.com/ronin-rb/ronin-support/issues/85
-[ronin-support#84]: https://github.com/ronin-rb/ronin-support/issues/84
-[ronin-support#83]: https://github.com/ronin-rb/ronin-support/issues/83
-[ronin-support#82]: https://github.com/ronin-rb/ronin-support/issues/82
-[ronin-support#81]: https://github.com/ronin-rb/ronin-support/issues/81
-[ronin-support#80]: https://github.com/ronin-rb/ronin-support/issues/80
-[ronin-support#75]: https://github.com/ronin-rb/ronin-support/issues/75
-[ronin-support#74]: https://github.com/ronin-rb/ronin-support/issues/74
-
+* [x] [Add support for a RONIN_HTTP_PROXY env variable][ronin-support#146]
+* [x] [Style the [ ] part as ANSI bold+bright in CLI::Printing#print_\* methods][ronin-support#138]
+* [x] [Remove ANSI coloring from the message in CLI::Printing#print_\* methods?][ronin-support#137]
+* [x] [Add an ANSI reset to the CLI::Printing#print_\* methods][ronin-support#136]
+* [x] [Add a Hash of built-in User-Agent strings][ronin-support#125]
+* [x] [Allow the user_agent: keyword argument to accept a Symbol][ronin-support#124]
+* [x] [Add a user_agent: :random option to Network::HTTP methods][ronin-support#123]
+* [x] [Add Ronin::Support::CLI::IOShell][ronin-support#121]
+* [x] [Remove data_paths dependency][ronin-support#114]
+* [x] [Add Ronin::Support::Network::IP value-object class][ronin-support#111]
+* [x] [Add Ronin::Support::Network::Host value-object class][ronin-support#110]
+* [x] [Add Ronin::Support::Network::Domain value-object class][ronin-support#109]
+* [x] [Rename ronin/formatting to just ronin/format][ronin-support#107]
+* [x] [Rename ronin/extensions/regexp to ronin/text/patterns][ronin-support#105]
+* [x] [Add Ronin::Support::Network::IP::CIDR][ronin-support#104]
+* [x] [Add a Ronin::Support::Network::IP::Glob class][ronin-support#103]
+* [x] [Refactor Ronin::Templates::Erb to Ronin::Text::Mixin][ronin-support#102]
+* [x] [Add support for Base32][ronin-support#101]
+* [x] [Add Ronin::Support::Text::Typo][ronin-support#99]
+* [x] [Add bash shell command formatting methods to ronin/formatting][ronin-support#98]
+* [x] [Add helper methods for converting between ASCII and UTF8][ronin-support#97]
+* [x] [Add Ronin::Network::DNS::Resolver][ronin-support#96]
+* [x] [Add dns_record(type, name) method to Ronin::Network::DNS][ronin-support#95]
+* [x] [Add dns_mx(name), dns_cname(name), dns_txt(name), etc methods to Ronin::Network::DNS][ronin-support#94]
+* [x] [Add a method for generating our own self-signed cert in Ronin::Network::SSL][ronin-support#92]
+* [x] [Allow configuring the ssl_version in Ronin::Network::SSL][ronin-support#91]
+* [x] [Add Ronin::Support::Network::TLS][ronin-support#89]
+* [x] [Add Ronin::Support::Network::HTTP::Client class][ronin-support#87]
+* [x] [Refactor http_\* methods to accept a single String or URI argument][ronin-support#86]
+* [x] [Allow http_\* methods to support passing a block to receive each response chunk][ronin-support#85]
+* [x] [Add methods for parsing .key, .pem, or .crt files to Ronin::Support::Crypto][ronin-support#84]
+* [x] [Add AES encryption/decryption methods to Ronin::Crypto][ronin-support#82]
+* [x] [Add RSA encryption/decryption methods to Ronin::Crypto][ronin-support#81]
+* [x] [Add String#rot(n=13) as a joke to Ronin::Crypto][ronin-support#80]
+* [x] [Add a Type system called Ronin::Support::Binary::Types][ronin-support#75]
+* [x] [Add Ronin::Support::Binary::Arch namespace][ronin-support#74]
 * [x] [Remove ronin/fuzzing.rb and ronin/fuzzing][ronin-support#145]
 * [x] [Change HTTP :proxy options to accept a String][ronin-support#144]
 * [x] [Upgrade to uri-query_params ~> 0.8][ronin-support#143]
@@ -245,6 +195,42 @@ scripts.
 * [x] [Remove Ronin::Wordlist][ronin-support#73]
 * [x] [Extract ronin/fuzzing from ronin-support][ronin-support#72]
 
+[ronin-support#146]: https://github.com/ronin-rb/ronin-support/issues/146
+[ronin-support#138]: https://github.com/ronin-rb/ronin-support/issues/138
+[ronin-support#137]: https://github.com/ronin-rb/ronin-support/issues/137
+[ronin-support#136]: https://github.com/ronin-rb/ronin-support/issues/136
+[ronin-support#125]: https://github.com/ronin-rb/ronin-support/issues/125
+[ronin-support#124]: https://github.com/ronin-rb/ronin-support/issues/124
+[ronin-support#123]: https://github.com/ronin-rb/ronin-support/issues/123
+[ronin-support#121]: https://github.com/ronin-rb/ronin-support/issues/121
+[ronin-support#114]: https://github.com/ronin-rb/ronin-support/issues/114
+[ronin-support#111]: https://github.com/ronin-rb/ronin-support/issues/111
+[ronin-support#110]: https://github.com/ronin-rb/ronin-support/issues/110
+[ronin-support#109]: https://github.com/ronin-rb/ronin-support/issues/109
+[ronin-support#107]: https://github.com/ronin-rb/ronin-support/issues/107
+[ronin-support#105]: https://github.com/ronin-rb/ronin-support/issues/105
+[ronin-support#104]: https://github.com/ronin-rb/ronin-support/issues/104
+[ronin-support#103]: https://github.com/ronin-rb/ronin-support/issues/103
+[ronin-support#102]: https://github.com/ronin-rb/ronin-support/issues/102
+[ronin-support#101]: https://github.com/ronin-rb/ronin-support/issues/101
+[ronin-support#99]: https://github.com/ronin-rb/ronin-support/issues/99
+[ronin-support#98]: https://github.com/ronin-rb/ronin-support/issues/98
+[ronin-support#97]: https://github.com/ronin-rb/ronin-support/issues/97
+[ronin-support#96]: https://github.com/ronin-rb/ronin-support/issues/96
+[ronin-support#95]: https://github.com/ronin-rb/ronin-support/issues/95
+[ronin-support#94]: https://github.com/ronin-rb/ronin-support/issues/94
+[ronin-support#92]: https://github.com/ronin-rb/ronin-support/issues/92
+[ronin-support#91]: https://github.com/ronin-rb/ronin-support/issues/91
+[ronin-support#89]: https://github.com/ronin-rb/ronin-support/issues/89
+[ronin-support#87]: https://github.com/ronin-rb/ronin-support/issues/87
+[ronin-support#86]: https://github.com/ronin-rb/ronin-support/issues/86
+[ronin-support#85]: https://github.com/ronin-rb/ronin-support/issues/85
+[ronin-support#84]: https://github.com/ronin-rb/ronin-support/issues/84
+[ronin-support#82]: https://github.com/ronin-rb/ronin-support/issues/82
+[ronin-support#81]: https://github.com/ronin-rb/ronin-support/issues/81
+[ronin-support#80]: https://github.com/ronin-rb/ronin-support/issues/80
+[ronin-support#75]: https://github.com/ronin-rb/ronin-support/issues/75
+[ronin-support#74]: https://github.com/ronin-rb/ronin-support/issues/74
 [ronin-support#145]: https://github.com/ronin-rb/ronin-support/issues/145
 [ronin-support#144]: https://github.com/ronin-rb/ronin-support/issues/144
 [ronin-support#143]: https://github.com/ronin-rb/ronin-support/issues/143
@@ -281,24 +267,11 @@ libraries.
 **Note:** Development work is currently taking place on the
 [main](https://github.com/ronin-rb/ronin-core/tree/main) branch.
 
-* [ ] [Add Ronin::Core::Metadata::References][ronin-core#23]
-* [ ] [Add Ronin::Core::Metadata::Author][ronin-core#22]
-* [ ] [Add Ronin::Core::Metadata::Summary][ronin-core#21]
-* [ ] [Add Ronin::Core::Metadata::Description][ronin-core#20]
-* [ ] [Support reading multi-line input in Ronin::Core::CLI::Shell.start][ronin-core#19]
-* [ ] [Add a Ronin::Core::CLI::TipCommand base class][ronin-core#14]
-* [ ] [Add a TipFile class for parsing tips.yml files][ronin-core#13]
-* [ ] [Add a Module Registry API][ronin-core#9]
-
-[ronin-core#23]: https://github.com/ronin-rb/ronin-core/issues/23
-[ronin-core#22]: https://github.com/ronin-rb/ronin-core/issues/22
-[ronin-core#21]: https://github.com/ronin-rb/ronin-core/issues/21
-[ronin-core#20]: https://github.com/ronin-rb/ronin-core/issues/20
-[ronin-core#19]: https://github.com/ronin-rb/ronin-core/issues/19
-[ronin-core#14]: https://github.com/ronin-rb/ronin-core/issues/14
-[ronin-core#13]: https://github.com/ronin-rb/ronin-core/issues/13
-[ronin-core#9]: https://github.com/ronin-rb/ronin-core/issues/9
-
+* [x] [Add Ronin::Core::Metadata::References][ronin-core#23]
+* [x] [Add Ronin::Core::Metadata::Author][ronin-core#22]
+* [x] [Add Ronin::Core::Metadata::Summary][ronin-core#21]
+* [x] [Add Ronin::Core::Metadata::Description][ronin-core#20]
+* [x] [Add a Module Registry API][ronin-core#9]
 * [x] [Add the ability of defining shell commands that have different method names than the command name][ronin-core#17]
 * [x] [Add a sigil variable to Ronin::Core::CLI::Shell][ronin-core#16]
 * [x] [Split Ronin::Core::CLI::Shell into Shell and CommandShell][ronin-core#15]
@@ -309,6 +282,11 @@ libraries.
 * [x] [Add more professional looking \>\>\> message, \*\*\* warning, !!! error ANSI colored logging methods][ronin-core#4]
 * [x] [Add Ronin::Core::Shell][ronin-core#5]
 
+[ronin-core#23]: https://github.com/ronin-rb/ronin-core/issues/23
+[ronin-core#22]: https://github.com/ronin-rb/ronin-core/issues/22
+[ronin-core#21]: https://github.com/ronin-rb/ronin-core/issues/21
+[ronin-core#20]: https://github.com/ronin-rb/ronin-core/issues/20
+[ronin-core#9]: https://github.com/ronin-rb/ronin-core/issues/9
 [ronin-core#17]: https://github.com/ronin-rb/ronin-core/issues/17
 [ronin-core#16]: https://github.com/ronin-rb/ronin-core/issues/16
 [ronin-core#15]: https://github.com/ronin-rb/ronin-core/issues/15
@@ -327,19 +305,13 @@ accessing third-party git repositories, which can contain code or other data.
 **Note:** Development work is currently taking place on the
 [main](https://github.com/ronin-rb/ronin-repos/tree/main) branch.
 
-* [ ] [Add methods to allow requiring a single file from a repository][ronin-repos#8]
-* [ ] [Prefix all git methods in Repository with git_][ronin-repos#7]
-* [ ] [Add a Repository#has_directory? method][ronin-repos#6]
-* [ ] [Add Repository#has_file? method][ronin-repos#5]
-* [ ] [Add the ability of detecting a Gemfile and running bundle install][ronin-repos#4]
-* [ ] [Add an exec subcommand to ronin-repos][ronin-repos#3]
+* [x] [Add methods to allow requiring a single file from a repository][ronin-repos#8]
+* [x] [Add a Repository#has_directory? method][ronin-repos#6]
+* [x] [Add Repository#has_file? method][ronin-repos#5]
 
 [ronin-repos#8]: https://github.com/ronin-rb/ronin-repos/issues/8
-[ronin-repos#7]: https://github.com/ronin-rb/ronin-repos/issues/7
 [ronin-repos#6]: https://github.com/ronin-rb/ronin-repos/issues/6
 [ronin-repos#5]: https://github.com/ronin-rb/ronin-repos/issues/5
-[ronin-repos#4]: https://github.com/ronin-rb/ronin-repos/issues/4
-[ronin-repos#3]: https://github.com/ronin-rb/ronin-repos/issues/3
 
 ### [ronin-db](https://github.com/ronin-rb/ronin-db/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
 
@@ -352,20 +324,12 @@ the database(s).
 **Note:** Development work is currently taking place on the
 [main](https://github.com/ronin-rb/ronin-db/tree/main) branch.
 
-* [ ] [Convert option={} to keyword arguments][ronin-db#13]
-* [ ] [Refactor Ronin::DB::CLI::Commands to use Ronin::Core::CLI::Command][ronin-db#8]
-* [ ] [Add truffleruby to the CI][ronin-db#6]
-* [ ] [Refactor ronin-db to use ActiveRecord][ronin-db#3]
-* [ ] [Add models for storing Headers and form data in Ronin's Database][ronin-db#15]
-* [ ] [Add flavor property to OS][ronin-db#4]
-
-[ronin-db#13]: https://github.com/ronin-rb/ronin-db/issues/13
-[ronin-db#8]: https://github.com/ronin-rb/ronin-db/issues/8
-[ronin-db#6]: https://github.com/ronin-rb/ronin-db/issues/6
-[ronin-db#3]: https://github.com/ronin-rb/ronin-db/issues/3
-[ronin-db#15]: https://github.com/ronin-rb/ronin-db/issues/15
-[ronin-db#4]: https://github.com/ronin-rb/ronin-db/issues/4
-
+* [x] [Convert option={} to keyword arguments][ronin-db#13]
+* [x] [Refactor Ronin::DB::CLI::Commands to use Ronin::Core::CLI::Command][ronin-db#8]
+* [x] [Add truffleruby to the CI][ronin-db#6]
+* [x] [Refactor ronin-db to use ActiveRecord][ronin-db#3]
+* [x] [Add models for storing Headers and form data in Ronin's Database][ronin-db#15]
+* [x] [Add flavor property to OS][ronin-db#4]
 * [x] [Add Ronin::DB::CLI::Command base class][ronin-db#21]
 * [x] [Remove bin/ronin-\* files in favor of ronin-db subcommands][ronin-db#20]
 * [x] [Update required_ruby_version to >= 2.7.0][ronin-db#19]
@@ -380,6 +344,12 @@ the database(s).
 * [x] [Add ronin-core dependency][ronin-db#7]
 * [x] [Add GitHub CI][ronin-db#5]
 
+[ronin-db#13]: https://github.com/ronin-rb/ronin-db/issues/13
+[ronin-db#8]: https://github.com/ronin-rb/ronin-db/issues/8
+[ronin-db#6]: https://github.com/ronin-rb/ronin-db/issues/6
+[ronin-db#3]: https://github.com/ronin-rb/ronin-db/issues/3
+[ronin-db#15]: https://github.com/ronin-rb/ronin-db/issues/15
+[ronin-db#4]: https://github.com/ronin-rb/ronin-db/issues/4
 [ronin-db#21]: https://github.com/ronin-rb/ronin-db/issues/21
 [ronin-db#20]: https://github.com/ronin-rb/ronin-db/issues/20
 [ronin-db#19]: https://github.com/ronin-rb/ronin-db/issues/19
@@ -401,14 +371,12 @@ the database(s).
 **Note:** Development work is currently taking place on the
 [1.0.0](https://github.com/ronin-rb/ronin-asm/tree/1.0.0) branch.
 
-* [ ] [Replace options={} with keyword arguments][ronin-code-asm#20]
-* [ ] [Add truffleruby to the CI][ronin-code-asm#17]
+* [x] [Replace options={} with keyword arguments][ronin-code-asm#20]
+* [x] [Add truffleruby to the CI][ronin-code-asm#17]
+* [x] [Remove data_paths dependency][ronin-code-asm#19]
 
 [ronin-code-asm#20]: https://github.com/ronin-rb/ronin-code-asm/issues/20
 [ronin-code-asm#17]: https://github.com/ronin-rb/ronin-code-asm/issues/17
-
-* [x] [Remove data_paths dependency][ronin-code-asm#19]
-
 [ronin-code-asm#19]: https://github.com/ronin-rb/ronin-code-asm/issues/19
 
 ### [ronin-code-sql](https://github.com/ronin-rb/ronin-code-sql/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
@@ -418,17 +386,13 @@ the database(s).
 **Note:** Development work is currently taking place on the
 [2.0.0](https://github.com/ronin-rb/ronin-code-sql/tree/2.0.0) branch.
 
-* [ ] [Rename extensions directory to core_ext][ronin-code-sql#8]
-* [ ] [Replace options={} with keyword arguments][ronin-code-sql#7]
-* [ ] [Add a sql: keyword argument for selecting the SQL dialect][ronin-code-sql#9]
-
-[ronin-code-sql#8]: https://github.com/ronin-rb/ronin-code-sql/issues/8
-[ronin-code-sql#7]: https://github.com/ronin-rb/ronin-code-sql/issues/7
-[ronin-code-sql#9]: https://github.com/ronin-rb/ronin-code-sql/issues/9
-
+* [x] [Rename extensions directory to core_ext][ronin-code-sql#8]
+* [x] [Replace options={} with keyword arguments][ronin-code-sql#7]
 * [x] [Switch rake console back to irb][ronin-code-sql#6]
 * [x] [Move yard dependency into the Gemfile][ronin-code-sql#5]
 
+[ronin-code-sql#8]: https://github.com/ronin-rb/ronin-code-sql/issues/8
+[ronin-code-sql#7]: https://github.com/ronin-rb/ronin-code-sql/issues/7
 [ronin-code-sql#6]: https://github.com/ronin-rb/ronin-code-sql/issues/6
 [ronin-code-sql#5]: https://github.com/ronin-rb/ronin-code-sql/issues/5
 
@@ -440,28 +404,18 @@ security research and development.
 **Note:** Development work is currently taking place on the
 [main](https://github.com/ronin-rb/ronin-web-server/tree/main) branch.
 
-* [ ] [Add support for the RONIN_HTTP_PROXY env variable][ronin-web-server#17]
-* [ ] [Add rack-user_agent as a dependency][ronin-web-server#16]
-* [ ] [Replace print_debug statements in Ronin::Web::Proxy with Logger statements][ronin-web-server#14]
-* [ ] [Change default/preferred HTTP server to falcon?][ronin-web-server#12]
-* [ ] [Refactor the Proxy class to use async-http][ronin-web-server#11]
-* [ ] [Switch options={} to keyword arguments][ronin-web-server#9]
-* [ ] [Disable Rack::Protection in Ronin::Web::Proxy][ronin-web-server#4]
-
-[ronin-web-server#17]: https://github.com/ronin-rb/ronin-web-server/issues/17
-[ronin-web-server#16]: https://github.com/ronin-rb/ronin-web-server/issues/16
-[ronin-web-server#14]: https://github.com/ronin-rb/ronin-web-server/issues/14
-[ronin-web-server#12]: https://github.com/ronin-rb/ronin-web-server/issues/12
-[ronin-web-server#11]: https://github.com/ronin-rb/ronin-web-server/issues/11
-[ronin-web-server#9]: https://github.com/ronin-rb/ronin-web-server/issues/9
-[ronin-web-server#4]: https://github.com/ronin-rb/ronin-web-server/issues/4
-
+* [x] [Add rack-user_agent as a dependency][ronin-web-server#16]
+* [x] [Switch options={} to keyword arguments][ronin-web-server#9]
+* [x] [Disable Rack::Protection in Ronin::Web::Proxy][ronin-web-server#4]
 * [x] [Add webrick as a dependency][ronin-web-server#15]
 * [x] [Remove Ronin::Web::Server::Conditions::ClassMethods#campaign][ronin-web-server#13]
 * [x] [Move Ronin::Web::Proxy into Ronin::Web::Server][ronin-web-server#10]
 * [x] [Re-add project files][ronin-web-server#3]
 * [x] [Relicense as LGPL-3.0][ronin-web-server#1]
 
+[ronin-web-server#16]: https://github.com/ronin-rb/ronin-web-server/issues/16
+[ronin-web-server#9]: https://github.com/ronin-rb/ronin-web-server/issues/9
+[ronin-web-server#4]: https://github.com/ronin-rb/ronin-web-server/issues/4
 [ronin-web-server#15]: https://github.com/ronin-rb/ronin-web-server/issues/15
 [ronin-web-server#13]: https://github.com/ronin-rb/ronin-web-server/issues/13
 [ronin-web-server#10]: https://github.com/ronin-rb/ronin-web-server/issues/10
@@ -476,15 +430,13 @@ spidr gem.
 **Note:** Development work is currently taking place on the
 [main](https://github.com/ronin-rb/ronin-web-spider/tree/main) branch.
 
-* [ ] [Add support for RONIN_HTTP_PROXY env variable][ronin-web-spider#4]
-* [ ] [Add top-level methods for common spidering tasks][ronin-web-spider#3]
-
-[ronin-web-spider#4]: https://github.com/ronin-rb/ronin-web-spider/issues/4
-[ronin-web-spider#3]: https://github.com/ronin-rb/ronin-web-spider/issues/3
-
+* [x] [Add support for RONIN_HTTP_PROXY env variable][ronin-web-spider#4]
+* [x] [Add top-level methods for common spidering tasks][ronin-web-spider#3]
 * [x] [Re-add project files][ronin-web-spider#2]
 * [x] [Change license to LGPL-3.0][ronin-web-spider#1]
 
+[ronin-web-spider#4]: https://github.com/ronin-rb/ronin-web-spider/issues/4
+[ronin-web-spider#3]: https://github.com/ronin-rb/ronin-web-spider/issues/3
 [ronin-web-spider#2]: https://github.com/ronin-rb/ronin-web-spider/issues/2
 [ronin-web-spider#1]: https://github.com/ronin-rb/ronin-web-spider/issues/1
 
@@ -495,21 +447,17 @@ spidr gem.
 **Note:** Development work is currently taking place on the
 [main](https://github.com/ronin-rb/ronin-web-user_agents/tree/main) branch.
 
-* [ ] [Add top-level class-methods for the various categories][ronin-web-user_agents#7]
-* [ ] [Add a Category class][ronin-web-user_agents#6]
-* [ ] [Add a method for building a custom User-Agent string][ronin-web-user_agents#5]
-* [ ] [Update User-Agent lists][ronin-web-user_agents#4]
-* [ ] [Replace the .yml file with multiple .txt and .csv files][ronin-web-user_agents#3]
-
-[ronin-web-user_agents#7]: https://github.com/ronin-rb/ronin-web-user_agents/issues/7
-[ronin-web-user_agents#6]: https://github.com/ronin-rb/ronin-web-user_agents/issues/6
-[ronin-web-user_agents#5]: https://github.com/ronin-rb/ronin-web-user_agents/issues/5
-[ronin-web-user_agents#4]: https://github.com/ronin-rb/ronin-web-user_agents/issues/4
-[ronin-web-user_agents#3]: https://github.com/ronin-rb/ronin-web-user_agents/issues/3
-
+* [x] [Add top-level class-methods for the various categories][ronin-web-user_agents#7]
+* [x] [Add a method for building a custom User-Agent string][ronin-web-user_agents#5]
+* [x] [Update User-Agent lists][ronin-web-user_agents#4]
+* [x] [Replace the .yml file with multiple .txt and .csv files][ronin-web-user_agents#3]
 * [x] [Re-add project files][ronin-web-user_agents#2]
 * [x] [Change license to LGPL-3.0][ronin-web-user_agents#1]
 
+[ronin-web-user_agents#7]: https://github.com/ronin-rb/ronin-web-user_agents/issues/7
+[ronin-web-user_agents#5]: https://github.com/ronin-rb/ronin-web-user_agents/issues/5
+[ronin-web-user_agents#4]: https://github.com/ronin-rb/ronin-web-user_agents/issues/4
+[ronin-web-user_agents#3]: https://github.com/ronin-rb/ronin-web-user_agents/issues/3
 [ronin-web-user_agents#2]: https://github.com/ronin-rb/ronin-web-user_agents/issues/2
 [ronin-web-user_agents#1]: https://github.com/ronin-rb/ronin-web-user_agents/issues/1
 
@@ -521,24 +469,13 @@ spidering functionality.
 **Note:** Development work is currently taking place on the
 [1.0.0](https://github.com/ronin-rb/ronin-web/tree/1.0.0) branch.
 
-* [ ] [Add a spider sub-command][ronin-web#59]
-* [ ] [Add a server sub-command][ronin-web#58]
-* [ ] [Add support for a RONIN_HTTP_PROXY env variable][ronin-web#51]
-* [ ] [Add a proxy command][ronin-web#39]
-* [ ] [Add a MITM -> Browser Proxy command][ronin-web#38]
-* [ ] [Add a diff sub-command][ronin-web#28]
-* [ ] [Eventually re-add jruby to the CI matrix][ronin-web#26]
-* [ ] [Eventually support truffleruby][ronin-web#25]
-
-[ronin-web#59]: https://github.com/ronin-rb/ronin-web/issues/59
-[ronin-web#58]: https://github.com/ronin-rb/ronin-web/issues/58
-[ronin-web#51]: https://github.com/ronin-rb/ronin-web/issues/51
-[ronin-web#39]: https://github.com/ronin-rb/ronin-web/issues/39
-[ronin-web#38]: https://github.com/ronin-rb/ronin-web/issues/38
-[ronin-web#28]: https://github.com/ronin-rb/ronin-web/issues/28
-[ronin-web#26]: https://github.com/ronin-rb/ronin-web/issues/26
-[ronin-web#25]: https://github.com/ronin-rb/ronin-web/issues/25
-
+* [x] [Add a spider sub-command][ronin-web#59]
+* [x] [Add a server sub-command][ronin-web#58]
+* [x] [Add support for a RONIN_HTTP_PROXY env variable][ronin-web#51]
+* [x] [Add a proxy command][ronin-web#39]
+* [x] [Add a MITM -> Browser Proxy command][ronin-web#38]
+* [x] [Add a diff sub-command][ronin-web#28]
+* [x] [Eventually support truffleruby][ronin-web#25]
 * [x] [Add a common Ronin::Web::CLI::Command base class][ronin-web#57]
 * [x] [Add ronin-core as a dependency][ronin-web#56]
 * [x] [Add nokogiri-ext as a dependency][ronin-web#55]
@@ -565,6 +502,13 @@ spidering functionality.
 * [x] [Rename extensions/ to core_ext/][ronin-web#21]
 * [x] [Extract Ronin::Web::Server out into ronin-web-server][ronin-web#20]
 
+[ronin-web#59]: https://github.com/ronin-rb/ronin-web/issues/59
+[ronin-web#58]: https://github.com/ronin-rb/ronin-web/issues/58
+[ronin-web#51]: https://github.com/ronin-rb/ronin-web/issues/51
+[ronin-web#39]: https://github.com/ronin-rb/ronin-web/issues/39
+[ronin-web#38]: https://github.com/ronin-rb/ronin-web/issues/38
+[ronin-web#28]: https://github.com/ronin-rb/ronin-web/issues/28
+[ronin-web#25]: https://github.com/ronin-rb/ronin-web/issues/25
 [ronin-web#57]: https://github.com/ronin-rb/ronin-web/issues/57
 [ronin-web#56]: https://github.com/ronin-rb/ronin-web/issues/56
 [ronin-web#55]: https://github.com/ronin-rb/ronin-web/issues/55
@@ -618,16 +562,6 @@ spidering functionality.
 
 **Note:** Development work is currently taking place on the
 [main](https://github.com/ronin-rb/ronin-post_ex/tree/main) branch.
-
-* [ ] [Add a call method to System][ronin-post_ex#21]
-* [ ] [Add a Net resource for networking methods][ronin-post_ex#20]
-* [ ] [Add a Socket resource similar to File][ronin-post_ex#19]
-* [ ] [Add top-level methods to System that can use fs/process or shell_exec equivalent commands][ronin-post_ex#11]
-
-[ronin-post_ex#21]: https://github.com/ronin-rb/ronin-post_ex/issues/21
-[ronin-post_ex#20]: https://github.com/ronin-rb/ronin-post_ex/issues/20
-[ronin-post_ex#19]: https://github.com/ronin-rb/ronin-post_ex/issues/19
-[ronin-post_ex#11]: https://github.com/ronin-rb/ronin-post_ex/issues/11
 
 * [x] [Rename Mixin to System][ronin-post_ex#18]
 * [x] [Refactor Shells::FS to use Ronin::Core::CLI::Shell][ronin-post_ex#17]
@@ -748,18 +682,14 @@ and agents.
 **Note:** Development work is currently taking place on the
 [main](https://github.com/ronin-rb/ronin-agent-ruby/tree/main) branch.
 
-* [ ] [Move Agent::TCP, Agent::UDP, and Agent::HTTP into Agent::Transports][ronin-agent-ruby#6]
-* [ ] [Rename Transport to Message][ronin-agent-ruby#5]
+* [x] [Move Agent::TCP, Agent::UDP, and Agent::HTTP into Agent::Transports][ronin-agent-ruby#6]
+* [x] [Rename Transport to Message][ronin-agent-ruby#5]
 * [ ] [Support JSON RPC 2.0][ronin-agent-ruby#4]
-* [ ] [Rewrite TCP::Server to use TCPServer][ronin-agent-ruby#2]
+* [x] [Move all RPC methods into an RPC module][ronin-agent-ruby#8]
 
 [ronin-agent-ruby#6]: https://github.com/ronin-rb/ronin-agent-ruby/issues/6
 [ronin-agent-ruby#5]: https://github.com/ronin-rb/ronin-agent-ruby/issues/5
 [ronin-agent-ruby#4]: https://github.com/ronin-rb/ronin-agent-ruby/issues/4
-[ronin-agent-ruby#2]: https://github.com/ronin-rb/ronin-agent-ruby/issues/2
-
-* [x] [Move all RPC methods into an RPC module][ronin-agent-ruby#8]
-
 [ronin-agent-ruby#8]: https://github.com/ronin-rb/ronin-agent-ruby/issues/8
 
 ### [ronin-payloads](https://github.com/ronin-rb/ronin-payloads/issues?q=is%3Aopen+is%3Aissue+project%3Aronin-rb%2F2)
@@ -770,15 +700,22 @@ payloads.
 **Note:** Development work is currently taking place on the
 [main](https://github.com/ronin-rb/ronin-payloads/tree/main) branch.
 
-* [ ] [Refactor Payloads and Encoders classes to be plain Ruby Classes][ronin-payloads#24]
-* [ ] [Move Ronin::Encoders into Ronin::Payloads::][ronin-payloads#22]
-* [ ] [Remove the ronin/gen directory][ronin-payloads#15]
-* [ ] [Add a Ronin::Payloads::CLI::Commands::Gen command][ronin-payloads#14]
-* [ ] [Replace all database properties with class methods for declaring metadata][ronin-payloads#11]
-* [ ] [Replace options={} with keyword arguments][ronin-payloads#10]
-* [ ] [Rename Ronin::UI::CLI to Ronin::Payloads::CLI][ronin-payloads#9]
-* [ ] [Refactor Ronin::UI::CLI::Commands to use Ronin::Core::CLI::Command][ronin-payloads#8]
+* [x] [Refactor Payloads and Encoders classes to be plain Ruby Classes][ronin-payloads#24]
+* [x] [Move Ronin::Encoders into Ronin::Payloads::][ronin-payloads#22]
+* [x] [Remove the ronin/gen directory][ronin-payloads#15]
+* [x] [Add a Ronin::Payloads::CLI::Commands::New command][ronin-payloads#14]
+* [x] [Replace all database properties with class methods for declaring metadata][ronin-payloads#11]
+* [x] [Replace options={} with keyword arguments][ronin-payloads#10]
+* [x] [Rename Ronin::UI::CLI to Ronin::Payloads::CLI][ronin-payloads#9]
+* [x] [Refactor Ronin::UI::CLI::Commands to use Ronin::Core::CLI::Command][ronin-payloads#8]
 * [ ] [Add ronin-c2 as a dependency][ronin-payloads#6]
+* [x] [Added ronin-repos as a dependency][ronin-payloads#25]
+* [x] [Add ronin-post_ex as a dependency][ronin-payloads#23]
+* [x] [Change license to LGPL-3.0][ronin-payloads#21]
+* [x] [Remove ronin/payloads/helpers][ronin-payloads#20]
+* [x] [Remove ronin/database/migrations][ronin-payloads#13]
+* [x] [Re-add project files][ronin-payloads#12]
+* [x] [Add ronin-core as a dependency][ronin-payloads#7]
 
 [ronin-payloads#24]: https://github.com/ronin-rb/ronin-payloads/issues/24
 [ronin-payloads#22]: https://github.com/ronin-rb/ronin-payloads/issues/22
@@ -789,15 +726,6 @@ payloads.
 [ronin-payloads#9]: https://github.com/ronin-rb/ronin-payloads/issues/9
 [ronin-payloads#8]: https://github.com/ronin-rb/ronin-payloads/issues/8
 [ronin-payloads#6]: https://github.com/ronin-rb/ronin-payloads/issues/6
-
-* [x] [Added ronin-repos as a dependency][ronin-payloads#25]
-* [x] [Add ronin-post_ex as a dependency][ronin-payloads#23]
-* [x] [Change license to LGPL-3.0][ronin-payloads#21]
-* [x] [Remove ronin/payloads/helpers][ronin-payloads#20]
-* [x] [Remove ronin/database/migrations][ronin-payloads#13]
-* [x] [Re-add project files][ronin-payloads#12]
-* [x] [Add ronin-core as a dependency][ronin-payloads#7]
-
 [ronin-payloads#25]: https://github.com/ronin-rb/ronin-payloads/issues/25
 [ronin-payloads#23]: https://github.com/ronin-rb/ronin-payloads/issues/23
 [ronin-payloads#21]: https://github.com/ronin-rb/ronin-payloads/issues/21
@@ -814,36 +742,17 @@ payloads.
 **Note:** Development work is currently taking place on the
 [1.0.0](https://github.com/ronin-rb/ronin-exploits/tree/1.0.0) branch.
 
-* [ ] [Add a Ronin::Exploits::CLI::Commands::Gen subcommand][ronin-exploits#69]
-* [ ] [Replace all database properties with class methods for declaring metadata][ronin-exploits#66]
-* [ ] [Replace options={} with keyword arguments][ronin-exploits#65]
+* [x] [Replace all database properties with class methods for declaring metadata][ronin-exploits#66]
+* [x] [Replace options={} with keyword arguments][ronin-exploits#65]
 * [ ] [Add ronin-c2 as a dependency][ronin-exploits#62]
-* [ ] [Include Ronin::Core::ModuleRegistry into Ronin::Exploits][ronin-exploits#58]
-* [ ] [Update the ronin-exploits/ronin-exploit commands to use ronin-repos][ronin-exploits#57]
-* [ ] [Add a Ronin::Exploits::CLI main command class][ronin-exploits#55]
-* [ ] [Rename Ronin::UI::CLI to Ronin::Exploits::CLI][ronin-exploits#54]
-* [ ] [Refactor the Ronin::Exploits::CLI::Commands classes to use Ronin::Core::CLI::Command][ronin-exploits#53]
-* [ ] [Eventually support truffleruby][ronin-exploits#40]
-* [ ] [Eventually re-enable jruby in the CI][ronin-exploits#39]
-* [ ] [Add a "new" subcommand][ronin-exploits#37]
-* [ ] [Rename to ronin-exploit or ronin-exploitation to avoid confusion?][ronin-exploits#30]
-* [ ] [Refactor Ronin::Exploits::Exploit classes to be plain Ruby Classes][ronin-exploits#29]
-
-[ronin-exploits#69]: https://github.com/ronin-rb/ronin-exploits/issues/69
-[ronin-exploits#66]: https://github.com/ronin-rb/ronin-exploits/issues/66
-[ronin-exploits#65]: https://github.com/ronin-rb/ronin-exploits/issues/65
-[ronin-exploits#62]: https://github.com/ronin-rb/ronin-exploits/issues/62
-[ronin-exploits#58]: https://github.com/ronin-rb/ronin-exploits/issues/58
-[ronin-exploits#57]: https://github.com/ronin-rb/ronin-exploits/issues/57
-[ronin-exploits#55]: https://github.com/ronin-rb/ronin-exploits/issues/55
-[ronin-exploits#54]: https://github.com/ronin-rb/ronin-exploits/issues/54
-[ronin-exploits#53]: https://github.com/ronin-rb/ronin-exploits/issues/53
-[ronin-exploits#40]: https://github.com/ronin-rb/ronin-exploits/issues/40
-[ronin-exploits#39]: https://github.com/ronin-rb/ronin-exploits/issues/39
-[ronin-exploits#37]: https://github.com/ronin-rb/ronin-exploits/issues/37
-[ronin-exploits#30]: https://github.com/ronin-rb/ronin-exploits/issues/30
-[ronin-exploits#29]: https://github.com/ronin-rb/ronin-exploits/issues/29
-
+* [x] [Include Ronin::Core::ModuleRegistry into Ronin::Exploits][ronin-exploits#58]
+* [x] [Add a Ronin::Exploits::CLI main command class][ronin-exploits#55]
+* [x] [Rename Ronin::UI::CLI to Ronin::Exploits::CLI][ronin-exploits#54]
+* [x] [Refactor the Ronin::Exploits::CLI::Commands classes to use Ronin::Core::CLI::Command][ronin-exploits#53]
+* [x] [Eventually support truffleruby][ronin-exploits#40]
+* [x] [Eventually re-enable jruby in the CI][ronin-exploits#39]
+* [x] [Add a "new" subcommand][ronin-exploits#37]
+* [x] [Refactor Ronin::Exploits::Exploit classes to be plain Ruby Classes][ronin-exploits#29]
 * [x] [Require ruby >= 2.7.0][ronin-exploits#80]
 * [x] [Change license to LGPL-3.0][ronin-exploits#79]
 * [x] [Add ronin-core as a dependency][ronin-exploits#78]
@@ -871,6 +780,17 @@ payloads.
 * [x] [Remove data_paths dependency][ronin-exploits#34]
 * [x] [Remove open_namespace dependency][ronin-exploits#33]
 
+[ronin-exploits#66]: https://github.com/ronin-rb/ronin-exploits/issues/66
+[ronin-exploits#65]: https://github.com/ronin-rb/ronin-exploits/issues/65
+[ronin-exploits#62]: https://github.com/ronin-rb/ronin-exploits/issues/62
+[ronin-exploits#58]: https://github.com/ronin-rb/ronin-exploits/issues/58
+[ronin-exploits#55]: https://github.com/ronin-rb/ronin-exploits/issues/55
+[ronin-exploits#54]: https://github.com/ronin-rb/ronin-exploits/issues/54
+[ronin-exploits#53]: https://github.com/ronin-rb/ronin-exploits/issues/53
+[ronin-exploits#40]: https://github.com/ronin-rb/ronin-exploits/issues/40
+[ronin-exploits#39]: https://github.com/ronin-rb/ronin-exploits/issues/39
+[ronin-exploits#37]: https://github.com/ronin-rb/ronin-exploits/issues/37
+[ronin-exploits#29]: https://github.com/ronin-rb/ronin-exploits/issues/29
 [ronin-exploits#80]: https://github.com/ronin-rb/ronin-exploits/issues/80
 [ronin-exploits#79]: https://github.com/ronin-rb/ronin-exploits/issues/79
 [ronin-exploits#78]: https://github.com/ronin-rb/ronin-exploits/issues/78
@@ -905,32 +825,17 @@ The main [ronin] gem.
 **Note:** Development work is currently taking place on the
 [2.0.0](https://github.com/ronin-rb/ronin/tree/2.0.0) branch.
 
-* [ ] [Eventually re-add jruby to the CI matrix][ronin#71]
-* [ ] [Eventually support truffleruby][ronin#70]
-* [ ] [Make ronin a "meta gem" which pulls in all other ronin-\* gems][ronin#61]
-* [ ] [Add a tip subcommand][ronin#55]
-* [ ] [Add a gen subcommand][ronin#54]
-* [ ] [Add a http subcommand][ronin#53]
-* [ ] [Add a netcat subcommand][ronin#52]
-* [ ] [Add a unhexdump subcommand to ronin using Ronin::Binary::Hexdump::Parser in ronin-support][ronin#51]
-* [ ] [Add a hexdump subcommand][ronin#50]
-* [ ] [Add a smart grep subcommand][ronin#49]
-* [ ] [Add a strings subcommand][ronin#48]
-* [ ] [Add enc and dec subcommands][ronin#47]
-
-[ronin#71]: https://github.com/ronin-rb/ronin/issues/71
-[ronin#70]: https://github.com/ronin-rb/ronin/issues/70
-[ronin#61]: https://github.com/ronin-rb/ronin/issues/61
-[ronin#55]: https://github.com/ronin-rb/ronin/issues/55
-[ronin#54]: https://github.com/ronin-rb/ronin/issues/54
-[ronin#53]: https://github.com/ronin-rb/ronin/issues/53
-[ronin#52]: https://github.com/ronin-rb/ronin/issues/52
-[ronin#51]: https://github.com/ronin-rb/ronin/issues/51
-[ronin#50]: https://github.com/ronin-rb/ronin/issues/50
-[ronin#49]: https://github.com/ronin-rb/ronin/issues/49
-[ronin#48]: https://github.com/ronin-rb/ronin/issues/48
-[ronin#47]: https://github.com/ronin-rb/ronin/issues/47
-
+* [x] [Eventually support truffleruby][ronin#70]
+* [x] [Make ronin a "meta gem" which pulls in all other ronin-\* gems][ronin#61]
+* [x] [Add a tip subcommand][ronin#55]
+* [x] [Add a new subcommand][ronin#54]
+* [x] [Add a http subcommand][ronin#53]
+* [x] [Add a netcat subcommand][ronin#52]
+* [x] [Add a unhexdump subcommand to ronin using Ronin::Binary::Hexdump::Parser in ronin-support][ronin#51]
+* [x] [Add a hexdump subcommand][ronin#50]
+* [x] [Add a smart grep subcommand][ronin#49]
+* [x] [Add a strings subcommand][ronin#48]
+* [x] [Add enc and dec subcommands][ronin#47]
 * [x] [Re-add the Ronin::CLI::Command base class][ronin#86]
 * [x] [Remove Ronin::Installation][ronin#85]
 * [x] [Bump required_ruby_version to 2.7.0][ronin#84]
@@ -957,6 +862,17 @@ The main [ronin] gem.
 * [x] [Remove bin/ronin-\* commands in favor of a single ronin command with subcommands][ronin#45]
 * [x] [ronin help should list other ronin-\* commands from other ronin-\* libraries][ronin#44]
 
+[ronin#70]: https://github.com/ronin-rb/ronin/issues/70
+[ronin#61]: https://github.com/ronin-rb/ronin/issues/61
+[ronin#55]: https://github.com/ronin-rb/ronin/issues/55
+[ronin#54]: https://github.com/ronin-rb/ronin/issues/54
+[ronin#53]: https://github.com/ronin-rb/ronin/issues/53
+[ronin#52]: https://github.com/ronin-rb/ronin/issues/52
+[ronin#51]: https://github.com/ronin-rb/ronin/issues/51
+[ronin#50]: https://github.com/ronin-rb/ronin/issues/50
+[ronin#49]: https://github.com/ronin-rb/ronin/issues/49
+[ronin#48]: https://github.com/ronin-rb/ronin/issues/48
+[ronin#47]: https://github.com/ronin-rb/ronin/issues/47
 [ronin#86]: https://github.com/ronin-rb/ronin/issues/86
 [ronin#85]: https://github.com/ronin-rb/ronin/issues/85
 [ronin#84]: https://github.com/ronin-rb/ronin/issues/84
