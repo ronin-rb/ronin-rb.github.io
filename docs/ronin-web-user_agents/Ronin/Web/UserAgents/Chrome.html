@@ -237,6 +237,98 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#build_android-class_method" title="build_android (class method)">.<strong>build_android</strong>(chrome_version:, android_version:, arch: nil, android_device: nil)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Builds a Chrome <code>User-Agent</code> string for Android.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#build_linux-class_method" title="build_linux (class method)">.<strong>build_linux</strong>(chrome_version:, arch:, linux_distro: nil)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Builds a Chrome <code>User-Agent</code> string for Linux.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#build_macos-class_method" title="build_macos (class method)">.<strong>build_macos</strong>(chrome_version:, macos_version:, arch: :intel)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Builds a Chrome <code>User-Agent</code> string for macOS.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#build_windows-class_method" title="build_windows (class method)">.<strong>build_windows</strong>(chrome_version:, windows_version:, arch: nil)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Builds a Chrome <code>User-Agent</code> string for Windows.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#random-class_method" title="random (class method)">.<strong>random</strong>(chrome_version: KNOWN_VERSIONS.sample, os: SUPPORTED_OSES.sample, os_version: KNOWN_OS_VERSIONS[os].sample, linux_distro: SUPPORTED_LINUX_DISTROS.sample, arch: SUPPORTED_OS_ARCHES[os].sample, android_device: OS::Android::DEVICES.sample)  &#x21d2; String </a>
     
 
@@ -411,6 +503,7 @@
       <pre class="lines">
 
 
+60
 61
 62
 63
@@ -461,11 +554,10 @@
 108
 109
 110
-111
-112</pre>
+111</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/user_agents/chrome.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/user_agents/chrome.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='label'>chrome_version:</span> <span class='comma'>,</span>
                <span class='label'>os:</span> <span class='comma'>,</span>
@@ -518,6 +610,513 @@
   <span class='kw'>else</span>
     <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unsupported os: value (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_os'>os</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="build_android-class_method">
+  
+    .<strong>build_android</strong>(chrome_version:, android_version:, arch: nil, android_device: nil)  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Builds a Chrome <code>User-Agent</code> string for Android.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>chrome_version</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The <code>Chrome/...</code> version.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>android_version</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Android version.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>arch</span>
+      
+      
+        <span class='type'>(<tt>:arm</tt>, <tt>:arm64</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The optional hardware architecture.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>android_device</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The optional Android device.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Chrome <code>User-Agent</code> string for Android.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/user_agents/chrome.rb', line 285</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_build_android'>build_android</span><span class='lparen'>(</span><span class='label'>chrome_version:</span> <span class='comma'>,</span> <span class='label'>android_version:</span> <span class='comma'>,</span> <span class='label'>arch:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>android_device:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_arch'>arch</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="OS.html" title="Ronin::Web::UserAgents::OS (module)">OS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="OS/Android.html" title="Ronin::Web::UserAgents::OS::Android (module)">Android</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="OS/Android.html#ARCHES-constant" title="Ronin::Web::UserAgents::OS::Android::ARCHES (constant)">ARCHES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_arch'>arch</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_extensions'>extensions</span> <span class='op'>=</span> <span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Linux</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_extensions'>extensions</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>; </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_arch'>arch</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_arch'>arch</span>
+  <span class='id identifier rubyid_extensions'>extensions</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>; Android </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_android_version'>android_version</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_extensions'>extensions</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>; </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_android_device'>android_device</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_android_device'>android_device</span>
+
+  <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Mozilla/5.0 (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_extensions'>extensions</span><span class='embexpr_end'>}</span><span class='tstring_content'>) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_chrome_version'>chrome_version</span><span class='embexpr_end'>}</span><span class='tstring_content'> Mobile Safari/537.36</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="build_linux-class_method">
+  
+    .<strong>build_linux</strong>(chrome_version:, arch:, linux_distro: nil)  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Builds a Chrome <code>User-Agent</code> string for Linux.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>chrome_version</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The <code>Chrome/...</code> version.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>arch</span>
+      
+      
+        <span class='type'>(<tt>:x86_64</tt>, <tt>:x86</tt>, <tt>:i686</tt>, <tt>:aarch64</tt>, <tt>:arm64</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The hardware architecture.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>linux_distro</span>
+      
+      
+        <span class='type'>(<tt>:ubuntu</tt>, <tt>:fedora</tt>, <tt>:arch</tt>, <tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The optional Linux Distro.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Chrome <code>User-Agent</code> string for Linux.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/user_agents/chrome.rb', line 254</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_build_linux'>build_linux</span><span class='lparen'>(</span><span class='label'>chrome_version:</span> <span class='comma'>,</span> <span class='label'>arch:</span> <span class='comma'>,</span> <span class='label'>linux_distro:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_linux_distro'>linux_distro</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="OS.html" title="Ronin::Web::UserAgents::OS (module)">OS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="OS/Linux.html" title="Ronin::Web::UserAgents::OS::Linux (module)">Linux</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="OS/Linux.html#DISTROS-constant" title="Ronin::Web::UserAgents::OS::Linux::DISTROS (constant)">DISTROS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_linux_distro'>linux_distro</span><span class='comma'>,</span><span class='id identifier rubyid_linux_distro'>linux_distro</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_linux_arch'>linux_arch</span>   <span class='op'>=</span> <span class='const'><span class='object_link'><a href="OS.html" title="Ronin::Web::UserAgents::OS (module)">OS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="OS/Linux.html" title="Ronin::Web::UserAgents::OS::Linux (module)">Linux</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="OS/Linux.html#ARCHES-constant" title="Ronin::Web::UserAgents::OS::Linux::ARCHES (constant)">ARCHES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_arch'>arch</span><span class='rparen'>)</span> <span class='kw'>do</span>
+                   <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown arch: value (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_arch'>arch</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+                 <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_extensions'>extensions</span> <span class='op'>=</span> <span class='const'>String</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>X11</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_extensions'>extensions</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>; </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_linux_distro'>linux_distro</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_linux_distro'>linux_distro</span>
+  <span class='id identifier rubyid_extensions'>extensions</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>; Linux </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_linux_arch'>linux_arch</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+
+  <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Mozilla/5.0 (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_extensions'>extensions</span><span class='embexpr_end'>}</span><span class='tstring_content'>) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_chrome_version'>chrome_version</span><span class='embexpr_end'>}</span><span class='tstring_content'> Safari/537.36</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="build_macos-class_method">
+  
+    .<strong>build_macos</strong>(chrome_version:, macos_version:, arch: :intel)  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Builds a Chrome <code>User-Agent</code> string for macOS.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>chrome_version</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The <code>Chrome/...</code> version.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>macos_version</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The macOS version.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>arch</span>
+      
+      
+        <span class='type'>(<tt>:x86_64</tt>, <tt>:x86</tt>, <tt>:i686</tt>, <tt>:aarch64</tt>, <tt>:arm64</tt>, <tt>:arm</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>:intel</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The hardware architecture.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Chrome <code>User-Agent</code> string for macOS.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+230
+231
+232
+233
+234
+235
+236
+237</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/user_agents/chrome.rb', line 230</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_build_macos'>build_macos</span><span class='lparen'>(</span><span class='label'>chrome_version:</span> <span class='comma'>,</span> <span class='label'>macos_version:</span> <span class='comma'>,</span> <span class='label'>arch:</span> <span class='symbol'>:intel</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_macos_version'>macos_version</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="OS.html" title="Ronin::Web::UserAgents::OS (module)">OS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="OS/MacOS.html" title="Ronin::Web::UserAgents::OS::MacOS (module)">MacOS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="OS/MacOS.html#VERSIONS_UNDERSCORED-constant" title="Ronin::Web::UserAgents::OS::MacOS::VERSIONS_UNDERSCORED (constant)">VERSIONS_UNDERSCORED</a></span></span><span class='lbracket'>[</span><span class='id identifier rubyid_macos_version'>macos_version</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_macos_arch'>macos_arch</span>    <span class='op'>=</span> <span class='const'><span class='object_link'><a href="OS.html" title="Ronin::Web::UserAgents::OS (module)">OS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="OS/MacOS.html" title="Ronin::Web::UserAgents::OS::MacOS (module)">MacOS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="OS/MacOS.html#ARCHES-constant" title="Ronin::Web::UserAgents::OS::MacOS::ARCHES (constant)">ARCHES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_arch'>arch</span><span class='rparen'>)</span> <span class='kw'>do</span>
+                    <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown arch: value (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_arch'>arch</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+                  <span class='kw'>end</span>
+
+  <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Mozilla/5.0 (Macintosh; </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_macos_arch'>macos_arch</span><span class='embexpr_end'>}</span><span class='tstring_content'> Mac OS X </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_macos_version'>macos_version</span><span class='embexpr_end'>}</span><span class='tstring_content'>) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_chrome_version'>chrome_version</span><span class='embexpr_end'>}</span><span class='tstring_content'> Safari/537.36</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="build_windows-class_method">
+  
+    .<strong>build_windows</strong>(chrome_version:, windows_version:, arch: nil)  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Builds a Chrome <code>User-Agent</code> string for Windows.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>chrome_version</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The <code>Chrome/...</code> version.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>windows_version</span>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Windows version.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>arch</span>
+      
+      
+        <span class='type'>(<tt>:x86_64</tt>, <tt>:x86</tt>, <tt>:i686</tt>, <tt>:aarch64</tt>, <tt>:arm64</tt>, <tt>:arm</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The hardware architecture.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>The Chrome <code>User-Agent</code> string for Windows.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/user_agents/chrome.rb', line 203</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_build_windows'>build_windows</span><span class='lparen'>(</span><span class='label'>chrome_version:</span> <span class='comma'>,</span> <span class='label'>windows_version:</span> <span class='comma'>,</span> <span class='label'>arch:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_windows_version'>windows_version</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="OS.html" title="Ronin::Web::UserAgents::OS (module)">OS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="OS/Windows.html" title="Ronin::Web::UserAgents::OS::Windows (module)">Windows</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="OS/Windows.html#VERSIONS-constant" title="Ronin::Web::UserAgents::OS::Windows::VERSIONS (constant)">VERSIONS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_windows_version'>windows_version</span><span class='comma'>,</span><span class='id identifier rubyid_windows_version'>windows_version</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_windows_arch'>windows_arch</span>    <span class='op'>=</span> <span class='const'><span class='object_link'><a href="OS.html" title="Ronin::Web::UserAgents::OS (module)">OS</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="OS/Windows.html" title="Ronin::Web::UserAgents::OS::Windows (module)">Windows</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="OS/Windows.html#ARCHES-constant" title="Ronin::Web::UserAgents::OS::Windows::ARCHES (constant)">ARCHES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='id identifier rubyid_arch'>arch</span><span class='rparen'>)</span> <span class='kw'>do</span>
+                      <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>unknown arch: value (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_arch'>arch</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+                    <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_extensions'>extensions</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Windows NT </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_windows_version'>windows_version</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_extensions'>extensions</span> <span class='op'>&lt;&lt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>; </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_windows_arch'>windows_arch</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_windows_arch'>windows_arch</span>
+
+  <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Mozilla/5.0 (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_extensions'>extensions</span><span class='embexpr_end'>}</span><span class='tstring_content'>) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_chrome_version'>chrome_version</span><span class='embexpr_end'>}</span><span class='tstring_content'> Safari/537.36</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -673,6 +1272,7 @@
       <pre class="lines">
 
 
+172
 173
 174
 175
@@ -686,11 +1286,10 @@
 183
 184
 185
-186
-187</pre>
+186</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/web/user_agents/chrome.rb', line 173</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/web/user_agents/chrome.rb', line 172</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_random'>random</span><span class='lparen'>(</span><span class='label'>chrome_version:</span> <span class='const'><span class='object_link'><a href="#KNOWN_VERSIONS-constant" title="Ronin::Web::UserAgents::Chrome::KNOWN_VERSIONS (constant)">KNOWN_VERSIONS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_sample'>sample</span><span class='comma'>,</span>
                 <span class='label'>os:</span>             <span class='const'><span class='object_link'><a href="#SUPPORTED_OSES-constant" title="Ronin::Web::UserAgents::Chrome::SUPPORTED_OSES (constant)">SUPPORTED_OSES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_sample'>sample</span><span class='comma'>,</span>
@@ -717,9 +1316,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Feb  1 13:44:33 2023 by
+  Generated on Fri Feb 14 22:42:53 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.28 (ruby-3.1.3).
+  0.9.37 (ruby-3.3.6).
 </div>
 
     </div>
