@@ -42,16 +42,16 @@ Produces quoted a string for a variety of programming languages.
 : Quotes the data as a C string.
 
 `-j`, `--js`
-: quotes the data as a JavaScript string.
+: Quotes the data as a JavaScript string.
 
 `-S`, `--shell`
-: Quotes the data as a Shell String.
+: Quotes the data as a Shell string.
 
 `-P`, `--powershell`
-: Quotes the data as a PowerShell String.
+: Quotes the data as a PowerShell string.
 
 `-R`, `--ruby`
-: Quotes the data as a Ruby String.
+: Quotes the data as a Ruby string.
 
 `-h`, `--help`
 : Print help information.
@@ -63,3 +63,4 @@ Postmodern <postmodern.mod3@gmail.com>
 ## SEE ALSO
 
 [ronin-unquote](ronin-unquote.1.html)
+

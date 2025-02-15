@@ -70,10 +70,10 @@ Decodes each character of the given data from a variety of formats.
 : JavaScript decodes the data.
 
 `-S`, `--shell`
-: Decodes the data as a Shell String.
+: Decodes the data as a Shell string.
 
 `-P`, `--powershell`
-: Decodes the data as a PowerShell String.
+: Decodes the data as a PowerShell string.
 
 `--punycode`
 : Decodes the data as Punycode.
@@ -82,7 +82,7 @@ Decodes each character of the given data from a variety of formats.
 : Decodes the data as Quoted Printable.
 
 `-R`, `--ruby`
-: Ruby decodes the data.
+: Decodes the data as a Ruby string.
 
 `--uudecode`
 : uudecodes the data.
@@ -100,3 +100,4 @@ Postmodern <postmodern.mod3@gmail.com>
 ## SEE ALSO
 
 [ronin-encode](ronin-encode.1.html)
+

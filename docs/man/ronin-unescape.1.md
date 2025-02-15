@@ -51,19 +51,19 @@ Unescapes each escaped character from a variety of encodings.
 : HTTP unescapes the data.
 
 `-j`, `--js`
-: JavaScript unescapes the data.
+: Unescapes the data as a JavaScript string.
 
 `-S`, `--shell`
-: Unescapes the data as a Shell String.
+: Unescapes the data as a Shell string.
 
 `-P`, `--powershell`
-: Unescapes the data as a PowerShell String.
+: Unescapes the data as a PowerShell string.
 
 `-Q`, `--quoted-printable`
 : Unescapes the data as Quoted Printable.
 
 `-R`, `--ruby`
-: Unescapes the data as a Ruby String.
+: Unescapes the data as a Ruby string.
 
 `-x`, `--xml`
 : XML unescapes the data.
@@ -78,3 +78,4 @@ Postmodern <postmodern.mod3@gmail.com>
 ## SEE ALSO
 
 [ronin-escape](ronin-escape.1.html)
+
