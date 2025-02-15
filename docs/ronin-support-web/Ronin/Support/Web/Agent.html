@@ -1153,6 +1153,40 @@ JSON.</li>
   
     <li>
       
+        <span class='name'>follow_redirects</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>true</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Specifies whether HTTP redirects will automatically be followed.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>max_redirects</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>20</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>The maximum number of redirects to follow. Defaults to 20.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
         <span class='name'>proxy</span>
       
       
@@ -1360,12 +1394,6 @@ JSON.</li>
       <pre class="lines">
 
 
-128
-129
-130
-131
-132
-133
 134
 135
 136
@@ -1375,10 +1403,16 @@ JSON.</li>
 140
 141
 142
-143</pre>
+143
+144
+145
+146
+147
+148
+149</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 128</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 134</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>follow_redirects:</span> <span class='kw'>true</span><span class='comma'>,</span>
                <span class='label'>max_redirects:</span>    <span class='int'>20</span><span class='comma'>,</span>
@@ -1616,12 +1650,12 @@ JSON.</li>
       <pre class="lines">
 
 
-150
-151
-152</pre>
+156
+157
+158</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 150</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 156</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_follow_redirects?'>follow_redirects?</span>
   <span class='ivar'>@follow_redirects</span>
@@ -1657,7 +1691,7 @@ JSON.</li>
 <div class="tags">
   
   <div class="examples">
-    <p class="tag_title">Examples:</p>
+    <h4 class="tag_title">Examples:</h4>
     
       
       <pre class="example code"><code><span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://example.com/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -1678,6 +1712,40 @@ JSON.</li>
       
         &mdash;
         <div class='inline'><p>The URL to create the HTTP GET request for.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>follow_redirects</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>@follow_redirects</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Overrides whether HTTP redirects will automatically be followed.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>max_redirects</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>@max_redirects</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Overrides the maximum number of redirects to follow.</p>
 </div>
       
     </li>
@@ -1948,18 +2016,6 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-1059
-1060
-1061
-1062
-1063
-1064
-1065
-1066
-1067
-1068
-1069
-1070
 1071
 1072
 1073
@@ -1970,10 +2026,22 @@ Will also default the <code>Content-Type</code> header to
 1078
 1079
 1080
-1081</pre>
+1081
+1082
+1083
+1084
+1085
+1086
+1087
+1088
+1089
+1090
+1091
+1092
+1093</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1059</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1071</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>follow_redirects:</span> <span class='ivar'>@follow_redirects</span><span class='comma'>,</span>
              <span class='label'>max_redirects:</span>    <span class='ivar'>@max_redirects</span><span class='comma'>,</span>
@@ -2029,7 +2097,7 @@ Will also default the <code>Content-Type</code> header to
 <div class="tags">
   
   <div class="examples">
-    <p class="tag_title">Examples:</p>
+    <h4 class="tag_title">Examples:</h4>
     
       
       <pre class="example code"><code><span class='id identifier rubyid_doc'>doc</span> <span class='op'>=</span> <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_get_html'>get_html</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://example.com/page.html</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -2078,6 +2146,30 @@ Will also default the <code>Content-Type</code> header to
     
     <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
     <ul class="option">
+      
+        <li>
+          <span class="name">:follow_redirects</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Overrides whether HTTP redirects will automatically be followed.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_redirects</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Overrides the maximum number of redirects to follow.</p>
+</div>
+          
+        </li>
       
         <li>
           <span class="name">:query</span>
@@ -2293,18 +2385,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-1106
-1107
-1108
-1109
-1110
-1111
-1112
-1113
-1114</pre>
+1124
+1125
+1126
+1127
+1128
+1129
+1130
+1131
+1132</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1106</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1124</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_html'>get_html</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -2346,7 +2438,7 @@ Will also default the <code>Content-Type</code> header to
 <div class="tags">
   
   <div class="examples">
-    <p class="tag_title">Examples:</p>
+    <h4 class="tag_title">Examples:</h4>
     
       
       <pre class="example code"><code><span class='id identifier rubyid_json'>json</span> <span class='op'>=</span> <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_get_json'>get_json</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://example.com/data.json</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -2395,6 +2487,30 @@ Will also default the <code>Content-Type</code> header to
     
     <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
     <ul class="option">
+      
+        <li>
+          <span class="name">:follow_redirects</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Overrides whether HTTP redirects will automatically be followed.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_redirects</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Overrides the maximum number of redirects to follow.</p>
+</div>
+          
+        </li>
       
         <li>
           <span class="name">:query</span>
@@ -2611,18 +2727,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-1173
-1174
-1175
-1176
-1177
-1178
-1179
-1180
-1181</pre>
+1203
+1204
+1205
+1206
+1207
+1208
+1209
+1210
+1211</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1173</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1203</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_json'>get_json</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -2664,7 +2780,7 @@ Will also default the <code>Content-Type</code> header to
 <div class="tags">
   
   <div class="examples">
-    <p class="tag_title">Examples:</p>
+    <h4 class="tag_title">Examples:</h4>
     
       
       <pre class="example code"><code><span class='id identifier rubyid_doc'>doc</span> <span class='op'>=</span> <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_get_xml'>get_xml</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://example.com/data.xml</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -2713,6 +2829,30 @@ Will also default the <code>Content-Type</code> header to
     
     <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
     <ul class="option">
+      
+        <li>
+          <span class="name">:follow_redirects</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Overrides whether HTTP redirects will automatically be followed.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_redirects</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Overrides the maximum number of redirects to follow.</p>
+</div>
+          
+        </li>
       
         <li>
           <span class="name">:query</span>
@@ -2928,18 +3068,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-1139
-1140
-1141
-1142
-1143
-1144
-1145
-1146
-1147</pre>
+1163
+1164
+1165
+1166
+1167
+1168
+1169
+1170
+1171</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1139</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1163</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_xml'>get_xml</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -3207,18 +3347,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-750
-751
-752
-753
-754
-755
 756
 757
-758</pre>
+758
+759
+760
+761
+762
+763
+764</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 750</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 756</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_allowed_methods'>http_allowed_methods</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -3521,18 +3661,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-429
-430
-431
-432
-433
-434
 435
 436
-437</pre>
+437
+438
+439
+440
+441
+442
+443</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 429</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 435</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_copy'>http_copy</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -3835,18 +3975,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-460
-461
-462
-463
-464
-465
 466
 467
-468</pre>
+468
+469
+470
+471
+472
+473
+474</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 460</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 466</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_delete'>http_delete</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -4149,18 +4289,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-491
-492
-493
-494
-495
-496
 497
 498
-499</pre>
+499
+500
+501
+502
+503
+504
+505</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 491</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 497</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -4428,18 +4568,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-569
-570
-571
-572
-573
-574
 575
 576
-577</pre>
+577
+578
+579
+580
+581
+582
+583</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 569</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 575</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_get_body'>http_get_body</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -4707,18 +4847,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-543
-544
-545
-546
-547
-548
 549
 550
-551</pre>
+551
+552
+553
+554
+555
+556
+557</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 543</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 549</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_get_cookies'>http_get_cookies</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -4986,18 +5126,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-517
-518
-519
-520
-521
-522
 523
 524
-525</pre>
+525
+526
+527
+528
+529
+530
+531</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 517</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 523</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_get_headers'>http_get_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -5300,18 +5440,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-600
-601
-602
-603
-604
-605
 606
 607
-608</pre>
+608
+609
+610
+611
+612
+613
+614</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 600</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 606</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_head'>http_head</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -5614,18 +5754,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-631
-632
-633
-634
-635
-636
 637
 638
-639</pre>
+639
+640
+641
+642
+643
+644
+645</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 631</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 637</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_lock'>http_lock</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -5928,18 +6068,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-662
-663
-664
-665
-666
-667
 668
 669
-670</pre>
+670
+671
+672
+673
+674
+675
+676</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 662</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 668</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_mkcol'>http_mkcol</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -6242,18 +6382,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-693
-694
-695
-696
-697
-698
 699
 700
-701</pre>
+701
+702
+703
+704
+705
+706
+707</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 693</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 699</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_move'>http_move</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -6539,18 +6679,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-290
-291
-292
-293
-294
-295
 296
 297
-298</pre>
+298
+299
+300
+301
+302
+303
+304</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 290</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 296</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_ok?'>http_ok?</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:head</span><span class='comma'>,</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -6853,18 +6993,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-724
-725
-726
-727
-728
-729
 730
 731
-732</pre>
+732
+733
+734
+735
+736
+737
+738</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 724</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 730</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_options'>http_options</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -7167,18 +7307,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-781
-782
-783
-784
-785
-786
 787
 788
-789</pre>
+789
+790
+791
+792
+793
+794
+795</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 781</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 787</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_patch'>http_patch</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -7481,18 +7621,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-812
-813
-814
-815
-816
-817
 818
 819
-820</pre>
+820
+821
+822
+823
+824
+825
+826</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 812</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 818</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -7760,18 +7900,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-864
-865
-866
-867
-868
-869
 870
 871
-872</pre>
+872
+873
+874
+875
+876
+877
+878</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 864</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 870</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_post_body'>http_post_body</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -8039,18 +8179,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-838
-839
-840
-841
-842
-843
 844
 845
-846</pre>
+846
+847
+848
+849
+850
+851
+852</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 838</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 844</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_post_headers'>http_post_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -8317,19 +8457,19 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-369
-370
-371
-372
-373
-374
 375
 376
 377
-378</pre>
+378
+379
+380
+381
+382
+383
+384</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 369</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 375</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_powered_by_header'>http_powered_by_header</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -8637,18 +8777,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-895
-896
-897
-898
-899
-900
 901
 902
-903</pre>
+903
+904
+905
+906
+907
+908
+909</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 895</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 901</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_propfind'>http_propfind</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -8955,18 +9095,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-928
-929
-930
-931
-932
-933
 934
 935
-936</pre>
+936
+937
+938
+939
+940
+941
+942</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 928</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 934</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_proppatch'>http_proppatch</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -9269,18 +9409,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-961
-962
-963
-964
-965
-966
 967
 968
-969</pre>
+969
+970
+971
+972
+973
+974
+975</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 961</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 967</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_put'>http_put</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -9618,18 +9758,18 @@ class.</p>
       <pre class="lines">
 
 
-234
-235
-236
-237
-238
-239
 240
 241
-242</pre>
+242
+243
+244
+245
+246
+247
+248</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 234</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 240</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_request'>http_request</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -9915,18 +10055,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-398
-399
-400
-401
-402
-403
 404
 405
-406</pre>
+406
+407
+408
+409
+410
+411
+412</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 398</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 404</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_response_body'>http_response_body</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:get</span><span class='comma'>,</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -10212,18 +10352,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-318
-319
-320
-321
-322
-323
 324
 325
-326</pre>
+326
+327
+328
+329
+330
+331
+332</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 318</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 324</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_response_headers'>http_response_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:head</span><span class='comma'>,</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -10509,18 +10649,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-262
-263
-264
-265
-266
-267
 268
 269
-270</pre>
+270
+271
+272
+273
+274
+275
+276</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 262</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 268</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_response_status'>http_response_status</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='op'>=</span><span class='symbol'>:head</span><span class='comma'>,</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -10787,19 +10927,19 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-343
-344
-345
-346
-347
-348
 349
 350
 351
-352</pre>
+352
+353
+354
+355
+356
+357
+358</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 343</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 349</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_server_header'>http_server_header</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -11103,18 +11243,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-992
-993
-994
-995
-996
-997
 998
 999
-1000</pre>
+1000
+1001
+1002
+1003
+1004
+1005
+1006</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 992</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 998</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_trace'>http_trace</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -11417,18 +11557,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-1023
-1024
-1025
-1026
-1027
-1028
 1029
 1030
-1031</pre>
+1031
+1032
+1033
+1034
+1035
+1036
+1037</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1023</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1029</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_unlock'>http_unlock</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='comma'>,</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='id identifier rubyid_normalize_url'>normalize_url</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
@@ -11471,7 +11611,7 @@ follow any redirects.</p>
 <div class="tags">
   
   <div class="examples">
-    <p class="tag_title">Examples:</p>
+    <h4 class="tag_title">Examples:</h4>
     
       
       <pre class="example code"><code><span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://example.com/form</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>form_data:</span> <span class='lbrace'>{</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>foo</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bar</span><span class='tstring_end'>&#39;</span></span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -11492,6 +11632,40 @@ follow any redirects.</p>
       
         &mdash;
         <div class='inline'><p>The URL to create the HTTP GET request for.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>follow_redirects</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>@follow_redirects</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Overrides whether HTTP redirects will automatically be followed.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>max_redirects</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>@max_redirects</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>Overrides the maximum number of redirects to follow.</p>
 </div>
       
     </li>
@@ -11762,28 +11936,28 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-1211
-1212
-1213
-1214
-1215
-1216
-1217
-1218
-1219
-1220
-1221
-1222
-1223
-1224
-1225
-1226
-1227
-1228
-1229</pre>
+1247
+1248
+1249
+1250
+1251
+1252
+1253
+1254
+1255
+1256
+1257
+1258
+1259
+1260
+1261
+1262
+1263
+1264
+1265</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1211</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1247</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='label'>follow_redirects:</span> <span class='ivar'>@follow_redirects</span><span class='comma'>,</span>
               <span class='label'>max_redirects:</span>    <span class='ivar'>@max_redirects</span><span class='comma'>,</span>
@@ -11836,11 +12010,11 @@ follow any redirects.</p>
 <div class="tags">
   
   <div class="examples">
-    <p class="tag_title">Examples:</p>
+    <h4 class="tag_title">Examples:</h4>
     
       
-        <p class="example_title"><div class='inline'><p>Send a POST request and parses the HTML response:</p>
-</div></p>
+        <h5 class="example_title"><div class='inline'><p>Send a POST request and parses the HTML response:</p>
+</div></h5>
       
       <pre class="example code"><code>doc = agent.post_html &#39;https://example.com/form&#39;, form_data: {foo: &#39;bar&#39;})
 # =&gt; #&lt;Nokogiri::HTML::Document:...&gt;</code></pre>
@@ -11888,6 +12062,30 @@ follow any redirects.</p>
     
     <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
     <ul class="option">
+      
+        <li>
+          <span class="name">:follow_redirects</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Overrides whether HTTP redirects will automatically be followed.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_redirects</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Overrides the maximum number of redirects to follow.</p>
+</div>
+          
+        </li>
       
         <li>
           <span class="name">:query</span>
@@ -12104,18 +12302,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-1257
-1258
-1259
-1260
-1261
-1262
-1263
-1264
-1265</pre>
+1299
+1300
+1301
+1302
+1303
+1304
+1305
+1306
+1307</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1257</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1299</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_post_html'>post_html</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -12158,18 +12356,18 @@ follow any redirects.</p>
 <div class="tags">
   
   <div class="examples">
-    <p class="tag_title">Examples:</p>
+    <h4 class="tag_title">Examples:</h4>
     
       
-        <p class="example_title"><div class='inline'><p>Send a POST request to the form and parse the JSON response:</p>
-</div></p>
+        <h5 class="example_title"><div class='inline'><p>Send a POST request to the form and parse the JSON response:</p>
+</div></h5>
       
       <pre class="example code"><code><span class='id identifier rubyid_json'>json</span> <span class='op'>=</span> <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_post_json'>post_json</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://example.com/form</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>form_data:</span> <span class='lbrace'>{</span><span class='label'>foo:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bar</span><span class='tstring_end'>&#39;</span></span><span class='rbrace'>}</span>
 <span class='comment'># =&gt; {...}</span></code></pre>
     
       
-        <p class="example_title"><div class='inline'><p>Send a POST request containing JSON and parse the JSON response:</p>
-</div></p>
+        <h5 class="example_title"><div class='inline'><p>Send a POST request containing JSON and parse the JSON response:</p>
+</div></h5>
       
       <pre class="example code"><code><span class='id identifier rubyid_json'>json</span> <span class='op'>=</span> <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_post_json'>post_json</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://example.com/api/end-point</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>json:</span> <span class='lbrace'>{</span><span class='label'>foo:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bar</span><span class='tstring_end'>&#39;</span></span><span class='rbrace'>}</span>
 <span class='comment'># =&gt; {...}</span></code></pre>
@@ -12217,6 +12415,30 @@ follow any redirects.</p>
     
     <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
     <ul class="option">
+      
+        <li>
+          <span class="name">:follow_redirects</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Overrides whether HTTP redirects will automatically be followed.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_redirects</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Overrides the maximum number of redirects to follow.</p>
+</div>
+          
+        </li>
       
         <li>
           <span class="name">:query</span>
@@ -12433,18 +12655,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-1333
-1334
-1335
-1336
-1337
-1338
-1339
-1340
-1341</pre>
+1387
+1388
+1389
+1390
+1391
+1392
+1393
+1394
+1395</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1333</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1387</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_post_json'>post_json</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -12487,11 +12709,11 @@ follow any redirects.</p>
 <div class="tags">
   
   <div class="examples">
-    <p class="tag_title">Examples:</p>
+    <h4 class="tag_title">Examples:</h4>
     
       
-        <p class="example_title"><div class='inline'><p>Send a POST request to the form and parses the XML response:</p>
-</div></p>
+        <h5 class="example_title"><div class='inline'><p>Send a POST request to the form and parses the XML response:</p>
+</div></h5>
       
       <pre class="example code"><code><span class='id identifier rubyid_doc'>doc</span> <span class='op'>=</span> <span class='id identifier rubyid_agent'>agent</span><span class='period'>.</span><span class='id identifier rubyid_post_xml'>post_xml</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://example.com/form</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>form_data:</span> <span class='lbrace'>{</span><span class='label'>foo:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bar</span><span class='tstring_end'>&#39;</span></span><span class='rbrace'>}</span>
 <span class='comment'># =&gt; #&lt;Nokogiri::XML::Document:...&gt;</span></code></pre>
@@ -12539,6 +12761,30 @@ follow any redirects.</p>
     
     <p class="tag_title">Options Hash (<tt>**kwargs</tt>):</p>
     <ul class="option">
+      
+        <li>
+          <span class="name">:follow_redirects</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Overrides whether HTTP redirects will automatically be followed.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_redirects</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'><p>Overrides the maximum number of redirects to follow.</p>
+</div>
+          
+        </li>
       
         <li>
           <span class="name">:query</span>
@@ -12755,18 +13001,18 @@ Will also default the <code>Content-Type</code> header to
       <pre class="lines">
 
 
-1293
-1294
-1295
-1296
-1297
-1298
-1299
-1300
-1301</pre>
+1341
+1342
+1343
+1344
+1345
+1346
+1347
+1348
+1349</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1293</span>
+      <pre class="code"><span class="info file"># File 'lib/ronin/support/web/agent.rb', line 1341</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_post_xml'>post_xml</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='comma'>,</span><span class='op'>**</span><span class='id identifier rubyid_kwargs'>kwargs</span><span class='rparen'>)</span>
@@ -12787,9 +13033,9 @@ Will also default the <code>Content-Type</code> header to
 </div>
 
       <div id="footer">
-  Generated on Mon Jul 22 11:26:44 2024 by
+  Generated on Fri Feb 14 23:27:52 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.36 (ruby-3.3.4).
+  0.9.37 (ruby-3.3.6).
 </div>
 
     </div>
