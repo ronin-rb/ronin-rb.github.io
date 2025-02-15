@@ -153,7 +153,7 @@ Commands:
 
 <p>Test a URL for SQL injection (SQLi):</p>
 
-<pre class="code shell"><code class="shell">$ ronin-vulns sqli &quot;http://www.example.com/page.php?lang=en&quot;
+<pre class="code shell"><code class="shell">$ ronin-vulns sqli &quot;http://testphp.vulnweb.com/listproducts.php?cat=1&quot;
 </code></pre>
 
 <p>Test a URL for Server Side Template Injection (SSTI):</p>
@@ -239,16 +239,16 @@ end
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ronin/vulns/sqli</span><span class='tstring_end'>&#39;</span></span>
 
-<span class='id identifier rubyid_vuln'>vuln</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Vulns.html" title="Ronin::Vulns (module)">Vulns</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Vulns/SQLI.html" title="Ronin::Vulns::SQLI (class)">SQLI</a></span></span><span class='period'>.</span><span class='id identifier rubyid_test'><span class='object_link'><a href="Ronin/Vulns/WebVuln.html#test-class_method" title="Ronin::Vulns::WebVuln.test (method)">test</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://www.example.com/page.php?lang=en</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_vuln'>vuln</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Vulns.html" title="Ronin::Vulns (module)">Vulns</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Vulns/SQLI.html" title="Ronin::Vulns::SQLI (class)">SQLI</a></span></span><span class='period'>.</span><span class='id identifier rubyid_test'><span class='object_link'><a href="Ronin/Vulns/WebVuln.html#test-class_method" title="Ronin::Vulns::WebVuln.test (method)">test</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://testphp.vulnweb.com/listproducts.php?cat=1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='comment'># =&gt; #&lt;Ronin::Vulns::SQLI: ...&gt;
 </span></code></pre>
 
 <p>Finds all Server Side Template Injection (SQLI) vulnerabilities for a given URL:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_vulns'>vulns</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Vulns.html" title="Ronin::Vulns (module)">Vulns</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Vulns/SQLI.html" title="Ronin::Vulns::SQLI (class)">SQLI</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="Ronin/Vulns/WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://www.example.com/page.php?lang=en</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_vulns'>vulns</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Vulns.html" title="Ronin::Vulns (module)">Vulns</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Vulns/SQLI.html" title="Ronin::Vulns::SQLI (class)">SQLI</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="Ronin/Vulns/WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://testphp.vulnweb.com/listproducts.php?cat=1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='comment'># =&gt; [#&lt;Ronin::Vulns::SQLI: ...&gt;, ...]
 </span>
-<span class='id identifier rubyid_vulns'>vulns</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Vulns.html" title="Ronin::Vulns (module)">Vulns</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Vulns/SQLI.html" title="Ronin::Vulns::SQLI (class)">SQLI</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="Ronin/Vulns/WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://www.example.com/page.php?lang=en</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vuln'>vuln</span><span class='op'>|</span>
+<span class='id identifier rubyid_vulns'>vulns</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Ronin.html" title="Ronin (module)">Ronin</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Vulns.html" title="Ronin::Vulns (module)">Vulns</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Ronin/Vulns/SQLI.html" title="Ronin::Vulns::SQLI (class)">SQLI</a></span></span><span class='period'>.</span><span class='id identifier rubyid_scan'><span class='object_link'><a href="Ronin/Vulns/WebVuln.html#scan-class_method" title="Ronin::Vulns::WebVuln.scan (method)">scan</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://testphp.vulnweb.com/listproducts.php?cat=1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vuln'>vuln</span><span class='op'>|</span>
   <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Found SQLi on </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vuln'>vuln</span><span class='period'>.</span><span class='id identifier rubyid_url'>url</span><span class='embexpr_end'>}</span><span class='tstring_content'> query param </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_vuln'>vuln</span><span class='period'>.</span><span class='id identifier rubyid_query_param'>query_param</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span>
 <span class='comment'># =&gt; [#&lt;Ronin::Vulns::SQLI: ...&gt;, ...]
@@ -322,6 +322,7 @@ URL:</p>
 
 <ul>
 <li><a href="https://www.ruby-lang.org">Ruby</a> &gt;= 3.0.0</li>
+<li><a href="https://github.com/ruby/base64#readme">base64</a> ~&gt; 0.1</li>
 <li><a href="https://github.com/ronin-rb/ronin-support#readme">ronin-support</a> ~&gt; 1.0</li>
 <li><a href="https://github.com/ronin-rb/ronin-core#readme">ronin-core</a> ~&gt; 0.2</li>
 <li><a href="https://github.com/ronin-rb/ronin-db#readme">ronin-db</a> ~&gt; 0.2</li>
@@ -357,7 +358,7 @@ URL:</p>
 
 <h2 id="license">License</h2>
 
-<p>Copyright (c) 2022-2024 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
+<p>Copyright (c) 2022-2025 Hal Brodigan (postmodern.mod3 at gmail.com)</p>
 
 <p>ronin-vulns is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published
@@ -374,9 +375,9 @@ along with ronin-vulns.  If not, see <a href="https://www.gnu.org/licenses/">htt
 </div></div>
 
       <div id="footer">
-  Generated on Mon Jul 22 12:28:48 2024 by
+  Generated on Fri Feb 14 23:25:03 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.36 (ruby-3.3.4).
+  0.9.37 (ruby-3.3.6).
 </div>
 
     </div>
