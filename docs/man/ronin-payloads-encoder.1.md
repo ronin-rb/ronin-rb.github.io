@@ -9,7 +9,7 @@ ronin-payloads-encoder - Prints information about an encoder
 
 ## SYNOPSIS
 
-`ronin-payloads encoder` [*options*] *NAME*
+`ronin-payloads encoder` [*options*] [*NAME*]
 
 ## DESCRIPTION
 
@@ -18,7 +18,7 @@ Prints information about a particular payload encoder.
 ## ARGUMENTS
 
 *NAME*
-: The name of the payload encoder to load.
+: The optional name of the payload encoder to load.
 
 ## OPTIONS
 
@@ -35,3 +35,4 @@ Postmodern <postmodern.mod3@gmail.com>
 ## SEE ALSO
 
 [ronin-payloads-encoders](ronin-payloads-encoders.1.html) [ronin-payloads-encode](ronin-payloads-encode.1.html)
+
