@@ -57,7 +57,38 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'><h3 id="1-1-0-2024-07-22">1.1.0 / 2024-07-22</h3>
+      <div id="content"><div id='filecontents'><h3 id="1-1-1-2025-02-14">1.1.1 / 2025-02-14</h3>
+
+<ul>
+<li>Added the <code>base64</code> gem as a dependency for Bundler and Ruby 3.4.0.</li>
+<li>No longer escape <code>#</code> characters in
+<span class='object_link'><a href="Ronin/Support/Encoding/Shell.html#escape_byte-class_method" title="Ronin::Support::Encoding::Shell.escape_byte (method)">Ronin::Support::Encoding::Shell.escape_byte</a></span>,
+<span class='object_link'><a href="Ronin/Support/Encoding/Shell.html#escape-class_method" title="Ronin::Support::Encoding::Shell.escape (method)">Ronin::Support::Encoding::Shell.escape</a></span>,
+<span class='object_link'><a href="Integer.html#shell_escape-instance_method" title="Integer#shell_escape (method)">Integer#shell_escape</a></span>, and <span class='object_link'><a href="String.html#shell_escape-instance_method" title="String#shell_escape (method)">String#shell_escape</a></span>.
+
+<ul>
+<li><strong>Note:</strong> The <code>#</code> character does not actually need to be backslash escaped
+within double-quoted or single-quoted shell strings.</li>
+</ul></li>
+<li>Fixed <span class='object_link'><a href="Ronin/Support/Encoding/Shell.html#unescape-class_method" title="Ronin::Support::Encoding::Shell.unescape (method)">Ronin::Support::Encoding::Shell.unescape</a></span> and <span class='object_link'><a href="String.html#shell_unescape-instance_method" title="String#shell_unescape (method)">String#shell_unescape</a></span>
+to return a UTF-8 encoded String.</li>
+<li>Fixed decoding of <code>\UXXXXXXXX</code> unicode characters in
+<span class='object_link'><a href="Ronin/Support/Encoding/C.html#unescape-class_method" title="Ronin::Support::Encoding::C.unescape (method)">Ronin::Support::Encoding::C.unescape</a></span> and <span class='object_link'><a href="String.html#c_unescape-instance_method" title="String#c_unescape (method)">String#c_unescape</a></span>.</li>
+<li>Fixed decoding of <code>\u{X..}</code> unicode characters in
+<span class='object_link'><a href="Ronin/Support/Encoding/Ruby.html#unescape-class_method" title="Ronin::Support::Encoding::Ruby.unescape (method)">Ronin::Support::Encoding::Ruby.unescape</a></span> and <span class='object_link'><a href="String.html#ruby_unescape-instance_method" title="String#ruby_unescape (method)">String#ruby_unescape</a></span>.</li>
+<li>Fixed multiple bugs in <span class='object_link'><a href="Ronin/Support/Text/Patterns.html#VERSION_NUMBER-constant" title="Ronin::Support::Text::Patterns::VERSION_NUMBER (constant)">Ronin::Support::Text::Patterns::VERSION_NUMBER</a></span>:
+
+<ul>
+<li>Fixed a regex typo that was preventing the regex from matching versions.</li>
+<li>Fixed matching of version numbers containing alpha-numeric characters
+(ex: <code>1.2.3a</code>).</li>
+<li>Fixed matching of version numbers within file names, but to not accidentally
+also match the file extension (ex: <code>foo-1.2.3.zip</code> -&gt; <code>1.2.3</code>).</li>
+</ul></li>
+<li>Documentation improvements.</li>
+</ul>
+
+<h3 id="1-1-0-2024-07-22">1.1.0 / 2024-07-22</h3>
 
 <ul>
 <li>Added <span class='object_link'><a href="Ronin/Support/Binary/CTypes/OS/Android.html" title="Ronin::Support::Binary::CTypes::OS::Android (class)">Ronin::Support::Binary::CTypes::OS::Android</a></span>.</li>
@@ -954,9 +985,9 @@ for unicode characters.</li>
 </div></div>
 
       <div id="footer">
-  Generated on Mon Jul 22 11:13:06 2024 by
+  Generated on Fri Feb 14 21:59:16 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.36 (ruby-3.3.4).
+  0.9.37 (ruby-3.3.6).
 </div>
 
     </div>
