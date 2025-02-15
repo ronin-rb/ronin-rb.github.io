@@ -1,6 +1,6 @@
 namespace :docs do
   LIBRARIES.each_key do |library|
-    namespace :sync do
+    namespace :api do
       desc "Syncs the documentation for #{library}"
       task(library) do
         library_doc_dir = "docs/#{library}"
