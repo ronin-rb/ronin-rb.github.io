@@ -9,7 +9,7 @@ js: ["copy-button.js"]
 ## Copy/Paste Instructions
 
 ```shell
-sudo zypper -n in -l gcc make awk ruby-devel git zip nmap masscan graphviz
+sudo zypper -n in -l gcc make diffutils awk ruby-devel git zip nmap masscan graphviz
 sudo gem install ronin
 ```
 
@@ -18,8 +18,16 @@ sudo gem install ronin
 {% include install/build_deps.md %}
 
 ```shell
-sudo zypper -n in -l gcc make awk
+sudo zypper -n in -l gcc make diffutils awk
 ```
+
+<article class="message is-dark">
+  <div class="message-header">Note:</div>
+  <div class="message-body" markdown="1">
+  `diffutils`, which provides the `cmp` command, is not installed by default in
+  the official OpenSUSE docker image.
+  </div>
+</article>
 
 <article class="message is-dark">
   <div class="message-header">Note:</div>
