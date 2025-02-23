@@ -28,7 +28,6 @@ sudo zypper -n in -l gcc make awk
   </div>
 </article>
 
-
 {% include install/ruby.md %}
 
 ```shell
